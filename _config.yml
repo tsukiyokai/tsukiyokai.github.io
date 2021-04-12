@@ -74,7 +74,7 @@ deploy:
   branch: main
 backup:
   type: git
-  theme: claudia
+  theme: next
   message: Backup my blog
   repository:
     github: git@github.com:tsukiyokai/tsukiyokai.github.io.git,backup
