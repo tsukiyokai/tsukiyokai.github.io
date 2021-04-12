@@ -78,4 +78,3 @@ backup:
   message: Backup my blog
   repository:
     github: git@github.com:tsukiyokai/tsukiyokai.github.io.git,backup
-    coding: git@git.dev.tencent.com:tsukiyokai/tsukiyokai.git,backup
