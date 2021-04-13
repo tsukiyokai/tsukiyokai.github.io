@@ -28,7 +28,7 @@
 <meta property="og:description" content="二级指针概念一级指针存储变量的地址，二级指针存储一级指针的地址。当我们想通过函数改变某个变量的值时，我们向函数传递指向该变量的指针；而如果我们想改变一个指针的值（例如改变指针的指向），此时我们传递指向该指针的指针，即二级指针。 总体应上把握住一个原则：将指针作为函数参数时，看是为了修改指针指向的值，还是为了修改指针本身。前者传入一级指针，后者传入二级指针。指针本身也是一种变量，它也有相应的地址，对">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-12T08:30:22.607Z">
+<meta property="article:modified_time" content="2021-04-13T17:20:31.285Z">
 <meta property="article:author" content="月夜海">
 <meta property="article:tag" content="指针">
 <meta name="twitter:card" content="summary">
@@ -90,7 +90,7 @@
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-书单"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -164,20 +164,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -288,6 +288,7 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="二级指针概念"><a href="#二级指针概念" class="headerlink" title="二级指针概念"></a>二级指针概念</h2><p>一级指针存储变量的地址，二级指针存储一级指针的地址。当我们想通过函数改变某个变量的值时，我们向函数传递指向该变量的指针；而如果我们想改变一个指针的值（例如改变指针的指向），此时我们传递指向该指针的指针，即二级指针。</p>
 <p>总体应上把握住一个原则：将指针作为函数参数时，看是为了修改指针指向的值，还是为了修改指针本身。前者传入一级指针，后者传入二级指针。指针本身也是一种变量，它也有相应的地址，对指针取地址就得到了指针这个对象的地址。</p>
+<span id="more"></span>
 <p>下面以具体代码来解释各级指针的含义。</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>* p = &amp;a;</span><br><span class="line">    <span class="keyword">int</span>** q = &amp;p;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;a   = %d\n&quot;</span>, a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;&amp;a  = %p\n&quot;</span>, &amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p   = %p\n&quot;</span>, p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;&amp;p  = %p\n&quot;</span>, &amp;p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;*p  = %d\n&quot;</span>, *p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;q   = %p\n&quot;</span>, q);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;&amp;q  = %p\n&quot;</span>, &amp;q);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;*q  = %p\n&quot;</span>, *q);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;**q = %d\n&quot;</span>, **q);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -362,7 +363,7 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"># 指针</a>
+              <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
           </div>
 
         
@@ -462,7 +463,7 @@
 NexT.utils.loadComments('.utterances-container', () => {
   const script = document.createElement('script');
   script.src = 'https://utteranc.es/client.js';
-  script.setAttribute('repo', "tsukiyokai/utterances-bot");
+  script.setAttribute('repo', "tsukiyokai/blog-assets");
   script.setAttribute('issue-term', "pathname");
   script.setAttribute('theme', "photon-dark");
   script.crossOrigin = 'anonymous';
