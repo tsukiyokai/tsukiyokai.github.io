@@ -214,7 +214,7 @@ body {
   background: var(--body-bg-color);
   color: var(--text-color);
   font-family: Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 2;
   min-height: 100%;
   position: relative;
@@ -226,7 +226,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 华文中宋, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: ZCOOL XiaoWei, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -1185,6 +1185,10 @@ pre code {
 .post-body .note.danger h6 {
   color: #d9534f;
 }
+.mermaid {
+  margin-bottom: 20px;
+  text-align: center;
+}
 .pagination .prev,
 .pagination .next,
 .pagination .page-number,
@@ -1339,7 +1343,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Long Cang, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Ma Shan Zheng, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   margin: 0;
@@ -2901,6 +2905,7 @@ mjx-container[display="true"] + br {
   position: sticky;
   top: 12px;
   width: 240px;
+  visibility: hidden;
 }
 @media (max-width: 991px) {
   .sidebar {
