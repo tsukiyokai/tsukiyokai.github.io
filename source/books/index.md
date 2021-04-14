@@ -12,7 +12,7 @@ date: 2021-04-10 06:03:20
 | C/C++      | C++ Primer(1~7)         | Stanley B. Lippman | 2021.02 |
 | 计算机基础 | 计算机网络              | 谢希仁             | 2021.03 |
 | 计算机基础 | 操作系统之哲学原理      | 邹恒明             | 2021.03 |
-| C/C++      | C++ Primer(8~12)        | Stanley B. Lippman | 2021.04 |
+| C/C++      | C++ Primer(8~12)        | Stanley B. Lippman | 还没看完... |
 
 ```markdown
 ## 计划未看1：
