@@ -52,8 +52,10 @@ darkmode: true
 favicon:
   small: /images/favicon.ico
   medium: /images/favicon.ico
-  apple_touch_icon: /images/apple-touch-icon-next.png
-  safari_pinned_tab: /images/logo.svg
+  apple_touch_icon: /images/favicon.ico
+  safari_pinned_tab: /images/favicon.ico
+  #apple_touch_icon: /images/apple-touch-icon-next.png
+  #safari_pinned_tab: /images/logo.svg
   #android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
@@ -429,17 +431,18 @@ font:
   global:
     external: true
     family: Noto Serif SC
-    size: 1.1
 
   # Font settings for site title (.site-title).
   title:
     external: true
-    family: Long Cang
+    family: Ma Shan Zheng
+    #family: Long Cang
 
   # Font settings for headlines (<h1> to <h6>).
   headings:
     external: true
-    family: 华文中宋
+    family: ZCOOL XiaoWei
+    #family: 华文中宋
 
   # Font settings for posts (.post-body).
   posts:
@@ -801,7 +804,7 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
   theme: forest
 
@@ -813,8 +816,8 @@ mermaid:
 # Use Animate.css to animate everything.
 # For more information: https://animate.style
 motion:
-  enable: false
-  async: false
+  enable: true
+  async: true
   transition:
     # All available transition variants: https://theme-next.js.org/animate/
     post_block: fadeIn
@@ -827,7 +830,7 @@ motion:
 # Progress bar in the top during page loading.
 # For more information: https://github.com/rstacruz/nprogress
 nprogress:
-  enable: false
+  enable: true
   spinner: true
 
 # Canvas ribbon
