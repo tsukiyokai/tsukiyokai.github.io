@@ -3,7 +3,7 @@ title: ACM模式下C++标准输入输出惯用法汇总
 abbrlink: 860a
 date: 2021-04-14 04:23:23
 categories: [编程珠玑,C++]
-tags: [惯用法,输入输出]
+tags: [ACM,C++,惯用法,输入输出]
 ---
 
 ## 引言：从核心代码到ACM

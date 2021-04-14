@@ -3,7 +3,7 @@ title: C++标准输入输出详解
 abbrlink: b9eb
 date: 2021-04-13 14:59:55
 categories: [编程珠玑,C++]
-tags: [输入输出]
+tags: [C++,输入输出]
 ---
 
 C++的IO发生在流中，流是字节序列。

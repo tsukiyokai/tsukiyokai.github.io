@@ -79,19 +79,14 @@ backup:
   repository:
     github: git@github.com:tsukiyokai/tsukiyokai.github.io.git,backup
 
-# hexo-neat
-# 博文压缩
 neat_enable: true
-# 压缩html
 neat_html:
   enable: true
   exclude:
-# 压缩css  
 neat_css:
   enable: true
   exclude:
     - '**/*.min.css'
-# 压缩js
 neat_js:
   enable: false
   mangle: true
