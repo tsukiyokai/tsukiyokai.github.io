@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>剑指 Offer 49 丑数</title>
+    <url>/posts/96df/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子2,3和5的数称作丑数。求按从小到大的顺序的第n个丑数。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p>对途经所有数字都进行判断是否为丑数。</p>
+<h2 id="解法2："><a href="#解法2：" class="headerlink" title="解法2："></a>解法2：</h2>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>堆</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>古诗为焦仲卿妻作</title>
     <url>/posts/f294/</url>
     <content><![CDATA[<blockquote>
@@ -71,7 +86,7 @@
       </categories>
   </entry>
   <entry>
-    <title>PE001 Multiples of 3 and 5</title>
+    <title>PE1 Multiples of 3 and 5</title>
     <url>/posts/18889/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
@@ -82,14 +97,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>欧拉计划</category>
+        <category>Project Euler</category>
       </categories>
       <tags>
         <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0001 两数之和</title>
+    <title>LC1 两数之和</title>
     <url>/posts/16786/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案，但是数组中同一个元素不能使用两遍。</p>
 <h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
@@ -105,14 +120,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>哈希</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0002 两数相加</title>
+    <title>LC2 两数相加</title>
     <url>/posts/61293/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
 <p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
@@ -124,14 +139,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0003 无重复字符的最长子串</title>
+    <title>LC3 无重复字符的最长子串</title>
     <url>/posts/7c48/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。</p>
 <h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p>时间复杂度：O(N^3)</p>
@@ -145,7 +160,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
@@ -153,7 +168,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0007 整数反转</title>
+    <title>LC7 整数反转</title>
     <url>/posts/4025/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个32位的有符号整数x，返回x中每位上的数字反转后的结果。<br>如果反转后整数超过32位的有符号整数的范围[−2^31, 2^31−1]，就返回0。</p>
 <h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
@@ -164,28 +179,28 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0009 回文数</title>
+    <title>LC9 回文数</title>
     <url>/posts/36078/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数x，如果x是一个回文整数，返回true；否则，返回false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121是回文，而123不是。</p>
 <h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        string str = <span class="built_in">to_string</span>(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] != str[str.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0011 盛最多水的容器</title>
+    <title>LC11 盛最多水的容器</title>
     <url>/posts/7616/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你n个非负整数a1,a2,…，an，每个数代表坐标中的一个点(i,ai)。在坐标内画n条垂直线，垂直线i的两个端点分别为(i,ai)和(i,0)。找出其中的两条线，使得它们与x轴共同构成的容器可以容纳最多的水。</p>
 <p>木桶原理的核心内容为：一只木桶盛水多少，并不取决于桶壁上最高的那块木块，而恰恰取决于桶壁上最短的那块。</p>
@@ -209,14 +224,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0013 罗马数字转整数</title>
+    <title>LC13 罗马数字转整数</title>
     <url>/posts/27483/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>罗马数字包含以下七种字符: I，V，X，L，C，D，M。</p>
 <p>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000</p>
@@ -229,14 +244,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>哈希</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0014 最长公共前缀</title>
+    <title>LC14 最长公共前缀</title>
     <url>/posts/4146/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数来查找给定一组字符串的最长公共前缀。如果不存在公共前缀，返回空字符串<code>&quot;&quot;</code>。</p>
 <h2 id="解法1：逐词匹配"><a href="#解法1：逐词匹配" class="headerlink" title="解法1：逐词匹配"></a>解法1：逐词匹配</h2><p>我们从一个例子开始。假设有两个字符串<code>geeksforgeks</code>和<code>geeks</code>。它们中最长的共同前缀是什么？是<code>geeks</code>。现在让我们介绍另一个词<code>geek</code>。那么这三个词中最长的共同前缀是什么呢？是<code>geek</code>。</p>
@@ -258,7 +273,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestCommonPrefix</span><span class="params">(vector&lt;string&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = strs.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">sort</span>(strs.<span class="built_in">begin</span>(), strs.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">int</span> minlen = <span class="built_in">min</span>(strs[<span class="number">0</span>].<span class="built_in">size</span>(), strs[n - <span class="number">1</span>].<span class="built_in">size</span>());</span><br><span class="line">        string first = strs[<span class="number">0</span>], last = strs[n - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; minlen &amp;&amp; first[i] == last[i]) i++;</span><br><span class="line">        string prefix = first.<span class="built_in">substr</span>(<span class="number">0</span>, i);</span><br><span class="line">        <span class="keyword">return</span> prefix;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
@@ -266,7 +281,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0020 有效的括号</title>
+    <title>LC20 有效的括号</title>
     <url>/posts/f5a0/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个只包括’(‘，’)’，’{‘，’}’，’[‘，’]’的字符串s，判断字符串是否有效。</p>
 <p>有效字符串需满足：<br>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。</p>
@@ -274,7 +289,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        stack&lt;<span class="keyword">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">char</span> tmp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || c == <span class="string">&#x27;(&#x27;</span> || c == <span class="string">&#x27;[&#x27;</span> || c == <span class="string">&#x27;&#123;&#x27;</span>) &#123;</span><br><span class="line">                st.<span class="built_in">push</span>(c);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">                tmp = st.<span class="built_in">top</span>();</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="string">&#x27;(&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;]&#x27;</span>) &#123;</span><br><span class="line">                tmp = st.<span class="built_in">top</span>();</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="string">&#x27;[&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;&#125;&#x27;</span>) &#123;</span><br><span class="line">                tmp = st.<span class="built_in">top</span>();</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="string">&#x27;&#123;&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (st.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
@@ -282,7 +297,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0021-合并两个有序链表</title>
+    <title>LC21-合并两个有序链表</title>
     <url>/posts/52766/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有结点组成的。 </p>
 <h2 id="解法1：迭代"><a href="#解法1：迭代" class="headerlink" title="解法1：迭代"></a>解法1：迭代</h2><p><strong>代码</strong></p>
@@ -292,7 +307,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!l1) <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span> (!l2) <span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = <span class="built_in">mergeTwoLists</span>(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = <span class="built_in">mergeTwoLists</span>(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
@@ -300,7 +315,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0026 删除排序数组中的重复项</title>
+    <title>LC26 删除排序数组中的重复项</title>
     <url>/posts/60925/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须在原地修改输入数组 并在使用O(1)额外空间的条件下完成。<br>为什么返回数值是整数，但输出的答案是数组呢？请注意，输入数组是以引用方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
 <h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p><strong>代码</strong></p>
@@ -315,14 +330,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0027 移除元素</title>
+    <title>LC27 移除元素</title>
     <url>/posts/24251/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个数组nums和一个值val，你需要原地移除所有数值等于val的元素，并返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须仅使用O(1)额外空间并原地修改输入数组。<br>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
 <h2 id="解法1：STL"><a href="#解法1：STL" class="headerlink" title="解法1：STL"></a>解法1：STL</h2><p><strong>代码</strong></p>
@@ -332,14 +347,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (num != val) nums[ans++] = num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0028 实现strStr()</title>
+    <title>LC28 实现strStr()</title>
     <url>/posts/46801/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个haystack字符串和一个needle字符串，在haystack字符串中找出needle字符串出现的第一个位置(从0开始)。如果不存在，则返回-1。</p>
 <p>输入: haystack=”hello”,needle=”ll”<br>输出: 2</p>
@@ -351,14 +366,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0053 最大子序和</title>
+    <title>LC53 最大子序和</title>
     <url>/posts/30723/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <p>示例：<br>输入：nums=[-2,1,-3,4,-1,2,1,-5,4]<br>输出：6<br>解释：连续子数组[4,-1,2,1]的和最大，为6。</p>
@@ -376,15 +391,15 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> temp = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            temp += nums[i];</span><br><span class="line">            <span class="keyword">if</span> (temp &lt; nums[i]) &#123;</span><br><span class="line">                temp = nums[i];</span><br><span class="line">                <span class="keyword">if</span> (nums[i] &gt; max) max = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> max = (temp &gt; max) ? temp : max;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>贪心算法</tag>
         <tag>动态规划</tag>
+        <tag>贪心算法</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0058 最后一个单词的长度</title>
+    <title>LC58 最后一个单词的长度</title>
     <url>/posts/28079/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串s，由若干单词组成，单词之间用空格隔开。返回字符串中最后一个单词的长度。如果不存在最后一个单词，请返回0。<br>单词是指仅由字母组成、不包含任何空格字符的最大子字符串。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
@@ -396,14 +411,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0066 加一</title>
+    <title>LC66 加一</title>
     <url>/posts/59478/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个由整数组成的非空 数组所表示的非负整数，在该数的基础上加一。<br>最高位数字存放在数组的首位，数组中每个元素只存储单个数字。<br>你可以假设除了整数0之外，这个整数不会以零开头。</p>
 <h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
@@ -412,14 +427,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0067 二进制求和</title>
+    <title>LC67 二进制求和</title>
     <url>/posts/39547/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个二进制字符串，返回它们的和（用二进制表示）。<br>输入为非空字符串且只包含数字1和0。</p>
 <p>输入: a = “1010”, b = “1011”<br>输出: “10101”</p>
@@ -427,18 +442,18 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">addBinary</span><span class="params">(string a, string b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = a.<span class="built_in">length</span>() - <span class="number">1</span>, j = b.<span class="built_in">length</span>() - <span class="number">1</span>, carry = <span class="number">0</span>;</span><br><span class="line">        string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = i &gt;= <span class="number">0</span> ? a[i] - <span class="string">&#x27;0&#x27;</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = j &gt;= <span class="number">0</span> ? b[j] - <span class="string">&#x27;0&#x27;</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> result = x + y + carry;</span><br><span class="line">            res.<span class="built_in">push_back</span>(<span class="string">&#x27;0&#x27;</span> + result % <span class="number">2</span>);</span><br><span class="line">            carry = result / <span class="number">2</span>;</span><br><span class="line">            --i;</span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注释</strong></p>
-<p>LC0415 字符串相加</p>
+<p>LC415 字符串相加</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0069 x的平方根</title>
+    <title>LC69 x的平方根</title>
     <url>/posts/9418/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>实现<code>int sqrt(int x)</code>函数。<br>计算并返回x的平方根，其中x是非负整数。<br>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p>
 <h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
@@ -474,14 +489,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>数学</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0070 爬楼梯</title>
+    <title>LC70 爬楼梯</title>
     <url>/posts/47392/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设你正在爬楼梯。需要n阶你才能到达楼顶。<br>每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
 <h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
@@ -498,15 +513,15 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>动态规划</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0088 合并两个有序数组</title>
+    <title>LC88 合并两个有序数组</title>
     <url>/posts/25399/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个有序整数数组nums1和nums2，请你将nums2合并到nums1中，使nums1成为一个有序数组。<br>初始化nums1和nums2的元素数量分别为m和n。你可以假设nums1的空间大小等于m+n，这样它就有足够的空间保存来自nums2的元素。</p>
 <p>输入：nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3<br>输出：[1,2,2,3,5,6]</p>
@@ -518,14 +533,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>排序</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0094 二叉树的中序遍历</title>
+    <title>LC94 二叉树的中序遍历</title>
     <url>/posts/16054/</url>
     <content><![CDATA[<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;left, a);</span><br><span class="line">        a.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;right, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -534,7 +549,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; s;</span><br><span class="line">        TreeNode* curr = root;</span><br><span class="line">        <span class="keyword">while</span> (s.<span class="built_in">empty</span>() == <span class="literal">false</span> || curr != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (curr != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">                s.<span class="built_in">push</span>(curr);</span><br><span class="line">                curr = curr-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (s.<span class="built_in">empty</span>() == <span class="literal">false</span>) &#123;</span><br><span class="line">                curr = s.<span class="built_in">top</span>(); s.<span class="built_in">pop</span>();</span><br><span class="line">                a.<span class="built_in">push_back</span>(curr-&gt;val);</span><br><span class="line">                curr = curr-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
@@ -542,7 +557,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0098 验证二叉搜索树</title>
+    <title>LC98 验证二叉搜索树</title>
     <url>/posts/49399/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，判断其是否是一个有效的二叉查找树。</p>
 <p>假设一个二叉查找树具有如下特征：<br>结点的左子树只包含小于当前结点的数。<br>结点的右子树只包含大于当前结点的数。<br>所有左子树和右子树自身必须也是二叉查找树。</p>
@@ -554,14 +569,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0100 相同的树</title>
+    <title>LC100 相同的树</title>
     <url>/posts/32761/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
@@ -572,14 +587,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0101 对称二叉树</title>
+    <title>LC101 对称二叉树</title>
     <url>/posts/45276/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，检查它是否是镜像对称的。</p>
 <p>例如，二叉树 [1,2,2,3,4,4,3] 是对称的。<br>    1<br>   / <br>  2   2<br> / \ / <br>3  4 4  3<br>但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的：<br>    1<br>   / <br>  2   2<br>   \   <br>   3    3</p>
@@ -592,14 +607,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0102 二叉树的层序遍历</title>
+    <title>LC102 二叉树的层序遍历</title>
     <url>/posts/ee40/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉树，请你返回其按层序遍历得到的节点值。<br>即逐层地从左到右访问所有节点。</p>
 <figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入：</span><br><span class="line">    3</span><br><span class="line">   / <span class="keyword">\</span></span><br><span class="line"><span class="keyword"></span>  9  20</span><br><span class="line">    /  <span class="keyword">\</span></span><br><span class="line"><span class="keyword"></span>   15   7</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">&#123;</span><br><span class="line">  [3],</span><br><span class="line">  [9,20],</span><br><span class="line">  [15,7]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -609,7 +624,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>树</tag>
@@ -617,7 +632,23 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0104 二叉树的最大深度</title>
+    <title>LC108 将有序数组转换为二叉搜索树</title>
+    <url>/posts/58423/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
+<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC104 二叉树的最大深度</title>
     <url>/posts/64920/</url>
     <content><![CDATA[<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">maxDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">maxDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -627,30 +658,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0108 将有序数组转换为二叉搜索树</title>
-    <url>/posts/58423/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
-<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC0111 二叉树的最小深度</title>
+    <title>LC111 二叉树的最小深度</title>
     <url>/posts/17107/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，找出其最小深度。<br>最小深度是从根结点到最近叶子结点的最短路径上的结点数量。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
@@ -661,14 +676,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0112 路径总和</title>
+    <title>LC112 路径总和</title>
     <url>/posts/19568/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你二叉树的根结点root和一个表示目标和的整数targetSum。<br>判断该树中是否存在根结点到叶子结点的路径上所有结点和为targetSum 。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
@@ -679,14 +694,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0121 买卖股票的最佳时机</title>
+    <title>LC121 买卖股票的最佳时机</title>
     <url>/posts/35823/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个数组prices，它的第i个元素prices[i]表示一支给定股票第i天的价格。<br>你只能选择某一天买入这只股票，并选择在未来的某一个不同的日子卖出该股票。设计一个算法来计算你所能获取的最大利润。<br>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回0。<br>注意卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</p>
 <h2 id="解法1：事无巨细-——-暴力法-两层for"><a href="#解法1：事无巨细-——-暴力法-两层for" class="headerlink" title="解法1：事无巨细 —— 暴力法 两层for"></a>解法1：事无巨细 —— 暴力法 两层for</h2><p><strong>代码</strong></p>
@@ -702,14 +717,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0136 只出现一次的数字</title>
+    <title>LC136 只出现一次的数字</title>
     <url>/posts/41787/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
 <h2 id="解法：位运算"><a href="#解法：位运算" class="headerlink" title="解法：位运算"></a>解法：位运算</h2><p><strong>代码</strong></p>
@@ -721,14 +736,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0141 环形链表</title>
+    <title>LC141 环形链表</title>
     <url>/posts/52084/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个链表，判断链表中是否有环。<br>如果链表中有某个节点，可以通过连续跟踪next指针再次到达，则链表中存在环。为了表示给定链表中的环，我们使用整数pos来表示链表尾连接到链表中的位置（索引从0开始）。如果pos是-1，则在该链表中没有环。注意：pos不作为参数进行传递，仅仅是为了标识链表的实际情况。<br>如果链表中存在环，则返回true。否则，返回false。<br>注：这道题描述的很复杂，其实没必要，pos跟你没关系，是服务器构造环形链表用的，写题不用管。</p>
 <p>进阶：你能用O(1)内存解决此问题吗？</p>
@@ -756,7 +771,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>哈希</tag>
@@ -764,7 +779,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0144 二叉树的前序遍历</title>
+    <title>LC144 二叉树的前序遍历</title>
     <url>/posts/46413/</url>
     <content><![CDATA[<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        a.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;left, a);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;right, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -781,7 +796,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
@@ -789,7 +804,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0145 二叉树的后序遍历</title>
+    <title>LC145 二叉树的后序遍历</title>
     <url>/posts/6463/</url>
     <content><![CDATA[<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;left, a);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;right, a);</span><br><span class="line">        a.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -811,7 +826,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
@@ -819,7 +834,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0155 最小栈</title>
+    <title>LC155 最小栈</title>
     <url>/posts/20585/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持push，pop，top操作，并能在常数时间内检索到最小元素的栈。</p>
 <p>push(x) —— 将元素x推入栈中。<br>pop() —— 删除栈顶的元素。<br>top() —— 获取栈顶元素。<br>getMin() —— 检索栈中的最小元素。</p>
@@ -830,14 +845,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>栈</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0160 相交链表</title>
+    <title>LC160 相交链表</title>
     <url>/posts/3e29/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序，找到两个单链表相交的起始节点。</p>
 <p>要求：<br>如果两个链表没有交点，返回null.<br>在返回结果后，两个链表仍须保持原有的结构。<br>可假定整个链表结构中没有循环。<br>程序尽量满足O(n)时间复杂度，且仅用O(1)内存。</p>
@@ -855,14 +870,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0167 两数之和 II - 输入有序数组</title>
+    <title>LC167 两数之和 II - 输入有序数组</title>
     <url>/posts/ebc9/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个已按照升序排列的整数数组numbers，请你从数组中找出两个数满足相加之和等于目标数target。</p>
 <p>函数应该以长度为2的整数数组的形式返回这两个数的下标值。numbers的下标从1开始计数，所以答案数组应当满足<code>1&lt;=answer[0]&lt;answer[1]&lt;=numbers.length</code>。你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</p>
@@ -871,14 +886,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> find = <span class="built_in">binSearch</span>(numbers, i + <span class="number">1</span>, numbers.<span class="built_in">size</span>() - <span class="number">1</span>, target - numbers[i]);</span><br><span class="line">            <span class="keyword">if</span> (find == <span class="number">-1</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (find != <span class="number">-1</span>) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(i + <span class="number">1</span>);</span><br><span class="line">                res.<span class="built_in">push_back</span>(find + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">binSearch</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == x) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; x) l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123; r = mid - <span class="number">1</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>二分搜索</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0169 多数元素</title>
+    <title>LC169 多数元素</title>
     <url>/posts/35778/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个大小为n的数组，找到其中的多数元素。多数元素是指在数组中出现次数大于n/2的元素。<br>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
 <h2 id="解法1：排序"><a href="#解法1：排序" class="headerlink" title="解法1：排序"></a>解法1：排序</h2><p><strong>代码</strong></p>
@@ -894,14 +909,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>排序</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0171 Excel表列序号</title>
+    <title>LC171 Excel表列序号</title>
     <url>/posts/23205/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个Excel表格中的列名称，返回其相应的列序号。</p>
 <p>例如：<br>A -&gt; 1<br>B -&gt; 2<br>C -&gt; 3<br>…<br>Z -&gt; 26<br>AA -&gt; 27<br>AB -&gt; 28<br>…    </p>
@@ -920,14 +935,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0190 颠倒二进制位</title>
+    <title>LC190 颠倒二进制位</title>
     <url>/posts/10915/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>颠倒给定的32位无符号整数的二进制位。</p>
 <h2 id="解法：移位运算"><a href="#解法：移位运算" class="headerlink" title="解法：移位运算"></a>解法：移位运算</h2><p><strong>代码</strong></p>
@@ -939,14 +954,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0191 位1的个数</title>
+    <title>LC191 位1的个数</title>
     <url>/posts/10400/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
 <h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
@@ -960,14 +975,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0202 快乐数</title>
+    <title>LC202 快乐数</title>
     <url>/posts/927b/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个算法来判断一个数n是不是快乐数。</p>
 <p>快乐数定义为：<br>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。<br>然后重复这个过程直到这个数变为1，也可能是无限循环但始终变不到1。<br>如果可以变为1，那么这个数就是快乐数。<br>如果n是快乐数就返回true；不是则返回false 。</p>
@@ -979,14 +994,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0203 移除链表元素</title>
+    <title>LC203 移除链表元素</title>
     <url>/posts/18228/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>删除链表中等于给定值val的所有结点。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
@@ -1002,14 +1017,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>链表</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0204 计数质数</title>
+    <title>LC204 计数质数</title>
     <url>/posts/50568/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>统计所有小于非负整数n的质数的数量。</p>
 <h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
@@ -1033,14 +1048,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>数学</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0206 反转链表</title>
+    <title>LC206 反转链表</title>
     <url>/posts/13788/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>反转一个单链表。</p>
 <p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
@@ -1057,7 +1072,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>递归</tag>
@@ -1065,7 +1080,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0217 存在重复元素</title>
+    <title>LC217 存在重复元素</title>
     <url>/posts/32846/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组，判断是否存在重复元素。<br>如果存在一值在数组中出现至少两次，函数返回true。如果数组中每个元素都不相同，则返回false 。</p>
 <p>输入: [1,2,3,1]<br>输出: true</p>
@@ -1076,14 +1091,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsDuplicate</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>排序</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0225 用队列实现栈</title>
+    <title>LC225 用队列实现栈</title>
     <url>/posts/24678/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用队列实现一个后入先出(LIFO)的栈，并支持普通队列的全部四种操作(push、top、pop和empty)。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>只使用一个队列<br>By making push operation costly</p>
@@ -1095,7 +1110,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>栈</tag>
@@ -1103,34 +1118,21 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0226 翻转二叉树</title>
+    <title>LC226 翻转二叉树</title>
     <url>/posts/48bf/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>镜像翻转一棵二叉树。</p>
 <h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span> || root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="built_in">swap</span>(root-&gt;left, root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left) <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;right) <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>树</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0231 2的幂</title>
-    <url>/posts/61503/</url>
-    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ((n &amp; (n - <span class="number">1</span>)) == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC0232 用栈实现队列</title>
+    <title>LC232 用栈实现队列</title>
     <url>/posts/49631/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用两个栈实现先入先出队列。<br>队列应当支持一般队列的支持的所有操作(push、pop、peek、empty)。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>By making pop operation costly</p>
@@ -1142,7 +1144,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>栈</tag>
@@ -1150,7 +1152,20 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0234 回文链表</title>
+    <title>LC231 2的幂</title>
+    <url>/posts/61503/</url>
+    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ((n &amp; (n - <span class="number">1</span>)) == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC234 回文链表</title>
     <url>/posts/55b8/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请判断一个链表是否为回文链表。<br>你能否用O(n)时间复杂度和O(1)空间复杂度解决此题？</p>
 <h2 id="解法1：利用数组"><a href="#解法1：利用数组" class="headerlink" title="解法1：利用数组"></a>解法1：利用数组</h2><p><strong>代码</strong></p>
@@ -1161,14 +1176,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 找到前半部分链表的尾结点并反转后半部分链表</span></span><br><span class="line">        ListNode* firstHalfEnd = <span class="built_in">endOfFirstHalf</span>(head);</span><br><span class="line">        ListNode* secondHalfStart = <span class="built_in">reverseList</span>(firstHalfEnd-&gt;next);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断是否回文</span></span><br><span class="line">        ListNode* p1 = head;</span><br><span class="line">        ListNode* p2 = secondHalfStart;</span><br><span class="line">        <span class="keyword">while</span> (p2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1-&gt;val != p2-&gt;val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 还原链表并返回结果</span></span><br><span class="line">        firstHalfEnd-&gt;next = <span class="built_in">reverseList</span>(secondHalfStart);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反转链表</span></span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* prev = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* curr = head;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            ListNode* nextTemp = curr-&gt;next;</span><br><span class="line">            curr-&gt;next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = nextTemp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 找到前半部分链表的尾结点</span></span><br><span class="line">    <span class="function">ListNode* <span class="title">endOfFirstHalf</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* fast = head;</span><br><span class="line">        ListNode* slow = head;</span><br><span class="line">        <span class="keyword">while</span> (fast-&gt;next != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0237 删除链表中的节点</title>
+    <title>LC237 删除链表中的节点</title>
     <url>/posts/12948/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供head。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
@@ -1176,14 +1191,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>链表</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0242 有效的字母异位词</title>
+    <title>LC242 有效的字母异位词</title>
     <url>/posts/17730/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串s和t，编写一个函数来判断t是否是s的字母异位词。</p>
 <p>输入: s = “anagram”, t = “nagaram”<br>输出: true</p>
@@ -1206,7 +1221,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>哈希</tag>
@@ -1215,7 +1230,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0258 各位相加</title>
+    <title>LC258 各位相加</title>
     <url>/posts/37800/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数num，反复将各个位上的数字相加，直到结果为一位数。</p>
 <h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
@@ -1224,14 +1239,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0263 丑数</title>
+    <title>LC263 丑数</title>
     <url>/posts/70bd/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序判断给定的数是否为丑数。<br>丑数就是只包含质因数2,3,5的正整数。<br>说明：1是丑数</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>连续消去所有2,3,5倍的因数，判断最后剩下的数是否为1。</p>
@@ -1241,14 +1256,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>数学</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0283 移动零</title>
+    <title>LC283 移动零</title>
     <url>/posts/28202/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个数组nums，编写一个函数将所有0移动到数组的末尾，同时保持非零元素的相对顺序。</p>
 <p>输入: [0,1,0,3,12]<br>输出: [1,3,12,0,0]</p>
@@ -1260,14 +1275,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>数组</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0292 Nim游戏</title>
+    <title>LC292 Nim游戏</title>
     <url>/posts/1bb/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>你和你的朋友，两个人一起玩Nim游戏：桌子上有一堆石头，你们轮流进行自己的回合，你作为先手。每一回合，轮到的人拿掉1-3块石头。拿掉最后一块石头的人就是获胜者。假设你们每一步都是最优解。<br>请编写一个函数，来判断你是否可以在给定石头数量为n的情况下赢得游戏。如果可以赢，返回true；否则，返回false。</p>
 <p>输入：n=4<br>输出：false<br>解释：如果堆中有4块石头，那么你永远不会赢得比赛。因为无论你拿走1块、2块还是3块石头，最后一块石头总是会被你的朋友拿走。</p>
@@ -1275,14 +1290,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n % <span class="number">4</span> != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0338 比特位计数</title>
+    <title>LC338 比特位计数</title>
     <url>/posts/57809/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数num。对于0≤i≤num范围中的每个数字i，计算其二进制数中的1的数目并将它们作为数组返回。</p>
 <p>输入: 5<br>输出: [0,1,1,2,1,2]</p>
@@ -1297,14 +1312,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0344 反转字符串</title>
+    <title>LC344 反转字符串</title>
     <url>/posts/51705/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。<br>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。<br>你可以假设数组中的所有字符都是ASCII码表中的可打印字符。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
@@ -1313,14 +1328,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0367 有效的完全平方数</title>
+    <title>LC367 有效的完全平方数</title>
     <url>/posts/42082/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个正整数num，编写一个函数，如果num是一个完全平方数，则返回True，否则返回False。<br>说明：不要使用任何内置的库函数，如sqrt。</p>
 <h2 id="解法1：牛顿迭代法"><a href="#解法1：牛顿迭代法" class="headerlink" title="解法1：牛顿迭代法"></a>解法1：牛顿迭代法</h2><p><strong>代码</strong></p>
@@ -1336,14 +1351,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>数学</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0415 字符串相加</title>
+    <title>LC415 字符串相加</title>
     <url>/posts/28898/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数num1和num2，计算它们的和。<br>你不能使用任何內建BigInteger库，也不能直接将输入的字符串转换为整数形式。</p>
 <h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
@@ -1354,14 +1369,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0387 字符串中的第一个唯一字符</title>
+    <title>LC387 字符串中的第一个唯一字符</title>
     <url>/posts/49339/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
 <p>输入 s = “leetcode”<br>输出 0</p>
@@ -1370,14 +1385,14 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0461 汉明距离</title>
+    <title>LC461 汉明距离</title>
     <url>/posts/33492/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数x和y，计算它们之间的汉明距离。</p>
 <h2 id="解法：异或、n-amp-n-1"><a href="#解法：异或、n-amp-n-1" class="headerlink" title="解法：异或、n&amp;(n-1)"></a>解法：异或、n&amp;(n-1)</h2><p><strong>代码</strong></p>
@@ -1388,14 +1403,14 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0543 二叉树的直径</title>
+    <title>LC543 二叉树的直径</title>
     <url>/posts/9f34/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一棵二叉树，你需要计算它的直径长度。<br>一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>树T的直径是下列数量中的最大值：<br>T的左子树的直径。<br>T的右子树的直径。<br>穿过T的根的叶子之间的最长路径（可以从T的子树的高度计算得出）</p>
@@ -1407,7 +1422,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>树</tag>
@@ -1415,7 +1430,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0557 反转字符串中的单词 III</title>
+    <title>LC557 反转字符串中的单词 III</title>
     <url>/posts/52489/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。</p>
 <p>输入：”Let’s take LeetCode contest”<br>输出：”s’teL ekat edoCteeL tsetnoc”</p>
@@ -1430,20 +1445,20 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
-    <title>LC0704 二分查找</title>
+    <title>LC704 二分查找</title>
     <url>/posts/166/</url>
     <content><![CDATA[<p>标准二分搜索，熟读并背诵。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123; r = mid - <span class="number">1</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>二分搜索</tag>
@@ -1464,7 +1479,7 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
@@ -1486,44 +1501,11 @@
 ]]></content>
       <categories>
         <category>小镇做题家</category>
-        <category>力扣</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>字符串</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>LeetCode里程碑</title>
-    <url>/posts/31ab/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th align="left">DATE</th>
-<th>MILESTONE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">2021-2-21</td>
-<td>1</td>
-</tr>
-<tr>
-<td align="left">2021-3-4</td>
-<td>50</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>100</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>200</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
   </entry>
   <entry>
     <title>破译密码</title>
