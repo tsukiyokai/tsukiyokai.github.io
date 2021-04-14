@@ -136,25 +136,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0002 两数相加</title>
-    <url>/posts/61293/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
-<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
-<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0003 无重复字符的最长子串</title>
     <url>/posts/7c48/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。</p>
@@ -174,6 +155,25 @@
       <tags>
         <tag>字符串</tag>
         <tag>滑动窗口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0002 两数相加</title>
+    <url>/posts/61293/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
+<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
+<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -324,28 +324,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0026 删除排序数组中的重复项</title>
-    <url>/posts/60925/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须在原地修改输入数组 并在使用O(1)额外空间的条件下完成。<br>为什么返回数值是整数，但输出的答案是数组呢？请注意，输入数组是以引用方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> fast = <span class="number">1</span>, slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (fast &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fast] != nums[slow]) nums[++slow] = nums[fast];</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分析</strong></p>
-<p><img data-src="https://www.programcreek.com/wp-content/uploads/2013/01/Remove-Duplicates-from-Sorted-Array-337x400.png" alt="img"></p>
-<p>此题用双指针。如图所示，fast指向较前位置，slow指向较后位置。fast是遍历的主要执行者，它一定要从头遍历到尾。也可以理解为其性质比较活泼，fast是深圳，是改革的试验田。fast负责探路、开迷雾，slow负责兜底，老老实实记录fast传来的珍贵信息。</p>
-<p>慢指针到目前为止的元素只保存互不相同的元素。只要fast路过一个和slow所指向元素相等的元素，他就继续向后移动，当作没看见这个无聊（即不特殊，不相异于slow）的地方；如果fast路过一个与slow所指不同的元素，就立刻让slow向前挪一次，然后让原slow后面的这个数字变成fast现在所处的特殊值。当然，slow变化完，fast也要移动一次：fast无论慢指针怎么样变还是不变，最后它都要移动一次的，毕竟遍历是fast最优先的本职工作。</p>
-<p>因为fast永远走在slow前方，路过的无用（即相同）元素越多，则f甩开l就越远，因此l指针的右邻域一定是被fast无视的垃圾信息。完全可以直接改写右邻域内容——哪怕右邻域此时就是fast本尊，反正是用fast来给slow右邻域赋值，无论怎样也不会使slow丢失重要信息。</p>
-<p>当快指针走完整个数组后，慢指针当前的坐标加 1 就是数组中不同数字的个数。之后有需要的话，遍历打印此数组0~slow地址的元素即可（或者打印前slow+1个），这样就“看似地”完成了原地删除工作。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>双指针</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0027 移除元素</title>
     <url>/posts/24251/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个数组nums和一个值val，你需要原地移除所有数值等于val的元素，并返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须仅使用O(1)额外空间并原地修改输入数组。<br>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
@@ -405,6 +383,28 @@
       <tags>
         <tag>贪心算法</tag>
         <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0026 删除排序数组中的重复项</title>
+    <url>/posts/60925/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须在原地修改输入数组 并在使用O(1)额外空间的条件下完成。<br>为什么返回数值是整数，但输出的答案是数组呢？请注意，输入数组是以引用方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> fast = <span class="number">1</span>, slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (fast &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fast] != nums[slow]) nums[++slow] = nums[fast];</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析</strong></p>
+<p><img data-src="https://www.programcreek.com/wp-content/uploads/2013/01/Remove-Duplicates-from-Sorted-Array-337x400.png" alt="img"></p>
+<p>此题用双指针。如图所示，fast指向较前位置，slow指向较后位置。fast是遍历的主要执行者，它一定要从头遍历到尾。也可以理解为其性质比较活泼，fast是深圳，是改革的试验田。fast负责探路、开迷雾，slow负责兜底，老老实实记录fast传来的珍贵信息。</p>
+<p>慢指针到目前为止的元素只保存互不相同的元素。只要fast路过一个和slow所指向元素相等的元素，他就继续向后移动，当作没看见这个无聊（即不特殊，不相异于slow）的地方；如果fast路过一个与slow所指不同的元素，就立刻让slow向前挪一次，然后让原slow后面的这个数字变成fast现在所处的特殊值。当然，slow变化完，fast也要移动一次：fast无论慢指针怎么样变还是不变，最后它都要移动一次的，毕竟遍历是fast最优先的本职工作。</p>
+<p>因为fast永远走在slow前方，路过的无用（即相同）元素越多，则f甩开l就越远，因此l指针的右邻域一定是被fast无视的垃圾信息。完全可以直接改写右邻域内容——哪怕右邻域此时就是fast本尊，反正是用fast来给slow右邻域赋值，无论怎样也不会使slow丢失重要信息。</p>
+<p>当快指针走完整个数组后，慢指针当前的坐标加 1 就是数组中不同数字的个数。之后有需要的话，遍历打印此数组0~slow地址的元素即可（或者打印前slow+1个），这样就“看似地”完成了原地删除工作。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -566,15 +566,14 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0098 验证二叉搜索树</title>
-    <url>/posts/49399/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，判断其是否是一个有效的二叉查找树。</p>
-<p>假设一个二叉查找树具有如下特征：<br>结点的左子树只包含小于当前结点的数。<br>结点的右子树只包含大于当前结点的数。<br>所有左子树和右子树自身必须也是二叉查找树。</p>
+    <title>LC0100 相同的树</title>
+    <url>/posts/32761/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>(<span class="built_in">isBSTUtil</span>(root, LONG_MIN, LONG_MAX));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBSTUtil</span><span class="params">(TreeNode* root, <span class="keyword">long</span> min, <span class="keyword">long</span> max)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;val &lt;= min || root-&gt;val &gt;= max) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">isBSTUtil</span>(root-&gt;left, min, root-&gt;val) &amp;&amp; <span class="built_in">isBSTUtil</span>(root-&gt;right, root-&gt;val, max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">nullptr</span> &amp;&amp; q == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">nullptr</span> &amp;&amp; q != <span class="literal">nullptr</span>) </span><br><span class="line">        <span class="built_in"><span class="keyword">return</span></span> (p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;left, q-&gt;left) &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;right, q-&gt;right));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注释</strong></p>
-<p>这个方法从isBST1()优化而来。具体参考：二叉树 110.md<br>在ver1.0中使用了maxValue()和minValue()，ver1.0多次遍历树的某些部分，所以运行缓慢。<br>更好的解决方案是只对每个结点检查一次。诀窍是编写一个辅助函数isBSTUtil()。<br>该辅助函数向下遍历树，跟踪缩小的最小和最大允许值，只对每个结点查看一次。<br>min和max的初始值应为INT_MIN和INT_MAX——从那里开始变窄。<br>额外注意，在本题中，因为提交时的测试用例需要卡边界值，所以用到的是LONG_MIN和LONG_MAX。</p>
+<p>返回值类型：bool<br>函数名：isSameTree<br>传入参数：根结点p和根结点q<br>向函数传入两棵树的根结点。<br>如果当前两个结点同为空，说明相同，返回true；<br>否则，如果当前两个结点同不为空，则进一步判断：<br>    如果同时递归地满足三个条件，说明两个指针所指向的树是相同的，返回true；<br>    这三个条件为：当前结点数据域相同 且 当前结点左邻域相同 且 当前结点右邻域相同。<br>    只有“真&amp;&amp;真&amp;&amp;真”才为真，任何一个命题为假，则返回假。<br>出现上述条件之外的情况，均说明两树不相同，返回false；</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -585,14 +584,15 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0100 相同的树</title>
-    <url>/posts/32761/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
+    <title>LC0098 验证二叉搜索树</title>
+    <url>/posts/49399/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，判断其是否是一个有效的二叉查找树。</p>
+<p>假设一个二叉查找树具有如下特征：<br>结点的左子树只包含小于当前结点的数。<br>结点的右子树只包含大于当前结点的数。<br>所有左子树和右子树自身必须也是二叉查找树。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">nullptr</span> &amp;&amp; q == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">nullptr</span> &amp;&amp; q != <span class="literal">nullptr</span>) </span><br><span class="line">        <span class="built_in"><span class="keyword">return</span></span> (p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;left, q-&gt;left) &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;right, q-&gt;right));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>(<span class="built_in">isBSTUtil</span>(root, LONG_MIN, LONG_MAX));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBSTUtil</span><span class="params">(TreeNode* root, <span class="keyword">long</span> min, <span class="keyword">long</span> max)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;val &lt;= min || root-&gt;val &gt;= max) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">isBSTUtil</span>(root-&gt;left, min, root-&gt;val) &amp;&amp; <span class="built_in">isBSTUtil</span>(root-&gt;right, root-&gt;val, max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注释</strong></p>
-<p>返回值类型：bool<br>函数名：isSameTree<br>传入参数：根结点p和根结点q<br>向函数传入两棵树的根结点。<br>如果当前两个结点同为空，说明相同，返回true；<br>否则，如果当前两个结点同不为空，则进一步判断：<br>    如果同时递归地满足三个条件，说明两个指针所指向的树是相同的，返回true；<br>    这三个条件为：当前结点数据域相同 且 当前结点左邻域相同 且 当前结点右邻域相同。<br>    只有“真&amp;&amp;真&amp;&amp;真”才为真，任何一个命题为假，则返回假。<br>出现上述条件之外的情况，均说明两树不相同，返回false；</p>
+<p>这个方法从isBST1()优化而来。具体参考：二叉树 110.md<br>在ver1.0中使用了maxValue()和minValue()，ver1.0多次遍历树的某些部分，所以运行缓慢。<br>更好的解决方案是只对每个结点检查一次。诀窍是编写一个辅助函数isBSTUtil()。<br>该辅助函数向下遍历树，跟踪缩小的最小和最大允许值，只对每个结点查看一次。<br>min和max的初始值应为INT_MIN和INT_MAX——从那里开始变窄。<br>额外注意，在本题中，因为提交时的测试用例需要卡边界值，所以用到的是LONG_MIN和LONG_MAX。</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -658,22 +658,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0108 将有序数组转换为二叉搜索树</title>
-    <url>/posts/58423/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
-<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0111 二叉树的最小深度</title>
     <url>/posts/17107/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，找出其最小深度。<br>最小深度是从根结点到最近叶子结点的最短路径上的结点数量。</p>
@@ -689,6 +673,22 @@
       </categories>
       <tags>
         <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0108 将有序数组转换为二叉搜索树</title>
+    <url>/posts/58423/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
+<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
       </tags>
   </entry>
   <entry>
@@ -991,25 +991,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0202 快乐数</title>
-    <url>/posts/927b/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个算法来判断一个数n是不是快乐数。</p>
-<p>快乐数定义为：<br>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。<br>然后重复这个过程直到这个数变为1，也可能是无限循环但始终变不到1。<br>如果可以变为1，那么这个数就是快乐数。<br>如果n是快乐数就返回true；不是则返回false 。</p>
-<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p>此题可以拆分成两个模块，一是求各位平方之和，二是循环和跳出循环。<br>难点在于何时跳出循环，显然是自己正处于一个无限循环中的时候。那如何知道自己是否正在处于一个循环中呢？想到了另一道题环形链表中的弗洛伊德判圈算法。于是采用快慢指针的方法。</p>
-<p>需要清楚一点：如果自身永远不能到达1，说明自己必定处在一个无限循环中，注意是无限循环而非无限不循环。有没有可能无限不循环呢（像无理数那样）？答案是不会，因为10以内的整数个数是有限的。</p>
-<p>区分：<br>无限循环但始终变不到1<br>无限不循环但始终变不到1</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">bitSquareSum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n) &#123;</span><br><span class="line">            <span class="keyword">int</span> bit = n % <span class="number">10</span>;</span><br><span class="line">            sum += bit * bit;</span><br><span class="line">            n = n / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> slow = n, fast = n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            slow = <span class="built_in">bitSquareSum</span>(slow);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">        &#125; <span class="keyword">while</span> (slow != fast);</span><br><span class="line">        <span class="keyword">return</span> slow == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>双指针</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0203 移除链表元素</title>
     <url>/posts/18228/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>删除链表中等于给定值val的所有结点。</p>
@@ -1030,6 +1011,25 @@
       </categories>
       <tags>
         <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0202 快乐数</title>
+    <url>/posts/927b/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个算法来判断一个数n是不是快乐数。</p>
+<p>快乐数定义为：<br>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。<br>然后重复这个过程直到这个数变为1，也可能是无限循环但始终变不到1。<br>如果可以变为1，那么这个数就是快乐数。<br>如果n是快乐数就返回true；不是则返回false 。</p>
+<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p>此题可以拆分成两个模块，一是求各位平方之和，二是循环和跳出循环。<br>难点在于何时跳出循环，显然是自己正处于一个无限循环中的时候。那如何知道自己是否正在处于一个循环中呢？想到了另一道题环形链表中的弗洛伊德判圈算法。于是采用快慢指针的方法。</p>
+<p>需要清楚一点：如果自身永远不能到达1，说明自己必定处在一个无限循环中，注意是无限循环而非无限不循环。有没有可能无限不循环呢（像无理数那样）？答案是不会，因为10以内的整数个数是有限的。</p>
+<p>区分：<br>无限循环但始终变不到1<br>无限不循环但始终变不到1</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">bitSquareSum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n) &#123;</span><br><span class="line">            <span class="keyword">int</span> bit = n % <span class="number">10</span>;</span><br><span class="line">            sum += bit * bit;</span><br><span class="line">            n = n / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> slow = n, fast = n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            slow = <span class="built_in">bitSquareSum</span>(slow);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">        &#125; <span class="keyword">while</span> (slow != fast);</span><br><span class="line">        <span class="keyword">return</span> slow == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -1174,21 +1174,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0237 删除链表中的节点</title>
-    <url>/posts/12948/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供head。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0234 回文链表</title>
     <url>/posts/55b8/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请判断一个链表是否为回文链表。<br>你能否用O(n)时间复杂度和O(1)空间复杂度解决此题？</p>
@@ -1204,6 +1189,21 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0237 删除链表中的节点</title>
+    <url>/posts/12948/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供head。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -1383,24 +1383,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0415 字符串相加</title>
-    <url>/posts/28898/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数num1和num2，计算它们的和。<br>你不能使用任何內建BigInteger库，也不能直接将输入的字符串转换为整数形式。</p>
-<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">addStrings</span><span class="params">(string num1, string num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = num1.<span class="built_in">length</span>() - <span class="number">1</span>, j = num2.<span class="built_in">length</span>() - <span class="number">1</span>, carry = <span class="number">0</span>;</span><br><span class="line">        string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = i &gt;= <span class="number">0</span> ? num1[i] - <span class="string">&#x27;0&#x27;</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = j &gt;= <span class="number">0</span> ? num2[j] - <span class="string">&#x27;0&#x27;</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> result = x + y + carry;</span><br><span class="line">            res.<span class="built_in">push_back</span>(<span class="string">&#x27;0&#x27;</span> + result % <span class="number">10</span>);</span><br><span class="line">            carry = result / <span class="number">10</span>;</span><br><span class="line">            --i;</span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>模拟从末尾开始进位相加，最后记得反转过来。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0461 汉明距离</title>
     <url>/posts/33492/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数x和y，计算它们之间的汉明距离。</p>
@@ -1416,6 +1398,24 @@
       </categories>
       <tags>
         <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0415 字符串相加</title>
+    <url>/posts/28898/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数num1和num2，计算它们的和。<br>你不能使用任何內建BigInteger库，也不能直接将输入的字符串转换为整数形式。</p>
+<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">addStrings</span><span class="params">(string num1, string num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = num1.<span class="built_in">length</span>() - <span class="number">1</span>, j = num2.<span class="built_in">length</span>() - <span class="number">1</span>, carry = <span class="number">0</span>;</span><br><span class="line">        string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = i &gt;= <span class="number">0</span> ? num1[i] - <span class="string">&#x27;0&#x27;</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = j &gt;= <span class="number">0</span> ? num2[j] - <span class="string">&#x27;0&#x27;</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> result = x + y + carry;</span><br><span class="line">            res.<span class="built_in">push_back</span>(<span class="string">&#x27;0&#x27;</span> + result % <span class="number">10</span>);</span><br><span class="line">            carry = result / <span class="number">10</span>;</span><br><span class="line">            --i;</span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>模拟从末尾开始进位相加，最后记得反转过来。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
