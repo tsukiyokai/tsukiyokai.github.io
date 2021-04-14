@@ -11,6 +11,9 @@
       <categories>
         <category>孔雀东南飞</category>
       </categories>
+      <tags>
+        <tag>语文</tag>
+      </tags>
   </entry>
   <entry>
     <title>2021年度计划</title>
@@ -37,26 +40,31 @@
     <content><![CDATA[<blockquote>
 <p>凤飞翱翔兮，四海求凰。</p>
 </blockquote>
-<p>声明：以下均为弹性标准；绝不涉及针对任何群体的歧视；绝不代表除本人以外一般男性的普遍追求。</p>
+<p>声明：以下条目均为弹性标准；绝不涉及针对任何群体的歧视；绝不代表除本人以外一般男性的普遍追求。</p>
 <h2 id="基本条件"><a href="#基本条件" class="headerlink" title="基本条件"></a>基本条件</h2><ol>
 <li>性别女，取向男；1994到2002年出生；城镇户口。</li>
 <li>外貌6分及以上；身高165-175cm；不胖。</li>
 <li>本科211及以上，不是特别冷门的专业。</li>
-<li>无伤残和遗传病；无长期性经历。</li>
+<li>无重大伤残；无严重影响生活的家族遗传病史；无长期性经历。</li>
 <li>不抽烟；不纹身；不信教；不丁克。</li>
 </ol>
 <h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><ol>
-<li>笑容治愈优先。</li>
-<li>本科985优先；东北985优先。</li>
-<li>共产党员优先。</li>
-<li>二次元优先。</li>
-<li>非北京上海户口优先。（北上户口的反正也看不上我，这一条是我最后的倔强）</li>
+<li>笑容治愈加分。</li>
+<li>本科985加分。</li>
+<li>共产党员加分。</li>
+<li>语文素养高加分。</li>
+<li>二次元加分。</li>
+<li>熟练使用计算机加分。</li>
+<li>非北京上海户口加分。（北上户口的反正也看不上我，这一条是我最后的倔强）</li>
 </ol>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>本来是去年疫情期间无聊时写的，没想到时隔一年又把我自己给看笑了。<br>然而标准坚决不变，相信的心就是我的魔法。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这段东西起初于去年疫情隔离期间出于无聊写成，无聊的事情总是遗忘得很快，没想到却在操作系统的便签里神不知鬼不觉地保存了一整年。今年被我重新看到，起初有些羞耻，但仅有的羞耻随后也变作了感慨。<br>我清楚地知道女性之深刻和伟大绝对无法用任何标准衡量万一，就连我初中时代喜欢过的人，也离这篇文章中描绘的品质相去甚远，而我曾经写下的这些天真的标准，也不过是自己所认识的一个个普通人物身上的缩影，绝非什么必须遵守和不能改变的金科玉律。其中被我欣赏的逐渐抽象成了优点；而我厌烦的则不知不觉变成了缺点。当我的内心逐渐丰富着某种幻想时，这一幻想也就约略有了生命；当我傲慢地以为自己能把乍现的灵光编排成文字，禁锢在白纸上，修订成这份标准，它的生命又就此走向毁灭。我赋予它生命，又使其永远陷入沉寂，这是怎样一件矛盾的事。<br>我将它保存下来，因为它的确是我某个现实时期产生的稚嫩思考。我更希望真的找到满足我心愿的人，从此可以一起制定计划和遵守计划。</p>
 ]]></content>
       <categories>
         <category>自由王国</category>
       </categories>
+      <tags>
+        <tag>爱情</tag>
+      </tags>
   </entry>
   <entry>
     <title>网站目录</title>
@@ -95,24 +103,6 @@
       </categories>
   </entry>
   <entry>
-    <title>PE001 Multiples of 3 and 5</title>
-    <url>/posts/18889/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>欧拉计划</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0001 两数之和</title>
     <url>/posts/16786/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案，但是数组中同一个元素不能使用两遍。</p>
@@ -133,6 +123,25 @@
       </categories>
       <tags>
         <tag>哈希</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0002 两数相加</title>
+    <url>/posts/61293/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
+<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
+<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -158,25 +167,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0002 两数相加</title>
-    <url>/posts/61293/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
-<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
-<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0007 整数反转</title>
     <url>/posts/4025/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个32位的有符号整数x，返回x中每位上的数字反转后的结果。<br>如果反转后整数超过32位的有符号整数的范围[−2^31, 2^31−1]，就返回0。</p>
@@ -186,20 +176,6 @@
 <p><strong>注释</strong></p>
 <p>一开始字符串转整数用的是stoi()，运行正常但是提交报错，原因是有一个越界的测试用例1534236469，改成stoll()后顺利通过。</p>
 ]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC0009 回文数</title>
-    <url>/posts/36078/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数x，如果x是一个回文整数，返回true；否则，返回false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121是回文，而123不是。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        string str = <span class="built_in">to_string</span>(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] != str[str.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>力扣</category>
@@ -237,6 +213,20 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0009 回文数</title>
+    <url>/posts/36078/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数x，如果x是一个回文整数，返回true；否则，返回false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121是回文，而123不是。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        string str = <span class="built_in">to_string</span>(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] != str[str.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -324,6 +314,28 @@
       </tags>
   </entry>
   <entry>
+    <title>LC0026 删除排序数组中的重复项</title>
+    <url>/posts/60925/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须在原地修改输入数组 并在使用O(1)额外空间的条件下完成。<br>为什么返回数值是整数，但输出的答案是数组呢？请注意，输入数组是以引用方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> fast = <span class="number">1</span>, slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (fast &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fast] != nums[slow]) nums[++slow] = nums[fast];</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析</strong></p>
+<p><img data-src="https://www.programcreek.com/wp-content/uploads/2013/01/Remove-Duplicates-from-Sorted-Array-337x400.png" alt="img"></p>
+<p>此题用双指针。如图所示，fast指向较前位置，slow指向较后位置。fast是遍历的主要执行者，它一定要从头遍历到尾。也可以理解为其性质比较活泼，fast是深圳，是改革的试验田。fast负责探路、开迷雾，slow负责兜底，老老实实记录fast传来的珍贵信息。</p>
+<p>慢指针到目前为止的元素只保存互不相同的元素。只要fast路过一个和slow所指向元素相等的元素，他就继续向后移动，当作没看见这个无聊（即不特殊，不相异于slow）的地方；如果fast路过一个与slow所指不同的元素，就立刻让slow向前挪一次，然后让原slow后面的这个数字变成fast现在所处的特殊值。当然，slow变化完，fast也要移动一次：fast无论慢指针怎么样变还是不变，最后它都要移动一次的，毕竟遍历是fast最优先的本职工作。</p>
+<p>因为fast永远走在slow前方，路过的无用（即相同）元素越多，则f甩开l就越远，因此l指针的右邻域一定是被fast无视的垃圾信息。完全可以直接改写右邻域内容——哪怕右邻域此时就是fast本尊，反正是用fast来给slow右邻域赋值，无论怎样也不会使slow丢失重要信息。</p>
+<p>当快指针走完整个数组后，慢指针当前的坐标加 1 就是数组中不同数字的个数。之后有需要的话，遍历打印此数组0~slow地址的元素即可（或者打印前slow+1个），这样就“看似地”完成了原地删除工作。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC0027 移除元素</title>
     <url>/posts/24251/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个数组nums和一个值val，你需要原地移除所有数值等于val的元素，并返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须仅使用O(1)额外空间并原地修改输入数组。<br>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
@@ -383,28 +395,6 @@
       <tags>
         <tag>贪心算法</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC0026 删除排序数组中的重复项</title>
-    <url>/posts/60925/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须在原地修改输入数组 并在使用O(1)额外空间的条件下完成。<br>为什么返回数值是整数，但输出的答案是数组呢？请注意，输入数组是以引用方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> fast = <span class="number">1</span>, slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (fast &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fast] != nums[slow]) nums[++slow] = nums[fast];</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分析</strong></p>
-<p><img data-src="https://www.programcreek.com/wp-content/uploads/2013/01/Remove-Duplicates-from-Sorted-Array-337x400.png" alt="img"></p>
-<p>此题用双指针。如图所示，fast指向较前位置，slow指向较后位置。fast是遍历的主要执行者，它一定要从头遍历到尾。也可以理解为其性质比较活泼，fast是深圳，是改革的试验田。fast负责探路、开迷雾，slow负责兜底，老老实实记录fast传来的珍贵信息。</p>
-<p>慢指针到目前为止的元素只保存互不相同的元素。只要fast路过一个和slow所指向元素相等的元素，他就继续向后移动，当作没看见这个无聊（即不特殊，不相异于slow）的地方；如果fast路过一个与slow所指不同的元素，就立刻让slow向前挪一次，然后让原slow后面的这个数字变成fast现在所处的特殊值。当然，slow变化完，fast也要移动一次：fast无论慢指针怎么样变还是不变，最后它都要移动一次的，毕竟遍历是fast最优先的本职工作。</p>
-<p>因为fast永远走在slow前方，路过的无用（即相同）元素越多，则f甩开l就越远，因此l指针的右邻域一定是被fast无视的垃圾信息。完全可以直接改写右邻域内容——哪怕右邻域此时就是fast本尊，反正是用fast来给slow右邻域赋值，无论怎样也不会使slow丢失重要信息。</p>
-<p>当快指针走完整个数组后，慢指针当前的坐标加 1 就是数组中不同数字的个数。之后有需要的话，遍历打印此数组0~slow地址的元素即可（或者打印前slow+1个），这样就“看似地”完成了原地删除工作。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -566,14 +556,15 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0100 相同的树</title>
-    <url>/posts/32761/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
+    <title>LC0098 验证二叉搜索树</title>
+    <url>/posts/49399/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，判断其是否是一个有效的二叉查找树。</p>
+<p>假设一个二叉查找树具有如下特征：<br>结点的左子树只包含小于当前结点的数。<br>结点的右子树只包含大于当前结点的数。<br>所有左子树和右子树自身必须也是二叉查找树。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">nullptr</span> &amp;&amp; q == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">nullptr</span> &amp;&amp; q != <span class="literal">nullptr</span>) </span><br><span class="line">        <span class="built_in"><span class="keyword">return</span></span> (p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;left, q-&gt;left) &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;right, q-&gt;right));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>(<span class="built_in">isBSTUtil</span>(root, LONG_MIN, LONG_MAX));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBSTUtil</span><span class="params">(TreeNode* root, <span class="keyword">long</span> min, <span class="keyword">long</span> max)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;val &lt;= min || root-&gt;val &gt;= max) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">isBSTUtil</span>(root-&gt;left, min, root-&gt;val) &amp;&amp; <span class="built_in">isBSTUtil</span>(root-&gt;right, root-&gt;val, max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注释</strong></p>
-<p>返回值类型：bool<br>函数名：isSameTree<br>传入参数：根结点p和根结点q<br>向函数传入两棵树的根结点。<br>如果当前两个结点同为空，说明相同，返回true；<br>否则，如果当前两个结点同不为空，则进一步判断：<br>    如果同时递归地满足三个条件，说明两个指针所指向的树是相同的，返回true；<br>    这三个条件为：当前结点数据域相同 且 当前结点左邻域相同 且 当前结点右邻域相同。<br>    只有“真&amp;&amp;真&amp;&amp;真”才为真，任何一个命题为假，则返回假。<br>出现上述条件之外的情况，均说明两树不相同，返回false；</p>
+<p>这个方法从isBST1()优化而来。具体参考：二叉树 110.md<br>在ver1.0中使用了maxValue()和minValue()，ver1.0多次遍历树的某些部分，所以运行缓慢。<br>更好的解决方案是只对每个结点检查一次。诀窍是编写一个辅助函数isBSTUtil()。<br>该辅助函数向下遍历树，跟踪缩小的最小和最大允许值，只对每个结点查看一次。<br>min和max的初始值应为INT_MIN和INT_MAX——从那里开始变窄。<br>额外注意，在本题中，因为提交时的测试用例需要卡边界值，所以用到的是LONG_MIN和LONG_MAX。</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -584,15 +575,14 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0098 验证二叉搜索树</title>
-    <url>/posts/49399/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，判断其是否是一个有效的二叉查找树。</p>
-<p>假设一个二叉查找树具有如下特征：<br>结点的左子树只包含小于当前结点的数。<br>结点的右子树只包含大于当前结点的数。<br>所有左子树和右子树自身必须也是二叉查找树。</p>
+    <title>LC0100 相同的树</title>
+    <url>/posts/32761/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>(<span class="built_in">isBSTUtil</span>(root, LONG_MIN, LONG_MAX));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBSTUtil</span><span class="params">(TreeNode* root, <span class="keyword">long</span> min, <span class="keyword">long</span> max)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;val &lt;= min || root-&gt;val &gt;= max) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">isBSTUtil</span>(root-&gt;left, min, root-&gt;val) &amp;&amp; <span class="built_in">isBSTUtil</span>(root-&gt;right, root-&gt;val, max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">nullptr</span> &amp;&amp; q == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">nullptr</span> &amp;&amp; q != <span class="literal">nullptr</span>) </span><br><span class="line">        <span class="built_in"><span class="keyword">return</span></span> (p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;left, q-&gt;left) &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;right, q-&gt;right));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注释</strong></p>
-<p>这个方法从isBST1()优化而来。具体参考：二叉树 110.md<br>在ver1.0中使用了maxValue()和minValue()，ver1.0多次遍历树的某些部分，所以运行缓慢。<br>更好的解决方案是只对每个结点检查一次。诀窍是编写一个辅助函数isBSTUtil()。<br>该辅助函数向下遍历树，跟踪缩小的最小和最大允许值，只对每个结点查看一次。<br>min和max的初始值应为INT_MIN和INT_MAX——从那里开始变窄。<br>额外注意，在本题中，因为提交时的测试用例需要卡边界值，所以用到的是LONG_MIN和LONG_MAX。</p>
+<p>返回值类型：bool<br>函数名：isSameTree<br>传入参数：根结点p和根结点q<br>向函数传入两棵树的根结点。<br>如果当前两个结点同为空，说明相同，返回true；<br>否则，如果当前两个结点同不为空，则进一步判断：<br>    如果同时递归地满足三个条件，说明两个指针所指向的树是相同的，返回true；<br>    这三个条件为：当前结点数据域相同 且 当前结点左邻域相同 且 当前结点右邻域相同。<br>    只有“真&amp;&amp;真&amp;&amp;真”才为真，任何一个命题为假，则返回假。<br>出现上述条件之外的情况，均说明两树不相同，返回false；</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -658,6 +648,22 @@
       </tags>
   </entry>
   <entry>
+    <title>LC0108 将有序数组转换为二叉搜索树</title>
+    <url>/posts/58423/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
+<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC0111 二叉树的最小深度</title>
     <url>/posts/17107/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，找出其最小深度。<br>最小深度是从根结点到最近叶子结点的最短路径上的结点数量。</p>
@@ -673,22 +679,6 @@
       </categories>
       <tags>
         <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC0108 将有序数组转换为二叉搜索树</title>
-    <url>/posts/58423/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
-<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
       </tags>
   </entry>
   <entry>
@@ -843,24 +833,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0155 最小栈</title>
-    <url>/posts/20585/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持push，pop，top操作，并能在常数时间内检索到最小元素的栈。</p>
-<p>push(x) —— 将元素x推入栈中。<br>pop() —— 删除栈顶的元素。<br>top() —— 获取栈顶元素。<br>getMin() —— 检索栈中的最小元素。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>用两个栈实现</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> &#123;</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            s1.<span class="built_in">push</span>(x); s2.<span class="built_in">push</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            s1.<span class="built_in">push</span>(x);</span><br><span class="line">            x &lt; s2.<span class="built_in">top</span>() ? s2.<span class="built_in">push</span>(x) : s2.<span class="built_in">push</span>(s2.<span class="built_in">top</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        s1.<span class="built_in">pop</span>(); s2.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s1.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s2.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0160 相交链表</title>
     <url>/posts/3e29/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序，找到两个单链表相交的起始节点。</p>
@@ -883,6 +855,24 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0155 最小栈</title>
+    <url>/posts/20585/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持push，pop，top操作，并能在常数时间内检索到最小元素的栈。</p>
+<p>push(x) —— 将元素x推入栈中。<br>pop() —— 删除栈顶的元素。<br>top() —— 获取栈顶元素。<br>getMin() —— 检索栈中的最小元素。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>用两个栈实现</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> &#123;</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            s1.<span class="built_in">push</span>(x); s2.<span class="built_in">push</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            s1.<span class="built_in">push</span>(x);</span><br><span class="line">            x &lt; s2.<span class="built_in">top</span>() ? s2.<span class="built_in">push</span>(x) : s2.<span class="built_in">push</span>(s2.<span class="built_in">top</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        s1.<span class="built_in">pop</span>(); s2.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s1.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s2.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -951,6 +941,27 @@
       </tags>
   </entry>
   <entry>
+    <title>LC0191 位1的个数</title>
+    <url>/posts/10400/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>) count++;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：消1技巧"><a href="#解法2：消1技巧" class="headerlink" title="解法2：消1技巧"></a>解法2：消1技巧</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            n = n &amp; (n - <span class="number">1</span>);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>位操作的小技巧：n&amp;(n-1)可以将n的二进制表示中的最低位的1改为0<br>重复上述操作，最终将使n消成0</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC0190 颠倒二进制位</title>
     <url>/posts/10915/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>颠倒给定的32位无符号整数的二进制位。</p>
@@ -970,24 +981,22 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0191 位1的个数</title>
-    <url>/posts/10400/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>) count++;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    <title>LC0202 快乐数</title>
+    <url>/posts/927b/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个算法来判断一个数n是不是快乐数。</p>
+<p>快乐数定义为：<br>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。<br>然后重复这个过程直到这个数变为1，也可能是无限循环但始终变不到1。<br>如果可以变为1，那么这个数就是快乐数。<br>如果n是快乐数就返回true；不是则返回false 。</p>
+<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p>此题可以拆分成两个模块，一是求各位平方之和，二是循环和跳出循环。<br>难点在于何时跳出循环，显然是自己正处于一个无限循环中的时候。那如何知道自己是否正在处于一个循环中呢？想到了另一道题环形链表中的弗洛伊德判圈算法。于是采用快慢指针的方法。</p>
+<p>需要清楚一点：如果自身永远不能到达1，说明自己必定处在一个无限循环中，注意是无限循环而非无限不循环。有没有可能无限不循环呢（像无理数那样）？答案是不会，因为10以内的整数个数是有限的。</p>
+<p>区分：<br>无限循环但始终变不到1<br>无限不循环但始终变不到1</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">bitSquareSum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n) &#123;</span><br><span class="line">            <span class="keyword">int</span> bit = n % <span class="number">10</span>;</span><br><span class="line">            sum += bit * bit;</span><br><span class="line">            n = n / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> slow = n, fast = n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            slow = <span class="built_in">bitSquareSum</span>(slow);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">        &#125; <span class="keyword">while</span> (slow != fast);</span><br><span class="line">        <span class="keyword">return</span> slow == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="解法2：消1技巧"><a href="#解法2：消1技巧" class="headerlink" title="解法2：消1技巧"></a>解法2：消1技巧</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            n = n &amp; (n - <span class="number">1</span>);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>位操作的小技巧：n&amp;(n-1)可以将n的二进制表示中的最低位的1改为0<br>重复上述操作，最终将使n消成0</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>力扣</category>
       </categories>
       <tags>
-        <tag>位运算</tag>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -1011,25 +1020,6 @@
       </categories>
       <tags>
         <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC0202 快乐数</title>
-    <url>/posts/927b/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个算法来判断一个数n是不是快乐数。</p>
-<p>快乐数定义为：<br>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。<br>然后重复这个过程直到这个数变为1，也可能是无限循环但始终变不到1。<br>如果可以变为1，那么这个数就是快乐数。<br>如果n是快乐数就返回true；不是则返回false 。</p>
-<h2 id="解法：双指针"><a href="#解法：双指针" class="headerlink" title="解法：双指针"></a>解法：双指针</h2><p>此题可以拆分成两个模块，一是求各位平方之和，二是循环和跳出循环。<br>难点在于何时跳出循环，显然是自己正处于一个无限循环中的时候。那如何知道自己是否正在处于一个循环中呢？想到了另一道题环形链表中的弗洛伊德判圈算法。于是采用快慢指针的方法。</p>
-<p>需要清楚一点：如果自身永远不能到达1，说明自己必定处在一个无限循环中，注意是无限循环而非无限不循环。有没有可能无限不循环呢（像无理数那样）？答案是不会，因为10以内的整数个数是有限的。</p>
-<p>区分：<br>无限循环但始终变不到1<br>无限不循环但始终变不到1</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">bitSquareSum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n) &#123;</span><br><span class="line">            <span class="keyword">int</span> bit = n % <span class="number">10</span>;</span><br><span class="line">            sum += bit * bit;</span><br><span class="line">            n = n / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> slow = n, fast = n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            slow = <span class="built_in">bitSquareSum</span>(slow);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">            fast = <span class="built_in">bitSquareSum</span>(fast);</span><br><span class="line">        &#125; <span class="keyword">while</span> (slow != fast);</span><br><span class="line">        <span class="keyword">return</span> slow == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -1383,24 +1373,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC0461 汉明距离</title>
-    <url>/posts/33492/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数x和y，计算它们之间的汉明距离。</p>
-<h2 id="解法：异或、n-amp-n-1"><a href="#解法：异或、n-amp-n-1" class="headerlink" title="解法：异或、n&amp;(n-1)"></a>解法：异或、n&amp;(n-1)</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingDistance</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = x ^ y;</span><br><span class="line">        <span class="keyword">while</span> (res) &#123;</span><br><span class="line">            res = res &amp; (res - <span class="number">1</span>);</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>XOR的功能：同0异1<br>n&amp;(n-1)的功能：消去n的二进制里最右边的1</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>力扣</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC0415 字符串相加</title>
     <url>/posts/28898/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数num1和num2，计算它们的和。<br>你不能使用任何內建BigInteger库，也不能直接将输入的字符串转换为整数形式。</p>
@@ -1416,6 +1388,24 @@
       </categories>
       <tags>
         <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC0461 汉明距离</title>
+    <url>/posts/33492/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数x和y，计算它们之间的汉明距离。</p>
+<h2 id="解法：异或、n-amp-n-1"><a href="#解法：异或、n-amp-n-1" class="headerlink" title="解法：异或、n&amp;(n-1)"></a>解法：异或、n&amp;(n-1)</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingDistance</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = x ^ y;</span><br><span class="line">        <span class="keyword">while</span> (res) &#123;</span><br><span class="line">            res = res &amp; (res - <span class="number">1</span>);</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>XOR的功能：同0异1<br>n&amp;(n-1)的功能：消去n的二进制里最右边的1</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>力扣</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1570,6 +1560,7 @@
       </categories>
       <tags>
         <tag>字符串</tag>
+        <tag>字节跳动</tag>
       </tags>
   </entry>
   <entry>
@@ -1590,6 +1581,25 @@
       </categories>
       <tags>
         <tag>字符串</tag>
+        <tag>Shopee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE001 Multiples of 3 and 5</title>
+    <url>/posts/18889/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>欧拉计划</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1675,6 +1685,8 @@
         <category>C++</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
+        <tag>C++</tag>
         <tag>惯用法</tag>
         <tag>输入输出</tag>
       </tags>
@@ -1799,6 +1811,7 @@
         <category>C++</category>
       </categories>
       <tags>
+        <tag>C++</tag>
         <tag>输入输出</tag>
       </tags>
   </entry>
@@ -1829,6 +1842,7 @@
       </categories>
       <tags>
         <tag>位运算</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1908,6 +1922,7 @@
         <category>C++</category>
       </categories>
       <tags>
+        <tag>C++</tag>
         <tag>指针</tag>
       </tags>
   </entry>
