@@ -1,9 +1,9 @@
 ---
-title: LC0028 实现strStr()
+title: LC28 实现strStr()
 abbrlink: 46801
 categories:
 - 小镇做题家
-- 力扣
+- LeetCode
 tag: 模拟
 date: 2021-03-02 00:00:00
 ---

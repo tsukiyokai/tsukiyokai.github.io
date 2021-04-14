@@ -1,8 +1,8 @@
 ---
-title: LC0292 Nim游戏
+title: LC292 Nim游戏
 categories:
 - 小镇做题家
-- 力扣
+- LeetCode
 abbrlink: 1bb
 date: 2021-04-07 00:48:18
 tags: 找规律

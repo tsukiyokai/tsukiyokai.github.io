@@ -1,9 +1,9 @@
 ---
-title: LC0171 Excel表列序号
+title: LC171 Excel表列序号
 abbrlink: 23205
 categories:
 - 小镇做题家
-- 力扣
+- LeetCode
 tag: 模拟
 date: 2021-02-25 00:00:00
 ---

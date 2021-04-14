@@ -1,8 +1,8 @@
 ---
-title: PE001 Multiples of 3 and 5
+title: PE1 Multiples of 3 and 5
 categories:
 - 小镇做题家
-- 欧拉计划
+- Project Euler
 tags: 组合数学
 abbrlink: 18889
 date: 2021-04-05 03:32:15
