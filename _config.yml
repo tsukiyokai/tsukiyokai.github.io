@@ -1,5 +1,5 @@
 title: 鹿屋泊地
-subtitle: 孔雀东南飞 五里一徘徊
+subtitle: null
 description: ''
 keywords: null
 author: 月夜海
@@ -31,7 +31,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -79,7 +79,7 @@ backup:
   repository:
     github: git@github.com:tsukiyokai/tsukiyokai.github.io.git,backup
 
-neat_enable: true
+neat_enable: false
 neat_html:
   enable: true
   exclude:
