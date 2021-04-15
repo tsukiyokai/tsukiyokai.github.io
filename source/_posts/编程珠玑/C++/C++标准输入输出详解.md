@@ -288,16 +288,8 @@ int main() {
 }
 ```
 
-#### 其它用法
-
-```c++
-cin.read(char* buffer, int n); // 从输入流中读取n个字符到缓冲区
-cin.ignore(int n); // 忽略输入流中接下来的n个字符
-cin.eof(); // 如果达到文件结尾EOF，返回一个非零值
-```
-
 补充：
-Windows下命令行输入文件结束符EOF的方式为Ctrl+z，Linux为Ctrl+d。
+Windows下命令行模拟文件结束符EOF的方式为Ctrl+z，Linux为Ctrl+d。按下这两个键，就相当于对eofbit进行了置位。
 
 ### cin的条件状态
 
@@ -310,6 +302,7 @@ failbit(0x2)：非致命的输入输出错误，可以挽回
 badbit(0x4)：致命的输入输出错误，无法挽回
 ```
 
+以上状态的官方叫法是error state flags，即错误状态标记。虽然有的看起来并不是错误，比如goodbit和eofbit，但就是这么叫的。可以这么理解，good是一种错误状态，它表示的错误状态是“无错误的状态”。eof也同理，因为到达文件尾也可以看作是一种错误状态。
 与其对应的使设置、读取、判断条件状态的成员函数。成员函数主要有：
 
 ```c++
@@ -332,10 +325,10 @@ using namespace std;
 
 int main() {
     char ch, str[20];
-    cin.getline(str, 5); // 能接收4个字符
-    cout << "goodbit:" << cin.good() << endl; // 查看goodbit状态，即是否有异常
-    cin.clear(); // 清除错误标志
-    cout << "goodbit:" << cin.good() << endl; // 清除标志后再查看异常状态
+    cin.getline(str, 5);
+    cout << "goodbit:" << cin.good() << endl;
+    cin.clear();
+    cout << "goodbit:" << cin.good() << endl;
     cin >> ch;
     cout << "str:" << str << endl;
     cout << "ch:" << ch << endl;
@@ -381,8 +374,8 @@ using namespace std;
 int main() {
     char str1[20] = { NULL }, str2[20] = { NULL };
     cin.getline(str1, 5);
-    cin.clear(); // 清除错误标志
-    cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // 清除缓冲区的当前行
+    cin.clear();
+    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
     cin.getline(str2, 20);
     cout << "str1:" << str1 << endl;
     cout << "str2:" << str2 << endl;
