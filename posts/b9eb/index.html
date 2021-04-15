@@ -1,1 +1,657 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.0"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico"><link rel="mask-icon" href="/images/favicon.ico" color="#222"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CMa+Shan+Zheng:300,300italic,400,400italic,700,700italic%7CZCOOL+XiaoWei:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css"><script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script><meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}"><meta name="description" content="C++的IO发生在流中，流是字节序列。如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做输入操作。如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做输出操作。"><meta property="og:type" content="article"><meta property="og:title" content="C++标准输入输出详解"><meta property="og:url" content="https://tsukiyokai.github.io/posts/b9eb/index.html"><meta property="og:site_name" content="鹿屋泊地"><meta property="og:description" content="C++的IO发生在流中，流是字节序列。如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做输入操作。如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做输出操作。"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2021-04-13T06:59:55.000Z"><meta property="article:modified_time" content="2021-04-15T05:05:07.869Z"><meta property="article:author" content="月夜海"><meta property="article:tag" content="C++"><meta property="article:tag" content="输入输出"><meta name="twitter:card" content="summary"><link rel="canonical" href="https://tsukiyokai.github.io/posts/b9eb/"><meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}"><meta name="hexo-config-calendar" content=""><title>C++标准输入输出详解 | 鹿屋泊地</title><script data-pjax src="/js/load-config.js"></script><noscript><link rel="stylesheet" href="/css/noscript.css"></noscript></head><body itemscope itemtype="http://schema.org/WebPage" class="use-motion"><div class="headband"></div><main class="main"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-container"><div class="site-nav-toggle"><div class="toggle" aria-label="切换导航栏" role="button"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div></div><div class="site-meta"><a href="/" class="brand" rel="start"><i class="logo-line"></i><h1 class="site-title">鹿屋泊地</h1><i class="logo-line"></i></a><p class="site-subtitle" itemprop="description">孔雀东南飞 五里一徘徊</p></div><div class="site-nav-right"><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class="site-nav"><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-search"><a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class="search-pop-overlay"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"><input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input"></div><span class="popup-btn-close" role="button"><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class="search-result-icon"><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role="button"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div><aside class="sidebar"><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class="sidebar-nav"><li class="sidebar-nav-toc">文章目录</li><li class="sidebar-nav-overview">站点概览</li></ul><div class="sidebar-panel-container"><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cin"><span class="nav-number">1.</span> <span class="nav-text">cin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E4%B8%8E%E6%8F%90%E5%8F%96%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">cin与提取运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E4%B8%8E%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">cin与成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cin-get"><span class="nav-number">1.2.1.</span> <span class="nav-text">cin.get()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cin-getline"><span class="nav-number">1.2.2.</span> <span class="nav-text">cin.getline()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getline"><span class="nav-number">1.2.3.</span> <span class="nav-text">getline()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E7%9A%84%E6%9D%A1%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="nav-number">1.3.</span> <span class="nav-text">cin的条件状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E6%B8%85%E7%A9%BA%E8%BE%93%E5%85%A5%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">1.4.</span> <span class="nav-text">cin清空输入缓冲区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" alt="月夜海" src="/images/haruna.png"><p class="site-author-name" itemprop="name">月夜海</p><div class="site-description" itemprop="description"></div></div><div class="site-state-wrap site-overview-item animated"><nav class="site-state"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">79</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">9</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class="site-state-item-count">31</span> <span class="site-state-item-name">标签</span></a></div></nav></div><div class="links-of-author site-overview-item animated"><span class="links-of-author-item"><a href="https://github.com/tsukiyokai" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tsukiyokai" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a> </span><span class="links-of-author-item"><a href="mailto:tsukiyokai@hotmail.com" title="E-Mail → mailto:tsukiyokai@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a> </span><span class="links-of-author-item"><a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a> </span><span class="links-of-author-item"><a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a> </span><span class="links-of-author-item"><a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i></a></span></div></div></div></div></aside><div class="sidebar-dimmer"></div></header><div class="reading-progress-bar"></div><noscript><div class="noscript-warning">Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class="post-block"><article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/b9eb/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/haruna.png"><meta itemprop="name" content="月夜海"><meta itemprop="description" content=""></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="鹿屋泊地"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">C++标准输入输出详解</h1><div class="post-meta-container"><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2021-04-13 14:59:55" itemprop="dateCreated datePublished" datetime="2021-04-13T14:59:55+08:00">2021-04-13</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-folder"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a> </span>>> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a> </span></span><span id="/posts/b9eb/" class="post-meta-item leancloud_visitors" data-flag-title="C++标准输入输出详解" title="阅读次数"><span class="post-meta-item-icon"><i class="far fa-eye"></i> </span><span class="post-meta-item-text">阅读次数：</span> <span class="leancloud-visitors-count"></span></span></div></div></header><div class="post-body" itemprop="articleBody"><p>C++的IO发生在流中，流是字节序列。<br>如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做输入操作。<br>如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做输出操作。</p><span id="more"></span><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p>cin在头文件<code>&lt;iostream&gt;</code>中。<br>cin的字面意思：c=character，in=input。cin=字符输入。</p><h3 id="cin与提取运算符"><a href="#cin与提取运算符" class="headerlink" title="cin与提取运算符"></a>cin与提取运算符</h3><p>cin对象可以与提取运算符&gt;&gt;协同使用。</p><p>插入运算符（Insertion operator）：&lt;&lt;<br>提取运算符（Extraction operator）：&gt;&gt;</p><p><strong>工作原理</strong></p><p>1.cin对象与提取运算符&gt;&gt;一起使用以接收字符流。</p><p>2.cin函数从输入缓冲区中取数据而非直接保存键盘输入。</p><p>cin建有一个缓冲区，即输入缓冲区。一次输入过程是这样的，当一次键盘输入结束时会将输入的数据存入输入缓冲区，而cin函数直接从输入缓冲区中取数据。正因为cin函数是直接从缓冲区取数据的，所以有时候当缓冲区中有残留数据时，cin函数会直接取得这些残留数据而不会请求键盘输入，这就是为什么有时会出现输入语句失效的原因。</p><p>例如当我们输入一些数据按下回车时，这些数据会被第一条输入语句读入，但有一些函数却不会把这个回车符读入并舍弃掉（比如gets)，这时第二条输入语句便会直接读取到这个回车符从而认定已经完成了输入直接跳过了输入语句。</p><p>缓冲区有残留数据导致跳过键盘输入的案例：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str1, str2;</span><br><span class="line">    cin &gt;&gt; str1;</span><br><span class="line">    cout &lt;&lt; str1;</span><br><span class="line">    cin &gt;&gt; str2;</span><br><span class="line">    cout &lt;&lt; str2;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>分析：第一次输入aaa bbb，第一次输出为aaa并舍弃使第一次输入终止的空格符。第二次输入时因为缓冲区有残留数据所以cin不从键盘读入而是直接从缓冲区读入，因此不会请求用户键盘输入，表面上就出现了输入语句失效的现象，实际上这是由cin的工作原理所决定的，第二次输出bbb。</p><p>3.<code>cin &gt;&gt;</code>从缓冲区接收字符流时，遇Space、Tab、Enter就结束，并且丢弃缓冲区中导致输入结束的结束符（空格、制表、换行）。例如：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">input: aaabbbccc</span><br><span class="line">output: aaabbbccc</span><br><span class="line"></span><br><span class="line">input: aaa bbb ccc</span><br><span class="line">output: aaa</span><br></pre></td></tr></table></figure><p>分析：aaa bbb ccc进入缓冲区，cin&gt;&gt;从缓冲区接收字符流aaa，然后遇到第一个空格使cin&gt;&gt;行为中止，于是舍弃这个空格，完成cin&gt;&gt;行为。下一次从缓冲区中读取数据时接收空格后面的bbb，然后遇到并舍弃第二个空格。</p><p>4.提取运算符&gt;&gt;可以被多次使用以连续接收多个输入，例如：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">string name;</span><br><span class="line"><span class="keyword">int</span> age;</span><br><span class="line">cin &gt;&gt; name &gt;&gt; age;</span><br></pre></td></tr></table></figure><p>分析：反正缓冲区中有残留数据时键盘输入会被跳过，索性直接连续输入，让电脑自己从缓冲区读入并断句。不同对象之间的输入用空格分开，之后cin&gt;&gt;读缓冲区时会自动断句并舍弃空格。</p><h3 id="cin与成员函数"><a href="#cin与成员函数" class="headerlink" title="cin与成员函数"></a>cin与成员函数</h3><h4 id="cin-get"><a href="#cin-get" class="headerlink" title="cin.get()"></a>cin.get()</h4><p>cin.get(数组名,长度,结束符)</p><p>其中结束符为可选参数，读入的字符个数最多为长度-1个，结束符规定结束字符串读取的字符，默认为Enter。</p><p>1.读取单个字符的情况</p><p>若要读取一个字符，直接<code>cin.get(char ch);</code>或<code>ch=cin.get();</code>即可，二者是等价的。<br>输入结束条件：按下Enter<br>对结束符的处理：不丢弃缓冲区中的Enter</p><p>例如：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c1, c2;</span><br><span class="line">    cin.<span class="built_in">get</span>(c1);</span><br><span class="line">    cin.<span class="built_in">get</span>(c2);</span><br><span class="line">    cout &lt;&lt; c1 &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; c2 &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(c1) &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(c2) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>测试一</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line">97 10</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>分析：’a’的ASCII值为97，’\n’的ASCII值为10。</p><p>本来输入a后换行是为了准备输入第二个字符，发现似乎直接跳过了第二个get，只执行了一次从键盘输入，显然第一个字符变量取的’a’，第二个变量取的是’Enter’(ASCII值为10)。这是因为get()函数不丢弃上次输入结束时的Enter字符，所以第一次输入结束时缓冲区中残留的是上次输入结束时的Enter字符！</p><p>再次理清一点：get并没有直接把Enter作为第二个字符读入，而是因为，作为第一个字符变量结束条件的Enter没有被cin.get()丢弃，得以继续留在缓冲区中，所以下一次输入时就能读到缓冲区头部的残留Enter。</p><p><del>如果是cin.get()直接把Enter当成第二个字符，你会发现字符’a’和字符’\n’之间是没有能作为断句依据的其它字符的，那Enter”直接”作为第二个字符也就不成立了。</del>理解错了，cin.get()能够正确断句，因为一个字符变量只能存一个字符，就算两个字符之间什么也没有，也能正确分配输入。</p><p>测试二</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a b</span><br><span class="line">a  </span><br><span class="line">97 32</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>分析：’a’的ASCII值为97，’ ‘的ASCII值为32。原因同上，没有丢弃Space字符。</p><p>测试三</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ab</span><br><span class="line">a b</span><br><span class="line">97 98</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>分析：输入输出符合预期。</p><p>2.读取字符串的情况</p><p>输入结束条件：默认为Enter键，因此可接受空格和Tab键，可在第三个参数上自定义结束符<br>对结束符处理：丢弃缓冲区中的Enter</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch, a[<span class="number">20</span>];</span><br><span class="line">    cin.<span class="built_in">get</span>(a, <span class="number">5</span>, <span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">    cin &gt;&gt; ch;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>测试一</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12345</span><br><span class="line">1234</span><br><span class="line">5</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>分析：12345进缓冲区，cin.get()读走5-1=4个，剩’5’残留在缓冲区。<br>第二次输入不从键盘读取，直接取走’5’，所以打印的是字符’5’。</p><p>测试二</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12d45</span><br><span class="line">12</span><br><span class="line">d</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>分析：12d45进缓冲区，cin.get()准备读走4个，读到’d’时发现d是自定义的结束符，于是cin.get()实际读走12。<br>第二次输出什么呢？输出残留在缓冲区中的第一个字符。输出d还是4呢？取决于自定义的结束符是否被丢弃。<br>实际输出的是’d’，说明如果是自定义结束符，则不丢弃缓冲区中的结束符。而如果没自定义，默认使用的是Enter，则丢弃换行符。</p><h4 id="cin-getline"><a href="#cin-getline" class="headerlink" title="cin.getline()"></a>cin.getline()</h4><p>cin.getline(数组名,长度,结束符)</p><p>首先明确一点，在C++中cin.getline()和getline()是两码事。cin.getline()属于istream流，使用前需包含<code>#include&lt;iostream&gt;</code>；而getline()属于string流，使用前需包含<code>#include&lt;string&gt;</code>。</p><p>cin.getline()用于接收一个字符串，可以接收空格并输出，比如长度N=5时接收5个字符到字符串中，其中最后一个为’\0’，所以只看到4个字符输出。</p><p>cin.getline()可以接收空格并输出！<br>cin.getline()可以接收空格并输出！<br>cin.getline()可以接收空格并输出！</p><p>cin.getline(数组名,长度,结束符)大体与cin.get()相似。区别在于：cin.get()当输入的字符串超长时，不会引起cin函数的错误，后面的cin操作会继续执行，只是直接从缓冲区中取数据。而cin.getline()当输入超长时，会引起cin函数的错误，后面的cin操作将不再执行。<br>注意，1.这里的输入超长指的是用户键盘的输入超过了cin.getline()计划从缓冲区取走数据的长度。2.后面的cin操作不再执行指的是该cin下面的其它cin不再执行了，不是从这次cin开始后面的程序崩溃了。</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch, a[<span class="number">20</span>];</span><br><span class="line">    cin.<span class="built_in">getline</span>(a, <span class="number">5</span>);</span><br><span class="line">    cin &gt;&gt; ch;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>测试一</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abcd</span><br><span class="line">e</span><br><span class="line">abcd</span><br><span class="line">e</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>测试二</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abcde</span><br><span class="line">abcd</span><br><span class="line"></span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>分析：与cin.get()比较发现，这里的ch并没有读取缓冲区中的e，而是返回了无效结果，这里其实cin&gt;&gt;ch语句没有执行，是因为cin出错了！cin的错误处理以后介绍。</p><p>测试三</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ab cde</span><br><span class="line">ab c</span><br><span class="line"></span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure><p>分析：ab c进字符数组a[]，同时因为输入长度len=6超出上限4，所以产生错误，第二个cin不再执行，返回无效结果。</p><h4 id="getline"><a href="#getline" class="headerlink" title="getline()"></a>getline()</h4><p><code>getline(cin,str);</code>的意义：从输入流中提取一行字符存入字符串str。</p><p>如果程序中既有cin&gt;&gt;又有getline()时，需要注意的是：在cin&gt;&gt;输入流完成之后，getline()之前，需要通过</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">mystr = <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">getline</span>(cin, mystr);</span><br></pre></td></tr></table></figure><p>的方式来将换行符作为输入流cin以清除缓存。否则在控制台上就不会出现getline()的输入提示，而直接跳过，因为程序默认地将之前的变量作为输入流。</p><p>完整的例子看下面一段程序：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string mystr;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;What&#x27;s your name? &quot;</span>;</span><br><span class="line">    <span class="built_in">getline</span>(cin, mystr);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello,&quot;</span> &lt;&lt; mystr &lt;&lt; <span class="string">&quot;.\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Please enter an integer value as your age: &quot;</span>;</span><br><span class="line">    cin &gt;&gt; age;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Your ager is: &quot;</span> &lt;&lt; age &lt;&lt; <span class="string">&quot;.\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> sex;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Please enter a F or M as your sex: &quot;</span>;</span><br><span class="line">    cin &gt;&gt; sex;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Your sex is: &quot;</span> &lt;&lt; sex &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;What&#x27;s your favorite team? &quot;</span>;</span><br><span class="line">    mystr = <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="built_in">getline</span>(cin, mystr);</span><br><span class="line">    <span class="built_in">getline</span>(cin, mystr);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;I like &quot;</span> &lt;&lt; mystr &lt;&lt; <span class="string">&quot;.\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>补充：<br>Windows下命令行模拟文件结束符EOF的方式为Ctrl+z，Linux为Ctrl+d。按下这两个键，就相当于对eofbit进行了置位。</p><h3 id="cin的条件状态"><a href="#cin的条件状态" class="headerlink" title="cin的条件状态"></a>cin的条件状态</h3><p>使用cin读取键盘输入时难免会发生错误，比如上面说过的cin.getline()发生输入超长导致后续cin不再执行。出错时，cin将设置不同的条件状态（condition state）以传达自身信息，条件状态位主要有：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">goodbit</span>(<span class="number">0x0</span>)：无错误</span><br><span class="line"><span class="built_in">eofbit</span>(<span class="number">0x1</span>)：已到达文件尾</span><br><span class="line"><span class="built_in">failbit</span>(<span class="number">0x2</span>)：非致命的输入输出错误，可以挽回</span><br><span class="line"><span class="built_in">badbit</span>(<span class="number">0x4</span>)：致命的输入输出错误，无法挽回</span><br></pre></td></tr></table></figure><p>以上状态的官方叫法是error state flags，即错误状态标记。虽然有的看起来并不是错误，比如goodbit和eofbit，但就是这么叫的。可以这么理解，good是一种错误状态，它表示的错误状态是“无错误的状态”。eof也同理，因为到达文件尾也可以看作是一种错误状态。<br>与其对应的使设置、读取、判断条件状态的成员函数。成员函数主要有：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">s.<span class="built_in">good</span>()：若流s的goodbit置位，则返回<span class="literal">true</span></span><br><span class="line">s.<span class="built_in">eof</span>()：若流s的eofbit置位，则返回<span class="literal">true</span></span><br><span class="line">s.<span class="built_in">fail</span>()：若流s的failbit置位，则返回<span class="literal">true</span></span><br><span class="line">s.<span class="built_in">bad</span>()：若流s的badbit置位，则返回<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">s.<span class="built_in">clear</span>(flags)：清空当前状态,然后把状态设置为flags，返回<span class="keyword">void</span></span><br><span class="line">s.<span class="built_in">setstate</span>(flags)：不清空当前状态，设置给定的状态flags，返回<span class="keyword">void</span></span><br><span class="line">s.<span class="built_in">rdstate</span>()：返回流s的当前条件状态，返回值类型为ios_base::iostate</span><br></pre></td></tr></table></figure><p>注：置位就是置1，即为真。搜了一下好像是嵌入式里的叫法。</p><p>举例子来说明一下。这个例子因输入缓冲区未读取完造成状态位failbit被置位，后通过clear()成功复位。</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch, str[<span class="number">20</span>];</span><br><span class="line">    cin.<span class="built_in">getline</span>(str, <span class="number">5</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;goodbit:&quot;</span> &lt;&lt; cin.<span class="built_in">good</span>() &lt;&lt; endl;</span><br><span class="line">    cin.<span class="built_in">clear</span>();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;goodbit:&quot;</span> &lt;&lt; cin.<span class="built_in">good</span>() &lt;&lt; endl;</span><br><span class="line">    cin &gt;&gt; ch;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;str:&quot;</span> &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;ch:&quot;</span> &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>运行结果：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abcde</span><br><span class="line">goodbit:0</span><br><span class="line">goodbit:1</span><br><span class="line">str:abcd</span><br><span class="line">ch:e</span><br><span class="line">Press any key to continue . . .</span><br></pre></td></tr></table></figure><p>这个例子解决了cin.getline()里所讲的输入超长问题。</p><p>可以看出，因输入缓冲区未读取完造成的输入异常，通过clear()可以清除输入流对象cin的异常状态，从而不影响后面的cin&gt;&gt;ch从输入缓冲区读取数据。<br>因为cin.getline()读取之后，输入缓冲区中残留的字符串是：5\n，所以cin&gt;&gt;ch将5读取并存入ch，打印输入并输出5。</p><p>如果将cin.clear()一行注释掉，则cin&gt;&gt;ch;将读取失败，ch为空。<br>cin.clear()等同于<code>cin.clear(ios::goodbit);</code>。因为cin.clear()的默认参数是<code>ios::goodbit</code>，所以不需显示传递，故而你最常看到的就是cin.clear()。</p><h3 id="cin清空输入缓冲区"><a href="#cin清空输入缓冲区" class="headerlink" title="cin清空输入缓冲区"></a>cin清空输入缓冲区</h3><p>上一次的输入操作很有可能使输入缓冲区中残留数据，影响下一次输入。<br>如何解决这个问题呢？我们自然想到在进行输入时对输入缓冲区进行清空和状态条件的复位。条件状态的复位使用clear()，清空输入缓冲区应该使用cin.ignore()。</p><p>函数原型：<br>istream&amp; ignore (streamsize n = 1, int delim = EOF);<br>delim表示分隔符、划界字符、终止字符。<br>此函数的作用是跳过输入流中的n个字符，或在遇到指定的终止字符时提前结束（此时跳过包括终止字符在内的若干字符）。哪个条件先满足就按哪个执行。因为两个参数都有默认值，所以cin.ignore()就等效于cin.ignore(1, EOF)，即跳过一个字符。<br>该函数常用于跳过输入中的无用部分，以便提取有用的部分。</p><p>使用示例：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str1[<span class="number">20</span>] = &#123; <span class="literal">NULL</span> &#125;, str2[<span class="number">20</span>] = &#123; <span class="literal">NULL</span> &#125;;</span><br><span class="line">    cin.<span class="built_in">getline</span>(str1, <span class="number">5</span>);</span><br><span class="line">    cin.<span class="built_in">clear</span>();</span><br><span class="line">    cin.<span class="built_in">ignore</span>(numeric_limits&lt;std::streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    cin.<span class="built_in">getline</span>(str2, <span class="number">20</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;str1:&quot;</span> &lt;&lt; str1 &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;str2:&quot;</span> &lt;&lt; str2 &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>运行结果：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12345</span><br><span class="line">success</span><br><span class="line">str1:1234</span><br><span class="line">str2:success</span><br><span class="line">Press any key to continue . . .</span><br></pre></td></tr></table></figure><p>分析：</p><p>（1）程序中使用cin.ignore清空了输入缓冲区的当前行，使上次的输入残留下的数据没有影响到下一次的输入，这就是ignore()函数的主要作用。其中，<code>numeric_limits&lt;std::streamsize&gt;::max()</code>是<code>&lt;limits&gt;</code>头文件定义的流使用的最大值，你也可以用一个足够大的整数代替它。如果想清空输入缓冲区的所有内容，去掉换行符即可，即：<br><code>cin.ignore(numeric_limits&lt;std::streamsize&gt;::max());</code><br>这里要注意的是，如果缓冲区中没有EOF(-1)，cin.ignore()会阻塞等待。如果在命令行，我们可以使用Ctrl+Z然后回车（Windows命令行）或直接Ctrl+D（Linux命令行）输入EOF。</p><p>（2）cin.ignore()；当输入缓冲区没有数据时，没法清空已经为空的缓冲区，此时也会阻塞等待数据的到来。</p><p>（3）请不要使用cin.sync()来清空输入缓冲区，本人测试了一下，VC++和GNU C++都不行，请使用cin.ignore()。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://social.microsoft.com/Forums/zh-CN/c8ae82d8-18ed-42f1-aabf-e3c1de4f4d9f">https://social.microsoft.com/Forums/zh-CN/c8ae82d8-18ed-42f1-aabf-e3c1de4f4d9f</a></p></div><footer class="post-footer"><div class="post-copyright"><ul><li class="post-copyright-author"><strong>本文作者： </strong>月夜海</li><li class="post-copyright-link"><strong>本文链接：</strong> <a href="https://tsukiyokai.github.io/posts/b9eb/" title="C++标准输入输出详解">https://tsukiyokai.github.io/posts/b9eb/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><div class="post-tags"><a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a> <a href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" rel="tag"><i class="fa fa-tag"></i> 输入输出</a></div><div class="post-nav"><div class="post-nav-item"><a href="/posts/f294/" rel="prev" title="古诗为焦仲卿妻作"><i class="fa fa-chevron-left"></i> 古诗为焦仲卿妻作</a></div><div class="post-nav-item"><a href="/posts/860a/" rel="next" title="ACM模式下C++标准输入输出惯用法汇总">ACM模式下C++标准输入输出惯用法汇总 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div class="comments utterances-container"></div><script src="/js/comments.js"></script></div></main><footer class="footer"><div class="footer-inner"><div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2021</span> <span class="with-love"><i></i></span></div></div></footer><script size="200" alpha="0.6" zindex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/local-search.js"></script><script>var mermaidElements=document.querySelectorAll(".mermaid");mermaidElements.length&&NexT.utils.getScript("https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js",()=>{mermaidElements.forEach(e=>{const m=document.createElement("div");m.innerHTML=e.innerHTML,m.className=e.className,e.parentNode.replaceChild(m,e)}),mermaid.init({theme:"forest",logLevel:3,flowchart:{curve:"linear"},gantt:{axisFormat:"%m/%d/%Y"},sequence:{actorMargin:50}},".mermaid")},window.mermaid)</script><script>NProgress.configure({showSpinner:!1}),NProgress.start(),document.addEventListener("readystatechange",()=>{"interactive"===document.readyState&&NProgress.inc(.8),"complete"===document.readyState&&NProgress.done()}),document.addEventListener("pjax:send",()=>{NProgress.start()}),document.addEventListener("pjax:success",()=>{NProgress.done()})</script><script>!function(){function r(e){return e=encodeURI(e),document.getElementById(e).querySelector(".leancloud-visitors-count")}const{app_id:s,app_key:c,server_url:e}={enable:!0,app_id:"MENt3xxaJlxkVFyePnJeEmA5-gzGzoHsz",app_key:"nFiJhyLSqoN3ExuFMOhcy4fS",server_url:null,security:!1};function t(n){var e=(e,t,o)=>fetch(`${n}/1.1${t}`,{method:e,headers:{"X-LC-Id":s,"X-LC-Key":c,"Content-Type":"application/json"},body:JSON.stringify(o)});CONFIG.page.isPost?CONFIG.hostname===location.hostname&&function(t){var e=document.querySelector(".leancloud_visitors");const o=decodeURI(e.id),n=e.dataset.flagTitle;t("get","/classes/Counter?where="+encodeURIComponent(JSON.stringify({url:o}))).then(e=>e.json()).then(({results:e})=>{0<e.length?(e=e[0],r(o).innerText=e.time+1,t("put","/classes/Counter/"+e.objectId,{time:{__op:"Increment",amount:1}}).catch(e=>{console.error("Failed to save visitor count",e)})):t("post","/classes/Counter",{title:n,url:o,time:1}).then(e=>e.json()).then(()=>{r(o).innerText=1}).catch(e=>{console.error("Failed to create",e)})}).catch(e=>{console.error("LeanCloud Counter Error",e)})}(e):1<=document.querySelectorAll(".post-title-link").length&&function(e){const n=[...document.querySelectorAll(".leancloud_visitors")].map(e=>decodeURI(e.id));e("get","/classes/Counter?where="+encodeURIComponent(JSON.stringify({url:{$in:n}}))).then(e=>e.json()).then(({results:e})=>{for(let t of n){var o=e.find(e=>e.url===t);r(t).innerText=o?o.time:0}}).catch(e=>{console.error("LeanCloud Counter Error",e)})}(e)}var o="-MdYXbMMI"===s.slice(-9)?`https://${s.slice(0,8).toLowerCase()}.api.lncldglobal.com`:e;o?t(o):fetch("https://app-router.leancloud.cn/2/route?appId="+s).then(e=>e.json()).then(({api_server:e})=>{t("https://"+e)})}()</script><script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script><script>window.addEventListener("load",()=>{quicklink.listen({timeout:3e3,priority:!0,ignores:[i=>i.includes("#"),i=>"https://tsukiyokai.github.io/posts/b9eb/"===i]})})</script><script>NexT.utils.loadComments(".utterances-container",()=>{const t=document.createElement("script");t.src="https://utteranc.es/client.js",t.setAttribute("repo","tsukiyokai/blog-assets"),t.setAttribute("issue-term","pathname"),t.setAttribute("theme","photon-dark"),t.crossOrigin="anonymous",t.async=!0,document.querySelector(".utterances-container").appendChild(t)})</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7CZCOOL+XiaoWei:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
+<meta name="description" content="C++的IO发生在流中，流是字节序列。如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做输入操作。如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做输出操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++标准输入输出详解">
+<meta property="og:url" content="https://tsukiyokai.github.io/posts/b9eb/index.html">
+<meta property="og:site_name" content="鹿屋泊地">
+<meta property="og:description" content="C++的IO发生在流中，流是字节序列。如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做输入操作。如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做输出操作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-13T06:59:55.000Z">
+<meta property="article:modified_time" content="2021-04-15T05:05:07.869Z">
+<meta property="article:author" content="月夜海">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="输入输出">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tsukiyokai.github.io/posts/b9eb/">
+
+
+
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
+<meta name="hexo-config-calendar" content="">
+<title>C++标准输入输出详解 | 鹿屋泊地</title><script data-pjax src="/js/load-config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">鹿屋泊地</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cin"><span class="nav-number">1.</span> <span class="nav-text">cin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E4%B8%8E%E6%8F%90%E5%8F%96%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">cin与提取运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E4%B8%8E%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">cin与成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cin-get"><span class="nav-number">1.2.1.</span> <span class="nav-text">cin.get()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cin-getline"><span class="nav-number">1.2.2.</span> <span class="nav-text">cin.getline()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getline"><span class="nav-number">1.2.3.</span> <span class="nav-text">getline()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E7%9A%84%E6%9D%A1%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="nav-number">1.3.</span> <span class="nav-text">cin的条件状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cin%E6%B8%85%E7%A9%BA%E8%BE%93%E5%85%A5%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">1.4.</span> <span class="nav-text">cin清空输入缓冲区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="月夜海"
+      src="/images/haruna.png">
+  <p class="site-author-name" itemprop="name">月夜海</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tsukiyokai" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tsukiyokai" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tsukiyokai@hotmail.com" title="E-Mail → mailto:tsukiyokai@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/b9eb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="月夜海">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鹿屋泊地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++标准输入输出详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-13 14:59:55" itemprop="dateCreated datePublished" datetime="2021-04-13T14:59:55+08:00">2021-04-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          >>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/b9eb/" class="post-meta-item leancloud_visitors" data-flag-title="C++标准输入输出详解" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>C++的IO发生在流中，流是字节序列。<br>如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做输入操作。<br>如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做输出操作。</p>
+<span id="more"></span>
+<h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p>cin在头文件<code>&lt;iostream&gt;</code>中。<br>cin的字面意思：c=character，in=input。cin=字符输入。</p>
+<h3 id="cin与提取运算符"><a href="#cin与提取运算符" class="headerlink" title="cin与提取运算符"></a>cin与提取运算符</h3><p>cin对象可以与提取运算符&gt;&gt;协同使用。</p>
+<p>插入运算符（Insertion operator）：&lt;&lt;<br>提取运算符（Extraction operator）：&gt;&gt;</p>
+<p><strong>工作原理</strong></p>
+<p>1.cin对象与提取运算符&gt;&gt;一起使用以接收字符流。</p>
+<p>2.cin函数从输入缓冲区中取数据而非直接保存键盘输入。</p>
+<p>cin建有一个缓冲区，即输入缓冲区。一次输入过程是这样的，当一次键盘输入结束时会将输入的数据存入输入缓冲区，而cin函数直接从输入缓冲区中取数据。正因为cin函数是直接从缓冲区取数据的，所以有时候当缓冲区中有残留数据时，cin函数会直接取得这些残留数据而不会请求键盘输入，这就是为什么有时会出现输入语句失效的原因。</p>
+<p>例如当我们输入一些数据按下回车时，这些数据会被第一条输入语句读入，但有一些函数却不会把这个回车符读入并舍弃掉（比如gets)，这时第二条输入语句便会直接读取到这个回车符从而认定已经完成了输入直接跳过了输入语句。</p>
+<p>缓冲区有残留数据导致跳过键盘输入的案例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str1, str2;</span><br><span class="line">    cin &gt;&gt; str1;</span><br><span class="line">    cout &lt;&lt; str1;</span><br><span class="line">    cin &gt;&gt; str2;</span><br><span class="line">    cout &lt;&lt; str2;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析：第一次输入aaa bbb，第一次输出为aaa并舍弃使第一次输入终止的空格符。第二次输入时因为缓冲区有残留数据所以cin不从键盘读入而是直接从缓冲区读入，因此不会请求用户键盘输入，表面上就出现了输入语句失效的现象，实际上这是由cin的工作原理所决定的，第二次输出bbb。</p>
+<p>3.<code>cin &gt;&gt;</code>从缓冲区接收字符流时，遇Space、Tab、Enter就结束，并且丢弃缓冲区中导致输入结束的结束符（空格、制表、换行）。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">input: aaabbbccc</span><br><span class="line">output: aaabbbccc</span><br><span class="line"></span><br><span class="line">input: aaa bbb ccc</span><br><span class="line">output: aaa</span><br></pre></td></tr></table></figure>
+
+<p>分析：aaa bbb ccc进入缓冲区，cin&gt;&gt;从缓冲区接收字符流aaa，然后遇到第一个空格使cin&gt;&gt;行为中止，于是舍弃这个空格，完成cin&gt;&gt;行为。下一次从缓冲区中读取数据时接收空格后面的bbb，然后遇到并舍弃第二个空格。</p>
+<p>4.提取运算符&gt;&gt;可以被多次使用以连续接收多个输入，例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">string name;</span><br><span class="line"><span class="keyword">int</span> age;</span><br><span class="line">cin &gt;&gt; name &gt;&gt; age;</span><br></pre></td></tr></table></figure>
+
+<p>分析：反正缓冲区中有残留数据时键盘输入会被跳过，索性直接连续输入，让电脑自己从缓冲区读入并断句。不同对象之间的输入用空格分开，之后cin&gt;&gt;读缓冲区时会自动断句并舍弃空格。</p>
+<h3 id="cin与成员函数"><a href="#cin与成员函数" class="headerlink" title="cin与成员函数"></a>cin与成员函数</h3><h4 id="cin-get"><a href="#cin-get" class="headerlink" title="cin.get()"></a>cin.get()</h4><p>cin.get(数组名,长度,结束符)</p>
+<p>其中结束符为可选参数，读入的字符个数最多为长度-1个，结束符规定结束字符串读取的字符，默认为Enter。</p>
+<p>1.读取单个字符的情况</p>
+<p>若要读取一个字符，直接<code>cin.get(char ch);</code>或<code>ch=cin.get();</code>即可，二者是等价的。<br>输入结束条件：按下Enter<br>对结束符的处理：不丢弃缓冲区中的Enter</p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c1, c2;</span><br><span class="line">    cin.<span class="built_in">get</span>(c1);</span><br><span class="line">    cin.<span class="built_in">get</span>(c2);</span><br><span class="line">    cout &lt;&lt; c1 &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; c2 &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(c1) &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(c2) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试一</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line">97 10</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：’a’的ASCII值为97，’\n’的ASCII值为10。</p>
+<p>本来输入a后换行是为了准备输入第二个字符，发现似乎直接跳过了第二个get，只执行了一次从键盘输入，显然第一个字符变量取的’a’，第二个变量取的是’Enter’(ASCII值为10)。这是因为get()函数不丢弃上次输入结束时的Enter字符，所以第一次输入结束时缓冲区中残留的是上次输入结束时的Enter字符！</p>
+<p>再次理清一点：get并没有直接把Enter作为第二个字符读入，而是因为，作为第一个字符变量结束条件的Enter没有被cin.get()丢弃，得以继续留在缓冲区中，所以下一次输入时就能读到缓冲区头部的残留Enter。</p>
+<p><del>如果是cin.get()直接把Enter当成第二个字符，你会发现字符’a’和字符’\n’之间是没有能作为断句依据的其它字符的，那Enter”直接”作为第二个字符也就不成立了。</del>理解错了，cin.get()能够正确断句，因为一个字符变量只能存一个字符，就算两个字符之间什么也没有，也能正确分配输入。</p>
+<p>测试二</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a b</span><br><span class="line">a  </span><br><span class="line">97 32</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：’a’的ASCII值为97，’ ‘的ASCII值为32。原因同上，没有丢弃Space字符。</p>
+<p>测试三</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ab</span><br><span class="line">a b</span><br><span class="line">97 98</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：输入输出符合预期。</p>
+<p>2.读取字符串的情况</p>
+<p>输入结束条件：默认为Enter键，因此可接受空格和Tab键，可在第三个参数上自定义结束符<br>对结束符处理：丢弃缓冲区中的Enter</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch, a[<span class="number">20</span>];</span><br><span class="line">    cin.<span class="built_in">get</span>(a, <span class="number">5</span>, <span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">    cin &gt;&gt; ch;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试一</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12345</span><br><span class="line">1234</span><br><span class="line">5</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：12345进缓冲区，cin.get()读走5-1=4个，剩’5’残留在缓冲区。<br>第二次输入不从键盘读取，直接取走’5’，所以打印的是字符’5’。</p>
+<p>测试二</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12d45</span><br><span class="line">12</span><br><span class="line">d</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：12d45进缓冲区，cin.get()准备读走4个，读到’d’时发现d是自定义的结束符，于是cin.get()实际读走12。<br>第二次输出什么呢？输出残留在缓冲区中的第一个字符。输出d还是4呢？取决于自定义的结束符是否被丢弃。<br>实际输出的是’d’，说明如果是自定义结束符，则不丢弃缓冲区中的结束符。而如果没自定义，默认使用的是Enter，则丢弃换行符。</p>
+<h4 id="cin-getline"><a href="#cin-getline" class="headerlink" title="cin.getline()"></a>cin.getline()</h4><p>cin.getline(数组名,长度,结束符)</p>
+<p>首先明确一点，在C++中cin.getline()和getline()是两码事。cin.getline()属于istream流，使用前需包含<code>#include&lt;iostream&gt;</code>；而getline()属于string流，使用前需包含<code>#include&lt;string&gt;</code>。</p>
+<p>cin.getline()用于接收一个字符串，可以接收空格并输出，比如长度N=5时接收5个字符到字符串中，其中最后一个为’\0’，所以只看到4个字符输出。</p>
+<p>cin.getline()可以接收空格并输出！<br>cin.getline()可以接收空格并输出！<br>cin.getline()可以接收空格并输出！</p>
+<p>cin.getline(数组名,长度,结束符)大体与cin.get()相似。区别在于：cin.get()当输入的字符串超长时，不会引起cin函数的错误，后面的cin操作会继续执行，只是直接从缓冲区中取数据。而cin.getline()当输入超长时，会引起cin函数的错误，后面的cin操作将不再执行。<br>注意，1.这里的输入超长指的是用户键盘的输入超过了cin.getline()计划从缓冲区取走数据的长度。2.后面的cin操作不再执行指的是该cin下面的其它cin不再执行了，不是从这次cin开始后面的程序崩溃了。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch, a[<span class="number">20</span>];</span><br><span class="line">    cin.<span class="built_in">getline</span>(a, <span class="number">5</span>);</span><br><span class="line">    cin &gt;&gt; ch;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试一</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abcd</span><br><span class="line">e</span><br><span class="line">abcd</span><br><span class="line">e</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>测试二</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abcde</span><br><span class="line">abcd</span><br><span class="line"></span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：与cin.get()比较发现，这里的ch并没有读取缓冲区中的e，而是返回了无效结果，这里其实cin&gt;&gt;ch语句没有执行，是因为cin出错了！cin的错误处理以后介绍。</p>
+<p>测试三</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ab cde</span><br><span class="line">ab c</span><br><span class="line"></span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：ab c进字符数组a[]，同时因为输入长度len=6超出上限4，所以产生错误，第二个cin不再执行，返回无效结果。</p>
+<h4 id="getline"><a href="#getline" class="headerlink" title="getline()"></a>getline()</h4><p><code>getline(cin,str);</code>的意义：从输入流中提取一行字符存入字符串str。</p>
+<p>如果程序中既有cin&gt;&gt;又有getline()时，需要注意的是：在cin&gt;&gt;输入流完成之后，getline()之前，需要通过</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">mystr = <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">getline</span>(cin, mystr);</span><br></pre></td></tr></table></figure>
+<p>的方式来将换行符作为输入流cin以清除缓存。否则在控制台上就不会出现getline()的输入提示，而直接跳过，因为程序默认地将之前的变量作为输入流。</p>
+<p>完整的例子看下面一段程序：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string mystr;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;What&#x27;s your name? &quot;</span>;</span><br><span class="line">    <span class="built_in">getline</span>(cin, mystr);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello,&quot;</span> &lt;&lt; mystr &lt;&lt; <span class="string">&quot;.\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Please enter an integer value as your age: &quot;</span>;</span><br><span class="line">    cin &gt;&gt; age;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Your ager is: &quot;</span> &lt;&lt; age &lt;&lt; <span class="string">&quot;.\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> sex;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Please enter a F or M as your sex: &quot;</span>;</span><br><span class="line">    cin &gt;&gt; sex;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Your sex is: &quot;</span> &lt;&lt; sex &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;What&#x27;s your favorite team? &quot;</span>;</span><br><span class="line">    mystr = <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="built_in">getline</span>(cin, mystr);</span><br><span class="line">    <span class="built_in">getline</span>(cin, mystr);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;I like &quot;</span> &lt;&lt; mystr &lt;&lt; <span class="string">&quot;.\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>补充：<br>Windows下命令行模拟文件结束符EOF的方式为Ctrl+z，Linux为Ctrl+d。按下这两个键，就相当于对eofbit进行了置位。</p>
+<h3 id="cin的条件状态"><a href="#cin的条件状态" class="headerlink" title="cin的条件状态"></a>cin的条件状态</h3><p>使用cin读取键盘输入时难免会发生错误，比如上面说过的cin.getline()发生输入超长导致后续cin不再执行。出错时，cin将设置不同的条件状态（condition state）以传达自身信息，条件状态位主要有：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">goodbit</span>(<span class="number">0x0</span>)：无错误</span><br><span class="line"><span class="built_in">eofbit</span>(<span class="number">0x1</span>)：已到达文件尾</span><br><span class="line"><span class="built_in">failbit</span>(<span class="number">0x2</span>)：非致命的输入输出错误，可以挽回</span><br><span class="line"><span class="built_in">badbit</span>(<span class="number">0x4</span>)：致命的输入输出错误，无法挽回</span><br></pre></td></tr></table></figure>
+
+<p>以上状态的官方叫法是error state flags，即错误状态标记。虽然有的看起来并不是错误，比如goodbit和eofbit，但就是这么叫的。可以这么理解，good是一种错误状态，它表示的错误状态是“无错误的状态”。eof也同理，因为到达文件尾也可以看作是一种错误状态。<br>与其对应的使设置、读取、判断条件状态的成员函数。成员函数主要有：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">s.<span class="built_in">good</span>()：若流s的goodbit置位，则返回<span class="literal">true</span></span><br><span class="line">s.<span class="built_in">eof</span>()：若流s的eofbit置位，则返回<span class="literal">true</span></span><br><span class="line">s.<span class="built_in">fail</span>()：若流s的failbit置位，则返回<span class="literal">true</span></span><br><span class="line">s.<span class="built_in">bad</span>()：若流s的badbit置位，则返回<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">s.<span class="built_in">clear</span>(flags)：清空当前状态,然后把状态设置为flags，返回<span class="keyword">void</span></span><br><span class="line">s.<span class="built_in">setstate</span>(flags)：不清空当前状态，设置给定的状态flags，返回<span class="keyword">void</span></span><br><span class="line">s.<span class="built_in">rdstate</span>()：返回流s的当前条件状态，返回值类型为ios_base::iostate</span><br></pre></td></tr></table></figure>
+<p>注：置位就是置1，即为真。搜了一下好像是嵌入式里的叫法。</p>
+<p>举例子来说明一下。这个例子因输入缓冲区未读取完造成状态位failbit被置位，后通过clear()成功复位。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch, str[<span class="number">20</span>];</span><br><span class="line">    cin.<span class="built_in">getline</span>(str, <span class="number">5</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;goodbit:&quot;</span> &lt;&lt; cin.<span class="built_in">good</span>() &lt;&lt; endl;</span><br><span class="line">    cin.<span class="built_in">clear</span>();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;goodbit:&quot;</span> &lt;&lt; cin.<span class="built_in">good</span>() &lt;&lt; endl;</span><br><span class="line">    cin &gt;&gt; ch;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;str:&quot;</span> &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;ch:&quot;</span> &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abcde</span><br><span class="line">goodbit:0</span><br><span class="line">goodbit:1</span><br><span class="line">str:abcd</span><br><span class="line">ch:e</span><br><span class="line">Press any key to continue . . .</span><br></pre></td></tr></table></figure>
+
+<p>这个例子解决了cin.getline()里所讲的输入超长问题。</p>
+<p>可以看出，因输入缓冲区未读取完造成的输入异常，通过clear()可以清除输入流对象cin的异常状态，从而不影响后面的cin&gt;&gt;ch从输入缓冲区读取数据。<br>因为cin.getline()读取之后，输入缓冲区中残留的字符串是：5\n，所以cin&gt;&gt;ch将5读取并存入ch，打印输入并输出5。</p>
+<p>如果将cin.clear()一行注释掉，则cin&gt;&gt;ch;将读取失败，ch为空。<br>cin.clear()等同于<code>cin.clear(ios::goodbit);</code>。因为cin.clear()的默认参数是<code>ios::goodbit</code>，所以不需显示传递，故而你最常看到的就是cin.clear()。</p>
+<h3 id="cin清空输入缓冲区"><a href="#cin清空输入缓冲区" class="headerlink" title="cin清空输入缓冲区"></a>cin清空输入缓冲区</h3><p>上一次的输入操作很有可能使输入缓冲区中残留数据，影响下一次输入。<br>如何解决这个问题呢？我们自然想到在进行输入时对输入缓冲区进行清空和状态条件的复位。条件状态的复位使用clear()，清空输入缓冲区应该使用cin.ignore()。</p>
+<p>函数原型：<br>istream&amp; ignore (streamsize n = 1, int delim = EOF);<br>delim表示分隔符、划界字符、终止字符。<br>此函数的作用是跳过输入流中的n个字符，或在遇到指定的终止字符时提前结束（此时跳过包括终止字符在内的若干字符）。哪个条件先满足就按哪个执行。因为两个参数都有默认值，所以cin.ignore()就等效于cin.ignore(1, EOF)，即跳过一个字符。<br>该函数常用于跳过输入中的无用部分，以便提取有用的部分。</p>
+<p>使用示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str1[<span class="number">20</span>] = &#123; <span class="literal">NULL</span> &#125;, str2[<span class="number">20</span>] = &#123; <span class="literal">NULL</span> &#125;;</span><br><span class="line">    cin.<span class="built_in">getline</span>(str1, <span class="number">5</span>);</span><br><span class="line">    cin.<span class="built_in">clear</span>();</span><br><span class="line">    cin.<span class="built_in">ignore</span>(numeric_limits&lt;std::streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    cin.<span class="built_in">getline</span>(str2, <span class="number">20</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;str1:&quot;</span> &lt;&lt; str1 &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;str2:&quot;</span> &lt;&lt; str2 &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12345</span><br><span class="line">success</span><br><span class="line">str1:1234</span><br><span class="line">str2:success</span><br><span class="line">Press any key to continue . . .</span><br></pre></td></tr></table></figure>
+
+<p>分析：</p>
+<p>（1）程序中使用cin.ignore清空了输入缓冲区的当前行，使上次的输入残留下的数据没有影响到下一次的输入，这就是ignore()函数的主要作用。其中，<code>numeric_limits&lt;std::streamsize&gt;::max()</code>是<code>&lt;limits&gt;</code>头文件定义的流使用的最大值，你也可以用一个足够大的整数代替它。如果想清空输入缓冲区的所有内容，去掉换行符即可，即：<br><code>cin.ignore(numeric_limits&lt;std::streamsize&gt;::max());</code><br>这里要注意的是，如果缓冲区中没有EOF(-1)，cin.ignore()会阻塞等待。如果在命令行，我们可以使用Ctrl+Z然后回车（Windows命令行）或直接Ctrl+D（Linux命令行）输入EOF。</p>
+<p>（2）cin.ignore()；当输入缓冲区没有数据时，没法清空已经为空的缓冲区，此时也会阻塞等待数据的到来。</p>
+<p>（3）请不要使用cin.sync()来清空输入缓冲区，本人测试了一下，VC++和GNU C++都不行，请使用cin.ignore()。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://social.microsoft.com/Forums/zh-CN/c8ae82d8-18ed-42f1-aabf-e3c1de4f4d9f">https://social.microsoft.com/Forums/zh-CN/c8ae82d8-18ed-42f1-aabf-e3c1de4f4d9f</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>月夜海
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tsukiyokai.github.io/posts/b9eb/" title="C++标准输入输出详解">https://tsukiyokai.github.io/posts/b9eb/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+              <a href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" rel="tag"><i class="fa fa-tag"></i> 输入输出</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/f294/" rel="prev" title="古诗为焦仲卿妻作">
+                  <i class="fa fa-chevron-left"></i> 古诗为焦仲卿妻作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/860a/" rel="next" title="ACM模式下C++标准输入输出惯用法汇总">
+                  ACM模式下C++标准输入输出惯用法汇总 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+var mermaidElements = document.querySelectorAll('.mermaid');
+if (mermaidElements.length) {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js', () => {
+    mermaidElements.forEach(element => {
+      const newElement = document.createElement('div');
+      newElement.innerHTML = element.innerHTML;
+      newElement.className = element.className;
+      element.parentNode.replaceChild(newElement, element);
+    });
+
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+<script data-pjax>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"MENt3xxaJlxkVFyePnJeEmA5-gzGzoHsz","app_key":"nFiJhyLSqoN3ExuFMOhcy4fS","server_url":null,"security":false};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+    <div class="pjax">
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink.listen({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://tsukiyokai.github.io/posts/b9eb/',]
+      });
+      });
+  </script>
+
+<script>
+NexT.utils.loadComments('.utterances-container', () => {
+  const script = document.createElement('script');
+  script.src = 'https://utteranc.es/client.js';
+  script.setAttribute('repo', "tsukiyokai/blog-assets");
+  script.setAttribute('issue-term', "pathname");
+  script.setAttribute('theme', "photon-dark");
+  script.crossOrigin = 'anonymous';
+  script.async = true;
+  document.querySelector('.utterances-container').appendChild(script);
+});
+</script>
+
+    </div>
+</body>
+</html>
