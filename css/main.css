@@ -2469,7 +2469,7 @@ pre code {
   content: ') ';
 }
 .category-all-page .category-list-child {
-  font-size: 14px;
+  font-size: 16px;
   list-style: none;
   padding-left: 10px;
 }
@@ -2997,7 +2997,6 @@ mjx-container[display="true"] + br {
   position: sticky;
   top: 12px;
   width: 240px;
-  visibility: hidden;
 }
 @media (max-width: 991px) {
   .sidebar {
