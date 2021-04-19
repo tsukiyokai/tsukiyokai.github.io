@@ -136,6 +136,12 @@ a=5     S=5             S0=5            S1=5
 请按任意键继续. . .
 ```
 
+3.引用不如指针功能强大
+
+引用必须在声明时进行初始化，指针没有这种限制。由于上述限制，C++中的引用不能用于实现链表，树等数据结构。在Java中，引用没有上述限制，可以用于实现所有数据结构。Java中引用功能更强大是Java不需要指针的主要原因。
+
+4.引用更安全更容易使用
+
 ## 什么是void指针?
 
 void指针一般被称为通用指针或叫泛指针。它是C语言关于纯粹地址的一种约定。当某个指针是void型指针时，所指向的对象不属于任何类型。因为void指针不属于任何类型，则不可以对其进行算术运算，比如自增，编译器不知道其自增需要增加多少。比如`char*`型指针，自增一定是指针指向的地址加1，`short*`型指针自增，则偏移2。
@@ -146,4 +152,56 @@ void指针一般被称为通用指针或叫泛指针。它是C语言关于纯粹
 
 对指针变量的解引用，使用间接寻址运算符*达到目的。但是在使用空指针的情况下，需要先转换指针变量再解引用。这是因为空指针没有与之关联的数据类型。编译器无法知道void指针指向的数据类型。因此，要获取由void指针指向的数据，需要使用在void指针位置内保存的正确类型的数据进行显式类型转换。
 
-![](https://img2020.cnblogs.com/blog/2028254/202005/2028254-20200505094248280-1172805575.png)
+## 参数传递（传值、传引用、传指针）
+
+```c++
+#include<iostream>
+using namespace std;
+
+void change1(int n) {
+    cout << "传值方式的函数操作地址：：" << &n << endl;
+    n++;
+}
+
+void change2(int& n) {
+    cout << "传引用方式的函数操作地址：" << &n << endl;
+    n++;
+}
+
+void change3(int* n) {
+    cout << "传指针方式的函数操作地址： " << n << endl;
+    *n += 1;
+}
+
+int main() {
+    int n = 10;
+    cout << "实参的初值：" << n << endl;
+    cout << "实参的地址：" << &n << endl;
+    change1(n);
+    cout << "after change1() n= " << n << endl;
+    change2(n);
+    cout << "after change2() n= " << n << endl;
+    change3(&n);
+    cout << "after change3() n= " << n << endl;
+    return true;
+}
+```
+
+运行结果
+
+```
+实参的初值：10
+实参的地址：0019FED8
+传值方式的函数操作地址：：0019FE04
+after change1() n= 10
+传引用方式的函数操作地址：0019FED8
+after change2() n= 11
+传指针方式的函数操作地址： 0019FED8
+after change3() n= 12
+请按任意键继续. . .
+```
+
+那么应该什么时候使用传引用或传指针呢？
+
+1. To modify local variables of the caller function.
+2. For passing large sized arguments.

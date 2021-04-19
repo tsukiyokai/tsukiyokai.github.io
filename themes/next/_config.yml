@@ -85,8 +85,8 @@ menu:
   home: / || fa fa-home
   archives: /archives/ || fa fa-archive
   categories: /categories/ || fa fa-th
-  tags: /tags/ || fa fa-tags
   books: /books/ || fa fa-book
+  tags: /tags/ || fa fa-tags
   about: /about/ || fa fa-user
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
@@ -437,13 +437,13 @@ font:
   title:
     external: true
     family: Long Cang
-    size: 2
+    size: 1.5
 
   # Font settings for headlines (<h1> to <h6>).
   headings:
     external: true
-    family: ZCOOL XiaoWei
-    #family: 华文中宋
+    #family: ZCOOL XiaoWei
+    family: 华文中宋
 
   # Font settings for posts (.post-body).
   posts:
@@ -817,7 +817,7 @@ mermaid:
 # Use Animate.css to animate everything.
 # For more information: https://animate.style
 motion:
-  enable: false
+  enable: true
   async: true
   transition:
     # All available transition variants: https://theme-next.js.org/animate/

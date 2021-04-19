@@ -96,3 +96,6 @@ neat_js:
     - '**/*.min.js'
     - '**/jquery.fancybox.pack.js'
     - '**/index.js'
+
+server:
+  compress: true
