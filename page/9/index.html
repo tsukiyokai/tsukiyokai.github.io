@@ -87,6 +87,7 @@
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>藏书</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -159,20 +160,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -215,6 +216,452 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/27483/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="月夜海">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鹿屋泊地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/27483/" class="post-title-link" itemprop="url">LC13 罗马数字转整数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-21T00:00:00+08:00">2021-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          >>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/27483/" class="post-meta-item leancloud_visitors" data-flag-title="LC13 罗马数字转整数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>罗马数字包含以下七种字符: I，V，X，L，C，D，M。</p>
+<p>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000</p>
+<p>例如，罗马数字2写做II，即为两个并列的I。12写做XII，即为X+II。27写做XXVII, 即为XX+V+II。通常情况下，罗马数字中小的数字在大的数字的右边。给定一个罗马数字，将其转换成整数。输入确保在1到3999的范围内。</p>
+<h2 id="解法：哈希"><a href="#解法：哈希" class="headerlink" title="解法：哈希"></a>解法：哈希</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; m = &#123;</span><br><span class="line">            &#123;<span class="string">&#x27;I&#x27;</span>,<span class="number">1</span>&#125; ,</span><br><span class="line">            &#123;<span class="string">&#x27;V&#x27;</span>, <span class="number">5</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;X&#x27;</span>, <span class="number">10</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;L&#x27;</span>, <span class="number">50</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;C&#x27;</span>, <span class="number">100</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;D&#x27;</span>, <span class="number">500</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;M&#x27;</span>, <span class="number">1000</span>&#125; &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">length</span>(); ++i) &#123;</span><br><span class="line">            m[s[i]] &lt; m[s[i + <span class="number">1</span>]] ? res -= m[s[i]] : res += m[s[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>注意理解规则：<br>处理某一位上的数字的时候，如果它小于右手边的数字，对它就使用减法；<br>处理某一位上的数字的时候，如果它大于右手边的数字，对它就使用加法。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/32761/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="月夜海">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鹿屋泊地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/32761/" class="post-title-link" itemprop="url">LC100 相同的树</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-21T00:00:00+08:00">2021-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          >>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/32761/" class="post-meta-item leancloud_visitors" data-flag-title="LC100 相同的树" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
+<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">nullptr</span> &amp;&amp; q == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">nullptr</span> &amp;&amp; q != <span class="literal">nullptr</span>) </span><br><span class="line">        <span class="built_in"><span class="keyword">return</span></span> (p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;left, q-&gt;left) &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;right, q-&gt;right));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：bool<br>函数名：isSameTree<br>传入参数：根结点p和根结点q<br>向函数传入两棵树的根结点。<br>如果当前两个结点同为空，说明相同，返回true；<br>否则，如果当前两个结点同不为空，则进一步判断：<br>    如果同时递归地满足三个条件，说明两个指针所指向的树是相同的，返回true；<br>    这三个条件为：当前结点数据域相同 且 当前结点左邻域相同 且 当前结点右邻域相同。<br>    只有“真&amp;&amp;真&amp;&amp;真”才为真，任何一个命题为假，则返回假。<br>出现上述条件之外的情况，均说明两树不相同，返回false；</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/64920/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="月夜海">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鹿屋泊地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/64920/" class="post-title-link" itemprop="url">LC104 二叉树的最大深度</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-21T00:00:00+08:00">2021-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          >>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/64920/" class="post-meta-item leancloud_visitors" data-flag-title="LC104 二叉树的最大深度" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">maxDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">maxDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：int<br>函数名：maxDepth<br>传入参数：根结点<br>向函数传入根结点。<br>如果当前结点为空，说明是空树，此时最大深度为0，返回0；<br>如果当前结点不为空，说明不是空树，<br>设，左子树最大深度为ldepth，右子树最大深度为rdepth；<br>如果（左子树深度&gt;右子树深度），返回左深度+1；<br>如果（左子树深度&lt;右子树深度），返回右深度+1；</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/17107/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="月夜海">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鹿屋泊地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/17107/" class="post-title-link" itemprop="url">LC111 二叉树的最小深度</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-21T00:00:00+08:00">2021-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          >>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/17107/" class="post-meta-item leancloud_visitors" data-flag-title="LC111 二叉树的最小深度" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，找出其最小深度。<br>最小深度是从根结点到最近叶子结点的最短路径上的结点数量。</p>
+<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">minDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">minDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">if</span> (ldepth == <span class="number">0</span> || rdepth == <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>如果当前结点为空，返回0；<br>如果当前结点非空，而其左右邻域都为空，返回1；<br>计算左邻域最小深度，计算右邻域最小深度；<br>如果左右邻域其中之一为空，返回其中较大的那个+1；（因为前面已经判断过左右全空的情况，所以这里一定是只有一个为空）<br>为什么返回较大那个？因为深度的概念是根到叶。只有一个为空时，该结点不是叶子，所以空分支不能作为深度<br>如果左右邻域均非空，返回其中较小的那个+1；</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/19568/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="月夜海">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鹿屋泊地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/19568/" class="post-title-link" itemprop="url">LC112 路径总和</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-21T00:00:00+08:00">2021-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          >>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/19568/" class="post-meta-item leancloud_visitors" data-flag-title="LC112 路径总和" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你二叉树的根结点root和一个表示目标和的整数targetSum。<br>判断该树中是否存在根结点到叶子结点的路径上所有结点和为targetSum 。</p>
+<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root-&gt;val == targetSum;</span><br><span class="line">        <span class="keyword">int</span> subsum = targetSum - root-&gt;val;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hasPathSum</span>(root-&gt;left, subsum) || <span class="built_in">hasPathSum</span>(root-&gt;right, subsum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：bool<br>函数名：hasPathSum<br>传入参数：根结点root和路径和targetSum</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -660,16 +1107,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="长期"><a href="#长期" class="headerlink" title="长期"></a>长期</h1><blockquote>
+          <blockquote>
 <p>伊曼努爾·康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
 </blockquote>
-<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p>CS：C++ Primer翻烂<br>CS：现代操作系统翻烂<br>CS：清华大学操作系统课程实验<br>CS：LeetCode累计刷到400题</p>
-<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><p>全刚需：配一副好眼镜<br>半刚需：MI6战不动了，过年前后换手机，暂时想要S21u<br>非刚需：攒台整机</p>
-<h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><p>出行：成都大熊貓繁育研究基地</p>
-<h1 id="短期"><a href="#短期" class="headerlink" title="短期"></a>短期</h1><blockquote>
+<blockquote>
 <p>斯波：人们高估了一天的改变，也低估了一年的改变。</p>
 </blockquote>
-<h2 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h2><p>每天坚持规律作息，尽量固定在24:00-06:00<br>晚上睡前脸盆泡脚，早上醒来热水洗澡</p>
+<h1 id="长期"><a href="#长期" class="headerlink" title="长期"></a>长期</h1><h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p>CS：C++ Primer翻烂<br>CS：现代操作系统翻烂<br>CS：清华大学操作系统课程实验<br>CS：LeetCode累计刷到400题</p>
+<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><p>全刚需：配一副好眼镜<br>半刚需：MI6战不动了，过年前后换手机，暂时心仪S21u<br>非刚需：攒台整机</p>
+<h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><p>出行：成都大熊貓繁育研究基地</p>
+<h1 id="短期"><a href="#短期" class="headerlink" title="短期"></a>短期</h1><h2 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h2><p>每天坚持规律作息，尽量固定在24:00-06:00<br>晚上睡前脸盆泡脚，早上醒来热水洗澡</p>
 <h2 id="每周任务"><a href="#每周任务" class="headerlink" title="每周任务"></a>每周任务</h2><p>每周做1顿饭菜（固定几道）<br>每周写1篇博文<br>为了维持英语水平不雪崩，每周精读1篇卫报<br>为了更加强壮和自信，每周去健身3次</p>
 <h2 id="每月任务"><a href="#每月任务" class="headerlink" title="每月任务"></a>每月任务</h2><p>每月看1本书</p>
 
@@ -690,200 +1137,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/1420/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="月夜海">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鹿屋泊地">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/1420/" class="post-title-link" itemprop="url">我的2020读书记录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-12-29 02:44:00" itemprop="dateCreated datePublished" datetime="2020-12-29T02:44:00+08:00">2020-12-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%87%AA%E7%94%B1%E7%8E%8B%E5%9B%BD/" itemprop="url" rel="index"><span itemprop="name">自由王国</span></a>
-        </span>
-          >>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%87%AA%E7%94%B1%E7%8E%8B%E5%9B%BD/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/1420/" class="post-meta-item leancloud_visitors" data-flag-title="我的2020读书记录" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2020年</span><br><span class="line">数量：   2本</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>标题</th>
-<th>作者</th>
-<th>完成</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>C</td>
-<td>C语言程序设计：现代方法</td>
-<td>K. N. King</td>
-<td>2020.10</td>
-</tr>
-<tr>
-<td>数学</td>
-<td>线性代数及其应用</td>
-<td>David C. Lay</td>
-<td>2020.11</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/96a0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="月夜海">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鹿屋泊地">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/96a0/" class="post-title-link" itemprop="url">我的书架</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-12-29 02:44:00" itemprop="dateCreated datePublished" datetime="2019-12-29T02:44:00+08:00">2019-12-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%87%AA%E7%94%B1%E7%8E%8B%E5%9B%BD/" itemprop="url" rel="index"><span itemprop="name">自由王国</span></a>
-        </span>
-          >>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%87%AA%E7%94%B1%E7%8E%8B%E5%9B%BD/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/96a0/" class="post-meta-item leancloud_visitors" data-flag-title="我的书架" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="科学技术"><a href="#科学技术" class="headerlink" title="科学技术"></a>科学技术</h2><p>Effective C++<br>Effective STL<br>Inside the C++ Object Model<br>C++ Template<br>离散数学及其应用<br>具体数学<br>代码大全<br>大话设计模式<br>编程珠玑<br>计算机程序设计艺术TAOCP<br>计算机程序的构造和解释SICP<br>深入理解计算机基础CSAPP<br>算法导论CLRS<br>概率论与数理统计<br>数学分析</p>
-<h2 id="人文社科"><a href="#人文社科" class="headerlink" title="人文社科"></a>人文社科</h2><p>The Hobbit<br>The Lord of the Rings: The Fellowship of the Ring<br>The Lord of the Rings: The Two Towers<br>The Lord of the Rings: The Return of the King<br>精灵宝钻<br>中洲历史<br>不能承受的生命之轻<br>安娜·卡列尼娜<br>|哲学|论语|孔子|未开坑|<br>|小说|化物语|西尾维新|未开坑|</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

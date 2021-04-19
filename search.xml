@@ -11,9 +11,6 @@
       <categories>
         <category>孔雀东南飞</category>
       </categories>
-      <tags>
-        <tag>语文</tag>
-      </tags>
   </entry>
   <entry>
     <title>图片测试</title>
@@ -27,6 +24,24 @@
       </categories>
       <tags>
         <tag>图片测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE1 Multiples of 3 and 5</title>
+    <url>/posts/18889/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>Project Euler</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -72,20 +87,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC9 回文数</title>
-    <url>/posts/36078/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数x，如果x是一个回文整数，返回true；否则，返回false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121是回文，而123不是。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        string str = <span class="built_in">to_string</span>(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] != str[str.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC3 无重复字符的最长子串</title>
     <url>/posts/7c48/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。</p>
@@ -105,6 +106,38 @@
       <tags>
         <tag>字符串</tag>
         <tag>滑动窗口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC7 整数反转</title>
+    <url>/posts/4025/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个32位的有符号整数x，返回x中每位上的数字反转后的结果。<br>如果反转后整数超过32位的有符号整数的范围[−2^31, 2^31−1]，就返回0。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">        x &gt;= <span class="number">0</span> ? res = <span class="built_in">reverseu</span>(x) : res = (<span class="number">-1</span>) * <span class="built_in">reverseu</span>(<span class="built_in">abs</span>(x));</span><br><span class="line">        <span class="keyword">return</span> res &gt; INT_MAX || res &lt; INT_MIN ? <span class="number">0</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">reverseu</span><span class="params">(<span class="keyword">unsigned</span> x)</span> </span>&#123;</span><br><span class="line">        string num = <span class="built_in">to_string</span>(x);</span><br><span class="line">        string num2 = num;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; num.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            num2[i] = num[num.<span class="built_in">size</span>() - i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> inum2 = <span class="built_in">stoll</span>(num2);</span><br><span class="line">        <span class="keyword">return</span> inum2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>一开始字符串转整数用的是stoi()，运行正常但是提交报错，原因是有一个越界的测试用例1534236469，改成stoll()后顺利通过。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC9 回文数</title>
+    <url>/posts/36078/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数x，如果x是一个回文整数，返回true；否则，返回false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121是回文，而123不是。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        string str = <span class="built_in">to_string</span>(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] != str[str.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -136,24 +169,6 @@
       </categories>
       <tags>
         <tag>双指针</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC7 整数反转</title>
-    <url>/posts/4025/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个32位的有符号整数x，返回x中每位上的数字反转后的结果。<br>如果反转后整数超过32位的有符号整数的范围[−2^31, 2^31−1]，就返回0。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">        x &gt;= <span class="number">0</span> ? res = <span class="built_in">reverseu</span>(x) : res = (<span class="number">-1</span>) * <span class="built_in">reverseu</span>(<span class="built_in">abs</span>(x));</span><br><span class="line">        <span class="keyword">return</span> res &gt; INT_MAX || res &lt; INT_MIN ? <span class="number">0</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">reverseu</span><span class="params">(<span class="keyword">unsigned</span> x)</span> </span>&#123;</span><br><span class="line">        string num = <span class="built_in">to_string</span>(x);</span><br><span class="line">        string num2 = num;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; num.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            num2[i] = num[num.<span class="built_in">size</span>() - i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> inum2 = <span class="built_in">stoll</span>(num2);</span><br><span class="line">        <span class="keyword">return</span> inum2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>一开始字符串转整数用的是stoi()，运行正常但是提交报错，原因是有一个越界的测试用例1534236469，改成stoll()后顺利通过。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -325,22 +340,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC66 加一</title>
-    <url>/posts/59478/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个由整数组成的非空 数组所表示的非负整数，在该数的基础上加一。<br>最高位数字存放在数组的首位，数组中每个元素只存储单个数字。<br>你可以假设除了整数0之外，这个整数不会以零开头。</p>
-<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it = digits.<span class="built_in">end</span>() - <span class="number">1</span>; it &gt;= digits.<span class="built_in">begin</span>(); --it) &#123;</span><br><span class="line">            <span class="keyword">if</span> (*it == <span class="number">9</span>) &#123;</span><br><span class="line">                carry = <span class="number">1</span>;</span><br><span class="line">                *it = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                carry = <span class="number">0</span>;</span><br><span class="line">                (*it)++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry) digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(), carry);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC58 最后一个单词的长度</title>
     <url>/posts/28079/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串s，由若干单词组成，单词之间用空格隔开。返回字符串中最后一个单词的长度。如果不存在最后一个单词，请返回0。<br>单词是指仅由字母组成、不包含任何空格字符的最大子字符串。</p>
@@ -357,6 +356,22 @@
       </categories>
       <tags>
         <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC66 加一</title>
+    <url>/posts/59478/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个由整数组成的非空 数组所表示的非负整数，在该数的基础上加一。<br>最高位数字存放在数组的首位，数组中每个元素只存储单个数字。<br>你可以假设除了整数0之外，这个整数不会以零开头。</p>
+<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it = digits.<span class="built_in">end</span>() - <span class="number">1</span>; it &gt;= digits.<span class="built_in">begin</span>(); --it) &#123;</span><br><span class="line">            <span class="keyword">if</span> (*it == <span class="number">9</span>) &#123;</span><br><span class="line">                carry = <span class="number">1</span>;</span><br><span class="line">                *it = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                carry = <span class="number">0</span>;</span><br><span class="line">                (*it)++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry) digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(), carry);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -542,6 +557,23 @@
       </tags>
   </entry>
   <entry>
+    <title>LC104 二叉树的最大深度</title>
+    <url>/posts/64920/</url>
+    <content><![CDATA[<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">maxDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">maxDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：int<br>函数名：maxDepth<br>传入参数：根结点<br>向函数传入根结点。<br>如果当前结点为空，说明是空树，此时最大深度为0，返回0；<br>如果当前结点不为空，说明不是空树，<br>设，左子树最大深度为ldepth，右子树最大深度为rdepth；<br>如果（左子树深度&gt;右子树深度），返回左深度+1；<br>如果（左子树深度&lt;右子树深度），返回右深度+1；</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC102 二叉树的层序遍历</title>
     <url>/posts/ee40/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉树，请你返回其按层序遍历得到的节点值。<br>即逐层地从左到右访问所有节点。</p>
@@ -557,23 +589,6 @@
       <tags>
         <tag>树</tag>
         <tag>队列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC104 二叉树的最大深度</title>
-    <url>/posts/64920/</url>
-    <content><![CDATA[<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">maxDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">maxDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>返回值类型：int<br>函数名：maxDepth<br>传入参数：根结点<br>向函数传入根结点。<br>如果当前结点为空，说明是空树，此时最大深度为0，返回0；<br>如果当前结点不为空，说明不是空树，<br>设，左子树最大深度为ldepth，右子树最大深度为rdepth；<br>如果（左子树深度&gt;右子树深度），返回左深度+1；<br>如果（左子树深度&lt;右子树深度），返回右深度+1；</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -1247,13 +1262,13 @@
       </tags>
   </entry>
   <entry>
-    <title>LC387 字符串中的第一个唯一字符</title>
-    <url>/posts/49339/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
-<p>输入 s = “leetcode”<br>输出 0</p>
-<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有26个字母的标记数组</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>LC344 反转字符串</title>
+    <url>/posts/51705/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。<br>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。<br>你可以假设数组中的所有字符都是ASCII码表中的可打印字符。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(vector&lt;<span class="keyword">char</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len / <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(s[i], s[len - <span class="number">1</span> - i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>LeetCode</category>
@@ -1286,13 +1301,13 @@
       </tags>
   </entry>
   <entry>
-    <title>LC344 反转字符串</title>
-    <url>/posts/51705/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。<br>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。<br>你可以假设数组中的所有字符都是ASCII码表中的可打印字符。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(vector&lt;<span class="keyword">char</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len / <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(s[i], s[len - <span class="number">1</span> - i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
+    <title>LC387 字符串中的第一个唯一字符</title>
+    <url>/posts/49339/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
+<p>输入 s = “leetcode”<br>输出 0</p>
+<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有26个字母的标记数组</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>LeetCode</category>
@@ -1436,24 +1451,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PE1 Multiples of 3 and 5</title>
-    <url>/posts/18889/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>Project Euler</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JZ49 丑数</title>
     <url>/posts/96df/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子2,3和5的数称作丑数。求按从小到大的顺序的第n个丑数。<br>注：第150个丑数为5832。</p>
@@ -1534,6 +1531,27 @@
       <tags>
         <tag>字符串</tag>
         <tag>字节跳动</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>精确表达浮点数</title>
+    <url>/posts/43ef/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将给定属于0~1区间的有限小数或者无限循环小数（循环节用括号标记）以最简真分数的形式表示。<br>最简分数是指分子和分母互质的分数。</p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>输入: 0.25<br>输出: 1/4</p>
+<p>输入: 0.33(33)<br>输出: 1/3</p>
+<p>输入: 0.285714(285714)<br>输出: 2/7</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RepresentExactly</span><span class="params">(string str)</span> </span>&#123;</span><br><span class="line">    string strLimited, strUnLimited;</span><br><span class="line">    <span class="keyword">int</span> nLenLimited = <span class="number">0</span>, nLenUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> Molecule = <span class="number">0</span>, Denominator = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nLimited = <span class="number">0</span>, nUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">auto</span> Start = str.<span class="built_in">find</span>(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Start != str.npos) &#123;</span><br><span class="line">        <span class="keyword">auto</span> End = str.<span class="built_in">find</span>(<span class="string">&#x27;)&#x27;</span>, Start);</span><br><span class="line"></span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>, Start - <span class="number">2</span>);</span><br><span class="line">        strUnLimited = str.<span class="built_in">substr</span>(Start + <span class="number">1</span>, End - Start - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        nLenUnLimited = strUnLimited.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        nLimited = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        nUnLimited = <span class="built_in">atoi</span>(strUnLimited.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">        Molecule = (<span class="keyword">long</span> <span class="keyword">long</span>)(nLimited * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>) + nUnLimited);</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited) * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>);</span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        Molecule = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="built_in">RepresentExactly</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是Shopee深圳21春招后端笔试第1题，分值20分，最后是通过了80%的case，没通过的那几个好像是输入的字符串小数里塞了乱七八糟的空格，写个trim space的函数就好了，没什么好说的。</p>
+<p>出自编程之美，题目倒是挺经典的，就是考的有点丑陋。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>Shopee</tag>
       </tags>
   </entry>
   <entry>
@@ -1623,27 +1641,6 @@
       </tags>
   </entry>
   <entry>
-    <title>精确表达浮点数</title>
-    <url>/posts/43ef/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将给定属于0~1区间的有限小数或者无限循环小数（循环节用括号标记）以最简真分数的形式表示。<br>最简分数是指分子和分母互质的分数。</p>
-<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>输入: 0.25<br>输出: 1/4</p>
-<p>输入: 0.33(33)<br>输出: 1/3</p>
-<p>输入: 0.285714(285714)<br>输出: 2/7</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RepresentExactly</span><span class="params">(string str)</span> </span>&#123;</span><br><span class="line">    string strLimited, strUnLimited;</span><br><span class="line">    <span class="keyword">int</span> nLenLimited = <span class="number">0</span>, nLenUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> Molecule = <span class="number">0</span>, Denominator = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nLimited = <span class="number">0</span>, nUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">auto</span> Start = str.<span class="built_in">find</span>(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Start != str.npos) &#123;</span><br><span class="line">        <span class="keyword">auto</span> End = str.<span class="built_in">find</span>(<span class="string">&#x27;)&#x27;</span>, Start);</span><br><span class="line"></span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>, Start - <span class="number">2</span>);</span><br><span class="line">        strUnLimited = str.<span class="built_in">substr</span>(Start + <span class="number">1</span>, End - Start - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        nLenUnLimited = strUnLimited.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        nLimited = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        nUnLimited = <span class="built_in">atoi</span>(strUnLimited.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">        Molecule = (<span class="keyword">long</span> <span class="keyword">long</span>)(nLimited * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>) + nUnLimited);</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited) * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>);</span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        Molecule = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="built_in">RepresentExactly</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是Shopee深圳21春招后端笔试第1题，分值20分，最后是通过了80%的case，没通过的那几个好像是输入的字符串小数里塞了乱七八糟的空格，写个trim space的函数就好了，没什么好说的。</p>
-<p>出自编程之美，题目倒是挺经典的，就是考的有点丑陋。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>Shopee</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++动态内存</title>
     <url>/posts/576d/</url>
     <content><![CDATA[<h2 id="内存分配的概念"><a href="#内存分配的概念" class="headerlink" title="内存分配的概念"></a>内存分配的概念</h2><p>C/C++的内存分配方式有两种：静态内存分配（编译时分配）和动态内存分配（运行时分配）。</p>
@@ -1686,39 +1683,83 @@
       </tags>
   </entry>
   <entry>
-    <title>C程序的内存布局</title>
-    <url>/posts/520a/</url>
-    <content><![CDATA[<h2 id="存储时的3个区域"><a href="#存储时的3个区域" class="headerlink" title="存储时的3个区域"></a>存储时的3个区域</h2><p>一个存储着数据但处于未运行状态的程序（它可以被编译过，注意编译和运行的差别），其存储结构分为三个部分：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
-
-<h2 id="运行时的5个区域"><a href="#运行时的5个区域" class="headerlink" title="运行时的5个区域"></a>运行时的5个区域</h2><p>一个正在运行着的C编译程序占用的内存可以分为5个部分：<br>注：从下到上，1为低地址，5为高地址。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5: Stack (Stack) ↓</span><br><span class="line">4: Heap (Heap) ↑</span><br><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
-
-<p>5以上是各种命令行参数和环境变量<br>5栈向低地址增长<br>4堆向高地址增长<br>3由exec函数族初始化为0<br>1和2由exec函数族从程序文件中读入</p>
-<p>接下来自底向上依次说明。</p>
-<h2 id="Text-代码段"><a href="#Text-代码段" class="headerlink" title="Text / 代码段"></a>Text / 代码段</h2><p>内存模型中的代码段部分是目标文件或内存中程序的一部分，其中包含可执行指令。</p>
-<p>作为一片内存区域，文本段最好放置在堆或栈的下面，以防堆栈溢出覆盖它。（堆栈以低地址为自己的底部，所以是向上发生溢出的。如果代码段设置在堆栈上面，就会有被覆盖的危险）</p>
-<p>通常来说，文本段是可被共享的，所以内存中只需要有一个副本，就能满足频繁执行的程序的需求（如文本编辑器、C编译器、shell等）。此外，文本段一般是只读的，以防内容被意外修改。</p>
-<h2 id="Data-数据段"><a href="#Data-数据段" class="headerlink" title="Data / 数据段"></a>Data / 数据段</h2><p>已初始化的数据段，通常简称为数据段。包含已经由程序员初始化的全局变量和静态变量。例如，任何位置的static int i = 10都将存储在数据段中，而全局的int i = 10也将存储在数据段中。</p>
-<p>请注意，数据段不是只读的，因为它可以在运行时更改变量的值。但该段也可以进一步细分为已初始化只读区和已初始化读写区。</p>
-<h2 id="BSS-BSS段"><a href="#BSS-BSS段" class="headerlink" title="BSS / BSS段"></a>BSS / BSS段</h2><p>未初始化的数据段通常称为bss段，以一个古老的汇编程序运算符命名，意思是block started by symbol（以符号开头的块）。</p>
-<p>bss中的数据的地址从Data段的末尾开始增长，bss包含所有初始化为零或在源代码中没有显式初始化的全局变量和静态变量。这个段中的数据将会在程序开始执行前由内核初始化为算术0。bss段属于静态内存分配，只存在于编译时，不存在于运行时。一旦程序开始运行，在bss内存区进入程序的地址空间后，这个段的数据将全部清零，包含data和bss段的整个区段此时统称为数据区。注意这里清零的意思就是置零。</p>
-<p>既然一开始执行程序就要清零bss段，那它为何还要存在？原因是：bss段并不给该段的数据分配空间，它的作用是记录数据所需空间的大小。</p>
-<p>举例说明</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 程序1</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序2</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译之后发现程序2的可执行文件比程序1大得多。这是因为程序1的数组ar位于bss段，bss不占用可执行文件空间，其内容由操作系统初始化（清零）。而程序2位于data段，data段需要占用可执行文件空间，其内容由程序初始化。</p>
-<p>一个程序本质上是由bss段、data段、text段三个组成的。在一个C程序编译完成之后正式执行之前，已初始化的全局变量保存在data段中，未初始化的全局变量保存在bss段中。text和data段都在可执行文件中（在嵌入式系统里一般是固化在镜像文件中），由系统从可执行文件中加载；而bss段不在可执行文件中，由系统初始化。</p>
-<p>例如，一个变量声明为<code>static int i;</code>或<code>int j;</code>，那么它将被包含在bss段中。</p>
-<h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>堆是动态内存分配行为频发的段。</p>
-<p>堆区域开始于bss段的结尾处，并从那里扩展到更大的地址。堆区域由new和delete，malloc，realloc和free管理，它们可以使用brk和sbrk系统调用来调整其大小。堆区域由进程中所有共享库和动态加载的模块共享。</p>
-<p>一定记得使用完后及时释放空间。</p>
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>栈区域在传统上与堆区域相邻，并以相反的方向增长，当栈指针遇到堆指针时，可用内存耗尽。（借助现代的大型地址空间和虚拟内存技术，堆区和栈区几乎可以放置在任何地方，但它们一般还是沿相反的方向生长。）</p>
-<p>之前看到的一种说法是，当初的内存容量小，栈是从地址最高位向低位分配，而堆是从最低位向高位分配，最大化压榨内存。</p>
-<p>栈区域包含栈数据结构，一种后进先出结构，它通常位于内存的较高部分。在标准的PC x86计算机体系结构上，它朝着地址0增长；在其他一些架构上，它则朝着相反的方向增长。栈顶指针寄存器跟踪着栈顶的位置，每次新值入栈时都会对其进行调整。为了完成一次函数调用而推入的一组值称为“栈帧”，栈帧也叫过程活动记录，是编译器用来实现函数调用的一种数据结构。栈帧至少包含一个返回地址。</p>
-<p>栈用于存储自动变量以及每次调用函数时保存的信息。每次调用函数时，返回位置的地址和调用者环境的某些信息（例如某些机器寄存器）都保存在栈中。接着新调用的函数在栈上为其自动和临时变量分配空间。这就是C中的递归函数的工作方式。递归函数每次调用自己时，都会使用一个新的栈帧，这样一组变量就不会干扰来自该函数另一个实例的变量。</p>
-<p>注：自动变量就是普通的局部变量，前面不带static。自动指的是局部变量离开块作用域自动销毁，临时指的是局部变量具有（短暂的）自动存储期限。由此可见，栈区域主要是用来存放函数内的局部变量，在函数执行结束时自动释放。栈内存的分配运算内置于处理器的指令集中，效率很高，但是可以分配的内存容量十分有限。</p>
-<p>题外话：注意区分内存模型中的栈区域和数据结构中的栈结构。stack这种LIFO结构由于比较复杂的历史和现实因素在国内普遍被翻译为堆栈，实在是有些误人子弟（台湾人背锅），即使在我的母校吉林大学，老师们一个个也乐此不疲地一口一个“堆栈”。学生自己还是要清楚：栈is栈，堆is堆，由计算机科学技术名词审定委员会编撰完成的《计算机科学技术名词》一书里完全就没有堆栈这个名词。</p>
+    <title>C++基本数据类型长度</title>
+    <url>/posts/1cba/</url>
+    <content><![CDATA[<h2 id="某数据类型在某平台下占用字节的问题"><a href="#某数据类型在某平台下占用字节的问题" class="headerlink" title="某数据类型在某平台下占用字节的问题"></a>某数据类型在某平台下占用字节的问题</h2><p>不同的平台上对不同数据类型分配的字节数是不同的。<br>个人对平台的理解是CPU+OS+Compiler，是因为：</p>
+<ol>
+<li>64位机器也可以装32位系统（x64装XP）；</li>
+<li>32位机器上可以有16/32位的编译器（XP上有tc是16位的，其他常见的是32位的）；</li>
+<li>即使是32位的编译器也可以弄出64位的integer来（int64）。</li>
+</ol>
+<p>以上这些是基于常见的wintel平台，加上我们可能很少机会接触的其它平台（其它的CPU和OS），所以个人认为所谓平台的概念是三者的组合。虽然三者的长度可以不一样，但显然相互配合（即长度相等，32位的CPU+32位的OS+32位的Compiler）发挥的能量最大。</p>
+<p>理论上来讲，我觉得数据类型的字节数应该是由CPU决定的，但是实际上主要由编译器决定（占多少位由编译器在编译期间说了算）。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>32位</th>
+<th>64位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>1字节</td>
+<td>1字节</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td>2字节</td>
+</tr>
+<tr>
+<td>int（重点）</td>
+<td>4字节</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>4字节</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4字节</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4字节</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>8字节</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>4字节</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>*指针（重点）</td>
+<td>4字节</td>
+<td>8字节</td>
+</tr>
+</tbody></table>
+<p>说明：<br>C99标准并不规定具体数据类型的长度大小，只规定级别。字节数和机器字长及编译器有关系，所以int，short，long的宽度都可能随编译器而异。但有几条铁定的原则（ANSI/ISO制订的）：</p>
+<ol>
+<li>sizeof(short) &lt;= sizeof(int) &lt;= sizeof(long)</li>
+<li>short至少为16位（2字节）</li>
+<li>long至少应为32位（4字节）。</li>
+</ol>
+<p>说明的说明：<br>short就是short int，long就是long int<br>整值提升的相关知识，去看C语言程序设计现代方法P101，书上讲的已经很完美了。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.cnblogs.com/vanishfan/p/3334369.html">https://www.cnblogs.com/vanishfan/p/3334369.html</a></p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -1726,7 +1767,46 @@
       </categories>
       <tags>
         <tag>底层技术</tag>
-        <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++引用</title>
+    <url>/posts/f148/</url>
+    <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>引用是已存在的对象的别名。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>&amp; ref = x;</span><br><span class="line"></span><br><span class="line">    ref = <span class="number">20</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    x = <span class="number">30</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;ref = &quot;</span> &lt;&lt; ref &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="修改函数中传递的参数"><a href="#修改函数中传递的参数" class="headerlink" title="修改函数中传递的参数"></a>修改函数中传递的参数</h3><p>如果函数收到对变量的引用，则可以修改变量的值。例如，下面的程序里使用了引用来交换变量。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>&amp; x, <span class="keyword">int</span>&amp; y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = x;</span><br><span class="line">    x = y;</span><br><span class="line">    y = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>, b = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">swap</span>(a, b);</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="避免复制大型结构"><a href="#避免复制大型结构" class="headerlink" title="避免复制大型结构"></a>避免复制大型结构</h3><p>函数传参，什么都不加就是传值方式，加上引用就是传引用。传值是通过赋值实现的，对象越大消耗越大。<br>想象一个函数必须接收一个庞大的对象。如果我们在没有引用的情况下传递它，就会创建一个新的副本，从而导致CPU时间和内存的浪费。我们可以使用引用来避免这种情况。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    string name;</span><br><span class="line">    string address;</span><br><span class="line">    <span class="keyword">int</span> rollNo;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> Student&amp; s)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; s.name &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; s.address &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; s.rollNo &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在基于范围的for循环中修改所有对象"><a href="#在基于范围的for循环中修改所有对象" class="headerlink" title="在基于范围的for循环中修改所有对象"></a>在基于范围的for循环中修改所有对象</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vect&#123; <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span>&amp; x : vect) x += <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x : vect) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="为每个循环避免对象的副本"><a href="#为每个循环避免对象的副本" class="headerlink" title="为每个循环避免对象的副本"></a>为每个循环避免对象的副本</h3><p>当对象很大时，我们可以在每个循环中使用引用来避免产生单个对象的副本。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; vect&#123; <span class="string">&quot;geeksforgeeks practice&quot;</span>, <span class="string">&quot;geeksforgeeks write&quot;</span>, <span class="string">&quot;geeksforgeeks ide&quot;</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; x : vect) cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h2><p>1.指针可以被声明为void但引用不行。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">void</span>* aa = &amp;a; <span class="comment">// it is valid</span></span><br><span class="line"><span class="keyword">void</span>&amp; ar = a; <span class="comment">// it is invalid</span></span><br></pre></td></tr></table></figure>
+
+<p>2.指针可以有多级间接关系，比如二级指针、三级指针等；引用只能有一层间接关系。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>* p = &amp;i; <span class="comment">// 一级指针</span></span><br><span class="line">    <span class="keyword">int</span>** pt = &amp;p; <span class="comment">// 二级指针</span></span><br><span class="line">    <span class="keyword">int</span>*** ptr = &amp;pt; <span class="comment">// 三级指针</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;i=&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;p=&quot;</span> &lt;&lt; p &lt;&lt; <span class="string">&quot;\t&quot;</span></span><br><span class="line">        &lt;&lt; <span class="string">&quot;pt=&quot;</span> &lt;&lt; pt &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;ptr=&quot;</span> &lt;&lt; ptr &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">int</span>&amp; S = a;</span><br><span class="line">    <span class="keyword">int</span>&amp; S0 = S;</span><br><span class="line">    <span class="keyword">int</span>&amp; S1 = S0;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a=&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;S=&quot;</span> &lt;&lt; S &lt;&lt; <span class="string">&quot;\t&quot;</span></span><br><span class="line">        &lt;&lt; <span class="string">&quot;S0=&quot;</span> &lt;&lt; S0 &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;S1=&quot;</span> &lt;&lt; S1 &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">i&#x3D;10    p&#x3D;0019FED8      pt&#x3D;0019FECC     ptr&#x3D;0019FEC0</span><br><span class="line">a&#x3D;5     S&#x3D;5             S0&#x3D;5            S1&#x3D;5</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<h2 id="什么是void指针"><a href="#什么是void指针" class="headerlink" title="什么是void指针?"></a>什么是void指针?</h2><p>void指针一般被称为通用指针或叫泛指针。它是C语言关于纯粹地址的一种约定。当某个指针是void型指针时，所指向的对象不属于任何类型。因为void指针不属于任何类型，则不可以对其进行算术运算，比如自增，编译器不知道其自增需要增加多少。比如<code>char*</code>型指针，自增一定是指针指向的地址加1，<code>short*</code>型指针自增，则偏移2。</p>
+<p>在C/C++中，在任意时刻都可以使用其它类型指针来代替void指针，或者用void指针来代替其他类型指针。由这些特性就可以衍生出很多比较有用的技巧。指针的本质，是其值为一个地址，那么延伸一下：</p>
+<p>当使用关键字void声明指针变量时，它将成为通用指针变量。任何数据类型的任何变量的地址都可以赋值给void指针变量。</p>
+<p>对指针变量的解引用，使用间接寻址运算符*达到目的。但是在使用空指针的情况下，需要先转换指针变量再解引用。这是因为空指针没有与之关联的数据类型。编译器无法知道void指针指向的数据类型。因此，要获取由void指针指向的数据，需要使用在void指针位置内保存的正确类型的数据进行显式类型转换。</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/2028254/202005/2028254-20200505094248280-1172805575.png"></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>指针</tag>
       </tags>
   </entry>
   <entry>
@@ -1851,6 +1931,141 @@
       </tags>
   </entry>
   <entry>
+    <title>C程序的内存布局</title>
+    <url>/posts/520a/</url>
+    <content><![CDATA[<h2 id="存储时的3个区域"><a href="#存储时的3个区域" class="headerlink" title="存储时的3个区域"></a>存储时的3个区域</h2><p>一个存储着数据但处于未运行状态的程序（它可以被编译过，注意编译和运行的差别），其存储结构分为三个部分：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行时的5个区域"><a href="#运行时的5个区域" class="headerlink" title="运行时的5个区域"></a>运行时的5个区域</h2><p>一个正在运行着的C编译程序占用的内存可以分为5个部分：<br>注：从下到上，1为低地址，5为高地址。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5: Stack (Stack) ↓</span><br><span class="line">4: Heap (Heap) ↑</span><br><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
+
+<p>5以上是各种命令行参数和环境变量<br>5栈向低地址增长<br>4堆向高地址增长<br>3由exec函数族初始化为0<br>1和2由exec函数族从程序文件中读入</p>
+<p>接下来自底向上依次说明。</p>
+<h2 id="Text-代码段"><a href="#Text-代码段" class="headerlink" title="Text / 代码段"></a>Text / 代码段</h2><p>内存模型中的代码段部分是目标文件或内存中程序的一部分，其中包含可执行指令。</p>
+<p>作为一片内存区域，文本段最好放置在堆或栈的下面，以防堆栈溢出覆盖它。（堆栈以低地址为自己的底部，所以是向上发生溢出的。如果代码段设置在堆栈上面，就会有被覆盖的危险）</p>
+<p>通常来说，文本段是可被共享的，所以内存中只需要有一个副本，就能满足频繁执行的程序的需求（如文本编辑器、C编译器、shell等）。此外，文本段一般是只读的，以防内容被意外修改。</p>
+<h2 id="Data-数据段"><a href="#Data-数据段" class="headerlink" title="Data / 数据段"></a>Data / 数据段</h2><p>已初始化的数据段，通常简称为数据段。包含已经由程序员初始化的全局变量和静态变量。例如，任何位置的static int i = 10都将存储在数据段中，而全局的int i = 10也将存储在数据段中。</p>
+<p>请注意，数据段不是只读的，因为它可以在运行时更改变量的值。但该段也可以进一步细分为已初始化只读区和已初始化读写区。</p>
+<h2 id="BSS-BSS段"><a href="#BSS-BSS段" class="headerlink" title="BSS / BSS段"></a>BSS / BSS段</h2><p>未初始化的数据段通常称为bss段，以一个古老的汇编程序运算符命名，意思是block started by symbol（以符号开头的块）。</p>
+<p>bss中的数据的地址从Data段的末尾开始增长，bss包含所有初始化为零或在源代码中没有显式初始化的全局变量和静态变量。这个段中的数据将会在程序开始执行前由内核初始化为算术0。bss段属于静态内存分配，只存在于编译时，不存在于运行时。一旦程序开始运行，在bss内存区进入程序的地址空间后，这个段的数据将全部清零，包含data和bss段的整个区段此时统称为数据区。注意这里清零的意思就是置零。</p>
+<p>既然一开始执行程序就要清零bss段，那它为何还要存在？原因是：bss段并不给该段的数据分配空间，它的作用是记录数据所需空间的大小。</p>
+<p>举例说明</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 程序1</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序2</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译之后发现程序2的可执行文件比程序1大得多。这是因为程序1的数组ar位于bss段，bss不占用可执行文件空间，其内容由操作系统初始化（清零）。而程序2位于data段，data段需要占用可执行文件空间，其内容由程序初始化。</p>
+<p>一个程序本质上是由bss段、data段、text段三个组成的。在一个C程序编译完成之后正式执行之前，已初始化的全局变量保存在data段中，未初始化的全局变量保存在bss段中。text和data段都在可执行文件中（在嵌入式系统里一般是固化在镜像文件中），由系统从可执行文件中加载；而bss段不在可执行文件中，由系统初始化。</p>
+<p>例如，一个变量声明为<code>static int i;</code>或<code>int j;</code>，那么它将被包含在bss段中。</p>
+<h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>堆是动态内存分配行为频发的段。</p>
+<p>堆区域开始于bss段的结尾处，并从那里扩展到更大的地址。堆区域由new和delete，malloc，realloc和free管理，它们可以使用brk和sbrk系统调用来调整其大小。堆区域由进程中所有共享库和动态加载的模块共享。</p>
+<p>一定记得使用完后及时释放空间。</p>
+<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>栈区域在传统上与堆区域相邻，并以相反的方向增长，当栈指针遇到堆指针时，可用内存耗尽。（借助现代的大型地址空间和虚拟内存技术，堆区和栈区几乎可以放置在任何地方，但它们一般还是沿相反的方向生长。）</p>
+<p>之前看到的一种说法是，当初的内存容量小，栈是从地址最高位向低位分配，而堆是从最低位向高位分配，最大化压榨内存。</p>
+<p>栈区域包含栈数据结构，一种后进先出结构，它通常位于内存的较高部分。在标准的PC x86计算机体系结构上，它朝着地址0增长；在其他一些架构上，它则朝着相反的方向增长。栈顶指针寄存器跟踪着栈顶的位置，每次新值入栈时都会对其进行调整。为了完成一次函数调用而推入的一组值称为“栈帧”，栈帧也叫过程活动记录，是编译器用来实现函数调用的一种数据结构。栈帧至少包含一个返回地址。</p>
+<p>栈用于存储自动变量以及每次调用函数时保存的信息。每次调用函数时，返回位置的地址和调用者环境的某些信息（例如某些机器寄存器）都保存在栈中。接着新调用的函数在栈上为其自动和临时变量分配空间。这就是C中的递归函数的工作方式。递归函数每次调用自己时，都会使用一个新的栈帧，这样一组变量就不会干扰来自该函数另一个实例的变量。</p>
+<p>注：自动变量就是普通的局部变量，前面不带static。自动指的是局部变量离开块作用域自动销毁，临时指的是局部变量具有（短暂的）自动存储期限。由此可见，栈区域主要是用来存放函数内的局部变量，在函数执行结束时自动释放。栈内存的分配运算内置于处理器的指令集中，效率很高，但是可以分配的内存容量十分有限。</p>
+<p>题外话：注意区分内存模型中的栈区域和数据结构中的栈结构。stack这种LIFO结构由于比较复杂的历史和现实因素在国内普遍被翻译为堆栈，实在是有些误人子弟（台湾人背锅），即使在我的母校吉林大学，老师们一个个也乐此不疲地一口一个“堆栈”。学生自己还是要清楚：栈is栈，堆is堆，由计算机科学技术名词审定委员会编撰完成的《计算机科学技术名词》一书里完全就没有堆栈这个名词。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>底层技术</tag>
+        <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二维数组名的本质</title>
+    <url>/posts/bbb5/</url>
+    <content><![CDATA[<h2 id="写在开头，数组名是指针吗？"><a href="#写在开头，数组名是指针吗？" class="headerlink" title="写在开头，数组名是指针吗？"></a>写在开头，数组名是指针吗？</h2><p>数组名不是指针，而是一个地址常量，可以使用指针操作地址，进而操作数组。</p>
+<p>下文之所以说二维数组名是指针，第一，只是想说数组名本质是个地址，但是借指针讲更舒服。第二，指针在解释步长的时候比较方便。何况指针也可以是泛化的概念。你LeetCode刷双指针题的时候经常设两个counter就能开始遍历了，严格来说也不叫指针，但你能说你解题用的不是双指针的思想？搞清学习的重点，其它不太重要的自己心里门儿清就行了，别那么锱铢必较。</p>
+<p>再说一遍，数组名不是指针，但我有时候就是想叫它指针。</p>
+<h2 id="二维数组名：指向二维数组每一行的指针"><a href="#二维数组名：指向二维数组每一行的指针" class="headerlink" title="二维数组名：指向二维数组每一行的指针"></a>二维数组名：指向二维数组每一行的指针</h2><p>众所周知一维数组名是数组首元素的地址。那么二维数组名是否是二维数组首元素的地址呢？</p>
+<p>定义一个2行3列的二维数组</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">    <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>,</span><br><span class="line">    <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>首先，必须明确二维数组名a肯定是一个指针（或直接理解为地址）。接下来我们才能探讨这个指针的含义。<br>一维数组名是一个指向首元素的指针，我们是通过指针步长来判断的（即：指针进行+1所跳过的字节数）。<br>所以自然想到也来判断二维数组名作为一个指针的步长。</p>
+<p><strong>程序示例</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>] = &#123; <span class="comment">// 二维数组名肯定是一个指针</span></span><br><span class="line">        <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>,</span><br><span class="line">        <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span></span><br><span class="line">    &#125;;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl; <span class="comment">// 指针的地址</span></span><br><span class="line">    cout &lt;&lt; a + <span class="number">1</span> &lt;&lt; endl; <span class="comment">// 指针加一后的地址</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0019FEC4</span><br><span class="line">0019FED0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+<p><strong>结果分析</strong></p>
+<p>将输出的2个十六进制地址换算成十进制表示<br>1703620<br>1703632</p>
+<p>发现了吗，地址相差12字节，也就是步长为12字节。而我们创建的二维数组每一行有三个int整数，每个int整数正好4个字节，3*4=12，12正是一整行的字节数。</p>
+<p>所以可以得出结论，二维数组名是一个指向二维数组每一行的指针。</p>
+<h2 id="二维数组名取地址：指向整个二维数组的指针"><a href="#二维数组名取地址：指向整个二维数组的指针" class="headerlink" title="二维数组名取地址：指向整个二维数组的指针"></a>二维数组名取地址：指向整个二维数组的指针</h2><p>如何得到指代整个二维数组的指针？仍然从步长出发思考。</p>
+<p><strong>程序示例</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>] = &#123; </span><br><span class="line">        <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>,</span><br><span class="line">        <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span></span><br><span class="line">    &#125;;</span><br><span class="line">    cout &lt;&lt; &amp;a &lt;&lt; endl; <span class="comment">// 二维数组名取地址也是一个指针</span></span><br><span class="line">    cout &lt;&lt; &amp;a + <span class="number">1</span> &lt;&lt; endl; <span class="comment">// 指针加一后的地址</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0019FEC4</span><br><span class="line">0019FEDC</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果分析</strong></p>
+<p>再次将输出的2个十六进制地址换算成十进制表示<br>1703620<br>1703644</p>
+<p>步长为24字节，说明+1之后指针跳过了整个二维数组，根据类似的分析方法就可以得出结论，对二维数组名取地址，得到的是指向整个二维数组的指针。</p>
+<h2 id="二维数组名的总结"><a href="#二维数组名的总结" class="headerlink" title="二维数组名的总结"></a>二维数组名的总结</h2><ol>
+<li>二维数组名是指向行的；&amp;二维数组名是指向整个数组的。</li>
+<li>*二维数组名[i]指向i行的首元素（注意是i行而不是第i行）；&amp;二维数组名[j]指向整个j行。</li>
+</ol>
+<h2 id="二维数组的指针表示法"><a href="#二维数组的指针表示法" class="headerlink" title="二维数组的指针表示法"></a>二维数组的指针表示法</h2><p><code>*(a+i)</code>等价于<code>a[i]</code>。左边是是先跳i行再间接寻址，右边直接就表示i行的首元素地址。<br>更一般地，<code>a[i][j]</code>等价于<code>*(*(a+i)+j)</code>。</p>
+<p><strong>程序示例</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    16 18 20</span></span><br><span class="line"><span class="comment">    25 26 27</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> nums[<span class="number">2</span>][<span class="number">3</span>] = &#123; &#123;<span class="number">16</span>, <span class="number">18</span>, <span class="number">20</span>&#125;, &#123;<span class="number">25</span>, <span class="number">26</span>, <span class="number">27</span>&#125; &#125;;</span><br><span class="line">    cout &lt;&lt; *(*nums) &lt;&lt; endl; <span class="comment">// nums[0][0] = 16</span></span><br><span class="line">    cout &lt;&lt; *(*nums + <span class="number">1</span>) &lt;&lt; endl; <span class="comment">// nums[0][1] = 18</span></span><br><span class="line">    cout &lt;&lt; *(*nums + <span class="number">2</span>) &lt;&lt; endl; <span class="comment">// nums[0][2] = 20</span></span><br><span class="line">    cout &lt;&lt; *(*(nums + <span class="number">1</span>)) &lt;&lt; endl; <span class="comment">// nums[1][0] = 25</span></span><br><span class="line">    cout &lt;&lt; *(*(nums + <span class="number">1</span>) + <span class="number">1</span>) &lt;&lt; endl; <span class="comment">// nums[1][1] = 26</span></span><br><span class="line">    cout &lt;&lt; *(*(nums + <span class="number">1</span>) + <span class="number">2</span>) &lt;&lt; endl; <span class="comment">// nums[1][2] = 27</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Pointer Notation</th>
+<th>Array Notation</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*(*nums)</code></td>
+<td>nums[0][0]</td>
+<td>16</td>
+</tr>
+<tr>
+<td><code>*(*nums + 1)</code></td>
+<td>nums[0][1]</td>
+<td>18</td>
+</tr>
+<tr>
+<td><code>*(*nums + 2)</code></td>
+<td>nums[0][2]</td>
+<td>20</td>
+</tr>
+<tr>
+<td><code>*(*(nums + 1))</code></td>
+<td>nums[1][0]</td>
+<td>25</td>
+</tr>
+<tr>
+<td><code>*(*(nums + 1) + 1)</code></td>
+<td>nums[1][1]</td>
+<td>26</td>
+</tr>
+<tr>
+<td><code>*(*(nums + 1) + 2)</code></td>
+<td>nums[1][2]</td>
+<td>27</td>
+</tr>
+</tbody></table>
+<h2 id="二维数组名部分碰到的一个bug"><a href="#二维数组名部分碰到的一个bug" class="headerlink" title="二维数组名部分碰到的一个bug"></a>二维数组名部分碰到的一个bug</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">        <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>,</span><br><span class="line">        <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; &amp;a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &amp;(a + <span class="number">1</span>) &lt;&lt; endl; <span class="comment">// 此行有误，（E0158）表达式必须为左值或函数指示符</span></span><br><span class="line">    cout &lt;&lt; &amp;a + <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析</strong></p>
+<p>解释一下，第一次写的是<code>&amp;(a + 1)</code>，报错后改成下面那行即<code>&amp;a + 1</code>就正确了。<br>想了想原因。因为取地址操作符&amp;必须作用于一个左值，而(a+1)明显是一个表达式，不是一个合法的左值，于是就报错了。</p>
+<p>左值右值这对概念是从C编程中沿袭来的。在C中，左值可以出现在等号左边或右边，右值则是只能出现在等号右边。<br>右值就是一个临时变量（没有在程序中申明），只有临时的地址空间；左值是在程序中具体定义了的，有其地址空间。<br>换句话说，使用取地址符&amp;对某个值取地址，左值能够得到地址，而右值不能得到地址！</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>多维数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>位运算惯用法汇总</title>
     <url>/posts/38691/</url>
     <content><![CDATA[<h2 id="用位运算代替一些普通操作"><a href="#用位运算代替一些普通操作" class="headerlink" title="用位运算代替一些普通操作"></a>用位运算代替一些普通操作</h2><p>左移就是乘以2<br>右移就是除以2</p>
@@ -1960,6 +2175,256 @@
       <tags>
         <tag>底层技术</tag>
         <tag>指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Program List</title>
+    <url>/posts/2f4f/</url>
+    <content><![CDATA[<blockquote>
+<p>工欲善其事，必先利其器。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Software Name</th>
+<th>Version</th>
+<th>Publisher</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7-Zip 21.01 alpha (x64)</td>
+<td>21.01 alpha</td>
+<td>Igor Pavlov</td>
+</tr>
+<tr>
+<td>AquaSnap 1.23.10</td>
+<td>1.23.10</td>
+<td>Nurgo Software</td>
+</tr>
+<tr>
+<td>Ashampoo WinOptimizer 15</td>
+<td>15.00.04</td>
+<td>Ashampoo GmbH &amp; Co. KG</td>
+</tr>
+<tr>
+<td>AutoHotkey 1.1.32.00</td>
+<td>1.1.32.00</td>
+<td>Lexikos</td>
+</tr>
+<tr>
+<td>BitComet(比特彗星) 1.74</td>
+<td>1.74</td>
+<td>CometNetwork</td>
+</tr>
+<tr>
+<td>Cacheman</td>
+<td>10</td>
+<td>Outertech</td>
+</tr>
+<tr>
+<td>CrystalDiskInfo 8.11.2 Shizuku Edition</td>
+<td>8.11.2</td>
+<td>Crystal Dew World</td>
+</tr>
+<tr>
+<td>Everything 1.4.1.1005 (x64)</td>
+<td>1.4.1.1005</td>
+<td>voidtools</td>
+</tr>
+<tr>
+<td>foobar2000 v1.6.4</td>
+<td>1.6.4</td>
+<td>Peter Pawlowski</td>
+</tr>
+<tr>
+<td>Git version 2.31.1</td>
+<td>2.31.1</td>
+<td>The Git Development Community</td>
+</tr>
+<tr>
+<td>GitHub Desktop</td>
+<td>2.7.2</td>
+<td>GitHub, Inc.</td>
+</tr>
+<tr>
+<td>Google Chrome</td>
+<td>89.0.4389.128</td>
+<td>Google LLC</td>
+</tr>
+<tr>
+<td>Honeyview</td>
+<td>5.35</td>
+<td>Bandisoft.com</td>
+</tr>
+<tr>
+<td>LAV Filters 0.74.1</td>
+<td>0.74.1</td>
+<td>Hendrik Leppkes</td>
+</tr>
+<tr>
+<td>MacType</td>
+<td>2019.1-beta6</td>
+<td>FlyingSnow, Samantha Glocker</td>
+</tr>
+<tr>
+<td>Microsoft Edge Dev</td>
+<td>91.0.852.0</td>
+<td>Microsoft Corporation</td>
+</tr>
+<tr>
+<td>Microsoft Office 专业增强版 2016 - zh-cn</td>
+<td>16.0.11231.20174</td>
+<td>Microsoft Corporation</td>
+</tr>
+<tr>
+<td>Microsoft Visual Studio Code (User)</td>
+<td>1.55.2</td>
+<td>Microsoft Corporation</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>12.22.0</td>
+<td>Node.js Foundation</td>
+</tr>
+<tr>
+<td>NVM for Windows 1.1.7</td>
+<td>1.1.7</td>
+<td>Ecor Ventures LLC</td>
+</tr>
+<tr>
+<td>PotPlayer-64 bit</td>
+<td>210209</td>
+<td>Kakao Corp.</td>
+</tr>
+<tr>
+<td>Sigil 1.5.1</td>
+<td>-</td>
+<td>Sigil-Ebook</td>
+</tr>
+<tr>
+<td>SumatraPDF</td>
+<td>3.2</td>
+<td>Krzysztof Kowalczyk</td>
+</tr>
+<tr>
+<td>TeraCopy version 3.26</td>
+<td>3.26</td>
+<td>Code Sector</td>
+</tr>
+<tr>
+<td>Typora version 0.9.98</td>
+<td>0.9.98</td>
+<td>typora.io</td>
+</tr>
+<tr>
+<td>Unlocker 1.9.2</td>
+<td>1.9.2</td>
+<td>Cedrick Collomb</td>
+</tr>
+<tr>
+<td>Visual Studio Community 2019 Preview</td>
+<td>16.10.31025.218</td>
+<td>Microsoft Corporation</td>
+</tr>
+<tr>
+<td>微信</td>
+<td>3.2.1.127</td>
+<td>腾讯科技(深圳)有限公司</td>
+</tr>
+<tr>
+<td>微软 Windows 10 易升</td>
+<td>1.4.9200.23258</td>
+<td>Microsoft Corporation</td>
+</tr>
+<tr>
+<td>桌面日历 2.2.24.4245</td>
+<td>2.2.24.4245</td>
+<td>DesktopCal</td>
+</tr>
+<tr>
+<td>网易云音乐</td>
+<td>2.8.0.198822</td>
+<td>网易公司</td>
+</tr>
+<tr>
+<td>腾讯QQ</td>
+<td>9.4.6.27760</td>
+<td>腾讯科技(深圳)有限公司</td>
+</tr>
+<tr>
+<td>腾讯会议</td>
+<td>2.9.3.408</td>
+<td>腾讯科技(深圳)有限公司</td>
+</tr>
+<tr>
+<td>哔哩哔哩动画</td>
+<td>2.13.16.0</td>
+<td>bilibili</td>
+</tr>
+<tr>
+<td>SquirrelVPN</td>
+<td>1.0.123.0</td>
+<td>Vinsider Inc</td>
+</tr>
+<tr>
+<td>Dolby Atmos</td>
+<td>3.20500.501.0</td>
+<td>Dolby Laboratories</td>
+</tr>
+<tr>
+<td>Hourglass</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Blumind</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IObitUninstaller</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>软媒清理大师</td>
+<td></td>
+<td>青岛软媒</td>
+</tr>
+<tr>
+<td>griefsyndrome.exe</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dism++</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>冰霜之刃</category>
+      </categories>
+      <tags>
+        <tag>技术教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VS Code 使用札记</title>
+    <url>/posts/e1f4/</url>
+    <content><![CDATA[<h3 id="批量删除注释"><a href="#批量删除注释" class="headerlink" title="批量删除注释"></a>批量删除注释</h3><p>打开VS Code-&gt;Ctrl+H打开替换-&gt;选中使用正则表达式-&gt;查找栏输入正则表达式，替换栏置空-&gt;Ctrl+Alt+Enter全部替换</p>
+<p>行注释<code>//[\s\S]*?\n</code><br>块注释<code>/\*(.|\r\n|\n)*?\*/</code><br>所有注释<code>\/\*[\s\S]*\*\/|\/\/.*</code><br>html注释<code>&lt;!--([\s\S|\r]*?)--&gt;</code></p>
+<h3 id="在每行开头或结尾添加字符串"><a href="#在每行开头或结尾添加字符串" class="headerlink" title="在每行开头或结尾添加字符串"></a>在每行开头或结尾添加字符串</h3><p>上尖号代表每行的开头：<code>^</code><br>美元符号代表每行的结尾：<code>$</code></p>
+<h3 id="选中包含某个字符串的所有行"><a href="#选中包含某个字符串的所有行" class="headerlink" title="选中包含某个字符串的所有行"></a>选中包含某个字符串的所有行</h3><p><code>^(.*)string(.*)\n</code><br>用目标子串替换string</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>冰霜之刃</category>
+      </categories>
+      <tags>
+        <tag>技术教程</tag>
       </tags>
   </entry>
   <entry>
@@ -2082,33 +2547,18 @@
       </tags>
   </entry>
   <entry>
-    <title>VS Code 使用札记</title>
-    <url>/posts/e1f4/</url>
-    <content><![CDATA[<h3 id="使用正则表达式批量删除注释"><a href="#使用正则表达式批量删除注释" class="headerlink" title="使用正则表达式批量删除注释"></a>使用正则表达式批量删除注释</h3><p>打开VS Code-&gt;Ctrl+H打开替换-&gt;选中使用正则表达式-&gt;查找栏输入正则表达式，替换栏置空-&gt;Ctrl+Alt+Enter全部替换</p>
-<p>行注释<code>//[\s\S]*?\n</code><br>块注释<code>/\*(.|\r\n|\n)*?\*/</code><br>所有注释<code>\/\*[\s\S]*\*\/|\/\/.*</code><br>html注释<code>&lt;!--([\s\S|\r]*?)--&gt;</code></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>瑞士军刀</category>
-      </categories>
-      <tags>
-        <tag>VS</tag>
-        <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2021年度计划</title>
     <url>/posts/527c/</url>
-    <content><![CDATA[<h1 id="长期"><a href="#长期" class="headerlink" title="长期"></a>长期</h1><blockquote>
+    <content><![CDATA[<blockquote>
 <p>伊曼努爾·康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
 </blockquote>
-<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p>CS：C++ Primer翻烂<br>CS：现代操作系统翻烂<br>CS：清华大学操作系统课程实验<br>CS：LeetCode累计刷到400题</p>
-<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><p>全刚需：配一副好眼镜<br>半刚需：MI6战不动了，过年前后换手机，暂时想要S21u<br>非刚需：攒台整机</p>
-<h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><p>出行：成都大熊貓繁育研究基地</p>
-<h1 id="短期"><a href="#短期" class="headerlink" title="短期"></a>短期</h1><blockquote>
+<blockquote>
 <p>斯波：人们高估了一天的改变，也低估了一年的改变。</p>
 </blockquote>
-<h2 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h2><p>每天坚持规律作息，尽量固定在24:00-06:00<br>晚上睡前脸盆泡脚，早上醒来热水洗澡</p>
+<h1 id="长期"><a href="#长期" class="headerlink" title="长期"></a>长期</h1><h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p>CS：C++ Primer翻烂<br>CS：现代操作系统翻烂<br>CS：清华大学操作系统课程实验<br>CS：LeetCode累计刷到400题</p>
+<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><p>全刚需：配一副好眼镜<br>半刚需：MI6战不动了，过年前后换手机，暂时心仪S21u<br>非刚需：攒台整机</p>
+<h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><p>出行：成都大熊貓繁育研究基地</p>
+<h1 id="短期"><a href="#短期" class="headerlink" title="短期"></a>短期</h1><h2 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h2><p>每天坚持规律作息，尽量固定在24:00-06:00<br>晚上睡前脸盆泡脚，早上醒来热水洗澡</p>
 <h2 id="每周任务"><a href="#每周任务" class="headerlink" title="每周任务"></a>每周任务</h2><p>每周做1顿饭菜（固定几道）<br>每周写1篇博文<br>为了维持英语水平不雪崩，每周精读1篇卫报<br>为了更加强壮和自信，每周去健身3次</p>
 <h2 id="每月任务"><a href="#每月任务" class="headerlink" title="每月任务"></a>每月任务</h2><p>每月看1本书</p>
 ]]></content>
@@ -2120,7 +2570,7 @@
   <entry>
     <title>我的2020读书记录</title>
     <url>/posts/1420/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2020年</span><br><span class="line">数量：   2本</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2020年</span><br><span class="line">数量：2本</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -2153,7 +2603,7 @@
   <entry>
     <title>我的2021读书记录</title>
     <url>/posts/c3ad/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2021年</span><br><span class="line">数量：  10本</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2021年</span><br><span class="line">数量：本</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -2220,14 +2670,42 @@
       </categories>
   </entry>
   <entry>
-    <title>我的书架</title>
-    <url>/posts/96a0/</url>
-    <content><![CDATA[<h2 id="科学技术"><a href="#科学技术" class="headerlink" title="科学技术"></a>科学技术</h2><p>Effective C++<br>Effective STL<br>Inside the C++ Object Model<br>C++ Template<br>离散数学及其应用<br>具体数学<br>代码大全<br>大话设计模式<br>编程珠玑<br>计算机程序设计艺术TAOCP<br>计算机程序的构造和解释SICP<br>深入理解计算机基础CSAPP<br>算法导论CLRS<br>概率论与数理统计<br>数学分析</p>
-<h2 id="人文社科"><a href="#人文社科" class="headerlink" title="人文社科"></a>人文社科</h2><p>The Hobbit<br>The Lord of the Rings: The Fellowship of the Ring<br>The Lord of the Rings: The Two Towers<br>The Lord of the Rings: The Return of the King<br>精灵宝钻<br>中洲历史<br>不能承受的生命之轻<br>安娜·卡列尼娜<br>|哲学|论语|孔子|未开坑|<br>|小说|化物语|西尾维新|未开坑|</p>
+    <title>择偶观</title>
+    <url>/posts/bbe4/</url>
+    <content><![CDATA[<blockquote>
+<p>凤飞翱翔兮，四海求凰。</p>
+</blockquote>
+<p>声明：<br>以下内容基本都是弹性标准；绝不涉及针对任何特定群体的歧视；也不代表除本人外一般男人的普遍追求。<br>本站未被百度爬虫和Google收录，因此本文放在自己个人网站里的唯一目的就是供自己一个人偶尔翻看。<br>如果有人出于各种偶然而看到这篇文章，最好不要当真，更不要传播。</p>
+<h2 id="基本项"><a href="#基本项" class="headerlink" title="基本项"></a>基本项</h2><ol>
+<li>性别女；1994~2002年出生。（不要在性别话题上搞什么幺蛾子，不是女同，不是双性恋；最大大3岁，最小小5岁）</li>
+<li>本科211及以上；正经专业。（不要专升本，不要地方照顾性211，不要没听过的专业）</li>
+<li>外貌6分；身高165~175cm；不胖。（妆前5分妆后6分就行，身高不要15打头的，要健康的不要胖的）</li>
+<li>不抽烟；无纹身；无信仰；不丁克。（不要抽烟纹身好女孩，饮酒适度没问题，家里没人信教，以后要生小孩）</li>
+<li>谈过最多1个。（相对专一的，不要段位比我高到天上的）</li>
+</ol>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><ol>
+<li>笑容治愈加分；声音甜美加分。（不用解释吧，对美的追求而已）</li>
+<li>本科985加分。（985本说明你中学时候拎得清主次知道学习重要性，上完985再差也不会跟我差到哪去）</li>
+<li>工学大类，计算机相关加分；理学大类，数学物理加分；人文社科大类，经济法律外国语加分。（我印象好，聊得来）</li>
+<li>有兴趣爱好或个人特长加分。（没啥标准，健康有趣就行，指那些需要长期付出努力的，不要闲出来的爱好）</li>
+<li>共产党员加分。（没别的意思，党员一般都被国家筛选过一次了，不会太离谱）</li>
+</ol>
+<p>关于兴趣爱好，随便拎几个比较多的说说吧。旅游、烘焙、追剧、看综艺、看动漫、看小说、听音乐、看电影、打游戏、散步、撸猫、刷微博。以上不算爱好，更不是特长，不想重复了。<br>如果你打羽毛球比一般人好，羽毛球就是你的特长。如果你唱歌比一般人好听，唱歌就是你的特长。如果刻苦练习过舞蹈，跳舞就是你的特长。哪怕你能跟我一样背一遍圆周率一百位，我都算你有特长了。女人，别再追剧了。</p>
+<h2 id="减分项"><a href="#减分项" class="headerlink" title="减分项"></a>减分项</h2><ol>
+<li>追星减分；热衷同性恋文化严重减分无论是不是玩梗。（我整体上对花钱追星持反对态度；更不要热衷屎尿屁文化）</li>
+<li>微博重度用户减分；2018年以后的豆瓣小组活跃用户减分；小红书重度用户减分。（智商测试）</li>
+<li>习惯性说脏话严重减分；脾气差易冲动减分。（脏话不要常说，矜持一些，脾气爆一般脑子都不太好，智商测试）</li>
+<li>无独自生活经济能力严重减分。（你不会走到自己被迫养活自己的那天，但是你得有一定的工作赚钱能力）</li>
+<li>起床不叠被子减分；不注意保持卫生减分。（叠被子不至于太懒，做一遍卫生不容易，尊重他人劳动成果）</li>
+<li>北京和上海户口减分。（这两个户口的反正也看不上我，加这一条当作我最后的倔强吧）</li>
+</ol>
+<h2 id="热烈，深沉，无私，几点希冀"><a href="#热烈，深沉，无私，几点希冀" class="headerlink" title="热烈，深沉，无私，几点希冀"></a>热烈，深沉，无私，几点希冀</h2><p>我喜欢的人最基本的身份应该是我的朋友，而且是我的朋友中最特殊，最忠诚，最无私的那个。两个人的世界容不下一句恶意的揣测和计算、人身伤害、心理打击、言不由衷或袖手旁观。长期相处产生的惰性，也应该予以克服。有生之年同甘共苦，即使死后也要让墓碑毗邻。不能接受任何形式的出轨，不能接受身边有男闺蜜、备胎和亲密的同性恋好友。我们的亲密关系必须超过从前二十年往后五十年内的其它一切关系。所有的事务中同时涉及两人的优先级最高，其次是你，再次是我，最后才是外人。<br>我无比希望我的女人也对我有以上所有要求。</p>
+<p>为什么想起来写这种羞耻的东西呢？我慢慢觉得，像我这种的一般人，本来就不具备勇敢追求自己心爱事物的资本，如果再不知道自己真正想要的是什么，生命就真的没有价值可言了。这大概是两年来的不顺经历给我带来的一点新变化。我已经完全不觉得这种事有什么可羞耻的了。虚无缥缈的颜面不足以和这份货真价实的思考相提并论。K.N.King书里有这样一句话，大概是他恩师常说的，被他记了下来：不是他们没能力解决问题，而是他们还没能真正地看到问题。我常常看着这句话直到发呆。看不到问题的情况分两种，要么认知偏差，要么身在庐山，在我确定自己开始思考问题前，我总是先站在问题的门外，想想自己是否属于其中哪种。</p>
+<p>也许我真的是个过于理想的人，好在我不觉得理想化是个贬义词，因为理想的总是无效的，但往往也是浪漫的。</p>
 ]]></content>
       <categories>
         <category>自由王国</category>
-        <category>读书札记</category>
+        <category>世界观，价值观，人生观</category>
       </categories>
   </entry>
 </search>
