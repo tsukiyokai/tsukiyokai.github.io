@@ -5,6 +5,7 @@ categories:
   - 编程珠玑
   - C++程序设计
 tags:
+  - 引用
   - 指针
 date: 2021-04-18 22:35:02
 ---
@@ -201,7 +202,201 @@ after change3() n= 12
 请按任意键继续. . .
 ```
 
-那么应该什么时候使用传引用或传指针呢？
+## 什么时候使用传引用或传指针？
 
-1. To modify local variables of the caller function.
-2. For passing large sized arguments.
+1.修改对象
+
+```c++
+#include <iostream>
+using namespace std;
+void fun(int& x) { x = 20; }
+int main() {
+    int x = 10;
+    fun(x);
+    cout << "New value of x is " << x;
+    return 0;
+}
+```
+
+2.传递大类型
+
+```c++
+class Employee {
+private:
+    string name;
+    string desig;
+    // More attributes and operations
+};
+
+void printEmpDetails(Employee emp)
+{
+    cout << emp.getName();
+    cout << emp.getDesig();
+    // Print more attributes
+}
+
+void printEmpDetails(const Employee& emp)
+{
+    cout << emp.getName();
+    cout << emp.getDesig();
+    // Print more attributes
+}
+```
+
+这一点仅对结构体和类变量有效，因为对于int，char等基本数据类型，我们没有任何效率上的优势。
+
+3.避免切片
+
+如果我们将子类的对象传递给需要超类对象的函数，则如果按值传递，传递的对象会被切片。
+
+```c++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Pet {
+public:
+    virtual string getDescription() const {
+        return "This is Pet class";
+    }
+};
+
+class Dog : public Pet {
+public:
+    virtual string getDescription() const {
+        return "This is Dog class";
+    }
+};
+
+void describe(Pet p) { // Slices the derived class object
+    cout << p.getDescription() << endl;
+}
+
+int main() {
+    Dog d;
+    describe(d);
+    return 0;
+}
+```
+
+运行结果
+
+```
+This is Pet class
+请按任意键继续. . .
+```
+
+我们创建的明明是子类狗对象，结果输出的却是超类宠物的语句。
+如果我们在上述程序中改成使用按引用传递，则它会正确打印This is Dog Class。请参阅以下修改的程序。
+
+```c++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Pet {
+public:
+    virtual string getDescription() const
+    {
+        return "This is Pet class";
+    }
+};
+
+class Dog : public Pet {
+public:
+    virtual string getDescription() const
+    {
+        return "This is Dog class";
+    }
+};
+
+void describe(const Pet& p)
+{ // Doesn't slice the derived class object.
+    cout << p.getDescription() << endl;
+}
+
+int main()
+{
+    Dog d;
+    describe(d);
+    return 0;
+}
+```
+
+运行结果
+
+```
+This is Dog class
+请按任意键继续. . .
+```
+
+值得注意的是，这一点也对基本数据类型无效。仅对结构体和类变量有效。
+
+4.在函数中实现运行时多态（Run Time Polymorphism）
+
+多态分为运行时多态和编译时多态。
+
+通过将对象作为引用或指针传递给函数，我们可以使函数具有多态性。
+
+例如，在下面的程序中，print()接收对基类对象的引用。如果传递了基类对象，print()调用基类中的show()，如果传递了派生类对象，则调用派生类中的show()。
+
+```c++
+#include <iostream>
+using namespace std;
+
+class base {
+public:
+    virtual void show()
+    { // Note the virtual keyword here
+        cout << "In base \n";
+    }
+};
+
+class derived : public base {
+public:
+    void show() { cout << "In derived \n"; }
+};
+
+// Since we pass b as reference, we achieve run time polymorphism here.
+void print(base& b) { b.show(); }
+
+int main(void)
+{
+    base b;
+    derived d;
+    print(b);
+    print(d);
+    return 0;
+}
+```
+
+运行结果
+
+```
+In base
+In derived
+请按任意键继续. . .
+```
+
+如果把上面程序中的`void print(base& b) { b.show(); }`传递的参数修改为`void print(base b) { b.show(); }`，则运行结果会变成输出两次In base，不具备多态性。
+
+考虑另一种情况，把上面程序中`void print(base& b) { b.show(); }`的传参部分修改成`void print(derived& b) { b.show(); }`，此时会报错：无法用"base"类型的值初始化"derived &"类型的引用(非常量限定)
+
+这是因为原来的print()期待一个基类对象的引用，也可以识别从基类派生出来的子类。但是修改后的print()期待的是一个子类对象的引用。期待父类时勉强也可以接受只有子类的现实；但期待子类的时候，这一目的变得更加明确，动机也更加强烈，它只愿意接受自己所期待的子类，而不愿用父类对象来凑活一下。
+
+这就像，A和B是学生时代最好的朋友，A和B各自成家立业后依然是最好的朋友，此外A也很关照B的儿子b，B也很关照A的儿子a。虽然a和b也是好朋友，但作为小辈的a和b则一般不会对对方的父辈（像对方父辈关照自己一样）那么亲近了。这在现实世界是很常见的。
+
+说明：
+```c++
+A: void print1(base& b); // 期待基类对象的函数，也愿意接收基类的子类
+B: base b; // 基类对象
+a: void print2(derived& b); // 期待子类对象的函数，但不愿意接收子类的父类
+b: derived d; // 子类对象
+```
+结果：A既认B也认b，但a不认B只认b。
+
+这个例子其实举得并不好，因为基类和子类的关系实际上比伦理的父与子的关系更加紧密。好好体会上述事实和背后的原理。
+
+（与运行时多态这个例子无关）顺带说明一下，对函数传引用时，建议的做法是：如果只是出于对上面所提到第2（传递大类型）或3（避免切片）条的考虑而选择通过引用传递参数，请将引用参数设置为const。这是为了避免对对象造成意外修改。比如：`void describe(const Pet& p)`。

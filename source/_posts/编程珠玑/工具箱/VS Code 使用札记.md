@@ -1,9 +1,9 @@
 ---
 abbrlink: e1f4
-title: VS Code 使用札记
+title: VS Code使用札记（本文已转型为正则表达式学习记录...）
 categories:
   - 编程珠玑
-  - 冰霜之刃
+  - 工具箱
 tags:
   - 技术教程
 date: 2021-04-16 00:02:00
