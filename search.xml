@@ -45,6 +45,25 @@
       </tags>
   </entry>
   <entry>
+    <title>LC2 两数相加</title>
+    <url>/posts/61293/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
+<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
+<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC1 两数之和</title>
     <url>/posts/16786/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案，但是数组中同一个元素不能使用两遍。</p>
@@ -65,25 +84,6 @@
       </categories>
       <tags>
         <tag>哈希</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC2 两数相加</title>
-    <url>/posts/61293/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
-<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
-<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -557,23 +557,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC104 二叉树的最大深度</title>
-    <url>/posts/64920/</url>
-    <content><![CDATA[<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">maxDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">maxDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>返回值类型：int<br>函数名：maxDepth<br>传入参数：根结点<br>向函数传入根结点。<br>如果当前结点为空，说明是空树，此时最大深度为0，返回0；<br>如果当前结点不为空，说明不是空树，<br>设，左子树最大深度为ldepth，右子树最大深度为rdepth；<br>如果（左子树深度&gt;右子树深度），返回左深度+1；<br>如果（左子树深度&lt;右子树深度），返回右深度+1；</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC102 二叉树的层序遍历</title>
     <url>/posts/ee40/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉树，请你返回其按层序遍历得到的节点值。<br>即逐层地从左到右访问所有节点。</p>
@@ -589,6 +572,23 @@
       <tags>
         <tag>树</tag>
         <tag>队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC104 二叉树的最大深度</title>
+    <url>/posts/64920/</url>
+    <content><![CDATA[<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">maxDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">maxDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：int<br>函数名：maxDepth<br>传入参数：根结点<br>向函数传入根结点。<br>如果当前结点为空，说明是空树，此时最大深度为0，返回0；<br>如果当前结点不为空，说明不是空树，<br>设，左子树最大深度为ldepth，右子树最大深度为rdepth；<br>如果（左子树深度&gt;右子树深度），返回左深度+1；<br>如果（左子树深度&lt;右子树深度），返回右深度+1；</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -608,14 +608,14 @@
       </tags>
   </entry>
   <entry>
-    <title>LC111 二叉树的最小深度</title>
-    <url>/posts/17107/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，找出其最小深度。<br>最小深度是从根结点到最近叶子结点的最短路径上的结点数量。</p>
+    <title>LC112 路径总和</title>
+    <url>/posts/19568/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你二叉树的根结点root和一个表示目标和的整数targetSum。<br>判断该树中是否存在根结点到叶子结点的路径上所有结点和为targetSum 。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">minDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">minDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">if</span> (ldepth == <span class="number">0</span> || rdepth == <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root-&gt;val == targetSum;</span><br><span class="line">        <span class="keyword">int</span> subsum = targetSum - root-&gt;val;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hasPathSum</span>(root-&gt;left, subsum) || <span class="built_in">hasPathSum</span>(root-&gt;right, subsum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注释</strong></p>
-<p>如果当前结点为空，返回0；<br>如果当前结点非空，而其左右邻域都为空，返回1；<br>计算左邻域最小深度，计算右邻域最小深度；<br>如果左右邻域其中之一为空，返回其中较大的那个+1；（因为前面已经判断过左右全空的情况，所以这里一定是只有一个为空）<br>为什么返回较大那个？因为深度的概念是根到叶。只有一个为空时，该结点不是叶子，所以空分支不能作为深度<br>如果左右邻域均非空，返回其中较小的那个+1；</p>
+<p>返回值类型：bool<br>函数名：hasPathSum<br>传入参数：根结点root和路径和targetSum</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -626,14 +626,14 @@
       </tags>
   </entry>
   <entry>
-    <title>LC112 路径总和</title>
-    <url>/posts/19568/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你二叉树的根结点root和一个表示目标和的整数targetSum。<br>判断该树中是否存在根结点到叶子结点的路径上所有结点和为targetSum 。</p>
+    <title>LC111 二叉树的最小深度</title>
+    <url>/posts/17107/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，找出其最小深度。<br>最小深度是从根结点到最近叶子结点的最短路径上的结点数量。</p>
 <h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root-&gt;val == targetSum;</span><br><span class="line">        <span class="keyword">int</span> subsum = targetSum - root-&gt;val;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hasPathSum</span>(root-&gt;left, subsum) || <span class="built_in">hasPathSum</span>(root-&gt;right, subsum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> ldepth = <span class="built_in">minDepth</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">int</span> rdepth = <span class="built_in">minDepth</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">if</span> (ldepth == <span class="number">0</span> || rdepth == <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">max</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ldepth, rdepth) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注释</strong></p>
-<p>返回值类型：bool<br>函数名：hasPathSum<br>传入参数：根结点root和路径和targetSum</p>
+<p>如果当前结点为空，返回0；<br>如果当前结点非空，而其左右邻域都为空，返回1；<br>计算左邻域最小深度，计算右邻域最小深度；<br>如果左右邻域其中之一为空，返回其中较大的那个+1；（因为前面已经判断过左右全空的情况，所以这里一定是只有一个为空）<br>为什么返回较大那个？因为深度的概念是根到叶。只有一个为空时，该结点不是叶子，所以空分支不能作为深度<br>如果左右邻域均非空，返回其中较小的那个+1；</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -1041,6 +1041,20 @@
       </tags>
   </entry>
   <entry>
+    <title>LC226 翻转二叉树</title>
+    <url>/posts/48bf/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>镜像翻转一棵二叉树。</p>
+<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span> || root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="built_in">swap</span>(root-&gt;left, root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left) <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;right) <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC225 用队列实现栈</title>
     <url>/posts/24678/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用队列实现一个后入先出(LIFO)的栈，并支持普通队列的全部四种操作(push、top、pop和empty)。</p>
@@ -1058,20 +1072,6 @@
       <tags>
         <tag>栈</tag>
         <tag>队列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC226 翻转二叉树</title>
-    <url>/posts/48bf/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>镜像翻转一棵二叉树。</p>
-<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span> || root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="built_in">swap</span>(root-&gt;left, root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left) <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;right) <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>树</tag>
       </tags>
   </entry>
   <entry>
@@ -1126,21 +1126,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC237 删除链表中的节点</title>
-    <url>/posts/12948/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供head。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC242 有效的字母异位词</title>
     <url>/posts/17730/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串s和t，编写一个函数来判断t是否是s的字母异位词。</p>
@@ -1173,6 +1158,21 @@
       </tags>
   </entry>
   <entry>
+    <title>LC237 删除链表中的节点</title>
+    <url>/posts/12948/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供head。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC258 各位相加</title>
     <url>/posts/37800/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数num，反复将各个位上的数字相加，直到结果为一位数。</p>
@@ -1186,23 +1186,6 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC263 丑数</title>
-    <url>/posts/70bd/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序判断给定的数是否为丑数。<br>丑数就是只包含质因数2,3,5的正整数。<br>说明：1是丑数</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>连续消去所有2,3,5倍的因数，判断最后剩下的数是否为1。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isUgly</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (n % <span class="number">2</span> == <span class="number">0</span>) n /= <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span> (n % <span class="number">3</span> == <span class="number">0</span>) n /= <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">while</span> (n % <span class="number">5</span> == <span class="number">0</span>) n /= <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1225,18 +1208,20 @@
       </tags>
   </entry>
   <entry>
-    <title>LC292 Nim游戏</title>
-    <url>/posts/1bb/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>你和你的朋友，两个人一起玩Nim游戏：桌子上有一堆石头，你们轮流进行自己的回合，你作为先手。每一回合，轮到的人拿掉1-3块石头。拿掉最后一块石头的人就是获胜者。假设你们每一步都是最优解。<br>请编写一个函数，来判断你是否可以在给定石头数量为n的情况下赢得游戏。如果可以赢，返回true；否则，返回false。</p>
-<p>输入：n=4<br>输出：false<br>解释：如果堆中有4块石头，那么你永远不会赢得比赛。因为无论你拿走1块、2块还是3块石头，最后一块石头总是会被你的朋友拿走。</p>
-<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>石头总数等于4的倍数时先手必输。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n % <span class="number">4</span> != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>LC263 丑数</title>
+    <url>/posts/70bd/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序判断给定的数是否为丑数。<br>丑数就是只包含质因数2,3,5的正整数。<br>说明：1是丑数</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>连续消去所有2,3,5倍的因数，判断最后剩下的数是否为1。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isUgly</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (n % <span class="number">2</span> == <span class="number">0</span>) n /= <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span> (n % <span class="number">3</span> == <span class="number">0</span>) n /= <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">while</span> (n % <span class="number">5</span> == <span class="number">0</span>) n /= <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>找规律</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1259,6 +1244,21 @@
       </categories>
       <tags>
         <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC292 Nim游戏</title>
+    <url>/posts/1bb/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>你和你的朋友，两个人一起玩Nim游戏：桌子上有一堆石头，你们轮流进行自己的回合，你作为先手。每一回合，轮到的人拿掉1-3块石头。拿掉最后一块石头的人就是获胜者。假设你们每一步都是最优解。<br>请编写一个函数，来判断你是否可以在给定石头数量为n的情况下赢得游戏。如果可以赢，返回true；否则，返回false。</p>
+<p>输入：n=4<br>输出：false<br>解释：如果堆中有4块石头，那么你永远不会赢得比赛。因为无论你拿走1块、2块还是3块石头，最后一块石头总是会被你的朋友拿走。</p>
+<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>石头总数等于4的倍数时先手必输。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n % <span class="number">4</span> != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
@@ -1770,46 +1770,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C++引用</title>
-    <url>/posts/f148/</url>
-    <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>引用是已存在的对象的别名。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>&amp; ref = x;</span><br><span class="line"></span><br><span class="line">    ref = <span class="number">20</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    x = <span class="number">30</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;ref = &quot;</span> &lt;&lt; ref &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="修改函数中传递的参数"><a href="#修改函数中传递的参数" class="headerlink" title="修改函数中传递的参数"></a>修改函数中传递的参数</h3><p>如果函数收到对变量的引用，则可以修改变量的值。例如，下面的程序里使用了引用来交换变量。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>&amp; x, <span class="keyword">int</span>&amp; y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = x;</span><br><span class="line">    x = y;</span><br><span class="line">    y = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>, b = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">swap</span>(a, b);</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="避免复制大型结构"><a href="#避免复制大型结构" class="headerlink" title="避免复制大型结构"></a>避免复制大型结构</h3><p>函数传参，什么都不加就是传值方式，加上引用就是传引用。传值是通过赋值实现的，对象越大消耗越大。<br>想象一个函数必须接收一个庞大的对象。如果我们在没有引用的情况下传递它，就会创建一个新的副本，从而导致CPU时间和内存的浪费。我们可以使用引用来避免这种情况。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    string name;</span><br><span class="line">    string address;</span><br><span class="line">    <span class="keyword">int</span> rollNo;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> Student&amp; s)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; s.name &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; s.address &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; s.rollNo &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="在基于范围的for循环中修改所有对象"><a href="#在基于范围的for循环中修改所有对象" class="headerlink" title="在基于范围的for循环中修改所有对象"></a>在基于范围的for循环中修改所有对象</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vect&#123; <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span>&amp; x : vect) x += <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x : vect) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="为每个循环避免对象的副本"><a href="#为每个循环避免对象的副本" class="headerlink" title="为每个循环避免对象的副本"></a>为每个循环避免对象的副本</h3><p>当对象很大时，我们可以在每个循环中使用引用来避免产生单个对象的副本。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; vect&#123; <span class="string">&quot;geeksforgeeks practice&quot;</span>, <span class="string">&quot;geeksforgeeks write&quot;</span>, <span class="string">&quot;geeksforgeeks ide&quot;</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; x : vect) cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h2><p>1.指针可以被声明为void但引用不行。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">void</span>* aa = &amp;a; <span class="comment">// it is valid</span></span><br><span class="line"><span class="keyword">void</span>&amp; ar = a; <span class="comment">// it is invalid</span></span><br></pre></td></tr></table></figure>
-
-<p>2.指针可以有多级间接关系，比如二级指针、三级指针等；引用只能有一层间接关系。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>* p = &amp;i; <span class="comment">// 一级指针</span></span><br><span class="line">    <span class="keyword">int</span>** pt = &amp;p; <span class="comment">// 二级指针</span></span><br><span class="line">    <span class="keyword">int</span>*** ptr = &amp;pt; <span class="comment">// 三级指针</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;i=&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;p=&quot;</span> &lt;&lt; p &lt;&lt; <span class="string">&quot;\t&quot;</span></span><br><span class="line">        &lt;&lt; <span class="string">&quot;pt=&quot;</span> &lt;&lt; pt &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;ptr=&quot;</span> &lt;&lt; ptr &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">int</span>&amp; S = a;</span><br><span class="line">    <span class="keyword">int</span>&amp; S0 = S;</span><br><span class="line">    <span class="keyword">int</span>&amp; S1 = S0;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a=&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;S=&quot;</span> &lt;&lt; S &lt;&lt; <span class="string">&quot;\t&quot;</span></span><br><span class="line">        &lt;&lt; <span class="string">&quot;S0=&quot;</span> &lt;&lt; S0 &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;S1=&quot;</span> &lt;&lt; S1 &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">i&#x3D;10    p&#x3D;0019FED8      pt&#x3D;0019FECC     ptr&#x3D;0019FEC0</span><br><span class="line">a&#x3D;5     S&#x3D;5             S0&#x3D;5            S1&#x3D;5</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
-
-<h2 id="什么是void指针"><a href="#什么是void指针" class="headerlink" title="什么是void指针?"></a>什么是void指针?</h2><p>void指针一般被称为通用指针或叫泛指针。它是C语言关于纯粹地址的一种约定。当某个指针是void型指针时，所指向的对象不属于任何类型。因为void指针不属于任何类型，则不可以对其进行算术运算，比如自增，编译器不知道其自增需要增加多少。比如<code>char*</code>型指针，自增一定是指针指向的地址加1，<code>short*</code>型指针自增，则偏移2。</p>
-<p>在C/C++中，在任意时刻都可以使用其它类型指针来代替void指针，或者用void指针来代替其他类型指针。由这些特性就可以衍生出很多比较有用的技巧。指针的本质，是其值为一个地址，那么延伸一下：</p>
-<p>当使用关键字void声明指针变量时，它将成为通用指针变量。任何数据类型的任何变量的地址都可以赋值给void指针变量。</p>
-<p>对指针变量的解引用，使用间接寻址运算符*达到目的。但是在使用空指针的情况下，需要先转换指针变量再解引用。这是因为空指针没有与之关联的数据类型。编译器无法知道void指针指向的数据类型。因此，要获取由void指针指向的数据，需要使用在void指针位置内保存的正确类型的数据进行显式类型转换。</p>
-<p><img data-src="https://img2020.cnblogs.com/blog/2028254/202005/2028254-20200505094248280-1172805575.png"></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>C++程序设计</category>
-      </categories>
-      <tags>
-        <tag>指针</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++标准输入输出</title>
     <url>/posts/b9eb/</url>
     <content><![CDATA[<p>C++的IO发生在流中，流是字节序列。<br>如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做输入操作。<br>如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做输出操作。</p>
@@ -1972,6 +1932,58 @@
       <tags>
         <tag>底层技术</tag>
         <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++引用</title>
+    <url>/posts/f148/</url>
+    <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>引用是已存在的对象的别名。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>&amp; ref = x;</span><br><span class="line"></span><br><span class="line">    ref = <span class="number">20</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    x = <span class="number">30</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;ref = &quot;</span> &lt;&lt; ref &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="修改函数中传递的参数"><a href="#修改函数中传递的参数" class="headerlink" title="修改函数中传递的参数"></a>修改函数中传递的参数</h3><p>如果函数收到对变量的引用，则可以修改变量的值。例如，下面的程序里使用了引用来交换变量。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>&amp; x, <span class="keyword">int</span>&amp; y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = x;</span><br><span class="line">    x = y;</span><br><span class="line">    y = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>, b = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">swap</span>(a, b);</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="避免复制大型结构"><a href="#避免复制大型结构" class="headerlink" title="避免复制大型结构"></a>避免复制大型结构</h3><p>函数传参，什么都不加就是传值方式，加上引用就是传引用。传值是通过赋值实现的，对象越大消耗越大。<br>想象一个函数必须接收一个庞大的对象。如果我们在没有引用的情况下传递它，就会创建一个新的副本，从而导致CPU时间和内存的浪费。我们可以使用引用来避免这种情况。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    string name;</span><br><span class="line">    string address;</span><br><span class="line">    <span class="keyword">int</span> rollNo;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> Student&amp; s)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; s.name &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; s.address &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; s.rollNo &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在基于范围的for循环中修改所有对象"><a href="#在基于范围的for循环中修改所有对象" class="headerlink" title="在基于范围的for循环中修改所有对象"></a>在基于范围的for循环中修改所有对象</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vect&#123; <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span>&amp; x : vect) x += <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x : vect) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="为每个循环避免对象的副本"><a href="#为每个循环避免对象的副本" class="headerlink" title="为每个循环避免对象的副本"></a>为每个循环避免对象的副本</h3><p>当对象很大时，我们可以在每个循环中使用引用来避免产生单个对象的副本。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; vect&#123; <span class="string">&quot;geeksforgeeks practice&quot;</span>, <span class="string">&quot;geeksforgeeks write&quot;</span>, <span class="string">&quot;geeksforgeeks ide&quot;</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; x : vect) cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h2><p>1.指针可以被声明为void但引用不行。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">void</span>* aa = &amp;a; <span class="comment">// it is valid</span></span><br><span class="line"><span class="keyword">void</span>&amp; ar = a; <span class="comment">// it is invalid</span></span><br></pre></td></tr></table></figure>
+
+<p>2.指针可以有多级间接关系，比如二级指针、三级指针等；引用只能有一层间接关系。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>* p = &amp;i; <span class="comment">// 一级指针</span></span><br><span class="line">    <span class="keyword">int</span>** pt = &amp;p; <span class="comment">// 二级指针</span></span><br><span class="line">    <span class="keyword">int</span>*** ptr = &amp;pt; <span class="comment">// 三级指针</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;i=&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;p=&quot;</span> &lt;&lt; p &lt;&lt; <span class="string">&quot;\t&quot;</span></span><br><span class="line">        &lt;&lt; <span class="string">&quot;pt=&quot;</span> &lt;&lt; pt &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;ptr=&quot;</span> &lt;&lt; ptr &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">int</span>&amp; S = a;</span><br><span class="line">    <span class="keyword">int</span>&amp; S0 = S;</span><br><span class="line">    <span class="keyword">int</span>&amp; S1 = S0;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a=&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;S=&quot;</span> &lt;&lt; S &lt;&lt; <span class="string">&quot;\t&quot;</span></span><br><span class="line">        &lt;&lt; <span class="string">&quot;S0=&quot;</span> &lt;&lt; S0 &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="string">&quot;S1=&quot;</span> &lt;&lt; S1 &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">i&#x3D;10    p&#x3D;0019FED8      pt&#x3D;0019FECC     ptr&#x3D;0019FEC0</span><br><span class="line">a&#x3D;5     S&#x3D;5             S0&#x3D;5            S1&#x3D;5</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>3.引用不如指针功能强大</p>
+<p>引用必须在声明时进行初始化，指针没有这种限制。由于上述限制，C++中的引用不能用于实现链表，树等数据结构。在Java中，引用没有上述限制，可以用于实现所有数据结构。Java中引用功能更强大是Java不需要指针的主要原因。</p>
+<p>4.引用更安全更容易使用</p>
+<h2 id="什么是void指针"><a href="#什么是void指针" class="headerlink" title="什么是void指针?"></a>什么是void指针?</h2><p>void指针一般被称为通用指针或叫泛指针。它是C语言关于纯粹地址的一种约定。当某个指针是void型指针时，所指向的对象不属于任何类型。因为void指针不属于任何类型，则不可以对其进行算术运算，比如自增，编译器不知道其自增需要增加多少。比如<code>char*</code>型指针，自增一定是指针指向的地址加1，<code>short*</code>型指针自增，则偏移2。</p>
+<p>在C/C++中，在任意时刻都可以使用其它类型指针来代替void指针，或者用void指针来代替其他类型指针。由这些特性就可以衍生出很多比较有用的技巧。指针的本质，是其值为一个地址，那么延伸一下：</p>
+<p>当使用关键字void声明指针变量时，它将成为通用指针变量。任何数据类型的任何变量的地址都可以赋值给void指针变量。</p>
+<p>对指针变量的解引用，使用间接寻址运算符*达到目的。但是在使用空指针的情况下，需要先转换指针变量再解引用。这是因为空指针没有与之关联的数据类型。编译器无法知道void指针指向的数据类型。因此，要获取由void指针指向的数据，需要使用在void指针位置内保存的正确类型的数据进行显式类型转换。</p>
+<h2 id="参数传递（传值、传引用、传指针）"><a href="#参数传递（传值、传引用、传指针）" class="headerlink" title="参数传递（传值、传引用、传指针）"></a>参数传递（传值、传引用、传指针）</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;传值方式的函数操作地址：：&quot;</span> &lt;&lt; &amp;n &lt;&lt; endl;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change2</span><span class="params">(<span class="keyword">int</span>&amp; n)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;传引用方式的函数操作地址：&quot;</span> &lt;&lt; &amp;n &lt;&lt; endl;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change3</span><span class="params">(<span class="keyword">int</span>* n)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;传指针方式的函数操作地址： &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    *n += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;实参的初值：&quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;实参的地址：&quot;</span> &lt;&lt; &amp;n &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">change1</span>(n);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;after change1() n= &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">change2</span>(n);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;after change2() n= &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">change3</span>(&amp;n);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;after change3() n= &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">实参的初值：10</span><br><span class="line">实参的地址：0019FED8</span><br><span class="line">传值方式的函数操作地址：：0019FE04</span><br><span class="line">after change1() n&#x3D; 10</span><br><span class="line">传引用方式的函数操作地址：0019FED8</span><br><span class="line">after change2() n&#x3D; 11</span><br><span class="line">传指针方式的函数操作地址： 0019FED8</span><br><span class="line">after change3() n&#x3D; 12</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>那么应该什么时候使用传引用或传指针呢？</p>
+<ol>
+<li>To modify local variables of the caller function.</li>
+<li>For passing large sized arguments.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>指针</tag>
       </tags>
   </entry>
   <entry>
@@ -2412,22 +2424,6 @@
       </tags>
   </entry>
   <entry>
-    <title>VS Code 使用札记</title>
-    <url>/posts/e1f4/</url>
-    <content><![CDATA[<h3 id="批量删除注释"><a href="#批量删除注释" class="headerlink" title="批量删除注释"></a>批量删除注释</h3><p>打开VS Code-&gt;Ctrl+H打开替换-&gt;选中使用正则表达式-&gt;查找栏输入正则表达式，替换栏置空-&gt;Ctrl+Alt+Enter全部替换</p>
-<p>行注释<code>//[\s\S]*?\n</code><br>块注释<code>/\*(.|\r\n|\n)*?\*/</code><br>所有注释<code>\/\*[\s\S]*\*\/|\/\/.*</code><br>html注释<code>&lt;!--([\s\S|\r]*?)--&gt;</code></p>
-<h3 id="在每行开头或结尾添加字符串"><a href="#在每行开头或结尾添加字符串" class="headerlink" title="在每行开头或结尾添加字符串"></a>在每行开头或结尾添加字符串</h3><p>上尖号代表每行的开头：<code>^</code><br>美元符号代表每行的结尾：<code>$</code></p>
-<h3 id="选中包含某个字符串的所有行"><a href="#选中包含某个字符串的所有行" class="headerlink" title="选中包含某个字符串的所有行"></a>选中包含某个字符串的所有行</h3><p><code>^(.*)string(.*)\n</code><br>用目标子串替换string</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>冰霜之刃</category>
-      </categories>
-      <tags>
-        <tag>技术教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>优先级队列简介</title>
     <url>/posts/4873/</url>
     <content><![CDATA[<h2 id="优先级队列的概念"><a href="#优先级队列的概念" class="headerlink" title="优先级队列的概念"></a>优先级队列的概念</h2><p>优先级队列是具有以下属性的队列的扩展：</p>
@@ -2456,6 +2452,22 @@
       <tags>
         <tag>队列</tag>
         <tag>堆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VS Code 使用札记</title>
+    <url>/posts/e1f4/</url>
+    <content><![CDATA[<h3 id="批量删除注释"><a href="#批量删除注释" class="headerlink" title="批量删除注释"></a>批量删除注释</h3><p>打开VS Code-&gt;Ctrl+H打开替换-&gt;选中使用正则表达式-&gt;查找栏输入正则表达式，替换栏置空-&gt;Ctrl+Alt+Enter全部替换</p>
+<p>行注释<code>//[\s\S]*?\n</code><br>块注释<code>/\*(.|\r\n|\n)*?\*/</code><br>所有注释<code>\/\*[\s\S]*\*\/|\/\/.*</code><br>html注释<code>&lt;!--([\s\S|\r]*?)--&gt;</code></p>
+<h3 id="在每行开头或结尾添加字符串"><a href="#在每行开头或结尾添加字符串" class="headerlink" title="在每行开头或结尾添加字符串"></a>在每行开头或结尾添加字符串</h3><p>上尖号代表每行的开头：<code>^</code><br>美元符号代表每行的结尾：<code>$</code></p>
+<h3 id="选中包含某个字符串的所有行"><a href="#选中包含某个字符串的所有行" class="headerlink" title="选中包含某个字符串的所有行"></a>选中包含某个字符串的所有行</h3><p><code>^(.*)string(.*)\n</code><br>用目标子串替换string</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>冰霜之刃</category>
+      </categories>
+      <tags>
+        <tag>技术教程</tag>
       </tags>
   </entry>
   <entry>
@@ -2568,7 +2580,86 @@
       </categories>
   </entry>
   <entry>
-    <title>我的2020读书记录</title>
+    <title>罗卫东：大学要多读硬书——给新生的一点忠告</title>
+    <url>/posts/4067/</url>
+    <content><![CDATA[<p>2019级新生陆续入学了，激动人心的时刻也过去了，周围的一切复归平静。</p>
+<p>接下来几天，每个大学都会给新入学的同学安排始业教育，指导新生如何尽早适应大学阶段的学习，尽快调整自己的身心状态，开始人生新一阶段的奋斗。</p>
+<p>始业教育的内容不无外乎以下几个方面，告诉大家，大学与高中的不同，如何变被动为主动；讲解本学校的现状、历史文化和精神价值观；介绍学校、学院、学科的特色和优势；提出对新生的德智体美劳各个方面的要求。有的也会告诫新生要注意的一些问题，正确择友、构建良好的同学关系、身心健康、养成良好学习和生活习惯，诸如此类，内容丰富，面面俱到。这里，无需我重复了。</p>
+<p>如果有谁问我，最想告诫新生们的是什么，那么，我只想告诫大家一点。这一点就是，作为一个大学生，在本科四年时间里，一定要读几本硬书。</p>
+<h2 id="何为硬书？"><a href="#何为硬书？" class="headerlink" title="何为硬书？"></a>何为硬书？</h2><p>“硬书”，这个说法不太常见，是我借用北方地区聚宴时“硬菜”的说法而起的名字。</p>
+<p>我自己这样来定义它。</p>
+<p>所谓的“硬书”：</p>
+<p>首先，是公认的重要。学术经典、思想经典、文学艺术经典等等，它在我们人类历史上发挥过启迪思想、净化心灵、构建文明、推动进步等等的重大作用，甚至是文明的奠基之作。</p>
+<p>其次，是公认的难懂。它的思想密度高，原创性强，表述独特。它是高营养的、不容易消化吸收。硬书，无论篇幅体例，有多大的差异，但无一例外都是思想深刻、旨意丰富的。要么深奥晦涩、要么微言大义、要么体宏思精，若无名师高人指点，自己又静不下心来，就读不进，更看不懂。</p>
+<h2 id="为什么一定要读硬书？"><a href="#为什么一定要读硬书？" class="headerlink" title="为什么一定要读硬书？"></a>为什么一定要读硬书？</h2><p>先打个比方，一个国家要使自己的经济体系变得强大，就必须首先建造重要的基础设施，交通运输、电力能源等，这是任何产业发展都要用到的通用资产；还要投资建造核心技术支撑的巨型成套设备，这是经济发展的重资产。缺乏这两类资产，自主、自强、自立的产业体系便是空中楼阁。硬书，就是你作为独立自主自强的人，必须准备的基础设施，是硬资产，是通用资产。一个人，有了精神的基础设施，有了能力的重型装备，就能够作为屹立于社会。没有硬资产的人，是立不起来的。</p>
+<p>硬书，一旦看懂了，吸收了，转化了，就会成为你思想进步的主引擎，人生旅途的指南针，安身立命的坚实基础。</p>
+<p>能让你变得强大并持续一生的，只有硬书中的道理，因为，它建设了你作为人的基础设施和重型通用资产。一个大学生，要成为具有正确的批评与自我批评能力的现代公民，公忠坚毅的社会精英，最需要的不是水课和软文、不是鸡零狗碎的知识和信息，而是硬书，是硬书！</p>
+<p>一句话，“强国须造重器，大学要读硬书”！</p>
+<h2 id="为什么要在大学读硬书？"><a href="#为什么要在大学读硬书？" class="headerlink" title="为什么要在大学读硬书？"></a>为什么要在大学读硬书？</h2><p>简单地说，有几点：</p>
+<p>第一，大学是人生中各种观念成型的关键阶段，此时的认识歪了和偏了，以后纠正起来就难了。这四年，书读对了，读懂了，读好了，今后的路子就对了、宽了。</p>
+<p>第二，大学生的身心发展已经到了可以接受更深更难思想的阶段。</p>
+<p>第三，硬书难读，难懂，需要花费时间，需要高人指点。只有在大学阶段，才有相对完整和充裕的阅读、思考、讨论时间，才有学养深厚的导师。在大学之前的基础教育阶段，虽然也是读书，但以成熟知识的接受和文化基础的训练为主，身心发展都还不具备读硬书的条件。离开大学走上社会以后，不可能给你读硬书所需要的大块时间和心境，身边更不可能有你可以随时请教的老师和互动研讨的同学。</p>
+<p>第四，中学生要高考，大学毕业后要谋生。只有大学时代，人的功利心最弱，可以正心诚意、轻装上阵、全力以赴去进行思想的探险。</p>
+<p>很多大学生，受社会思潮的影响，认为花大量时间去读硬书，是得不偿失的，宁可把时间花在刷绩点、泡水课、挣学分、考技能上，认为这样做最实用，岂不知，这是舍本求末的认识，结果是得不偿失。它也许拿到了高学分，却浪费了人生最宝贵的资源，就是时间；更令人痛心的是由此错过了人生最好的读硬书的窗口期。</p>
+<p>我不否认学分、绩点、技能的重要性，现实生活需要这些。但与读硬书获得的持久能力相比，这些仍然是次要的。如果年轻时本末倒置，错误地配置了时间和精力，到人生的中后程，就很难扳回来，一切悔之晚矣。</p>
+<p>虽说难读的不一定是硬书，但硬书多半难读。舍得时间、耐得寂寞、沉得下心、放得下脸，这是读硬书的几大要求。前面三点，一看便知，毋须说明。这第四点放得下脸，指的是不要碍于虚荣，或者碍于面子，而失去向高人名师求教的机会。</p>
+<h2 id="哪些是必读的硬书？"><a href="#哪些是必读的硬书？" class="headerlink" title="哪些是必读的硬书？"></a>哪些是必读的硬书？</h2><p>这并无完全一致的答案。每一个导师都有自己心目中的硬书。公认的硬书更像是处在大多数好老师开出书单的交集上的那些书。比如梁启超、胡适、钱穆、傅斯年这些民国时代的大学者都曾经给大学生青年开过书单，内容有差异，但其中都有《四书五经》，则基本可以确定，这是必读的经典。</p>
+<p>朋友圈也在转发世界著名大学必读书单。你找那些被选中的次数最多、入选时间最长，基本不会错。比如，哈佛、普林斯顿、耶鲁、斯坦福、哥伦比亚、剑桥、牛津等等的名校，图书馆借书中位居前列的十种，各校有差异，但都列入了柏拉图的《理想国》，则基本能够确认，这是重要的经典。</p>
+<p>作为一名经济学从业人员，其他学科哪些是硬书，我发表的意见，肯定不作数。仅就经济学而言，《国富论》、《资本论》、《经济学原理》、《通论》，这四本是必读的硬书。</p>
+<p>41年前，我进入大学学习，那时候诱惑应酬少，读书风气好，四年里花在读书上的时间和精力是有保证的。今天回想起来，总体来说很是欣慰和庆幸，但也不是完全没有遗憾。庆幸的是大学时代还真是读了几部硬书的，欣慰的是读的这些硬书对自己后来的发展帮助很大。略有遗憾的是，这样有用的硬书，当时读的还是不够多。</p>
+<p>现在，虽然韶华已逝，时间精力都与大学时代不能同日而语，但我还要努力减少遗憾。</p>
+<p>亲爱的大学生们，请静下心、沉住气，多读几本硬书吧！</p>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>杂文</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>择偶观</title>
+    <url>/posts/bbe4/</url>
+    <content><![CDATA[<blockquote>
+<p>凤飞翱翔兮，四海求凰。</p>
+</blockquote>
+<p>声明：<br>以下内容基本都是弹性标准；绝不涉及针对任何特定群体的歧视；也不代表除本人外一般男人的普遍追求。<br>本站未被百度爬虫和Google收录，因此本文放在自己个人网站里的唯一目的就是供自己一个人偶尔翻看。<br>写下这种东西，我本来就是非常犹豫的，思前想后，还是觉得有必要清楚地写下来。<br>如果有人出于各种未知原因偶然看到这篇文章，不要当真，也不要批判，更不要传播。</p>
+<h2 id="基本项，应该全部满足"><a href="#基本项，应该全部满足" class="headerlink" title="基本项，应该全部满足"></a>基本项，应该全部满足</h2><ol>
+<li>性别女；1994~2002年出生。（不是女同，不是双性恋；最大大3岁，最小小5岁）</li>
+<li>本科211及以上；正经专业。（不要专升本，不要地方照顾性211，不要独立学院，不要没听过的专业）</li>
+<li>外貌6分；身高160~175cm；不胖。（妆前5分妆后6分，身高不要15打头，不要太胖）</li>
+<li>不抽烟；无纹身；无信仰；不丁克。（不要抽烟纹身好女孩，饮酒适度就没问题，家里没人信教，以后要生小孩）</li>
+<li>最多谈过1个。（相对专一，不要段位比我高到天上的）</li>
+</ol>
+<h2 id="加分项，应该满足至少1条"><a href="#加分项，应该满足至少1条" class="headerlink" title="加分项，应该满足至少1条"></a>加分项，应该满足至少1条</h2><ol>
+<li>眼睛漂亮加分；笑容治愈加分；声音甜美加分。（追求美的天性）</li>
+<li>本科985加分。（我也985，喜欢比我更爱学习的人）</li>
+<li>工学大类，计算机相关加分；理学大类，数学物理生物加分；人文社科大类，经济法律外国语加分。（印象好，聊得来）</li>
+<li>有爱好或特长加分。（没啥硬性标准，健康、有趣就行，指的是那些需要付出长期努力的，不是闲出来的爱好）</li>
+<li>共产党员加分。（党员被国家筛选过一次了，不会太离谱）</li>
+</ol>
+<p>关于兴趣爱好，我随便拎几个比较普遍的说说。旅游、烘焙、追剧、看综艺、看动漫、看小说、听音乐、看电影、打游戏、散步、撸猫、刷微博。以上不能算爱好，更不是特长，不想重复了。你坚持这些就是你的爱好，不如直接把我不爱学习不爱工作贴在脸上得了。如果你打羽毛球比一般人厉害，羽毛球就是你的特长。如果你唱歌比一般人好听，唱歌就是你的特长。如果刻苦练习过舞蹈，跳舞就是你的特长。哪怕你只能像我一样背一遍圆周率小数点后100位，我都算你有爱好特长了。更何况爱好这条在我这里只是加分项又不是基本项。<br>女人，别再追剧了。</p>
+<h2 id="减分项，完全符合3条或以上直接放弃"><a href="#减分项，完全符合3条或以上直接放弃" class="headerlink" title="减分项，完全符合3条或以上直接放弃"></a>减分项，完全符合3条或以上直接放弃</h2><ol>
+<li>追星减分；热衷同性恋文化严重减分无论是不是玩梗。（我整体上对花钱追星持反对态度；更不要热衷屎尿屁文化）</li>
+<li>微博重度用户减分；2018年以后的豆瓣小组活跃用户减分；小红书重度用户减分。（智商测试）</li>
+<li>习惯性说脏话严重减分；脾气差易冲动减分。（脏话可以偶尔说，矜持一些；脾气爆一般脑子都不太好，智商测试）</li>
+<li>无独自生活经济能力严重减分。（你应该不会走到自己被迫养活自己的那天，但是你得有一定的工作赚钱能力）</li>
+<li>起床不叠被子减分；不注意保持卫生减分。（能叠被子不至于太懒，而且大概率经历过风气不错的集体生活）</li>
+<li>北京和上海户口减分。（反正这两个户口的也看不上我，加这一条当作我最后的倔强吧）</li>
+</ol>
+<p>因为追星的人几乎必定满足第二条微博重度用户，所以追星就接近出局。</p>
+<h2 id="热烈，深沉，无私，几点希冀"><a href="#热烈，深沉，无私，几点希冀" class="headerlink" title="热烈，深沉，无私，几点希冀"></a>热烈，深沉，无私，几点希冀</h2><p>我喜欢的人的诸多身份之间，最基本的身份应该是我的朋友，而且是我的朋友中最特殊，最忠诚，最无私的那个。两个人的世界不能容得下一句恶意的揣测或计算、人身伤害、心理打击、言不由衷或袖手旁观。长期相处产生的惰性，也应该予以克服。有生之年同甘共苦，即使死后也要让墓碑毗邻。不能接受任何形式的出轨，不能接受身边有男闺蜜、备胎和亲密的同性恋好友。我们的亲密关系必须超过从前二十年往后五十年内的其它一切关系。所有的事务中同时涉及两人的优先级最高，其次是你，再次是我，最后才是外人。<br>我无比希望我的女人也对我有以上所有要求。</p>
+<p>为什么最近想起来写这种普通人觉得羞耻的东西呢？我慢慢觉得，像我这种的一般人，本来就不具备勇敢追求自己心爱事物的资本，如果再不知道自己真正想要的是什么，生命可能就真的没有价值了，等到垂垂老矣，连后悔都想不起来后悔。这大概是两年来的不顺经历给我带来的一点新变化。我已经几乎不觉得这种事有什么可羞耻的了。虚无缥缈的颜面不足以与这份货真价实的反思相提并论。CPMA书里有这样一句话，大概是作者的恩师说的，被他默默记了下来：不是他们没能力解决问题，而是他们还没能真正看到问题。我常常想着这句话直到发呆。看不到问题的情况大概分为两种，要么认知偏差，要么身在庐山，在我确定自己开始思考问题前，我总是先站在问题的门外，想想自己是否已经属于其中哪种情况而不自知。</p>
+<p>可能我真的是个过于理想的人，好在我不觉得理想化是个贬义词，因为理想的总是无效的，但往往也是浪漫的。</p>
+]]></content>
+      <categories>
+        <category>自由王国</category>
+        <category>价值观</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我的2020阅读记录</title>
     <url>/posts/1420/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2020年</span><br><span class="line">数量：2本</span><br></pre></td></tr></table></figure>
 
@@ -2596,12 +2687,15 @@
 </tbody></table>
 ]]></content>
       <categories>
-        <category>自由王国</category>
         <category>读书札记</category>
+        <category>阅读记录</category>
       </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
   </entry>
   <entry>
-    <title>我的2021读书记录</title>
+    <title>我的2021阅读记录</title>
     <url>/posts/c3ad/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2021年</span><br><span class="line">数量：本</span><br></pre></td></tr></table></figure>
 
@@ -2665,47 +2759,11 @@
 </tbody></table>
 ]]></content>
       <categories>
-        <category>自由王国</category>
         <category>读书札记</category>
+        <category>阅读记录</category>
       </categories>
-  </entry>
-  <entry>
-    <title>择偶观</title>
-    <url>/posts/bbe4/</url>
-    <content><![CDATA[<blockquote>
-<p>凤飞翱翔兮，四海求凰。</p>
-</blockquote>
-<p>声明：<br>以下内容基本都是弹性标准；绝不涉及针对任何特定群体的歧视；也不代表除本人外一般男人的普遍追求。<br>本站未被百度爬虫和Google收录，因此本文放在自己个人网站里的唯一目的就是供自己一个人偶尔翻看。<br>如果有人出于各种偶然而看到这篇文章，最好不要当真，更不要传播。</p>
-<h2 id="基本项"><a href="#基本项" class="headerlink" title="基本项"></a>基本项</h2><ol>
-<li>性别女；1994~2002年出生。（不要在性别话题上搞什么幺蛾子，不是女同，不是双性恋；最大大3岁，最小小5岁）</li>
-<li>本科211及以上；正经专业。（不要专升本，不要地方照顾性211，不要没听过的专业）</li>
-<li>外貌6分；身高165~175cm；不胖。（妆前5分妆后6分就行，身高不要15打头的，要健康的不要胖的）</li>
-<li>不抽烟；无纹身；无信仰；不丁克。（不要抽烟纹身好女孩，饮酒适度没问题，家里没人信教，以后要生小孩）</li>
-<li>谈过最多1个。（相对专一的，不要段位比我高到天上的）</li>
-</ol>
-<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><ol>
-<li>笑容治愈加分；声音甜美加分。（不用解释吧，对美的追求而已）</li>
-<li>本科985加分。（985本说明你中学时候拎得清主次知道学习重要性，上完985再差也不会跟我差到哪去）</li>
-<li>工学大类，计算机相关加分；理学大类，数学物理加分；人文社科大类，经济法律外国语加分。（我印象好，聊得来）</li>
-<li>有兴趣爱好或个人特长加分。（没啥标准，健康有趣就行，指那些需要长期付出努力的，不要闲出来的爱好）</li>
-<li>共产党员加分。（没别的意思，党员一般都被国家筛选过一次了，不会太离谱）</li>
-</ol>
-<p>关于兴趣爱好，随便拎几个比较多的说说吧。旅游、烘焙、追剧、看综艺、看动漫、看小说、听音乐、看电影、打游戏、散步、撸猫、刷微博。以上不算爱好，更不是特长，不想重复了。<br>如果你打羽毛球比一般人好，羽毛球就是你的特长。如果你唱歌比一般人好听，唱歌就是你的特长。如果刻苦练习过舞蹈，跳舞就是你的特长。哪怕你能跟我一样背一遍圆周率一百位，我都算你有特长了。女人，别再追剧了。</p>
-<h2 id="减分项"><a href="#减分项" class="headerlink" title="减分项"></a>减分项</h2><ol>
-<li>追星减分；热衷同性恋文化严重减分无论是不是玩梗。（我整体上对花钱追星持反对态度；更不要热衷屎尿屁文化）</li>
-<li>微博重度用户减分；2018年以后的豆瓣小组活跃用户减分；小红书重度用户减分。（智商测试）</li>
-<li>习惯性说脏话严重减分；脾气差易冲动减分。（脏话不要常说，矜持一些，脾气爆一般脑子都不太好，智商测试）</li>
-<li>无独自生活经济能力严重减分。（你不会走到自己被迫养活自己的那天，但是你得有一定的工作赚钱能力）</li>
-<li>起床不叠被子减分；不注意保持卫生减分。（叠被子不至于太懒，做一遍卫生不容易，尊重他人劳动成果）</li>
-<li>北京和上海户口减分。（这两个户口的反正也看不上我，加这一条当作我最后的倔强吧）</li>
-</ol>
-<h2 id="热烈，深沉，无私，几点希冀"><a href="#热烈，深沉，无私，几点希冀" class="headerlink" title="热烈，深沉，无私，几点希冀"></a>热烈，深沉，无私，几点希冀</h2><p>我喜欢的人最基本的身份应该是我的朋友，而且是我的朋友中最特殊，最忠诚，最无私的那个。两个人的世界容不下一句恶意的揣测和计算、人身伤害、心理打击、言不由衷或袖手旁观。长期相处产生的惰性，也应该予以克服。有生之年同甘共苦，即使死后也要让墓碑毗邻。不能接受任何形式的出轨，不能接受身边有男闺蜜、备胎和亲密的同性恋好友。我们的亲密关系必须超过从前二十年往后五十年内的其它一切关系。所有的事务中同时涉及两人的优先级最高，其次是你，再次是我，最后才是外人。<br>我无比希望我的女人也对我有以上所有要求。</p>
-<p>为什么想起来写这种羞耻的东西呢？我慢慢觉得，像我这种的一般人，本来就不具备勇敢追求自己心爱事物的资本，如果再不知道自己真正想要的是什么，生命就真的没有价值可言了。这大概是两年来的不顺经历给我带来的一点新变化。我已经完全不觉得这种事有什么可羞耻的了。虚无缥缈的颜面不足以和这份货真价实的思考相提并论。K.N.King书里有这样一句话，大概是他恩师常说的，被他记了下来：不是他们没能力解决问题，而是他们还没能真正地看到问题。我常常看着这句话直到发呆。看不到问题的情况分两种，要么认知偏差，要么身在庐山，在我确定自己开始思考问题前，我总是先站在问题的门外，想想自己是否属于其中哪种。</p>
-<p>也许我真的是个过于理想的人，好在我不觉得理想化是个贬义词，因为理想的总是无效的，但往往也是浪漫的。</p>
-]]></content>
-      <categories>
-        <category>自由王国</category>
-        <category>世界观，价值观，人生观</category>
-      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
   </entry>
 </search>

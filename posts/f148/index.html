@@ -15,14 +15,15 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7CZCOOL+XiaoWei:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7C华文中宋:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
-<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
 <meta name="description" content="概念引用是已存在的对象的别名。 #include&lt;iostream&gt;using namespace std;int main() &amp;#123;    int x &#x3D; 10;    int&amp; ref &#x3D; x;    ref &#x3D; 20;    cout &lt;&lt; &quot;x &#x3D; &quot; &lt;&lt; x &lt;&lt; endl;    x &#x3D; 30;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++引用">
@@ -30,13 +31,11 @@
 <meta property="og:site_name" content="鹿屋泊地">
 <meta property="og:description" content="概念引用是已存在的对象的别名。 #include&lt;iostream&gt;using namespace std;int main() &amp;#123;    int x &#x3D; 10;    int&amp; ref &#x3D; x;    ref &#x3D; 20;    cout &lt;&lt; &quot;x &#x3D; &quot; &lt;&lt; x &lt;&lt; endl;    x &#x3D; 30;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img2020.cnblogs.com/blog/2028254/202005/2028254-20200505094248280-1172805575.png">
 <meta property="article:published_time" content="2021-04-18T14:35:02.000Z">
-<meta property="article:modified_time" content="2021-04-19T05:34:12.264Z">
+<meta property="article:modified_time" content="2021-04-19T13:28:26.326Z">
 <meta property="article:author" content="月夜海">
 <meta property="article:tag" content="指针">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img2020.cnblogs.com/blog/2028254/202005/2028254-20200505094248280-1172805575.png">
 
 
 <link rel="canonical" href="https://tsukiyokai.github.io/posts/f148/">
@@ -56,7 +55,7 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
 
   <main class="main">
@@ -93,8 +92,8 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
         <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>藏书</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -152,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BC%A0%E9%80%92%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">修改函数中传递的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E5%A4%8D%E5%88%B6%E5%A4%A7%E5%9E%8B%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">避免复制大型结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%9F%BA%E4%BA%8E%E8%8C%83%E5%9B%B4%E7%9A%84for%E5%BE%AA%E7%8E%AF%E4%B8%AD%E4%BF%AE%E6%94%B9%E6%89%80%E6%9C%89%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.</span> <span class="nav-text">在基于范围的for循环中修改所有对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E6%AF%8F%E4%B8%AA%E5%BE%AA%E7%8E%AF%E9%81%BF%E5%85%8D%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%89%AF%E6%9C%AC"><span class="nav-number">2.4.</span> <span class="nav-text">为每个循环避免对象的副本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">指针和引用的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFvoid%E6%8C%87%E9%92%88"><span class="nav-number">4.</span> <span class="nav-text">什么是void指针?</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BC%A0%E9%80%92%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">修改函数中传递的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E5%A4%8D%E5%88%B6%E5%A4%A7%E5%9E%8B%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">避免复制大型结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%9F%BA%E4%BA%8E%E8%8C%83%E5%9B%B4%E7%9A%84for%E5%BE%AA%E7%8E%AF%E4%B8%AD%E4%BF%AE%E6%94%B9%E6%89%80%E6%9C%89%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.</span> <span class="nav-text">在基于范围的for循环中修改所有对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E6%AF%8F%E4%B8%AA%E5%BE%AA%E7%8E%AF%E9%81%BF%E5%85%8D%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%89%AF%E6%9C%AC"><span class="nav-number">2.4.</span> <span class="nav-text">为每个循环避免对象的副本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">指针和引用的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFvoid%E6%8C%87%E9%92%88"><span class="nav-number">4.</span> <span class="nav-text">什么是void指针?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%EF%BC%88%E4%BC%A0%E5%80%BC%E3%80%81%E4%BC%A0%E5%BC%95%E7%94%A8%E3%80%81%E4%BC%A0%E6%8C%87%E9%92%88%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">参数传递（传值、传引用、传指针）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,20 +167,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -314,11 +313,23 @@
 <p>输出结果</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">i&#x3D;10    p&#x3D;0019FED8      pt&#x3D;0019FECC     ptr&#x3D;0019FEC0</span><br><span class="line">a&#x3D;5     S&#x3D;5             S0&#x3D;5            S1&#x3D;5</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
 
+<p>3.引用不如指针功能强大</p>
+<p>引用必须在声明时进行初始化，指针没有这种限制。由于上述限制，C++中的引用不能用于实现链表，树等数据结构。在Java中，引用没有上述限制，可以用于实现所有数据结构。Java中引用功能更强大是Java不需要指针的主要原因。</p>
+<p>4.引用更安全更容易使用</p>
 <h2 id="什么是void指针"><a href="#什么是void指针" class="headerlink" title="什么是void指针?"></a>什么是void指针?</h2><p>void指针一般被称为通用指针或叫泛指针。它是C语言关于纯粹地址的一种约定。当某个指针是void型指针时，所指向的对象不属于任何类型。因为void指针不属于任何类型，则不可以对其进行算术运算，比如自增，编译器不知道其自增需要增加多少。比如<code>char*</code>型指针，自增一定是指针指向的地址加1，<code>short*</code>型指针自增，则偏移2。</p>
 <p>在C/C++中，在任意时刻都可以使用其它类型指针来代替void指针，或者用void指针来代替其他类型指针。由这些特性就可以衍生出很多比较有用的技巧。指针的本质，是其值为一个地址，那么延伸一下：</p>
 <p>当使用关键字void声明指针变量时，它将成为通用指针变量。任何数据类型的任何变量的地址都可以赋值给void指针变量。</p>
 <p>对指针变量的解引用，使用间接寻址运算符*达到目的。但是在使用空指针的情况下，需要先转换指针变量再解引用。这是因为空指针没有与之关联的数据类型。编译器无法知道void指针指向的数据类型。因此，要获取由void指针指向的数据，需要使用在void指针位置内保存的正确类型的数据进行显式类型转换。</p>
-<p><img data-src="https://img2020.cnblogs.com/blog/2028254/202005/2028254-20200505094248280-1172805575.png"></p>
+<h2 id="参数传递（传值、传引用、传指针）"><a href="#参数传递（传值、传引用、传指针）" class="headerlink" title="参数传递（传值、传引用、传指针）"></a>参数传递（传值、传引用、传指针）</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;传值方式的函数操作地址：：&quot;</span> &lt;&lt; &amp;n &lt;&lt; endl;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change2</span><span class="params">(<span class="keyword">int</span>&amp; n)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;传引用方式的函数操作地址：&quot;</span> &lt;&lt; &amp;n &lt;&lt; endl;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change3</span><span class="params">(<span class="keyword">int</span>* n)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;传指针方式的函数操作地址： &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    *n += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;实参的初值：&quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;实参的地址：&quot;</span> &lt;&lt; &amp;n &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">change1</span>(n);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;after change1() n= &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">change2</span>(n);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;after change2() n= &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">change3</span>(&amp;n);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;after change3() n= &quot;</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">实参的初值：10</span><br><span class="line">实参的地址：0019FED8</span><br><span class="line">传值方式的函数操作地址：：0019FE04</span><br><span class="line">after change1() n&#x3D; 10</span><br><span class="line">传引用方式的函数操作地址：0019FED8</span><br><span class="line">after change2() n&#x3D; 11</span><br><span class="line">传指针方式的函数操作地址： 0019FED8</span><br><span class="line">after change3() n&#x3D; 12</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>那么应该什么时候使用传引用或传指针呢？</p>
+<ol>
+<li>To modify local variables of the caller function.</li>
+<li>For passing large sized arguments.</li>
+</ol>
 
     </div>
 
@@ -357,8 +368,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/c3ad/" rel="next" title="我的2021读书记录">
-                  我的2021读书记录 <i class="fa fa-chevron-right"></i>
+                <a href="/posts/4067/" rel="next" title="罗卫东：大学要多读硬书——给新生的一点忠告">
+                  罗卫东：大学要多读硬书——给新生的一点忠告 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -396,7 +407,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
 
   
 <script src="/js/local-search.js"></script>

@@ -226,7 +226,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: ZCOOL XiaoWei, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: 华文中宋, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -1426,7 +1426,7 @@ pre code {
 }
 .site-title {
   font-family: Long Cang, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: normal;
   margin: 0;
 }
@@ -2997,6 +2997,7 @@ mjx-container[display="true"] + br {
   position: sticky;
   top: 12px;
   width: 240px;
+  visibility: hidden;
 }
 @media (max-width: 991px) {
   .sidebar {
