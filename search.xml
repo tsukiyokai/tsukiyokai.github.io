@@ -13,17 +13,9 @@
       </categories>
   </entry>
   <entry>
-    <title>Sitemap</title>
-    <url>/posts/527d/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;tsukiyokai.github.io</span><br><span class="line">编程珠玑</span><br><span class="line">    C++程序设计</span><br><span class="line">    数据结构与算法分析</span><br><span class="line">    工具箱</span><br><span class="line">小镇做题家</span><br><span class="line">    LeetCode</span><br><span class="line">    Project Euler</span><br><span class="line">    剑指Offer</span><br><span class="line">    面试</span><br><span class="line">孔雀东南飞</span><br><span class="line">    古诗为焦仲卿妻作.md</span><br><span class="line">流光徘徊</span><br><span class="line">    亲人</span><br><span class="line">    好友</span><br><span class="line">读书札记</span><br><span class="line">    文摘</span><br><span class="line">    阅读记录</span><br><span class="line">自由王国</span><br><span class="line">    年度系列</span><br><span class="line">    价值观</span><br><span class="line">网站建设</span><br><span class="line">    Sitemap.md</span><br><span class="line">    图片测试</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>网站建设</category>
-      </categories>
-  </entry>
-  <entry>
     <title>图片测试</title>
     <url>/posts/66bd/</url>
-    <content><![CDATA[<img data-src="/posts/66bd/test.png" class="">
+    <content><![CDATA[<img data-src="/posts/66bd/test.png" class="" title="text">
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img test.png text %&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
@@ -31,6 +23,69 @@
       </categories>
       <tags>
         <tag>图片测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE1 Multiples of 3 and 5</title>
+    <url>/posts/18889/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>Project Euler</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>破译密码</title>
+    <url>/posts/8f03/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>译码规则：</p>
+<ol>
+<li>字母如A开头，串中所有字母和数字顺延1位，其他不变。</li>
+<li>数字如1开头，串中所有字母和数字顺延1位，其他不变。</li>
+<li>符号如_开头，视为字母A开头。</li>
+<li>Z顺延一位变回A，9顺延一位变回0</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">trans</span><span class="params">(string before)</span> </span>&#123;</span><br><span class="line">    string after = before;</span><br><span class="line">    <span class="keyword">int</span> diff;</span><br><span class="line">    <span class="keyword">if</span> (before[<span class="number">0</span>] &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; before[<span class="number">0</span>] &lt;= <span class="string">&#x27;Z&#x27;</span>) diff = before[<span class="number">0</span>] - <span class="string">&#x27;A&#x27;</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (before[<span class="number">0</span>] &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; before[<span class="number">0</span>] &lt;= <span class="string">&#x27;Z&#x27;</span>) diff = before[<span class="number">0</span>] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span> diff = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : after) &#123;</span><br><span class="line">        <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;Z&#x27;</span>) c = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>&gt;(<span class="string">&#x27;A&#x27;</span> + (c - <span class="string">&#x27;A&#x27;</span> + diff) % <span class="number">26</span>);</span><br><span class="line">        <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span>) c = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>&gt;(<span class="string">&#x27;0&#x27;</span> + (c - <span class="string">&#x27;0&#x27;</span> + diff) % <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> after;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(cin, str)) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">trans</span>(str) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是字节跳动21春招第五场笔试的第1题，分值10分。</p>
+<p>好好练练ACM模式的输入输出吧，这学习代价未免也太大了。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>字节跳动</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>精确表达浮点数</title>
+    <url>/posts/43ef/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将给定属于0~1区间的有限小数或者无限循环小数（循环节用括号标记）以最简真分数的形式表示。<br>最简分数是指分子和分母互质的分数。</p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>输入: 0.25<br>输出: 1/4</p>
+<p>输入: 0.33(33)<br>输出: 1/3</p>
+<p>输入: 0.285714(285714)<br>输出: 2/7</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RepresentExactly</span><span class="params">(string str)</span> </span>&#123;</span><br><span class="line">    string strLimited, strUnLimited;</span><br><span class="line">    <span class="keyword">int</span> nLenLimited = <span class="number">0</span>, nLenUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> Molecule = <span class="number">0</span>, Denominator = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nLimited = <span class="number">0</span>, nUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">auto</span> Start = str.<span class="built_in">find</span>(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Start != str.npos) &#123;</span><br><span class="line">        <span class="keyword">auto</span> End = str.<span class="built_in">find</span>(<span class="string">&#x27;)&#x27;</span>, Start);</span><br><span class="line"></span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>, Start - <span class="number">2</span>);</span><br><span class="line">        strUnLimited = str.<span class="built_in">substr</span>(Start + <span class="number">1</span>, End - Start - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        nLenUnLimited = strUnLimited.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        nLimited = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        nUnLimited = <span class="built_in">atoi</span>(strUnLimited.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">        Molecule = (<span class="keyword">long</span> <span class="keyword">long</span>)(nLimited * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>) + nUnLimited);</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited) * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>);</span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        Molecule = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="built_in">RepresentExactly</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是Shopee深圳21春招后端笔试第1题，分值20分，最后是通过了80%的case，没通过的那几个好像是输入的字符串小数里塞了乱七八糟的空格，写个trim space的函数就好了，没什么好说的。</p>
+<p>出自编程之美，题目倒是挺经典的，就是考的有点丑陋。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>Shopee</tag>
       </tags>
   </entry>
   <entry>
@@ -227,24 +282,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC21-合并两个有序链表</title>
-    <url>/posts/52766/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有结点组成的。 </p>
-<h2 id="解法1：迭代"><a href="#解法1：迭代" class="headerlink" title="解法1：迭代"></a>解法1：迭代</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* res = <span class="keyword">new</span> <span class="built_in">ListNode</span>(), * curr = res;</span><br><span class="line">        <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                curr-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                curr-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            curr = curr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        curr-&gt;next = l1 ? l1 : l2;</span><br><span class="line">        <span class="keyword">return</span> res-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：递归"><a href="#解法2：递归" class="headerlink" title="解法2：递归"></a>解法2：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!l1) <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span> (!l2) <span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = <span class="built_in">mergeTwoLists</span>(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = <span class="built_in">mergeTwoLists</span>(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-        <tag>迭代</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC26 删除排序数组中的重复项</title>
     <url>/posts/60925/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须在原地修改输入数组 并在使用O(1)额外空间的条件下完成。<br>为什么返回数值是整数，但输出的答案是数组呢？请注意，输入数组是以引用方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
@@ -264,6 +301,24 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC21-合并两个有序链表</title>
+    <url>/posts/52766/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有结点组成的。 </p>
+<h2 id="解法1：迭代"><a href="#解法1：迭代" class="headerlink" title="解法1：迭代"></a>解法1：迭代</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* res = <span class="keyword">new</span> <span class="built_in">ListNode</span>(), * curr = res;</span><br><span class="line">        <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                curr-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                curr-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            curr = curr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        curr-&gt;next = l1 ? l1 : l2;</span><br><span class="line">        <span class="keyword">return</span> res-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：递归"><a href="#解法2：递归" class="headerlink" title="解法2：递归"></a>解法2：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!l1) <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span> (!l2) <span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = <span class="built_in">mergeTwoLists</span>(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = <span class="built_in">mergeTwoLists</span>(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>迭代</tag>
       </tags>
   </entry>
   <entry>
@@ -383,33 +438,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC70 爬楼梯</title>
-    <url>/posts/47392/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设你正在爬楼梯。需要n阶你才能到达楼顶。<br>每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
-<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">unsigned</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">climbStairs</span>(n - <span class="number">1</span>) + <span class="built_in">climbStairs</span>(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分析</strong></p>
-<p>经典方法是一种不进入问题而解决问题的思想，有极多重复计算，因此容易超时。<br>这个方法虽然被舍弃了，但是它揭示了一个规律，即climbStairs(n)=climbStairs(n-2)+climbStairs(n-1)。无需我们算出来每一层的走法再寻找规律，这是用正推的思想启发倒推的思想。<br>由此可见，笨方法虽然在写出来之前就已经被抛弃了，但还是有必要经过这一步无用功，因为它往往是聪明方法的垫脚石。</p>
-<h2 id="解法2：DP"><a href="#解法2：DP" class="headerlink" title="解法2：DP"></a>解法2：DP</h2><p>台阶 1 2 3 4<br>方法 1 2 3 5</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        dp[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度 O(N)<br>空间复杂度 O(N)</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">3</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        dp[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = dp[<span class="number">1</span>] + dp[<span class="number">2</span>];</span><br><span class="line">            dp[<span class="number">1</span>] = dp[<span class="number">2</span>];</span><br><span class="line">            dp[<span class="number">2</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度 O(N)<br>空间复杂度 O(1)</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC69 x的平方根</title>
     <url>/posts/9418/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>实现<code>int sqrt(int x)</code>函数。<br>计算并返回x的平方根，其中x是非负整数。<br>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p>
@@ -450,6 +478,33 @@
       </categories>
       <tags>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC70 爬楼梯</title>
+    <url>/posts/47392/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设你正在爬楼梯。需要n阶你才能到达楼顶。<br>每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">unsigned</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">climbStairs</span>(n - <span class="number">1</span>) + <span class="built_in">climbStairs</span>(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析</strong></p>
+<p>经典方法是一种不进入问题而解决问题的思想，有极多重复计算，因此容易超时。<br>这个方法虽然被舍弃了，但是它揭示了一个规律，即climbStairs(n)=climbStairs(n-2)+climbStairs(n-1)。无需我们算出来每一层的走法再寻找规律，这是用正推的思想启发倒推的思想。<br>由此可见，笨方法虽然在写出来之前就已经被抛弃了，但还是有必要经过这一步无用功，因为它往往是聪明方法的垫脚石。</p>
+<h2 id="解法2：DP"><a href="#解法2：DP" class="headerlink" title="解法2：DP"></a>解法2：DP</h2><p>台阶 1 2 3 4<br>方法 1 2 3 5</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        dp[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(N)<br>空间复杂度 O(N)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">3</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        dp[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = dp[<span class="number">1</span>] + dp[<span class="number">2</span>];</span><br><span class="line">            dp[<span class="number">1</span>] = dp[<span class="number">2</span>];</span><br><span class="line">            dp[<span class="number">2</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(N)<br>空间复杂度 O(1)</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -508,24 +563,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC100 相同的树</title>
-    <url>/posts/32761/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
-<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">nullptr</span> &amp;&amp; q == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">nullptr</span> &amp;&amp; q != <span class="literal">nullptr</span>) </span><br><span class="line">        <span class="built_in"><span class="keyword">return</span></span> (p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;left, q-&gt;left) &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;right, q-&gt;right));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>返回值类型：bool<br>函数名：isSameTree<br>传入参数：根结点p和根结点q<br>向函数传入两棵树的根结点。<br>如果当前两个结点同为空，说明相同，返回true；<br>否则，如果当前两个结点同不为空，则进一步判断：<br>    如果同时递归地满足三个条件，说明两个指针所指向的树是相同的，返回true；<br>    这三个条件为：当前结点数据域相同 且 当前结点左邻域相同 且 当前结点右邻域相同。<br>    只有“真&amp;&amp;真&amp;&amp;真”才为真，任何一个命题为假，则返回假。<br>出现上述条件之外的情况，均说明两树不相同，返回false；</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC101 对称二叉树</title>
     <url>/posts/45276/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，检查它是否是镜像对称的。</p>
@@ -543,6 +580,24 @@
       </categories>
       <tags>
         <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC100 相同的树</title>
+    <url>/posts/32761/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两棵二叉树的根结点p和q，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且结点具有相同的值，则认为它们是相同的。</p>
+<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">nullptr</span> &amp;&amp; q == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">nullptr</span> &amp;&amp; q != <span class="literal">nullptr</span>) </span><br><span class="line">        <span class="built_in"><span class="keyword">return</span></span> (p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;left, q-&gt;left) &amp;&amp; <span class="built_in">isSameTree</span>(p-&gt;right, q-&gt;right));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：bool<br>函数名：isSameTree<br>传入参数：根结点p和根结点q<br>向函数传入两棵树的根结点。<br>如果当前两个结点同为空，说明相同，返回true；<br>否则，如果当前两个结点同不为空，则进一步判断：<br>    如果同时递归地满足三个条件，说明两个指针所指向的树是相同的，返回true；<br>    这三个条件为：当前结点数据域相同 且 当前结点左邻域相同 且 当前结点右邻域相同。<br>    只有“真&amp;&amp;真&amp;&amp;真”才为真，任何一个命题为假，则返回假。<br>出现上述条件之外的情况，均说明两树不相同，返回false；</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -581,6 +636,22 @@
       </tags>
   </entry>
   <entry>
+    <title>LC108 将有序数组转换为二叉搜索树</title>
+    <url>/posts/58423/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
+<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC111 二叉树的最小深度</title>
     <url>/posts/17107/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，找出其最小深度。<br>最小深度是从根结点到最近叶子结点的最短路径上的结点数量。</p>
@@ -596,22 +667,6 @@
       </categories>
       <tags>
         <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC108 将有序数组转换为二叉搜索树</title>
-    <url>/posts/58423/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组nums，其中元素已经按升序排列，请你将其转换为一棵高度平衡二叉查找树。<br>高度平衡二叉树是一棵满足「每个结点的左右两个子树的高度差的绝对值不超过1」的二叉树。</p>
-<h2 id="解法：分治法"><a href="#解法：分治法" class="headerlink" title="解法：分治法"></a>解法：分治法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fun</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">fun</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[mid]);</span><br><span class="line">        root-&gt;left = <span class="built_in">fun</span>(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">fun</span>(nums, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
       </tags>
   </entry>
   <entry>
@@ -711,31 +766,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC144 二叉树的前序遍历</title>
-    <url>/posts/46413/</url>
-    <content><![CDATA[<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        a.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;left, a);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;right, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>返回值类型：vector<int><br>函数名：preorderTraversal<br>传入参数：根结点<br>初始化int类型的容器res，<br>向函数fun传入根结点root和res<br>返回res。</p>
-<p>返回值类型：void<br>函数名：fun<br>传入参数：根结点，容器res的引用a；因为要修改容器res的内容，所以不能按传值方式，要传引用。<br>如果传入结点为空，无需遍历，直接返回；<br>否则传入结点非空，则：<br>访问当前结点，将其数据域压入容器res的引用a；<br>按前序遍历递归地访问当前结点的左子树；<br>按前序遍历递归地访问当前结点的右子树；</p>
-<h2 id="解法2：迭代"><a href="#解法2：迭代" class="headerlink" title="解法2：迭代"></a>解法2：迭代</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; s;</span><br><span class="line">        TreeNode* curr = root;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">nullptr</span> || s.<span class="built_in">empty</span>() == <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (curr != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">                a.<span class="built_in">push_back</span>(curr-&gt;val);</span><br><span class="line">                <span class="keyword">if</span> (curr-&gt;right != <span class="literal">nullptr</span>) s.<span class="built_in">push</span>(curr-&gt;right);</span><br><span class="line">                curr = curr-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!s.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                curr = s.<span class="built_in">top</span>();</span><br><span class="line">                s.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>返回值类型：vector<int><br>函数名：preorderTraversal<br>传入参数：根结点<br>初始化int类型的容器res，<br>向函数fun传入根结点root和res<br>返回res。</p>
-<p>返回值类型：void<br>函数名：fun<br>传入参数：根结点，容器res的引用a 因为要修改容器res的内容，所以不能按传值方式，要传引用。<br>初始化一个辅助容器，名为s的栈，栈中的每个元素的类型均为指向TreeNode类型的指针；<br>声明一个指向当前结点的指针curr，将其初始化为指向根结点；<br>当（栈s非空 或 当前结点curr非空）时，进行循环：<br>当（当前结点curr非空）时，进行循环：<br>（访问根）向容器res的引用a中压入当前结点的数据域；向左迭代过程中，根和左都能依次访问，而右则暂时存入辅助栈。<br>如果（当前结点curr的右邻域非空），则将curr的右结点压入辅助栈s中；<br>curr向左移动；<br>上面循环结束时，curr指向最左边结点的左邻域，为空；循环结束时根左都访问完成，之后依次弹出栈中事先存放的右结点们即可。<br>如果（辅助栈s非空），则：<br>令curr=辅助栈s的顶部元素；<br>s弹出一次；</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-        <tag>迭代</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC145 二叉树的后序遍历</title>
     <url>/posts/6463/</url>
     <content><![CDATA[<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
@@ -766,6 +796,31 @@
       </tags>
   </entry>
   <entry>
+    <title>LC144 二叉树的前序遍历</title>
+    <url>/posts/46413/</url>
+    <content><![CDATA[<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        a.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;left, a);</span><br><span class="line">        <span class="built_in">fun</span>(root-&gt;right, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：vector<int><br>函数名：preorderTraversal<br>传入参数：根结点<br>初始化int类型的容器res，<br>向函数fun传入根结点root和res<br>返回res。</p>
+<p>返回值类型：void<br>函数名：fun<br>传入参数：根结点，容器res的引用a；因为要修改容器res的内容，所以不能按传值方式，要传引用。<br>如果传入结点为空，无需遍历，直接返回；<br>否则传入结点非空，则：<br>访问当前结点，将其数据域压入容器res的引用a；<br>按前序遍历递归地访问当前结点的左子树；<br>按前序遍历递归地访问当前结点的右子树；</p>
+<h2 id="解法2：迭代"><a href="#解法2：迭代" class="headerlink" title="解法2：迭代"></a>解法2：迭代</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">fun</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; s;</span><br><span class="line">        TreeNode* curr = root;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">nullptr</span> || s.<span class="built_in">empty</span>() == <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (curr != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">                a.<span class="built_in">push_back</span>(curr-&gt;val);</span><br><span class="line">                <span class="keyword">if</span> (curr-&gt;right != <span class="literal">nullptr</span>) s.<span class="built_in">push</span>(curr-&gt;right);</span><br><span class="line">                curr = curr-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!s.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                curr = s.<span class="built_in">top</span>();</span><br><span class="line">                s.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：vector<int><br>函数名：preorderTraversal<br>传入参数：根结点<br>初始化int类型的容器res，<br>向函数fun传入根结点root和res<br>返回res。</p>
+<p>返回值类型：void<br>函数名：fun<br>传入参数：根结点，容器res的引用a 因为要修改容器res的内容，所以不能按传值方式，要传引用。<br>初始化一个辅助容器，名为s的栈，栈中的每个元素的类型均为指向TreeNode类型的指针；<br>声明一个指向当前结点的指针curr，将其初始化为指向根结点；<br>当（栈s非空 或 当前结点curr非空）时，进行循环：<br>当（当前结点curr非空）时，进行循环：<br>（访问根）向容器res的引用a中压入当前结点的数据域；向左迭代过程中，根和左都能依次访问，而右则暂时存入辅助栈。<br>如果（当前结点curr的右邻域非空），则将curr的右结点压入辅助栈s中；<br>curr向左移动；<br>上面循环结束时，curr指向最左边结点的左邻域，为空；循环结束时根左都访问完成，之后依次弹出栈中事先存放的右结点们即可。<br>如果（辅助栈s非空），则：<br>令curr=辅助栈s的顶部元素；<br>s弹出一次；</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>迭代</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC155 最小栈</title>
     <url>/posts/20585/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持push，pop，top操作，并能在常数时间内检索到最小元素的栈。</p>
@@ -781,22 +836,6 @@
       </categories>
       <tags>
         <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC167 两数之和 II - 输入有序数组</title>
-    <url>/posts/ebc9/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个已按照升序排列的整数数组numbers，请你从数组中找出两个数满足相加之和等于目标数target。</p>
-<p>函数应该以长度为2的整数数组的形式返回这两个数的下标值。numbers的下标从1开始计数，所以答案数组应当满足<code>1&lt;=answer[0]&lt;answer[1]&lt;=numbers.length</code>。你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</p>
-<h2 id="解法1：二分搜索"><a href="#解法1：二分搜索" class="headerlink" title="解法1：二分搜索"></a>解法1：二分搜索</h2><p>注意对二分搜索的左右边界进行迭代。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> find = <span class="built_in">binSearch</span>(numbers, i + <span class="number">1</span>, numbers.<span class="built_in">size</span>() - <span class="number">1</span>, target - numbers[i]);</span><br><span class="line">            <span class="keyword">if</span> (find == <span class="number">-1</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (find != <span class="number">-1</span>) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(i + <span class="number">1</span>);</span><br><span class="line">                res.<span class="built_in">push_back</span>(find + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">binSearch</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == x) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; x) l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123; r = mid - <span class="number">1</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>二分搜索</tag>
       </tags>
   </entry>
   <entry>
@@ -822,6 +861,22 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC167 两数之和 II - 输入有序数组</title>
+    <url>/posts/ebc9/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个已按照升序排列的整数数组numbers，请你从数组中找出两个数满足相加之和等于目标数target。</p>
+<p>函数应该以长度为2的整数数组的形式返回这两个数的下标值。numbers的下标从1开始计数，所以答案数组应当满足<code>1&lt;=answer[0]&lt;answer[1]&lt;=numbers.length</code>。你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</p>
+<h2 id="解法1：二分搜索"><a href="#解法1：二分搜索" class="headerlink" title="解法1：二分搜索"></a>解法1：二分搜索</h2><p>注意对二分搜索的左右边界进行迭代。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> find = <span class="built_in">binSearch</span>(numbers, i + <span class="number">1</span>, numbers.<span class="built_in">size</span>() - <span class="number">1</span>, target - numbers[i]);</span><br><span class="line">            <span class="keyword">if</span> (find == <span class="number">-1</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (find != <span class="number">-1</span>) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(i + <span class="number">1</span>);</span><br><span class="line">                res.<span class="built_in">push_back</span>(find + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">binSearch</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == x) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; x) l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123; r = mid - <span class="number">1</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>二分搜索</tag>
       </tags>
   </entry>
   <entry>
@@ -874,27 +929,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC191 位1的个数</title>
-    <url>/posts/10400/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>) count++;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：消1技巧"><a href="#解法2：消1技巧" class="headerlink" title="解法2：消1技巧"></a>解法2：消1技巧</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            n = n &amp; (n - <span class="number">1</span>);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>位操作的小技巧：n&amp;(n-1)可以将n的二进制表示中的最低位的1改为0<br>重复上述操作，最终将使n消成0</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC190 颠倒二进制位</title>
     <url>/posts/10915/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>颠倒给定的32位无符号整数的二进制位。</p>
@@ -930,6 +964,27 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC191 位1的个数</title>
+    <url>/posts/10400/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>) count++;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：消1技巧"><a href="#解法2：消1技巧" class="headerlink" title="解法2：消1技巧"></a>解法2：消1技巧</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            n = n &amp; (n - <span class="number">1</span>);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>位操作的小技巧：n&amp;(n-1)可以将n的二进制表示中的最低位的1改为0<br>重复上述操作，最终将使n消成0</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -987,24 +1042,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC217 存在重复元素</title>
-    <url>/posts/32846/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组，判断是否存在重复元素。<br>如果存在一值在数组中出现至少两次，函数返回true。如果数组中每个元素都不相同，则返回false 。</p>
-<p>输入: [1,2,3,1]<br>输出: true</p>
-<p>输入：[]<br>返回：false </p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p>两层for</p>
-<h2 id="解法2：排序"><a href="#解法2：排序" class="headerlink" title="解法2：排序"></a>解法2：排序</h2><p>先排序，在遍历，只遍历一遍</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsDuplicate</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC206 反转链表</title>
     <url>/posts/13788/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>反转一个单链表。</p>
@@ -1030,6 +1067,24 @@
       </tags>
   </entry>
   <entry>
+    <title>LC217 存在重复元素</title>
+    <url>/posts/32846/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组，判断是否存在重复元素。<br>如果存在一值在数组中出现至少两次，函数返回true。如果数组中每个元素都不相同，则返回false 。</p>
+<p>输入: [1,2,3,1]<br>输出: true</p>
+<p>输入：[]<br>返回：false </p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p>两层for</p>
+<h2 id="解法2：排序"><a href="#解法2：排序" class="headerlink" title="解法2：排序"></a>解法2：排序</h2><p>先排序，在遍历，只遍历一遍</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsDuplicate</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC225 用队列实现栈</title>
     <url>/posts/24678/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用队列实现一个后入先出(LIFO)的栈，并支持普通队列的全部四种操作(push、top、pop和empty)。</p>
@@ -1050,19 +1105,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC231 2的幂</title>
-    <url>/posts/61503/</url>
-    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ((n &amp; (n - <span class="number">1</span>)) == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC226 翻转二叉树</title>
     <url>/posts/48bf/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>镜像翻转一棵二叉树。</p>
@@ -1074,6 +1116,19 @@
       </categories>
       <tags>
         <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC231 2的幂</title>
+    <url>/posts/61503/</url>
+    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ((n &amp; (n - <span class="number">1</span>)) == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1156,8 +1211,8 @@
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>哈希</tag>
         <tag>字符串</tag>
+        <tag>哈希</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -1267,22 +1322,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC387 字符串中的第一个唯一字符</title>
-    <url>/posts/49339/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
-<p>输入 s = “leetcode”<br>输出 0</p>
-<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有26个字母的标记数组</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC367 有效的完全平方数</title>
     <url>/posts/42082/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个正整数num，编写一个函数，如果num是一个完全平方数，则返回True，否则返回False。<br>说明：不要使用任何内置的库函数，如sqrt。</p>
@@ -1303,6 +1342,22 @@
       </categories>
       <tags>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC387 字符串中的第一个唯一字符</title>
+    <url>/posts/49339/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
+<p>输入 s = “leetcode”<br>输出 0</p>
+<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有26个字母的标记数组</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1440,24 +1495,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PE1 Multiples of 3 and 5</title>
-    <url>/posts/18889/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>Project Euler</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JZ49 丑数</title>
     <url>/posts/96df/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子2,3和5的数称作丑数。求按从小到大的顺序的第n个丑数。<br>注：第150个丑数为5832。</p>
@@ -1514,51 +1551,6 @@
         <tag>二分搜索</tag>
         <tag>堆</tag>
         <tag>集合</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>破译密码</title>
-    <url>/posts/8f03/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>译码规则：</p>
-<ol>
-<li>字母如A开头，串中所有字母和数字顺延1位，其他不变。</li>
-<li>数字如1开头，串中所有字母和数字顺延1位，其他不变。</li>
-<li>符号如_开头，视为字母A开头。</li>
-<li>Z顺延一位变回A，9顺延一位变回0</li>
-</ol>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">trans</span><span class="params">(string before)</span> </span>&#123;</span><br><span class="line">    string after = before;</span><br><span class="line">    <span class="keyword">int</span> diff;</span><br><span class="line">    <span class="keyword">if</span> (before[<span class="number">0</span>] &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; before[<span class="number">0</span>] &lt;= <span class="string">&#x27;Z&#x27;</span>) diff = before[<span class="number">0</span>] - <span class="string">&#x27;A&#x27;</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (before[<span class="number">0</span>] &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; before[<span class="number">0</span>] &lt;= <span class="string">&#x27;Z&#x27;</span>) diff = before[<span class="number">0</span>] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span> diff = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : after) &#123;</span><br><span class="line">        <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;Z&#x27;</span>) c = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>&gt;(<span class="string">&#x27;A&#x27;</span> + (c - <span class="string">&#x27;A&#x27;</span> + diff) % <span class="number">26</span>);</span><br><span class="line">        <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span>) c = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>&gt;(<span class="string">&#x27;0&#x27;</span> + (c - <span class="string">&#x27;0&#x27;</span> + diff) % <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> after;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(cin, str)) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">trans</span>(str) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是字节跳动21春招第五场笔试的第1题，分值10分。</p>
-<p>好好练练ACM模式的输入输出吧，这学习代价未免也太大了。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>字节跳动</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>精确表达浮点数</title>
-    <url>/posts/43ef/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将给定属于0~1区间的有限小数或者无限循环小数（循环节用括号标记）以最简真分数的形式表示。<br>最简分数是指分子和分母互质的分数。</p>
-<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>输入: 0.25<br>输出: 1/4</p>
-<p>输入: 0.33(33)<br>输出: 1/3</p>
-<p>输入: 0.285714(285714)<br>输出: 2/7</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RepresentExactly</span><span class="params">(string str)</span> </span>&#123;</span><br><span class="line">    string strLimited, strUnLimited;</span><br><span class="line">    <span class="keyword">int</span> nLenLimited = <span class="number">0</span>, nLenUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> Molecule = <span class="number">0</span>, Denominator = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nLimited = <span class="number">0</span>, nUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">auto</span> Start = str.<span class="built_in">find</span>(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Start != str.npos) &#123;</span><br><span class="line">        <span class="keyword">auto</span> End = str.<span class="built_in">find</span>(<span class="string">&#x27;)&#x27;</span>, Start);</span><br><span class="line"></span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>, Start - <span class="number">2</span>);</span><br><span class="line">        strUnLimited = str.<span class="built_in">substr</span>(Start + <span class="number">1</span>, End - Start - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        nLenUnLimited = strUnLimited.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        nLimited = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        nUnLimited = <span class="built_in">atoi</span>(strUnLimited.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">        Molecule = (<span class="keyword">long</span> <span class="keyword">long</span>)(nLimited * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>) + nUnLimited);</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited) * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>);</span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        Molecule = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="built_in">RepresentExactly</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是Shopee深圳21春招后端笔试第1题，分值20分，最后是通过了80%的case，没通过的那几个好像是输入的字符串小数里塞了乱七八糟的空格，写个trim space的函数就好了，没什么好说的。</p>
-<p>出自编程之美，题目倒是挺经典的，就是考的有点丑陋。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>Shopee</tag>
       </tags>
   </entry>
   <entry>
@@ -1645,48 +1637,6 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++动态内存</title>
-    <url>/posts/576d/</url>
-    <content><![CDATA[<h2 id="内存分配的概念"><a href="#内存分配的概念" class="headerlink" title="内存分配的概念"></a>内存分配的概念</h2><p>C/C++的内存分配方式有两种：静态内存分配（编译时分配）和动态内存分配（运行时分配）。</p>
-<p>动态内存分配是指由程序员手动执行的内存分配。<br>动态内存是指通过动态内存分配方式分配的内存。</p>
-<p>动态分配的内存位于堆上，非静态（即临时的）局部变量则位于栈上。有关详细信息，请参阅<a href="https://www.geeksforgeeks.org/memory-layout-of-c-program/">C的内存布局</a>。</p>
-<h3 id="动态内存分配有什么用？"><a href="#动态内存分配有什么用？" class="headerlink" title="动态内存分配有什么用？"></a>动态内存分配有什么用？</h3><ul>
-<li>动态内存分配的一个用途是分配可变大小的内存，这是编译时内存分配做不到的（可变长度数组除外）。</li>
-<li>动态内存分配最大的作用是为程序员提供了灵活性。无论何时需要或不再需要，我们都可以自由地分配和释放内存。很多情况下这种灵活性是大有帮助的，例如链表、树等。</li>
-</ul>
-<h3 id="动态内存与分配给普通变量的内存有何不同？"><a href="#动态内存与分配给普通变量的内存有何不同？" class="headerlink" title="动态内存与分配给普通变量的内存有何不同？"></a>动态内存与分配给普通变量的内存有何不同？</h3><p>对于声明像<code>int a</code>、<code>char str[]</code>这样的常规变量，编译器将自动分配和释放内存。<br>对于用new-delete动态分配的内存，如<code>int* p = new int[10]</code>，程序员必须在使用结束后手动释放内存。否则将导致内存泄漏（直到程序终止内存才被动地释放）。</p>
-<h3 id="什么是内存泄漏，怎么确定内存泄漏？"><a href="#什么是内存泄漏，怎么确定内存泄漏？" class="headerlink" title="什么是内存泄漏，怎么确定内存泄漏？"></a>什么是内存泄漏，怎么确定内存泄漏？</h3><p>内存泄漏（memory leak）是指由于疏忽或错误造成了程序未能释放掉已经不再使用的内存的情况。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，在程序的后续运行中失去了对该段内存的控制，因而造成了内存的浪费。内存泄漏通常是由于调用了malloc/new等内存申请的操作，但是缺少了对应的free/delete。</p>
-<p>为了判断内存是否泄露，我们一方面可以使用linux环境下的Valgrind或mtrace内存泄漏检查工具，另一方面可以在写代码时可以添加内存申请和释放的统计功能，统计当前申请和释放的内存是否一致，以此来判断内存是否泄露。</p>
-<h3 id="如何在C-中分配-释放内存？"><a href="#如何在C-中分配-释放内存？" class="headerlink" title="如何在C++中分配/释放内存？"></a>如何在C++中分配/释放内存？</h3><p>C语言使用malloc()和callol()函数来在运行时动态分配内存，并使用free()函数释放这些动态分配的内存。<br>C++中也支持上面这些函数，此外还有new()和delete()两个新的操作符，它们可以以更好和更轻松的方式执行分配和释放内存的任务。<br>本文全部是关于new和delete操作符的。</p>
-<p>注：new和delete应该叫操作符还是运算符？我本来觉得应该是叫操作符，操作符是嵌在每一条指令中的，我理解的是计算机系统中的术语，比如赋值、判等。运算符主要侧重信息的提取和转化，比如取地址运算符和间接寻址运算符。简而言之，操作符的作用比较直观，而运算符的作用比较抽象和本质。我一开始混淆着用，后来想想两者还是有些不同的，再后来我又感觉这两者其实还是差不多……</p>
-<h2 id="new运算符"><a href="#new运算符" class="headerlink" title="new运算符"></a>new运算符</h2><p>new运算符表示请求在空闲内存上分配一块内存，如果有足够的内存可用，则new运算符将初始化该内存，并将新分配和初始化的内存的地址返回给指针变量。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>要分配任何数据类型的内存，其语法为：<br>pointer-variable = new data-type;</p>
-<p>这里，pointer-variable是指向某种数据类型的指针，数据类型可以是任何内置数据类型（包括数组），也可以是用户定义的任何数据类型（包括结构体和类）。</p>
-<p>例如：<code>int* p = new int;</code></p>
-<h3 id="初始化内存"><a href="#初始化内存" class="headerlink" title="初始化内存"></a>初始化内存</h3><p>内存的初始化的意思是，赋予这块内存上的变量一个缺省值。new运算符能够支持内存初始化的重要原理是：new会自动调用构造函数，而且delete销毁对象的时候也会调用对象的析构函数。这是C++动态内存和C语言的重要不同。</p>
-<p>例如：<code>int* p = new int(25);</code></p>
-<h3 id="分配内存块"><a href="#分配内存块" class="headerlink" title="分配内存块"></a>分配内存块</h3><p>内存块就是在一起的一些内存的集合，也就是俗话说的数组。<br>new运算符还可以用于分配data-type类型的内存块（数组）。</p>
-<p>例如：<code>int* p = new int[10];</code></p>
-<p>动态地为int类型的10个整数连续分配内存，并返回序列中第一个元素的地址给指针p。p[0]表示第一个元素，p[1]表示第二个元素，依此类推。</p>
-<h3 id="Normal-Array-Declaration-vs-Using-new"><a href="#Normal-Array-Declaration-vs-Using-new" class="headerlink" title="Normal Array Declaration vs Using new"></a>Normal Array Declaration vs Using new</h3><p>以普通方式声明的数组与使用new分配的内存块之间是有区别的。最重要的区别是，常规数组由编译器释放（如果数组在局部声明，则在函数返回或完成时释放）。但是，动态分配的数组始终保留在那里，直到程序员主动将其释放或程序彻底结束为止。</p>
-<h3 id="运行时可用内存不足怎么办？"><a href="#运行时可用内存不足怎么办？" class="headerlink" title="运行时可用内存不足怎么办？"></a>运行时可用内存不足怎么办？</h3><p>如果堆中没有足够的内存可供分配，则新请求通过抛出std::bad_alloc类型的异常来指示内存分配失败了，如果new运算符使用了nothrow则不会抛出异常，但会返回一个空指针（请参阅<a href="https://aticleworld.com/dynamic-memory-and-new-operator-c/">new运算符的异常处理</a>一文）。因此，在使用new出来的对象之前，最好先检查指针变量是否为空。</p>
-<p>例如：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>* p = <span class="built_in"><span class="keyword">new</span></span>(nothrow) <span class="keyword">int</span>;</span><br><span class="line"><span class="keyword">if</span> (!p) &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Memory allocation failed.\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="delete运算符"><a href="#delete运算符" class="headerlink" title="delete运算符"></a>delete运算符</h2><p>由于程序员有责任释放自己动态分配的内存，因此C++为程序员提供了delete运算符。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>// Release memory pointed by pointer-variable<br>一般：delete pointer-variable;<br>具体：delete p;</p>
-<h3 id="销毁内存块（数组）"><a href="#销毁内存块（数组）" class="headerlink" title="销毁内存块（数组）"></a>销毁内存块（数组）</h3><p>// Release block of memory pointed by pointer-variable<br>一般：delete[] pointer-variable;<br>具体：delete[] p;</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>C++程序设计</category>
-      </categories>
-      <tags>
-        <tag>底层技术</tag>
-        <tag>内存</tag>
       </tags>
   </entry>
   <entry>
@@ -1777,6 +1727,48 @@
       </tags>
   </entry>
   <entry>
+    <title>C++动态内存</title>
+    <url>/posts/576d/</url>
+    <content><![CDATA[<h2 id="内存分配的概念"><a href="#内存分配的概念" class="headerlink" title="内存分配的概念"></a>内存分配的概念</h2><p>C/C++的内存分配方式有两种：静态内存分配（编译时分配）和动态内存分配（运行时分配）。</p>
+<p>动态内存分配是指由程序员手动执行的内存分配。<br>动态内存是指通过动态内存分配方式分配的内存。</p>
+<p>动态分配的内存位于堆上，非静态（即临时的）局部变量则位于栈上。有关详细信息，请参阅<a href="https://www.geeksforgeeks.org/memory-layout-of-c-program/">C的内存布局</a>。</p>
+<h3 id="动态内存分配有什么用？"><a href="#动态内存分配有什么用？" class="headerlink" title="动态内存分配有什么用？"></a>动态内存分配有什么用？</h3><ul>
+<li>动态内存分配的一个用途是分配可变大小的内存，这是编译时内存分配做不到的（可变长度数组除外）。</li>
+<li>动态内存分配最大的作用是为程序员提供了灵活性。无论何时需要或不再需要，我们都可以自由地分配和释放内存。很多情况下这种灵活性是大有帮助的，例如链表、树等。</li>
+</ul>
+<h3 id="动态内存与分配给普通变量的内存有何不同？"><a href="#动态内存与分配给普通变量的内存有何不同？" class="headerlink" title="动态内存与分配给普通变量的内存有何不同？"></a>动态内存与分配给普通变量的内存有何不同？</h3><p>对于声明像<code>int a</code>、<code>char str[]</code>这样的常规变量，编译器将自动分配和释放内存。<br>对于用new-delete动态分配的内存，如<code>int* p = new int[10]</code>，程序员必须在使用结束后手动释放内存。否则将导致内存泄漏（直到程序终止内存才被动地释放）。</p>
+<h3 id="什么是内存泄漏，怎么确定内存泄漏？"><a href="#什么是内存泄漏，怎么确定内存泄漏？" class="headerlink" title="什么是内存泄漏，怎么确定内存泄漏？"></a>什么是内存泄漏，怎么确定内存泄漏？</h3><p>内存泄漏（memory leak）是指由于疏忽或错误造成了程序未能释放掉已经不再使用的内存的情况。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，在程序的后续运行中失去了对该段内存的控制，因而造成了内存的浪费。内存泄漏通常是由于调用了malloc/new等内存申请的操作，但是缺少了对应的free/delete。</p>
+<p>为了判断内存是否泄露，我们一方面可以使用linux环境下的Valgrind或mtrace内存泄漏检查工具，另一方面可以在写代码时可以添加内存申请和释放的统计功能，统计当前申请和释放的内存是否一致，以此来判断内存是否泄露。</p>
+<h3 id="如何在C-中分配-释放内存？"><a href="#如何在C-中分配-释放内存？" class="headerlink" title="如何在C++中分配/释放内存？"></a>如何在C++中分配/释放内存？</h3><p>C语言使用malloc()和callol()函数来在运行时动态分配内存，并使用free()函数释放这些动态分配的内存。<br>C++中也支持上面这些函数，此外还有new()和delete()两个新的操作符，它们可以以更好和更轻松的方式执行分配和释放内存的任务。<br>本文全部是关于new和delete操作符的。</p>
+<p>注：new和delete应该叫操作符还是运算符？我本来觉得应该是叫操作符，操作符是嵌在每一条指令中的，我理解的是计算机系统中的术语，比如赋值、判等。运算符主要侧重信息的提取和转化，比如取地址运算符和间接寻址运算符。简而言之，操作符的作用比较直观，而运算符的作用比较抽象和本质。我一开始混淆着用，后来想想两者还是有些不同的，再后来我又感觉这两者其实还是差不多……</p>
+<h2 id="new运算符"><a href="#new运算符" class="headerlink" title="new运算符"></a>new运算符</h2><p>new运算符表示请求在空闲内存上分配一块内存，如果有足够的内存可用，则new运算符将初始化该内存，并将新分配和初始化的内存的地址返回给指针变量。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>要分配任何数据类型的内存，其语法为：<br>pointer-variable = new data-type;</p>
+<p>这里，pointer-variable是指向某种数据类型的指针，数据类型可以是任何内置数据类型（包括数组），也可以是用户定义的任何数据类型（包括结构体和类）。</p>
+<p>例如：<code>int* p = new int;</code></p>
+<h3 id="初始化内存"><a href="#初始化内存" class="headerlink" title="初始化内存"></a>初始化内存</h3><p>内存的初始化的意思是，赋予这块内存上的变量一个缺省值。new运算符能够支持内存初始化的重要原理是：new会自动调用构造函数，而且delete销毁对象的时候也会调用对象的析构函数。这是C++动态内存和C语言的重要不同。</p>
+<p>例如：<code>int* p = new int(25);</code></p>
+<h3 id="分配内存块"><a href="#分配内存块" class="headerlink" title="分配内存块"></a>分配内存块</h3><p>内存块就是在一起的一些内存的集合，也就是俗话说的数组。<br>new运算符还可以用于分配data-type类型的内存块（数组）。</p>
+<p>例如：<code>int* p = new int[10];</code></p>
+<p>动态地为int类型的10个整数连续分配内存，并返回序列中第一个元素的地址给指针p。p[0]表示第一个元素，p[1]表示第二个元素，依此类推。</p>
+<h3 id="Normal-Array-Declaration-vs-Using-new"><a href="#Normal-Array-Declaration-vs-Using-new" class="headerlink" title="Normal Array Declaration vs Using new"></a>Normal Array Declaration vs Using new</h3><p>以普通方式声明的数组与使用new分配的内存块之间是有区别的。最重要的区别是，常规数组由编译器释放（如果数组在局部声明，则在函数返回或完成时释放）。但是，动态分配的数组始终保留在那里，直到程序员主动将其释放或程序彻底结束为止。</p>
+<h3 id="运行时可用内存不足怎么办？"><a href="#运行时可用内存不足怎么办？" class="headerlink" title="运行时可用内存不足怎么办？"></a>运行时可用内存不足怎么办？</h3><p>如果堆中没有足够的内存可供分配，则新请求通过抛出std::bad_alloc类型的异常来指示内存分配失败了，如果new运算符使用了nothrow则不会抛出异常，但会返回一个空指针（请参阅<a href="https://aticleworld.com/dynamic-memory-and-new-operator-c/">new运算符的异常处理</a>一文）。因此，在使用new出来的对象之前，最好先检查指针变量是否为空。</p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>* p = <span class="built_in"><span class="keyword">new</span></span>(nothrow) <span class="keyword">int</span>;</span><br><span class="line"><span class="keyword">if</span> (!p) &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Memory allocation failed.\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="delete运算符"><a href="#delete运算符" class="headerlink" title="delete运算符"></a>delete运算符</h2><p>由于程序员有责任释放自己动态分配的内存，因此C++为程序员提供了delete运算符。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>// Release memory pointed by pointer-variable<br>一般：delete pointer-variable;<br>具体：delete p;</p>
+<h3 id="销毁内存块（数组）"><a href="#销毁内存块（数组）" class="headerlink" title="销毁内存块（数组）"></a>销毁内存块（数组）</h3><p>// Release block of memory pointed by pointer-variable<br>一般：delete[] pointer-variable;<br>具体：delete[] p;</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>底层技术</tag>
+        <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++引用</title>
     <url>/posts/f148/</url>
     <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>引用是已存在的对象的别名。</p>
@@ -1861,6 +1853,143 @@
       <tags>
         <tag>引用</tag>
         <tag>指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++构造函数</title>
+    <url>/posts/7a4a/</url>
+    <content><![CDATA[<h2 id="什么是构造函数？"><a href="#什么是构造函数？" class="headerlink" title="什么是构造函数？"></a>什么是构造函数？</h2><p>构造函数是类的成员函数，用于初始化类的对象。在C++中，创建对象（类的实例）时会自动调用Constructor。它是该类的特殊成员函数。</p>
+<h2 id="构造函数与普通成员函数有何不同？"><a href="#构造函数与普通成员函数有何不同？" class="headerlink" title="构造函数与普通成员函数有何不同？"></a>构造函数与普通成员函数有何不同？</h2><ol>
+<li>构造函数与类本身具有相同的名称。</li>
+<li>构造函数没有返回类型。</li>
+<li>在创建对象时会自动调用构造函数。</li>
+<li>如果不指定构造函数，C++编译器为我们生成默认构造函数（不带参数，具有空函数体）。</li>
+</ol>
+<h2 id="C-中的构造函数有哪几种？"><a href="#C-中的构造函数有哪几种？" class="headerlink" title="C++中的构造函数有哪几种？"></a>C++中的构造函数有哪几种？</h2><ol>
+<li>默认构造函数（无参）</li>
+<li>有参构造函数</li>
+<li>拷贝构造函数</li>
+</ol>
+<p>gfg有上一个非常好的比喻，没有生词，我就不翻译了，试着翻了一下感觉没有原文生动。</p>
+<p>Let us understand the types of constructors in C++ by taking a real-world example.</p>
+<p>Suppose you went to a shop to buy a marker. When you want to buy a marker, what are the options? </p>
+<p>The first one you go to a shop and say give me a marker. So just saying give me a marker mean that you did not set which brand name and which color, you didn’t mention anything just say you want a marker. So when we said just I want a marker so whatever the frequently sold marker is there in the market or in his shop he will simply hand over that. And this is what a default constructor is!（默认构造函数）</p>
+<p>The second method you go to a shop and say I want a marker a red in color and XYZ brand. So you are mentioning this and he will give you that marker. So in this case you have given the parameters. And this is what a parameterized constructor is!（有参构造函数）</p>
+<p>Then the third one you go to a shop and say I want a marker like this(a physical marker on your hand). So the shopkeeper will see that marker. Okay, and he will give a new marker for you. So copy of that marker. And that’s what copy constructor is!（拷贝构造函数）</p>
+<h2 id="三种构造函数"><a href="#三种构造函数" class="headerlink" title="三种构造函数"></a>三种构造函数</h2><h3 id="默认构造函数"><a href="#默认构造函数" class="headerlink" title="默认构造函数"></a>默认构造函数</h3><p>默认构造函数是不接受任何参数的构造函数。它没有参数。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">construct</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line">    <span class="built_in">construct</span>() &#123; a = <span class="number">10</span>; b = <span class="number">20</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    construct c;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a: &quot;</span> &lt;&lt; c.a &lt;&lt; endl &lt;&lt; <span class="string">&quot;b: &quot;</span> &lt;&lt; c.b &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>即使我们没有显式地定义任何构造函数，编译器也会自动隐式地提供默认构造函数。</p>
+<h3 id="有参构造函数"><a href="#有参构造函数" class="headerlink" title="有参构造函数"></a>有参构造函数</h3><p>可以将参数传递给构造函数。通常，这些参数有助于在创建对象时初始化对象。要创建有参构造函数，只需像向其他函数一样添加参数即可。定义构造函数的函数体时，请使用参数初始化对象。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Point</span>(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1) &#123; x = x1; y = y1; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> y; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Point <span class="title">p1</span><span class="params">(<span class="number">10</span>, <span class="number">15</span>)</span></span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;p1.x = &quot;</span> &lt;&lt; p1.<span class="built_in">getX</span>() &lt;&lt; <span class="string">&quot;, p1.y = &quot;</span> &lt;&lt; p1.<span class="built_in">getY</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有参构造函数可以显式或隐式地调用。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Example e = <span class="built_in">Example</span>(<span class="number">0</span>, <span class="number">50</span>); <span class="comment">// 显式调用</span></span><br><span class="line"><span class="function">Example <span class="title">e</span><span class="params">(<span class="number">0</span>, <span class="number">50</span>)</span></span>; <span class="comment">// 隐式调用</span></span><br></pre></td></tr></table></figure>
+
+<p>有参构造函数的使用</p>
+<ol>
+<li>创建对象时，使用它来初始化具有不同值的不同对象的各种数据元素。</li>
+<li>它用于重载构造函数。</li>
+</ol>
+<p>一个类中可以有多个构造函数吗？<br>是的，这称为构造函数重载。</p>
+<p>构造函数重载</p>
+<p>在C++中，我们可以在一个同名的类中拥有多个构造函数，只要每个构造函数具有不同的参数列表即可。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">construct</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">float</span> area;</span><br><span class="line">    <span class="built_in">construct</span>() &#123; area = <span class="number">0</span>; &#125;</span><br><span class="line">    <span class="built_in">construct</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123; area = a * b; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">disp</span><span class="params">()</span> </span>&#123; cout &lt;&lt; area &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    construct o;</span><br><span class="line">    <span class="function">construct <span class="title">o2</span><span class="params">(<span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    o.<span class="built_in">disp</span>();</span><br><span class="line">    o2.<span class="built_in">disp</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>拷贝构造函数是一个成员函数，它使用同一类的另一个对象初始化一个对象。拷贝构造函数具有以下一般函数原型：<code>ClassName (const ClassName &amp;old_obj);</code>。</p>
+<p>下面是一个拷贝构造函数的简单例子。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Point</span>(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1) &#123; x = x1; y = y1; &#125;</span><br><span class="line">    <span class="built_in">Point</span>(<span class="keyword">const</span> Point&amp; p1) &#123; x = p1.x; y = p1.y; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> y; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Point <span class="title">p1</span><span class="params">(<span class="number">10</span>, <span class="number">15</span>)</span></span>;</span><br><span class="line">    Point p2 = p1; <span class="comment">// 这里不是赋值语句，而是调用拷贝构造函数。注意是不用的。</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;p1.x = &quot;</span> &lt;&lt; p1.<span class="built_in">getX</span>() &lt;&lt; <span class="string">&quot;, p1.y = &quot;</span> &lt;&lt; p1.<span class="built_in">getY</span>() &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;p2.x = &quot;</span> &lt;&lt; p2.<span class="built_in">getX</span>() &lt;&lt; <span class="string">&quot;, p2.y = &quot;</span> &lt;&lt; p2.<span class="built_in">getY</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每当我们为一个类定义一个或多个非默认构造函数（有参）时，也应显式定义一个默认构造函数（无参），因为在这种情况下编译器将不提供默认构造函数。虽然这不是必须的，但是始终定义默认构造函数一般被认为是最佳实践。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">point</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Non-default Constructor &amp; default Constructor</span></span><br><span class="line">    <span class="built_in">point</span>(<span class="keyword">double</span> px, <span class="keyword">double</span> py) &#123; x = px, y = py; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Define an array of size 10 &amp; of type point</span></span><br><span class="line">    <span class="comment">// This line will cause error</span></span><br><span class="line">    point a[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Remove above line and program will compile without error</span></span><br><span class="line">    point b = <span class="built_in">point</span>(<span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>错误：E0291    类 “point” 不存在默认构造函数</p>
+<h4 id="拷贝构造函数什么时候调用？"><a href="#拷贝构造函数什么时候调用？" class="headerlink" title="拷贝构造函数什么时候调用？"></a>拷贝构造函数什么时候调用？</h4><ol>
+<li>当类的对象按值返回时；</li>
+<li>当类的一个对象被值作为参数传递给函数时；</li>
+<li>当一个对象基于同一类的另一个对象来构造时；</li>
+<li>当编译器生成临时对象时。</li>
+</ol>
+<p>然而，在所有这些情况下，都不能保证拷贝构造函数一定被调用，因为C++标准允许编译器在某些情况下优化拷贝。</p>
+<h4 id="什么时候需要用户定义的拷贝构造函数？"><a href="#什么时候需要用户定义的拷贝构造函数？" class="headerlink" title="什么时候需要用户定义的拷贝构造函数？"></a>什么时候需要用户定义的拷贝构造函数？</h4><p>如果我们不定义自己的拷贝构造函数，则C++编译器会为每个类创建一个默认的拷贝构造函数，以在对象之间进行成员级复制。编译器创建的拷贝构造函数通常可以正常工作。仅当对象具有指针或文件句柄，网络连接等资源的任何运行时分配（runtime allocation）时，才需要定义我们自己的拷贝构造函数。</p>
+<p>默认构造函数只执行浅拷贝。<br>只有用户定义的拷贝构造函数才可以进行深层复制。</p>
+<h4 id="拷贝构造函数vs赋值语句"><a href="#拷贝构造函数vs赋值语句" class="headerlink" title="拷贝构造函数vs赋值语句"></a>拷贝构造函数vs赋值语句</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">MyClass t1, t2;</span><br><span class="line">MyClass t3 = t1;</span><br><span class="line">t2 = t1;</span><br></pre></td></tr></table></figure>
+<p>赋值只能是两个已存在的对象，而拷贝构造可以是正在声明。</p>
+<h4 id="为什么必须将拷贝构造函数的参数作为引用传递？"><a href="#为什么必须将拷贝构造函数的参数作为引用传递？" class="headerlink" title="为什么必须将拷贝构造函数的参数作为引用传递？"></a>为什么必须将拷贝构造函数的参数作为引用传递？</h4><p>按值传递对象时，将调用拷贝构造函数。拷贝构造函数本身就是一个函数。因此，如果我们在拷贝构造函数中按值传递参数，则将调用拷贝构造函数来调用拷贝构造函数，这将成为一个无终止的调用链。因此，编译器不允许参数按值传递。</p>
+<h4 id="为什么拷贝构造函数参数应为const？"><a href="#为什么拷贝构造函数参数应为const？" class="headerlink" title="为什么拷贝构造函数参数应为const？"></a>为什么拷贝构造函数参数应为const？</h4><ol>
+<li>我们应尽可能在C++中使用const，以免意外修改对象。</li>
+<li>修改编译器创建的临时对象是没有意义的，因为它们随时都可能死亡。</li>
+</ol>
+<h2 id="C-的内部视角：默认构造函数"><a href="#C-的内部视角：默认构造函数" class="headerlink" title="C++的内部视角：默认构造函数"></a>C++的内部视角：默认构造函数</h2><p>一个问题：编译器是否会在幕后向用户实现的默认构造函数插入任何代码？</p>
+<p>考虑从另一个具有默认构造函数的类派生而来的类，或者包含另一个具有默认构造函数的类对象的类。编译器需要插入代码来调用基类或嵌入对象的默认构造函数。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">A</span>() &#123; cout &lt;&lt; <span class="string">&quot;A Constructor&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span> <span class="keyword">public</span> A &#123;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> <span class="keyword">public</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">C</span>() &#123; cout &lt;&lt; <span class="string">&quot;C Constructor&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">D</span>() &#123; cout &lt;&lt; <span class="string">&quot;D Constructor&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    A a; <span class="comment">// a是嵌入D的一部分，欲构造整体的D，先构造局部的a</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Base base;</span><br><span class="line">    B b; <span class="comment">// A</span></span><br><span class="line">    C c; <span class="comment">// A C</span></span><br><span class="line">    D d; <span class="comment">// A D</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
+        <tag>面向对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++析构函数、虚析构函数、纯虚析构函数</title>
+    <url>/posts/48af/</url>
+    <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>当对象被销毁时，来完成诸如清理和释放资源工作的函数。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><code>~类名();</code></p>
+<h2 id="析构函数的性质"><a href="#析构函数的性质" class="headerlink" title="析构函数的性质"></a>析构函数的性质</h2><ol>
+<li>销毁对象时会自动调用析构函数。</li>
+<li>析构函数不能声明为static或const。</li>
+<li>析构函数没有参数。</li>
+<li>它没有返回类型，甚至没有void。</li>
+<li>具有析构函数的类的对象不能成为联合的成员。</li>
+<li>应该在类的公共部分声明析构函数。</li>
+<li>程序员无法访问析构函数的地址。</li>
+</ol>
+<h2 id="什么时候调用析构函数？"><a href="#什么时候调用析构函数？" class="headerlink" title="什么时候调用析构函数？"></a>什么时候调用析构函数？</h2><p>当对象超出范围时，将自动调用析构函数：</p>
+<ol>
+<li>功能结束</li>
+<li>程序结束</li>
+<li>包含局部变量的块结尾</li>
+<li>调用删除操作符</li>
+</ol>
+<h2 id="析构函数与普通成员函数有何不同？"><a href="#析构函数与普通成员函数有何不同？" class="headerlink" title="析构函数与普通成员函数有何不同？"></a>析构函数与普通成员函数有何不同？</h2><p>析构函数的名称与带波浪号（〜）的类名相同<br>析构函数不接受任何参数，也不返回任何内容</p>
+<p>代码示例</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">char</span>* s;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">String</span>(<span class="keyword">char</span>*); <span class="comment">// constructor</span></span><br><span class="line">    ~<span class="built_in">String</span>(); <span class="comment">// destructor</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">String::<span class="built_in">String</span>(<span class="keyword">char</span>* c) &#123;</span><br><span class="line">    size = <span class="built_in">strlen</span>(c);</span><br><span class="line">    s = <span class="keyword">new</span> <span class="keyword">char</span>[size + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(s, c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String::~<span class="built_in">String</span>() &#123; <span class="keyword">delete</span>[] s; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="我们什么时候需要编写用户定义的析构函数？"><a href="#我们什么时候需要编写用户定义的析构函数？" class="headerlink" title="我们什么时候需要编写用户定义的析构函数？"></a>我们什么时候需要编写用户定义的析构函数？</h2><p>如果我们不在类中编写自己的析构函数，则编译器会为我们创建一个默认的析构函数。除非我们在类中动态分配了内存或指针，否则默认析构函数可以正常工作。当一个类包含指向在该类中分配的内存的指针时，我们应该编写一个析构函数以释放该类实例之前的内存。必须这样做以避免内存泄漏。</p>
+<h2 id="析构函数可以是虚的吗？"><a href="#析构函数可以是虚的吗？" class="headerlink" title="析构函数可以是虚的吗？"></a>析构函数可以是虚的吗？</h2><p>是的，事实上，当我们有一个虚函数时，在基类中使析构函数虚化总是一个好主意。有关详细信息，请参见<a href="https://www.geeksforgeeks.org/g-fact-37/">虚析构函数</a>。</p>
+<h2 id="虚析构函数"><a href="#虚析构函数" class="headerlink" title="虚析构函数"></a>虚析构函数</h2><p>Deleting a derived class object using a pointer of base class type that has a non-virtual destructor results in undefined behavior.<br>（使用普通析构函数的）基类指针不能用来释放派生类对象。<br>要纠正这种情况，应使用虚拟析构函数定义基类。</p>
+<p>运行以下程序：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CPP program without virtual destructor</span></span><br><span class="line"><span class="comment">// causing undefined behavior</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing base \n&quot;</span>; &#125;</span><br><span class="line">    ~<span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing base \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">derived</span> :</span> <span class="keyword">public</span> base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing derived \n&quot;</span>; &#125;</span><br><span class="line">    ~<span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing derived \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    derived* d = <span class="keyword">new</span> <span class="built_in">derived</span>();</span><br><span class="line">    base* b = d;</span><br><span class="line">    <span class="keyword">delete</span> b;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将导致</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Constructing base</span><br><span class="line">Constructing derived</span><br><span class="line">Destructing base</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>发现实际上只调用了父类的析构函数，没有调用子类析构函数。可想而知，如果在子类的构造函数中对某个成员函数在堆内存中分配了空间，而子类没有被析构，是不是会造成内存泄漏呢？答案是肯定的，那有什么办法可以解决这种情况下出现的内存泄漏呢？那就是把父类的析构函数写为虚析构函数，</p>
+<p>如果使用虚析构函数</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CPP program without virtual destructor</span></span><br><span class="line"><span class="comment">// causing undefined behavior</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing base \n&quot;</span>; &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing base \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">derived</span> :</span> <span class="keyword">public</span> base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing derived \n&quot;</span>; &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing derived \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    derived* d = <span class="keyword">new</span> <span class="built_in">derived</span>();</span><br><span class="line">    base* b = d; <span class="comment">// 派生类可以为基类赋值，而基类不能给派生类赋值</span></span><br><span class="line">    <span class="keyword">delete</span> b;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则正常输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Constructing base</span><br><span class="line">Constructing derived</span><br><span class="line">Destructing derived</span><br><span class="line">Destructing base</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>分析一下</p>
+<p>构造函数和析构函数调用的次序是：</p>
+<p>首先，创建派生类对象时必须调用基类构造函数，这是语法规定。<br>其次，销毁基类对象时，反过来必须先调用派生类析构函数。</p>
+<p>子类的析构函数其实不止只有析构子类的这些代码，C++语言隐式生成了很多其他代码，即析构顺序，在调用析构函数时会先调用子类的析构函数，然后反向依次析构子类的成员变量，然后再反向析构各基类，如果有多个基类，按照先非virtual基类后virtual基类的顺序。并且子类的析构函数不是立刻返回的，而是等到上述函数全部调用完才返回。</p>
+<p>这个例子是向上转型，将派生类赋值给基类，非常安全，可以由编译器自动完成。<br>而向下转型是将基类赋值给派生类，有未定义的风险，需要程序员手动干预。</p>
+<p>换句话说，基类指针指向派生类对象，只需要切除多于的部分。<br>但派生类指针指向基类对象，派生类多出来的空余没法填满，会产生编译错误。因为派生类中可能具有只有派生类才有的成员或成员函数。</p>
+<p>再换句话说，把男女老少当人看；把鸡鸭猫狗当动物看。有那么难理解吗？<br>派生类对象本来就能当基类用，</p>
+<p>内存视角为什么C++中，基类指针可以指向派生类对象？<br>在内存中，一个基类类型的指针是覆盖N个单位长度的内存空间。<br>当其指向派生类的时候，由于派生类元素在内存中堆放是：前N个是基类的元素，N之后的是派生类的元素。<br>于是基类的指针就可以访问到基类也有的元素了，但是此时无法访问到派生类（就是N之后）的元素。</p>
+<p>原则上，任何时候在类中有虚函数时，都应立即添加虚析构函数（即使它不执行任何操作）。这样，您可以确保以后不会出现任何意外情况。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
+        <tag>面向对象</tag>
       </tags>
   </entry>
   <entry>
@@ -1985,50 +2114,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C程序的内存布局</title>
-    <url>/posts/520a/</url>
-    <content><![CDATA[<h2 id="存储时的3个区域"><a href="#存储时的3个区域" class="headerlink" title="存储时的3个区域"></a>存储时的3个区域</h2><p>一个存储着数据但处于未运行状态的程序（它可以被编译过，注意编译和运行的差别），其存储结构分为三个部分：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
-
-<h2 id="运行时的5个区域"><a href="#运行时的5个区域" class="headerlink" title="运行时的5个区域"></a>运行时的5个区域</h2><p>一个正在运行着的C编译程序占用的内存可以分为5个部分：<br>注：从下到上，1为低地址，5为高地址。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5: Stack (Stack) ↓</span><br><span class="line">4: Heap (Heap) ↑</span><br><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
-
-<p>5以上是各种命令行参数和环境变量<br>5栈向低地址增长<br>4堆向高地址增长<br>3由exec函数族初始化为0<br>1和2由exec函数族从程序文件中读入</p>
-<p>接下来自底向上依次说明。</p>
-<h2 id="Text-代码段"><a href="#Text-代码段" class="headerlink" title="Text / 代码段"></a>Text / 代码段</h2><p>内存模型中的代码段部分是目标文件或内存中程序的一部分，其中包含可执行指令。</p>
-<p>作为一片内存区域，文本段最好放置在堆或栈的下面，以防堆栈溢出覆盖它。（堆栈以低地址为自己的底部，所以是向上发生溢出的。如果代码段设置在堆栈上面，就会有被覆盖的危险）</p>
-<p>通常来说，文本段是可被共享的，所以内存中只需要有一个副本，就能满足频繁执行的程序的需求（如文本编辑器、C编译器、shell等）。此外，文本段一般是只读的，以防内容被意外修改。</p>
-<h2 id="Data-数据段"><a href="#Data-数据段" class="headerlink" title="Data / 数据段"></a>Data / 数据段</h2><p>已初始化的数据段，通常简称为数据段。包含已经由程序员初始化的全局变量和静态变量。例如，任何位置的static int i = 10都将存储在数据段中，而全局的int i = 10也将存储在数据段中。</p>
-<p>请注意，数据段不是只读的，因为它可以在运行时更改变量的值。但该段也可以进一步细分为已初始化只读区和已初始化读写区。</p>
-<h2 id="BSS-BSS段"><a href="#BSS-BSS段" class="headerlink" title="BSS / BSS段"></a>BSS / BSS段</h2><p>未初始化的数据段通常称为bss段，以一个古老的汇编程序运算符命名，意思是block started by symbol（以符号开头的块）。</p>
-<p>bss中的数据的地址从Data段的末尾开始增长，bss包含所有初始化为零或在源代码中没有显式初始化的全局变量和静态变量。这个段中的数据将会在程序开始执行前由内核初始化为算术0。bss段属于静态内存分配，只存在于编译时，不存在于运行时。一旦程序开始运行，在bss内存区进入程序的地址空间后，这个段的数据将全部清零，包含data和bss段的整个区段此时统称为数据区。注意这里清零的意思就是置零。</p>
-<p>既然一开始执行程序就要清零bss段，那它为何还要存在？原因是：bss段并不给该段的数据分配空间，它的作用是记录数据所需空间的大小。</p>
-<p>举例说明</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 程序1</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序2</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译之后发现程序2的可执行文件比程序1大得多。这是因为程序1的数组ar位于bss段，bss不占用可执行文件空间，其内容由操作系统初始化（清零）。而程序2位于data段，data段需要占用可执行文件空间，其内容由程序初始化。</p>
-<p>一个程序本质上是由bss段、data段、text段三个组成的。在一个C程序编译完成之后正式执行之前，已初始化的全局变量保存在data段中，未初始化的全局变量保存在bss段中。text和data段都在可执行文件中（在嵌入式系统里一般是固化在镜像文件中），由系统从可执行文件中加载；而bss段不在可执行文件中，由系统初始化。</p>
-<p>例如，一个变量声明为<code>static int i;</code>或<code>int j;</code>，那么它将被包含在bss段中。</p>
-<h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>堆是动态内存分配行为频发的段。</p>
-<p>堆区域开始于bss段的结尾处，并从那里扩展到更大的地址。堆区域由new和delete，malloc，realloc和free管理，它们可以使用brk和sbrk系统调用来调整其大小。堆区域由进程中所有共享库和动态加载的模块共享。</p>
-<p>一定记得使用完后及时释放空间。</p>
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>栈区域在传统上与堆区域相邻，并以相反的方向增长，当栈指针遇到堆指针时，可用内存耗尽。（借助现代的大型地址空间和虚拟内存技术，堆区和栈区几乎可以放置在任何地方，但它们一般还是沿相反的方向生长。）</p>
-<p>之前看到的一种说法是，当初的内存容量小，栈是从地址最高位向低位分配，而堆是从最低位向高位分配，最大化压榨内存。</p>
-<p>栈区域包含栈数据结构，一种后进先出结构，它通常位于内存的较高部分。在标准的PC x86计算机体系结构上，它朝着地址0增长；在其他一些架构上，它则朝着相反的方向增长。栈顶指针寄存器跟踪着栈顶的位置，每次新值入栈时都会对其进行调整。为了完成一次函数调用而推入的一组值称为“栈帧”，栈帧也叫过程活动记录，是编译器用来实现函数调用的一种数据结构。栈帧至少包含一个返回地址。</p>
-<p>栈用于存储自动变量以及每次调用函数时保存的信息。每次调用函数时，返回位置的地址和调用者环境的某些信息（例如某些机器寄存器）都保存在栈中。接着新调用的函数在栈上为其自动和临时变量分配空间。这就是C中的递归函数的工作方式。递归函数每次调用自己时，都会使用一个新的栈帧，这样一组变量就不会干扰来自该函数另一个实例的变量。</p>
-<p>注：自动变量就是普通的局部变量，前面不带static。自动指的是局部变量离开块作用域自动销毁，临时指的是局部变量具有（短暂的）自动存储期限。由此可见，栈区域主要是用来存放函数内的局部变量，在函数执行结束时自动释放。栈内存的分配运算内置于处理器的指令集中，效率很高，但是可以分配的内存容量十分有限。</p>
-<p>题外话：注意区分内存模型中的栈区域和数据结构中的栈结构。stack这种LIFO结构由于比较复杂的历史和现实因素在国内普遍被翻译为堆栈，实在是有些误人子弟（台湾人背锅），即使在我的母校吉林大学，老师们一个个也乐此不疲地一口一个“堆栈”。学生自己还是要清楚：栈is栈，堆is堆，由计算机科学技术名词审定委员会编撰完成的《计算机科学技术名词》一书里完全就没有堆栈这个名词。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>C++程序设计</category>
-      </categories>
-      <tags>
-        <tag>底层技术</tag>
-        <tag>内存</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二维数组名的本质</title>
     <url>/posts/bbb5/</url>
     <content><![CDATA[<h2 id="写在开头，数组名是指针吗？"><a href="#写在开头，数组名是指针吗？" class="headerlink" title="写在开头，数组名是指针吗？"></a>写在开头，数组名是指针吗？</h2><p>数组名不是指针，而是一个地址常量，可以使用指针操作地址，进而操作数组。</p>
@@ -2117,6 +2202,50 @@
       </categories>
       <tags>
         <tag>多维数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C程序的内存布局</title>
+    <url>/posts/520a/</url>
+    <content><![CDATA[<h2 id="存储时的3个区域"><a href="#存储时的3个区域" class="headerlink" title="存储时的3个区域"></a>存储时的3个区域</h2><p>一个存储着数据但处于未运行状态的程序（它可以被编译过，注意编译和运行的差别），其存储结构分为三个部分：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行时的5个区域"><a href="#运行时的5个区域" class="headerlink" title="运行时的5个区域"></a>运行时的5个区域</h2><p>一个正在运行着的C编译程序占用的内存可以分为5个部分：<br>注：从下到上，1为低地址，5为高地址。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5: Stack (Stack) ↓</span><br><span class="line">4: Heap (Heap) ↑</span><br><span class="line">3: Uninitialized data segment (BSS)</span><br><span class="line">2: Initialized data segment (Data)</span><br><span class="line">1: Text segment (Text)</span><br></pre></td></tr></table></figure>
+
+<p>5以上是各种命令行参数和环境变量<br>5栈向低地址增长<br>4堆向高地址增长<br>3由exec函数族初始化为0<br>1和2由exec函数族从程序文件中读入</p>
+<p>接下来自底向上依次说明。</p>
+<h2 id="Text-代码段"><a href="#Text-代码段" class="headerlink" title="Text / 代码段"></a>Text / 代码段</h2><p>内存模型中的代码段部分是目标文件或内存中程序的一部分，其中包含可执行指令。</p>
+<p>作为一片内存区域，文本段最好放置在堆或栈的下面，以防堆栈溢出覆盖它。（堆栈以低地址为自己的底部，所以是向上发生溢出的。如果代码段设置在堆栈上面，就会有被覆盖的危险）</p>
+<p>通常来说，文本段是可被共享的，所以内存中只需要有一个副本，就能满足频繁执行的程序的需求（如文本编辑器、C编译器、shell等）。此外，文本段一般是只读的，以防内容被意外修改。</p>
+<h2 id="Data-数据段"><a href="#Data-数据段" class="headerlink" title="Data / 数据段"></a>Data / 数据段</h2><p>已初始化的数据段，通常简称为数据段。包含已经由程序员初始化的全局变量和静态变量。例如，任何位置的static int i = 10都将存储在数据段中，而全局的int i = 10也将存储在数据段中。</p>
+<p>请注意，数据段不是只读的，因为它可以在运行时更改变量的值。但该段也可以进一步细分为已初始化只读区和已初始化读写区。</p>
+<h2 id="BSS-BSS段"><a href="#BSS-BSS段" class="headerlink" title="BSS / BSS段"></a>BSS / BSS段</h2><p>未初始化的数据段通常称为bss段，以一个古老的汇编程序运算符命名，意思是block started by symbol（以符号开头的块）。</p>
+<p>bss中的数据的地址从Data段的末尾开始增长，bss包含所有初始化为零或在源代码中没有显式初始化的全局变量和静态变量。这个段中的数据将会在程序开始执行前由内核初始化为算术0。bss段属于静态内存分配，只存在于编译时，不存在于运行时。一旦程序开始运行，在bss内存区进入程序的地址空间后，这个段的数据将全部清零，包含data和bss段的整个区段此时统称为数据区。注意这里清零的意思就是置零。</p>
+<p>既然一开始执行程序就要清零bss段，那它为何还要存在？原因是：bss段并不给该段的数据分配空间，它的作用是记录数据所需空间的大小。</p>
+<p>举例说明</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 程序1</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序2</span></span><br><span class="line"><span class="keyword">int</span> ar[<span class="number">30000</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译之后发现程序2的可执行文件比程序1大得多。这是因为程序1的数组ar位于bss段，bss不占用可执行文件空间，其内容由操作系统初始化（清零）。而程序2位于data段，data段需要占用可执行文件空间，其内容由程序初始化。</p>
+<p>一个程序本质上是由bss段、data段、text段三个组成的。在一个C程序编译完成之后正式执行之前，已初始化的全局变量保存在data段中，未初始化的全局变量保存在bss段中。text和data段都在可执行文件中（在嵌入式系统里一般是固化在镜像文件中），由系统从可执行文件中加载；而bss段不在可执行文件中，由系统初始化。</p>
+<p>例如，一个变量声明为<code>static int i;</code>或<code>int j;</code>，那么它将被包含在bss段中。</p>
+<h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>堆是动态内存分配行为频发的段。</p>
+<p>堆区域开始于bss段的结尾处，并从那里扩展到更大的地址。堆区域由new和delete，malloc，realloc和free管理，它们可以使用brk和sbrk系统调用来调整其大小。堆区域由进程中所有共享库和动态加载的模块共享。</p>
+<p>一定记得使用完后及时释放空间。</p>
+<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>栈区域在传统上与堆区域相邻，并以相反的方向增长，当栈指针遇到堆指针时，可用内存耗尽。（借助现代的大型地址空间和虚拟内存技术，堆区和栈区几乎可以放置在任何地方，但它们一般还是沿相反的方向生长。）</p>
+<p>之前看到的一种说法是，当初的内存容量小，栈是从地址最高位向低位分配，而堆是从最低位向高位分配，最大化压榨内存。</p>
+<p>栈区域包含栈数据结构，一种后进先出结构，它通常位于内存的较高部分。在标准的PC x86计算机体系结构上，它朝着地址0增长；在其他一些架构上，它则朝着相反的方向增长。栈顶指针寄存器跟踪着栈顶的位置，每次新值入栈时都会对其进行调整。为了完成一次函数调用而推入的一组值称为“栈帧”，栈帧也叫过程活动记录，是编译器用来实现函数调用的一种数据结构。栈帧至少包含一个返回地址。</p>
+<p>栈用于存储自动变量以及每次调用函数时保存的信息。每次调用函数时，返回位置的地址和调用者环境的某些信息（例如某些机器寄存器）都保存在栈中。接着新调用的函数在栈上为其自动和临时变量分配空间。这就是C中的递归函数的工作方式。递归函数每次调用自己时，都会使用一个新的栈帧，这样一组变量就不会干扰来自该函数另一个实例的变量。</p>
+<p>注：自动变量就是普通的局部变量，前面不带static。自动指的是局部变量离开块作用域自动销毁，临时指的是局部变量具有（短暂的）自动存储期限。由此可见，栈区域主要是用来存放函数内的局部变量，在函数执行结束时自动释放。栈内存的分配运算内置于处理器的指令集中，效率很高，但是可以分配的内存容量十分有限。</p>
+<p>题外话：注意区分内存模型中的栈区域和数据结构中的栈结构。stack这种LIFO结构由于比较复杂的历史和现实因素在国内普遍被翻译为堆栈，实在是有些误人子弟（台湾人背锅），即使在我的母校吉林大学，老师们一个个也乐此不疲地一口一个“堆栈”。学生自己还是要清楚：栈is栈，堆is堆，由计算机科学技术名词审定委员会编撰完成的《计算机科学技术名词》一书里完全就没有堆栈这个名词。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++程序设计</category>
+      </categories>
+      <tags>
+        <tag>底层技术</tag>
+        <tag>内存</tag>
       </tags>
   </entry>
   <entry>
@@ -2466,7 +2595,7 @@
       </tags>
   </entry>
   <entry>
-    <title>VS Code使用札记（本文已转型为正则表达式学习记录...）</title>
+    <title>VS Code使用札记（本文已转型正则表达式学习记录...）</title>
     <url>/posts/e1f4/</url>
     <content><![CDATA[<h3 id="批量删除注释"><a href="#批量删除注释" class="headerlink" title="批量删除注释"></a>批量删除注释</h3><p>打开VS Code-&gt;Ctrl+H打开替换-&gt;选中使用正则表达式-&gt;查找栏输入正则表达式，替换栏置空-&gt;Ctrl+Alt+Enter全部替换</p>
 <p>行注释<code>//[\s\S]*?\n</code><br>块注释<code>/\*(.|\r\n|\n)*?\*/</code><br>所有注释<code>\/\*[\s\S]*\*\/|\/\/.*</code><br>html注释<code>&lt;!--([\s\S|\r]*?)--&gt;</code></p>
@@ -2603,37 +2732,41 @@
   <entry>
     <title>择偶观</title>
     <url>/posts/bbe4/</url>
-    <content><![CDATA[<blockquote>
+    <content><![CDATA[<p>以下内容大多是弹性标准，绝不歧视任何特定群体，也不代表除本人外一般男人的普遍追求。本站未被百度或谷歌收录，因此本文存在于我个人网站里的唯一目的就是供自己偶尔翻看。如果有陌生人或熟人出于各种未知的原因无意间看到这篇东西，不要当真，也不要批判，更不要传播。</p>
+<blockquote>
 <p>凤飞翱翔兮，四海求凰。</p>
 </blockquote>
-<p>声明：<br>以下内容基本都是弹性标准；绝不涉及针对任何特定群体的歧视；也不代表除本人外一般男人的普遍追求。<br>本站未被百度爬虫和Google收录，因此本文放在自己个人网站里的唯一目的就是供自己一个人偶尔翻看。<br>写下这种东西，我本来就是非常犹豫的，思前想后，还是觉得有必要清楚地写下来。<br>如果有人出于各种未知原因偶然看到这篇文章，不要当真，也不要批判，更不要传播。</p>
-<h2 id="基本项，应该全部满足"><a href="#基本项，应该全部满足" class="headerlink" title="基本项，应该全部满足"></a>基本项，应该全部满足</h2><ol>
-<li>性别女；1994~2002年出生。（不是女同，不是双性恋；最大大3岁，最小小5岁）</li>
-<li>本科211及以上；正经专业。（不要专升本，不要地方照顾性211，不要独立学院，不要没听过的专业）</li>
-<li>外貌6分；身高160~175cm；不胖。（妆前5分妆后6分，身高不要15打头，不要太胖）</li>
-<li>不抽烟；无纹身；无信仰；不丁克。（不要抽烟纹身好女孩，饮酒适度就没问题，家里没人信教，以后要生小孩）</li>
-<li>最多谈过1个。（相对专一，不要段位比我高到天上的）</li>
+<h2 id="减分项：符合任意一条直接送走"><a href="#减分项：符合任意一条直接送走" class="headerlink" title="减分项：符合任意一条直接送走"></a>减分项：符合任意一条直接送走</h2><ol>
+<li>饭圈拳师同性恋。</li>
+<li>二本三本大专人。</li>
+<li>抽烟纹身。</li>
+<li>滥交说谎。</li>
 </ol>
-<h2 id="加分项，应该满足至少1条"><a href="#加分项，应该满足至少1条" class="headerlink" title="加分项，应该满足至少1条"></a>加分项，应该满足至少1条</h2><ol>
-<li>眼睛漂亮加分；笑容治愈加分；声音甜美加分。（追求美的天性）</li>
-<li>本科985加分。（我也985，喜欢比我更爱学习的人）</li>
-<li>工学大类，计算机相关加分；理学大类，数学物理生物加分；人文社科大类，经济法律外国语加分。（印象好，聊得来）</li>
-<li>有爱好或特长加分。（没啥硬性标准，健康、有趣就行，指的是那些需要付出长期努力的，不是闲出来的爱好）</li>
-<li>共产党员加分。（党员被国家筛选过一次了，不会太离谱）</li>
+<h2 id="基本项：应该全部满足"><a href="#基本项：应该全部满足" class="headerlink" title="基本项：应该全部满足"></a>基本项：应该全部满足</h2><ol>
+<li>女，94~02年。</li>
+<li>本科211，正经专业。</li>
+<li>外貌5分，身高160~175cm。</li>
+<li>最多谈过1个，不要段位比我高上天。</li>
 </ol>
-<p>关于兴趣爱好，我随便拎几个比较普遍的说说。旅游、烘焙、追剧、看综艺、看动漫、看小说、听音乐、看电影、打游戏、散步、撸猫、刷微博。以上不能算爱好，更不是特长，不想重复了。你坚持这些就是你的爱好，不如直接把我不爱学习不爱工作贴在脸上得了。如果你打羽毛球比一般人厉害，羽毛球就是你的特长。如果你唱歌比一般人好听，唱歌就是你的特长。如果刻苦练习过舞蹈，跳舞就是你的特长。哪怕你只能像我一样背一遍圆周率小数点后100位，我都算你有爱好特长了。更何况爱好这条在我这里只是加分项又不是基本项。<br>女人，别再追剧了。</p>
-<h2 id="减分项，完全符合3条或以上直接放弃"><a href="#减分项，完全符合3条或以上直接放弃" class="headerlink" title="减分项，完全符合3条或以上直接放弃"></a>减分项，完全符合3条或以上直接放弃</h2><ol>
-<li>追星减分；热衷同性恋文化严重减分无论是不是玩梗。（我整体上对花钱追星持反对态度；更不要热衷屎尿屁文化）</li>
-<li>微博重度用户减分；2018年以后的豆瓣小组活跃用户减分；小红书重度用户减分。（智商测试）</li>
-<li>习惯性说脏话严重减分；脾气差易冲动减分。（脏话可以偶尔说，矜持一些；脾气爆一般脑子都不太好，智商测试）</li>
-<li>无独自生活经济能力严重减分。（你应该不会走到自己被迫养活自己的那天，但是你得有一定的工作赚钱能力）</li>
-<li>起床不叠被子减分；不注意保持卫生减分。（能叠被子不至于太懒，而且大概率经历过风气不错的集体生活）</li>
-<li>北京和上海户口减分。（反正这两个户口的也看不上我，加这一条当作我最后的倔强吧）</li>
+<h2 id="加分项：应该满足至少一条"><a href="#加分项：应该满足至少一条" class="headerlink" title="加分项：应该满足至少一条"></a>加分项：应该满足至少一条</h2><ol>
+<li>笑容治愈。</li>
+<li>身高165~170cm。</li>
+<li>本科985。</li>
+<li>有爱好或特长。</li>
+<li>共产党员。</li>
 </ol>
-<p>因为追星的人几乎必定满足第二条微博重度用户，所以追星就接近出局。</p>
-<h2 id="热烈，深沉，无私，几点希冀"><a href="#热烈，深沉，无私，几点希冀" class="headerlink" title="热烈，深沉，无私，几点希冀"></a>热烈，深沉，无私，几点希冀</h2><p>我喜欢的人的诸多身份之间，最基本的身份应该是我的朋友，而且是我的朋友中最特殊，最忠诚，最无私的那个。两个人的世界不能容得下一句恶意的揣测或计算、人身伤害、心理打击、言不由衷或袖手旁观。长期相处产生的惰性，也应该予以克服。有生之年同甘共苦，即使死后也要让墓碑毗邻。不能接受任何形式的出轨，不能接受身边有男闺蜜、备胎和亲密的同性恋好友。我们的亲密关系必须超过从前二十年往后五十年内的其它一切关系。所有的事务中同时涉及两人的优先级最高，其次是你，再次是我，最后才是外人。<br>我无比希望我的女人也对我有以上所有要求。</p>
-<p>为什么最近想起来写这种普通人觉得羞耻的东西呢？我慢慢觉得，像我这种的一般人，本来就不具备勇敢追求自己心爱事物的资本，如果再不知道自己真正想要的是什么，生命可能就真的没有价值了，等到垂垂老矣，连后悔都想不起来后悔。这大概是两年来的不顺经历给我带来的一点新变化。我已经几乎不觉得这种事有什么可羞耻的了。虚无缥缈的颜面不足以与这份货真价实的反思相提并论。CPMA书里有这样一句话，大概是作者的恩师说的，被他默默记了下来：不是他们没能力解决问题，而是他们还没能真正看到问题。我常常想着这句话直到发呆。看不到问题的情况大概分为两种，要么认知偏差，要么身在庐山，在我确定自己开始思考问题前，我总是先站在问题的门外，想想自己是否已经属于其中哪种情况而不自知。</p>
-<p>可能我真的是个过于理想的人，好在我不觉得理想化是个贬义词，因为理想的总是无效的，但往往也是浪漫的。</p>
+<h2 id="几点希冀"><a href="#几点希冀" class="headerlink" title="几点希冀"></a>几点希冀</h2><ol>
+<li>要真实，不要虚伪。</li>
+<li>要热烈，不要平淡。</li>
+<li>要理解，不要控制。</li>
+<li>要深沉，不要肤浅。</li>
+<li>要无私，不要计算。</li>
+</ol>
+<h2 id="提醒自己"><a href="#提醒自己" class="headerlink" title="提醒自己"></a>提醒自己</h2><ol>
+<li>规矩是死的，人是活的。</li>
+<li>真心只换真心。</li>
+<li>贵在真实。</li>
+</ol>
 ]]></content>
       <categories>
         <category>自由王国</category>
@@ -2646,11 +2779,8 @@
     <content><![CDATA[<blockquote>
 <p>伊曼努爾·康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
 </blockquote>
-<blockquote>
-<p>斯波：人们高估了一天的改变，也低估了一年的改变。</p>
-</blockquote>
 <h1 id="长期"><a href="#长期" class="headerlink" title="长期"></a>长期</h1><h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p>CS：C++ Primer翻烂<br>CS：现代操作系统翻烂<br>CS：清华大学操作系统课程实验<br>CS：LeetCode累计刷到400题</p>
-<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><p>全刚需：配一副好眼镜<br>半刚需：MI6战不动了，过年前后换手机，暂时心仪S21u<br>非刚需：攒台整机</p>
+<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><p>全刚需：配一副好眼镜<br>半刚需：MI6战不动了，过年前后换新手机，暂时心仪S21u<br>非刚需：攒台整机</p>
 <h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><p>出行：成都大熊貓繁育研究基地</p>
 <h1 id="短期"><a href="#短期" class="headerlink" title="短期"></a>短期</h1><h2 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h2><p>每天坚持规律作息，尽量固定在24:00-06:00<br>晚上睡前脸盆泡脚，早上醒来热水洗澡</p>
 <h2 id="每周任务"><a href="#每周任务" class="headerlink" title="每周任务"></a>每周任务</h2><p>每周做1顿饭菜（固定几道）<br>每周写1篇博文<br>为了维持英语水平不雪崩，每周精读1篇卫报<br>为了更加强壮和自信，每周去健身3次</p>
@@ -2660,6 +2790,114 @@
         <category>自由王国</category>
         <category>年度系列</category>
       </categories>
+  </entry>
+  <entry>
+    <title>我的2020阅读记录</title>
+    <url>/posts/1420/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2020年</span><br><span class="line">数量：2本</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>标题</th>
+<th>作者</th>
+<th>完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C</td>
+<td>C语言程序设计：现代方法</td>
+<td>K. N. King</td>
+<td>2020.10</td>
+</tr>
+<tr>
+<td>数学</td>
+<td>线性代数及其应用</td>
+<td>David C. Lay</td>
+<td>2020.11</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>阅读记录</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的2021阅读记录</title>
+    <url>/posts/c3ad/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2021年</span><br><span class="line">数量：3本</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>标题</th>
+<th>作者</th>
+<th>完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C++</td>
+<td>C++ Primer(1~7)</td>
+<td>Stanley B. Lippman</td>
+<td>2021.02</td>
+</tr>
+<tr>
+<td>计算机系统</td>
+<td>计算机网络</td>
+<td>谢希仁</td>
+<td>2021.03</td>
+</tr>
+<tr>
+<td>计算机系统</td>
+<td>操作系统之哲学原理</td>
+<td>邹恒明</td>
+<td>2021.03</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>C++ Primer(8~12)</td>
+<td>Stanley B. Lippman</td>
+<td>正在啃…</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>阅读记录</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《美国反对美国》笔记</title>
+    <url>/posts/ca9a/</url>
+    <content><![CDATA[<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><ol>
+<li><p>美国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</p>
+</li>
+<li><p>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</p>
+</li>
+<li><p>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</p>
+</li>
+<li><p>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</p>
+</li>
+<li><p>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>文摘</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
   </entry>
   <entry>
     <title>罗卫东：大学要多读硬书——给新生的一点忠告</title>
@@ -2701,111 +2939,22 @@
       </tags>
   </entry>
   <entry>
-    <title>我的2020阅读记录</title>
-    <url>/posts/1420/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2020年</span><br><span class="line">数量：2本</span><br></pre></td></tr></table></figure>
+    <title>镇命歌·陌路</title>
+    <url>/posts/5b48/</url>
+    <content><![CDATA[<p>唱：禁酒隐<br>词：泉竹闲家</p>
+<p>三生命定 六道难解难梳<br>情深缘浅 奈何一步两殊途<br>前尘往事 可还记得当初<br>举袂遥祝 别后旦行莫回顾<br>故地依旧 芳草滋味暗浮<br>花似人面 垂眸浅笑似当初<br>故人何在 衣袂翻红默舞<br>人如花语 风住落英悄低诉<br>同采一捧 浅清醉薄 花颜欲夺目<br>扶风摇蕊 犹说 当年共甘苦<br>独捻一指 馥郁胭脂 依稀还相熟<br>好景犹在 却道 如今已陌路</p>
+<p>故地依旧 芳草滋味暗浮<br>花似人面 垂眸浅笑似当初<br>故人何在 衣袂翻红默舞<br>人如花语 风住落英悄低诉<br>同采一捧 浅清醉薄 花颜欲夺目<br>扶风摇蕊 犹说 当年共甘苦<br>独捻一指 馥郁胭脂 依稀还相熟<br>好景犹在 却道 如今已陌路</p>
+<p>林荫斑驳 树影描金 古庙隐落木（有灵保兮 寿夭在彼 珠兮玉兮光陆离）<br>阶前又生新苔 年年春来住（有女茕独不群兮 阴阳御兮明晦齐）<br>桔花噙露 雀鸟踟蹰 垂紫泪楚楚（有灵保兮 寿夭在彼 珠兮玉兮光陆离）<br>好景犹在 却道 如今人已故（驭赤豹兮驱玄云 乘游龙兮引清气）<br>有灵保兮 云袖被被 珠兮玉兮光陆离<br>攀杜若兮长独立 不见君子絓结兮<br>有灵保兮 云袖翳翳 珠兮玉兮光陆离<br>风飘飘兮为太息 落英兮捐水裔<br>有灵保兮 寿夭在彼 珠兮玉兮光陆离<br>有女茕独不群兮 阴阳御兮明晦齐<br>有灵保兮 寿夭在彼 珠兮玉兮光陆离<br>驭赤豹兮驱玄云 乘游龙兮引清气</p>
+<img data-src="/posts/5b48/957385_inuyasha-backgrounds-wallpapers-cave_2109x1500_h.jpg" class="" title="最爱的一张海报">
 
-<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>标题</th>
-<th>作者</th>
-<th>完成</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>C</td>
-<td>C语言程序设计：现代方法</td>
-<td>K. N. King</td>
-<td>2020.10</td>
-</tr>
-<tr>
-<td>数学</td>
-<td>线性代数及其应用</td>
-<td>David C. Lay</td>
-<td>2020.11</td>
-</tr>
-</tbody></table>
+<p>歌曲链接<br><a href="http://5sing.kugou.com/fc/8725728.html">http://5sing.kugou.com/fc/8725728.html</a></p>
 ]]></content>
       <categories>
         <category>读书札记</category>
-        <category>阅读记录</category>
+        <category>文摘</category>
       </categories>
       <tags>
-        <tag>读书</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的2021阅读记录</title>
-    <url>/posts/c3ad/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">年份：2021年</span><br><span class="line">数量：本</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>标题</th>
-<th>作者</th>
-<th>完成</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>C++</td>
-<td>C++ Primer(1~7)</td>
-<td>Stanley B. Lippman</td>
-<td>2021.02</td>
-</tr>
-<tr>
-<td>计算机基础</td>
-<td>计算机网络</td>
-<td>谢希仁</td>
-<td>2021.03</td>
-</tr>
-<tr>
-<td>计算机基础</td>
-<td>操作系统之哲学原理</td>
-<td>邹恒明</td>
-<td>2021.03</td>
-</tr>
-<tr>
-<td>C++</td>
-<td>C++ Primer(8~12)</td>
-<td>Stanley B. Lippman</td>
-<td>正在啃…</td>
-</tr>
-<tr>
-<td>数据结构与算法分析</td>
-<td>算法</td>
-<td>Robert Sedgewick</td>
-<td>未开坑</td>
-</tr>
-<tr>
-<td>数据结构与算法分析</td>
-<td>算法竞赛入门经典</td>
-<td>刘汝佳</td>
-<td>未开坑</td>
-</tr>
-<tr>
-<td>数据结构与算法分析</td>
-<td>算法竞赛入门经典：训练指南</td>
-<td>刘汝佳</td>
-<td>未开坑</td>
-</tr>
-<tr>
-<td>C++</td>
-<td>STL源码剖析</td>
-<td>侯捷</td>
-<td>未开坑</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>读书札记</category>
-        <category>阅读记录</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
+        <tag>歌词</tag>
       </tags>
   </entry>
 </search>
