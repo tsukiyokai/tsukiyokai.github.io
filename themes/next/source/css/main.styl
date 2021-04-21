@@ -50,3 +50,41 @@ for $inject_style in hexo-config('injects.style')
   width: 0px;
   height: 0px;
 }
+
+.words{
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    fill: none;
+    stroke-width: 3px;
+    stroke-dasharray: 35,125;
+    animation-name: drawing;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.words-1{
+    stroke: deepskyblue;
+    text-shadow: 0 0 15px deepskyblue;
+    animation-delay: -1.5s;
+}
+.words-2{
+    stroke: lightseagreen;
+    text-shadow: 0 0 15px lightseagreen;
+    animation-delay: -3s;
+}
+.words-3{
+    stroke: orange;
+    text-shadow: 0 0 15px orange;
+    animation-delay: -4.5s;
+}
+.words-4{
+    stroke: purple;
+    text-shadow: 0 0 15px purple;
+    animation-delay: -6s;
+}
+@keyframes drawing {
+    100%{
+        stroke-dashoffset: -160;
+    }
+}

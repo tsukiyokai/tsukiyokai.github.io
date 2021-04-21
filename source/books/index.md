@@ -1,50 +1,51 @@
 ---
-title: 我的藏书
+title: 我的书架
 date: 2021-04-18 13:54:58
 ---
 
 > 根深叶茂，本固枝荣。
 
-# 计算机科学与技术
+# 计算机科学
 
 ## 计算机基础
 
-- 计算机网络 — 谢希仁
-- 操作系统之哲学原理 — 邹恒明
-- 深入理解计算机基础（CSAPP）
+- 深入理解计算机系统（Computer Systems: A Programmer's Perspective，简：CSAPP）
+- 计算机程序的构造和解释（简：SICP）
 - 编译原理（Compilers: Principles, Techniques, and Tools）
 
-## 数学基础
+## 数学基础（mathematics）
 
 - 数学分析
-- 线性代数及其应用 — David C. Lay
+- 线性代数及其应用 -- David C. Lay
 - 概率论与数理统计
+- 具体数学（Concrete Mathematics: A Foundation for Computer Science）
 - 离散数学及其应用
-- 具体数学
 
-## 魔法书
+## 计算机系统
 
-- 计算机程序的构造和解释（SICP）
+- 计算机网络 -- 谢希仁
+- 操作系统之哲学原理 -- 邹恒明
+- 数据库系统概念
 
 ## C++
 
-- C语言程序设计：现代方法 — K. N. King
-- C++ Primer — Stanley B. Lippman
+- C语言程序设计：现代方法 -- K. N. King
+- C++ Primer -- Stanley B. Lippman
 - Effective C++
-- STL源码剖析 — 侯捷
+- STL源码剖析 -- 侯捷
 - Inside the C++ Object Model
 - C++ Template
 - Effective STL
 
-## 数据结构与算法分析
+## 数据结构与算法分析（Data Structures and Algorithm Analysis）
 
-- 算法 — Robert Sedgewick
-- 算法竞赛入门经典 — 刘汝佳
-- 算法竞赛入门经典：训练指南 — 刘汝佳
-- 算法导论（CLRS）
-- 计算机程序设计艺术（TAOCP）
+- 算法 -- Robert Sedgewick
+- 算法竞赛入门经典 -- 刘汝佳
+- 算法竞赛入门经典：训练指南 -- 刘汝佳
+- 算法导论（简：CLRS）
+- 计算机程序设计艺术（简：TAOCP）
 
-## 软件工程
+## 软件工程（software engineering）
 
 - Design Patterns（设计模式）
 - Head First设计模式
@@ -54,45 +55,71 @@ date: 2021-04-18 13:54:58
 - 编程珠玑
 - 人件
 
+## 人工智能
+
+- AIMA
+- 机器学习 -- 周志华
+
 # 人文科学
 
-## 小说
+## 哲学（philosophy）
 
-- 不能承受的生命之轻（许均 译） — 米兰·昆德拉
-- 化物语 — 西尾维新
-- The Lord of the Rings: The Fellowship of the Ring — J. R. R. Tolkien
-- The Lord of the Rings: The Two Towers — J. R. R. Tolkien
-- The Lord of the Rings: The Return of the King — J. R. R. Tolkien
-- The Hobbit（霍比特人） — J. R. R. Tolkien
-- 精灵宝钻 — J. R. R. Tolkien
-- 中洲历史 — J. R. R. Tolkien
-- 安娜·卡列尼娜 — 列夫·托尔斯泰
+## 心理学（psychology）
 
-## 散文
+## 小说（novel）
 
-- 论语 — 孔子
+- 越女剑 -- 金庸
+- 天龙八部 -- 金庸
+- 射雕英雄传 -- 金庸
+- 神雕侠侣 -- 金庸
+- 倚天屠龙记 -- 金庸
+- 鹿鼎记 -- 金庸
+- 不能承受的生命之轻（许均 译） -- 米兰·昆德拉
+- 化物语 -- 西尾维新
+- The Lord of the Rings: The Fellowship of the Ring -- J. R. R. Tolkien
+- The Lord of the Rings: The Two Towers -- J. R. R. Tolkien
+- The Lord of the Rings: The Return of the King -- J. R. R. Tolkien
+- The Hobbit（霍比特人） -- J. R. R. Tolkien
+- 精灵宝钻 -- J. R. R. Tolkien
+- 中洲历史 -- J. R. R. Tolkien
+- 安娜·卡列尼娜 -- 列夫·托尔斯泰
+
+## 散文（essay）
+
+- 论语 -- 孔子
 
 # 社会科学
 
-## 经济学
+## 经济学（economics）
 
-- 国富论 — 亚当·斯密
-- 资本论 — 卡尔·马克思
-- 经济学原理 — 曼昆
-- 就业、利息和货币通论 — 凯恩斯
+- 国富论 -- 亚当·斯密
+- 资本论 -- 马克思
+- 经济学原理 -- 曼昆
+- 就业、利息和货币通论 -- 凯恩斯
+- 1844年经济学哲学手稿 -- 马克思
 
-## 政治学
+## 政治学（politics）
 
-- 美国反对美国 — 王沪宁
+- 理想国 -- 柏拉图
+- 君主论
+- 国际政治理论 -- 华尔兹
+- 比较政治学
+- 美国反对美国 -- 王沪宁
 
-## 法学
+## 法学（law）
 
-# 整理说明
+# 备忘
 
-藏书的整理优先遵循下列原则：
+## 阅读原则
 
-1. 作者人数为复数时，只取第一个。
-2. 作者是外国人时，尽量使用本名而非译名，除非本名特别复杂。如托尔斯泰。
-3. 对于外国书籍，按实际阅读语言收录。如果是读的原版书，就收录`The Hobbit`而非`霍比特人`。
-4. 对于经典的中译本，应在标题后注明译者。如`生命中不能承受之轻（韩少功 译）`。
-5. 对于广泛流传的书籍简称，可将其并列于标题后。如`计算机程序的构造和解释（SICP）`。
+1. 80%的精力看计算机，20%的精力看人文社科。
+2. 只读一次就是没有读过（one is never）。
+3. 第一遍快，第二遍细。第一遍背目录，第二遍记笔记。
+
+## 整理原则
+
+1. 对于复数作者，原则上只取第一个。
+2. 对于外国书籍，按实际阅读语言算。
+3. 对于外国作者，尽量取本名而非译名，除非本名难于书写或译名过于深入人心。
+4. 对于经典的中译本，应在标题后注明译者或组织。
+5. 对于流传广泛的书籍绰号，可将其并列于标题后。

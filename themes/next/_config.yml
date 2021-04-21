@@ -105,8 +105,8 @@ menu_settings:
 
 sidebar:
   # Sidebar Position.
-  position: left
-  #position: right
+  #position: left
+  position: right
 
   # Manual define the sidebar width. If commented, will be default for:
   # Muse | Mist: 320
@@ -144,11 +144,11 @@ site_state: true
 social:
   GitHub: https://github.com/tsukiyokai || fab fa-github
   E-Mail: mailto:tsukiyokai@hotmail.com || fa fa-envelope
-  #Weibo: https://weibo.com/yourname || fab fa-weibo
+  Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
-  StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow 
+  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow 
   YouTube: https://youtube.com/yourname || fab fa-youtube
   #Instagram: https://instagram.com/yourname || fab fa-instagram
   #Skype: skype:yourname?call|chat || fab fa-skype
@@ -156,17 +156,17 @@ social:
 social_icons:
   enable: true
   icons_only: true
-  transition: false
+  transition: true
 
 # Blog rolls
 links_settings:
   icon: fa fa-globe
-  title: Links
+  title: 友链
   # Available values: block | inline
   layout: block
 
 links:
-  #Title: https://example.com
+  #术语在线: https://www.termonline.cn
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
@@ -201,7 +201,7 @@ language_switcher: false
 
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
-  since: 2017
+  since: 2019
 
   # Icon between year and copyright info.
   icon:
@@ -314,11 +314,11 @@ post_navigation: left
 
 # TagCloud settings for tags page.
 tagcloud:
-  min: 16 # Minimun font size in px
-  max: 32 # Maxium font size in px
+  min: 18 # Minimun font size in px
+  max: 36 # Maxium font size in px
   amount: 200 # Total amount of tags
   orderby: name # Order of tags
-  order: 1 # Sort order
+  order: -1 # Sort order
 
 # Google Calendar
 # Share your recent schedule to others via calendar page.
@@ -437,12 +437,11 @@ font:
   title:
     external: true
     family: Long Cang
-    size: 1.5
+    size: 2
 
   # Font settings for headlines (<h1> to <h6>).
   headings:
     external: true
-    #family: ZCOOL XiaoWei
     family: 华文中宋
 
   # Font settings for posts (.post-body).
@@ -463,7 +462,7 @@ font:
 
 # If true, site-subtitle will be added to index page.
 # Remember to set up your site-subtitle in Hexo `_config.yml` (e.g. subtitle: Subtitle)
-index_with_subtitle: true
+index_with_subtitle: false
 
 # Automatically add external URL with Base64 encrypt & decrypt.
 exturl: false
@@ -544,8 +543,8 @@ quicklink:
 
   # Home page and archive page can be controlled through home and archive options below.
   # This configuration item is independent of `enable`.
-  home: false
-  archive: false
+  home: true
+  archive: true
 
   # Default (true) will initialize quicklink after the load event fires.
   delay: true
@@ -736,7 +735,7 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/next-theme/hexo-generator-searchdb
 local_search:
-  enable: true
+  enable: false
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
@@ -805,7 +804,7 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: true
+  enable: false
   # Available themes: default | dark | forest | neutral
   theme: forest
 
@@ -817,7 +816,7 @@ mermaid:
 # Use Animate.css to animate everything.
 # For more information: https://animate.style
 motion:
-  enable: true
+  enable: false
   async: true
   transition:
     # All available transition variants: https://theme-next.js.org/animate/
