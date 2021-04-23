@@ -2441,7 +2441,7 @@ pre code {
   margin-top: 20px;
 }
 .category-all-page .category-list {
-  font-size: 28px;
+  font-size: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2459,7 +2459,7 @@ pre code {
   content: ') ';
 }
 .category-all-page .category-list-child {
-  font-size: 14px;
+  font-size: 16px;
   list-style: none;
   padding-left: 10px;
 }
