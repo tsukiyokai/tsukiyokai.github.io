@@ -8,4 +8,3 @@ date: 2021-04-01
 <br />
 
 <center><img src="http://ghchart.rshah.org/tsukiyokai" alt="tsukiyokai's Github chart" /></center>
-<br />

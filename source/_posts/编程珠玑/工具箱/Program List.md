@@ -39,12 +39,7 @@ date: 2021-04-18 21:33:34
 |Typora version 0.9.98|0.9.98|typora.io|
 |Unlocker 1.9.2|1.9.2|Cedrick Collomb|
 |Visual Studio Community 2019 Preview|16.10.31025.218|Microsoft Corporation|
-|微信|3.2.1.127|腾讯科技(深圳)有限公司|
 |微软 Windows 10 易升|1.4.9200.23258|Microsoft Corporation|
-|桌面日历 2.2.24.4245|2.2.24.4245|DesktopCal|
-|网易云音乐|2.8.0.198822|网易公司|
-|腾讯QQ|9.4.6.27760|腾讯科技(深圳)有限公司|
-|腾讯会议|2.9.3.408|腾讯科技(深圳)有限公司|
 |哔哩哔哩动画|2.13.16.0|bilibili|
 |SquirrelVPN|1.0.123.0|Vinsider Inc|
 |Dolby Atmos|3.20500.501.0|Dolby Laboratories|

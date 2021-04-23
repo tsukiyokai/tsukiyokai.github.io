@@ -95,11 +95,52 @@ if (!p) {
 ### 语法
 
 // Release memory pointed by pointer-variable
-一般：delete pointer-variable;  
-具体：delete p;
+`delete pointer-variable;`
 
 ### 销毁内存块（数组）
 
-// Release block of memory pointed by pointer-variable
-一般：delete[] pointer-variable;
-具体：delete[] p;
+連續配置得來的空間，不使用時要使用 delete[] 歸還給記憶體，必須加上 []，表示歸還的是整個連續空間：
+`delete[] pointer-variable;`
+
+若要動態配置連續空間，並當成二維陣列來操作，就記得二維（或多維）陣列，就是以陣列的陣列來實作，二維陣列就是多段一維陣列，如果你的二維陣列有兩段一維陣列，那就是如下用法：
+`int **arr = new int*[2];`
+
+### delete例子
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* p = NULL;
+    p = new(nothrow) int;
+    if (!p) cout << "memory allocation failed\n";
+    else {
+        *p = 29;
+        cout << "Value of p: " << *p << endl;
+    }
+
+    float* r = new float(75.25);
+    cout << "Value of r: " << *r << endl;
+
+    int n = 5;
+    int* q = new(nothrow) int[n];
+
+    if (!q) cout << "allocation of memory failed\n";
+    else {
+        for (int i = 0; i < n; i++) q[i] = i + 1;
+        cout << "Value store in block of memory: ";
+        for (int i = 0; i < n; i++) cout << q[i] << " ";
+    }
+
+    delete p;
+    delete r;
+    delete[] q;
+
+    return 0;
+}
+```
+
+注：
+`int* p = NULL;` 意思是“p哪也不指”，而非“p指向的地方是空”。
+`p = new(nothrow) int;` nothrow与标准new的区别是，new在分配内存失败时会抛出异常，而new(std::nothrow)在分配内存失败时会返回一个空指针。
