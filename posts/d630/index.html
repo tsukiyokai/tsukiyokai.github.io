@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7C华文中宋:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
+<meta name="description" content="#05 进程调度调度是操作系统实现进程模型的根本手段。 5.1 进程调度的意义进程调度的任务是：选择下一个要运行的进程。 进程使用CPU的模式有三种：  CPU导向&#x2F;计算密集型程序：大部分时间在CPU上执行，如科学计算方面的程序。 IO导向&#x2F;输入输出密集型程序：大部分时间在进行输入输出，如人机交互式程序。 平衡型程序：介于前两种模式之间，如网络浏览类程序。  5.2 进程调度的目标 极小化平均响应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进程调度">
+<meta property="og:url" content="https://tsukiyokai.github.io/posts/d630/index.html">
+<meta property="og:site_name" content="月夜海">
+<meta property="og:description" content="#05 进程调度调度是操作系统实现进程模型的根本手段。 5.1 进程调度的意义进程调度的任务是：选择下一个要运行的进程。 进程使用CPU的模式有三种：  CPU导向&#x2F;计算密集型程序：大部分时间在CPU上执行，如科学计算方面的程序。 IO导向&#x2F;输入输出密集型程序：大部分时间在进行输入输出，如人机交互式程序。 平衡型程序：介于前两种模式之间，如网络浏览类程序。  5.2 进程调度的目标 极小化平均响应">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-14T12:47:00.000Z">
+<meta property="article:modified_time" content="2021-04-25T16:45:25.391Z">
+<meta property="article:author" content="充电的猫猫">
+<meta property="article:tag" content="进程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tsukiyokai.github.io/posts/d630/">
+
+
+
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
+<meta name="hexo-config-calendar" content="">
+<title>进程调度 | 月夜海</title><script data-pjax src="/js/load-config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">月夜海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">当空皓月 木已成舟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书架</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#05-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">#05 进程调度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 进程调度的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 进程调度的目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 先来先服务调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E6%97%B6%E9%97%B4%E7%89%87%E8%BD%AE%E8%BD%AC%E7%AE%97%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 时间片轮转算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-%E7%9F%AD%E4%BB%BB%E5%8A%A1%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">5.5 短任务优先算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-%E4%BC%98%E5%85%88%E7%BA%A7%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.</span> <span class="nav-text">5.6 优先级调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-7-%E6%B7%B7%E5%90%88%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">5.7 混合调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-8-%E5%85%B6%E4%BB%96%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">1.8.</span> <span class="nav-text">5.8 其他调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-9-%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">1.9.</span> <span class="nav-text">5.9 实时调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-10-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.10.</span> <span class="nav-text">5.10 进程调度的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-11-%E8%B0%83%E5%BA%A6%E5%BC%82%E5%B8%B8%EF%BC%9A%E4%BC%98%E5%85%88%E7%BA%A7%E5%80%92%E6%8C%82"><span class="nav-number">1.11.</span> <span class="nav-text">5.11 调度异常：优先级倒挂</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="充电的猫猫"
+      src="/images/haruna.png">
+  <p class="site-author-name" itemprop="name">充电的猫猫</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tsukiyokai" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tsukiyokai" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tsukiyokai@hotmail.com" title="E-Mail → mailto:tsukiyokai@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/d630/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          进程调度
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-14 20:47:00" itemprop="dateCreated datePublished" datetime="2021-03-14T20:47:00+08:00">2021-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/d630/" class="post-meta-item leancloud_visitors" data-flag-title="进程调度" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="05-进程调度"><a href="#05-进程调度" class="headerlink" title="#05 进程调度"></a>#05 进程调度</h1><p>调度是操作系统实现进程模型的根本手段。</p>
+<h2 id="5-1-进程调度的意义"><a href="#5-1-进程调度的意义" class="headerlink" title="5.1 进程调度的意义"></a>5.1 进程调度的意义</h2><p>进程调度的任务是：选择下一个要运行的进程。</p>
+<p>进程使用CPU的模式有三种：</p>
+<ol>
+<li>CPU导向/计算密集型程序：大部分时间在CPU上执行，如科学计算方面的程序。</li>
+<li>IO导向/输入输出密集型程序：大部分时间在进行输入输出，如人机交互式程序。</li>
+<li>平衡型程序：介于前两种模式之间，如网络浏览类程序。</li>
+</ol>
+<h2 id="5-2-进程调度的目标"><a href="#5-2-进程调度的目标" class="headerlink" title="5.2 进程调度的目标"></a>5.2 进程调度的目标</h2><ol>
+<li>极小化平均响应时间。注意适度性，即响应时间要和期望值相匹配。提供超越用户期望的响应会增加系统设计的难度，而不会提高用户的满意度。</li>
+<li>极大化系统吞吐率</li>
+<li>保持系统各个功能部件均处于繁忙状态</li>
+<li>提供某种貌似公平的机制</li>
+</ol>
+<h2 id="5-3-先来先服务调度算法"><a href="#5-3-先来先服务调度算法" class="headerlink" title="5.3 先来先服务调度算法"></a>5.3 先来先服务调度算法</h2><p>FCFS即First Come First Serve的缩写。先来先服务的一个隐含条件就是不能抢占，一个程序一旦启动就一直运行到结束或者受到阻塞为止。</p>
+<ul>
+<li>优点：简单（易理解，易实现）。</li>
+<li>缺点：交互式体验较差（短任务可能会变得很慢，因为前面有很长的任务）。</li>
+</ul>
+<p>比喻：在窗口前排队办理事情，你要办理的事情只要10分钟就能办好，而你前面的人办理的事情因为复杂需要1个小时。这时你要等在她后面就十分不高兴。这时候你就想：要是每个人轮流办理10分钟事务的话，那多好呀。自然，研究进程调度的人也想到了这一点，而这种轮流办理的调度方式就是时间片轮转。</p>
+<h2 id="5-4-时间片轮转算法"><a href="#5-4-时间片轮转算法" class="headerlink" title="5.4 时间片轮转算法"></a>5.4 时间片轮转算法</h2><p>时间片轮转算法是对FCFS算法的一种改进。其主要目的是改善短程序的响应时间。其方法是周期性地进行进程切换。</p>
+<p>一个核心问题是，如何选择合适的时间片？如果时间片过大，则轮转算法越来越像先来先服务，直到完全退化为先来先服务。如果时间片过小，则进程切换所用的系统消耗将太多，使得系统的大部分时间花费在进程的上下文切换上，真正用来执行程序的有效时间很少。</p>
+<p>另一个重要问题是：时间片轮转真的公平吗？时间片轮转的系统响应时间总是比FCFS短吗？答案是不一定。</p>
+<h2 id="5-5-短任务优先算法"><a href="#5-5-短任务优先算法" class="headerlink" title="5.5 短任务优先算法"></a>5.5 短任务优先算法</h2><p>为了改善短任务排在长任务后面轮转而造成响应时间和交互体验下降的办法就是短任务优先算法（shortedtimetocompletionfirst,STCF）。这种算法的核心思想是：所有的任务并不平等，而是有优先级的区分。具体来说就是，短任务优先于长任务，而我们总是安排优先级高的程序先运行。</p>
+<p>短任务优先算法有两个变种，一种是抢占式，一种是非抢占式。</p>
+<ul>
+<li>非抢占式短任务优先算法的原理是：让已经在CPU上运行的程序执行到结束或阻塞，然后再所有候选的程序中选择需要执行时间最短的进程来执行。</li>
+<li>抢占式短任务优先算法的原理是：每增加一个新的进程就要对包括正在CPU上运行的进程在内的所有进程进行检查，谁的需要执行时间最短就运行谁。</li>
+</ul>
+<p>优点：短任务优先算法在目前已经讨论过的调度算法中，平均响应时间最优。事实上，在所有非抢占式调度算法中，STCF算法响应时间最优；在所有抢占式调度算法中，抢占式STCF算法响应时间最优。</p>
+<p>缺点：</p>
+<ol>
+<li>可能造成长程序无法得到CPU时间而导致饥饿。</li>
+<li>我们怎么能在运行一个进程之前就知道每个进程需要多长时间？难道我们能够预测未来不成？一个解决方案是用启发式方法来进行估算（例如根据程序大小来推测所需CPU执行时间），但这个方法往往并不可靠。另一个方法是先将所有进程运行一遍并记录其用时，今后根据这个实测数据来进行STCF调度。</li>
+</ol>
+<h2 id="5-6-优先级调度算法"><a href="#5-6-优先级调度算法" class="headerlink" title="5.6 优先级调度算法"></a>5.6 优先级调度算法</h2><p>短任务优选算法的缺陷之一是可能造成长程序无法得到CPU时间而导致饥饿。解决这个缺陷的方法是使用优先级。</p>
+<p>优先级调度算法的原理是赋予每个进程一个优先级，每次需要切换进程时选择优先级最高的进程进行调度。这样如果赋予长程序较高优先级，则不会发生饥饿。事实上，短任务优先算法本身就是一种优先级调度算法，只不过它赋予短进程高优先级。</p>
+<p>缺点：</p>
+<ol>
+<li>低优先级的进程可能会导致饥饿。解决方案：动态地调节优先级。一个进程执行了特定CPU时间后降低其优先级一个级别，或者将处于等待状态的进程的优先级提高一个级别。这样，如果一个进程等待的时间过长，就会持续提升优先级。这样就可以防止饥饿现象。</li>
+<li>响应时间不能保证，除非将一个进程优先级设为最高。但如果每个人都将自己进程的优先级设为最高，响应时间还是无法保证。</li>
+</ol>
+<h2 id="5-7-混合调度算法"><a href="#5-7-混合调度算法" class="headerlink" title="5.7 混合调度算法"></a>5.7 混合调度算法</h2><p>原理：将所有进程分成不同的大类，每个大类为一个优先级。如果两个进程处于不同的大类，则处于高优先级大类的进程优先执行；如果两个进程处于同一个大类，则采用时间片轮转算法来执行。</p>
+<h2 id="5-8-其他调度算法"><a href="#5-8-其他调度算法" class="headerlink" title="5.8 其他调度算法"></a>5.8 其他调度算法</h2><ul>
+<li>保障调度</li>
+<li>彩票调度</li>
+<li>用户公平调度</li>
+</ul>
+<h2 id="5-9-实时调度算法"><a href="#5-9-实时调度算法" class="headerlink" title="5.9 实时调度算法"></a>5.9 实时调度算法</h2><ul>
+<li>EDF调度算法：最早截止的任务先做，允许抢占正在运行的程序。EDF调度算法其实就是抢占式STCF算法。</li>
+<li>RMS调度算法：动态地计算每个任务的截止时间并动态调节优先级。</li>
+</ul>
+<h2 id="5-10-进程调度的过程"><a href="#5-10-进程调度的过程" class="headerlink" title="5.10 进程调度的过程"></a>5.10 进程调度的过程</h2><h2 id="5-11-调度异常：优先级倒挂"><a href="#5-11-调度异常：优先级倒挂" class="headerlink" title="5.11 调度异常：优先级倒挂"></a>5.11 调度异常：优先级倒挂</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>充电的猫猫
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tsukiyokai.github.io/posts/d630/" title="进程调度">https://tsukiyokai.github.io/posts/d630/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%BF%9B%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 进程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/cde6/" rel="prev" title="进程概论">
+                  <i class="fa fa-chevron-left"></i> 进程概论
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/d65/" rel="next" title="进程通信">
+                  进程通信 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="translate-style">
+繁/簡：<a id="translateLink" href="javascript:translatePage();">繁體
+</a>
+</div>
+<script type="text/javascript" src="/js/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 1; //網站編寫字體是否繁體，1-繁體，2-簡體
+var translateDelay = 0; //延遲時間,若不在前, 要設定延遲翻譯時間, 如100表示100ms,默認為0
+var cookieDomain = "https://tsukiyokai.github.io/"; //Cookie地址, 一定要設定, 通常為你的網址
+var msgToTraditionalChinese = "繁體"; //此處可以更改為你想要顯示的文字
+var msgToSimplifiedChinese = "簡體"; //同上，但兩處均不建議更改
+var translateButtonId = "translateLink"; //默認互換id
+translateInitilization();
+</script>
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+<script data-pjax>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"MENt3xxaJlxkVFyePnJeEmA5-gzGzoHsz","app_key":"nFiJhyLSqoN3ExuFMOhcy4fS","server_url":null,"security":false};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+    <div class="pjax">
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink.listen({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://tsukiyokai.github.io/posts/d630/',]
+      });
+      });
+  </script>
+
+<script>
+NexT.utils.loadComments('.utterances-container', () => {
+  const script = document.createElement('script');
+  script.src = 'https://utteranc.es/client.js';
+  script.setAttribute('repo', "tsukiyokai/blog-assets");
+  script.setAttribute('issue-term', "pathname");
+  script.setAttribute('theme', "photon-dark");
+  script.crossOrigin = 'anonymous';
+  script.async = true;
+  document.querySelector('.utterances-container').appendChild(script);
+});
+</script>
+
+    </div>
+</body>
+</html>

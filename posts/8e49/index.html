@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7C华文中宋:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
+<meta name="description" content="#08 线程同步在战场上，友军之间的同步对战争的胜利至关重要。在计算机里，线程之间的同步对程序的正确运行也至关重要。 8.1 为什么要同步线程这一概念被引入操作系统的同时，也引发了一个巨大的问题，即多线程程序的执行：由于线程之间的相对执行顺序是不确定的，因此执行结果也可能是不确定的。线程同步的目的就是消除执行结果的这种不确定性。 8.2 线程同步的目的线程同步的具体目的是，不管线程之间如何穿插执行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程同步">
+<meta property="og:url" content="https://tsukiyokai.github.io/posts/8e49/index.html">
+<meta property="og:site_name" content="月夜海">
+<meta property="og:description" content="#08 线程同步在战场上，友军之间的同步对战争的胜利至关重要。在计算机里，线程之间的同步对程序的正确运行也至关重要。 8.1 为什么要同步线程这一概念被引入操作系统的同时，也引发了一个巨大的问题，即多线程程序的执行：由于线程之间的相对执行顺序是不确定的，因此执行结果也可能是不确定的。线程同步的目的就是消除执行结果的这种不确定性。 8.2 线程同步的目的线程同步的具体目的是，不管线程之间如何穿插执行">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-17T10:11:00.000Z">
+<meta property="article:modified_time" content="2021-04-25T16:45:25.422Z">
+<meta property="article:author" content="充电的猫猫">
+<meta property="article:tag" content="线程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tsukiyokai.github.io/posts/8e49/">
+
+
+
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
+<meta name="hexo-config-calendar" content="">
+<title>线程同步 | 月夜海</title><script data-pjax src="/js/load-config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">月夜海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">当空皓月 木已成舟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书架</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#08-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">#08 线程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%90%8C%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text">8.1 为什么要同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="nav-number">1.2.</span> <span class="nav-text">8.2 线程同步的目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-%E9%94%81%E7%9A%84%E8%BF%9B%E5%8C%96%EF%BC%9A%E9%87%91%E9%B1%BC%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">8.3 锁的进化：金鱼问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-1-%E6%B0%A8%E5%9F%BA%E9%85%B8%E9%98%B6%E6%AE%B5-%E6%97%A0%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.1.</span> <span class="nav-text">8.3.1 氨基酸阶段-无同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-2-%E8%8D%89%E5%B1%A5%E8%99%AB%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%80%E7%B1%BB%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">8.3.2 草履虫阶段-第一类同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-3-%E9%B1%BC%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%8C%E7%B1%BB%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.3.</span> <span class="nav-text">8.3.3 鱼阶段-第二类同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-4-%E7%8C%B4%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E7%B1%BB%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.4.</span> <span class="nav-text">9.3.4 猴阶段-第三类同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-5-%E4%BA%BA%E9%98%B6%E6%AE%B5%EF%BC%88%E9%94%81%EF%BC%89"><span class="nav-number">1.3.5.</span> <span class="nav-text">8.3.5 人阶段（锁）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-%E7%9D%A1%E8%A7%89%E4%B8%8E%E5%8F%AB%E9%86%92%EF%BC%9A%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">8.4 睡觉与叫醒：生产者与消费者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-5-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-number">1.5.</span> <span class="nav-text">8.5 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-6-%E9%94%81%E3%80%81%E7%9D%A1%E8%A7%89%E4%B8%8E%E5%8F%AB%E9%86%92%E3%80%81%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-number">1.6.</span> <span class="nav-text">8.6 锁、睡觉与叫醒、信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-7-%E7%AE%A1%E7%A8%8B"><span class="nav-number">1.7.</span> <span class="nav-text">8.7 管程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-8-%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92"><span class="nav-number">1.8.</span> <span class="nav-text">8.8 消息传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-9-%E6%A0%85%E6%A0%8F"><span class="nav-number">1.9.</span> <span class="nav-text">8.9 栅栏</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="充电的猫猫"
+      src="/images/haruna.png">
+  <p class="site-author-name" itemprop="name">充电的猫猫</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tsukiyokai" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tsukiyokai" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tsukiyokai@hotmail.com" title="E-Mail → mailto:tsukiyokai@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8e49/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线程同步
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-17 18:11:00" itemprop="dateCreated datePublished" datetime="2021-03-17T18:11:00+08:00">2021-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/8e49/" class="post-meta-item leancloud_visitors" data-flag-title="线程同步" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="08-线程同步"><a href="#08-线程同步" class="headerlink" title="#08 线程同步"></a>#08 线程同步</h1><p>在战场上，友军之间的同步对战争的胜利至关重要。在计算机里，线程之间的同步对程序的正确运行也至关重要。</p>
+<h2 id="8-1-为什么要同步"><a href="#8-1-为什么要同步" class="headerlink" title="8.1 为什么要同步"></a>8.1 为什么要同步</h2><p>线程这一概念被引入操作系统的同时，也引发了一个巨大的问题，即多线程程序的执行：由于线程之间的相对执行顺序是不确定的，因此执行结果也可能是不确定的。线程同步的目的就是消除执行结果的这种不确定性。</p>
+<h2 id="8-2-线程同步的目的"><a href="#8-2-线程同步的目的" class="headerlink" title="8.2 线程同步的目的"></a>8.2 线程同步的目的</h2><p>线程同步的具体目的是，不管线程之间如何穿插执行，其运行结果都是正确的、可预测的。并且在保证运行结果正确的条件下对线程执行的限制越少越好。</p>
+<p>多线程的执行，除了结果是不确定的之外，其效率也是不确定的。如果我们想使其变得确定，就需要进行线程同步。同步就是让所有线程按照一定的规则执行，使其正确性和效率有迹可循。线程同步的手段就是对线程之间的穿插进行控制。</p>
+<h2 id="8-3-锁的进化：金鱼问题"><a href="#8-3-锁的进化：金鱼问题" class="headerlink" title="8.3 锁的进化：金鱼问题"></a>8.3 锁的进化：金鱼问题</h2><h3 id="8-3-1-氨基酸阶段-无同步"><a href="#8-3-1-氨基酸阶段-无同步" class="headerlink" title="8.3.1 氨基酸阶段-无同步"></a>8.3.1 氨基酸阶段-无同步</h3><p>金鱼没有饱腹的感觉，不会因为吃饱了就停止。只要浴缸中还有食物，金鱼就会不停进食直至胀死。因此，金鱼的死活由投食者控制。</p>
+<p>假定甲和乙两人合住，共同喂养一条金鱼，该金鱼每日进食一次。如果一天内两人都喂了鱼，金鱼胀死；如果一天内两人都没有喂鱼，金鱼饿死。</p>
+<p>现约定如下：</p>
+<ol>
+<li>每天喂鱼一次，且仅一次。</li>
+<li>如果今天甲已喂鱼，则乙不能再喂。反之亦然。</li>
+<li>如果今天甲未喂鱼，则乙必须喂鱼。反之亦然。</li>
+</ol>
+<p>最简单的情况是甲乙两人不进行任何沟通。为了保证鱼的存活，分别应该执行如下程序：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="keyword">if</span>(noFeed)&#123;</span><br><span class="line"><span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="keyword">if</span>(noFeed)&#123;</span><br><span class="line"><span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述程序可以正确保证鱼的存活吗？答案是否定的。由于线程的执行可以任意穿插，甲可以先检查金鱼，发现没有喂，于是准备喂鱼。但就在甲准备喂但尚未喂的时候，发生了某件事情使得程序切换，轮到乙执行。乙发现此时鱼还没有被喂（事实上也确实如此），于是乙就喂鱼。此后程序重新切回甲，因为甲已经检查过了金鱼的状态（没喂），所以甲从检查之后的指令开始执行，也喂鱼。这样鱼就先后被喂了两次，金鱼胀死。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检查金鱼（没喂）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查金鱼（没喂）</td>
+</tr>
+<tr>
+<td>喂鱼</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>喂鱼</td>
+</tr>
+</tbody></table>
+<p>为什么会发生金鱼胀死的情况？原因在于甲乙同时执行了同一段代码。两个或多个线程争相执行同一段代码或访问同一资源的现象称为竞争。可能造成竞争的共享代码段或资源称为临界区。当然，单核情况下两个线程不可能真的在同一时刻执行，但可能同一时刻两个线程都在同一段代码上，者这个例子里竞争的就是代码，称为代码竞争。如果两个线程同时访问同一个数据就叫做数据竞争。</p>
+<p>以人类进化来比喻，上面的代码段只相当于氨基酸阶段，竞争杂乱而无序，不具备任何协调能力。</p>
+<h3 id="8-3-2-草履虫阶段-第一类同步"><a href="#8-3-2-草履虫阶段-第一类同步" class="headerlink" title="8.3.2 草履虫阶段-第一类同步"></a>8.3.2 草履虫阶段-第一类同步</h3><p>要防止鱼胀死，就要防止竞争。要避免竞争，就要防止两个或多个线程同时进入临界区。这需要某种协调手段。</p>
+<p>协调的目的是保证任何时刻都只能有一个人再临界区，称为互斥。互斥意思就是一次只能有一个人使用共享资源，其他人皆排除在外，且互斥不能违反前面给出的进程模型。因此，正确互斥需要满足4个条件。</p>
+<ol>
+<li>不能有两个进程同时在临界区里面。</li>
+<li>进程能够在任何数量和速度的CPU上正确执行。</li>
+<li>在互斥区域外不能阻止另一个进程的运行。</li>
+<li>进程不能无限制地等待进入临界区。</li>
+</ol>
+<p>如果任何一个条件不满足，那么设计的互斥就是不正确的。</p>
+<p>如何确保一次只有一个人在临界区？答案是让两个线程协调。最简单的协调是让甲乙直接交谈，但两人未必有时间碰面。那么剩下的办法是留字条。这就是第一种同步方式：甲乙约定，在喂鱼之前应该留下字条，告诉对方自己将检查鱼缸并在需要时喂鱼。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="keyword">if</span>(noNote)&#123;</span><br><span class="line"><span class="built_in">leaveNote</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNote</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="keyword">if</span>(noNote)&#123;</span><br><span class="line"><span class="built_in">leaveNote</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNote</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述机制可以正确保证鱼的存活吗？答案仍然是否定的。如果甲乙交叉执行上述程序，还是会造成鱼的胀死。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检查字条（无字条）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查字条（无字条）</td>
+</tr>
+<tr>
+<td>留下字条</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>留下字条</td>
+</tr>
+<tr>
+<td>检查金鱼（没喂）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查金鱼（没喂）</td>
+</tr>
+<tr>
+<td>喂鱼</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>喂鱼</td>
+</tr>
+</tbody></table>
+<p>为什么没起到作用呢？这是因为虽然使用了互斥手段，但并没有达成互斥的目的，留字条依然没有阻止甲乙同时进入临界区。虽然结果失败了，但这个机制与第一个解决方案相比的确有所改善，金鱼胀死的几率大大降低，只有在甲乙严格交叉执行的情况下才可能发生胀死。</p>
+<h3 id="8-3-3-鱼阶段-第二类同步"><a href="#8-3-3-鱼阶段-第二类同步" class="headerlink" title="8.3.3 鱼阶段-第二类同步"></a>8.3.3 鱼阶段-第二类同步</h3><p>分析上面程序发现，失败原因是检查字条和留下字条两个动作之间存在一个空隙。我们可以改变一下顺序，先留字条，再检查有没有对方的字条。如果没有对方的字条，就喂鱼，喂完把自己的字条拿掉。这种方法需要区分字条是谁留下的。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">leaveNoteA</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteB)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteA</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">leaveNoteB</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteA)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteB</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种方法能否保证鱼存活？可以。因为无论按照什么顺序穿插，总有某个人的留字条指令在另一个人的检查字条指令前面执行，从而防止两个人同时进入临界区。所以鱼不会因为两个人重复投食而胀死。</p>
+<p>但我们还是要检验此机制在极限交叉执行情况下的表现。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>留字条-乙</td>
+</tr>
+<tr>
+<td>留字条-甲</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查字条-甲（有）</td>
+</tr>
+<tr>
+<td>检查字条-乙（有）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>丢弃字条-乙</td>
+</tr>
+<tr>
+<td>丢弃字条-甲</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>由于严格交叉执行，两人在检查字条时，都看到了对方留下字条，于是都选择不喂鱼。金鱼饿死。</p>
+<p>由于存在饿死的可能，这个程序似乎没有被改善。但实际上，与胀死相比，饿死的确是一种改善。对于计算机系统，饿死好于胀死。胀死情况下程序的运行极有可能出错（几个线程同时获得同一资源，结果出现不一致性和不确定性几乎是难以避免的）。饿死情况下所有人都拿不到某个资源，线程处于饥饿状态，一般会停止推进，这不一定会产生严重错误，只是延迟了正确结果的出现。</p>
+<p>虽然饿死比起胀死已经是一种进化，但同步机制仍需继续进化。</p>
+<h3 id="9-3-4-猴阶段-第三类同步"><a href="#9-3-4-猴阶段-第三类同步" class="headerlink" title="9.3.4 猴阶段-第三类同步"></a>9.3.4 猴阶段-第三类同步</h3><p>上述机制的互斥，保证了没有两个人同时进入临界区，但没有保证必须有一个人进入临界区喂鱼。换句话说，互斥过头了。</p>
+<p>解决办法就是让某个人等着，直到确认有人喂了鱼才离开，不要只看到对方字条就走人。于是得到第三类同步方式。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">leaveNoteA</span>();</span><br><span class="line"><span class="keyword">while</span>(noteB)&#123;</span><br><span class="line">donothing;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNoteA</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">leaveNoteB</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteA)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteB</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种机制下，鱼显然不会胀死。并且鱼不会饿死，因为鱼饿死的唯一条件是两个人同时留纸条并离开。而本程序在两个人都留了纸条的情况下，甲不会走人，而是一直等到乙删除自己纸条后，金鱼再被重新检查。这种同步方式既避免了胀死又防止了饿死。</p>
+<p>一切似乎大功告成，但程序仍有进步空间。</p>
+<h3 id="8-3-5-人阶段（锁）"><a href="#8-3-5-人阶段（锁）" class="headerlink" title="8.3.5 人阶段（锁）"></a>8.3.5 人阶段（锁）</h3><p>上述同步机制存在一些问题。</p>
+<ol>
+<li>不对称。程序因不对称而不美观。其次，不对称造成程序编写困难。为了追求程序的正确性，即使是做同样操作的线程也得以不同样式编写，自然增加了编程难度。最后不对称还造成程序证明的困难，想要从理论上证明不对称程序的正确性是十分复杂的。</li>
+</ol>
+<blockquote>
+<p>程序就像蓝色的诗歌。——DonaldKnuth</p>
+</blockquote>
+<ol start="2">
+<li>浪费。甲执行的循环等待是一件很大的浪费。但浪费不是循环等待的唯一问题，它可能造成CPU调度的优先级倒挂。优先级倒挂就是高优先级线程等待低优先级线程。假设甲的优先级比乙高，甲获得CPU，留下字条，进入循环等待，而乙无法获得CPU完成后续工作，造成甲始终处于循环等待阶段无法推进。这样，优先级高的甲就被优先级低的乙所阻塞。优先级倒挂完全违反了设立优先级的初衷，因而无法忍受。</li>
+</ol>
+<p>欲进一步改善同步方案，首先要先确定在哪一个方案的基础上改进。第三类同步看似最为合适，无非就是不美观和循环等待，然而实际上这两点都是无法改进的：我们既无法强行使其变得对称，也不能去掉甲的循环等待。由此可见，这种零敲碎打式的推进模式已经走到了尽头，需要新的修改思路。新的思路就是直接对前两类方案进行修改。</p>
+<p>第一类方案完全对称，第二类方案不完全对称，因为每个人的字条不同。我们选择第一类作为修改的基础。首先，应该回顾其当初不满足需求的原因。</p>
+<p>为什么第一类同步没起到作用呢？这是因为检查字条和留字条是两个分离的步骤，虽然使用了互斥手段，但未能达到互斥的目的，没有阻止甲乙同时进入临界区。显然现在的思路就是：使这两个步骤并为一个步骤，或者变成一个原子操作，使其中间不留空隙。这样问题就迎刃而解。</p>
+<p>换句话说，我们之所以到现在还没有解决掉金鱼问题，是因为我们始终在非常低的层次上徘徊。我们试图工作的层面是鱼和鱼缸，我们仅仅在指令层上努力，由于我们所控制的单元是一条条指令，因此对指令之间的空袭无能为力。解决这种问题的办法就是提高抽象的层次，将我们控制的层面上升到对一组指令的控制。</p>
+<p>金鱼问题中，若我们将抽象层次从保护鱼和鱼缸的层次提高至保护放置鱼缸的房间的层次，这个问题将得以解决。也就是设计一种同步措施，使得在任何时候只能一个人进入房间，这样检查字条和留字条的两个步骤就变成给房间上锁的一步操作。</p>
+<p>如果两个教师想使用同一间教室给学生上课（竞争），该如何协调？只要先到的教师进入教室后将门锁上，后来的教师就无法进入教室了。锁就是用来保证互斥的。操作系统中，将可以保证互斥的同步机制称为锁。</p>
+<p>有了锁，金鱼问题就可以解决。当一个人进屋准备喂鱼，就把放有鱼缸的房间上锁，如此做另外一个人就进不来，自然无法喂鱼。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">unlock</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种同步机制的代码完美地确保了金鱼既不会饿死也不会胀死，更重要的是，两人执行完全相同地代码，程序逻辑对称，格式美观，编写方便，证明简单。金鱼问题到此迎刃而解。</p>
+<p><strong>锁的基本操作</strong></p>
+<ul>
+<li>闭锁（上锁）</li>
+<li>开锁（解锁）</li>
+</ul>
+<p>开锁只有一步，即打开锁。闭锁有两个步骤：1.等待锁达到打开状态。2.获得锁并锁上。显然，闭锁的两个步骤应当是原子操作，原子操作就是不能分开的操作。如果允许两个操作分开，就会留下允许穿插的空袭，导致锁失效。</p>
+<p>实际上，第一类同步方案里面的字条从某种意义上来说就是一把锁，只是这把锁没能锁住资源。因为这把锁还不具备一把合格锁所应具备的特性：</p>
+<ol>
+<li>锁的初始状态必须是打开状态。</li>
+<li>进入临界区前必须获得锁。</li>
+<li>离开临界区时必须打开锁。</li>
+<li>如果别人持有锁，必须等待。</li>
+</ol>
+<p>第一类同步中的留字条方法违反了第四个原则，在别人持有锁（准备留下字条）的情况下依旧进入临界区。字条无法起到锁的作用，即是一把破锁。</p>
+<p>这个程序还有什么缺点？如果甲正在喂鱼，乙在门外什么也不能干，只能等待锁变为打开状态。如果甲喂鱼花费时间很久，乙等待的时间就会很漫长。这种繁忙等待不仅将造成浪费，而且将降低系统效率。因为锁的特性之一就是必须在别人持有锁时等待，因此我们无法消除这种等待，但可以减少等待的时间。那就是把喂鱼的操作放在锁的外面。这样可以使锁上的繁忙等待时间减少。但终究还是要等待的，如果想要不进行任何等待，这需要引入睡觉与叫醒。</p>
+<h2 id="8-4-睡觉与叫醒：生产者与消费者问题"><a href="#8-4-睡觉与叫醒：生产者与消费者问题" class="headerlink" title="8.4 睡觉与叫醒：生产者与消费者问题"></a>8.4 睡觉与叫醒：生产者与消费者问题</h2><p>睡觉与叫醒就是，如果对方持有锁，你就不需要等待锁变成打开状态，而是去睡觉，等锁打开后对方再来把你叫醒。</p>
+<p>在生产者-中介机构-消费者这个模式里，中介机构的存在使得生产者和消费者能够相对独立地运行，不必亦步亦趋地跟在另一方后面。只要超市（中介机构）货架没满，生产者就可以一直生产，不用等消费者订一件才做一件。生产者与消费者直接对接的这种原始模式在资源分配方面效率十分低下。</p>
+<p>在操作系统中可以这样类比：一个进程代表生产者，一个进程代表消费者，一片内存缓冲区代表商店。生产者生产的物品从一端放入缓冲区，消费者从缓冲区的另一端获取物品。</p>
+<p>以校园中的自动售货机为例。售货机是缓冲区，送货员是生产者，学生是消费者。只要售货机既不空也不满，送货员和学生就可以一直进行生产和消费。如果学生来买饮料时发现售货机空了，可以有两个选择：在售货机前面等待，直到送货员来送货。或者转身回宿舍睡觉，等送货员来把学生叫醒。同理，如果送货员送货时发现售货机已满，也有两种选择：在售货机前原地等待，直到有学生来买走一些东西，然后将售货机填满。或者回家睡觉，等有学生买走一些东西后再来补货，学生买走商品后需要叫醒送货员。</p>
+<p>下面程序中的sleep和wakeup就是操作系统里的睡觉和叫醒原语。一个程序调用sleep后将进入休眠状态，释放其占用的CPU。一个执行wakeup的程序将发送一个信号给指定的接收进程，如wakeup(producer)就发送一个信号给生产者。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">#defineN100<span class="comment">//定义缓冲区的大小</span></span><br><span class="line">intcount=<span class="number">0</span>;<span class="comment">//定义当前缓冲区里的商品数，初始化为0</span></span><br><span class="line"></span><br><span class="line">voidproducer(<span class="keyword">void</span>)&#123;<span class="comment">//生产者程序</span></span><br><span class="line">intitem;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">item=producer_item();<span class="comment">//生产一件商品</span></span><br><span class="line"><span class="keyword">if</span>(count==N)sleep();<span class="comment">//如果缓冲区满，则睡眠</span></span><br><span class="line">insert_item(item);<span class="comment">//如果缓冲区未满，则将商品放入缓冲区</span></span><br><span class="line">count++;<span class="comment">//商品放入后计数加1</span></span><br><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)wakeup(consumer);<span class="comment">//如果刚好剩1件则说明此前为空，可能有消费者见到空缓冲区而去睡觉，唤醒消费者</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">voidconsumer(<span class="keyword">void</span>)&#123;<span class="comment">//消费者程序</span></span><br><span class="line">intitem;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(count==<span class="number">0</span>)sleep();<span class="comment">//检查当前商品计数，如果为0，没有商品，就去睡觉</span></span><br><span class="line">item=remove_item();<span class="comment">//缓冲区非空，则从中拿走一件商品</span></span><br><span class="line">count--;<span class="comment">//拿走商品后计数器减1</span></span><br><span class="line"><span class="keyword">if</span>(count==N<span class="number">-1</span>)wakeup(producer);<span class="comment">//如果刚好剩N-1件，可能有生产者因见到缓冲区满而去睡觉，唤醒生产者</span></span><br><span class="line">consumer_item(item);<span class="comment">//尽情享用商品</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序存在两个问题。</p>
+<ol>
+<li>错误唤醒。假如cnt此时为1，生产者先运行，对cnt加1后变成2，接下来准备判断cnt是否为1（不等于）。就在尚未判断的此刻，CPU被消费者获得，随后对cnt减1变回1，这时再切换回生产者，cnt==1成立，于是顺其自然地就向消费者发送了叫醒信号——实际上该信号本不应发出。</li>
+<li>死锁。死锁是生产者和消费者都无法向前推进的情况。举例说明一下，假如cnt此时为初始值0，消费者先来，于是去睡觉，但是在cnt==1之后和sleep之前CPU发生切换，生产者开始运行，他生产一件商品，cnt加1后变为1，刚好满足唤醒消费者的条件。但消费者此时处于sleep之前，准备要睡但还没有睡觉，于是这个唤醒信号无事发生，浪费了。生产者此后继续运行直到缓冲区满后也去睡觉，然后CPU交给消费者，消费者执行的第一条指令就是完成刚才准备要做的sleep动作。至此，生产者和消费者都进入睡觉状态，不能唤醒对方而无法向前推进，系统发生了死锁。</li>
+</ol>
+<p>对于第一个问题，解决方案是加上锁。在进行对cnt的操作前后分别加上开锁和闭锁即可防止生产者和消费者同时访问cnt的情况出现。虽然一旦引入锁就必然伴随着等待，但实际上我们并非一刻也不愿等待，只是不愿意等太久。cnt的访问前后加上锁所造成的繁忙等待时间是很短的，完全可以接收。</p>
+<p>对于第二个问题，解决方案是不让二者同时睡觉。首先反思造成双方同时睡觉的原因是什么？原因正是生产者发出的叫醒信号丢失（此时对方并没有睡觉因此也无需唤醒）。解决思路如下：如果我们用某种方法将发出的信号积累起来，而不是直接丢弃，问题不就解决了吗？回顾死锁发生前的情景，试想如果消费者重新获得CPU并执行sleep语句后，生产者早前发送的叫醒信号还保留着，消费者就能及时获得这个信号而醒过来。</p>
+<p>能够将信号累计起来的操作系统原语就是信号量。信号和信号量是两个完全不同的概念：信号类似于软中断，进程接收到信号，相当于发生了中断。信号量是一个计数器，其取值为当前积累的信号数量。</p>
+<h2 id="8-5-信号量"><a href="#8-5-信号量" class="headerlink" title="8.5 信号量"></a>8.5 信号量</h2><h2 id="8-6-锁、睡觉与叫醒、信号量"><a href="#8-6-锁、睡觉与叫醒、信号量" class="headerlink" title="8.6 锁、睡觉与叫醒、信号量"></a>8.6 锁、睡觉与叫醒、信号量</h2><h2 id="8-7-管程"><a href="#8-7-管程" class="headerlink" title="8.7 管程"></a>8.7 管程</h2><h2 id="8-8-消息传递"><a href="#8-8-消息传递" class="headerlink" title="8.8 消息传递"></a>8.8 消息传递</h2><h2 id="8-9-栅栏"><a href="#8-9-栅栏" class="headerlink" title="8.9 栅栏"></a>8.9 栅栏</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>充电的猫猫
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tsukiyokai.github.io/posts/8e49/" title="线程同步">https://tsukiyokai.github.io/posts/8e49/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 线程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/aaa3/" rel="prev" title="线程概论">
+                  <i class="fa fa-chevron-left"></i> 线程概论
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/6ee0/" rel="next" title="死锁">
+                  死锁 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="translate-style">
+繁/簡：<a id="translateLink" href="javascript:translatePage();">繁體
+</a>
+</div>
+<script type="text/javascript" src="/js/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 1; //網站編寫字體是否繁體，1-繁體，2-簡體
+var translateDelay = 0; //延遲時間,若不在前, 要設定延遲翻譯時間, 如100表示100ms,默認為0
+var cookieDomain = "https://tsukiyokai.github.io/"; //Cookie地址, 一定要設定, 通常為你的網址
+var msgToTraditionalChinese = "繁體"; //此處可以更改為你想要顯示的文字
+var msgToSimplifiedChinese = "簡體"; //同上，但兩處均不建議更改
+var translateButtonId = "translateLink"; //默認互換id
+translateInitilization();
+</script>
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+<script data-pjax>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"MENt3xxaJlxkVFyePnJeEmA5-gzGzoHsz","app_key":"nFiJhyLSqoN3ExuFMOhcy4fS","server_url":null,"security":false};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+    <div class="pjax">
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink.listen({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://tsukiyokai.github.io/posts/8e49/',]
+      });
+      });
+  </script>
+
+<script>
+NexT.utils.loadComments('.utterances-container', () => {
+  const script = document.createElement('script');
+  script.src = 'https://utteranc.es/client.js';
+  script.setAttribute('repo', "tsukiyokai/blog-assets");
+  script.setAttribute('issue-term', "pathname");
+  script.setAttribute('theme', "photon-dark");
+  script.crossOrigin = 'anonymous';
+  script.async = true;
+  document.querySelector('.utterances-container').appendChild(script);
+});
+</script>
+
+    </div>
+</body>
+</html>

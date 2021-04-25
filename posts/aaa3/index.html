@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7C华文中宋:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
+<meta name="description" content="#07 线程概论进程希望自己在某些时候能够分身从而完成更加复杂的任务。从根本上说，线程是操作系统给进程模型提供并发能力的手段。虽然线程和进程出现的动机都是并发，但他们的并发层次不同：  进程属于处理器级并发，即在处理器这一层次上提供并发的抽象；  线程则属于进程级并发，即在进程这个层次上再提供一层并发的抽象；  如果我们继续下到底层，进入计算机体系结构里就会发现，流水线提供的也是一种并发，不过是指">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程概论">
+<meta property="og:url" content="https://tsukiyokai.github.io/posts/aaa3/index.html">
+<meta property="og:site_name" content="月夜海">
+<meta property="og:description" content="#07 线程概论进程希望自己在某些时候能够分身从而完成更加复杂的任务。从根本上说，线程是操作系统给进程模型提供并发能力的手段。虽然线程和进程出现的动机都是并发，但他们的并发层次不同：  进程属于处理器级并发，即在处理器这一层次上提供并发的抽象；  线程则属于进程级并发，即在进程这个层次上再提供一层并发的抽象；  如果我们继续下到底层，进入计算机体系结构里就会发现，流水线提供的也是一种并发，不过是指">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-15T09:09:00.000Z">
+<meta property="article:modified_time" content="2021-04-25T16:45:25.391Z">
+<meta property="article:author" content="充电的猫猫">
+<meta property="article:tag" content="线程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tsukiyokai.github.io/posts/aaa3/">
+
+
+
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
+<meta name="hexo-config-calendar" content="">
+<title>线程概论 | 月夜海</title><script data-pjax src="/js/load-config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">月夜海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">当空皓月 木已成舟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书架</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#07-%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">#07 线程概论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%86%E8%BA%AB%E6%9C%AF%E2%80%94%E2%80%94%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">7.1 进程的分身术——线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">7.2 线程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">7.3 线程实现模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">7.4 现代操作系统的线程实现模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.5.</span> <span class="nav-text">7.5 多线程的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-6-%E8%AE%A8%E8%AE%BA%EF%BC%9A%E4%BB%8E%E7%94%A8%E6%88%B7%E6%80%81%E8%BF%9B%E5%85%A5%EF%BC%88%E9%99%B7%E5%85%A5%EF%BC%89%E5%86%85%E6%A0%B8%E6%80%81"><span class="nav-number">1.6.</span> <span class="nav-text">7.6 讨论：从用户态进入（陷入）内核态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-7-%E8%AE%A8%E8%AE%BA%EF%BC%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%9B%B0%E6%83%91%E2%80%94%E2%80%94%E7%A1%AE%E5%AE%9A%E6%80%A7%E4%B8%8E%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-number">1.7.</span> <span class="nav-text">7.7 讨论：线程的困惑——确定性与非确定性</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="充电的猫猫"
+      src="/images/haruna.png">
+  <p class="site-author-name" itemprop="name">充电的猫猫</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tsukiyokai" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tsukiyokai" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tsukiyokai@hotmail.com" title="E-Mail → mailto:tsukiyokai@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/aaa3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线程概论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-15 17:09:00" itemprop="dateCreated datePublished" datetime="2021-03-15T17:09:00+08:00">2021-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/aaa3/" class="post-meta-item leancloud_visitors" data-flag-title="线程概论" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="07-线程概论"><a href="#07-线程概论" class="headerlink" title="#07 线程概论"></a>#07 线程概论</h1><p>进程希望自己在某些时候能够分身从而完成更加复杂的任务。从根本上说，线程是操作系统给进程模型提供并发能力的手段。虽然线程和进程出现的动机都是并发，但他们的并发层次不同：</p>
+<ul>
+<li><p>进程属于处理器级并发，即在处理器这一层次上提供并发的抽象；</p>
+</li>
+<li><p>线程则属于进程级并发，即在进程这个层次上再提供一层并发的抽象；</p>
+</li>
+<li><p>如果我们继续下到底层，进入计算机体系结构里就会发现，流水线提供的也是一种并发，不过是指令级并发。</p>
+</li>
+</ul>
+<p>这样，流水线、进程、线程就从低到高在3个层次上提供了我们需要的并发。</p>
+<blockquote>
+<p>进程是资源分配的最小单位，线程是cpu调度的最小单位。</p>
+</blockquote>
+<h2 id="7-1-进程的分身术——线程"><a href="#7-1-进程的分身术——线程" class="headerlink" title="7.1 进程的分身术——线程"></a>7.1 进程的分身术——线程</h2><p>亚历山大的分身术：只要速度够快，就相当于拥有分身。</p>
+<p>将进程分解为线程可以有效地利用多处理器和多核计算机。在没有线程的情况下，增加一个处理器并不能提高一个进程的执行速度。但如果分解为多个线程，则可以让不同的线程同时运转在不同的处理器上，从而提高进程的执行速度。</p>
+<p>例如，当我们使用文字处理软件MicrosoftWord时，实际上是打开了多个线程。这些线程一个负责显示，一个接收输入，一个定时保存。这些线程运行在不同的处理器上，让我们感到输入和显示同时发生。</p>
+<h2 id="7-2-线程管理"><a href="#7-2-线程管理" class="headerlink" title="7.2 线程管理"></a>7.2 线程管理</h2><ul>
+<li>存放进程各种信息的数据结构称为进程表或进程控制块。</li>
+<li>存放线程各种信息的数据结构称为线程控制表或线程控制块。</li>
+</ul>
+<p>线程共享一个进程空间，因此许多资源是共享的。共享的资源不需要放在线程控制块里，而是放到进程控制块即可。但线程也有一些不能共享的资源，不被共享的资源和信息需要存放到线程控制块里。</p>
+<p>正确的设计思想是：应当让共享的资源越多越好，这是我们发明线程的主要动机之一。</p>
+<ul>
+<li>线程共享资源：地址空间、全局变量、打开的文件、子进程、闹铃、信号和信号服务程序、记账信息</li>
+<li>线程独享资源：程序计数器、寄存器、栈、状态字</li>
+</ul>
+<h2 id="7-3-线程实现模型"><a href="#7-3-线程实现模型" class="headerlink" title="7.3 线程实现模型"></a>7.3 线程实现模型</h2><p>线程在进程基础上提供第二次并发。由于线程之间的共享远比进程之间的共享丰富，因此线程在高度并发的环境下发挥着极为重要的作用。</p>
+<p>和进程一样，线程本身也对应着某种物理现实，也需要存储和调度。</p>
+<ul>
+<li>存储上，因为线程依附于进程而存在，所以无需额外设计，而是直接附于进程存储方案上。</li>
+<li>调度上，线程和进程有所不同。线程的调度既可以由进程负责，也可以由操作系统负责，这两种不同的调度推手形成了线程的两种实现：用户态实现和内核态实现。由进程自己管理就是用户态线程的实现，由操作系统管理就是内核态线程实现。用户态和内核态的判断以线程表所处的位置为依据：位于内核叫内核态实现，位于用户层叫用户态实现。</li>
+</ul>
+<p>为什么前面讲述进程时没有提到用户态和内核态的实现方式？因为进程是在CPU上实现并发的，而CPU是由操作系统管理的，因此进程的实现只有内核态实现，没有用户态实现。但线程不同于进程，线程是进程内部的东西，存在着由进程直接管理线程的可能性。因此线程有内核态和用户态两种实现方式。</p>
+<ul>
+<li>内核态线程实现：好处是用户编程简单，因为线程的复杂性由操作系统承担。另一个好处是如果一个线程执行阻塞操作，操作系统可以从容地调度另一个线程执行，因为操作系统有权监控和指挥所有的线程。缺点是效率较低，每次线程切换都需要陷入到内核，由操作系统来进行调度，而从用户态陷入到内核态是要花时间的。最致命的缺陷是：内核态实现需要修改操作系统，这一操作往往伴随着未知的风险。因此就有了线程的用户态实现。</li>
+<li>用户态线程实现：线程出现之初，研究人员无法说服操作系统研发商修改操作系统，把一个有效性未经证明的新概念加入其中，其实现的方式只能是用户态。用户态实现的优点是灵活，因为操作系统无须知道线程的存在，所以在任何操作系统上都能应用。其次是线程切换速度快，因为每次切换无需陷入内核。最后是不用修改操作系统，实现容易。缺点是编程变得诡异，用户态线程需要相互合作才能运转，一个线程受到阻塞将造成整个进程都受阻，这是用户态线程的致命弱点。解决思路有两个：一是不让线程阻塞，二是阻塞后想办法激活受阻进程的其他线程。事实上阻塞不可避免，一般考虑第二种思路，即线程阻塞后想办法激活受阻进程的其他线程。这种办法的实现依赖于OS。线程阻塞后CPU的控制权回到OS手中，此时让OS在进行进程切换时先不切换，而是通知受阻的进程执行系统，询问是否有其他线程可以执行，从而调度另一个可以执行的线程到CPU上。这种做法称为“第二机会”。该做法存在一个严重缺陷：违反了层次架构原则，即下层功能调用了上层功能（操作系统在下，执行系统在上）。这种违反上下有别的做法使得操作系统的设计和管理变得更加复杂。</li>
+</ul>
+<h2 id="7-4-现代操作系统的线程实现模型"><a href="#7-4-现代操作系统的线程实现模型" class="headerlink" title="7.4 现代操作系统的线程实现模型"></a>7.4 现代操作系统的线程实现模型</h2><p>现代操作系统将内核态和用户态结合起来使用。用户态的执行系统负责进程内部线程在非阻塞时的切换；内核态的操作系统负责阻塞线程的切换。即我们同时实现内核态和用户态线程管理。其中内核态线程数量较少，用户态线程数量较多。每个内核态线程可以服务一个或多个用户态线程，换句话说，用户态线程被多路复用到内核态线程上。如果进程内部一组线程中的某一个线程阻塞，则与其属于同一组的线程皆阻塞，但该进程内的另外一组线程仍可以继续执行。</p>
+<p>在分配线程时，我们可将需要执行阻塞操作的线程设为内核态线程，将不会执行阻塞操作的线程设为用户态线程。这样就结合了两种态势实现下的优点并避免其缺点。</p>
+<h2 id="7-5-多线程的关系"><a href="#7-5-多线程的关系" class="headerlink" title="7.5 多线程的关系"></a>7.5 多线程的关系</h2><p>推出线程模型的目的就是实现进程级并发。因为在一个进程中通常会出现多个线程，否则就没有必要搞什么线程了。</p>
+<p>因此研究线程就必然要研究多线程，多个线程位于一个舞台，时而交互，时而独舞。</p>
+<p>多线程共享一个地址空间的资源的过程中会产生矛盾，这些矛盾归结到下面两个根本问题：</p>
+<ol>
+<li>线程之间如何通信？</li>
+<li>线程之间如何同步？</li>
+</ol>
+<h2 id="7-6-讨论：从用户态进入（陷入）内核态"><a href="#7-6-讨论：从用户态进入（陷入）内核态" class="headerlink" title="7.6 讨论：从用户态进入（陷入）内核态"></a>7.6 讨论：从用户态进入（陷入）内核态</h2><p>程序在运行过程中发生中断或异常，系统将自动切换到内核态来运行中断或异常处理机制。此外，程序进行系统调用也将造成从用户态到内核态的转换。</p>
+<h2 id="7-7-讨论：线程的困惑——确定性与非确定性"><a href="#7-7-讨论：线程的困惑——确定性与非确定性" class="headerlink" title="7.7 讨论：线程的困惑——确定性与非确定性"></a>7.7 讨论：线程的困惑——确定性与非确定性</h2><blockquote>
+<p>一种特殊观点是：线程带给我们的优势有限，而其造成的缺憾却巨大。</p>
+</blockquote>
+<p>从某种程度上说，线程与流水线分别是软件层和硬件层不确定性的根源。流水线使得我们可以在硬件指令执行上实现并发，线程则使我们在软件指令执行上实现并发。但其带来的操作系统、编译系统、指令集结构的高度复杂是否值得，这并不容易回答。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>充电的猫猫
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tsukiyokai.github.io/posts/aaa3/" title="线程概论">https://tsukiyokai.github.io/posts/aaa3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 线程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/d65/" rel="prev" title="进程通信">
+                  <i class="fa fa-chevron-left"></i> 进程通信
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/8e49/" rel="next" title="线程同步">
+                  线程同步 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="translate-style">
+繁/簡：<a id="translateLink" href="javascript:translatePage();">繁體
+</a>
+</div>
+<script type="text/javascript" src="/js/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 1; //網站編寫字體是否繁體，1-繁體，2-簡體
+var translateDelay = 0; //延遲時間,若不在前, 要設定延遲翻譯時間, 如100表示100ms,默認為0
+var cookieDomain = "https://tsukiyokai.github.io/"; //Cookie地址, 一定要設定, 通常為你的網址
+var msgToTraditionalChinese = "繁體"; //此處可以更改為你想要顯示的文字
+var msgToSimplifiedChinese = "簡體"; //同上，但兩處均不建議更改
+var translateButtonId = "translateLink"; //默認互換id
+translateInitilization();
+</script>
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+<script data-pjax>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"MENt3xxaJlxkVFyePnJeEmA5-gzGzoHsz","app_key":"nFiJhyLSqoN3ExuFMOhcy4fS","server_url":null,"security":false};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+    <div class="pjax">
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink.listen({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://tsukiyokai.github.io/posts/aaa3/',]
+      });
+      });
+  </script>
+
+<script>
+NexT.utils.loadComments('.utterances-container', () => {
+  const script = document.createElement('script');
+  script.src = 'https://utteranc.es/client.js';
+  script.setAttribute('repo', "tsukiyokai/blog-assets");
+  script.setAttribute('issue-term', "pathname");
+  script.setAttribute('theme', "photon-dark");
+  script.crossOrigin = 'anonymous';
+  script.async = true;
+  document.querySelector('.utterances-container').appendChild(script);
+});
+</script>
+
+    </div>
+</body>
+</html>

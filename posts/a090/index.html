@@ -31,7 +31,7 @@
 <meta property="og:description" content="概念要理解this指针，重要的是要了解对象如何是看待类的函数和数据成员的。  每个对象都拥有属于自己的数据成员的副本。 所有函数都访问与代码段中相同的函数定义。  这分别意味着每个对象都有自己的数据成员副本以及所有对象共享一个成员函数副本。 现在的问题是，如果每个成员函数只存在一个副本，并且被多个对象使用，那么如何访问和更新适当的数据成员？编译器了提供一个隐式指针this。 使用this指针的几种">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-22T07:29:10.000Z">
-<meta property="article:modified_time" content="2021-04-23T03:58:44.534Z">
+<meta property="article:modified_time" content="2021-04-25T16:47:41.524Z">
 <meta property="article:author" content="充电的猫猫">
 <meta property="article:tag" content="指针">
 <meta name="twitter:card" content="summary">
@@ -167,20 +167,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">137</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -302,7 +302,7 @@
 <p>知乎上一个0赞的匿名回答完美解释了我好几年来的疑问，如下：<br>问题：C++中this指针藏在哪里？this指针应该是指向对象的，那么这个指针不是应该存在对象中的吗？<br>回答：答主。面向对象编程在编译过后并不存在所谓对象这个东西。对象的概念只存在在高层次的抽象中。所谓对象方法，实际上只是个普通的函数，只不过在你写代码的时候，这个函数是归属于某个对象或者某个类的，而编译成程序后，这个方法和普通的函数没有区别。实际上，在方法中使用this的原理非常简单，<strong>就是在传参时把对象所在的内存地址传进去</strong>。就像在python中类方法生命时需要有self变量。<br>解决我长久迷惑的那一句：就是在传参时把对象所在的内存地址传进去。<br>就是在传参时把对象所在的内存地址传进去。<br>就是在传参时把对象所在的内存地址传进去。<br>适用到上面的程序中就是，在把参数x传进setX()时，把obj这个Test类型的对象所在的地址也传进去。</p>
 <p>这时就可以完美理解百度百科上的那个例子了。</p>
 <p>（来自百度百科）关于this指针的一个经典回答:<br>当你进入一个房子后，<br>你可以看见桌子、椅子、地板等，<br>但是房子你是看不到全貌了。<br>对于一个类的实例来说，<br>你可以看到它的成员函数、成员变量，<br>但是实例本身呢？<br>this是一个指针，它时时刻刻指向你这个实例本身。</p>
-<p>啊，大脑终于畅通了。</p>
+<p>啊，至此终于全部畅通了。</p>
 <h3 id="返回对调用对象的引用"><a href="#返回对调用对象的引用" class="headerlink" title="返回对调用对象的引用"></a>返回对调用对象的引用</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Reference to the calling object can be returned */</span></span><br><span class="line"><span class="function">Test&amp; <span class="title">Test::func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Some processing</span></span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>当一个局部对象返回引用时，返回的引用可以做为一个对象调用下一个函数。这就是链式函数调用。</p>
