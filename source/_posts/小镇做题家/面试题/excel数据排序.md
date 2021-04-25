@@ -1,0 +1,199 @@
+---
+title: 拓展式局部数据排序
+categories:
+  - 小镇做题家
+  - 面试题
+abbrlink: 76d7
+tags:
+  - 数组
+  - 网易雷火
+date: 2021-04-24 18:48:23
+---
+
+第一题：数据排序 100%
+
+```c++
+#include<iostream>
+#include<vector>
+//#include<algorithm>
+//#include<string>
+using namespace std;
+
+/* 示意图
+4 4 1
+1   2   3   4
+5   6   7   8
+9   10  11  12
+13  14  15  16
+2 3 2 3 3 1
+
+1   2   3   4
+5   10  11  8
+9   6   7   12
+13  14  15  16
+
+    c1  c2  s
+r1
+r2
+
+*/
+
+// 交换特定纵向范围内的指定两行元素
+void swapline(vector<vector<int>>& unsorted1, int ra, int rb, int cb, int ce) {
+    for (int i = cb - 1; i < ce; i++) {
+        swap(unsorted1[ra][i], unsorted1[rb][i]);
+    }
+}
+
+// 对指定区域进行拓展式排序
+void sortpart(vector<vector<int>>& unsorted1, int r1, int r2, int c1, int c2, int s, int A) {
+    int diff = r2 - r1;
+    int times = (1 + diff) * diff / 2;
+    if (A == 0) {
+        while (times != 0) {
+            for (int i = r1 - 1; i < r2 - 1; i++) {
+                if (unsorted1[i][s - 1] < unsorted1[i + 1][s - 1]) continue;
+                else swapline(unsorted1, i, i + 1, c1, c2);
+            }
+            times--;
+        }
+    }
+    else {
+        while (times != 0) {
+            for (int i = r1 - 1; i < r2 - 1; i++) {
+                if (unsorted1[i][s - 1] > unsorted1[i + 1][s - 1]) continue;
+                else swapline(unsorted1, i, i + 1, c1, c2);
+            }
+            times--;
+        }
+    }
+}
+
+void printexcel(vector<vector<int>> unsorted1, int N, int M) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            cout << unsorted1[i][j] << " ";
+        }
+        cout << '\n';
+    }
+}
+
+int main() {
+    int N, M, T; // N行，M列，T次
+    vector<int> unsorted0;
+    vector<vector<int>> unsorted1; // 初始N*M数据
+    cin >> N >> M >> T;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            int x; cin >> x;
+            unsorted0.push_back(x);
+        }
+        unsorted1.push_back(unsorted0);
+        unsorted0.clear();
+    }
+    int r1, r2, c1, c2, s, A; // 目的区域
+    while (T--) {
+        cin >> r1 >> r2 >> c1 >> c2 >> s >> A;
+        sortpart(unsorted1, r1, r2, c1, c2, s, A); // 局部排序
+    }
+    printexcel(unsorted1, N, M); // 输出结果
+
+    return 0;
+}
+```
+
+第二题：游戏策划 1.67%
+
+```c++
+/*
+10(M) 10(N) 3(X) 3(Y) 1(R)
+1(K)
+3(X1) 5(Y1)
+1(C)
+1(P) 2(T) 1(S) S(down)
+2(D)
+2(s) 1(s)
+
+1 0
+*/
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+bool cansee(int X, int Y, int R, int X0, int Y0) {
+    return (X0 >= X - R && X0 <= X + R) && (Y0 >= Y - R && Y0 <= Y + R);
+}
+
+void move(int M, int N, int& X, int& Y, char WASD, char distance) {
+    int dist = static_cast<int>(distance - '0');
+    if (WASD == 'W') Y + distance < N ? Y = Y + distance : Y = N;
+    else if (WASD == 'A') X - distance > 1 ? X = X - distance : X = 1;
+    else if (WASD == 'S') Y - distance > 1 ? Y = Y - distance : Y = 1;
+    else if (WASD == 'D') X + distance < M ? X = X + distance : X = M;
+}
+
+int main() {
+    int M, N, X, Y, R;
+    cin >> M >> N >> X >> Y >> R;
+    int K; // 敌人数量
+    cin >> K;
+    int KK = K;
+    vector<vector<int>> enemypos;
+    while (K--) {
+        int X0, Y0;
+        vector<int> enemy0;
+        cin >> X0 >> Y0;
+        enemy0.push_back(X0);
+        enemy0.push_back(Y0);
+        enemypos.push_back(enemy0);
+        enemy0.clear();
+    }
+    int C; // 移动人次
+    cin >> C;
+    int CC = C;
+    vector<vector<char>> moves;
+    while (C--) {
+        char P, T, S, WSAD;
+        vector<char> move0;
+        cin >> P >> T >> S >> WSAD;
+        move0.push_back(P);
+        move0.push_back(T);
+        move0.push_back(S);
+        move0.push_back(WSAD);
+        moves.push_back(move0);
+        move0.clear();
+    }
+    int D; // 时间点数量
+    cin >> D;
+    int DD = D;
+    vector<int> time;
+    while (D--) {
+        int second;
+        cin >> second;
+        time.push_back(second);
+    }
+
+    for (int i = 0; i < DD; i++) {
+        int cnt = 0;
+        // int clock = time[i];
+        vector<vector<int>> enemyposcopy = enemypos;
+        vector<vector<char>> movescopy = moves;
+        for (int j = 0; j < KK; j++) {
+            /*
+            敌人原坐标(enemyposcopy[j][1],enemyposcopy[j][2])
+            */
+            for (int k = 0; k < CC; k++) {
+                if (static_cast<int>(movescopy[k][1] - '0') <= time[i] && static_cast<int>(movescopy[k][0] - '0') == j)
+                    move(M, N, enemyposcopy[j][0], enemyposcopy[j][1], movescopy[k][3], movescopy[k][2]);
+            }
+            cansee(X, Y, R, enemyposcopy[j][0], enemyposcopy[j][1]) == true ? cnt++ : cnt += 0;
+        }
+        cout << cnt << " ";
+    }
+
+    return 0;
+}
+```
+
+评注：网易笔试，一共四道。还有两题，一道最短路径(30)，一道16进制配置译码(40)，路径算法太久没做忘了，译码看不懂。
