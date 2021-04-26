@@ -31,7 +31,7 @@
 <meta property="og:description" content="概念要理解this指针，重要的是要了解对象如何是看待类的函数和数据成员的。  每个对象都拥有属于自己的数据成员的副本。 所有函数都访问与代码段中相同的函数定义。  这分别意味着每个对象都有自己的数据成员副本以及所有对象共享一个成员函数副本。 现在的问题是，如果每个成员函数只存在一个副本，并且被多个对象使用，那么如何访问和更新适当的数据成员？编译器了提供一个隐式指针this。 使用this指针的几种">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-22T07:29:10.000Z">
-<meta property="article:modified_time" content="2021-04-25T16:47:41.524Z">
+<meta property="article:modified_time" content="2021-04-26T11:29:31.599Z">
 <meta property="article:author" content="充电的猫猫">
 <meta property="article:tag" content="指针">
 <meta name="twitter:card" content="summary">
@@ -167,7 +167,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -180,7 +180,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -308,7 +308,7 @@
 <p>当一个局部对象返回引用时，返回的引用可以做为一个对象调用下一个函数。这就是链式函数调用。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Test</span>(<span class="keyword">int</span> x = <span class="number">0</span>, <span class="keyword">int</span> y = <span class="number">0</span>) &#123; <span class="keyword">this</span>-&gt;x = x; <span class="keyword">this</span>-&gt;y = y; &#125;</span><br><span class="line">    <span class="function">Test&amp; <span class="title">setX</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123; x = a; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    <span class="function">Test&amp; <span class="title">setY</span><span class="params">(<span class="keyword">int</span> b)</span> </span>&#123; y = b; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; <span class="string">&quot; y = &quot;</span> &lt;&lt; y &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Test <span class="title">obj1</span><span class="params">(<span class="number">5</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 链式函数调用。所有调用都修改同一个对象，因为引用返回了同一个对象</span></span><br><span class="line">    obj1.<span class="built_in">setX</span>(<span class="number">10</span>).<span class="built_in">setY</span>(<span class="number">20</span>);</span><br><span class="line">    obj1.<span class="built_in">print</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="this指针的类型"><a href="#this指针的类型" class="headerlink" title="this指针的类型"></a>this指针的类型</h2><p>在C++中，this指针作为一个隐藏参数传递给所有非静态成员函数调用。它的类型取决于函数声明。如果将类X的成员函数声明为const，则其类型为const X<em>（请参见下面的代码1），如果将成员函数声明为volatile，则其类型为volatile X</em>（请参见下面的代码2），如果成员函数声明为const volatile，则其类型为const volatile X*（请参见下面的代码3）。</p>
+<h2 id="this指针的类型"><a href="#this指针的类型" class="headerlink" title="this指针的类型"></a>this指针的类型</h2><p>在C++中，this指针作为一个隐藏参数传递给所有非静态成员函数调用。它的类型取决于函数声明。如果将类X的成员函数声明为const，则其类型为<code>const X*</code>（请参见下面的代码1），如果将成员函数声明为volatile，则其类型为<code>volatile X*</code>（请参见下面的代码2），如果成员函数声明为<code>const volatile</code>，则其类型为const <code>volatile X*</code>（请参见下面的代码3）。</p>
 <p>Code1</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="comment">// this is passed as hidden argument to fun().</span></span><br><span class="line">        <span class="comment">// Type of this is const X* const</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -319,8 +319,10 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">volatile</span> </span>&#123;</span><br><span class="line">        <span class="comment">// this is passed as hidden argument to fun().</span></span><br><span class="line">        <span class="comment">// Type of this is const volatile X* const</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="this的销毁"><a href="#this的销毁" class="headerlink" title="this的销毁"></a>this的销毁</h2><p>理想情况下，不应将delete运算符用于this指针。但是，如果使用，则必须考虑以下几点。</p>
-<p>1.delete运算符仅适用于使用new运算符分配的对象。如果对象是使用new创建的，那么我们可以删除它，否则会发生未定义行为。</p>
-<p>2.delete完成后，已删除对象的任何成员都不应被访问。</p>
+<ol>
+<li>delete运算符仅适用于使用new运算符分配的对象。如果对象是使用new创建的，那么我们可以删除它，否则会发生未定义行为。</li>
+<li>delete完成后，已删除对象的任何成员都不应被访问。</li>
+</ol>
 <p>最好压根就不要适用delete this。</p>
 
     </div>

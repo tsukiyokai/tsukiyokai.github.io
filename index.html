@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,7 +174,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,6 +217,207 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c208/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c208/" class="post-title-link" itemprop="url">C++虚拟继承</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-26 22:34:08" itemprop="dateCreated datePublished" datetime="2021-04-26T22:34:08+08:00">2021-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/c208/" class="post-meta-item leancloud_visitors" data-flag-title="C++虚拟继承" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给也从这个基类型直接或间接派生的其它类。</p>
+<p>虚拟继承是多重继承中特有的概念。<br>虚拟基类是为解决多重继承中的钻石继承问题而出现的。</p>
+<p>虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。</p>
+<p>首先还是先给出虚继承和虚基类的定义。<br>虚继承：在继承定义中包含了virtual关键字的继承关系。<br>虚基类：在虚继承体系中的通过virtual继承而来的基类。</p>
+<p>需要注意的是：<br><code>class B : public virtual A &#123; &#125;;</code><br>其中A称之为B的虚基类，而不是说A就是个虚基类，因为A还可以作为不是虚继承体系中的基类。</p>
+<p>现在，B继承A的公共成员a时，继承的时a本体，而非a的副本。（感觉有点像继承机制中的传引用）</p>
+<p>语义：此机制为何被称作虚继承？</p>
+<p>从语义上来讲什么是虚继承和虚基类呢？上面仅仅是从如何在C++语言中书写合法的虚继承类定义而已。首先来了解一下virtual这个关键字在C++中的公共含义，在C++语言中仅仅有两个地方可以使用virtual这个关键字，一个就是类成员虚函数和这里所讨论的虚继承。不要看这两种应用场合好像没什么关系，其实他们在背景语义上具有virtual这个词所代表的共同的含义，所以才会在这两种场合使用相同的关键字。</p>
+<p>那么virtual这个词的含义是什么呢？<br>virtual在《美国传统词典（双解）》中是这样定义的：</p>
+<p>adj.（形容词）</p>
+<ol>
+<li>Existing or resulting in essence or effect though not in actual fact, form, or name:<br>实质上的，实际上的：虽然没有实际的事实、形式或名义，但在实际上或效果上存在或产生的；</li>
+<li>Existing in the mind, especially as a product of the imagination. Used in literary criticism of text.<br>虚的，内心的：在头脑中存在的，尤指意想的产物。用于文学批评中。</li>
+</ol>
+<p>我们采用第一个定义，也就是说被virtual所修饰的事物或现象在本质上是存在的，但是没有直观的形式表现，无法直接描述或定义，需要通过其他的间接方式或手段才能够体现出其实际上的效果。</p>
+<p>那么在C++中就是采用了这个词意，不可以在语言模型中直接调用或体现的，但是确实是存在可以被间接的方式进行调用或体现的。比如：虚函数必须要通过一种间接的运行时（而不是编译时）机制才能够激活（调用）的函数，而虚继承也是必须在运行时才能够进行定位访问的一种体制。存在，但间接。其中关键就在于存在、间接和共享这三种特征。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/ede8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/ede8/" class="post-title-link" itemprop="url">C++访问修饰符</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-26 19:45:47" itemprop="dateCreated datePublished" datetime="2021-04-26T19:45:47+08:00">2021-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/ede8/" class="post-meta-item leancloud_visitors" data-flag-title="C++访问修饰符" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>访问修饰符用于实现OOP的一个重要方面——数据封装。</p>
+<p>类中的访问修饰符或访问说明符用于将可访问性分配给类成员。<br>也就是说，它对类成员设置了一些限制，使其不能被外部函数随意访问。</p>
+<p>There are 3 types of access modifiers available in C++: </p>
+<ul>
+<li>Public</li>
+<li>Private</li>
+<li>Protected</li>
+</ul>
+<p>Note: If we do not specify any access modifiers for the members inside the class then by default the access modifier for the members will be Private.</p>
+<h2 id="Public"><a href="#Public" class="headerlink" title="Public"></a>Public</h2><p>公开，可以被内外部其它类或函数随便访问。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> radius;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">compute_area</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">3.14</span> * radius * radius; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Circle obj;</span><br><span class="line">    obj.radius = <span class="number">5.5</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Radius is: &quot;</span> &lt;&lt; obj.radius &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Area is: &quot;</span> &lt;&lt; obj.<span class="built_in">compute_area</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Private"><a href="#Private" class="headerlink" title="Private"></a>Private</h2><p>基类本身、友元可以直接访问。<br>派生类、外部、陌生类不能访问。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> radius;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">compute_area</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">3.14</span> * radius * radius; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Circle obj;</span><br><span class="line">    obj.radius = <span class="number">1.5</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Area is:&quot;</span> &lt;&lt; obj.<span class="built_in">compute_area</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段程序发生编译错误：E0265    成员 “Circle::radius” (已声明 所在行数:6) 不可访问</p>
+<p>但是，我们可以通过类的公共成员函数来间接访问类的私有数据成员。例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> radius;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">compute_area</span><span class="params">(<span class="keyword">double</span> r)</span> </span>&#123;</span><br><span class="line">        radius = r;</span><br><span class="line">        <span class="keyword">double</span> area = <span class="number">3.14</span> * radius * radius;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Radius is: &quot;</span> &lt;&lt; radius &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Area is: &quot;</span> &lt;&lt; area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Circle obj;</span><br><span class="line">    obj.<span class="built_in">compute_area</span>(<span class="number">1.5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Protected"><a href="#Protected" class="headerlink" title="Protected"></a>Protected</h2><p>基类本身、派生类、友元可以访问。<br>陌生类和外部不能访问。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> &#123;</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> id_protected;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> :</span> <span class="keyword">public</span> Parent &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123; id_protected = id; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">displayId</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;id_protected is: &quot;</span> &lt;&lt; id_protected &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Child obj1;</span><br><span class="line">    obj1.<span class="built_in">setId</span>(<span class="number">81</span>);</span><br><span class="line">    obj1.<span class="built_in">displayId</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -567,7 +768,7 @@
 <p>当一个局部对象返回引用时，返回的引用可以做为一个对象调用下一个函数。这就是链式函数调用。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Test</span>(<span class="keyword">int</span> x = <span class="number">0</span>, <span class="keyword">int</span> y = <span class="number">0</span>) &#123; <span class="keyword">this</span>-&gt;x = x; <span class="keyword">this</span>-&gt;y = y; &#125;</span><br><span class="line">    <span class="function">Test&amp; <span class="title">setX</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123; x = a; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    <span class="function">Test&amp; <span class="title">setY</span><span class="params">(<span class="keyword">int</span> b)</span> </span>&#123; y = b; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; <span class="string">&quot; y = &quot;</span> &lt;&lt; y &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Test <span class="title">obj1</span><span class="params">(<span class="number">5</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 链式函数调用。所有调用都修改同一个对象，因为引用返回了同一个对象</span></span><br><span class="line">    obj1.<span class="built_in">setX</span>(<span class="number">10</span>).<span class="built_in">setY</span>(<span class="number">20</span>);</span><br><span class="line">    obj1.<span class="built_in">print</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="this指针的类型"><a href="#this指针的类型" class="headerlink" title="this指针的类型"></a>this指针的类型</h2><p>在C++中，this指针作为一个隐藏参数传递给所有非静态成员函数调用。它的类型取决于函数声明。如果将类X的成员函数声明为const，则其类型为const X<em>（请参见下面的代码1），如果将成员函数声明为volatile，则其类型为volatile X</em>（请参见下面的代码2），如果成员函数声明为const volatile，则其类型为const volatile X*（请参见下面的代码3）。</p>
+<h2 id="this指针的类型"><a href="#this指针的类型" class="headerlink" title="this指针的类型"></a>this指针的类型</h2><p>在C++中，this指针作为一个隐藏参数传递给所有非静态成员函数调用。它的类型取决于函数声明。如果将类X的成员函数声明为const，则其类型为<code>const X*</code>（请参见下面的代码1），如果将成员函数声明为volatile，则其类型为<code>volatile X*</code>（请参见下面的代码2），如果成员函数声明为<code>const volatile</code>，则其类型为const <code>volatile X*</code>（请参见下面的代码3）。</p>
 <p>Code1</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="comment">// this is passed as hidden argument to fun().</span></span><br><span class="line">        <span class="comment">// Type of this is const X* const</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -578,8 +779,10 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">volatile</span> </span>&#123;</span><br><span class="line">        <span class="comment">// this is passed as hidden argument to fun().</span></span><br><span class="line">        <span class="comment">// Type of this is const volatile X* const</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="this的销毁"><a href="#this的销毁" class="headerlink" title="this的销毁"></a>this的销毁</h2><p>理想情况下，不应将delete运算符用于this指针。但是，如果使用，则必须考虑以下几点。</p>
-<p>1.delete运算符仅适用于使用new运算符分配的对象。如果对象是使用new创建的，那么我们可以删除它，否则会发生未定义行为。</p>
-<p>2.delete完成后，已删除对象的任何成员都不应被访问。</p>
+<ol>
+<li>delete运算符仅适用于使用new运算符分配的对象。如果对象是使用new创建的，那么我们可以删除它，否则会发生未定义行为。</li>
+<li>delete完成后，已删除对象的任何成员都不应被访问。</li>
+</ol>
 <p>最好压根就不要适用delete this。</p>
 
       
@@ -1036,218 +1239,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><ol>
-<li><p>美国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</p>
-</li>
-<li><p>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</p>
-</li>
-<li><p>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</p>
-</li>
-<li><p>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</p>
-</li>
-<li><p>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/5b48/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/5b48/" class="post-title-link" itemprop="url">镇命歌·陌路</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-20 02:03:55" itemprop="dateCreated datePublished" datetime="2021-04-20T02:03:55+08:00">2021-04-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E6%96%87%E6%91%98/" itemprop="url" rel="index"><span itemprop="name">文摘</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/5b48/" class="post-meta-item leancloud_visitors" data-flag-title="镇命歌·陌路" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>唱：禁酒隐<br>词：泉竹闲家</p>
-<p>三生命定 六道难解难梳<br>情深缘浅 奈何一步两殊途<br>前尘往事 可还记得当初<br>举袂遥祝 别后旦行莫回顾<br>故地依旧 芳草滋味暗浮<br>花似人面 垂眸浅笑似当初<br>故人何在 衣袂翻红默舞<br>人如花语 风住落英悄低诉<br>同采一捧 浅清醉薄 花颜欲夺目<br>扶风摇蕊 犹说 当年共甘苦<br>独捻一指 馥郁胭脂 依稀还相熟<br>好景犹在 却道 如今已陌路</p>
-<p>故地依旧 芳草滋味暗浮<br>花似人面 垂眸浅笑似当初<br>故人何在 衣袂翻红默舞<br>人如花语 风住落英悄低诉<br>同采一捧 浅清醉薄 花颜欲夺目<br>扶风摇蕊 犹说 当年共甘苦<br>独捻一指 馥郁胭脂 依稀还相熟<br>好景犹在 却道 如今已陌路</p>
-<p>林荫斑驳 树影描金 古庙隐落木（有灵保兮 寿夭在彼 珠兮玉兮光陆离）<br>阶前又生新苔 年年春来住（有女茕独不群兮 阴阳御兮明晦齐）<br>桔花噙露 雀鸟踟蹰 垂紫泪楚楚（有灵保兮 寿夭在彼 珠兮玉兮光陆离）<br>好景犹在 却道 如今人已故（驭赤豹兮驱玄云 乘游龙兮引清气）<br>有灵保兮 云袖被被 珠兮玉兮光陆离<br>攀杜若兮长独立 不见君子絓结兮<br>有灵保兮 云袖翳翳 珠兮玉兮光陆离<br>风飘飘兮为太息 落英兮捐水裔<br>有灵保兮 寿夭在彼 珠兮玉兮光陆离<br>有女茕独不群兮 阴阳御兮明晦齐<br>有灵保兮 寿夭在彼 珠兮玉兮光陆离<br>驭赤豹兮驱玄云 乘游龙兮引清气</p>
-<img data-src="/posts/5b48/957385_inuyasha-backgrounds-wallpapers-cave_2109x1500_h.jpg" class="" title="最爱的一张海报">
-
-<p>歌曲链接<br><a target="_blank" rel="noopener" href="http://5sing.kugou.com/fc/8725728.html">http://5sing.kugou.com/fc/8725728.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/4067/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/4067/" class="post-title-link" itemprop="url">罗卫东：大学要多读硬书——给新生的一点忠告</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-19 16:15:17" itemprop="dateCreated datePublished" datetime="2021-04-19T16:15:17+08:00">2021-04-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E6%96%87%E6%91%98/" itemprop="url" rel="index"><span itemprop="name">文摘</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/4067/" class="post-meta-item leancloud_visitors" data-flag-title="罗卫东：大学要多读硬书——给新生的一点忠告" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2019级新生陆续入学了，激动人心的时刻也过去了，周围的一切复归平静。</p>
-<p>接下来几天，每个大学都会给新入学的同学安排始业教育，指导新生如何尽早适应大学阶段的学习，尽快调整自己的身心状态，开始人生新一阶段的奋斗。</p>
-<p>始业教育的内容不无外乎以下几个方面，告诉大家，大学与高中的不同，如何变被动为主动；讲解本学校的现状、历史文化和精神价值观；介绍学校、学院、学科的特色和优势；提出对新生的德智体美劳各个方面的要求。有的也会告诫新生要注意的一些问题，正确择友、构建良好的同学关系、身心健康、养成良好学习和生活习惯，诸如此类，内容丰富，面面俱到。这里，无需我重复了。</p>
-<p>如果有谁问我，最想告诫新生们的是什么，那么，我只想告诫大家一点。这一点就是，作为一个大学生，在本科四年时间里，一定要读几本硬书。</p>
-<h2 id="何为硬书？"><a href="#何为硬书？" class="headerlink" title="何为硬书？"></a>何为硬书？</h2><p>“硬书”，这个说法不太常见，是我借用北方地区聚宴时“硬菜”的说法而起的名字。</p>
-<p>我自己这样来定义它。</p>
-<p>所谓的“硬书”：</p>
-<p>首先，是公认的重要。学术经典、思想经典、文学艺术经典等等，它在我们人类历史上发挥过启迪思想、净化心灵、构建文明、推动进步等等的重大作用，甚至是文明的奠基之作。</p>
-<p>其次，是公认的难懂。它的思想密度高，原创性强，表述独特。它是高营养的、不容易消化吸收。硬书，无论篇幅体例，有多大的差异，但无一例外都是思想深刻、旨意丰富的。要么深奥晦涩、要么微言大义、要么体宏思精，若无名师高人指点，自己又静不下心来，就读不进，更看不懂。</p>
-<h2 id="为什么一定要读硬书？"><a href="#为什么一定要读硬书？" class="headerlink" title="为什么一定要读硬书？"></a>为什么一定要读硬书？</h2><p>先打个比方，一个国家要使自己的经济体系变得强大，就必须首先建造重要的基础设施，交通运输、电力能源等，这是任何产业发展都要用到的通用资产；还要投资建造核心技术支撑的巨型成套设备，这是经济发展的重资产。缺乏这两类资产，自主、自强、自立的产业体系便是空中楼阁。硬书，就是你作为独立自主自强的人，必须准备的基础设施，是硬资产，是通用资产。一个人，有了精神的基础设施，有了能力的重型装备，就能够作为屹立于社会。没有硬资产的人，是立不起来的。</p>
-<p>硬书，一旦看懂了，吸收了，转化了，就会成为你思想进步的主引擎，人生旅途的指南针，安身立命的坚实基础。</p>
-<p>能让你变得强大并持续一生的，只有硬书中的道理，因为，它建设了你作为人的基础设施和重型通用资产。一个大学生，要成为具有正确的批评与自我批评能力的现代公民，公忠坚毅的社会精英，最需要的不是水课和软文、不是鸡零狗碎的知识和信息，而是硬书，是硬书！</p>
-<p>一句话，“强国须造重器，大学要读硬书”！</p>
-<h2 id="为什么要在大学读硬书？"><a href="#为什么要在大学读硬书？" class="headerlink" title="为什么要在大学读硬书？"></a>为什么要在大学读硬书？</h2><p>简单地说，有几点：</p>
-<p>第一，大学是人生中各种观念成型的关键阶段，此时的认识歪了和偏了，以后纠正起来就难了。这四年，书读对了，读懂了，读好了，今后的路子就对了、宽了。</p>
-<p>第二，大学生的身心发展已经到了可以接受更深更难思想的阶段。</p>
-<p>第三，硬书难读，难懂，需要花费时间，需要高人指点。只有在大学阶段，才有相对完整和充裕的阅读、思考、讨论时间，才有学养深厚的导师。在大学之前的基础教育阶段，虽然也是读书，但以成熟知识的接受和文化基础的训练为主，身心发展都还不具备读硬书的条件。离开大学走上社会以后，不可能给你读硬书所需要的大块时间和心境，身边更不可能有你可以随时请教的老师和互动研讨的同学。</p>
-<p>第四，中学生要高考，大学毕业后要谋生。只有大学时代，人的功利心最弱，可以正心诚意、轻装上阵、全力以赴去进行思想的探险。</p>
-<p>很多大学生，受社会思潮的影响，认为花大量时间去读硬书，是得不偿失的，宁可把时间花在刷绩点、泡水课、挣学分、考技能上，认为这样做最实用，岂不知，这是舍本求末的认识，结果是得不偿失。它也许拿到了高学分，却浪费了人生最宝贵的资源，就是时间；更令人痛心的是由此错过了人生最好的读硬书的窗口期。</p>
-<p>我不否认学分、绩点、技能的重要性，现实生活需要这些。但与读硬书获得的持久能力相比，这些仍然是次要的。如果年轻时本末倒置，错误地配置了时间和精力，到人生的中后程，就很难扳回来，一切悔之晚矣。</p>
-<p>虽说难读的不一定是硬书，但硬书多半难读。舍得时间、耐得寂寞、沉得下心、放得下脸，这是读硬书的几大要求。前面三点，一看便知，毋须说明。这第四点放得下脸，指的是不要碍于虚荣，或者碍于面子，而失去向高人名师求教的机会。</p>
-<h2 id="哪些是必读的硬书？"><a href="#哪些是必读的硬书？" class="headerlink" title="哪些是必读的硬书？"></a>哪些是必读的硬书？</h2><p>这并无完全一致的答案。每一个导师都有自己心目中的硬书。公认的硬书更像是处在大多数好老师开出书单的交集上的那些书。比如梁启超、胡适、钱穆、傅斯年这些民国时代的大学者都曾经给大学生青年开过书单，内容有差异，但其中都有《四书五经》，则基本可以确定，这是必读的经典。</p>
-<p>朋友圈也在转发世界著名大学必读书单。你找那些被选中的次数最多、入选时间最长，基本不会错。比如，哈佛、普林斯顿、耶鲁、斯坦福、哥伦比亚、剑桥、牛津等等的名校，图书馆借书中位居前列的十种，各校有差异，但都列入了柏拉图的《理想国》，则基本能够确认，这是重要的经典。</p>
-<p>作为一名经济学从业人员，其他学科哪些是硬书，我发表的意见，肯定不作数。仅就经济学而言，《国富论》、《资本论》、《经济学原理》、《通论》，这四本是必读的硬书。</p>
-<p>41年前，我进入大学学习，那时候诱惑应酬少，读书风气好，四年里花在读书上的时间和精力是有保证的。今天回想起来，总体来说很是欣慰和庆幸，但也不是完全没有遗憾。庆幸的是大学时代还真是读了几部硬书的，欣慰的是读的这些硬书对自己后来的发展帮助很大。略有遗憾的是，这样有用的硬书，当时读的还是不够多。</p>
-<p>现在，虽然韶华已逝，时间精力都与大学时代不能同日而语，但我还要努力减少遗憾。</p>
-<p>亲爱的大学生们，请静下心、沉住气，多读几本硬书吧！</p>
+          <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>《美国反对美国》，大概是一个奇怪而又颇为费解的书名。我起进个书名的用意在于表明，美国不是一个简单的均质的整体，用一句话就可以打发掉。在过去的年代，人们从教条主义的观念出发，把美国仅伩看成是“剥削剩余价值”，“资产阶级专政”，看得一无是处，那么现实的美国同样反对这祥的“美国”、僵化观念中的美国。如今又出现了另一种极端，有的人把美国想象成富丽天堂，十全十美，那么现实的美国同样反对这样的“美国”、理想化的美国。包括美国社会本身，它有它的肯定性力量，也有它的否定性力量，凡是在能发现肯定性力量的地方，都能发现否定性的力量。这便是《美国反对美国》的基本意蕴。</p>
+<p>本书共有十一章，我想在这里扼要点明一下：<br>（1）社会不均衡发及其诸特点；<br>（2）主导政治生活的价值观念及其流变；<br>（3）民族的多样性格及其社会功效；<br>（4）调节人们社会活动的正式和非正式的机制；<br>（5）在社会上活跃的政治力量及其关系；<br>（6）竞选中的民主和非民主因素；<br>（7）自上而下的政治运作及其特征；<br>（8）非政治的协调机制及社会化的管制；<br>（9）文化、价值观念乃至制度的复制与教育的关联；<br>（10）思想在社会发展和管理中的作甩；<br>（11）危及未来发展的种种潜流。</p>
+<p>王沪宁 1989年4月1日 于复旦大学国际政治系</p>
+<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><p>美国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</p>
+<p>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</p>
+<p>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</p>
+<p>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</p>
+<p>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</p>
+<h2 id="古老的政治精神"><a href="#古老的政治精神" class="headerlink" title="古老的政治精神"></a>古老的政治精神</h2><h3 id="美国精神"><a href="#美国精神" class="headerlink" title="美国精神"></a>美国精神</h3><p>有时候，可以这样说，社会生活本无精神，等你去发现了，它便有了。或者说，世界上本来就有精神，问题是有没有发现。黑格尔就坚信他发现了“绝对精神”。美国人的精神就是没有“绝对精神”。</p>
+<h3 id="五月花号"><a href="#五月花号" class="headerlink" title="五月花号"></a>五月花号</h3><p>“五月花号”船于1620年将最早的移民送到美洲大陆。这是近代美国的肇始。</p>
 
       
     </div>
@@ -1267,7 +1268,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>
