@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
-<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="月夜海">
 <meta property="og:url" content="https://tsukiyokai.github.io/page/5/index.html">
@@ -558,7 +558,8 @@
 <p>64KB内存空间即可以满足所有人的内存需要。——比尔·盖茨</p>
 </blockquote>
 <h2 id="11-1-内存管理的现实基础"><a href="#11-1-内存管理的现实基础" class="headerlink" title="11.1 内存管理的现实基础"></a>11.1 内存管理的现实基础</h2><p>程序要运行，必须要加载到内存。因为从外部存储媒介上直接执行指令的做法效率很低，且灵活性很差，因此，人们发明了内存储器来讲需要运行的程序先行加载，再自动执行，从而提高效率和灵活性。</p>
-<p>理想状态下，程序员或用户对内存的要求是：大容量、高速度、持久性。但程序员面临的物理现实却是一个由缓存、主存、磁盘、磁带等组成的复杂内存架构。其中，缓存的特点是低容量、高速度、高价格；主存的特点是中容量、中速度、中价格；磁盘的特点是大容量、低速度、低成本；磁带则更持久、速度更慢、价格更低、（内存架构：缓存——主存——磁盘——磁带）</p>
+<p>理想状态下，程序员或用户对内存的要求是：大容量、高速度、持久性。但程序员面临的物理现实却是一个由缓存、主存、磁盘、磁带等组成的复杂内存架构。其中，缓存的特点是低容量、高速度、高价格；主存的特点是中容量、中速度、中价格；磁盘的特点是大容量、低速度、低成本；磁带则更持久、速度更慢、价格更低。</p>
+<p>（内存架构：缓存——主存——磁盘——磁带）</p>
 <p>显然这个架构与程序员对内存的要求相去甚远，要以这个存储架构为基础来提供程序员所需的内存抽象，我们需要一个巧妙的内存管理机制。内存管理机制负责对内存架构进行管理，使得程序在内存架构的任何一个层次上的存放对用户都是一样的。用户无需担心自己的程序是存储在缓存、主存、磁盘还是磁带上，反正运行、计算、输出的结果都一样。内存管理实现这种媒介透明的手段就是虚拟内存。虚拟内存就是操作系统提供的一种抽象。</p>
 <h2 id="11-2-内存管理的目标"><a href="#11-2-内存管理的目标" class="headerlink" title="11.2 内存管理的目标"></a>11.2 内存管理的目标</h2><ol>
 <li>地址保护：一个程序不能访问另一个程序的地址空间。</li>
@@ -657,7 +658,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="09-死锁"><a href="#09-死锁" class="headerlink" title="#09 死锁"></a>#09 死锁</h1><p>死锁的发生，归根结底是因为对资源的竞争。</p>
+          <h1 id="09-死锁"><a href="#09-死锁" class="headerlink" title="#09 死锁"></a>#09 死锁</h1><blockquote>
+<p>A set of blocked processes each holding a resource and waiting to acquire a resource held by another process in the set.</p>
+</blockquote>
+<p>死锁的发生，归根结底是因为对资源的竞争。</p>
 <p>这里所说的资源就是一个程序工作时需要的东西。资源既可以是硬件，如CPU、内存、磁盘，也可以是软件，如锁、信号量。根据资源是否可以抢占分为可抢占资源和不可抢占资源。可抢占资源是可以从持有者手中强行抢夺过来的资源，且不会发生系统运行紊乱；不可抢占资源则不能从持有者手中强行抢夺，如果强行抢夺将造成系统运行错误。</p>
 <p>当然，从绝对概念上说，没有什么资源是不可抢占的。因此不可抢占只不过是相对意义上的概念，目标是保证每个程序都能正确运行。如果抢占一个线程所持的资源后，还能找到某种方式让该程序正确运行下去，则该资源就是可抢占的；否则就是不可抢占的。例如，CPU是可抢占资源，打印机，刻录机是不可抢占资源。</p>
 <h2 id="9-2-死锁的描述"><a href="#9-2-死锁的描述" class="headerlink" title="9.2 死锁的描述"></a>9.2 死锁的描述</h2><p>线程的执行需要资源，他们都要求以某种顺序来使用资源：</p>
@@ -1094,12 +1098,9 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="07-线程概论"><a href="#07-线程概论" class="headerlink" title="#07 线程概论"></a>#07 线程概论</h1><p>进程希望自己在某些时候能够分身从而完成更加复杂的任务。从根本上说，线程是操作系统给进程模型提供并发能力的手段。虽然线程和进程出现的动机都是并发，但他们的并发层次不同：</p>
 <ul>
-<li><p>进程属于处理器级并发，即在处理器这一层次上提供并发的抽象；</p>
-</li>
-<li><p>线程则属于进程级并发，即在进程这个层次上再提供一层并发的抽象；</p>
-</li>
-<li><p>如果我们继续下到底层，进入计算机体系结构里就会发现，流水线提供的也是一种并发，不过是指令级并发。</p>
-</li>
+<li>进程属于处理器级并发，即在处理器这一层次上提供并发的抽象；</li>
+<li>线程则属于进程级并发，即在进程这个层次上再提供一层并发的抽象；</li>
+<li>如果我们继续下到底层，进入计算机体系结构里就会发现，流水线提供的也是一种并发，不过是指令级并发。</li>
 </ul>
 <p>这样，流水线、进程、线程就从低到高在3个层次上提供了我们需要的并发。</p>
 <blockquote>
@@ -1131,17 +1132,13 @@
 </ul>
 <h2 id="7-4-现代操作系统的线程实现模型"><a href="#7-4-现代操作系统的线程实现模型" class="headerlink" title="7.4 现代操作系统的线程实现模型"></a>7.4 现代操作系统的线程实现模型</h2><p>现代操作系统将内核态和用户态结合起来使用。用户态的执行系统负责进程内部线程在非阻塞时的切换；内核态的操作系统负责阻塞线程的切换。即我们同时实现内核态和用户态线程管理。其中内核态线程数量较少，用户态线程数量较多。每个内核态线程可以服务一个或多个用户态线程，换句话说，用户态线程被多路复用到内核态线程上。如果进程内部一组线程中的某一个线程阻塞，则与其属于同一组的线程皆阻塞，但该进程内的另外一组线程仍可以继续执行。</p>
 <p>在分配线程时，我们可将需要执行阻塞操作的线程设为内核态线程，将不会执行阻塞操作的线程设为用户态线程。这样就结合了两种态势实现下的优点并避免其缺点。</p>
-<h2 id="7-5-多线程的关系"><a href="#7-5-多线程的关系" class="headerlink" title="7.5 多线程的关系"></a>7.5 多线程的关系</h2><p>推出线程模型的目的就是实现进程级并发。因为在一个进程中通常会出现多个线程，否则就没有必要搞什么线程了。</p>
-<p>因此研究线程就必然要研究多线程，多个线程位于一个舞台，时而交互，时而独舞。</p>
-<p>多线程共享一个地址空间的资源的过程中会产生矛盾，这些矛盾归结到下面两个根本问题：</p>
+<h2 id="7-5-多线程的关系"><a href="#7-5-多线程的关系" class="headerlink" title="7.5 多线程的关系"></a>7.5 多线程的关系</h2><p>推出线程模型的目的就是实现进程级并发。因为在一个进程中通常会出现多个线程，否则就没有必要搞什么线程了。<br>因此研究线程就必然要研究多线程，多个线程位于一个舞台，时而交互，时而独舞。<br>多线程共享一个地址空间的资源的过程中会产生矛盾，这些矛盾归结到下面两个根本问题：</p>
 <ol>
 <li>线程之间如何通信？</li>
 <li>线程之间如何同步？</li>
 </ol>
 <h2 id="7-6-讨论：从用户态进入（陷入）内核态"><a href="#7-6-讨论：从用户态进入（陷入）内核态" class="headerlink" title="7.6 讨论：从用户态进入（陷入）内核态"></a>7.6 讨论：从用户态进入（陷入）内核态</h2><p>程序在运行过程中发生中断或异常，系统将自动切换到内核态来运行中断或异常处理机制。此外，程序进行系统调用也将造成从用户态到内核态的转换。</p>
-<h2 id="7-7-讨论：线程的困惑——确定性与非确定性"><a href="#7-7-讨论：线程的困惑——确定性与非确定性" class="headerlink" title="7.7 讨论：线程的困惑——确定性与非确定性"></a>7.7 讨论：线程的困惑——确定性与非确定性</h2><blockquote>
-<p>一种特殊观点是：线程带给我们的优势有限，而其造成的缺憾却巨大。</p>
-</blockquote>
+<h2 id="7-7-讨论：线程的困惑——确定性与非确定性"><a href="#7-7-讨论：线程的困惑——确定性与非确定性" class="headerlink" title="7.7 讨论：线程的困惑——确定性与非确定性"></a>7.7 讨论：线程的困惑——确定性与非确定性</h2><p>有一种特殊观点是：线程带给我们的优势有限，而其造成的缺憾却巨大。</p>
 <p>从某种程度上说，线程与流水线分别是软件层和硬件层不确定性的根源。流水线使得我们可以在硬件指令执行上实现并发，线程则使我们在软件指令执行上实现并发。但其带来的操作系统、编译系统、指令集结构的高度复杂是否值得，这并不容易回答。</p>
 
       
@@ -1326,7 +1323,7 @@
 <li>平衡型程序：介于前两种模式之间，如网络浏览类程序。</li>
 </ol>
 <h2 id="5-2-进程调度的目标"><a href="#5-2-进程调度的目标" class="headerlink" title="5.2 进程调度的目标"></a>5.2 进程调度的目标</h2><ol>
-<li>极小化平均响应时间。注意适度性，即响应时间要和期望值相匹配。提供超越用户期望的响应会增加系统设计的难度，而不会提高用户的满意度。</li>
+<li>极小化平均响应时间。也要注意适度性，即响应时间要和期望值相匹配。提供超越用户期望的响应会增加系统设计的难度，而不会提高用户的满意度。</li>
 <li>极大化系统吞吐率</li>
 <li>保持系统各个功能部件均处于繁忙状态</li>
 <li>提供某种貌似公平的机制</li>
@@ -1340,7 +1337,8 @@
 <h2 id="5-4-时间片轮转算法"><a href="#5-4-时间片轮转算法" class="headerlink" title="5.4 时间片轮转算法"></a>5.4 时间片轮转算法</h2><p>时间片轮转算法是对FCFS算法的一种改进。其主要目的是改善短程序的响应时间。其方法是周期性地进行进程切换。</p>
 <p>一个核心问题是，如何选择合适的时间片？如果时间片过大，则轮转算法越来越像先来先服务，直到完全退化为先来先服务。如果时间片过小，则进程切换所用的系统消耗将太多，使得系统的大部分时间花费在进程的上下文切换上，真正用来执行程序的有效时间很少。</p>
 <p>另一个重要问题是：时间片轮转真的公平吗？时间片轮转的系统响应时间总是比FCFS短吗？答案是不一定。</p>
-<h2 id="5-5-短任务优先算法"><a href="#5-5-短任务优先算法" class="headerlink" title="5.5 短任务优先算法"></a>5.5 短任务优先算法</h2><p>为了改善短任务排在长任务后面轮转而造成响应时间和交互体验下降的办法就是短任务优先算法（shortedtimetocompletionfirst,STCF）。这种算法的核心思想是：所有的任务并不平等，而是有优先级的区分。具体来说就是，短任务优先于长任务，而我们总是安排优先级高的程序先运行。</p>
+<h2 id="5-5-短任务优先算法"><a href="#5-5-短任务优先算法" class="headerlink" title="5.5 短任务优先算法"></a>5.5 短任务优先算法</h2><p>shorted time to completion first=STCF</p>
+<p>为了改善短任务排在长任务后面轮转而造成响应时间和交互体验下降的办法就是短任务优先算法（STCF）。这种算法的核心思想是：所有的任务并不平等，而是有优先级的区分。具体来说就是，短任务优先于长任务，而我们总是安排优先级高的程序先运行。</p>
 <p>短任务优先算法有两个变种，一种是抢占式，一种是非抢占式。</p>
 <ul>
 <li>非抢占式短任务优先算法的原理是：让已经在CPU上运行的程序执行到结束或阻塞，然后再所有候选的程序中选择需要执行时间最短的进程来执行。</li>
@@ -1480,27 +1478,19 @@
 <h2 id="4-6-进程的状态"><a href="#4-6-进程的状态" class="headerlink" title="4.6 进程的状态"></a>4.6 进程的状态</h2><p>进程可以执行，也可以挂起。根据挂起的原因不同，又将挂起分为阻塞和就绪。</p>
 <p>因此将进程分为了三种状态：执行、阻塞和就绪。</p>
 <ul>
-<li><p>执行中的进程（执行态）因等待输入阻塞而主动挂起，进入阻塞态。</p>
-</li>
-<li><p>阻塞中的进程（阻塞态）因其等待的资源到达而不再阻塞，进入就绪态。</p>
-</li>
-<li><p>已就绪的进程（就绪态）因获得CPU控制权，得以重新进入执行态；</p>
-<p>执行中的进程（执行态）因执行时间太久，为公平起见被操作系统挂起让其他进程执行，进入就绪态。</p>
-</li>
+<li>执行中的进程（执行态）因等待输入阻塞而主动挂起，进入阻塞态。</li>
+<li>阻塞中的进程（阻塞态）因其等待的资源到达而不再阻塞，进入就绪态。</li>
+<li>已就绪的进程（就绪态）因获得CPU控制权，得以重新进入执行态；</li>
 </ul>
+<p>执行中的进程（执行态）也会因执行时间太久，为公平起见被操作系统挂起让其他进程执行，进入就绪态。</p>
 <p>总结：</p>
 <ul>
-<li><p>阻塞这种挂起是进程自身的原因（内因），此时即使把CPU控制权交给它也不会运行；而就绪这种挂起是操作系统的原因（外因），进程自己并无问题，只要重新把CPU控制权交给进程就立即可以运行。</p>
-</li>
-<li><p>阻塞态无法直接转化为执行态，必须先转化为就绪态。</p>
-<p>因为阻塞进程即使被给予CPU也无法执行，因此操作系统在进程调度时只需查看就绪的进程，而无需浪费时间查看阻塞的进程。</p>
-</li>
-<li><p>一个进程只有在执行时才可能阻塞，就绪态无法直接转化成阻塞态。</p>
-<p>因为处于就绪态的进程并未执行，自然无法进入阻塞态。就像一个人停滞不前，自然不会有人成为他的障碍。</p>
-</li>
+<li>阻塞这种挂起是进程自身的原因（内因），此时即使把CPU控制权交给它也不会运行；而就绪这种挂起是操作系统的原因（外因），进程自己并无问题，只要重新把CPU控制权交给进程就立即可以运行。</li>
+<li>阻塞态无法直接转化为执行态，必须先转化为就绪态。因为阻塞进程即使被给予CPU也无法执行，因此操作系统在进程调度时只需查看就绪的进程，而无需浪费时间查看阻塞的进程。</li>
+<li>一个进程只有在执行时才可能阻塞，就绪态无法直接转化成阻塞态。因为处于就绪态的进程并未执行，自然无法进入阻塞态。就像一个人停滞不前，自然不会有人成为他的障碍。</li>
 </ul>
 <h2 id="4-7-进程与地址空间"><a href="#4-7-进程与地址空间" class="headerlink" title="4.7 进程与地址空间"></a>4.7 进程与地址空间</h2><p>进程空间也称地址空间。地址空间就是进程要用的所有资源。做个比喻就是：音乐剧的舞台布景及设施就是地址空间，而舞台上的男女演员是线程。进程与地址空间研究的主要内容就是如何安全高效地让所有进程共享这片物理内存。</p>
-<h2 id="4-8-进程管理"><a href="#4-8-进程管理" class="headerlink" title="4.8 进程管理"></a>4.8 进程管理</h2><p>当一个进程产生时，操作系统需要为其创建记录。操作系统用于维护进程记录的结构就是进程表或进程控制块（ProcessControlBlock,PCB）。进程表保持在操作系统所在的内核空间而非用户空间里。</p>
+<h2 id="4-8-进程管理"><a href="#4-8-进程管理" class="headerlink" title="4.8 进程管理"></a>4.8 进程管理</h2><p>当一个进程产生时，操作系统需要为其创建记录。操作系统用于维护进程记录的结构就是进程表或进程控制块（PCB）。进程表保持在操作系统所在的内核空间而非用户空间里。</p>
 
       
     </div>

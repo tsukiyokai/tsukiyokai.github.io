@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
-<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
 <meta name="description" content="#05 进程调度调度是操作系统实现进程模型的根本手段。 5.1 进程调度的意义进程调度的任务是：选择下一个要运行的进程。 进程使用CPU的模式有三种：  CPU导向&#x2F;计算密集型程序：大部分时间在CPU上执行，如科学计算方面的程序。 IO导向&#x2F;输入输出密集型程序：大部分时间在进行输入输出，如人机交互式程序。 平衡型程序：介于前两种模式之间，如网络浏览类程序。  5.2 进程调度的目标 极小化平均响应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程调度">
@@ -31,7 +31,7 @@
 <meta property="og:description" content="#05 进程调度调度是操作系统实现进程模型的根本手段。 5.1 进程调度的意义进程调度的任务是：选择下一个要运行的进程。 进程使用CPU的模式有三种：  CPU导向&#x2F;计算密集型程序：大部分时间在CPU上执行，如科学计算方面的程序。 IO导向&#x2F;输入输出密集型程序：大部分时间在进行输入输出，如人机交互式程序。 平衡型程序：介于前两种模式之间，如网络浏览类程序。  5.2 进程调度的目标 极小化平均响应">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-14T12:47:00.000Z">
-<meta property="article:modified_time" content="2021-04-25T16:45:25.391Z">
+<meta property="article:modified_time" content="2021-04-26T01:48:56.084Z">
 <meta property="article:author" content="充电的猫猫">
 <meta property="article:tag" content="进程">
 <meta name="twitter:card" content="summary">
@@ -299,7 +299,7 @@
 <li>平衡型程序：介于前两种模式之间，如网络浏览类程序。</li>
 </ol>
 <h2 id="5-2-进程调度的目标"><a href="#5-2-进程调度的目标" class="headerlink" title="5.2 进程调度的目标"></a>5.2 进程调度的目标</h2><ol>
-<li>极小化平均响应时间。注意适度性，即响应时间要和期望值相匹配。提供超越用户期望的响应会增加系统设计的难度，而不会提高用户的满意度。</li>
+<li>极小化平均响应时间。也要注意适度性，即响应时间要和期望值相匹配。提供超越用户期望的响应会增加系统设计的难度，而不会提高用户的满意度。</li>
 <li>极大化系统吞吐率</li>
 <li>保持系统各个功能部件均处于繁忙状态</li>
 <li>提供某种貌似公平的机制</li>
@@ -313,7 +313,8 @@
 <h2 id="5-4-时间片轮转算法"><a href="#5-4-时间片轮转算法" class="headerlink" title="5.4 时间片轮转算法"></a>5.4 时间片轮转算法</h2><p>时间片轮转算法是对FCFS算法的一种改进。其主要目的是改善短程序的响应时间。其方法是周期性地进行进程切换。</p>
 <p>一个核心问题是，如何选择合适的时间片？如果时间片过大，则轮转算法越来越像先来先服务，直到完全退化为先来先服务。如果时间片过小，则进程切换所用的系统消耗将太多，使得系统的大部分时间花费在进程的上下文切换上，真正用来执行程序的有效时间很少。</p>
 <p>另一个重要问题是：时间片轮转真的公平吗？时间片轮转的系统响应时间总是比FCFS短吗？答案是不一定。</p>
-<h2 id="5-5-短任务优先算法"><a href="#5-5-短任务优先算法" class="headerlink" title="5.5 短任务优先算法"></a>5.5 短任务优先算法</h2><p>为了改善短任务排在长任务后面轮转而造成响应时间和交互体验下降的办法就是短任务优先算法（shortedtimetocompletionfirst,STCF）。这种算法的核心思想是：所有的任务并不平等，而是有优先级的区分。具体来说就是，短任务优先于长任务，而我们总是安排优先级高的程序先运行。</p>
+<h2 id="5-5-短任务优先算法"><a href="#5-5-短任务优先算法" class="headerlink" title="5.5 短任务优先算法"></a>5.5 短任务优先算法</h2><p>shorted time to completion first=STCF</p>
+<p>为了改善短任务排在长任务后面轮转而造成响应时间和交互体验下降的办法就是短任务优先算法（STCF）。这种算法的核心思想是：所有的任务并不平等，而是有优先级的区分。具体来说就是，短任务优先于长任务，而我们总是安排优先级高的程序先运行。</p>
 <p>短任务优先算法有两个变种，一种是抢占式，一种是非抢占式。</p>
 <ul>
 <li>非抢占式短任务优先算法的原理是：让已经在CPU上运行的程序执行到结束或阻塞，然后再所有候选的程序中选择需要执行时间最短的进程来执行。</li>
