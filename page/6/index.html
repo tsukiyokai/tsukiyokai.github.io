@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -217,6 +217,762 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8e49/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/8e49/" class="post-title-link" itemprop="url">线程同步</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-17 18:11:00" itemprop="dateCreated datePublished" datetime="2021-03-17T18:11:00+08:00">2021-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/8e49/" class="post-meta-item leancloud_visitors" data-flag-title="线程同步" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="08-线程同步"><a href="#08-线程同步" class="headerlink" title="#08 线程同步"></a>#08 线程同步</h1><p>在战场上，友军之间的同步对战争的胜利至关重要。在计算机里，线程之间的同步对程序的正确运行也至关重要。</p>
+<h2 id="8-1-为什么要同步"><a href="#8-1-为什么要同步" class="headerlink" title="8.1 为什么要同步"></a>8.1 为什么要同步</h2><p>线程这一概念被引入操作系统的同时，也引发了一个巨大的问题，即多线程程序的执行：由于线程之间的相对执行顺序是不确定的，因此执行结果也可能是不确定的。线程同步的目的就是消除执行结果的这种不确定性。</p>
+<h2 id="8-2-线程同步的目的"><a href="#8-2-线程同步的目的" class="headerlink" title="8.2 线程同步的目的"></a>8.2 线程同步的目的</h2><p>线程同步的具体目的是，不管线程之间如何穿插执行，其运行结果都是正确的、可预测的。并且在保证运行结果正确的条件下对线程执行的限制越少越好。</p>
+<p>多线程的执行，除了结果是不确定的之外，其效率也是不确定的。如果我们想使其变得确定，就需要进行线程同步。同步就是让所有线程按照一定的规则执行，使其正确性和效率有迹可循。线程同步的手段就是对线程之间的穿插进行控制。</p>
+<h2 id="8-3-锁的进化：金鱼问题"><a href="#8-3-锁的进化：金鱼问题" class="headerlink" title="8.3 锁的进化：金鱼问题"></a>8.3 锁的进化：金鱼问题</h2><h3 id="8-3-1-氨基酸阶段-无同步"><a href="#8-3-1-氨基酸阶段-无同步" class="headerlink" title="8.3.1 氨基酸阶段-无同步"></a>8.3.1 氨基酸阶段-无同步</h3><p>金鱼没有饱腹的感觉，不会因为吃饱了就停止。只要浴缸中还有食物，金鱼就会不停进食直至胀死。因此，金鱼的死活由投食者控制。</p>
+<p>假定甲和乙两人合住，共同喂养一条金鱼，该金鱼每日进食一次。如果一天内两人都喂了鱼，金鱼胀死；如果一天内两人都没有喂鱼，金鱼饿死。</p>
+<p>现约定如下：</p>
+<ol>
+<li>每天喂鱼一次，且仅一次。</li>
+<li>如果今天甲已喂鱼，则乙不能再喂。反之亦然。</li>
+<li>如果今天甲未喂鱼，则乙必须喂鱼。反之亦然。</li>
+</ol>
+<p>最简单的情况是甲乙两人不进行任何沟通。为了保证鱼的存活，分别应该执行如下程序：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="keyword">if</span>(noFeed)&#123;</span><br><span class="line"><span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="keyword">if</span>(noFeed)&#123;</span><br><span class="line"><span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述程序可以正确保证鱼的存活吗？答案是否定的。由于线程的执行可以任意穿插，甲可以先检查金鱼，发现没有喂，于是准备喂鱼。但就在甲准备喂但尚未喂的时候，发生了某件事情使得程序切换，轮到乙执行。乙发现此时鱼还没有被喂（事实上也确实如此），于是乙就喂鱼。此后程序重新切回甲，因为甲已经检查过了金鱼的状态（没喂），所以甲从检查之后的指令开始执行，也喂鱼。这样鱼就先后被喂了两次，金鱼胀死。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检查金鱼（没喂）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查金鱼（没喂）</td>
+</tr>
+<tr>
+<td>喂鱼</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>喂鱼</td>
+</tr>
+</tbody></table>
+<p>为什么会发生金鱼胀死的情况？原因在于甲乙同时执行了同一段代码。两个或多个线程争相执行同一段代码或访问同一资源的现象称为竞争。可能造成竞争的共享代码段或资源称为临界区。当然，单核情况下两个线程不可能真的在同一时刻执行，但可能同一时刻两个线程都在同一段代码上，者这个例子里竞争的就是代码，称为代码竞争。如果两个线程同时访问同一个数据就叫做数据竞争。</p>
+<p>以人类进化来比喻，上面的代码段只相当于氨基酸阶段，竞争杂乱而无序，不具备任何协调能力。</p>
+<h3 id="8-3-2-草履虫阶段-第一类同步"><a href="#8-3-2-草履虫阶段-第一类同步" class="headerlink" title="8.3.2 草履虫阶段-第一类同步"></a>8.3.2 草履虫阶段-第一类同步</h3><p>要防止鱼胀死，就要防止竞争。要避免竞争，就要防止两个或多个线程同时进入临界区。这需要某种协调手段。</p>
+<p>协调的目的是保证任何时刻都只能有一个人再临界区，称为互斥。互斥意思就是一次只能有一个人使用共享资源，其他人皆排除在外，且互斥不能违反前面给出的进程模型。因此，正确互斥需要满足4个条件。</p>
+<ol>
+<li>不能有两个进程同时在临界区里面。</li>
+<li>进程能够在任何数量和速度的CPU上正确执行。</li>
+<li>在互斥区域外不能阻止另一个进程的运行。</li>
+<li>进程不能无限制地等待进入临界区。</li>
+</ol>
+<p>如果任何一个条件不满足，那么设计的互斥就是不正确的。</p>
+<p>如何确保一次只有一个人在临界区？答案是让两个线程协调。最简单的协调是让甲乙直接交谈，但两人未必有时间碰面。那么剩下的办法是留字条。这就是第一种同步方式：甲乙约定，在喂鱼之前应该留下字条，告诉对方自己将检查鱼缸并在需要时喂鱼。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="keyword">if</span>(noNote)&#123;</span><br><span class="line"><span class="built_in">leaveNote</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNote</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="keyword">if</span>(noNote)&#123;</span><br><span class="line"><span class="built_in">leaveNote</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNote</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述机制可以正确保证鱼的存活吗？答案仍然是否定的。如果甲乙交叉执行上述程序，还是会造成鱼的胀死。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检查字条（无字条）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查字条（无字条）</td>
+</tr>
+<tr>
+<td>留下字条</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>留下字条</td>
+</tr>
+<tr>
+<td>检查金鱼（没喂）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查金鱼（没喂）</td>
+</tr>
+<tr>
+<td>喂鱼</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>喂鱼</td>
+</tr>
+</tbody></table>
+<p>为什么没起到作用呢？这是因为虽然使用了互斥手段，但并没有达成互斥的目的，留字条依然没有阻止甲乙同时进入临界区。虽然结果失败了，但这个机制与第一个解决方案相比的确有所改善，金鱼胀死的几率大大降低，只有在甲乙严格交叉执行的情况下才可能发生胀死。</p>
+<h3 id="8-3-3-鱼阶段-第二类同步"><a href="#8-3-3-鱼阶段-第二类同步" class="headerlink" title="8.3.3 鱼阶段-第二类同步"></a>8.3.3 鱼阶段-第二类同步</h3><p>分析上面程序发现，失败原因是检查字条和留下字条两个动作之间存在一个空隙。我们可以改变一下顺序，先留字条，再检查有没有对方的字条。如果没有对方的字条，就喂鱼，喂完把自己的字条拿掉。这种方法需要区分字条是谁留下的。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">leaveNoteA</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteB)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteA</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">leaveNoteB</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteA)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteB</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种方法能否保证鱼存活？可以。因为无论按照什么顺序穿插，总有某个人的留字条指令在另一个人的检查字条指令前面执行，从而防止两个人同时进入临界区。所以鱼不会因为两个人重复投食而胀死。</p>
+<p>但我们还是要检验此机制在极限交叉执行情况下的表现。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>留字条-乙</td>
+</tr>
+<tr>
+<td>留字条-甲</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查字条-甲（有）</td>
+</tr>
+<tr>
+<td>检查字条-乙（有）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>丢弃字条-乙</td>
+</tr>
+<tr>
+<td>丢弃字条-甲</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>由于严格交叉执行，两人在检查字条时，都看到了对方留下字条，于是都选择不喂鱼。金鱼饿死。</p>
+<p>由于存在饿死的可能，这个程序似乎没有被改善。但实际上，与胀死相比，饿死的确是一种改善。对于计算机系统，饿死好于胀死。胀死情况下程序的运行极有可能出错（几个线程同时获得同一资源，结果出现不一致性和不确定性几乎是难以避免的）。饿死情况下所有人都拿不到某个资源，线程处于饥饿状态，一般会停止推进，这不一定会产生严重错误，只是延迟了正确结果的出现。</p>
+<p>虽然饿死比起胀死已经是一种进化，但同步机制仍需继续进化。</p>
+<h3 id="9-3-4-猴阶段-第三类同步"><a href="#9-3-4-猴阶段-第三类同步" class="headerlink" title="9.3.4 猴阶段-第三类同步"></a>9.3.4 猴阶段-第三类同步</h3><p>上述机制的互斥，保证了没有两个人同时进入临界区，但没有保证必须有一个人进入临界区喂鱼。换句话说，互斥过头了。</p>
+<p>解决办法就是让某个人等着，直到确认有人喂了鱼才离开，不要只看到对方字条就走人。于是得到第三类同步方式。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">leaveNoteA</span>();</span><br><span class="line"><span class="keyword">while</span>(noteB)&#123;</span><br><span class="line">donothing;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNoteA</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">leaveNoteB</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteA)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteB</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种机制下，鱼显然不会胀死。并且鱼不会饿死，因为鱼饿死的唯一条件是两个人同时留纸条并离开。而本程序在两个人都留了纸条的情况下，甲不会走人，而是一直等到乙删除自己纸条后，金鱼再被重新检查。这种同步方式既避免了胀死又防止了饿死。</p>
+<p>一切似乎大功告成，但程序仍有进步空间。</p>
+<h3 id="8-3-5-人阶段（锁）"><a href="#8-3-5-人阶段（锁）" class="headerlink" title="8.3.5 人阶段（锁）"></a>8.3.5 人阶段（锁）</h3><p>上述同步机制存在一些问题。</p>
+<ol>
+<li>不对称。程序因不对称而不美观。其次，不对称造成程序编写困难。为了追求程序的正确性，即使是做同样操作的线程也得以不同样式编写，自然增加了编程难度。最后不对称还造成程序证明的困难，想要从理论上证明不对称程序的正确性是十分复杂的。</li>
+</ol>
+<blockquote>
+<p>程序就像蓝色的诗歌。——DonaldKnuth</p>
+</blockquote>
+<ol start="2">
+<li>浪费。甲执行的循环等待是一件很大的浪费。但浪费不是循环等待的唯一问题，它可能造成CPU调度的优先级倒挂。优先级倒挂就是高优先级线程等待低优先级线程。假设甲的优先级比乙高，甲获得CPU，留下字条，进入循环等待，而乙无法获得CPU完成后续工作，造成甲始终处于循环等待阶段无法推进。这样，优先级高的甲就被优先级低的乙所阻塞。优先级倒挂完全违反了设立优先级的初衷，因而无法忍受。</li>
+</ol>
+<p>欲进一步改善同步方案，首先要先确定在哪一个方案的基础上改进。第三类同步看似最为合适，无非就是不美观和循环等待，然而实际上这两点都是无法改进的：我们既无法强行使其变得对称，也不能去掉甲的循环等待。由此可见，这种零敲碎打式的推进模式已经走到了尽头，需要新的修改思路。新的思路就是直接对前两类方案进行修改。</p>
+<p>第一类方案完全对称，第二类方案不完全对称，因为每个人的字条不同。我们选择第一类作为修改的基础。首先，应该回顾其当初不满足需求的原因。</p>
+<p>为什么第一类同步没起到作用呢？这是因为检查字条和留字条是两个分离的步骤，虽然使用了互斥手段，但未能达到互斥的目的，没有阻止甲乙同时进入临界区。显然现在的思路就是：使这两个步骤并为一个步骤，或者变成一个原子操作，使其中间不留空隙。这样问题就迎刃而解。</p>
+<p>换句话说，我们之所以到现在还没有解决掉金鱼问题，是因为我们始终在非常低的层次上徘徊。我们试图工作的层面是鱼和鱼缸，我们仅仅在指令层上努力，由于我们所控制的单元是一条条指令，因此对指令之间的空袭无能为力。解决这种问题的办法就是提高抽象的层次，将我们控制的层面上升到对一组指令的控制。</p>
+<p>金鱼问题中，若我们将抽象层次从保护鱼和鱼缸的层次提高至保护放置鱼缸的房间的层次，这个问题将得以解决。也就是设计一种同步措施，使得在任何时候只能一个人进入房间，这样检查字条和留字条的两个步骤就变成给房间上锁的一步操作。</p>
+<p>如果两个教师想使用同一间教室给学生上课（竞争），该如何协调？只要先到的教师进入教室后将门锁上，后来的教师就无法进入教室了。锁就是用来保证互斥的。操作系统中，将可以保证互斥的同步机制称为锁。</p>
+<p>有了锁，金鱼问题就可以解决。当一个人进屋准备喂鱼，就把放有鱼缸的房间上锁，如此做另外一个人就进不来，自然无法喂鱼。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">unlock</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种同步机制的代码完美地确保了金鱼既不会饿死也不会胀死，更重要的是，两人执行完全相同地代码，程序逻辑对称，格式美观，编写方便，证明简单。金鱼问题到此迎刃而解。</p>
+<p><strong>锁的基本操作</strong></p>
+<ul>
+<li>闭锁（上锁）</li>
+<li>开锁（解锁）</li>
+</ul>
+<p>开锁只有一步，即打开锁。闭锁有两个步骤：1.等待锁达到打开状态。2.获得锁并锁上。显然，闭锁的两个步骤应当是原子操作，原子操作就是不能分开的操作。如果允许两个操作分开，就会留下允许穿插的空袭，导致锁失效。</p>
+<p>实际上，第一类同步方案里面的字条从某种意义上来说就是一把锁，只是这把锁没能锁住资源。因为这把锁还不具备一把合格锁所应具备的特性：</p>
+<ol>
+<li>锁的初始状态必须是打开状态。</li>
+<li>进入临界区前必须获得锁。</li>
+<li>离开临界区时必须打开锁。</li>
+<li>如果别人持有锁，必须等待。</li>
+</ol>
+<p>第一类同步中的留字条方法违反了第四个原则，在别人持有锁（准备留下字条）的情况下依旧进入临界区。字条无法起到锁的作用，即是一把破锁。</p>
+<p>这个程序还有什么缺点？如果甲正在喂鱼，乙在门外什么也不能干，只能等待锁变为打开状态。如果甲喂鱼花费时间很久，乙等待的时间就会很漫长。这种繁忙等待不仅将造成浪费，而且将降低系统效率。因为锁的特性之一就是必须在别人持有锁时等待，因此我们无法消除这种等待，但可以减少等待的时间。那就是把喂鱼的操作放在锁的外面。这样可以使锁上的繁忙等待时间减少。但终究还是要等待的，如果想要不进行任何等待，这需要引入睡觉与叫醒。</p>
+<h2 id="8-4-睡觉与叫醒：生产者与消费者问题"><a href="#8-4-睡觉与叫醒：生产者与消费者问题" class="headerlink" title="8.4 睡觉与叫醒：生产者与消费者问题"></a>8.4 睡觉与叫醒：生产者与消费者问题</h2><p>睡觉与叫醒就是，如果对方持有锁，你就不需要等待锁变成打开状态，而是去睡觉，等锁打开后对方再来把你叫醒。</p>
+<p>在生产者-中介机构-消费者这个模式里，中介机构的存在使得生产者和消费者能够相对独立地运行，不必亦步亦趋地跟在另一方后面。只要超市（中介机构）货架没满，生产者就可以一直生产，不用等消费者订一件才做一件。生产者与消费者直接对接的这种原始模式在资源分配方面效率十分低下。</p>
+<p>在操作系统中可以这样类比：一个进程代表生产者，一个进程代表消费者，一片内存缓冲区代表商店。生产者生产的物品从一端放入缓冲区，消费者从缓冲区的另一端获取物品。</p>
+<p>以校园中的自动售货机为例。售货机是缓冲区，送货员是生产者，学生是消费者。只要售货机既不空也不满，送货员和学生就可以一直进行生产和消费。如果学生来买饮料时发现售货机空了，可以有两个选择：在售货机前面等待，直到送货员来送货。或者转身回宿舍睡觉，等送货员来把学生叫醒。同理，如果送货员送货时发现售货机已满，也有两种选择：在售货机前原地等待，直到有学生来买走一些东西，然后将售货机填满。或者回家睡觉，等有学生买走一些东西后再来补货，学生买走商品后需要叫醒送货员。</p>
+<p>下面程序中的sleep和wakeup就是操作系统里的睡觉和叫醒原语。一个程序调用sleep后将进入休眠状态，释放其占用的CPU。一个执行wakeup的程序将发送一个信号给指定的接收进程，如wakeup(producer)就发送一个信号给生产者。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">#defineN100<span class="comment">//定义缓冲区的大小</span></span><br><span class="line">intcount=<span class="number">0</span>;<span class="comment">//定义当前缓冲区里的商品数，初始化为0</span></span><br><span class="line"></span><br><span class="line">voidproducer(<span class="keyword">void</span>)&#123;<span class="comment">//生产者程序</span></span><br><span class="line">intitem;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">item=producer_item();<span class="comment">//生产一件商品</span></span><br><span class="line"><span class="keyword">if</span>(count==N)sleep();<span class="comment">//如果缓冲区满，则睡眠</span></span><br><span class="line">insert_item(item);<span class="comment">//如果缓冲区未满，则将商品放入缓冲区</span></span><br><span class="line">count++;<span class="comment">//商品放入后计数加1</span></span><br><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)wakeup(consumer);<span class="comment">//如果刚好剩1件则说明此前为空，可能有消费者见到空缓冲区而去睡觉，唤醒消费者</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">voidconsumer(<span class="keyword">void</span>)&#123;<span class="comment">//消费者程序</span></span><br><span class="line">intitem;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(count==<span class="number">0</span>)sleep();<span class="comment">//检查当前商品计数，如果为0，没有商品，就去睡觉</span></span><br><span class="line">item=remove_item();<span class="comment">//缓冲区非空，则从中拿走一件商品</span></span><br><span class="line">count--;<span class="comment">//拿走商品后计数器减1</span></span><br><span class="line"><span class="keyword">if</span>(count==N<span class="number">-1</span>)wakeup(producer);<span class="comment">//如果刚好剩N-1件，可能有生产者因见到缓冲区满而去睡觉，唤醒生产者</span></span><br><span class="line">consumer_item(item);<span class="comment">//尽情享用商品</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序存在两个问题。</p>
+<ol>
+<li>错误唤醒。假如cnt此时为1，生产者先运行，对cnt加1后变成2，接下来准备判断cnt是否为1（不等于）。就在尚未判断的此刻，CPU被消费者获得，随后对cnt减1变回1，这时再切换回生产者，cnt==1成立，于是顺其自然地就向消费者发送了叫醒信号——实际上该信号本不应发出。</li>
+<li>死锁。死锁是生产者和消费者都无法向前推进的情况。举例说明一下，假如cnt此时为初始值0，消费者先来，于是去睡觉，但是在cnt==1之后和sleep之前CPU发生切换，生产者开始运行，他生产一件商品，cnt加1后变为1，刚好满足唤醒消费者的条件。但消费者此时处于sleep之前，准备要睡但还没有睡觉，于是这个唤醒信号无事发生，浪费了。生产者此后继续运行直到缓冲区满后也去睡觉，然后CPU交给消费者，消费者执行的第一条指令就是完成刚才准备要做的sleep动作。至此，生产者和消费者都进入睡觉状态，不能唤醒对方而无法向前推进，系统发生了死锁。</li>
+</ol>
+<p>对于第一个问题，解决方案是加上锁。在进行对cnt的操作前后分别加上开锁和闭锁即可防止生产者和消费者同时访问cnt的情况出现。虽然一旦引入锁就必然伴随着等待，但实际上我们并非一刻也不愿等待，只是不愿意等太久。cnt的访问前后加上锁所造成的繁忙等待时间是很短的，完全可以接收。</p>
+<p>对于第二个问题，解决方案是不让二者同时睡觉。首先反思造成双方同时睡觉的原因是什么？原因正是生产者发出的叫醒信号丢失（此时对方并没有睡觉因此也无需唤醒）。解决思路如下：如果我们用某种方法将发出的信号积累起来，而不是直接丢弃，问题不就解决了吗？回顾死锁发生前的情景，试想如果消费者重新获得CPU并执行sleep语句后，生产者早前发送的叫醒信号还保留着，消费者就能及时获得这个信号而醒过来。</p>
+<p>能够将信号累计起来的操作系统原语就是信号量。信号和信号量是两个完全不同的概念：信号类似于软中断，进程接收到信号，相当于发生了中断。信号量是一个计数器，其取值为当前积累的信号数量。</p>
+<h2 id="8-5-信号量"><a href="#8-5-信号量" class="headerlink" title="8.5 信号量"></a>8.5 信号量</h2><h2 id="8-6-锁、睡觉与叫醒、信号量"><a href="#8-6-锁、睡觉与叫醒、信号量" class="headerlink" title="8.6 锁、睡觉与叫醒、信号量"></a>8.6 锁、睡觉与叫醒、信号量</h2><h2 id="8-7-管程"><a href="#8-7-管程" class="headerlink" title="8.7 管程"></a>8.7 管程</h2><h2 id="8-8-消息传递"><a href="#8-8-消息传递" class="headerlink" title="8.8 消息传递"></a>8.8 消息传递</h2><h2 id="8-9-栅栏"><a href="#8-9-栅栏" class="headerlink" title="8.9 栅栏"></a>8.9 栅栏</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/aaa3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/aaa3/" class="post-title-link" itemprop="url">线程概论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-15 17:09:00" itemprop="dateCreated datePublished" datetime="2021-03-15T17:09:00+08:00">2021-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/aaa3/" class="post-meta-item leancloud_visitors" data-flag-title="线程概论" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="07-线程概论"><a href="#07-线程概论" class="headerlink" title="#07 线程概论"></a>#07 线程概论</h1><p>进程希望自己在某些时候能够分身从而完成更加复杂的任务。从根本上说，线程是操作系统给进程模型提供并发能力的手段。虽然线程和进程出现的动机都是并发，但他们的并发层次不同：</p>
+<ul>
+<li>进程属于处理器级并发，即在处理器这一层次上提供并发的抽象；</li>
+<li>线程则属于进程级并发，即在进程这个层次上再提供一层并发的抽象；</li>
+<li>如果我们继续下到底层，进入计算机体系结构里就会发现，流水线提供的也是一种并发，不过是指令级并发。</li>
+</ul>
+<p>这样，流水线、进程、线程就从低到高在3个层次上提供了我们需要的并发。</p>
+<blockquote>
+<p>进程是资源分配的最小单位，线程是cpu调度的最小单位。</p>
+</blockquote>
+<h2 id="7-1-进程的分身术——线程"><a href="#7-1-进程的分身术——线程" class="headerlink" title="7.1 进程的分身术——线程"></a>7.1 进程的分身术——线程</h2><p>亚历山大的分身术：只要速度够快，就相当于拥有分身。</p>
+<p>将进程分解为线程可以有效地利用多处理器和多核计算机。在没有线程的情况下，增加一个处理器并不能提高一个进程的执行速度。但如果分解为多个线程，则可以让不同的线程同时运转在不同的处理器上，从而提高进程的执行速度。</p>
+<p>例如，当我们使用文字处理软件MicrosoftWord时，实际上是打开了多个线程。这些线程一个负责显示，一个接收输入，一个定时保存。这些线程运行在不同的处理器上，让我们感到输入和显示同时发生。</p>
+<h2 id="7-2-线程管理"><a href="#7-2-线程管理" class="headerlink" title="7.2 线程管理"></a>7.2 线程管理</h2><ul>
+<li>存放进程各种信息的数据结构称为进程表或进程控制块。</li>
+<li>存放线程各种信息的数据结构称为线程控制表或线程控制块。</li>
+</ul>
+<p>线程共享一个进程空间，因此许多资源是共享的。共享的资源不需要放在线程控制块里，而是放到进程控制块即可。但线程也有一些不能共享的资源，不被共享的资源和信息需要存放到线程控制块里。</p>
+<p>正确的设计思想是：应当让共享的资源越多越好，这是我们发明线程的主要动机之一。</p>
+<ul>
+<li>线程共享资源：地址空间、全局变量、打开的文件、子进程、闹铃、信号和信号服务程序、记账信息</li>
+<li>线程独享资源：程序计数器、寄存器、栈、状态字</li>
+</ul>
+<h2 id="7-3-线程实现模型"><a href="#7-3-线程实现模型" class="headerlink" title="7.3 线程实现模型"></a>7.3 线程实现模型</h2><p>线程在进程基础上提供第二次并发。由于线程之间的共享远比进程之间的共享丰富，因此线程在高度并发的环境下发挥着极为重要的作用。</p>
+<p>和进程一样，线程本身也对应着某种物理现实，也需要存储和调度。</p>
+<ul>
+<li>存储上，因为线程依附于进程而存在，所以无需额外设计，而是直接附于进程存储方案上。</li>
+<li>调度上，线程和进程有所不同。线程的调度既可以由进程负责，也可以由操作系统负责，这两种不同的调度推手形成了线程的两种实现：用户态实现和内核态实现。由进程自己管理就是用户态线程的实现，由操作系统管理就是内核态线程实现。用户态和内核态的判断以线程表所处的位置为依据：位于内核叫内核态实现，位于用户层叫用户态实现。</li>
+</ul>
+<p>为什么前面讲述进程时没有提到用户态和内核态的实现方式？因为进程是在CPU上实现并发的，而CPU是由操作系统管理的，因此进程的实现只有内核态实现，没有用户态实现。但线程不同于进程，线程是进程内部的东西，存在着由进程直接管理线程的可能性。因此线程有内核态和用户态两种实现方式。</p>
+<ul>
+<li>内核态线程实现：好处是用户编程简单，因为线程的复杂性由操作系统承担。另一个好处是如果一个线程执行阻塞操作，操作系统可以从容地调度另一个线程执行，因为操作系统有权监控和指挥所有的线程。缺点是效率较低，每次线程切换都需要陷入到内核，由操作系统来进行调度，而从用户态陷入到内核态是要花时间的。最致命的缺陷是：内核态实现需要修改操作系统，这一操作往往伴随着未知的风险。因此就有了线程的用户态实现。</li>
+<li>用户态线程实现：线程出现之初，研究人员无法说服操作系统研发商修改操作系统，把一个有效性未经证明的新概念加入其中，其实现的方式只能是用户态。用户态实现的优点是灵活，因为操作系统无须知道线程的存在，所以在任何操作系统上都能应用。其次是线程切换速度快，因为每次切换无需陷入内核。最后是不用修改操作系统，实现容易。缺点是编程变得诡异，用户态线程需要相互合作才能运转，一个线程受到阻塞将造成整个进程都受阻，这是用户态线程的致命弱点。解决思路有两个：一是不让线程阻塞，二是阻塞后想办法激活受阻进程的其他线程。事实上阻塞不可避免，一般考虑第二种思路，即线程阻塞后想办法激活受阻进程的其他线程。这种办法的实现依赖于OS。线程阻塞后CPU的控制权回到OS手中，此时让OS在进行进程切换时先不切换，而是通知受阻的进程执行系统，询问是否有其他线程可以执行，从而调度另一个可以执行的线程到CPU上。这种做法称为“第二机会”。该做法存在一个严重缺陷：违反了层次架构原则，即下层功能调用了上层功能（操作系统在下，执行系统在上）。这种违反上下有别的做法使得操作系统的设计和管理变得更加复杂。</li>
+</ul>
+<h2 id="7-4-现代操作系统的线程实现模型"><a href="#7-4-现代操作系统的线程实现模型" class="headerlink" title="7.4 现代操作系统的线程实现模型"></a>7.4 现代操作系统的线程实现模型</h2><p>现代操作系统将内核态和用户态结合起来使用。用户态的执行系统负责进程内部线程在非阻塞时的切换；内核态的操作系统负责阻塞线程的切换。即我们同时实现内核态和用户态线程管理。其中内核态线程数量较少，用户态线程数量较多。每个内核态线程可以服务一个或多个用户态线程，换句话说，用户态线程被多路复用到内核态线程上。如果进程内部一组线程中的某一个线程阻塞，则与其属于同一组的线程皆阻塞，但该进程内的另外一组线程仍可以继续执行。</p>
+<p>在分配线程时，我们可将需要执行阻塞操作的线程设为内核态线程，将不会执行阻塞操作的线程设为用户态线程。这样就结合了两种态势实现下的优点并避免其缺点。</p>
+<h2 id="7-5-多线程的关系"><a href="#7-5-多线程的关系" class="headerlink" title="7.5 多线程的关系"></a>7.5 多线程的关系</h2><p>推出线程模型的目的就是实现进程级并发。因为在一个进程中通常会出现多个线程，否则就没有必要搞什么线程了。<br>因此研究线程就必然要研究多线程，多个线程位于一个舞台，时而交互，时而独舞。<br>多线程共享一个地址空间的资源的过程中会产生矛盾，这些矛盾归结到下面两个根本问题：</p>
+<ol>
+<li>线程之间如何通信？</li>
+<li>线程之间如何同步？</li>
+</ol>
+<h2 id="7-6-讨论：从用户态进入（陷入）内核态"><a href="#7-6-讨论：从用户态进入（陷入）内核态" class="headerlink" title="7.6 讨论：从用户态进入（陷入）内核态"></a>7.6 讨论：从用户态进入（陷入）内核态</h2><p>程序在运行过程中发生中断或异常，系统将自动切换到内核态来运行中断或异常处理机制。此外，程序进行系统调用也将造成从用户态到内核态的转换。</p>
+<h2 id="7-7-讨论：线程的困惑——确定性与非确定性"><a href="#7-7-讨论：线程的困惑——确定性与非确定性" class="headerlink" title="7.7 讨论：线程的困惑——确定性与非确定性"></a>7.7 讨论：线程的困惑——确定性与非确定性</h2><p>有一种特殊观点是：线程带给我们的优势有限，而其造成的缺憾却巨大。</p>
+<p>从某种程度上说，线程与流水线分别是软件层和硬件层不确定性的根源。流水线使得我们可以在硬件指令执行上实现并发，线程则使我们在软件指令执行上实现并发。但其带来的操作系统、编译系统、指令集结构的高度复杂是否值得，这并不容易回答。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/d65/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/d65/" class="post-title-link" itemprop="url">进程通信</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-15 16:35:00" itemprop="dateCreated datePublished" datetime="2021-03-15T16:35:00+08:00">2021-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/d65/" class="post-meta-item leancloud_visitors" data-flag-title="进程通信" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="06-进程通信"><a href="#06-进程通信" class="headerlink" title="#06 进程通信"></a>#06 进程通信</h1><h2 id="6-1-为什么要通信"><a href="#6-1-为什么要通信" class="headerlink" title="6.1 为什么要通信"></a>6.1 为什么要通信</h2><p>进程之间的交互称为进程间通信。</p>
+<p>以人类通信方式来类比进程通信：对白、发电报、打手势、拥抱、写信。</p>
+<h2 id="6-2-进程对白：管道、记名管道、套接字"><a href="#6-2-进程对白：管道、记名管道、套接字" class="headerlink" title="6.2 进程对白：管道、记名管道、套接字"></a>6.2 进程对白：管道、记名管道、套接字</h2><p>人类的对白：一人发出声音，另一人接收声音，声音在介质中传播。</p>
+<p>进程的对白：一个进程发送数据，另一个进程接收数据，数据通过一片共享的存储空间传递。</p>
+<p>管道：又称无名管道。从根本上说，管道是一个线性字节数组。类似文件，可以使用文件读写的方式进行访问。但又不是文件，因为通过文件系统看不到管道的存在。管道的一个重要特点是使用管道的两个进程之间必须存在某种关系。</p>
+<p>记名管道：如果要在两个不相关的进程之间进行管道通信，则需要记名管道。</p>
+<p>虫洞与套接字：虫洞的一端是开放的，它在宇宙内或宇宙间漂移着，另一端处于一个不同的宇宙，监听是否有任何东西从虫洞来。欲使用虫洞者需要找到虫洞的开口端（发送连接请求），然后穿越虫洞即可。而使用套接字进行通信需要双方均创建一个套接字，其中一方作为服务器，另一方作为客户方。服务器方先创建一个服务器套接字，然后在该套接字上进行监听，等待远方的连接请求。欲与服务器通信的客户则创建一个客户套接字，然后向服务器套接字发送连接请求。服务器套接字收到连接请求后，将在服务器方机器上创建一个客户套接字，与远方的客户机上的客户套接字形成点到点的通信通道。之后客户和服务器就可以通过send和recv命令在这个通道上进行交流。</p>
+<h2 id="6-3-进程电报：信号"><a href="#6-3-进程电报：信号" class="headerlink" title="6.3 进程电报：信号"></a>6.3 进程电报：信号</h2><h2 id="6-4-进程旗语：信号量"><a href="#6-4-进程旗语：信号量" class="headerlink" title="6.4 进程旗语：信号量"></a>6.4 进程旗语：信号量</h2><h2 id="6-5-进程拥抱：共享内存"><a href="#6-5-进程拥抱：共享内存" class="headerlink" title="6.5 进程拥抱：共享内存"></a>6.5 进程拥抱：共享内存</h2><p>两个进程需要共享大量数据。类似两个人互相喜欢，想要一起生活（共享大量数据），这时打电话、握手、对白等就显得不够了，需要拥抱。进程的拥抱就是共享内存。</p>
+<h2 id="6-6-信件发送：消息队列"><a href="#6-6-信件发送：消息队列" class="headerlink" title="6.6 信件发送：消息队列"></a>6.6 信件发送：消息队列</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/d630/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/d630/" class="post-title-link" itemprop="url">进程调度</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-14 20:47:00" itemprop="dateCreated datePublished" datetime="2021-03-14T20:47:00+08:00">2021-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/d630/" class="post-meta-item leancloud_visitors" data-flag-title="进程调度" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="05-进程调度"><a href="#05-进程调度" class="headerlink" title="#05 进程调度"></a>#05 进程调度</h1><p>调度是操作系统实现进程模型的根本手段。</p>
+<h2 id="5-1-进程调度的意义"><a href="#5-1-进程调度的意义" class="headerlink" title="5.1 进程调度的意义"></a>5.1 进程调度的意义</h2><p>进程调度的任务是：选择下一个要运行的进程。</p>
+<p>进程使用CPU的模式有三种：</p>
+<ol>
+<li>CPU导向/计算密集型程序：大部分时间在CPU上执行，如科学计算方面的程序。</li>
+<li>IO导向/输入输出密集型程序：大部分时间在进行输入输出，如人机交互式程序。</li>
+<li>平衡型程序：介于前两种模式之间，如网络浏览类程序。</li>
+</ol>
+<h2 id="5-2-进程调度的目标"><a href="#5-2-进程调度的目标" class="headerlink" title="5.2 进程调度的目标"></a>5.2 进程调度的目标</h2><ol>
+<li>极小化平均响应时间。也要注意适度性，即响应时间要和期望值相匹配。提供超越用户期望的响应会增加系统设计的难度，而不会提高用户的满意度。</li>
+<li>极大化系统吞吐率</li>
+<li>保持系统各个功能部件均处于繁忙状态</li>
+<li>提供某种貌似公平的机制</li>
+</ol>
+<h2 id="5-3-先来先服务调度算法"><a href="#5-3-先来先服务调度算法" class="headerlink" title="5.3 先来先服务调度算法"></a>5.3 先来先服务调度算法</h2><p>FCFS即First Come First Serve的缩写。先来先服务的一个隐含条件就是不能抢占，一个程序一旦启动就一直运行到结束或者受到阻塞为止。</p>
+<ul>
+<li>优点：简单（易理解，易实现）。</li>
+<li>缺点：交互式体验较差（短任务可能会变得很慢，因为前面有很长的任务）。</li>
+</ul>
+<p>比喻：在窗口前排队办理事情，你要办理的事情只要10分钟就能办好，而你前面的人办理的事情因为复杂需要1个小时。这时你要等在她后面就十分不高兴。这时候你就想：要是每个人轮流办理10分钟事务的话，那多好呀。自然，研究进程调度的人也想到了这一点，而这种轮流办理的调度方式就是时间片轮转。</p>
+<h2 id="5-4-时间片轮转算法"><a href="#5-4-时间片轮转算法" class="headerlink" title="5.4 时间片轮转算法"></a>5.4 时间片轮转算法</h2><p>时间片轮转算法是对FCFS算法的一种改进。其主要目的是改善短程序的响应时间。其方法是周期性地进行进程切换。</p>
+<p>一个核心问题是，如何选择合适的时间片？如果时间片过大，则轮转算法越来越像先来先服务，直到完全退化为先来先服务。如果时间片过小，则进程切换所用的系统消耗将太多，使得系统的大部分时间花费在进程的上下文切换上，真正用来执行程序的有效时间很少。</p>
+<p>另一个重要问题是：时间片轮转真的公平吗？时间片轮转的系统响应时间总是比FCFS短吗？答案是不一定。</p>
+<h2 id="5-5-短任务优先算法"><a href="#5-5-短任务优先算法" class="headerlink" title="5.5 短任务优先算法"></a>5.5 短任务优先算法</h2><p>shorted time to completion first=STCF</p>
+<p>为了改善短任务排在长任务后面轮转而造成响应时间和交互体验下降的办法就是短任务优先算法（STCF）。这种算法的核心思想是：所有的任务并不平等，而是有优先级的区分。具体来说就是，短任务优先于长任务，而我们总是安排优先级高的程序先运行。</p>
+<p>短任务优先算法有两个变种，一种是抢占式，一种是非抢占式。</p>
+<ul>
+<li>非抢占式短任务优先算法的原理是：让已经在CPU上运行的程序执行到结束或阻塞，然后再所有候选的程序中选择需要执行时间最短的进程来执行。</li>
+<li>抢占式短任务优先算法的原理是：每增加一个新的进程就要对包括正在CPU上运行的进程在内的所有进程进行检查，谁的需要执行时间最短就运行谁。</li>
+</ul>
+<p>优点：短任务优先算法在目前已经讨论过的调度算法中，平均响应时间最优。事实上，在所有非抢占式调度算法中，STCF算法响应时间最优；在所有抢占式调度算法中，抢占式STCF算法响应时间最优。</p>
+<p>缺点：</p>
+<ol>
+<li>可能造成长程序无法得到CPU时间而导致饥饿。</li>
+<li>我们怎么能在运行一个进程之前就知道每个进程需要多长时间？难道我们能够预测未来不成？一个解决方案是用启发式方法来进行估算（例如根据程序大小来推测所需CPU执行时间），但这个方法往往并不可靠。另一个方法是先将所有进程运行一遍并记录其用时，今后根据这个实测数据来进行STCF调度。</li>
+</ol>
+<h2 id="5-6-优先级调度算法"><a href="#5-6-优先级调度算法" class="headerlink" title="5.6 优先级调度算法"></a>5.6 优先级调度算法</h2><p>短任务优选算法的缺陷之一是可能造成长程序无法得到CPU时间而导致饥饿。解决这个缺陷的方法是使用优先级。</p>
+<p>优先级调度算法的原理是赋予每个进程一个优先级，每次需要切换进程时选择优先级最高的进程进行调度。这样如果赋予长程序较高优先级，则不会发生饥饿。事实上，短任务优先算法本身就是一种优先级调度算法，只不过它赋予短进程高优先级。</p>
+<p>缺点：</p>
+<ol>
+<li>低优先级的进程可能会导致饥饿。解决方案：动态地调节优先级。一个进程执行了特定CPU时间后降低其优先级一个级别，或者将处于等待状态的进程的优先级提高一个级别。这样，如果一个进程等待的时间过长，就会持续提升优先级。这样就可以防止饥饿现象。</li>
+<li>响应时间不能保证，除非将一个进程优先级设为最高。但如果每个人都将自己进程的优先级设为最高，响应时间还是无法保证。</li>
+</ol>
+<h2 id="5-7-混合调度算法"><a href="#5-7-混合调度算法" class="headerlink" title="5.7 混合调度算法"></a>5.7 混合调度算法</h2><p>原理：将所有进程分成不同的大类，每个大类为一个优先级。如果两个进程处于不同的大类，则处于高优先级大类的进程优先执行；如果两个进程处于同一个大类，则采用时间片轮转算法来执行。</p>
+<h2 id="5-8-其他调度算法"><a href="#5-8-其他调度算法" class="headerlink" title="5.8 其他调度算法"></a>5.8 其他调度算法</h2><ul>
+<li>保障调度</li>
+<li>彩票调度</li>
+<li>用户公平调度</li>
+</ul>
+<h2 id="5-9-实时调度算法"><a href="#5-9-实时调度算法" class="headerlink" title="5.9 实时调度算法"></a>5.9 实时调度算法</h2><ul>
+<li>EDF调度算法：最早截止的任务先做，允许抢占正在运行的程序。EDF调度算法其实就是抢占式STCF算法。</li>
+<li>RMS调度算法：动态地计算每个任务的截止时间并动态调节优先级。</li>
+</ul>
+<h2 id="5-10-进程调度的过程"><a href="#5-10-进程调度的过程" class="headerlink" title="5.10 进程调度的过程"></a>5.10 进程调度的过程</h2><h2 id="5-11-调度异常：优先级倒挂"><a href="#5-11-调度异常：优先级倒挂" class="headerlink" title="5.11 调度异常：优先级倒挂"></a>5.11 调度异常：优先级倒挂</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/cde6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/cde6/" class="post-title-link" itemprop="url">进程概论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-14 20:46:00" itemprop="dateCreated datePublished" datetime="2021-03-14T20:46:00+08:00">2021-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/cde6/" class="post-meta-item leancloud_visitors" data-flag-title="进程概论" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="04-进程概论"><a href="#04-进程概论" class="headerlink" title="#04 进程概论"></a>#04 进程概论</h1><h2 id="4-1-进程概论"><a href="#4-1-进程概论" class="headerlink" title="4.1 进程概论"></a>4.1 进程概论</h2><p>进程（process）从根本上说是操作系统对CPU进行的抽象和装扮。</p>
+<p>因为要并发，所以我们发明了进程。进程让每个用户感觉到自己独占CPU。因此，进程就是为了在CPU上实现多道编程而出现的概念。</p>
+<blockquote>
+<p>进程=程序+执行</p>
+</blockquote>
+<h2 id="4-2-进程模型"><a href="#4-2-进程模型" class="headerlink" title="4.2 进程模型"></a>4.2 进程模型</h2><ul>
+<li>物理视角（进程切换）：任意时刻CPU只能执行一条指令，因此任意时刻只有一个进程执行。</li>
+<li>逻辑视角（多道并发）：每个进程可以执行也可以暂时挂起。</li>
+<li>时序视角（持续推进）：每个进程必须往前推进。“人不能两次踏进同一条河流。”</li>
+</ul>
+<h2 id="4-3-多道编程"><a href="#4-3-多道编程" class="headerlink" title="4.3 多道编程"></a>4.3 多道编程</h2><p>人发明进程是为了多道编程，多道编程是为了提高CPU的效率。比起单道编程，多道编程可以显著改善响应时间。</p>
+<p>多道编程度数和CPU利用率的关系：CPU利用率随着度增加而增加，直到一个临界点。</p>
+<h2 id="4-4-进程的产生与消亡"><a href="#4-4-进程的产生与消亡" class="headerlink" title="4.4 进程的产生与消亡"></a>4.4 进程的产生与消亡</h2><p>产生：</p>
+<ul>
+<li>系统初始化（神创造人）</li>
+<li>正在执行的程序执行进程创立程序（人生子）</li>
+<li>用户请求创立新进程（试管婴儿）</li>
+</ul>
+<p>消亡：</p>
+<ul>
+<li>寿终：进程运行完成而退出（自愿退出）</li>
+<li>自杀：进程发生错误自行退出（自愿退出）</li>
+<li>他杀：进程被其他进程终止（非自愿退出）</li>
+<li>处决：进程因异常或非法操作被操作系统强行终结（非自愿退出）</li>
+</ul>
+<h2 id="4-6-进程的状态"><a href="#4-6-进程的状态" class="headerlink" title="4.6 进程的状态"></a>4.6 进程的状态</h2><p>进程可以执行，也可以挂起。根据挂起的原因不同，又将挂起分为阻塞和就绪。</p>
+<p>因此将进程分为了三种状态：执行、阻塞和就绪。</p>
+<ul>
+<li>执行中的进程（执行态）因等待输入阻塞而主动挂起，进入阻塞态。</li>
+<li>阻塞中的进程（阻塞态）因其等待的资源到达而不再阻塞，进入就绪态。</li>
+<li>已就绪的进程（就绪态）因获得CPU控制权，得以重新进入执行态；</li>
+</ul>
+<p>执行中的进程（执行态）也会因执行时间太久，为公平起见被操作系统挂起让其他进程执行，进入就绪态。</p>
+<p>总结：</p>
+<ul>
+<li>阻塞这种挂起是进程自身的原因（内因），此时即使把CPU控制权交给它也不会运行；而就绪这种挂起是操作系统的原因（外因），进程自己并无问题，只要重新把CPU控制权交给进程就立即可以运行。</li>
+<li>阻塞态无法直接转化为执行态，必须先转化为就绪态。因为阻塞进程即使被给予CPU也无法执行，因此操作系统在进程调度时只需查看就绪的进程，而无需浪费时间查看阻塞的进程。</li>
+<li>一个进程只有在执行时才可能阻塞，就绪态无法直接转化成阻塞态。因为处于就绪态的进程并未执行，自然无法进入阻塞态。就像一个人停滞不前，自然不会有人成为他的障碍。</li>
+</ul>
+<h2 id="4-7-进程与地址空间"><a href="#4-7-进程与地址空间" class="headerlink" title="4.7 进程与地址空间"></a>4.7 进程与地址空间</h2><p>进程空间也称地址空间。地址空间就是进程要用的所有资源。做个比喻就是：音乐剧的舞台布景及设施就是地址空间，而舞台上的男女演员是线程。进程与地址空间研究的主要内容就是如何安全高效地让所有进程共享这片物理内存。</p>
+<h2 id="4-8-进程管理"><a href="#4-8-进程管理" class="headerlink" title="4.8 进程管理"></a>4.8 进程管理</h2><p>当一个进程产生时，操作系统需要为其创建记录。操作系统用于维护进程记录的结构就是进程表或进程控制块（PCB）。进程表保持在操作系统所在的内核空间而非用户空间里。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1051,452 +1807,6 @@
 </ol>
 <p>总结：TCP的连接释放采用四报文握手机制。任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后就进入半关闭状态。当另一方也没有数据再发送时，则发送连接释放通知，对方确认后就完全关闭了TCP连接。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/32846/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/32846/" class="post-title-link" itemprop="url">LC217 存在重复元素</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-04T00:00:00+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/32846/" class="post-meta-item leancloud_visitors" data-flag-title="LC217 存在重复元素" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组，判断是否存在重复元素。<br>如果存在一值在数组中出现至少两次，函数返回true。如果数组中每个元素都不相同，则返回false 。</p>
-<p>输入: [1,2,3,1]<br>输出: true</p>
-<p>输入：[]<br>返回：false </p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p>两层for</p>
-<h2 id="解法2：排序"><a href="#解法2：排序" class="headerlink" title="解法2：排序"></a>解法2：排序</h2><p>先排序，在遍历，只遍历一遍</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsDuplicate</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/49631/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/49631/" class="post-title-link" itemprop="url">LC232 用栈实现队列</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-04T00:00:00+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/49631/" class="post-meta-item leancloud_visitors" data-flag-title="LC232 用栈实现队列" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用两个栈实现先入先出队列。<br>队列应当支持一般队列的支持的所有操作(push、pop、peek、empty)。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>By making pop operation costly</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s2;</span><br><span class="line">    <span class="keyword">int</span> front;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyQueue</span>() &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>()) front = x;</span><br><span class="line">        s1.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>() &amp;&amp; s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                s2.<span class="built_in">push</span>(s1.<span class="built_in">top</span>());</span><br><span class="line">                s1.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> x = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!s2.<span class="built_in">empty</span>()) <span class="keyword">return</span> s2.<span class="built_in">top</span>();</span><br><span class="line">        <span class="keyword">return</span> front;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s1.<span class="built_in">empty</span>() &amp;&amp; s2.<span class="built_in">empty</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>额外维护一个整型变量front，用以保存队头元素。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/12948/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/12948/" class="post-title-link" itemprop="url">LC237 删除链表中的节点</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-04T00:00:00+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/12948/" class="post-meta-item leancloud_visitors" data-flag-title="LC237 删除链表中的节点" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供head。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/42082/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/42082/" class="post-title-link" itemprop="url">LC367 有效的完全平方数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-04T00:00:00+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/42082/" class="post-meta-item leancloud_visitors" data-flag-title="LC367 有效的完全平方数" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个正整数num，编写一个函数，如果num是一个完全平方数，则返回True，否则返回False。<br>说明：不要使用任何内置的库函数，如sqrt。</p>
-<h2 id="解法1：牛顿迭代法"><a href="#解法1：牛顿迭代法" class="headerlink" title="解法1：牛顿迭代法"></a>解法1：牛顿迭代法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">mySqrt</span>(num) * <span class="built_in">mySqrt</span>(num) == num) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> C = x, x0 = x;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">double</span> xi = <span class="number">0.5</span> * (x0 + C / x0);</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">fabs</span>(x0 - xi) &lt; <span class="number">1e-7</span>) <span class="keyword">break</span>;</span><br><span class="line">            x0 = xi;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)x0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：找规律"><a href="#解法2：找规律" class="headerlink" title="解法2：找规律"></a>解法2：找规律</h2><p>利用 1+3+5+7+9+…+(2n-1)=n^2，即完全平方数肯定是前n个连续奇数的和</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num1 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            num -= num1;</span><br><span class="line">            num1 += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分析</strong></p>
-<p>1=1<br>4=1+3<br>9=1+3+5<br>16=1+3+5+7<br>…<br>以此类推，模仿它可以使用一个while循环，不断减去一个从1开始不断增大的奇数，若最终能减到0，说明是完全平方数，否则不是。</p>
-<p>原理：(n+1)^2-n^2=2n+1，即相邻两个完全平方数的差必为奇数，反过来也成立，即任一奇数必定是相邻两个完全平方数的差。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/49339/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/49339/" class="post-title-link" itemprop="url">LC387 字符串中的第一个唯一字符</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-04T00:00:00+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/49339/" class="post-meta-item leancloud_visitors" data-flag-title="LC387 字符串中的第一个唯一字符" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
-<p>输入 s = “leetcode”<br>输出 0</p>
-<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有26个字母的标记数组</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 

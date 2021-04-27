@@ -23,15 +23,15 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
-<meta name="description" content="虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给也从这个基类型直接或间接派生的其它类。 虚拟继承是多重继承中特有的概念。虚拟基类是为解决多重继承中的钻石继承问题而出现的。 虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。 首先还是先给出虚继承和虚基类的定义。虚继承：在继承定义中包含了virtual关键字的继承关系。虚基类：在虚继承体系中的通过">
+<meta name="description" content="虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给同样从这个基类型直接或间接派生的其它类。 虚拟继承是多重继承中特有的概念。虚拟基类是为解决多重继承中的钻石继承问题而出现的。 虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。 首先还是先给出虚继承和虚基类的定义。虚继承：在继承定义中包含了virtual关键字的继承关系。虚基类：在虚继承体系中通过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++虚拟继承">
 <meta property="og:url" content="https://tsukiyokai.github.io/posts/c208/index.html">
 <meta property="og:site_name" content="月夜海">
-<meta property="og:description" content="虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给也从这个基类型直接或间接派生的其它类。 虚拟继承是多重继承中特有的概念。虚拟基类是为解决多重继承中的钻石继承问题而出现的。 虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。 首先还是先给出虚继承和虚基类的定义。虚继承：在继承定义中包含了virtual关键字的继承关系。虚基类：在虚继承体系中的通过">
+<meta property="og:description" content="虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给同样从这个基类型直接或间接派生的其它类。 虚拟继承是多重继承中特有的概念。虚拟基类是为解决多重继承中的钻石继承问题而出现的。 虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。 首先还是先给出虚继承和虚基类的定义。虚继承：在继承定义中包含了virtual关键字的继承关系。虚基类：在虚继承体系中通过">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-26T14:34:08.000Z">
-<meta property="article:modified_time" content="2021-04-26T14:40:01.389Z">
+<meta property="article:modified_time" content="2021-04-27T04:12:28.358Z">
 <meta property="article:author" content="充电的猫猫">
 <meta property="article:tag" content="OOP">
 <meta name="twitter:card" content="summary">
@@ -166,7 +166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,19 +289,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给也从这个基类型直接或间接派生的其它类。</p>
+        <p>虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给同样从这个基类型直接或间接派生的其它类。</p>
 <p>虚拟继承是多重继承中特有的概念。<br>虚拟基类是为解决多重继承中的钻石继承问题而出现的。</p>
 <p>虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。</p>
-<p>首先还是先给出虚继承和虚基类的定义。<br>虚继承：在继承定义中包含了virtual关键字的继承关系。<br>虚基类：在虚继承体系中的通过virtual继承而来的基类。</p>
+<p>首先还是先给出虚继承和虚基类的定义。<br>虚继承：在继承定义中包含了virtual关键字的继承关系。<br>虚基类：在虚继承体系中通过virtual继承而来的基类。</p>
 <p>需要注意的是：<br><code>class B : public virtual A &#123; &#125;;</code><br>其中A称之为B的虚基类，而不是说A就是个虚基类，因为A还可以作为不是虚继承体系中的基类。</p>
-<p>现在，B继承A的公共成员a时，继承的时a本体，而非a的副本。（感觉有点像继承机制中的传引用）</p>
+<p>现在，B继承A的公共成员a时，继承的是a的本体，而非a的副本。（感觉有点像继承机制中的传引用）</p>
 <p>语义：此机制为何被称作虚继承？</p>
 <p>从语义上来讲什么是虚继承和虚基类呢？上面仅仅是从如何在C++语言中书写合法的虚继承类定义而已。首先来了解一下virtual这个关键字在C++中的公共含义，在C++语言中仅仅有两个地方可以使用virtual这个关键字，一个就是类成员虚函数和这里所讨论的虚继承。不要看这两种应用场合好像没什么关系，其实他们在背景语义上具有virtual这个词所代表的共同的含义，所以才会在这两种场合使用相同的关键字。</p>
 <p>那么virtual这个词的含义是什么呢？<br>virtual在《美国传统词典（双解）》中是这样定义的：</p>
 <p>adj.（形容词）</p>
 <ol>
-<li>Existing or resulting in essence or effect though not in actual fact, form, or name:<br>实质上的，实际上的：虽然没有实际的事实、形式或名义，但在实际上或效果上存在或产生的；</li>
-<li>Existing in the mind, especially as a product of the imagination. Used in literary criticism of text.<br>虚的，内心的：在头脑中存在的，尤指意想的产物。用于文学批评中。</li>
+<li>Existing or resulting in essence or effect though not in actual fact, form, or name. 实质上的，实际上的：虽然没有实际的事实、形式或名义，但在实际上或效果上存在或产生的；</li>
+<li>Existing in the mind, especially as a product of the imagination. Used in literary criticism of text. 虚的，内心的：在头脑中存在的，尤指意想的产物。用于文学批评中。</li>
 </ol>
 <p>我们采用第一个定义，也就是说被virtual所修饰的事物或现象在本质上是存在的，但是没有直观的形式表现，无法直接描述或定义，需要通过其他的间接方式或手段才能够体现出其实际上的效果。</p>
 <p>那么在C++中就是采用了这个词意，不可以在语言模型中直接调用或体现的，但是确实是存在可以被间接的方式进行调用或体现的。比如：虚函数必须要通过一种间接的运行时（而不是编译时）机制才能够激活（调用）的函数，而虚继承也是必须在运行时才能够进行定位访问的一种体制。存在，但间接。其中关键就在于存在、间接和共享这三种特征。</p>
@@ -343,6 +343,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/posts/f9f4/" rel="next" title="C++多态">
+                  C++多态 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
