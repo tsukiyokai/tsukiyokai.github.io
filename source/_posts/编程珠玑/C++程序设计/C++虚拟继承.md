@@ -8,7 +8,7 @@ tags:
   - OOP
 date: 2021-04-26 22:34:08
 ---
-虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给也从这个基类型直接或间接派生的其它类。
+虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给同样从这个基类型直接或间接派生的其它类。
 
 虚拟继承是多重继承中特有的概念。
 虚拟基类是为解决多重继承中的钻石继承问题而出现的。
@@ -17,13 +17,13 @@ date: 2021-04-26 22:34:08
 
 首先还是先给出虚继承和虚基类的定义。
 虚继承：在继承定义中包含了virtual关键字的继承关系。
-虚基类：在虚继承体系中的通过virtual继承而来的基类。
+虚基类：在虚继承体系中通过virtual继承而来的基类。
 
 需要注意的是：
 `class B : public virtual A { };`
 其中A称之为B的虚基类，而不是说A就是个虚基类，因为A还可以作为不是虚继承体系中的基类。
 
-现在，B继承A的公共成员a时，继承的时a本体，而非a的副本。（感觉有点像继承机制中的传引用）
+现在，B继承A的公共成员a时，继承的是a的本体，而非a的副本。（感觉有点像继承机制中的传引用）
 
 语义：此机制为何被称作虚继承？
 
@@ -33,10 +33,8 @@ date: 2021-04-26 22:34:08
 virtual在《美国传统词典（双解）》中是这样定义的：
 
 adj.（形容词）
-1. Existing or resulting in essence or effect though not in actual fact, form, or name:
-实质上的，实际上的：虽然没有实际的事实、形式或名义，但在实际上或效果上存在或产生的；
-2. Existing in the mind, especially as a product of the imagination. Used in literary criticism of text.
-虚的，内心的：在头脑中存在的，尤指意想的产物。用于文学批评中。
+1. Existing or resulting in essence or effect though not in actual fact, form, or name. 实质上的，实际上的：虽然没有实际的事实、形式或名义，但在实际上或效果上存在或产生的；
+2. Existing in the mind, especially as a product of the imagination. Used in literary criticism of text. 虚的，内心的：在头脑中存在的，尤指意想的产物。用于文学批评中。
 
 我们采用第一个定义，也就是说被virtual所修饰的事物或现象在本质上是存在的，但是没有直观的形式表现，无法直接描述或定义，需要通过其他的间接方式或手段才能够体现出其实际上的效果。
 

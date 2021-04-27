@@ -431,7 +431,7 @@ font:
   global:
     external: true
     family: Noto Serif SC
-    size: 1.1
+    size: 1
 
   # Font settings for site title (.site-title).
   title:
