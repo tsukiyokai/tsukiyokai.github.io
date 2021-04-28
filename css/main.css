@@ -3145,6 +3145,22 @@ mjx-container[display="true"] + br {
     padding: 10px 12px;
   }
 }
+body {
+  background: url("/images/bg7.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+.main-inner {
+  opacity: 0.95;
+}
+.sidebar {
+  opacity: 0.95;
+}
+.popup {
+  opacity: 0.95;
+}
 .words {
   font-size: 30px;
   font-weight: bold;

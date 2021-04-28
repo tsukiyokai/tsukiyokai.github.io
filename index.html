@@ -162,20 +162,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -218,6 +218,636 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/9a2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/9a2/" class="post-title-link" itemprop="url">HJ75 公共串计算</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 01:16:30" itemprop="dateCreated datePublished" datetime="2021-04-29T01:16:30+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/9a2/" class="post-meta-item leancloud_visitors" data-flag-title="HJ75 公共串计算" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个只包含小写字母的字符串，计算两个字符串的最大公共子串的长度。<br>注：子串的定义指一个字符串删掉其部分前缀和后缀（也可以不删）后形成的字符串。</p>
+<p>示例<br>输入：<br>asdfas<br>werasdfaswer<br>输出：<br>6</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>暴力法</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">issub</span><span class="params">(string str1, string str2)</span> </span>&#123; <span class="comment">// 判断str1整体是否为str2的子串</span></span><br><span class="line">    <span class="keyword">int</span> len1 = str1.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> len2 = str2.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= (len2 - len1); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str1 == str2.<span class="built_in">substr</span>(i, len1)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxcommonsubstr</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> len1 = s1.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> len2 = s2.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len1; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= len1 - i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">issub</span>(s1.<span class="built_in">substr</span>(j, i), s2)) &#123;</span><br><span class="line">                len0 = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len0) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    <span class="keyword">int</span> len1 = s1.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> len2 = s2.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">if</span> (len1 &gt;= len2) <span class="built_in">swap</span>(s1, s2); <span class="comment">// 之后按s1短s2长进行调用</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">maxcommonsubstr</span>(s1, s2) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/1f5f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/1f5f/" class="post-title-link" itemprop="url">HJ37 统计每个月兔子的总数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 23:18:40" itemprop="dateCreated datePublished" datetime="2021-04-28T23:18:40+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/1f5f/" class="post-meta-item leancloud_visitors" data-flag-title="HJ37 统计每个月兔子的总数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有一只兔子，从出生后第3个月起每个月都生一只兔子，小兔子长到第三个月后每个月又生一只兔子，假如兔子都不死，问每个月的兔子总数为多少？<br>本题有多组数据。</p>
+<p>输入：<br>输入int型表示month<br>输出：<br>输出兔子总数int型</p>
+<p>示例<br>输入：<br>9<br>输出：<br>34</p>
+<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>这道题与其说是找规律，不如说就是DP的思想。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; m) &#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">0</span>, c = <span class="number">0</span>; <span class="comment">// a:一个月兔子数，b：两个月兔子数，c：三个月兔子个数</span></span><br><span class="line">        <span class="keyword">while</span> (--m) &#123; <span class="comment">// 每过一个月兔子数变化</span></span><br><span class="line">            c += b;</span><br><span class="line">            b = a;</span><br><span class="line">            a = c;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; a + b + c &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c13b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c13b/" class="post-title-link" itemprop="url">HJ8 合并表记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 23:14:46" itemprop="dateCreated datePublished" datetime="2021-04-28T23:14:46+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/c13b/" class="post-meta-item leancloud_visitors" data-flag-title="HJ8 合并表记录" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>数据表记录包含表索引和数值（int范围的正整数），请对表索引相同的记录进行合并，即将相同索引的数值进行求和运算，输出按照key值升序进行输出。</p>
+<p>输入：<br>先输入键值对的个数<br>然后输入成对的index和value值，以空格隔开<br>输出：<br>输出合并后的键值对（多行）</p>
+<p>示例<br>输入：<br>4<br>0 1<br>0 2<br>1 2<br>3 4<br>输出：<br>0 3<br>1 2<br>3 4</p>
+<h2 id="解法：map"><a href="#解法：map" class="headerlink" title="解法：map"></a>解法：map</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; iimap;</span><br><span class="line">    <span class="keyword">int</span> key, value;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        cin &gt;&gt; key &gt;&gt; value;</span><br><span class="line">        iimap[key] += value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> it = iimap.<span class="built_in">begin</span>(); it != iimap.<span class="built_in">end</span>(); ++it) &#123;</span><br><span class="line">        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/9a02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/9a02/" class="post-title-link" itemprop="url">C++ find_first_of</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 22:51:14" itemprop="dateCreated datePublished" datetime="2021-04-28T22:51:14+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/9a02/" class="post-meta-item leancloud_visitors" data-flag-title="C++ find_first_of" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>std::find_first_of</code>用于比较两个容器之间的元素。它将[first1，last1)范围内的所有元素与[first2，last2)范围内的所有元素进行比较：<br>如果在第一个范围内找到第二个范围内的任何元素，则返回一个指向第一个容器中的该元素的迭代器。<br>如果两个范围中有多个公共元素，则返回第一个容器中第一个公共元素的迭代器。<br>如果没有匹配项，则返回指向last1的迭代器。</p>
+<p>有下面两种用法：</p>
+<h2 id="直接判等"><a href="#直接判等" class="headerlink" title="直接判等"></a>直接判等</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">模板</span><br><span class="line">ForwardIterator1 find_first_of(ForwardIterator1 first1,</span><br><span class="line">                               ForwardIterator1 last1,</span><br><span class="line">                               ForwardIterator2 first2, </span><br><span class="line">                               ForwardIterator2 last2 );</span><br><span class="line"></span><br><span class="line">first1: 一个正向迭代器，指向第一个范围里的第一个元素。</span><br><span class="line">last1: 一个正向迭代器，指向第一个范围里的最后一个元素。</span><br><span class="line">first2: 一个正向迭代器，指向第二个范围里的第一个元素。</span><br><span class="line">last2: 一个正向迭代器，指向第一个范围里的最后一个元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;v = &#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span> &#125;, i;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;v1 = &#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">10</span> &#125;;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;::iterator ip;</span><br><span class="line">    ip = std::<span class="built_in">find_first_of</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), v1.<span class="built_in">begin</span>(), v1.<span class="built_in">end</span>());</span><br><span class="line">    cout &lt;&lt; *ip &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// 1</span></span><br><span class="line">    ip = std::<span class="built_in">find_first_of</span>(ip + <span class="number">1</span>, v.<span class="built_in">end</span>(), v1.<span class="built_in">begin</span>(), v1.<span class="built_in">end</span>());</span><br><span class="line">    cout &lt;&lt; *ip &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用预定义函数"><a href="#利用预定义函数" class="headerlink" title="利用预定义函数"></a>利用预定义函数</h2><p>语法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Template</span><br><span class="line">   ForwardIterator1 find_first_of (ForwardIterator1 first1, </span><br><span class="line">                                   ForwardIterator1 last1,</span><br><span class="line">                                   ForwardIterator2 first2, </span><br><span class="line">                                   ForwardIterator2 last2,</span><br><span class="line">                                   BinaryPredicate pred );</span><br><span class="line"></span><br><span class="line">这里的f1l1f2l3含义均与上例相同。</span><br></pre></td></tr></table></figure>
+
+<p>注</p>
+<p>Pred: Binary function that accepts two elements as arguments (one of each of the two sequences, in the same order), and returns a value convertible to bool. The value returned indicates whether the elements are considered to match in the context of this function.The function shall not modify any of its arguments. This can either be a function pointer or a function object.</p>
+<p>代码</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defining the BinaryFunction</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Pred</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a % b == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Defining first container</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;v = &#123; <span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">15</span>, <span class="number">30</span>, <span class="number">30</span>, <span class="number">7</span> &#125;, i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Defining second container</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;v1 = &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;;</span><br><span class="line"></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;::iterator ip;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Using std::find_first_of</span></span><br><span class="line">    ip = std::<span class="built_in">find_first_of</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), v1.<span class="built_in">begin</span>(), v1.<span class="built_in">end</span>(), Pred);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Displaying the first element satisfying Pred()</span></span><br><span class="line">    cout &lt;&lt; *ip &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>pred函数返回布尔类型，它希望a是b的整数倍。<br>a代表第一个容器里的数据，b代表第二个容器里的数据。<br>这个程序返回指向v1中第一个满足是v2中任一元素整数倍的元素的迭代器。<br>在此例中，程序输出15，因为15是第一个v1中元素之一（3）的倍数，而1、5、7、11、13均不是v2中哪个元素的整数倍。</p>
+<p>这两个基本用法可以延伸出一些实际应用：</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>std::find_first_of可用于查找另一个容器中存在的任一元素的第一次出现位置。</p>
+<p>1.比如找出句子中的第一个元音字母。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++ program to demonstrate the use of std::find_first_of</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Defining first container</span></span><br><span class="line">    string s1 = <span class="string">&quot;You are reading about std::find_first_of&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Defining second container containing list of vowels</span></span><br><span class="line">    string s2 = &#123; <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;O&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;U&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Using std::find_first_of to find first occurrence of a vowel</span></span><br><span class="line">    <span class="keyword">auto</span> ip = std::<span class="built_in">find_first_of</span>(s1.<span class="built_in">begin</span>(), s1.<span class="built_in">end</span>(), s2.<span class="built_in">begin</span>(), s2.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Displaying the first vowel found</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;First vowel found at index &quot;</span> &lt;&lt; (ip - s1.<span class="built_in">begin</span>()) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.用于查找列表中出现的第一个奇数或偶数。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defining the Predicate Function to find first occurrence of an odd number</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">pred</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a % b != <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 找到奇数为真</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defining the Predicate Function to find first occurrence of an even number</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">pred1</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a % b == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 找到偶数为真</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Defining a vector</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;v1 = &#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Declaring a sub-sequence</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;v2 = &#123; <span class="number">2</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Using std::find_first_of to find the first occurrence of an odd number</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;::iterator ip;</span><br><span class="line">    ip = std::<span class="built_in">find_first_of</span>(v1.<span class="built_in">begin</span>(), v1.<span class="built_in">end</span>(), v2.<span class="built_in">begin</span>(), v2.<span class="built_in">end</span>(), pred);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Displaying the index where the first odd number occurred</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;First odd occurs at index &quot;</span> &lt;&lt; (ip - v1.<span class="built_in">begin</span>()) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Using std::find_first_of to find the last occurrence of an even number</span></span><br><span class="line">    ip = std::<span class="built_in">find_first_of</span>(v1.<span class="built_in">begin</span>(), v1.<span class="built_in">end</span>(), v2.<span class="built_in">begin</span>(), v2.<span class="built_in">end</span>(), pred1);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Displaying the index where the first even number occurred</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;First even occurs at index &quot;</span> &lt;&lt; (ip - v1.<span class="built_in">begin</span>()) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">First odd occurs at index 0</span><br><span class="line">First even occurs at index 2</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>最后，find_first_of()的时间复杂度为：O(n1*n2)，n1n2分别为两个区间中的元素数</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c223/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c223/" class="post-title-link" itemprop="url">HJ73 计算日期到天数转换</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 21:06:39" itemprop="dateCreated datePublished" datetime="2021-04-28T21:06:39+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/c223/" class="post-meta-item leancloud_visitors" data-flag-title="HJ73 计算日期到天数转换" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>根据输入的日期，计算是这一年的第几天。。<br>测试用例有多组，注意循环输入</p>
+<p>输入<br>2012 12 31<br>输出<br>366</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isleap</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (y % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; y % <span class="number">100</span> != <span class="number">0</span> || y % <span class="number">400</span> == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> days[<span class="number">12</span>] = &#123; <span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> y, m, d;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; y &gt;&gt; m &gt;&gt; d) &#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            num += days[i];</span><br><span class="line">        &#125;</span><br><span class="line">        num += d;</span><br><span class="line">        <span class="keyword">if</span> (m &gt; <span class="number">2</span> &amp;&amp; <span class="built_in">isleap</span>(y)) num += <span class="number">1</span>;</span><br><span class="line">        cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/7621/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/7621/" class="post-title-link" itemprop="url">HJ85 字符串运用-密码截取（最长回文子串）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 20:40:58" itemprop="dateCreated datePublished" datetime="2021-04-28T20:40:58+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/7621/" class="post-meta-item leancloud_visitors" data-flag-title="HJ85 字符串运用-密码截取（最长回文子串）" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个仅包含小写字母的字符串，求它的最长回文子串的长度。<br>所谓回文串，指左右对称的字符串。<br>所谓子串，指一个字符串删掉其部分前缀和后缀（也可以不删）的字符串<br>（注意：记得加上while处理多个测试用例）</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (s[i] != s[s.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len0 = str.<span class="built_in">length</span>(); len0 &gt;= <span class="number">0</span>; len0--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="number">0</span>; it &lt;= str.<span class="built_in">length</span>() - len0; it++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">isPalindrome</span>(str.<span class="built_in">substr</span>(it, len0))) &#123;</span><br><span class="line">                    len = len0;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (len) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; len;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/35e4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/35e4/" class="post-title-link" itemprop="url">更相减损法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-28T00:00:00+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/35e4/" class="post-meta-item leancloud_visitors" data-flag-title="更相减损法" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一个优于辗转相除法求最大公因数的方法。<br>出自九章算术。<br>熟记。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大在前，小在后；<br>小为0，输出大；<br>小非0，递小差。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -608,655 +1238,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/24cf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/24cf/" class="post-title-link" itemprop="url">C++资料汇总</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-27 15:26:37" itemprop="dateCreated datePublished" datetime="2021-04-27T15:26:37+08:00">2021-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/24cf/" class="post-meta-item leancloud_visitors" data-flag-title="C++资料汇总" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>拷贝构造函数</p>
-<p><a target="_blank" rel="noopener" href="http://www.fredosaurus.com/notes-cpp/oop-condestructors/copyconstructors.html">Fred Swartz - C++ Notes: OOP: Copy Constructors</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/f9f4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/f9f4/" class="post-title-link" itemprop="url">C++多态</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-27 12:22:39" itemprop="dateCreated datePublished" datetime="2021-04-27T12:22:39+08:00">2021-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/f9f4/" class="post-meta-item leancloud_visitors" data-flag-title="C++多态" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="什么是多态？"><a href="#什么是多态？" class="headerlink" title="什么是多态？"></a>什么是多态？</h2><p>多态（英语：polymorphism）指为不同数据类型的实体提供统一的接口。</p>
-<h2 id="为什么适用多态？"><a href="#为什么适用多态？" class="headerlink" title="为什么适用多态？"></a>为什么适用多态？</h2><ol>
-<li>封装可以隐藏实现细节，使代码模块化；</li>
-<li>继承可以拓展已存在的代码模块，实现代码重用；</li>
-<li>多态除了实现代码的复用外，还可以解决项目中紧耦合的问题，提高程序的可拓展性。</li>
-</ol>
-<h2 id="多态的实现"><a href="#多态的实现" class="headerlink" title="多态的实现"></a>多态的实现</h2><ul>
-<li><p>动态多态：也称运行时多态，通过类继承机制和虚函数机制生效于运行期。可以优雅地处理异质对象集合，只要其共同的基类定义了虚函数的接口。也被称为子类型多态或包含多态。在面向对象程序设计中，这被直接称为多态。</p>
-</li>
-<li><p>静态多态：也称编译时多态。静态多态主要是重载，包括函数重载和运算符重载。模板允许将不同的特殊行为和单个泛化记号相关联，由于这种关联处理于编译期而非运行期，因此被称为“静态”。可以用来实现类型安全、运行高效的同质对象集合操作。C++STL不采用动态多态来实现就是个例子。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c208/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/c208/" class="post-title-link" itemprop="url">C++虚拟继承</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-26 22:34:08" itemprop="dateCreated datePublished" datetime="2021-04-26T22:34:08+08:00">2021-04-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/c208/" class="post-meta-item leancloud_visitors" data-flag-title="C++虚拟继承" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给同样从这个基类型直接或间接派生的其它类。</p>
-<p>虚拟继承是多重继承中特有的概念。<br>虚拟基类是为解决多重继承中的钻石继承问题而出现的。</p>
-<p>虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。</p>
-<p>首先还是先给出虚继承和虚基类的定义。<br>虚继承：在继承定义中包含了virtual关键字的继承关系。<br>虚基类：在虚继承体系中通过virtual继承而来的基类。</p>
-<p>需要注意的是：<br><code>class B : public virtual A &#123; &#125;;</code><br>其中A称之为B的虚基类，而不是说A就是个虚基类，因为A还可以作为不是虚继承体系中的基类。</p>
-<p>现在，B继承A的公共成员a时，继承的是a的本体，而非a的副本。（感觉有点像继承机制中的传引用）</p>
-<p>语义：此机制为何被称作虚继承？</p>
-<p>从语义上来讲什么是虚继承和虚基类呢？上面仅仅是从如何在C++语言中书写合法的虚继承类定义而已。首先来了解一下virtual这个关键字在C++中的公共含义，在C++语言中仅仅有两个地方可以使用virtual这个关键字，一个就是类成员虚函数和这里所讨论的虚继承。不要看这两种应用场合好像没什么关系，其实他们在背景语义上具有virtual这个词所代表的共同的含义，所以才会在这两种场合使用相同的关键字。</p>
-<p>那么virtual这个词的含义是什么呢？<br>virtual在《美国传统词典（双解）》中是这样定义的：</p>
-<p>adj.（形容词）</p>
-<ol>
-<li>Existing or resulting in essence or effect though not in actual fact, form, or name. 实质上的，实际上的：虽然没有实际的事实、形式或名义，但在实际上或效果上存在或产生的；</li>
-<li>Existing in the mind, especially as a product of the imagination. Used in literary criticism of text. 虚的，内心的：在头脑中存在的，尤指意想的产物。用于文学批评中。</li>
-</ol>
-<p>我们采用第一个定义，也就是说被virtual所修饰的事物或现象在本质上是存在的，但是没有直观的形式表现，无法直接描述或定义，需要通过其他的间接方式或手段才能够体现出其实际上的效果。</p>
-<p>那么在C++中就是采用了这个词意，不可以在语言模型中直接调用或体现的，但是确实是存在可以被间接的方式进行调用或体现的。比如：虚函数必须要通过一种间接的运行时（而不是编译时）机制才能够激活（调用）的函数，而虚继承也是必须在运行时才能够进行定位访问的一种体制。存在，但间接。其中关键就在于存在、间接和共享这三种特征。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/ede8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/ede8/" class="post-title-link" itemprop="url">C++访问修饰符</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-26 19:45:47" itemprop="dateCreated datePublished" datetime="2021-04-26T19:45:47+08:00">2021-04-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/ede8/" class="post-meta-item leancloud_visitors" data-flag-title="C++访问修饰符" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>访问修饰符用于实现OOP的一个重要方面——数据封装。</p>
-<p>类中的访问修饰符或访问说明符用于将可访问性分配给类成员。<br>也就是说，它对类成员设置了一些限制，使其不能被外部函数随意访问。</p>
-<p>There are 3 types of access modifiers available in C++: </p>
-<ul>
-<li>Public</li>
-<li>Private</li>
-<li>Protected</li>
-</ul>
-<p>Note: If we do not specify any access modifiers for the members inside the class then by default the access modifier for the members will be Private.</p>
-<h2 id="Public"><a href="#Public" class="headerlink" title="Public"></a>Public</h2><p>公开，可以被内外部其它类或函数随便访问。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> radius;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">compute_area</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">3.14</span> * radius * radius; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Circle obj;</span><br><span class="line">    obj.radius = <span class="number">5.5</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Radius is: &quot;</span> &lt;&lt; obj.radius &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Area is: &quot;</span> &lt;&lt; obj.<span class="built_in">compute_area</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Private"><a href="#Private" class="headerlink" title="Private"></a>Private</h2><p>基类本身、友元可以直接访问。<br>派生类、外部、陌生类不能访问。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> radius;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">compute_area</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">3.14</span> * radius * radius; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Circle obj;</span><br><span class="line">    obj.radius = <span class="number">1.5</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Area is:&quot;</span> &lt;&lt; obj.<span class="built_in">compute_area</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段程序发生编译错误：E0265    成员 “Circle::radius” (已声明 所在行数:6) 不可访问</p>
-<p>但是，我们可以通过类的公共成员函数来间接访问类的私有数据成员。例如：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> radius;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">compute_area</span><span class="params">(<span class="keyword">double</span> r)</span> </span>&#123;</span><br><span class="line">        radius = r;</span><br><span class="line">        <span class="keyword">double</span> area = <span class="number">3.14</span> * radius * radius;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Radius is: &quot;</span> &lt;&lt; radius &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Area is: &quot;</span> &lt;&lt; area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Circle obj;</span><br><span class="line">    obj.<span class="built_in">compute_area</span>(<span class="number">1.5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Protected"><a href="#Protected" class="headerlink" title="Protected"></a>Protected</h2><p>基类本身、派生类、友元可以访问。<br>陌生类和外部不能访问。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> &#123;</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> id_protected;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> :</span> <span class="keyword">public</span> Parent &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123; id_protected = id; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">displayId</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;id_protected is: &quot;</span> &lt;&lt; id_protected &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Child obj1;</span><br><span class="line">    obj1.<span class="built_in">setId</span>(<span class="number">81</span>);</span><br><span class="line">    obj1.<span class="built_in">displayId</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/d22b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/d22b/" class="post-title-link" itemprop="url">996夹缝中的理想生活</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-24 23:32:49" itemprop="dateCreated datePublished" datetime="2021-04-24T23:32:49+08:00">2021-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%90%86%E6%83%B3%E5%9B%BD/" itemprop="url" rel="index"><span itemprop="name">理想国</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%90%86%E6%83%B3%E5%9B%BD/%E4%BB%B7%E5%80%BC%E8%A7%82/" itemprop="url" rel="index"><span itemprop="name">价值观</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/d22b/" class="post-meta-item leancloud_visitors" data-flag-title="996夹缝中的理想生活" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <center>良田万顷，日食三升；</center>
-<center>大厦千间，夜眠八尺。</center>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/76d7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/76d7/" class="post-title-link" itemprop="url">拓展式局部数据排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-24 18:48:23" itemprop="dateCreated datePublished" datetime="2021-04-24T18:48:23+08:00">2021-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/76d7/" class="post-meta-item leancloud_visitors" data-flag-title="拓展式局部数据排序" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>第一题：数据排序 100%</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="comment">//#include&lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">//#include&lt;string&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 示意图</span></span><br><span class="line"><span class="comment">4 4 1</span></span><br><span class="line"><span class="comment">1   2   3   4</span></span><br><span class="line"><span class="comment">5   6   7   8</span></span><br><span class="line"><span class="comment">9   10  11  12</span></span><br><span class="line"><span class="comment">13  14  15  16</span></span><br><span class="line"><span class="comment">2 3 2 3 3 1</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1   2   3   4</span></span><br><span class="line"><span class="comment">5   10  11  8</span></span><br><span class="line"><span class="comment">9   6   7   12</span></span><br><span class="line"><span class="comment">13  14  15  16</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    c1  c2  s</span></span><br><span class="line"><span class="comment">r1</span></span><br><span class="line"><span class="comment">r2</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交换特定纵向范围内的指定两行元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapline</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; unsorted1, <span class="keyword">int</span> ra, <span class="keyword">int</span> rb, <span class="keyword">int</span> cb, <span class="keyword">int</span> ce)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = cb - <span class="number">1</span>; i &lt; ce; i++) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(unsorted1[ra][i], unsorted1[rb][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对指定区域进行拓展式排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sortpart</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; unsorted1, <span class="keyword">int</span> r1, <span class="keyword">int</span> r2, <span class="keyword">int</span> c1, <span class="keyword">int</span> c2, <span class="keyword">int</span> s, <span class="keyword">int</span> A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> diff = r2 - r1;</span><br><span class="line">    <span class="keyword">int</span> times = (<span class="number">1</span> + diff) * diff / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (A == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (times != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = r1 - <span class="number">1</span>; i &lt; r2 - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (unsorted1[i][s - <span class="number">1</span>] &lt; unsorted1[i + <span class="number">1</span>][s - <span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">swapline</span>(unsorted1, i, i + <span class="number">1</span>, c1, c2);</span><br><span class="line">            &#125;</span><br><span class="line">            times--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (times != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = r1 - <span class="number">1</span>; i &lt; r2 - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (unsorted1[i][s - <span class="number">1</span>] &gt; unsorted1[i + <span class="number">1</span>][s - <span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">swapline</span>(unsorted1, i, i + <span class="number">1</span>, c1, c2);</span><br><span class="line">            &#125;</span><br><span class="line">            times--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printexcel</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; unsorted1, <span class="keyword">int</span> N, <span class="keyword">int</span> M)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M; j++) &#123;</span><br><span class="line">            cout &lt;&lt; unsorted1[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N, M, T; <span class="comment">// N行，M列，T次</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; unsorted0;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; unsorted1; <span class="comment">// 初始N*M数据</span></span><br><span class="line">    cin &gt;&gt; N &gt;&gt; M &gt;&gt; T;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x; cin &gt;&gt; x;</span><br><span class="line">            unsorted0.<span class="built_in">push_back</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line">        unsorted1.<span class="built_in">push_back</span>(unsorted0);</span><br><span class="line">        unsorted0.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> r1, r2, c1, c2, s, A; <span class="comment">// 目的区域</span></span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        cin &gt;&gt; r1 &gt;&gt; r2 &gt;&gt; c1 &gt;&gt; c2 &gt;&gt; s &gt;&gt; A;</span><br><span class="line">        <span class="built_in">sortpart</span>(unsorted1, r1, r2, c1, c2, s, A); <span class="comment">// 局部排序</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printexcel</span>(unsorted1, N, M); <span class="comment">// 输出结果</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二题：游戏策划 1.67%</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">10(M) 10(N) 3(X) 3(Y) 1(R)</span></span><br><span class="line"><span class="comment">1(K)</span></span><br><span class="line"><span class="comment">3(X1) 5(Y1)</span></span><br><span class="line"><span class="comment">1(C)</span></span><br><span class="line"><span class="comment">1(P) 2(T) 1(S) S(down)</span></span><br><span class="line"><span class="comment">2(D)</span></span><br><span class="line"><span class="comment">2(s) 1(s)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1 0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cansee</span><span class="params">(<span class="keyword">int</span> X, <span class="keyword">int</span> Y, <span class="keyword">int</span> R, <span class="keyword">int</span> X0, <span class="keyword">int</span> Y0)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (X0 &gt;= X - R &amp;&amp; X0 &lt;= X + R) &amp;&amp; (Y0 &gt;= Y - R &amp;&amp; Y0 &lt;= Y + R);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> M, <span class="keyword">int</span> N, <span class="keyword">int</span>&amp; X, <span class="keyword">int</span>&amp; Y, <span class="keyword">char</span> WASD, <span class="keyword">char</span> distance)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dist = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(distance - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (WASD == <span class="string">&#x27;W&#x27;</span>) Y + distance &lt; N ? Y = Y + distance : Y = N;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (WASD == <span class="string">&#x27;A&#x27;</span>) X - distance &gt; <span class="number">1</span> ? X = X - distance : X = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (WASD == <span class="string">&#x27;S&#x27;</span>) Y - distance &gt; <span class="number">1</span> ? Y = Y - distance : Y = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (WASD == <span class="string">&#x27;D&#x27;</span>) X + distance &lt; M ? X = X + distance : X = M;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> M, N, X, Y, R;</span><br><span class="line">    cin &gt;&gt; M &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; R;</span><br><span class="line">    <span class="keyword">int</span> K; <span class="comment">// 敌人数量</span></span><br><span class="line">    cin &gt;&gt; K;</span><br><span class="line">    <span class="keyword">int</span> KK = K;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; enemypos;</span><br><span class="line">    <span class="keyword">while</span> (K--) &#123;</span><br><span class="line">        <span class="keyword">int</span> X0, Y0;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; enemy0;</span><br><span class="line">        cin &gt;&gt; X0 &gt;&gt; Y0;</span><br><span class="line">        enemy0.<span class="built_in">push_back</span>(X0);</span><br><span class="line">        enemy0.<span class="built_in">push_back</span>(Y0);</span><br><span class="line">        enemypos.<span class="built_in">push_back</span>(enemy0);</span><br><span class="line">        enemy0.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> C; <span class="comment">// 移动人次</span></span><br><span class="line">    cin &gt;&gt; C;</span><br><span class="line">    <span class="keyword">int</span> CC = C;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt; moves;</span><br><span class="line">    <span class="keyword">while</span> (C--) &#123;</span><br><span class="line">        <span class="keyword">char</span> P, T, S, WSAD;</span><br><span class="line">        vector&lt;<span class="keyword">char</span>&gt; move0;</span><br><span class="line">        cin &gt;&gt; P &gt;&gt; T &gt;&gt; S &gt;&gt; WSAD;</span><br><span class="line">        move0.<span class="built_in">push_back</span>(P);</span><br><span class="line">        move0.<span class="built_in">push_back</span>(T);</span><br><span class="line">        move0.<span class="built_in">push_back</span>(S);</span><br><span class="line">        move0.<span class="built_in">push_back</span>(WSAD);</span><br><span class="line">        moves.<span class="built_in">push_back</span>(move0);</span><br><span class="line">        move0.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> D; <span class="comment">// 时间点数量</span></span><br><span class="line">    cin &gt;&gt; D;</span><br><span class="line">    <span class="keyword">int</span> DD = D;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; time;</span><br><span class="line">    <span class="keyword">while</span> (D--) &#123;</span><br><span class="line">        <span class="keyword">int</span> second;</span><br><span class="line">        cin &gt;&gt; second;</span><br><span class="line">        time.<span class="built_in">push_back</span>(second);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; DD; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// int clock = time[i];</span></span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; enemyposcopy = enemypos;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt; movescopy = moves;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; KK; j++) &#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            敌人原坐标(enemyposcopy[j][1],enemyposcopy[j][2])</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; CC; k++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(movescopy[k][<span class="number">1</span>] - <span class="string">&#x27;0&#x27;</span>) &lt;= time[i] &amp;&amp; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(movescopy[k][<span class="number">0</span>] - <span class="string">&#x27;0&#x27;</span>) == j)</span><br><span class="line">                    <span class="built_in">move</span>(M, N, enemyposcopy[j][<span class="number">0</span>], enemyposcopy[j][<span class="number">1</span>], movescopy[k][<span class="number">3</span>], movescopy[k][<span class="number">2</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cansee</span>(X, Y, R, enemyposcopy[j][<span class="number">0</span>], enemyposcopy[j][<span class="number">1</span>]) == <span class="literal">true</span> ? cnt++ : cnt += <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; cnt &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>评注：网易笔试，一共四道。还有两题，一道最短路径(30)，一道16进制配置译码(40)，路径算法太久没做忘了，译码看不懂。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/d4e5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/d4e5/" class="post-title-link" itemprop="url">C++中的NULL和nullptr</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-23 18:51:07" itemprop="dateCreated datePublished" datetime="2021-04-23T18:51:07+08:00">2021-04-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/d4e5/" class="post-meta-item leancloud_visitors" data-flag-title="C++中的NULL和nullptr" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>观察下面一段程序。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;fun(int)&quot;</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;fun(char *)&quot;</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">fun</span>(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们一般认为NULL是空指针，按照这个想法，我们推测fun(NULL)应该去调用<code>fun(char* s)</code>。然而它输出了fun(int)。<br>原因是虽然NULL通常定义为void*，但它允许将NULL转换为整型0。因此，函数调用fun(NULL)变得模棱两可。<br>什么是void指针？void指针一般被称为通用指针或叫泛指针。它是C语言关于纯粹地址的一种约定。</p>
-<p>为了解决NULL的二义性，我们引入了nullptr。在上面的程序中，如果将NULL替换为nullptr，则输出为fun(char*)。<br>nullptr可以在所有本来期望NULL的地方使用。像NULL一样，nullptr也可以进行某些隐式转换，并可以与任何指针类型进行比较。与NULL不同是，它不能隐式转换为整数类型0。</p>
-<p>下面程序产生编译错误，因为它试图将nullptr转换为int。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// This program does NOT compile</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="literal">nullptr</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>顺便说一下，nullptr可转换为bool。<br>下面程序输出false。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* ptr = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">if</span> (ptr) &#123; cout &lt;&lt; <span class="string">&quot;true&quot;</span>; &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; cout &lt;&lt; <span class="string">&quot;false&quot;</span>; &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>
