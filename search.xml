@@ -27,25 +27,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC2 两数相加</title>
-    <url>/posts/61293/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
-<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
-<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC1 两数之和</title>
     <url>/posts/16786/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案，但是数组中同一个元素不能使用两遍。</p>
@@ -66,6 +47,25 @@
       </categories>
       <tags>
         <tag>哈希</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC2 两数相加</title>
+    <url>/posts/61293/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
+<p>输入：L1=[2,4,3], L2=[5,6,4]<br>输出：[7,0,8]<br>解释：342+465=807.</p>
+<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line">        ListNode* p = l1;</span><br><span class="line">        ListNode* q = l2;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next) &#123;</span><br><span class="line">            len1++;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next) &#123;</span><br><span class="line">            len2++;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len1 &gt; len2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1 - len2; i++) &#123;</span><br><span class="line">                q-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2 - len1; i++) &#123;</span><br><span class="line">                p-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        p = l1;</span><br><span class="line">        q = l2;</span><br><span class="line">        <span class="keyword">bool</span> count = <span class="literal">false</span>;</span><br><span class="line">        ListNode* l3 = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode* w = l3;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            i = count + p-&gt;val + q-&gt;val;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i % <span class="number">10</span>);</span><br><span class="line">            count = i &gt;= <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count) &#123;</span><br><span class="line">            w-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">            w = w-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -100,6 +100,20 @@
 <p><strong>注释</strong></p>
 <p>一开始字符串转整数用的是stoi()，运行正常但是提交报错，原因是有一个越界的测试用例1534236469，改成stoll()后顺利通过。</p>
 ]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC9 回文数</title>
+    <url>/posts/36078/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数x，如果x是一个回文整数，返回true；否则，返回false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121是回文，而123不是。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        string str = <span class="built_in">to_string</span>(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] != str[str.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>LeetCode</category>
@@ -157,20 +171,6 @@
       </categories>
       <tags>
         <tag>哈希</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC9 回文数</title>
-    <url>/posts/36078/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数x，如果x是一个回文整数，返回true；否则，返回false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121是回文，而123不是。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        string str = <span class="built_in">to_string</span>(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] != str[str.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -608,6 +608,24 @@
       </tags>
   </entry>
   <entry>
+    <title>LC112 路径总和</title>
+    <url>/posts/19568/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你二叉树的根结点root和一个表示目标和的整数targetSum。<br>判断该树中是否存在根结点到叶子结点的路径上所有结点和为targetSum 。</p>
+<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root-&gt;val == targetSum;</span><br><span class="line">        <span class="keyword">int</span> subsum = targetSum - root-&gt;val;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hasPathSum</span>(root-&gt;left, subsum) || <span class="built_in">hasPathSum</span>(root-&gt;right, subsum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>返回值类型：bool<br>函数名：hasPathSum<br>传入参数：根结点root和路径和targetSum</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC121 买卖股票的最佳时机</title>
     <url>/posts/35823/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个数组prices，它的第i个元素prices[i]表示一支给定股票第i天的价格。<br>你只能选择某一天买入这只股票，并选择在未来的某一个不同的日子卖出该股票。设计一个算法来计算你所能获取的最大利润。<br>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回0。<br>注意卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</p>
@@ -628,24 +646,6 @@
       </categories>
       <tags>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC112 路径总和</title>
-    <url>/posts/19568/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你二叉树的根结点root和一个表示目标和的整数targetSum。<br>判断该树中是否存在根结点到叶子结点的路径上所有结点和为targetSum 。</p>
-<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> root-&gt;val == targetSum;</span><br><span class="line">        <span class="keyword">int</span> subsum = targetSum - root-&gt;val;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hasPathSum</span>(root-&gt;left, subsum) || <span class="built_in">hasPathSum</span>(root-&gt;right, subsum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>返回值类型：bool<br>函数名：hasPathSum<br>传入参数：根结点root和路径和targetSum</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -1283,6 +1283,22 @@
       </tags>
   </entry>
   <entry>
+    <title>LC387 字符串中的第一个唯一字符</title>
+    <url>/posts/49339/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
+<p>输入 s = “leetcode”<br>输出 0</p>
+<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有26个字母的标记数组</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC415 字符串相加</title>
     <url>/posts/28898/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数num1和num2，计算它们的和。<br>你不能使用任何內建BigInteger库，也不能直接将输入的字符串转换为整数形式。</p>
@@ -1316,22 +1332,6 @@
       </categories>
       <tags>
         <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC387 字符串中的第一个唯一字符</title>
-    <url>/posts/49339/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
-<p>输入 s = “leetcode”<br>输出 0</p>
-<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有26个字母的标记数组</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag[<span class="number">26</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : s) &#123;</span><br><span class="line">            ++flag[c - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag[(s[i] - <span class="string">&#x27;a&#x27;</span>)] == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1433,24 +1433,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PE1 Multiples of 3 and 5</title>
-    <url>/posts/18889/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>Project Euler</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JZ49 丑数</title>
     <url>/posts/96df/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子2,3和5的数称作丑数。求按从小到大的顺序的第n个丑数。<br>注：第150个丑数为5832。</p>
@@ -1510,6 +1492,24 @@
       </tags>
   </entry>
   <entry>
+    <title>PE1 Multiples of 3 and 5</title>
+    <url>/posts/18889/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+<p>如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。<br>求1000以下所有3或5的倍数之和。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>) sum += i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：容斥原理"><a href="#解法2：容斥原理" class="headerlink" title="解法2：容斥原理"></a>解法2：容斥原理</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">sumN</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n + (N - <span class="number">1</span>) / n * n) * ((N - <span class="number">1</span>) / n) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum_3 = <span class="number">0</span>, sum_5 = <span class="number">0</span>, sum_15 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line">    sum_3 = <span class="built_in">sumN</span>(<span class="number">3</span>, N);</span><br><span class="line">    sum_5 = <span class="built_in">sumN</span>(<span class="number">5</span>, N);</span><br><span class="line">    sum_15 = <span class="built_in">sumN</span>(<span class="number">15</span>, N);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = sum_3 + sum_5 - sum_15;</span><br><span class="line">    cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>Project Euler</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>拓展式局部数据排序</title>
     <url>/posts/76d7/</url>
     <content><![CDATA[<p>第一题：数据排序 100%</p>
@@ -1527,27 +1527,6 @@
       <tags>
         <tag>数组</tag>
         <tag>网易雷火</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>精确表达浮点数</title>
-    <url>/posts/43ef/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将给定属于0~1区间的有限小数或者无限循环小数（循环节用括号标记）以最简真分数的形式表示。<br>最简分数是指分子和分母互质的分数。</p>
-<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>输入: 0.25<br>输出: 1/4</p>
-<p>输入: 0.33(33)<br>输出: 1/3</p>
-<p>输入: 0.285714(285714)<br>输出: 2/7</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RepresentExactly</span><span class="params">(string str)</span> </span>&#123;</span><br><span class="line">    string strLimited, strUnLimited;</span><br><span class="line">    <span class="keyword">int</span> nLenLimited = <span class="number">0</span>, nLenUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> Molecule = <span class="number">0</span>, Denominator = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nLimited = <span class="number">0</span>, nUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">auto</span> Start = str.<span class="built_in">find</span>(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Start != str.npos) &#123;</span><br><span class="line">        <span class="keyword">auto</span> End = str.<span class="built_in">find</span>(<span class="string">&#x27;)&#x27;</span>, Start);</span><br><span class="line"></span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>, Start - <span class="number">2</span>);</span><br><span class="line">        strUnLimited = str.<span class="built_in">substr</span>(Start + <span class="number">1</span>, End - Start - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        nLenUnLimited = strUnLimited.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        nLimited = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        nUnLimited = <span class="built_in">atoi</span>(strUnLimited.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">        Molecule = (<span class="keyword">long</span> <span class="keyword">long</span>)(nLimited * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>) + nUnLimited);</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited) * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>);</span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        Molecule = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="built_in">RepresentExactly</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是Shopee深圳21春招后端笔试第1题，分值20分，最后是通过了80%的case，没通过的那几个好像是输入的字符串小数里塞了乱七八糟的空格，写个trim space的函数就好了，没什么好说的。</p>
-<p>出自编程之美，题目倒是挺经典的，就是考的有点丑陋。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>面试题</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>Shopee</tag>
       </tags>
   </entry>
   <entry>
@@ -1572,6 +1551,27 @@
       <tags>
         <tag>字符串</tag>
         <tag>字节跳动</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>精确表达浮点数</title>
+    <url>/posts/43ef/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>将给定属于0~1区间的有限小数或者无限循环小数（循环节用括号标记）以最简真分数的形式表示。<br>最简分数是指分子和分母互质的分数。</p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>输入: 0.25<br>输出: 1/4</p>
+<p>输入: 0.33(33)<br>输出: 1/3</p>
+<p>输入: 0.285714(285714)<br>输出: 2/7</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RepresentExactly</span><span class="params">(string str)</span> </span>&#123;</span><br><span class="line">    string strLimited, strUnLimited;</span><br><span class="line">    <span class="keyword">int</span> nLenLimited = <span class="number">0</span>, nLenUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> Molecule = <span class="number">0</span>, Denominator = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nLimited = <span class="number">0</span>, nUnLimited = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">auto</span> Start = str.<span class="built_in">find</span>(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Start != str.npos) &#123;</span><br><span class="line">        <span class="keyword">auto</span> End = str.<span class="built_in">find</span>(<span class="string">&#x27;)&#x27;</span>, Start);</span><br><span class="line"></span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>, Start - <span class="number">2</span>);</span><br><span class="line">        strUnLimited = str.<span class="built_in">substr</span>(Start + <span class="number">1</span>, End - Start - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        nLenUnLimited = strUnLimited.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        nLimited = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        nUnLimited = <span class="built_in">atoi</span>(strUnLimited.<span class="built_in">c_str</span>());</span><br><span class="line"></span><br><span class="line">        Molecule = (<span class="keyword">long</span> <span class="keyword">long</span>)(nLimited * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>) + nUnLimited);</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited) * (<span class="built_in">pow</span>(<span class="number">10</span>, nLenUnLimited) - <span class="number">1</span>));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        strLimited = str.<span class="built_in">substr</span>(<span class="number">2</span>);</span><br><span class="line">        nLenLimited = strLimited.<span class="built_in">size</span>();</span><br><span class="line">        Molecule = <span class="built_in">atoi</span>(strLimited.<span class="built_in">c_str</span>());</span><br><span class="line">        Denominator = (<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>(<span class="number">10</span>, nLenLimited));</span><br><span class="line">        gcd0 = <span class="built_in">gcd</span>(Molecule, Denominator);</span><br><span class="line">        cout &lt;&lt; Molecule / gcd0 &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; Denominator / gcd0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="built_in">RepresentExactly</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目是Shopee深圳21春招后端笔试第1题，分值20分，最后是通过了80%的case，没通过的那几个好像是输入的字符串小数里塞了乱七八糟的空格，写个trim space的函数就好了，没什么好说的。</p>
+<p>出自编程之美，题目倒是挺经典的，就是考的有点丑陋。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>Shopee</tag>
       </tags>
   </entry>
   <entry>
@@ -3346,125 +3346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>优先级队列简介</title>
-    <url>/posts/4873/</url>
-    <content><![CDATA[<h2 id="优先级队列的概念"><a href="#优先级队列的概念" class="headerlink" title="优先级队列的概念"></a>优先级队列的概念</h2><p>优先级队列是具有以下属性的队列的扩展：</p>
-<ol>
-<li>每个元素都有与之关联的优先级。</li>
-<li>高优先级元素在低优先级元素之前出队。</li>
-<li>相同优先级的元素按照在队列中的顺序进行操作。</li>
-</ol>
-<h2 id="优先级队列的操作"><a href="#优先级队列的操作" class="headerlink" title="优先级队列的操作"></a>优先级队列的操作</h2><p>典型的优先级队列支持以下操作：<br><code>insert(item, priority)</code> 插入具有指定优先级的项<br><code>getHighestPriority()</code> 返回优先级最高的项<br><code>deleteHighestPriority()</code> 删除优先级最高的项</p>
-<h2 id="优先级队列的实现"><a href="#优先级队列的实现" class="headerlink" title="优先级队列的实现"></a>优先级队列的实现</h2><h3 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h3><p>一个简单的实现途径是使用具有以下结构的数组。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">item</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> item;</span><br><span class="line">    <span class="keyword">int</span> priority;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用数组时，插入操作复杂度为O(1)，取最高优先级元素的操作和删除最高优先级元素的操作复杂度都为O(n)。如果使用链表代替数组，插入和取的复杂度不变，删除操作变得简单一些，因为不用大面积移动元素。</p>
-<h3 id="使用堆"><a href="#使用堆" class="headerlink" title="使用堆"></a>使用堆</h3><p>堆通常是优先队列实现的首选，因为堆提供了比数组或链表更好的性能。在二叉堆中，getHighestPriority()可以在O(1)时间内实现，insert()可以在O(logn)时间内实现，deleteHighestPriority()也可以在O(logn)时间内实现。<br>更进一步，对于Fibonacci堆，insert()和getHighestPriority()都可以在O(1)摊销时间内实现，deleteHighestPriority()可以在O(logn)摊销时间内实现。</p>
-<p>补充一点，算法中的amortized time，即摊销时间，它和平均时间是略有不同的。<br>定义：Amortized time is the way to express the time complexity when an algorithm has the very bad time complexity only once in a while besides the time complexity that happens most of time.</p>
-<h2 id="优先级队列的应用"><a href="#优先级队列的应用" class="headerlink" title="优先级队列的应用"></a>优先级队列的应用</h2><ol>
-<li>CPU调度</li>
-<li>图算法，如Dijkstra最短路径算法，Prim最小生成树算法等</li>
-<li>所有涉及优先级的队列应用</li>
-</ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构与算法分析</category>
-      </categories>
-      <tags>
-        <tag>队列</tag>
-        <tag>堆</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>堆简介</title>
-    <url>/posts/55e8/</url>
-    <content><![CDATA[<h2 id="堆-heap"><a href="#堆-heap" class="headerlink" title="堆 heap"></a>堆 heap</h2><h3 id="堆的概念"><a href="#堆的概念" class="headerlink" title="堆的概念"></a>堆的概念</h3><p>n个元素序列 { k1, k2, k3, k4, k5, k6, …, kn } 当且仅当满足以下关系时才会被称为堆：<br><code>ki &lt;= k2i, ki &lt;= k2i+1 或 ki &gt;= k2i, ki &gt;= k2i+1 (i = 1, 2, 3, 4, …, n/2)</code><br>如果数组的下标是从0开始，那么需要满足：<br><code>ki &lt;= k2i+1, ki &lt;= k2i+2 或者 ki &gt;= k2i+1, ki &gt;= k2i+2 (i = 0, 1, 2, 3, …, n/2)</code></p>
-<p>比如 { 1, 3, 5, 10, 15, 9 } 这个序列就满足 [1 &lt;= 3; 1 &lt;= 5], [3 &lt;= 10; 3 &lt;= 15], [5 &lt;= 9] 这3个条件，这个序列就是一个堆。</p>
-<p>所以堆其实是一个序列或数组，如果这个序列满足上述条件，那么就把这个序列看成堆。另外，堆又被称作堆积树。</p>
-<span id="more"></span>
-<h3 id="堆的定义"><a href="#堆的定义" class="headerlink" title="堆的定义"></a>堆的定义</h3><p>定义：一棵完全二叉树，其每个节点都有一个值。特点是根节点值最小（或最大），且根节点的两个子树也是一个堆。根节点值最小的堆称为小根堆，根节点值最大的堆称为大根堆。<br>学科：计算机科学技术 理论计算机科学 数据结构<br>来源：计算机科学技术名词第三版</p>
-<h2 id="二叉堆-binary-heap"><a href="#二叉堆-binary-heap" class="headerlink" title="二叉堆 binary heap"></a>二叉堆 binary heap</h2><p>堆的实现通常是通过构造二叉堆，因为二叉堆应用很普遍，当不加限定时，堆通常指的就是二叉堆。</p>
-<h3 id="二叉堆的数组表示"><a href="#二叉堆的数组表示" class="headerlink" title="二叉堆的数组表示"></a>二叉堆的数组表示</h3><p>二叉堆是一棵完全二叉树。二叉堆通常表示为数组的形式。表示方法如下：</p>
-<ol>
-<li>根节点位于arr[0]</li>
-<li>第i个节点的相关节点可以表示为：<br>父节点：<code>arr[(i-1)/2]</code> 向下取整<br>左孩子：<code>arr[2*i+1]</code><br>右孩子：<code>arr[2*i+2]</code></li>
-</ol>
-<p>把堆用数组表示所使用的方法是进行层序遍历。</p>
-<p>二叉堆总是满足以下两种堆序性（heap order）之一：<br>最大堆：父节点的键值总是大于等于任何一个子节点的键值。<br>最小堆：父节点的键值总是小于等于任何一个子节点的键值。</p>
-<h3 id="二叉堆的应用"><a href="#二叉堆的应用" class="headerlink" title="二叉堆的应用"></a>二叉堆的应用</h3><ol>
-<li>堆排序。堆排序使用二叉堆在O(nlogn)时间内对数组进行排序。</li>
-<li>优先级队列。使用二叉堆可以有效地实现优先级队列，因为它支持在O(logn)时间内执行insert()、delete()和extractmax()、decreaseKey()等操作。二项式堆和斐波那契堆是二叉堆的变体。用堆实现的优先级队列主要用于Prim算法和Dijkstra算法等图算法中。</li>
-<li>图的算法。优先级队列特别适用于Dijkstra最短路径和Prim最小生成树等图算法。</li>
-<li>顺序统计量（Order Statistics）。使用堆可以有效地解决许多问题，如：<br> a）数组中第K大的元素。<br> b）对基本有序的数组进排序。<br> c）合并K个有序数组。</li>
-</ol>
-<h3 id="二叉堆的基本操作"><a href="#二叉堆的基本操作" class="headerlink" title="二叉堆的基本操作"></a>二叉堆的基本操作</h3><table>
-<thead>
-<tr>
-<th>操作</th>
-<th>描述</th>
-<th>时间复杂度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>build</td>
-<td>创建一个空堆</td>
-<td>O(n)*</td>
-</tr>
-<tr>
-<td>insert</td>
-<td>向堆中插入一个新元素</td>
-<td>O(logn)</td>
-</tr>
-<tr>
-<td>update</td>
-<td>提升新元素使其符合堆的性质</td>
-<td>O(logn)</td>
-</tr>
-<tr>
-<td>get</td>
-<td>获取当前堆顶元素即根节点的值</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>delete</td>
-<td>删除堆顶元素</td>
-<td>O(logn)</td>
-</tr>
-<tr>
-<td>heapify</td>
-<td>使删除堆顶元素的堆再次成为堆</td>
-<td>O(logn)</td>
-</tr>
-<tr>
-<td>union</td>
-<td>将两个堆合并成一个有效堆</td>
-<td>O(n), O(klogn)**</td>
-</tr>
-</tbody></table>
-<p>注：<br>*构造堆的时间复杂度为O(n)的相关证明参见：<a href="https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity">How can building a heap be O(n) time complexity?</a><br>**k是两个堆之间较小那个堆的长度</p>
-<p>某些堆实现还支持其他的一些操作，如斐波那契堆支持检查一个堆中是否存在某个元素。</p>
-<p>为了简洁起见，下面以最小堆的相关操作为例进行说明：</p>
-<ol>
-<li>getMini()：返回最小堆的根节点。时间复杂度为O(1)。</li>
-<li>insert()：插入新节点需要O(logn)时间。我们在完全二叉树最下层的末尾添加一个新键。如果新键大于其父键，则不需要执行任何操作。否则，需要遍历来修复冲突的heap属性。</li>
-<li>delete()：删除节点也需要O(logn)时间。因为删除操作是通过调用decreaseKey()将待删除的节点替换为负无穷大（注意是负无穷大而不是无穷小）。负无穷大的值必须到达最小堆的根节点处，此时我们再调用extractMin()来移除该节点。</li>
-<li>extractMin()：从最小堆中删除根节点。时间复杂度为O(logn)，因为删除后还必须通过调用heapify()来维护heap属性。</li>
-<li>decreaseKey()：减少某个关键字到指定的值。时间复杂度为O(logn)。一个节点减少后必然依旧小于子节点；如果一个节点减少后的值仍然大于其父节点，那么我们不需要做任何事情。否则，需要遍历来修复冲突的heap属性。</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++程序 以小顶堆为例演示常见的二叉堆操作</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 用来交换两个整数的函数的原型</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>* x, <span class="keyword">int</span>* y)</span></span>;</span><br><span class="line"><span class="comment">// 定义小顶堆的类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinHeap</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span>* heap_arr; <span class="comment">// 指针指向一个数组，该数组存放堆中所有元素</span></span><br><span class="line">    <span class="keyword">int</span> capacity; <span class="comment">// 堆的理论最大容量</span></span><br><span class="line">    <span class="keyword">int</span> heap_size; <span class="comment">// 堆中当前元素数量</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinHeap</span>(<span class="keyword">int</span> capacity); <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MinHeapify</span><span class="params">(<span class="keyword">int</span>)</span></span>; <span class="comment">// 以给定索引的元素为根，堆起来一个满足小顶堆属性的子树</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">parent</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> (i - <span class="number">1</span>) / <span class="number">2</span>; &#125; <span class="comment">// 由已知节点的地址，找其父节点地址</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">left</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> (<span class="number">2</span> * i + <span class="number">1</span>); &#125; <span class="comment">// 由已知节点找左孩子</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">right</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> (<span class="number">2</span> * i + <span class="number">2</span>); &#125; <span class="comment">// 由已知节点找右孩子</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">extractMin</span><span class="params">()</span></span>; <span class="comment">// 拿掉小顶并更新堆，返回拿走的小顶</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">decreaseKey</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> new_val)</span></span>; <span class="comment">// 将索引i处的堆节点键值减少为新值</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> heap_arr[<span class="number">0</span>]; &#125; <span class="comment">// 返回当前的小顶上的值</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteKey</span><span class="params">(<span class="keyword">int</span> i)</span></span>; <span class="comment">// 删除堆中索引i处的节点</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertKey</span><span class="params">(<span class="keyword">int</span> k)</span></span>; <span class="comment">// 向堆中插入新键k</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MinHeap::<span class="built_in">MinHeap</span>(<span class="keyword">int</span> cap) &#123; <span class="comment">// 构造函数。给定容量，建立一个小顶堆</span></span><br><span class="line">    heap_size = <span class="number">0</span>; <span class="comment">// 当前大小</span></span><br><span class="line">    capacity = cap; <span class="comment">// 最大容量</span></span><br><span class="line">    heap_arr = <span class="keyword">new</span> <span class="keyword">int</span>[cap]; <span class="comment">// 初始化数组</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::insertKey</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (heap_size == capacity) &#123; <span class="comment">// 堆已满</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;\nOverflow: Could not insertKey\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    heap_size++;</span><br><span class="line">    <span class="keyword">int</span> i = heap_size - <span class="number">1</span>;</span><br><span class="line">    heap_arr[i] = k;</span><br><span class="line">    <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; heap_arr[<span class="built_in">parent</span>(i)] &gt; heap_arr[i]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(&amp;heap_arr[i], &amp;heap_arr[<span class="built_in">parent</span>(i)]);</span><br><span class="line">        i = <span class="built_in">parent</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::decreaseKey</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> new_val)</span> </span>&#123;</span><br><span class="line">    heap_arr[i] = new_val;</span><br><span class="line">    <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; heap_arr[<span class="built_in">parent</span>(i)] &gt; heap_arr[i]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(&amp;heap_arr[i], &amp;heap_arr[<span class="built_in">parent</span>(i)]);</span><br><span class="line">        i = <span class="built_in">parent</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinHeap::extractMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (heap_size &lt;= <span class="number">0</span>) <span class="keyword">return</span> INT_MAX;</span><br><span class="line">    <span class="keyword">if</span> (heap_size == <span class="number">1</span>) &#123;</span><br><span class="line">        heap_size--;</span><br><span class="line">        <span class="keyword">return</span> heap_arr[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> root = heap_arr[<span class="number">0</span>];</span><br><span class="line">    heap_arr[<span class="number">0</span>] = heap_arr[heap_size - <span class="number">1</span>]; <span class="comment">// 把小顶换成最后即较大的元素</span></span><br><span class="line">    heap_size--;</span><br><span class="line">    <span class="built_in">MinHeapify</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::deleteKey</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">decreaseKey</span>(i, INT_MIN);</span><br><span class="line">    <span class="built_in">extractMin</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::MinHeapify</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 若i比子孙大，则小顶堆失去稳定性，需要让浊者下沉（此方法假定子树已经符合作为堆的条件）</span></span><br><span class="line">    <span class="keyword">int</span> lindex = <span class="built_in">left</span>(i);</span><br><span class="line">    <span class="keyword">int</span> rindex = <span class="built_in">right</span>(i);</span><br><span class="line">    <span class="keyword">int</span> smallest = i; <span class="comment">// 根左右一家人里最小的那个</span></span><br><span class="line">    <span class="keyword">if</span> (lindex &lt; heap_size &amp;&amp; heap_arr[lindex] &lt; heap_arr[i]) smallest = lindex;</span><br><span class="line">    <span class="keyword">if</span> (rindex &lt; heap_size &amp;&amp; heap_arr[rindex] &lt; heap_arr[smallest]) smallest = rindex;</span><br><span class="line">    <span class="keyword">if</span> (smallest != i) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(&amp;heap_arr[i], &amp;heap_arr[smallest]); <span class="comment">// 交换根和孩子，轻者上浮，浊者下沉</span></span><br><span class="line">        <span class="built_in">MinHeapify</span>(smallest); <span class="comment">// 对原来存放最小元素现在存放根元素的索引进行递归调用，注意是对地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>* x, <span class="keyword">int</span>* y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = *x;</span><br><span class="line">    *x = *y;</span><br><span class="line">    *y = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MinHeap <span class="title">h</span><span class="params">(<span class="number">11</span>)</span></span>;</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">3</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">2</span>);</span><br><span class="line">    h.<span class="built_in">deleteKey</span>(<span class="number">1</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">15</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">5</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">4</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">45</span>);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        2</span></span><br><span class="line"><span class="comment">      4   5</span></span><br><span class="line"><span class="comment">    15 45</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    cout &lt;&lt; h.<span class="built_in">extractMin</span>() &lt;&lt; endl; <span class="comment">// 输出：2</span></span><br><span class="line">    cout &lt;&lt; h.<span class="built_in">getMin</span>() &lt;&lt; endl; <span class="comment">// 输出：4</span></span><br><span class="line">    h.<span class="built_in">decreaseKey</span>(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; h.<span class="built_in">getMin</span>() &lt;&lt; endl; <span class="comment">// 输出：1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.growingwiththeweb.com/data-structures/binary-heap/overview/">https://www.growingwiththeweb.com/data-structures/binary-heap/overview/</a><br><a href="https://www2.cs.sfu.ca/CourseCentral/307/petra/2009/SLN_2.pdf">https://www2.cs.sfu.ca/CourseCentral/307/petra/2009/SLN_2.pdf</a><br><a href="https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/">https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构与算法分析</category>
-      </categories>
-      <tags>
-        <tag>堆</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>网络绪论</title>
     <url>/posts/2a1b/</url>
     <content><![CDATA[<h1 id="0-绪论"><a href="#0-绪论" class="headerlink" title="#0 绪论"></a>#0 绪论</h1><ul>
@@ -3773,6 +3654,147 @@
       </tags>
   </entry>
   <entry>
+    <title>优先级队列简介</title>
+    <url>/posts/4873/</url>
+    <content><![CDATA[<h2 id="优先级队列的概念"><a href="#优先级队列的概念" class="headerlink" title="优先级队列的概念"></a>优先级队列的概念</h2><p>优先级队列是具有以下属性的队列的扩展：</p>
+<ol>
+<li>每个元素都有与之关联的优先级。</li>
+<li>高优先级元素在低优先级元素之前出队。</li>
+<li>相同优先级的元素按照在队列中的顺序进行操作。</li>
+</ol>
+<h2 id="优先级队列的操作"><a href="#优先级队列的操作" class="headerlink" title="优先级队列的操作"></a>优先级队列的操作</h2><p>典型的优先级队列支持以下操作：<br><code>insert(item, priority)</code> 插入具有指定优先级的项<br><code>getHighestPriority()</code> 返回优先级最高的项<br><code>deleteHighestPriority()</code> 删除优先级最高的项</p>
+<h2 id="优先级队列的实现"><a href="#优先级队列的实现" class="headerlink" title="优先级队列的实现"></a>优先级队列的实现</h2><h3 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h3><p>一个简单的实现途径是使用具有以下结构的数组。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">item</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> item;</span><br><span class="line">    <span class="keyword">int</span> priority;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用数组时，插入操作复杂度为O(1)，取最高优先级元素的操作和删除最高优先级元素的操作复杂度都为O(n)。如果使用链表代替数组，插入和取的复杂度不变，删除操作变得简单一些，因为不用大面积移动元素。</p>
+<h3 id="使用堆"><a href="#使用堆" class="headerlink" title="使用堆"></a>使用堆</h3><p>堆通常是优先队列实现的首选，因为堆提供了比数组或链表更好的性能。在二叉堆中，getHighestPriority()可以在O(1)时间内实现，insert()可以在O(logn)时间内实现，deleteHighestPriority()也可以在O(logn)时间内实现。<br>更进一步，对于Fibonacci堆，insert()和getHighestPriority()都可以在O(1)摊销时间内实现，deleteHighestPriority()可以在O(logn)摊销时间内实现。</p>
+<p>补充一点，算法中的amortized time，即摊销时间，它和平均时间是略有不同的。<br>定义：Amortized time is the way to express the time complexity when an algorithm has the very bad time complexity only once in a while besides the time complexity that happens most of time.</p>
+<h2 id="优先级队列的应用"><a href="#优先级队列的应用" class="headerlink" title="优先级队列的应用"></a>优先级队列的应用</h2><ol>
+<li>CPU调度</li>
+<li>图算法，如Dijkstra最短路径算法，Prim最小生成树算法等</li>
+<li>所有涉及优先级的队列应用</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构与算法分析</category>
+      </categories>
+      <tags>
+        <tag>队列</tag>
+        <tag>堆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>堆简介</title>
+    <url>/posts/55e8/</url>
+    <content><![CDATA[<h2 id="堆-heap"><a href="#堆-heap" class="headerlink" title="堆 heap"></a>堆 heap</h2><h3 id="堆的概念"><a href="#堆的概念" class="headerlink" title="堆的概念"></a>堆的概念</h3><p>n个元素序列 { k1, k2, k3, k4, k5, k6, …, kn } 当且仅当满足以下关系时才会被称为堆：<br><code>ki &lt;= k2i, ki &lt;= k2i+1 或 ki &gt;= k2i, ki &gt;= k2i+1 (i = 1, 2, 3, 4, …, n/2)</code><br>如果数组的下标是从0开始，那么需要满足：<br><code>ki &lt;= k2i+1, ki &lt;= k2i+2 或者 ki &gt;= k2i+1, ki &gt;= k2i+2 (i = 0, 1, 2, 3, …, n/2)</code></p>
+<p>比如 { 1, 3, 5, 10, 15, 9 } 这个序列就满足 [1 &lt;= 3; 1 &lt;= 5], [3 &lt;= 10; 3 &lt;= 15], [5 &lt;= 9] 这3个条件，这个序列就是一个堆。</p>
+<p>所以堆其实是一个序列或数组，如果这个序列满足上述条件，那么就把这个序列看成堆。另外，堆又被称作堆积树。</p>
+<span id="more"></span>
+<h3 id="堆的定义"><a href="#堆的定义" class="headerlink" title="堆的定义"></a>堆的定义</h3><p>定义：一棵完全二叉树，其每个节点都有一个值。特点是根节点值最小（或最大），且根节点的两个子树也是一个堆。根节点值最小的堆称为小根堆，根节点值最大的堆称为大根堆。<br>学科：计算机科学技术 理论计算机科学 数据结构<br>来源：计算机科学技术名词第三版</p>
+<h2 id="二叉堆-binary-heap"><a href="#二叉堆-binary-heap" class="headerlink" title="二叉堆 binary heap"></a>二叉堆 binary heap</h2><p>堆的实现通常是通过构造二叉堆，因为二叉堆应用很普遍，当不加限定时，堆通常指的就是二叉堆。</p>
+<h3 id="二叉堆的数组表示"><a href="#二叉堆的数组表示" class="headerlink" title="二叉堆的数组表示"></a>二叉堆的数组表示</h3><p>二叉堆是一棵完全二叉树。二叉堆通常表示为数组的形式。表示方法如下：</p>
+<ol>
+<li>根节点位于arr[0]</li>
+<li>第i个节点的相关节点可以表示为：<br>父节点：<code>arr[(i-1)/2]</code> 向下取整<br>左孩子：<code>arr[2*i+1]</code><br>右孩子：<code>arr[2*i+2]</code></li>
+</ol>
+<p>把堆用数组表示所使用的方法是进行层序遍历。</p>
+<p>二叉堆总是满足以下两种堆序性（heap order）之一：<br>最大堆：父节点的键值总是大于等于任何一个子节点的键值。<br>最小堆：父节点的键值总是小于等于任何一个子节点的键值。</p>
+<h3 id="二叉堆的应用"><a href="#二叉堆的应用" class="headerlink" title="二叉堆的应用"></a>二叉堆的应用</h3><ol>
+<li>堆排序。堆排序使用二叉堆在O(nlogn)时间内对数组进行排序。</li>
+<li>优先级队列。使用二叉堆可以有效地实现优先级队列，因为它支持在O(logn)时间内执行insert()、delete()和extractmax()、decreaseKey()等操作。二项式堆和斐波那契堆是二叉堆的变体。用堆实现的优先级队列主要用于Prim算法和Dijkstra算法等图算法中。</li>
+<li>图的算法。优先级队列特别适用于Dijkstra最短路径和Prim最小生成树等图算法。</li>
+<li>顺序统计量（Order Statistics）。使用堆可以有效地解决许多问题，如：<br> a）数组中第K大的元素。<br> b）对基本有序的数组进排序。<br> c）合并K个有序数组。</li>
+</ol>
+<h3 id="二叉堆的基本操作"><a href="#二叉堆的基本操作" class="headerlink" title="二叉堆的基本操作"></a>二叉堆的基本操作</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>描述</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>build</td>
+<td>创建一个空堆</td>
+<td>O(n)*</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>向堆中插入一个新元素</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>update</td>
+<td>提升新元素使其符合堆的性质</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>get</td>
+<td>获取当前堆顶元素即根节点的值</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>删除堆顶元素</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>heapify</td>
+<td>使删除堆顶元素的堆再次成为堆</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>union</td>
+<td>将两个堆合并成一个有效堆</td>
+<td>O(n), O(klogn)**</td>
+</tr>
+</tbody></table>
+<p>注：<br>*构造堆的时间复杂度为O(n)的相关证明参见：<a href="https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity">How can building a heap be O(n) time complexity?</a><br>**k是两个堆之间较小那个堆的长度</p>
+<p>某些堆实现还支持其他的一些操作，如斐波那契堆支持检查一个堆中是否存在某个元素。</p>
+<p>为了简洁起见，下面以最小堆的相关操作为例进行说明：</p>
+<ol>
+<li>getMini()：返回最小堆的根节点。时间复杂度为O(1)。</li>
+<li>insert()：插入新节点需要O(logn)时间。我们在完全二叉树最下层的末尾添加一个新键。如果新键大于其父键，则不需要执行任何操作。否则，需要遍历来修复冲突的heap属性。</li>
+<li>delete()：删除节点也需要O(logn)时间。因为删除操作是通过调用decreaseKey()将待删除的节点替换为负无穷大（注意是负无穷大而不是无穷小）。负无穷大的值必须到达最小堆的根节点处，此时我们再调用extractMin()来移除该节点。</li>
+<li>extractMin()：从最小堆中删除根节点。时间复杂度为O(logn)，因为删除后还必须通过调用heapify()来维护heap属性。</li>
+<li>decreaseKey()：减少某个关键字到指定的值。时间复杂度为O(logn)。一个节点减少后必然依旧小于子节点；如果一个节点减少后的值仍然大于其父节点，那么我们不需要做任何事情。否则，需要遍历来修复冲突的heap属性。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++程序 以小顶堆为例演示常见的二叉堆操作</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 用来交换两个整数的函数的原型</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>* x, <span class="keyword">int</span>* y)</span></span>;</span><br><span class="line"><span class="comment">// 定义小顶堆的类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinHeap</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span>* heap_arr; <span class="comment">// 指针指向一个数组，该数组存放堆中所有元素</span></span><br><span class="line">    <span class="keyword">int</span> capacity; <span class="comment">// 堆的理论最大容量</span></span><br><span class="line">    <span class="keyword">int</span> heap_size; <span class="comment">// 堆中当前元素数量</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinHeap</span>(<span class="keyword">int</span> capacity); <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MinHeapify</span><span class="params">(<span class="keyword">int</span>)</span></span>; <span class="comment">// 以给定索引的元素为根，堆起来一个满足小顶堆属性的子树</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">parent</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> (i - <span class="number">1</span>) / <span class="number">2</span>; &#125; <span class="comment">// 由已知节点的地址，找其父节点地址</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">left</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> (<span class="number">2</span> * i + <span class="number">1</span>); &#125; <span class="comment">// 由已知节点找左孩子</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">right</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> (<span class="number">2</span> * i + <span class="number">2</span>); &#125; <span class="comment">// 由已知节点找右孩子</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">extractMin</span><span class="params">()</span></span>; <span class="comment">// 拿掉小顶并更新堆，返回拿走的小顶</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">decreaseKey</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> new_val)</span></span>; <span class="comment">// 将索引i处的堆节点键值减少为新值</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> heap_arr[<span class="number">0</span>]; &#125; <span class="comment">// 返回当前的小顶上的值</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteKey</span><span class="params">(<span class="keyword">int</span> i)</span></span>; <span class="comment">// 删除堆中索引i处的节点</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertKey</span><span class="params">(<span class="keyword">int</span> k)</span></span>; <span class="comment">// 向堆中插入新键k</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MinHeap::<span class="built_in">MinHeap</span>(<span class="keyword">int</span> cap) &#123; <span class="comment">// 构造函数。给定容量，建立一个小顶堆</span></span><br><span class="line">    heap_size = <span class="number">0</span>; <span class="comment">// 当前大小</span></span><br><span class="line">    capacity = cap; <span class="comment">// 最大容量</span></span><br><span class="line">    heap_arr = <span class="keyword">new</span> <span class="keyword">int</span>[cap]; <span class="comment">// 初始化数组</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::insertKey</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (heap_size == capacity) &#123; <span class="comment">// 堆已满</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;\nOverflow: Could not insertKey\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    heap_size++;</span><br><span class="line">    <span class="keyword">int</span> i = heap_size - <span class="number">1</span>;</span><br><span class="line">    heap_arr[i] = k;</span><br><span class="line">    <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; heap_arr[<span class="built_in">parent</span>(i)] &gt; heap_arr[i]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(&amp;heap_arr[i], &amp;heap_arr[<span class="built_in">parent</span>(i)]);</span><br><span class="line">        i = <span class="built_in">parent</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::decreaseKey</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> new_val)</span> </span>&#123;</span><br><span class="line">    heap_arr[i] = new_val;</span><br><span class="line">    <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; heap_arr[<span class="built_in">parent</span>(i)] &gt; heap_arr[i]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(&amp;heap_arr[i], &amp;heap_arr[<span class="built_in">parent</span>(i)]);</span><br><span class="line">        i = <span class="built_in">parent</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinHeap::extractMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (heap_size &lt;= <span class="number">0</span>) <span class="keyword">return</span> INT_MAX;</span><br><span class="line">    <span class="keyword">if</span> (heap_size == <span class="number">1</span>) &#123;</span><br><span class="line">        heap_size--;</span><br><span class="line">        <span class="keyword">return</span> heap_arr[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> root = heap_arr[<span class="number">0</span>];</span><br><span class="line">    heap_arr[<span class="number">0</span>] = heap_arr[heap_size - <span class="number">1</span>]; <span class="comment">// 把小顶换成最后即较大的元素</span></span><br><span class="line">    heap_size--;</span><br><span class="line">    <span class="built_in">MinHeapify</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::deleteKey</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">decreaseKey</span>(i, INT_MIN);</span><br><span class="line">    <span class="built_in">extractMin</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MinHeap::MinHeapify</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 若i比子孙大，则小顶堆失去稳定性，需要让浊者下沉（此方法假定子树已经符合作为堆的条件）</span></span><br><span class="line">    <span class="keyword">int</span> lindex = <span class="built_in">left</span>(i);</span><br><span class="line">    <span class="keyword">int</span> rindex = <span class="built_in">right</span>(i);</span><br><span class="line">    <span class="keyword">int</span> smallest = i; <span class="comment">// 根左右一家人里最小的那个</span></span><br><span class="line">    <span class="keyword">if</span> (lindex &lt; heap_size &amp;&amp; heap_arr[lindex] &lt; heap_arr[i]) smallest = lindex;</span><br><span class="line">    <span class="keyword">if</span> (rindex &lt; heap_size &amp;&amp; heap_arr[rindex] &lt; heap_arr[smallest]) smallest = rindex;</span><br><span class="line">    <span class="keyword">if</span> (smallest != i) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(&amp;heap_arr[i], &amp;heap_arr[smallest]); <span class="comment">// 交换根和孩子，轻者上浮，浊者下沉</span></span><br><span class="line">        <span class="built_in">MinHeapify</span>(smallest); <span class="comment">// 对原来存放最小元素现在存放根元素的索引进行递归调用，注意是对地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>* x, <span class="keyword">int</span>* y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = *x;</span><br><span class="line">    *x = *y;</span><br><span class="line">    *y = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MinHeap <span class="title">h</span><span class="params">(<span class="number">11</span>)</span></span>;</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">3</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">2</span>);</span><br><span class="line">    h.<span class="built_in">deleteKey</span>(<span class="number">1</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">15</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">5</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">4</span>);</span><br><span class="line">    h.<span class="built_in">insertKey</span>(<span class="number">45</span>);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        2</span></span><br><span class="line"><span class="comment">      4   5</span></span><br><span class="line"><span class="comment">    15 45</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    cout &lt;&lt; h.<span class="built_in">extractMin</span>() &lt;&lt; endl; <span class="comment">// 输出：2</span></span><br><span class="line">    cout &lt;&lt; h.<span class="built_in">getMin</span>() &lt;&lt; endl; <span class="comment">// 输出：4</span></span><br><span class="line">    h.<span class="built_in">decreaseKey</span>(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; h.<span class="built_in">getMin</span>() &lt;&lt; endl; <span class="comment">// 输出：1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.growingwiththeweb.com/data-structures/binary-heap/overview/">https://www.growingwiththeweb.com/data-structures/binary-heap/overview/</a><br><a href="https://www2.cs.sfu.ca/CourseCentral/307/petra/2009/SLN_2.pdf">https://www2.cs.sfu.ca/CourseCentral/307/petra/2009/SLN_2.pdf</a><br><a href="https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/">https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构与算法分析</category>
+      </categories>
+      <tags>
+        <tag>堆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《美国反对美国》读书笔记</title>
+    <url>/posts/ca9a/</url>
+    <content><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>《美国反对美国》，大概是一个奇怪而又颇为费解的书名。我起进个书名的用意在于表明，美国不是一个简单的均质的整体，用一句话就可以打发掉。在过去的年代，人们从教条主义的观念出发，把美国仅伩看成是“剥削剩余价值”，“资产阶级专政”，看得一无是处，那么现实的美国同样反对这祥的“美国”、僵化观念中的美国。如今又出现了另一种极端，有的人把美国想象成富丽天堂，十全十美，那么现实的美国同样反对这样的“美国”、理想化的美国。包括美国社会本身，它有它的肯定性力量，也有它的否定性力量，凡是在能发现肯定性力量的地方，都能发现否定性的力量。这便是《美国反对美国》的基本意蕴。</p>
+<p>本书共有十一章，我想在这里扼要点明一下：<br>（1）社会不均衡发及其诸特点；<br>（2）主导政治生活的价值观念及其流变；<br>（3）民族的多样性格及其社会功效；<br>（4）调节人们社会活动的正式和非正式的机制；<br>（5）在社会上活跃的政治力量及其关系；<br>（6）竞选中的民主和非民主因素；<br>（7）自上而下的政治运作及其特征；<br>（8）非政治的协调机制及社会化的管制；<br>（9）文化、价值观念乃至制度的复制与教育的关联；<br>（10）思想在社会发展和管理中的作甩；<br>（11）危及未来发展的种种潜流。</p>
+<p>王沪宁 1989年4月1日 于复旦大学国际政治系</p>
+<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><p>美国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</p>
+<p>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</p>
+<p>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</p>
+<p>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</p>
+<p>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</p>
+<h2 id="古老的政治精神"><a href="#古老的政治精神" class="headerlink" title="古老的政治精神"></a>古老的政治精神</h2><h3 id="美国精神"><a href="#美国精神" class="headerlink" title="美国精神"></a>美国精神</h3><p>有时候，可以这样说，社会生活本无精神，等你去发现了，它便有了。或者说，世界上本来就有精神，问题是有没有发现。黑格尔就坚信他发现了“绝对精神”。美国人的精神就是没有“绝对精神”。</p>
+<h3 id="五月花号"><a href="#五月花号" class="headerlink" title="五月花号"></a>五月花号</h3><p>“五月花号”船于1620年将最早的移民送到美洲大陆。这是近代美国的肇始。</p>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>书摘</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一位社会学家眼中的爱情——论爱情中的交换与权力</title>
     <url>/posts/b9a/</url>
     <content><![CDATA[<p>● 布劳  </p>
@@ -3836,28 +3858,6 @@
       </categories>
       <tags>
         <tag>歌词</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《美国反对美国》读书笔记</title>
-    <url>/posts/ca9a/</url>
-    <content><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>《美国反对美国》，大概是一个奇怪而又颇为费解的书名。我起进个书名的用意在于表明，美国不是一个简单的均质的整体，用一句话就可以打发掉。在过去的年代，人们从教条主义的观念出发，把美国仅伩看成是“剥削剩余价值”，“资产阶级专政”，看得一无是处，那么现实的美国同样反对这祥的“美国”、僵化观念中的美国。如今又出现了另一种极端，有的人把美国想象成富丽天堂，十全十美，那么现实的美国同样反对这样的“美国”、理想化的美国。包括美国社会本身，它有它的肯定性力量，也有它的否定性力量，凡是在能发现肯定性力量的地方，都能发现否定性的力量。这便是《美国反对美国》的基本意蕴。</p>
-<p>本书共有十一章，我想在这里扼要点明一下：<br>（1）社会不均衡发及其诸特点；<br>（2）主导政治生活的价值观念及其流变；<br>（3）民族的多样性格及其社会功效；<br>（4）调节人们社会活动的正式和非正式的机制；<br>（5）在社会上活跃的政治力量及其关系；<br>（6）竞选中的民主和非民主因素；<br>（7）自上而下的政治运作及其特征；<br>（8）非政治的协调机制及社会化的管制；<br>（9）文化、价值观念乃至制度的复制与教育的关联；<br>（10）思想在社会发展和管理中的作甩；<br>（11）危及未来发展的种种潜流。</p>
-<p>王沪宁 1989年4月1日 于复旦大学国际政治系</p>
-<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><p>美国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</p>
-<p>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</p>
-<p>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</p>
-<p>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</p>
-<p>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</p>
-<h2 id="古老的政治精神"><a href="#古老的政治精神" class="headerlink" title="古老的政治精神"></a>古老的政治精神</h2><h3 id="美国精神"><a href="#美国精神" class="headerlink" title="美国精神"></a>美国精神</h3><p>有时候，可以这样说，社会生活本无精神，等你去发现了，它便有了。或者说，世界上本来就有精神，问题是有没有发现。黑格尔就坚信他发现了“绝对精神”。美国人的精神就是没有“绝对精神”。</p>
-<h3 id="五月花号"><a href="#五月花号" class="headerlink" title="五月花号"></a>五月花号</h3><p>“五月花号”船于1620年将最早的移民送到美洲大陆。这是近代美国的肇始。</p>
-]]></content>
-      <categories>
-        <category>读书札记</category>
-        <category>书摘</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
       </tags>
   </entry>
   <entry>
@@ -4985,6 +4985,27 @@
       </tags>
   </entry>
   <entry>
+    <title>虚幻的“爱情”与被曲解的“情欲”</title>
+    <url>/posts/bc1a/</url>
+    <content><![CDATA[<p>● 吕嘉健</p>
+<blockquote>
+<p>他虽然每次总是狂热地爱着一个女子，似乎至死不渝，终生不二，但一生中却总免不了一次次地变换恋人。从其他方面的精神分析中，我们曾发现过这样一个铁定的规律：人的潜意识中对某种独一无二、不能替代的东西的热恋，会表现为一种永无休止的追寻活动。这是因为，替身终归是替身，它永远不能像真身那样满足他的渴求。 —— 弗洛伊德</p>
+</blockquote>
+<p>　　“爱情”具有绝对迷魂的影响力，它是神话化的理想主义传奇意境，这是人类命定的心理挫折经验过程：先要经历过对美丽爱情心魔的迷狂，才会回归到实实在在的情欲世界。你愿意陶醉在一个虚幻的爱情心理呢，还是愿意适度地平衡自我的情欲心理？——在情欲人生观方面的反思和进化，势必重新塑造一个人的自由主义心性。<br>　　<br>　　本文打算对“爱情”这个过度美好的概念祛魅，为被误读和被曲解的“情欲”一词正名。简言之，本文意欲证明“爱情”这一说法无非是审美心理道德化的产物，即将情欲之美感心理神话化而引导至高尚道德的境界，而“情欲”一词则是现实主义素描下中性表述的实际情形。二者都是“亲密关系”的类属，内里隐藏着生活政治的本质。
+　　</p>
+<h2 id="情欲寻常事，曲解乃醉翁之意"><a href="#情欲寻常事，曲解乃醉翁之意" class="headerlink" title="情欲寻常事，曲解乃醉翁之意"></a>情欲寻常事，曲解乃醉翁之意</h2><p>　　<br>　　人总是不知不觉地误读和曲解真相和对真相命名的概念，而且是故意的曲解，即使经验事实无数次地证伪了人自己的曲解，他们也无法觉悟。被曲解了的东西成了我们潜移默化的心性。被固置的概念成了一种观念，形成了一种心理定势，决定了我们如何处理实际生活中的事情。在文学中，未经理性严格审察追究的“爱情故事”之误读解释尤其严重，习以为常、一如既往地被读者和作家歪曲传播。文学传播担负了生活教科书的责任。<br>　　<br>　　一般惯例是：凡是正面描写的美人儿帅哥哥的迷人情欲故事，都会被幻想性地拔高了，誉之为“永恒爱情”，像罗密欧与朱丽叶、崔莺莺和杜丽娘一类；凡是人物性格不怎么美和不高尚的，就会不假思索把他们的“情欲”当作淫賤下流的动物性欲望，例如潘金莲。如果从严格的社会规范来看，无论是崔莺莺、杜丽娘或者是罗密欧、朱丽叶，他们都与潘金莲一样，是不道德的：或者违反贵族礼教，或者对抗家族利益，或者背叛婚姻，然而他们的情欲动机完全一样。读过《西厢记》的读者，会发现莺莺“情欲发姣”已经到了神魂荡漾、风骚万种的状况，恨不得顷刻献身，哪里有与张生精神之爱的任何铺垫！至于杜丽娘无中生有的情淫幻想，更是性成熟春困而饱受压抑的结果。如果说礼教和家族仇恨都是扼杀人性的，那么潘金莲被强加的与武大郎的婚姻也是不人道的。崔莺莺、杜丽娘与潘金莲都是同样层次上的情欲迷狂者。当然我不会用道德观来批判崔莺莺们，我只是指出基本事实而已。但是即使再怎样的观念更新，人们的潜意识里还是把崔莺莺、杜丽娘和罗密欧朱丽叶誉为美好的爱情之神，而将潘金莲看作丑陋的淫荡妖妇。这样的污名化，再过一千年，也难以改变人们的固执心理。一旦误读和曲解，便是永远的命名。<br>　　<br>　　解读名著的文学评论家常常是经学家、意识形态专家或者是痴性单纯的书生，还有一辈子一听说爱情就肃然起敬的情欲洁癖者，带着特殊的漂白眼镜误读人间常识事。他们不是对人性情欲有智障，就是常常将生命分裂成身体行为与精神心理两极，二者老死不相往来。作为一种文化社会心理的精神分裂症其实很普遍，为了保护自己脆弱的神经和道德高尚感觉，将他人的艳福看作是下流，以此反证自己的洁癖。将崔莺莺、杜丽娘的欲火焚身说成是追求爱情自由，因为“爱情”二字带着灿烂迷人的美感。“爱情”二字已将低级趣味完全解构。<br>　　<br>　　最善于审美心理道德化的爱情表现就是以诗意的描写来形容醉人的情欲，刻画得越华美雅致，越是用欲隐欲现的美感暗示，越是能够将庸俗的情欲行为道德化，这是雅化惯例。请看王实甫《西厢记》怎样写张生和莺莺做爱：<br>　　<br>　　张生：我这里软玉温香抱满怀。呀，阮肇到天台。春至人间花弄色，将柳腰款摆，花心轻拆，露滴牡丹开。蘸着些儿麻上来，鱼水得和谐，嫩蕊娇香蝶恣采。半推半就，又惊又爱，檀口搵香腮。……（看手帕科）春罗原莹白，早見红香点嫩色。（莺莺云）羞人答答的，看做甚么。（张生唱）灯下偷睛觑，胸前着肉揣。畅奇哉，浑身通泰，不知春从何处来。（第四本第一折）<br>　　<br>　　文学艺术经常表现人性里肉欲与情致、身体生理与精神心理得到高峰体验和谐渾融的状态。在性、爱欲这类事情中，这两者既可以分裂，也可以共赴仙境，水乳交融。张生说“畅奇哉，浑身通泰，不知春从何处来”，就是获得性高潮的身心诗意满足的形容。心理学家霭理士这样形容情、欲同时得到满足的生理美感：<br>　　<br>　　对于男子除了消释积欲过程中所蓄聚的紧张的状态而外，除了减低血压与恢复肌肉系统的休息而外，它可以取得一种精神上的满足，一种通体安闲的感觉，一种舒适的懒散的心情，一种心神解放、了无罣挂、万物自得、天地皆春的观感。…女子经过一度满足的解欲以后，也往往有如饮酒适如其量后的一种感觉，即相当的醉而不至于迷糊；这种感觉可以维持到好几小时…<br>　　<br>　　假如将迷人的诗意完全荡涤，以毫不掩饰的写实主义表现情欲，会对一般人的道德和审美心理构成考验挑战。试看看《红楼梦》里这一段描述：<br>　　<br>　　那贾琏只离了凤姐，便要寻事，独寝了两夜，十分难熬，只得暂将小厮内清俊的选来出火。（以下写贾琏勾引上了妖调轻狂的淫妇多姑娘儿尽情放荡了几天，后来贾琏和凤姐的女儿病好了，贾琏搬回去住，凤姐让平儿好好检查贾琏的东西，平儿发现了多姑娘儿的一缕青丝，贾琏追逐着平儿要夺回证物，平儿帮贾琏打了掩护，贾琏十分感激，搂着平儿眉开眼笑）贾琏见她娇俏动情，便搂着求欢，平儿夺手跑出来，急的贾琏弯着腰恨道：“死促狹小娼妇儿！一定浪上人的火来，他又跑了。”平儿在窗外笑道：“我浪我的，谁叫你动火？难道图你舒服，叫他知道了，又不待见我呀！”<br>　　<br>　　一般的阅读惯例把这一段看作下流情节，把贾琏看作放纵情欲的堕落贵族。其实贾琏并不算下流，贾琏情欲的强旺也是一个正常青年贵族男子的优质标志。读者如果有平常心的话，可以读读贾母的评论：“什么要紧的事！小孩子们年轻，馋嘴猫儿似的，那里保的住呢？从小儿人人都打这么过。”（第四十四回，P544）<br>　　<br>　　不够知己的读者很少会同时反思自我，想想自己同样也具有相类似的情欲，像上面所引一段，离了身边的女人，就十分难熬，要找替代物来“出火”，找着了一个浪荡的性伙伴，会觉得极度享受。和身边的美人一调情，就会浪出火来。还有，像平儿这样明白事理又品格端正的美人胚子，在日常生活里顺任天性地显现出妩媚娇妙的情态动作，令人触目生春，这是上天赋予女子美感的“浪荡轻佻习性”，是生气盎然的意境，男人见了，情不自禁性起，都是非常符合人性常情的，为什么一定要用高尚的道德去否定我们自己也会这样做的事情呢？——《红楼梦》里这样的情节细节多的是，宝玉看到宝钗浑圆丰腴雪白妩媚的膀子，就想能够摸一摸是多么的惬意，甚至号称最雅洁的出家人妙玉，也免不了有强烈的情欲心魔。<br>　　<br>　　由此可知：我们情不自禁的误读，源于道德化的集体无意识。人类有一个自我束缚的意识形态路径依赖：泛滥的道德化。道德本来是自律的精神心理意识，但是善于制约人们心灵的精神导师，一定会将道德他律化。为了从心理上制裁着普通人，势必将正常的东西曲解，将世俗高尚化，不允许人们自由。只许州官放火，不许百姓点灯。<br>　　<br>　　因此，总之，“情欲”被误读和被曲解成了“爱情”，已经成了文化惯例。在爱情故事里，最具有意识形态强奸意味的是“革命+爱情”的模式，在这类生活形式以至故事里，情欲本质之被误读和被曲解严重到无以复加。例如5、60年代风靡一时的革命爱情小说《青春之歌》，女主人公林道静投海自尽，被北大学生余永泽所救，林后来为余永泽“诗人兼骑士”的风度所迷醉，和余产生了“爱情”而同居。随着林道静和革命知识分子频繁接触，被风起云涌的革命时髦所裹挟，林的灵魂逐渐迷醉于革命加爱情的浪漫主义心魔，开始对身边专心于学术专业的丈夫不满而厌恶起来，和革命党人卢嘉川接触之后，卢对她灌输革命道理，借给她许多革命书籍，两人“畅谈革命，纵论人生”，卢嘉川的气质心性与林道静非常匹配，两个小资产阶级革命知识分子的革命浪漫情愫像野草一样疯长，林渐渐移情别恋，日益鄙视书生余永泽，视之为自私迂腐。由于卢嘉川不能在余家留宿，在外逃亡而被捕，林道静因此将责任归咎于余永泽，最终离开了余。后来林道静再遇到革命者江华，两人一拍即合并“幸福地结合在一起”。<br>　　<br>　　在那个时代里，所有读者并不会将林道静视作出轨、婚外恋或者乱搞男女关系的水性杨花女人，“革命”是最时髦的事情，它本身具有高尚道德和强大的审美功能，凡在革命风暴中作为弄潮儿的年轻人，同时也会在爱情的天平上具有无可阻挡的迷人的性感魅力。有一个革命志同道合的高大尚的理由，下半身的发挥就变得合乎道德且通体舒泰了。可怜余永泽作为正常人的人生行为，就变成了道德卑鄙和落后于时代、不爱国的低级角色。这种情欲观念的异化，成为中国普适的道德和意识形态误读模式，渐渐异化了多数人的文化心理，扭曲了国人的常识和公正意识。随着观念的异化，人们的理智也会丧失掉形式逻辑的监督，只能产生特殊的认同逻辑，和革命的非理性，我们整个时代的不讲理心性就是这样建构起来的。<br>　　<br>　　革命+爱情，青春荷尔蒙的情欲，在高尚名义下，生理行为就升华为激动人心的献身了。一切情欲心理甚至人性心态，无不如此，只要有正当的因果理由说法，合乎时髦，就赋予了世俗生活一种精神价值。这是给自我一个心理解释和慰藉。如果没有这种精神之恋的解释，急吼吼地上床，或者是被强奸，或者是苟且淫荡。“几乎可以说，所有‘真正的’革命者在对待性的态度上，都是杯水主义者。在革命者的眼中，革命才是第一位的，其他的一切，都只能放在次要的位置上。这就注定了，粗鄙的革命者多是无耻之徒。”、“抗战年代，一批青年女学生因为理想的激发，纷纷前往革命圣地延安。结果到延安之后，才发现轰轰烈烈的浪漫革命离她们是那么遥远，她们的主要任务，是和一批大他们不少的大老粗结婚，解决革命者们的性饥渴问题。直到那时她们才知道，革命者们也是有鸡巴的；而凡是带着家伙的，基本都不是传说中那么安生的。”
+　　</p>
+<h2 id="在爱情神话背后的情欲真相"><a href="#在爱情神话背后的情欲真相" class="headerlink" title="在爱情神话背后的情欲真相"></a>在爱情神话背后的情欲真相</h2><p>　　<br>　　从词义学来看，“爱情”单纯从心理角度来表述，是一种喜欢到极致而使当事人神魂颠倒丧失理智的情感。它只表述了“爱”这种“情”致，而有意识地隐藏了“欲望”的内涵。多数人可能没有追究过真实的意义，爱情其实源于“色”的刺激即性感和美感，并融合了双方性情、直觉的投缘与欣赏。很多人在这种短暂时段的情感高潮中，因为沉醉不知归路，而盲目地以为这是我对对方、或双方很纯洁的精神之恋与美好情感的缘分，忽略了下半身的强大主导力。当然，迷情人获得了审美的高峰体验。爱情会使当事人产生自我感动之高尚美好的道德意境，使人堕入迷狂的心理醉状。这种极致陶醉的美感，念念不忘的缠绵之感，无限珍惜欣赏不已的拥有心理，会将对方崇拜为纯洁天使或理想人物，此即“审美心理道德化的爱情”。<br>　　<br>　　而“情欲”这个说法呢？它不仅表述了双方直觉上投缘的情致，也标示真实状况是，下半身欲望的神秘影响力。欲望是什么呢？包括生理上的力比多和向外放射的旺盛的生命力，与性感、美感刺激下渴望与对方发生亲密性关系的人性文化心理希冀。在复杂欲望的引导下，“爱情”并不那么纯洁和高尚，它需要发泄和满足欲望，越是现代人越实际。情欲就是情欲，它尽量不要道德高尚化。不过文化是一种惯性，审美心理道德化是一种集体无意识，在文化无意识的控制下，对爱情神化和对情欲曲解是一体两面的惯例。<br>　　<br>　　关于“欲”字，值得从心理学的角度诠释一下。英国著名的性心理学家霭理士用了两个概念来解释性冲动的本质：积欲和解欲。“积欲在文学上或社会学上我们也叫做求爱；一个男子，因性冲动的力量，而向女子接近，就是求爱。”、“积欲的过程，若从外面来说，是各种官能的印象直接或间接所引起的。官能接受外来的印象，印象造成刺激，刺激唤起反应，反应就是积欲。冒尔所说的厮磨，就是通常一性对于另一性的刺激所造成的一切身心两方面的印象的总和。一个异性的人，最能供给合意的印象的，就是中选的人，这就叫做性选择。”<br>　　<br>　　霭理士很好地解释了一个异性在美感、性感、社会性格等给另一个异性的好印象之刺激，使之产生了合意情欲的“积欲”，当然还结合着他本人内部的性生理和性心理的要求，于是为了解欲，才会去求爱。所以“情欲”二字根本上比“爱情”二字是更科学准确的描述。<br>　　<br>　　在爱情文化惯例里，往往意味着为了对方可以牺牲自我，要完全满足对方的要求，摘星星攀月亮都勉为其难去做到，为了得到对方的欢心，怎么委屈自己都是爱的表示。爱情这种审美心理指导下的讨好情感值得反思。满足了对方的要求才能获得一种爱（亲近）的权利，说到底还是为了满足自我情欲的愿望，无故殷勤背后掩藏着欲望渴求。满足一方的过度要求而牺牲另一方的权利，一方压迫着另一方，蔑视了TA的尊严，这种爱情不平等。你不珍惜我，总有一天我也不会珍惜你。你的爱的任性伤害了我，你的爱是施舍的，当我审美疲劳并满足了情欲之后，厌恶和疏远就会产生。可见单方面殷勤的恋爱是自我想象性情欲的膨胀，是自恋的投射，同时丧失了对对方傲慢、勉强和无理的敏锐认知。讨好意味着他日的遗弃。假如爱情需要道德的话，那么这和自由原理一样：责任和权利对等，忠诚的律令就在其中。—— 在情欲文化里，同样有深刻的政治学内涵。然而，给爱情祛魅，局外人可以，当局者迷其实是一种心理享受。<br>　　<br>　　爱情的审美心理道德化本身具有一种自我解构的危机：越是狂热的爱恋，越是容易消退。所以从心理学的角度认识爱情是最重要的，社会学的解释尚在其次。弗洛伊德说：“他虽然每次总是狂热地爱着一个女子，似乎至死不渝，终生不二，但一生中却总免不了一次次地变换恋人。从其他方面的精神分析中，我们曾发现过这样一个铁定的规律：人的潜意识中对某种独一无二、不能替代的东西的热恋，会表现为一种永无休止的追寻活动。这是因为，替身终归是替身，它永远不能像真身那样满足他的渴求。”<br>　　<br>　　深刻理解弗洛伊德上述论断有助于给爱情祛魅。在爱情中，对于当事人的那个“情”的真实内涵值得分析和弄清楚，这可能是一个母亲或父亲的替代者，可能是一个文学形象或前世美感概念在心中的幻想，即使是一个恋爱者心仪的理想物，只要它一旦现实化，审美距离消失了之后，TA的恋爱狂热就会失望。这个事实告诉我们：人们所爱的具体对象背后应该是一个抽象的爱的理想范型，恰好在某一个一见钟情或者机缘成就的亲近中，让TA的这个理想范型具体化了。一旦这个具体爱人渐渐露出真面目，与TA的爱人范型不吻合了，TA就开始感到陌生和厌恶了。一个人所爱的那个真实的东西是什么，常常经不起拷问。《安娜·卡列尼娜》中的列文新婚后所面对的天使吉提，就是令列文失望的庸俗版本。即使对于安娜和渥伦斯基而言，情欲满足之后，当初双方那种无比迷人的美感，在零审美距离中，全部化为硝烟。<br>　　<br>　　所以，人类高度赞美的“爱情”被误读为高尚纯洁的精神之恋，完全是为了满足审美性心理之陶醉感而已。某些确实净化到只剩下精神之恋的“爱情”，仅仅是现实条件抑制或阻碍了性欲的满足而已，“所谓伊人，在水一方。溯迴从之，道阻且长。”有不少中毒的年青人被道德化的爱情害得失去了享受情欲的能力。“能力”是非常关键的，没有某种能力就没有资格做某类事情，例如没有爱国的能力，就无法理性地爱国；没有享受情欲的能力，就不能健康地进入欢乐的情欲天地。人类美化了几千年的“爱情”如果仅仅只是一个精神之恋的话，那不是实事求是而且会使人在自欺欺人中屡屡受害的。<br>　　<br>　　从“爱情”和“情欲”的关系可以解释一个规律：凡是男女双方激情恋爱期都不要过长，要在双方还处于迷恋阶段内结婚。相处越长，渐入冷静期，慢慢地，双方逐渐消褪掉爱情的迷幻感觉，除了生理上解欲的需求，只剩下了看到对方所有性格缺点的不满。年纪越大，成婚的机率越低，结婚的目的只剩下寻求性欲满足和家庭生活合作的需求。没有了爱欲审美迷幻感，就像做交易一样审视对方，很难找到一个对眼的生活合作者。<br>　　<br>　　荣格说过很重要的话：“身体是一位靠不住的朋友，因为它生产我们不喜欢的东西；关于身体有很多很多的东西是不能被提及的，身体常常是自我这个阴影的化身。”我猜想人类喜欢“爱情”这个说法而不喜欢“情欲”这个概念，就是荣格所指出的原因。假如我坦率地采用一种不加雅化的说法，那么“情欲”的定义完全可以这样来做：情欲是一种生理和心理能量，它强烈地促使双方建立亲密关系，然后去做性欲里想做的任何下流事情，否则则不可以。</p>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>文摘</category>
+      </categories>
+      <tags>
+        <tag>爱情</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>爱情中的交谈</title>
     <url>/posts/d9e1/</url>
     <content><![CDATA[<p>● 韩东  </p>
@@ -5011,27 +5032,6 @@
       </tags>
   </entry>
   <entry>
-    <title>虚幻的“爱情”与被曲解的“情欲”</title>
-    <url>/posts/bc1a/</url>
-    <content><![CDATA[<p>● 吕嘉健</p>
-<blockquote>
-<p>他虽然每次总是狂热地爱着一个女子，似乎至死不渝，终生不二，但一生中却总免不了一次次地变换恋人。从其他方面的精神分析中，我们曾发现过这样一个铁定的规律：人的潜意识中对某种独一无二、不能替代的东西的热恋，会表现为一种永无休止的追寻活动。这是因为，替身终归是替身，它永远不能像真身那样满足他的渴求。 —— 弗洛伊德</p>
-</blockquote>
-<p>　　“爱情”具有绝对迷魂的影响力，它是神话化的理想主义传奇意境，这是人类命定的心理挫折经验过程：先要经历过对美丽爱情心魔的迷狂，才会回归到实实在在的情欲世界。你愿意陶醉在一个虚幻的爱情心理呢，还是愿意适度地平衡自我的情欲心理？——在情欲人生观方面的反思和进化，势必重新塑造一个人的自由主义心性。<br>　　<br>　　本文打算对“爱情”这个过度美好的概念祛魅，为被误读和被曲解的“情欲”一词正名。简言之，本文意欲证明“爱情”这一说法无非是审美心理道德化的产物，即将情欲之美感心理神话化而引导至高尚道德的境界，而“情欲”一词则是现实主义素描下中性表述的实际情形。二者都是“亲密关系”的类属，内里隐藏着生活政治的本质。
-　　</p>
-<h2 id="情欲寻常事，曲解乃醉翁之意"><a href="#情欲寻常事，曲解乃醉翁之意" class="headerlink" title="情欲寻常事，曲解乃醉翁之意"></a>情欲寻常事，曲解乃醉翁之意</h2><p>　　<br>　　人总是不知不觉地误读和曲解真相和对真相命名的概念，而且是故意的曲解，即使经验事实无数次地证伪了人自己的曲解，他们也无法觉悟。被曲解了的东西成了我们潜移默化的心性。被固置的概念成了一种观念，形成了一种心理定势，决定了我们如何处理实际生活中的事情。在文学中，未经理性严格审察追究的“爱情故事”之误读解释尤其严重，习以为常、一如既往地被读者和作家歪曲传播。文学传播担负了生活教科书的责任。<br>　　<br>　　一般惯例是：凡是正面描写的美人儿帅哥哥的迷人情欲故事，都会被幻想性地拔高了，誉之为“永恒爱情”，像罗密欧与朱丽叶、崔莺莺和杜丽娘一类；凡是人物性格不怎么美和不高尚的，就会不假思索把他们的“情欲”当作淫賤下流的动物性欲望，例如潘金莲。如果从严格的社会规范来看，无论是崔莺莺、杜丽娘或者是罗密欧、朱丽叶，他们都与潘金莲一样，是不道德的：或者违反贵族礼教，或者对抗家族利益，或者背叛婚姻，然而他们的情欲动机完全一样。读过《西厢记》的读者，会发现莺莺“情欲发姣”已经到了神魂荡漾、风骚万种的状况，恨不得顷刻献身，哪里有与张生精神之爱的任何铺垫！至于杜丽娘无中生有的情淫幻想，更是性成熟春困而饱受压抑的结果。如果说礼教和家族仇恨都是扼杀人性的，那么潘金莲被强加的与武大郎的婚姻也是不人道的。崔莺莺、杜丽娘与潘金莲都是同样层次上的情欲迷狂者。当然我不会用道德观来批判崔莺莺们，我只是指出基本事实而已。但是即使再怎样的观念更新，人们的潜意识里还是把崔莺莺、杜丽娘和罗密欧朱丽叶誉为美好的爱情之神，而将潘金莲看作丑陋的淫荡妖妇。这样的污名化，再过一千年，也难以改变人们的固执心理。一旦误读和曲解，便是永远的命名。<br>　　<br>　　解读名著的文学评论家常常是经学家、意识形态专家或者是痴性单纯的书生，还有一辈子一听说爱情就肃然起敬的情欲洁癖者，带着特殊的漂白眼镜误读人间常识事。他们不是对人性情欲有智障，就是常常将生命分裂成身体行为与精神心理两极，二者老死不相往来。作为一种文化社会心理的精神分裂症其实很普遍，为了保护自己脆弱的神经和道德高尚感觉，将他人的艳福看作是下流，以此反证自己的洁癖。将崔莺莺、杜丽娘的欲火焚身说成是追求爱情自由，因为“爱情”二字带着灿烂迷人的美感。“爱情”二字已将低级趣味完全解构。<br>　　<br>　　最善于审美心理道德化的爱情表现就是以诗意的描写来形容醉人的情欲，刻画得越华美雅致，越是用欲隐欲现的美感暗示，越是能够将庸俗的情欲行为道德化，这是雅化惯例。请看王实甫《西厢记》怎样写张生和莺莺做爱：<br>　　<br>　　张生：我这里软玉温香抱满怀。呀，阮肇到天台。春至人间花弄色，将柳腰款摆，花心轻拆，露滴牡丹开。蘸着些儿麻上来，鱼水得和谐，嫩蕊娇香蝶恣采。半推半就，又惊又爱，檀口搵香腮。……（看手帕科）春罗原莹白，早見红香点嫩色。（莺莺云）羞人答答的，看做甚么。（张生唱）灯下偷睛觑，胸前着肉揣。畅奇哉，浑身通泰，不知春从何处来。（第四本第一折）<br>　　<br>　　文学艺术经常表现人性里肉欲与情致、身体生理与精神心理得到高峰体验和谐渾融的状态。在性、爱欲这类事情中，这两者既可以分裂，也可以共赴仙境，水乳交融。张生说“畅奇哉，浑身通泰，不知春从何处来”，就是获得性高潮的身心诗意满足的形容。心理学家霭理士这样形容情、欲同时得到满足的生理美感：<br>　　<br>　　对于男子除了消释积欲过程中所蓄聚的紧张的状态而外，除了减低血压与恢复肌肉系统的休息而外，它可以取得一种精神上的满足，一种通体安闲的感觉，一种舒适的懒散的心情，一种心神解放、了无罣挂、万物自得、天地皆春的观感。…女子经过一度满足的解欲以后，也往往有如饮酒适如其量后的一种感觉，即相当的醉而不至于迷糊；这种感觉可以维持到好几小时…<br>　　<br>　　假如将迷人的诗意完全荡涤，以毫不掩饰的写实主义表现情欲，会对一般人的道德和审美心理构成考验挑战。试看看《红楼梦》里这一段描述：<br>　　<br>　　那贾琏只离了凤姐，便要寻事，独寝了两夜，十分难熬，只得暂将小厮内清俊的选来出火。（以下写贾琏勾引上了妖调轻狂的淫妇多姑娘儿尽情放荡了几天，后来贾琏和凤姐的女儿病好了，贾琏搬回去住，凤姐让平儿好好检查贾琏的东西，平儿发现了多姑娘儿的一缕青丝，贾琏追逐着平儿要夺回证物，平儿帮贾琏打了掩护，贾琏十分感激，搂着平儿眉开眼笑）贾琏见她娇俏动情，便搂着求欢，平儿夺手跑出来，急的贾琏弯着腰恨道：“死促狹小娼妇儿！一定浪上人的火来，他又跑了。”平儿在窗外笑道：“我浪我的，谁叫你动火？难道图你舒服，叫他知道了，又不待见我呀！”<br>　　<br>　　一般的阅读惯例把这一段看作下流情节，把贾琏看作放纵情欲的堕落贵族。其实贾琏并不算下流，贾琏情欲的强旺也是一个正常青年贵族男子的优质标志。读者如果有平常心的话，可以读读贾母的评论：“什么要紧的事！小孩子们年轻，馋嘴猫儿似的，那里保的住呢？从小儿人人都打这么过。”（第四十四回，P544）<br>　　<br>　　不够知己的读者很少会同时反思自我，想想自己同样也具有相类似的情欲，像上面所引一段，离了身边的女人，就十分难熬，要找替代物来“出火”，找着了一个浪荡的性伙伴，会觉得极度享受。和身边的美人一调情，就会浪出火来。还有，像平儿这样明白事理又品格端正的美人胚子，在日常生活里顺任天性地显现出妩媚娇妙的情态动作，令人触目生春，这是上天赋予女子美感的“浪荡轻佻习性”，是生气盎然的意境，男人见了，情不自禁性起，都是非常符合人性常情的，为什么一定要用高尚的道德去否定我们自己也会这样做的事情呢？——《红楼梦》里这样的情节细节多的是，宝玉看到宝钗浑圆丰腴雪白妩媚的膀子，就想能够摸一摸是多么的惬意，甚至号称最雅洁的出家人妙玉，也免不了有强烈的情欲心魔。<br>　　<br>　　由此可知：我们情不自禁的误读，源于道德化的集体无意识。人类有一个自我束缚的意识形态路径依赖：泛滥的道德化。道德本来是自律的精神心理意识，但是善于制约人们心灵的精神导师，一定会将道德他律化。为了从心理上制裁着普通人，势必将正常的东西曲解，将世俗高尚化，不允许人们自由。只许州官放火，不许百姓点灯。<br>　　<br>　　因此，总之，“情欲”被误读和被曲解成了“爱情”，已经成了文化惯例。在爱情故事里，最具有意识形态强奸意味的是“革命+爱情”的模式，在这类生活形式以至故事里，情欲本质之被误读和被曲解严重到无以复加。例如5、60年代风靡一时的革命爱情小说《青春之歌》，女主人公林道静投海自尽，被北大学生余永泽所救，林后来为余永泽“诗人兼骑士”的风度所迷醉，和余产生了“爱情”而同居。随着林道静和革命知识分子频繁接触，被风起云涌的革命时髦所裹挟，林的灵魂逐渐迷醉于革命加爱情的浪漫主义心魔，开始对身边专心于学术专业的丈夫不满而厌恶起来，和革命党人卢嘉川接触之后，卢对她灌输革命道理，借给她许多革命书籍，两人“畅谈革命，纵论人生”，卢嘉川的气质心性与林道静非常匹配，两个小资产阶级革命知识分子的革命浪漫情愫像野草一样疯长，林渐渐移情别恋，日益鄙视书生余永泽，视之为自私迂腐。由于卢嘉川不能在余家留宿，在外逃亡而被捕，林道静因此将责任归咎于余永泽，最终离开了余。后来林道静再遇到革命者江华，两人一拍即合并“幸福地结合在一起”。<br>　　<br>　　在那个时代里，所有读者并不会将林道静视作出轨、婚外恋或者乱搞男女关系的水性杨花女人，“革命”是最时髦的事情，它本身具有高尚道德和强大的审美功能，凡在革命风暴中作为弄潮儿的年轻人，同时也会在爱情的天平上具有无可阻挡的迷人的性感魅力。有一个革命志同道合的高大尚的理由，下半身的发挥就变得合乎道德且通体舒泰了。可怜余永泽作为正常人的人生行为，就变成了道德卑鄙和落后于时代、不爱国的低级角色。这种情欲观念的异化，成为中国普适的道德和意识形态误读模式，渐渐异化了多数人的文化心理，扭曲了国人的常识和公正意识。随着观念的异化，人们的理智也会丧失掉形式逻辑的监督，只能产生特殊的认同逻辑，和革命的非理性，我们整个时代的不讲理心性就是这样建构起来的。<br>　　<br>　　革命+爱情，青春荷尔蒙的情欲，在高尚名义下，生理行为就升华为激动人心的献身了。一切情欲心理甚至人性心态，无不如此，只要有正当的因果理由说法，合乎时髦，就赋予了世俗生活一种精神价值。这是给自我一个心理解释和慰藉。如果没有这种精神之恋的解释，急吼吼地上床，或者是被强奸，或者是苟且淫荡。“几乎可以说，所有‘真正的’革命者在对待性的态度上，都是杯水主义者。在革命者的眼中，革命才是第一位的，其他的一切，都只能放在次要的位置上。这就注定了，粗鄙的革命者多是无耻之徒。”、“抗战年代，一批青年女学生因为理想的激发，纷纷前往革命圣地延安。结果到延安之后，才发现轰轰烈烈的浪漫革命离她们是那么遥远，她们的主要任务，是和一批大他们不少的大老粗结婚，解决革命者们的性饥渴问题。直到那时她们才知道，革命者们也是有鸡巴的；而凡是带着家伙的，基本都不是传说中那么安生的。”
-　　</p>
-<h2 id="在爱情神话背后的情欲真相"><a href="#在爱情神话背后的情欲真相" class="headerlink" title="在爱情神话背后的情欲真相"></a>在爱情神话背后的情欲真相</h2><p>　　<br>　　从词义学来看，“爱情”单纯从心理角度来表述，是一种喜欢到极致而使当事人神魂颠倒丧失理智的情感。它只表述了“爱”这种“情”致，而有意识地隐藏了“欲望”的内涵。多数人可能没有追究过真实的意义，爱情其实源于“色”的刺激即性感和美感，并融合了双方性情、直觉的投缘与欣赏。很多人在这种短暂时段的情感高潮中，因为沉醉不知归路，而盲目地以为这是我对对方、或双方很纯洁的精神之恋与美好情感的缘分，忽略了下半身的强大主导力。当然，迷情人获得了审美的高峰体验。爱情会使当事人产生自我感动之高尚美好的道德意境，使人堕入迷狂的心理醉状。这种极致陶醉的美感，念念不忘的缠绵之感，无限珍惜欣赏不已的拥有心理，会将对方崇拜为纯洁天使或理想人物，此即“审美心理道德化的爱情”。<br>　　<br>　　而“情欲”这个说法呢？它不仅表述了双方直觉上投缘的情致，也标示真实状况是，下半身欲望的神秘影响力。欲望是什么呢？包括生理上的力比多和向外放射的旺盛的生命力，与性感、美感刺激下渴望与对方发生亲密性关系的人性文化心理希冀。在复杂欲望的引导下，“爱情”并不那么纯洁和高尚，它需要发泄和满足欲望，越是现代人越实际。情欲就是情欲，它尽量不要道德高尚化。不过文化是一种惯性，审美心理道德化是一种集体无意识，在文化无意识的控制下，对爱情神化和对情欲曲解是一体两面的惯例。<br>　　<br>　　关于“欲”字，值得从心理学的角度诠释一下。英国著名的性心理学家霭理士用了两个概念来解释性冲动的本质：积欲和解欲。“积欲在文学上或社会学上我们也叫做求爱；一个男子，因性冲动的力量，而向女子接近，就是求爱。”、“积欲的过程，若从外面来说，是各种官能的印象直接或间接所引起的。官能接受外来的印象，印象造成刺激，刺激唤起反应，反应就是积欲。冒尔所说的厮磨，就是通常一性对于另一性的刺激所造成的一切身心两方面的印象的总和。一个异性的人，最能供给合意的印象的，就是中选的人，这就叫做性选择。”<br>　　<br>　　霭理士很好地解释了一个异性在美感、性感、社会性格等给另一个异性的好印象之刺激，使之产生了合意情欲的“积欲”，当然还结合着他本人内部的性生理和性心理的要求，于是为了解欲，才会去求爱。所以“情欲”二字根本上比“爱情”二字是更科学准确的描述。<br>　　<br>　　在爱情文化惯例里，往往意味着为了对方可以牺牲自我，要完全满足对方的要求，摘星星攀月亮都勉为其难去做到，为了得到对方的欢心，怎么委屈自己都是爱的表示。爱情这种审美心理指导下的讨好情感值得反思。满足了对方的要求才能获得一种爱（亲近）的权利，说到底还是为了满足自我情欲的愿望，无故殷勤背后掩藏着欲望渴求。满足一方的过度要求而牺牲另一方的权利，一方压迫着另一方，蔑视了TA的尊严，这种爱情不平等。你不珍惜我，总有一天我也不会珍惜你。你的爱的任性伤害了我，你的爱是施舍的，当我审美疲劳并满足了情欲之后，厌恶和疏远就会产生。可见单方面殷勤的恋爱是自我想象性情欲的膨胀，是自恋的投射，同时丧失了对对方傲慢、勉强和无理的敏锐认知。讨好意味着他日的遗弃。假如爱情需要道德的话，那么这和自由原理一样：责任和权利对等，忠诚的律令就在其中。—— 在情欲文化里，同样有深刻的政治学内涵。然而，给爱情祛魅，局外人可以，当局者迷其实是一种心理享受。<br>　　<br>　　爱情的审美心理道德化本身具有一种自我解构的危机：越是狂热的爱恋，越是容易消退。所以从心理学的角度认识爱情是最重要的，社会学的解释尚在其次。弗洛伊德说：“他虽然每次总是狂热地爱着一个女子，似乎至死不渝，终生不二，但一生中却总免不了一次次地变换恋人。从其他方面的精神分析中，我们曾发现过这样一个铁定的规律：人的潜意识中对某种独一无二、不能替代的东西的热恋，会表现为一种永无休止的追寻活动。这是因为，替身终归是替身，它永远不能像真身那样满足他的渴求。”<br>　　<br>　　深刻理解弗洛伊德上述论断有助于给爱情祛魅。在爱情中，对于当事人的那个“情”的真实内涵值得分析和弄清楚，这可能是一个母亲或父亲的替代者，可能是一个文学形象或前世美感概念在心中的幻想，即使是一个恋爱者心仪的理想物，只要它一旦现实化，审美距离消失了之后，TA的恋爱狂热就会失望。这个事实告诉我们：人们所爱的具体对象背后应该是一个抽象的爱的理想范型，恰好在某一个一见钟情或者机缘成就的亲近中，让TA的这个理想范型具体化了。一旦这个具体爱人渐渐露出真面目，与TA的爱人范型不吻合了，TA就开始感到陌生和厌恶了。一个人所爱的那个真实的东西是什么，常常经不起拷问。《安娜·卡列尼娜》中的列文新婚后所面对的天使吉提，就是令列文失望的庸俗版本。即使对于安娜和渥伦斯基而言，情欲满足之后，当初双方那种无比迷人的美感，在零审美距离中，全部化为硝烟。<br>　　<br>　　所以，人类高度赞美的“爱情”被误读为高尚纯洁的精神之恋，完全是为了满足审美性心理之陶醉感而已。某些确实净化到只剩下精神之恋的“爱情”，仅仅是现实条件抑制或阻碍了性欲的满足而已，“所谓伊人，在水一方。溯迴从之，道阻且长。”有不少中毒的年青人被道德化的爱情害得失去了享受情欲的能力。“能力”是非常关键的，没有某种能力就没有资格做某类事情，例如没有爱国的能力，就无法理性地爱国；没有享受情欲的能力，就不能健康地进入欢乐的情欲天地。人类美化了几千年的“爱情”如果仅仅只是一个精神之恋的话，那不是实事求是而且会使人在自欺欺人中屡屡受害的。<br>　　<br>　　从“爱情”和“情欲”的关系可以解释一个规律：凡是男女双方激情恋爱期都不要过长，要在双方还处于迷恋阶段内结婚。相处越长，渐入冷静期，慢慢地，双方逐渐消褪掉爱情的迷幻感觉，除了生理上解欲的需求，只剩下了看到对方所有性格缺点的不满。年纪越大，成婚的机率越低，结婚的目的只剩下寻求性欲满足和家庭生活合作的需求。没有了爱欲审美迷幻感，就像做交易一样审视对方，很难找到一个对眼的生活合作者。<br>　　<br>　　荣格说过很重要的话：“身体是一位靠不住的朋友，因为它生产我们不喜欢的东西；关于身体有很多很多的东西是不能被提及的，身体常常是自我这个阴影的化身。”我猜想人类喜欢“爱情”这个说法而不喜欢“情欲”这个概念，就是荣格所指出的原因。假如我坦率地采用一种不加雅化的说法，那么“情欲”的定义完全可以这样来做：情欲是一种生理和心理能量，它强烈地促使双方建立亲密关系，然后去做性欲里想做的任何下流事情，否则则不可以。</p>
-]]></content>
-      <categories>
-        <category>读书札记</category>
-        <category>文摘</category>
-      </categories>
-      <tags>
-        <tag>爱情</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二叉树 110</title>
     <url>/posts/136d/</url>
     <content><![CDATA[<h1 id="二叉树-110"><a href="#二叉树-110" class="headerlink" title="二叉树 110"></a>二叉树 110</h1><p>本文介绍了二叉树的基本概念，然后以C/C++为编程语言，解决了一些实践问题。二叉树具有优雅的递归指针结构，因此他们是学习递归指针算法的好方法。</p>
@@ -5039,7 +5039,7 @@
 <p>第二节。二叉树问题——按难度递增排列的一些实践问题。</p>
 <p>第三节。C/C++解决方案。（我把它合并在了第二节）</p>
 <p>第四节。Java版本（略）。</p>
-<h2 id="Stanford-CS-Education-Library-–-110"><a href="#Stanford-CS-Education-Library-–-110" class="headerlink" title="Stanford CS Education Library – #110"></a>Stanford CS Education Library – #110</h2><p>This is article #110 in the Stanford CS Education Library. This and other free CS materials are available at the library (<a href="http://cslibrary.stanford.edu/">http://cslibrary.stanford.edu/</a>). That people seeking education should have the opportunity to find it. This article may be used, reproduced, excerpted, or sold so long as this paragraph is clearly reproduced. Copyright 2000-2001, Nick Parlante, <a href="mailto:&#110;&#x69;&#x63;&#x6b;&#x2e;&#112;&#97;&#x72;&#x6c;&#x61;&#110;&#x74;&#101;&#64;&#99;&#115;&#46;&#x73;&#x74;&#x61;&#110;&#102;&#x6f;&#x72;&#100;&#x2e;&#x65;&#100;&#x75;">&#110;&#x69;&#x63;&#x6b;&#x2e;&#112;&#97;&#x72;&#x6c;&#x61;&#110;&#x74;&#101;&#64;&#99;&#115;&#46;&#x73;&#x74;&#x61;&#110;&#102;&#x6f;&#x72;&#100;&#x2e;&#x65;&#100;&#x75;</a>.</p>
+<h2 id="Stanford-CS-Education-Library-–-110"><a href="#Stanford-CS-Education-Library-–-110" class="headerlink" title="Stanford CS Education Library – #110"></a>Stanford CS Education Library – #110</h2><p>This is article #110 in the Stanford CS Education Library. This and other free CS materials are available at the library (<a href="http://cslibrary.stanford.edu/">http://cslibrary.stanford.edu/</a>). That people seeking education should have the opportunity to find it. This article may be used, reproduced, excerpted, or sold so long as this paragraph is clearly reproduced. Copyright 2000-2001, Nick Parlante, <a href="mailto:&#110;&#x69;&#99;&#107;&#x2e;&#x70;&#x61;&#x72;&#108;&#x61;&#x6e;&#116;&#101;&#x40;&#99;&#115;&#46;&#x73;&#x74;&#x61;&#110;&#102;&#x6f;&#x72;&#100;&#x2e;&#101;&#x64;&#x75;">&#110;&#x69;&#99;&#107;&#x2e;&#x70;&#x61;&#x72;&#108;&#x61;&#x6e;&#116;&#101;&#x40;&#99;&#115;&#46;&#x73;&#x74;&#x61;&#110;&#102;&#x6f;&#x72;&#100;&#x2e;&#101;&#x64;&#x75;</a>.</p>
 <h2 id="Section-1-–-Introduction-To-Binary-Trees"><a href="#Section-1-–-Introduction-To-Binary-Trees" class="headerlink" title="Section 1 – Introduction To Binary Trees"></a>Section 1 – Introduction To Binary Trees</h2><p>一棵二叉树有许多节点构成，其中每个节点包含一个左指针，一个右指针和一个数据元素。根指针指向树中位置最高的节点。左右指针递归地指向两侧的较小“子树”。空指针表示没有元素的二叉树，即空树。正式的递归定义是：二叉树或是空的（由空指针表示），或是由单个节点组成，其中左右指针皆递归地指向一棵二叉树。</p>
 <p><img data-src="http://cslibrary.stanford.edu/110/binarytree.gif" alt="a drawing of a little binary tree"></p>
 <p>“二叉查找树”或”有序二叉树“是二叉树的一种类型，其中每个节点按如下顺序排列：对于每个节点，其左子树中的所有元素都小于或等于该节点，其右子树中的所有元素都大于该节点。上图展示的就是一棵二叉查找树，根节点是5，其左子树上的节点1 3 4均&lt;=5，其右子树上的节点6 9均&gt;5。递归地，每棵子树也必须满足二分查找树的约束：在1 3 4子树中，3是根，1&lt;=3，4&gt;3。注意这里的准确描述：a “binary search tree” is different from a “binary tree”. 树底部边缘的节点具有空子树，称为叶节点（1 4 6），其他节点为内部节点（3 5 9）。</p>
