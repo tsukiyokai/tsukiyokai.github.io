@@ -213,7 +213,7 @@ body {
 body {
   background: var(--body-bg-color);
   color: var(--text-color);
-  font-family: Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
   line-height: 2;
   min-height: 100%;
@@ -226,7 +226,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 华文中宋, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Serif SC, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -1420,7 +1420,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Long Cang, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Long Cang, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 2em;
   font-weight: normal;
   margin: 0;
@@ -2061,7 +2061,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Noto Serif SC, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans SC, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2254,7 +2254,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Noto Serif SC, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans SC, Noto Sans SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -2445,7 +2445,7 @@ pre code {
   margin-top: 20px;
 }
 .category-all-page .category-list {
-  font-size: 26px;
+  font-size: 30px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2463,8 +2463,8 @@ pre code {
   content: ') ';
 }
 .category-all-page .category-list-child {
-  font-size: 16px;
-  list-style: none;
+  font-size: 15px;
+  list-style: georgian outside url("/non-existent.svg");
   padding-left: 10px;
 }
 .event-list hr {
@@ -2991,7 +2991,6 @@ mjx-container[display="true"] + br {
   position: sticky;
   top: 12px;
   width: 240px;
-  visibility: hidden;
 }
 @media (max-width: 991px) {
   .sidebar {
@@ -3146,7 +3145,7 @@ mjx-container[display="true"] + br {
   }
 }
 body {
-  background: url("/images/bg7.jpeg");
+  background: url("/images/bg1.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
