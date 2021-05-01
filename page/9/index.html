@@ -70,7 +70,7 @@
       <h1 class="site-title">月夜海</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">当空皓月 木已成舟</p>
+      <p class="site-subtitle" itemprop="description">Einmal ist keinmal.</p>
   </div>
 
   <div class="site-nav-right">
@@ -87,8 +87,8 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书架</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书架</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">176</span>
+          <span class="site-state-item-count">180</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -217,6 +217,675 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/f60c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/f60c/" class="post-title-link" itemprop="url">内存管理概论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-17 18:19:00" itemprop="dateCreated datePublished" datetime="2021-03-17T18:19:00+08:00">2021-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/f60c/" class="post-meta-item leancloud_visitors" data-flag-title="内存管理概论" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="11-内存管理概论"><a href="#11-内存管理概论" class="headerlink" title="#11 内存管理概论"></a>#11 内存管理概论</h1><blockquote>
+<p>64KB内存空间即可以满足所有人的内存需要。——比尔·盖茨</p>
+</blockquote>
+<h2 id="11-1-内存管理的现实基础"><a href="#11-1-内存管理的现实基础" class="headerlink" title="11.1 内存管理的现实基础"></a>11.1 内存管理的现实基础</h2><p>程序要运行，必须要加载到内存。因为从外部存储媒介上直接执行指令的做法效率很低，且灵活性很差，因此，人们发明了内存储器来讲需要运行的程序先行加载，再自动执行，从而提高效率和灵活性。</p>
+<p>理想状态下，程序员或用户对内存的要求是：大容量、高速度、持久性。但程序员面临的物理现实却是一个由缓存、主存、磁盘、磁带等组成的复杂内存架构。其中，缓存的特点是低容量、高速度、高价格；主存的特点是中容量、中速度、中价格；磁盘的特点是大容量、低速度、低成本；磁带则更持久、速度更慢、价格更低。</p>
+<p>（内存架构：缓存——主存——磁盘——磁带）</p>
+<p>显然这个架构与程序员对内存的要求相去甚远，要以这个存储架构为基础来提供程序员所需的内存抽象，我们需要一个巧妙的内存管理机制。内存管理机制负责对内存架构进行管理，使得程序在内存架构的任何一个层次上的存放对用户都是一样的。用户无需担心自己的程序是存储在缓存、主存、磁盘还是磁带上，反正运行、计算、输出的结果都一样。内存管理实现这种媒介透明的手段就是虚拟内存。虚拟内存就是操作系统提供的一种抽象。</p>
+<h2 id="11-2-内存管理的目标"><a href="#11-2-内存管理的目标" class="headerlink" title="11.2 内存管理的目标"></a>11.2 内存管理的目标</h2><ol>
+<li>地址保护：一个程序不能访问另一个程序的地址空间。</li>
+<li>地址独立：程序指令执行的过程是先将程序指令加载到内存，然后一条条指令读出并执行。每条指令执行时需要读取操作数和写入运算结果，要读取操作数，就需要给出操作数所在的内存地址，这个地址不能是物理地址，因为无法事先确定程序将在何种机器上运行，操作系统自然不可能发出对应于某台机器的物理内存地址。因此指令里的地址是程序空间的虚拟地址（即虚拟空间的程序地址）。也即程序发出的地址与具体机器的物理主存地址无关，彼此是独立的。</li>
+</ol>
+<h2 id="11-3-虚拟内存的概念"><a href="#11-3-虚拟内存的概念" class="headerlink" title="11.3 虚拟内存的概念"></a>11.3 虚拟内存的概念</h2><p>虚拟内存是计算机系统内存管理的一种技术。它使得应用程序认为它拥有连续可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时才进行数据交换。</p>
+<h2 id="11-4-操作系统在内存中的位置"><a href="#11-4-操作系统在内存中的位置" class="headerlink" title="11.4 操作系统在内存中的位置"></a>11.4 操作系统在内存中的位置</h2><p>操作系统是为用户提供服务的，在逻辑上处于用户程序之下。将其置于地址空间的下面，符合人们的惯性思维。另外，操作系统处于地址空间下面还有另外一个实际好处：就是在程序执行复位、中断、陷入等操作时，控制移交给操作系统更方便，因为这种构造下的操作系统的起始地址为0，无须另行记录操作系统所处的位置，PC清零就可以了。清零操作对硬件来说非常简单，不需要从总线或寄存器读取任何数据。</p>
+<h2 id="11-5-单道编程的内存管理"><a href="#11-5-单道编程的内存管理" class="headerlink" title="11.5 单道编程的内存管理"></a>11.5 单道编程的内存管理</h2><ul>
+<li>固定加载地址的内存管理</li>
+</ul>
+<h2 id="11-6-多道编程的内存管理"><a href="#11-6-多道编程的内存管理" class="headerlink" title="11.6 多道编程的内存管理"></a>11.6 多道编程的内存管理</h2><ul>
+<li>固定分区的内存管理</li>
+<li>非固定分区的内存管理</li>
+<li>交换内存管理</li>
+</ul>
+<h2 id="11-7-闲置空间管理"><a href="#11-7-闲置空间管理" class="headerlink" title="11.7 闲置空间管理"></a>11.7 闲置空间管理</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/6ee0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/6ee0/" class="post-title-link" itemprop="url">死锁</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-17 18:12:00" itemprop="dateCreated datePublished" datetime="2021-03-17T18:12:00+08:00">2021-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/6ee0/" class="post-meta-item leancloud_visitors" data-flag-title="死锁" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="09-死锁"><a href="#09-死锁" class="headerlink" title="#09 死锁"></a>#09 死锁</h1><blockquote>
+<p>A set of blocked processes each holding a resource and waiting to acquire a resource held by another process in the set.</p>
+</blockquote>
+<p>死锁的发生，归根结底是因为对资源的竞争。</p>
+<p>这里所说的资源就是一个程序工作时需要的东西。资源既可以是硬件，如CPU、内存、磁盘，也可以是软件，如锁、信号量。根据资源是否可以抢占分为可抢占资源和不可抢占资源。可抢占资源是可以从持有者手中强行抢夺过来的资源，且不会发生系统运行紊乱；不可抢占资源则不能从持有者手中强行抢夺，如果强行抢夺将造成系统运行错误。</p>
+<p>当然，从绝对概念上说，没有什么资源是不可抢占的。因此不可抢占只不过是相对意义上的概念，目标是保证每个程序都能正确运行。如果抢占一个线程所持的资源后，还能找到某种方式让该程序正确运行下去，则该资源就是可抢占的；否则就是不可抢占的。例如，CPU是可抢占资源，打印机，刻录机是不可抢占资源。</p>
+<h2 id="9-2-死锁的描述"><a href="#9-2-死锁的描述" class="headerlink" title="9.2 死锁的描述"></a>9.2 死锁的描述</h2><p>线程的执行需要资源，他们都要求以某种顺序来使用资源：</p>
+<ol>
+<li>请求资源</li>
+<li>使用资源</li>
+<li>释放资源</li>
+</ol>
+<p>如果请求被拒绝了或者没有批准，那就等待。这种等待有两种应对方式：一是阻塞等待；二是立即返回，执行别的事情，等以后再请求。也可以失败退出，终止线程。立即返回没有等待，因此也没有死锁，而阻塞等待就一定有可能发生死锁。如果每个线程都在等待某个资源，则没有任何线程可以推进，从而形成死锁。</p>
+<p>到现在可以给死锁下一个正式定义：</p>
+<blockquote>
+<p>如果有一组线程，每个线程都在等待一个事件的发生，而这个事件只能由该组线程里面的另一线程发出，则称这组线程发生了死锁。</p>
+</blockquote>
+<p>这里的事件通常是资源的释放。死锁状态中，没有线程可以被执行，释放资源或被叫醒。其实对于一般发生死锁的代码，发生死锁的可能性远低于不发生死锁的可能。但是在讨论死锁问题时，我们关注的是死锁的可能，而不是死锁的概率。</p>
+<h2 id="9-3-死锁的四个必要条件"><a href="#9-3-死锁的四个必要条件" class="headerlink" title="9.3 死锁的四个必要条件"></a>9.3 死锁的四个必要条件</h2><ol>
+<li>资源独占。也称为资源互斥条件，即资源不能共享，在一个时候只能由一个线程使用，它和资源有限是等价的。</li>
+<li>持有等待。即一个线程在请求新的资源时，其已经获得的资源并没有释放，而是继续持有。如果每个线程在请求资源时都没有持有任何资源，自然也不会阻碍到别的线程运行。</li>
+<li>不能抢占。由此可以推断出，凡是可以抢占的资源，均不会成为死锁的原因。</li>
+<li>循环等待。这时死锁的最后一个条件，你等我，我等你，就产生了死锁。如果此时画出资源占用和请求图，会出现一个回路。</li>
+</ol>
+<h2 id="9-4-哲学家就餐问题"><a href="#9-4-哲学家就餐问题" class="headerlink" title="9.4 哲学家就餐问题"></a>9.4 哲学家就餐问题</h2><p>哲学家每天只做两件事情：思考和吃饭。吃饭的规矩是：哲学家围坐于圆桌边，每个人的左右手两边都放着一根筷子。如果要吃饭，就需要获得左右两边的筷子（不能用一根筷子吃饭）。</p>
+<p>我们可以很自然地得到一个算法，对于每一个哲学家，运行下面的算法：</p>
+<ol>
+<li>等待左边的筷子可用，就拿起左边的筷子。</li>
+<li>等待右边的筷子可用，就拿起右边的筷子。</li>
+<li>吃饭。</li>
+<li>放下两根筷子。</li>
+</ol>
+<p>显然，如果每个哲学家严格交叉执行，将出现所有哲学家都拿着左边的筷子，都等待右边的筷子，死锁发生。接下来就该讨论死锁的应对。</p>
+<h2 id="9-5-死锁的应对"><a href="#9-5-死锁的应对" class="headerlink" title="9.5 死锁的应对"></a>9.5 死锁的应对</h2><p>死锁的应对，从较高的境界来看，有两种策略：</p>
+<ul>
+<li>允许死锁发生</li>
+<li>不允许死锁发生</li>
+</ul>
+<p>每个策略又有两个子策略。对于第一种策略，其子策略为：</p>
+<ol>
+<li>假装没看见死锁，不予理睬。</li>
+<li>死锁发生后，想办法予以解决。</li>
+</ol>
+<p>对于第二种策略，其子策略为：</p>
+<ol>
+<li>通过仔细检查，避免难题出现。</li>
+<li>将发生死锁的必要条件消除，杜绝死锁的发生。</li>
+</ol>
+<p>操作系统应对死锁的策略与人类应对难题的策略一样，也是两大类，四小种。下面将分别予以论述。</p>
+<h3 id="9-5-1-无为而治：允许死锁，不予理睬"><a href="#9-5-1-无为而治：允许死锁，不予理睬" class="headerlink" title="9.5.1 无为而治：允许死锁，不予理睬"></a>9.5.1 无为而治：允许死锁，不予理睬</h3><p>防止死锁往往比重启100次代价还高，因此对于普通的操作系统，与其花费大量精力防止死锁，不如直接重启。这是商业操作系统的常见思想。</p>
+<h3 id="9-5-2-后发制人：允许死锁，予以修复"><a href="#9-5-2-后发制人：允许死锁，予以修复" class="headerlink" title="9.5.2 后发制人：允许死锁，予以修复"></a>9.5.2 后发制人：允许死锁，予以修复</h3><p>对于高可靠性系统、实时控制系统，绝对不允许死锁发生。</p>
+<ol>
+<li><p>检测死锁。如果想纠正死锁，自然要先知道是否已经死锁了。死锁的原因是资源竞争，只要对系统中的资源拥有情况和资源请求情况进行分析，就可以得知是否发生死锁。死锁的一个特点是资源关系图中包含一个回路，但是判断一个有向图是否含有回路并不是一件容易的事。这种检查算法的时间复杂度是$n^3$。为了操作系统的效率，我们不会直接在图上进行操作。一种效率较高的做法是利用矩阵，这种做法需要维护两个矩阵：资源分配矩阵和资源请求矩阵。</p>
+</li>
+<li><p>从死锁恢复。检测到死锁发生后，有几种方法可以从死锁状态恢复。首先可以抢占，即将某个线程所占的资源强行拿走，分配给别的线程。当然，被抢占的线程很可能会不能正确运行，然而这就是纠正死锁的代价。另一个选择是更进一步，不只是抢占某个线程的资源，而是杀掉整个线程。最后一个方法是上翻（rollback），即将整个系统翻转到过去的某个状态。</p>
+</li>
+</ol>
+<p>先礼后兵、后发制人的方法实际上根本行不通。检测与恢复两个部分都存在巨大困难。因此只能走另一条路，即不让死锁发生。死锁一旦发生就不予理睬，不要试图检测和修复死锁。</p>
+<h3 id="9-5-3-先发制人：不允许死锁，动态避免"><a href="#9-5-3-先发制人：不允许死锁，动态避免" class="headerlink" title="9.5.3 先发制人：不允许死锁，动态避免"></a>9.5.3 先发制人：不允许死锁，动态避免</h3><p>动态避免的原则：在每次进行资源分配时，必须经过仔细计算，确保该资源请求批准后系统不会进入死锁或潜在的死锁状态。潜在的死锁状态指的是尚未发生死锁，但接下来的执行将一定产生死锁，这种状态又称为不安全状态，与之相对的状态称为安全状态。</p>
+<p>具体来说，安全状态是指从该状态开始，我们能够找到一种资源分配方法和顺序，使得所有线程都能够获得其需要的资源，从而不会产生死锁。而不安全状态则是从该状态开始，无论无何也不能找到一种资源分配方法和顺序来满足所有线程的资源需求。</p>
+<p>定义了安全状态后，死锁的动态避免策略就很简单了，就是要防止系统进入不安全状态。缺点是无法准确计算将来的最大资源需求。因此第三种方法也将被抛弃。</p>
+<h3 id="9-5-4-斩草除根：不允许死锁，静态防止"><a href="#9-5-4-斩草除根：不允许死锁，静态防止" class="headerlink" title="9.5.4 斩草除根：不允许死锁，静态防止"></a>9.5.4 斩草除根：不允许死锁，静态防止</h3><blockquote>
+<p>上兵伐谋，其次伐交，再下攻城。——孙子</p>
+</blockquote>
+<p>死锁的检测与修复只不过是攻城的下策，死锁的动态避免只能算其次伐交的中策，而死锁的静态防止才是上策。这个策略的中心思想是清除死锁发生的土壤，而死锁发生的土壤就是死锁的4个必要条件。只要消除4个必要条件中的任意一个，死锁就无法发生。接下来将讨论如何消除这些必要条件。</p>
+<h2 id="9-6-死锁的4个必要条件的消除"><a href="#9-6-死锁的4个必要条件的消除" class="headerlink" title="9.6 死锁的4个必要条件的消除"></a>9.6 死锁的4个必要条件的消除</h2><ol>
+<li><p>消除资源独占：将资源无限增加或把所有资源变为共享。</p>
+</li>
+<li><p>消除持有等待：一个线程必须一次请求其所需要的所有资源，而不是一般情况下的请求一点资源，做一点事情，到需要下一个资源的时候再请求一点，获得资源后再继续进行推进。这样就不需要持有一些资源，等待另一些资源。但是这样太过浪费，而且很难一开始就知道一个线程所需要的所有资源。</p>
+<p>一种变通的办法是还像以前那样请求资源，但是如果请求的资源被拒绝，就释放原本已经拥有的所有资源。如此，阻塞的线程不占用任何资源，死锁也就不会发生。然而这种做法容易因为一点小的失败就前功尽弃，造成浪费。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">阶段1.</span><br><span class="line">while(notdone)&#123;</span><br><span class="line">	tryacquiresomeresource;</span><br><span class="line">if(acquisitionfails)</span><br><span class="line">	releaseallresourcecurrentlyheld;</span><br><span class="line">elsework;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">阶段2.</span><br><span class="line">releaseallresources;</span><br></pre></td></tr></table></figure></li>
+<li><p>消除不能抢占：允许从一个线程手上将资源抢夺过来。典型的例子有CPU和内存空间。该方法也有局限性，并不是所有资源都可以不付出代价而抢占，例如锁就不能被抢占，如果从一个线程手上将锁抢过来，后果有可能是不堪设想的。</p>
+</li>
+<li><p>消除循环等待：出现循环等待是因为线程请求资源的顺序是随机的，如果规定对资源的请求必须有序进行，则死锁不会发生。典型的例子是锁。如果两个线程需要同时使用两把锁，若它们按照顺序进行请求，则死锁得以避免。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">线程A</span><br><span class="line">lock(x);</span><br><span class="line">lock(y);</span><br><span class="line">...</span><br><span class="line">unlock(y);</span><br><span class="line">unlock(x);</span><br><span class="line">————————————————————</span><br><span class="line">线程B</span><br><span class="line">lock(x);</span><br><span class="line">lock(y);</span><br><span class="line">...</span><br><span class="line">unlock(y);</span><br><span class="line">unlock(x);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="9-7-银行家算法：冒险的代价"><a href="#9-7-银行家算法：冒险的代价" class="headerlink" title="9.7 银行家算法：冒险的代价"></a>9.7 银行家算法：冒险的代价</h2><p>银行家算法是仿照银行发放贷款时采取的控制方式而设计的一种死锁避免算法。该算法的策略是动态避免死锁，通过对资源的仔细分配以避免死锁。其特点是可以超额批准客户的信用额度，即所有客户的信用额度之和可以超过银行的全部资本，这就是杠杆。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8e49/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/8e49/" class="post-title-link" itemprop="url">线程同步</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-17 18:11:00" itemprop="dateCreated datePublished" datetime="2021-03-17T18:11:00+08:00">2021-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/8e49/" class="post-meta-item leancloud_visitors" data-flag-title="线程同步" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="08-线程同步"><a href="#08-线程同步" class="headerlink" title="#08 线程同步"></a>#08 线程同步</h1><p>在战场上，友军之间的同步对战争的胜利至关重要。在计算机里，线程之间的同步对程序的正确运行也至关重要。</p>
+<h2 id="8-1-为什么要同步"><a href="#8-1-为什么要同步" class="headerlink" title="8.1 为什么要同步"></a>8.1 为什么要同步</h2><p>线程这一概念被引入操作系统的同时，也引发了一个巨大的问题，即多线程程序的执行：由于线程之间的相对执行顺序是不确定的，因此执行结果也可能是不确定的。线程同步的目的就是消除执行结果的这种不确定性。</p>
+<h2 id="8-2-线程同步的目的"><a href="#8-2-线程同步的目的" class="headerlink" title="8.2 线程同步的目的"></a>8.2 线程同步的目的</h2><p>线程同步的具体目的是，不管线程之间如何穿插执行，其运行结果都是正确的、可预测的。并且在保证运行结果正确的条件下对线程执行的限制越少越好。</p>
+<p>多线程的执行，除了结果是不确定的之外，其效率也是不确定的。如果我们想使其变得确定，就需要进行线程同步。同步就是让所有线程按照一定的规则执行，使其正确性和效率有迹可循。线程同步的手段就是对线程之间的穿插进行控制。</p>
+<h2 id="8-3-锁的进化：金鱼问题"><a href="#8-3-锁的进化：金鱼问题" class="headerlink" title="8.3 锁的进化：金鱼问题"></a>8.3 锁的进化：金鱼问题</h2><h3 id="8-3-1-氨基酸阶段-无同步"><a href="#8-3-1-氨基酸阶段-无同步" class="headerlink" title="8.3.1 氨基酸阶段-无同步"></a>8.3.1 氨基酸阶段-无同步</h3><p>金鱼没有饱腹的感觉，不会因为吃饱了就停止。只要浴缸中还有食物，金鱼就会不停进食直至胀死。因此，金鱼的死活由投食者控制。</p>
+<p>假定甲和乙两人合住，共同喂养一条金鱼，该金鱼每日进食一次。如果一天内两人都喂了鱼，金鱼胀死；如果一天内两人都没有喂鱼，金鱼饿死。</p>
+<p>现约定如下：</p>
+<ol>
+<li>每天喂鱼一次，且仅一次。</li>
+<li>如果今天甲已喂鱼，则乙不能再喂。反之亦然。</li>
+<li>如果今天甲未喂鱼，则乙必须喂鱼。反之亦然。</li>
+</ol>
+<p>最简单的情况是甲乙两人不进行任何沟通。为了保证鱼的存活，分别应该执行如下程序：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="keyword">if</span>(noFeed)&#123;</span><br><span class="line"><span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="keyword">if</span>(noFeed)&#123;</span><br><span class="line"><span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述程序可以正确保证鱼的存活吗？答案是否定的。由于线程的执行可以任意穿插，甲可以先检查金鱼，发现没有喂，于是准备喂鱼。但就在甲准备喂但尚未喂的时候，发生了某件事情使得程序切换，轮到乙执行。乙发现此时鱼还没有被喂（事实上也确实如此），于是乙就喂鱼。此后程序重新切回甲，因为甲已经检查过了金鱼的状态（没喂），所以甲从检查之后的指令开始执行，也喂鱼。这样鱼就先后被喂了两次，金鱼胀死。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检查金鱼（没喂）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查金鱼（没喂）</td>
+</tr>
+<tr>
+<td>喂鱼</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>喂鱼</td>
+</tr>
+</tbody></table>
+<p>为什么会发生金鱼胀死的情况？原因在于甲乙同时执行了同一段代码。两个或多个线程争相执行同一段代码或访问同一资源的现象称为竞争。可能造成竞争的共享代码段或资源称为临界区。当然，单核情况下两个线程不可能真的在同一时刻执行，但可能同一时刻两个线程都在同一段代码上，者这个例子里竞争的就是代码，称为代码竞争。如果两个线程同时访问同一个数据就叫做数据竞争。</p>
+<p>以人类进化来比喻，上面的代码段只相当于氨基酸阶段，竞争杂乱而无序，不具备任何协调能力。</p>
+<h3 id="8-3-2-草履虫阶段-第一类同步"><a href="#8-3-2-草履虫阶段-第一类同步" class="headerlink" title="8.3.2 草履虫阶段-第一类同步"></a>8.3.2 草履虫阶段-第一类同步</h3><p>要防止鱼胀死，就要防止竞争。要避免竞争，就要防止两个或多个线程同时进入临界区。这需要某种协调手段。</p>
+<p>协调的目的是保证任何时刻都只能有一个人再临界区，称为互斥。互斥意思就是一次只能有一个人使用共享资源，其他人皆排除在外，且互斥不能违反前面给出的进程模型。因此，正确互斥需要满足4个条件。</p>
+<ol>
+<li>不能有两个进程同时在临界区里面。</li>
+<li>进程能够在任何数量和速度的CPU上正确执行。</li>
+<li>在互斥区域外不能阻止另一个进程的运行。</li>
+<li>进程不能无限制地等待进入临界区。</li>
+</ol>
+<p>如果任何一个条件不满足，那么设计的互斥就是不正确的。</p>
+<p>如何确保一次只有一个人在临界区？答案是让两个线程协调。最简单的协调是让甲乙直接交谈，但两人未必有时间碰面。那么剩下的办法是留字条。这就是第一种同步方式：甲乙约定，在喂鱼之前应该留下字条，告诉对方自己将检查鱼缸并在需要时喂鱼。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="keyword">if</span>(noNote)&#123;</span><br><span class="line"><span class="built_in">leaveNote</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNote</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="keyword">if</span>(noNote)&#123;</span><br><span class="line"><span class="built_in">leaveNote</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNote</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述机制可以正确保证鱼的存活吗？答案仍然是否定的。如果甲乙交叉执行上述程序，还是会造成鱼的胀死。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检查字条（无字条）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查字条（无字条）</td>
+</tr>
+<tr>
+<td>留下字条</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>留下字条</td>
+</tr>
+<tr>
+<td>检查金鱼（没喂）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查金鱼（没喂）</td>
+</tr>
+<tr>
+<td>喂鱼</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>喂鱼</td>
+</tr>
+</tbody></table>
+<p>为什么没起到作用呢？这是因为虽然使用了互斥手段，但并没有达成互斥的目的，留字条依然没有阻止甲乙同时进入临界区。虽然结果失败了，但这个机制与第一个解决方案相比的确有所改善，金鱼胀死的几率大大降低，只有在甲乙严格交叉执行的情况下才可能发生胀死。</p>
+<h3 id="8-3-3-鱼阶段-第二类同步"><a href="#8-3-3-鱼阶段-第二类同步" class="headerlink" title="8.3.3 鱼阶段-第二类同步"></a>8.3.3 鱼阶段-第二类同步</h3><p>分析上面程序发现，失败原因是检查字条和留下字条两个动作之间存在一个空隙。我们可以改变一下顺序，先留字条，再检查有没有对方的字条。如果没有对方的字条，就喂鱼，喂完把自己的字条拿掉。这种方法需要区分字条是谁留下的。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">leaveNoteA</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteB)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteA</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">leaveNoteB</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteA)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteB</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种方法能否保证鱼存活？可以。因为无论按照什么顺序穿插，总有某个人的留字条指令在另一个人的检查字条指令前面执行，从而防止两个人同时进入临界区。所以鱼不会因为两个人重复投食而胀死。</p>
+<p>但我们还是要检验此机制在极限交叉执行情况下的表现。</p>
+<p>事件时序表</p>
+<table>
+<thead>
+<tr>
+<th>甲</th>
+<th>乙</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>留字条-乙</td>
+</tr>
+<tr>
+<td>留字条-甲</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>检查字条-甲（有）</td>
+</tr>
+<tr>
+<td>检查字条-乙（有）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>丢弃字条-乙</td>
+</tr>
+<tr>
+<td>丢弃字条-甲</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>由于严格交叉执行，两人在检查字条时，都看到了对方留下字条，于是都选择不喂鱼。金鱼饿死。</p>
+<p>由于存在饿死的可能，这个程序似乎没有被改善。但实际上，与胀死相比，饿死的确是一种改善。对于计算机系统，饿死好于胀死。胀死情况下程序的运行极有可能出错（几个线程同时获得同一资源，结果出现不一致性和不确定性几乎是难以避免的）。饿死情况下所有人都拿不到某个资源，线程处于饥饿状态，一般会停止推进，这不一定会产生严重错误，只是延迟了正确结果的出现。</p>
+<p>虽然饿死比起胀死已经是一种进化，但同步机制仍需继续进化。</p>
+<h3 id="9-3-4-猴阶段-第三类同步"><a href="#9-3-4-猴阶段-第三类同步" class="headerlink" title="9.3.4 猴阶段-第三类同步"></a>9.3.4 猴阶段-第三类同步</h3><p>上述机制的互斥，保证了没有两个人同时进入临界区，但没有保证必须有一个人进入临界区喂鱼。换句话说，互斥过头了。</p>
+<p>解决办法就是让某个人等着，直到确认有人喂了鱼才离开，不要只看到对方字条就走人。于是得到第三类同步方式。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">leaveNoteA</span>();</span><br><span class="line"><span class="keyword">while</span>(noteB)&#123;</span><br><span class="line">donothing;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">removeNoteA</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">leaveNoteB</span>();</span><br><span class="line"><span class="keyword">if</span>(noNoteA)&#123;</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">removeNoteB</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种机制下，鱼显然不会胀死。并且鱼不会饿死，因为鱼饿死的唯一条件是两个人同时留纸条并离开。而本程序在两个人都留了纸条的情况下，甲不会走人，而是一直等到乙删除自己纸条后，金鱼再被重新检查。这种同步方式既避免了胀死又防止了饿死。</p>
+<p>一切似乎大功告成，但程序仍有进步空间。</p>
+<h3 id="8-3-5-人阶段（锁）"><a href="#8-3-5-人阶段（锁）" class="headerlink" title="8.3.5 人阶段（锁）"></a>8.3.5 人阶段（锁）</h3><p>上述同步机制存在一些问题。</p>
+<ol>
+<li>不对称。程序因不对称而不美观。其次，不对称造成程序编写困难。为了追求程序的正确性，即使是做同样操作的线程也得以不同样式编写，自然增加了编程难度。最后不对称还造成程序证明的困难，想要从理论上证明不对称程序的正确性是十分复杂的。</li>
+</ol>
+<blockquote>
+<p>程序就像蓝色的诗歌。——DonaldKnuth</p>
+</blockquote>
+<ol start="2">
+<li>浪费。甲执行的循环等待是一件很大的浪费。但浪费不是循环等待的唯一问题，它可能造成CPU调度的优先级倒挂。优先级倒挂就是高优先级线程等待低优先级线程。假设甲的优先级比乙高，甲获得CPU，留下字条，进入循环等待，而乙无法获得CPU完成后续工作，造成甲始终处于循环等待阶段无法推进。这样，优先级高的甲就被优先级低的乙所阻塞。优先级倒挂完全违反了设立优先级的初衷，因而无法忍受。</li>
+</ol>
+<p>欲进一步改善同步方案，首先要先确定在哪一个方案的基础上改进。第三类同步看似最为合适，无非就是不美观和循环等待，然而实际上这两点都是无法改进的：我们既无法强行使其变得对称，也不能去掉甲的循环等待。由此可见，这种零敲碎打式的推进模式已经走到了尽头，需要新的修改思路。新的思路就是直接对前两类方案进行修改。</p>
+<p>第一类方案完全对称，第二类方案不完全对称，因为每个人的字条不同。我们选择第一类作为修改的基础。首先，应该回顾其当初不满足需求的原因。</p>
+<p>为什么第一类同步没起到作用呢？这是因为检查字条和留字条是两个分离的步骤，虽然使用了互斥手段，但未能达到互斥的目的，没有阻止甲乙同时进入临界区。显然现在的思路就是：使这两个步骤并为一个步骤，或者变成一个原子操作，使其中间不留空隙。这样问题就迎刃而解。</p>
+<p>换句话说，我们之所以到现在还没有解决掉金鱼问题，是因为我们始终在非常低的层次上徘徊。我们试图工作的层面是鱼和鱼缸，我们仅仅在指令层上努力，由于我们所控制的单元是一条条指令，因此对指令之间的空袭无能为力。解决这种问题的办法就是提高抽象的层次，将我们控制的层面上升到对一组指令的控制。</p>
+<p>金鱼问题中，若我们将抽象层次从保护鱼和鱼缸的层次提高至保护放置鱼缸的房间的层次，这个问题将得以解决。也就是设计一种同步措施，使得在任何时候只能一个人进入房间，这样检查字条和留字条的两个步骤就变成给房间上锁的一步操作。</p>
+<p>如果两个教师想使用同一间教室给学生上课（竞争），该如何协调？只要先到的教师进入教室后将门锁上，后来的教师就无法进入教室了。锁就是用来保证互斥的。操作系统中，将可以保证互斥的同步机制称为锁。</p>
+<p>有了锁，金鱼问题就可以解决。当一个人进屋准备喂鱼，就把放有鱼缸的房间上锁，如此做另外一个人就进不来，自然无法喂鱼。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//甲</span></span><br><span class="line"><span class="built_in">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//乙</span></span><br><span class="line"><span class="built_in">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(noFeed)<span class="built_in">feedFish</span>();</span><br><span class="line"><span class="built_in">unlock</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这种同步机制的代码完美地确保了金鱼既不会饿死也不会胀死，更重要的是，两人执行完全相同地代码，程序逻辑对称，格式美观，编写方便，证明简单。金鱼问题到此迎刃而解。</p>
+<p><strong>锁的基本操作</strong></p>
+<ul>
+<li>闭锁（上锁）</li>
+<li>开锁（解锁）</li>
+</ul>
+<p>开锁只有一步，即打开锁。闭锁有两个步骤：1.等待锁达到打开状态。2.获得锁并锁上。显然，闭锁的两个步骤应当是原子操作，原子操作就是不能分开的操作。如果允许两个操作分开，就会留下允许穿插的空袭，导致锁失效。</p>
+<p>实际上，第一类同步方案里面的字条从某种意义上来说就是一把锁，只是这把锁没能锁住资源。因为这把锁还不具备一把合格锁所应具备的特性：</p>
+<ol>
+<li>锁的初始状态必须是打开状态。</li>
+<li>进入临界区前必须获得锁。</li>
+<li>离开临界区时必须打开锁。</li>
+<li>如果别人持有锁，必须等待。</li>
+</ol>
+<p>第一类同步中的留字条方法违反了第四个原则，在别人持有锁（准备留下字条）的情况下依旧进入临界区。字条无法起到锁的作用，即是一把破锁。</p>
+<p>这个程序还有什么缺点？如果甲正在喂鱼，乙在门外什么也不能干，只能等待锁变为打开状态。如果甲喂鱼花费时间很久，乙等待的时间就会很漫长。这种繁忙等待不仅将造成浪费，而且将降低系统效率。因为锁的特性之一就是必须在别人持有锁时等待，因此我们无法消除这种等待，但可以减少等待的时间。那就是把喂鱼的操作放在锁的外面。这样可以使锁上的繁忙等待时间减少。但终究还是要等待的，如果想要不进行任何等待，这需要引入睡觉与叫醒。</p>
+<h2 id="8-4-睡觉与叫醒：生产者与消费者问题"><a href="#8-4-睡觉与叫醒：生产者与消费者问题" class="headerlink" title="8.4 睡觉与叫醒：生产者与消费者问题"></a>8.4 睡觉与叫醒：生产者与消费者问题</h2><p>睡觉与叫醒就是，如果对方持有锁，你就不需要等待锁变成打开状态，而是去睡觉，等锁打开后对方再来把你叫醒。</p>
+<p>在生产者-中介机构-消费者这个模式里，中介机构的存在使得生产者和消费者能够相对独立地运行，不必亦步亦趋地跟在另一方后面。只要超市（中介机构）货架没满，生产者就可以一直生产，不用等消费者订一件才做一件。生产者与消费者直接对接的这种原始模式在资源分配方面效率十分低下。</p>
+<p>在操作系统中可以这样类比：一个进程代表生产者，一个进程代表消费者，一片内存缓冲区代表商店。生产者生产的物品从一端放入缓冲区，消费者从缓冲区的另一端获取物品。</p>
+<p>以校园中的自动售货机为例。售货机是缓冲区，送货员是生产者，学生是消费者。只要售货机既不空也不满，送货员和学生就可以一直进行生产和消费。如果学生来买饮料时发现售货机空了，可以有两个选择：在售货机前面等待，直到送货员来送货。或者转身回宿舍睡觉，等送货员来把学生叫醒。同理，如果送货员送货时发现售货机已满，也有两种选择：在售货机前原地等待，直到有学生来买走一些东西，然后将售货机填满。或者回家睡觉，等有学生买走一些东西后再来补货，学生买走商品后需要叫醒送货员。</p>
+<p>下面程序中的sleep和wakeup就是操作系统里的睡觉和叫醒原语。一个程序调用sleep后将进入休眠状态，释放其占用的CPU。一个执行wakeup的程序将发送一个信号给指定的接收进程，如wakeup(producer)就发送一个信号给生产者。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">#defineN100<span class="comment">//定义缓冲区的大小</span></span><br><span class="line">intcount=<span class="number">0</span>;<span class="comment">//定义当前缓冲区里的商品数，初始化为0</span></span><br><span class="line"></span><br><span class="line">voidproducer(<span class="keyword">void</span>)&#123;<span class="comment">//生产者程序</span></span><br><span class="line">intitem;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">item=producer_item();<span class="comment">//生产一件商品</span></span><br><span class="line"><span class="keyword">if</span>(count==N)sleep();<span class="comment">//如果缓冲区满，则睡眠</span></span><br><span class="line">insert_item(item);<span class="comment">//如果缓冲区未满，则将商品放入缓冲区</span></span><br><span class="line">count++;<span class="comment">//商品放入后计数加1</span></span><br><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)wakeup(consumer);<span class="comment">//如果刚好剩1件则说明此前为空，可能有消费者见到空缓冲区而去睡觉，唤醒消费者</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">voidconsumer(<span class="keyword">void</span>)&#123;<span class="comment">//消费者程序</span></span><br><span class="line">intitem;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(count==<span class="number">0</span>)sleep();<span class="comment">//检查当前商品计数，如果为0，没有商品，就去睡觉</span></span><br><span class="line">item=remove_item();<span class="comment">//缓冲区非空，则从中拿走一件商品</span></span><br><span class="line">count--;<span class="comment">//拿走商品后计数器减1</span></span><br><span class="line"><span class="keyword">if</span>(count==N<span class="number">-1</span>)wakeup(producer);<span class="comment">//如果刚好剩N-1件，可能有生产者因见到缓冲区满而去睡觉，唤醒生产者</span></span><br><span class="line">consumer_item(item);<span class="comment">//尽情享用商品</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序存在两个问题。</p>
+<ol>
+<li>错误唤醒。假如cnt此时为1，生产者先运行，对cnt加1后变成2，接下来准备判断cnt是否为1（不等于）。就在尚未判断的此刻，CPU被消费者获得，随后对cnt减1变回1，这时再切换回生产者，cnt==1成立，于是顺其自然地就向消费者发送了叫醒信号——实际上该信号本不应发出。</li>
+<li>死锁。死锁是生产者和消费者都无法向前推进的情况。举例说明一下，假如cnt此时为初始值0，消费者先来，于是去睡觉，但是在cnt==1之后和sleep之前CPU发生切换，生产者开始运行，他生产一件商品，cnt加1后变为1，刚好满足唤醒消费者的条件。但消费者此时处于sleep之前，准备要睡但还没有睡觉，于是这个唤醒信号无事发生，浪费了。生产者此后继续运行直到缓冲区满后也去睡觉，然后CPU交给消费者，消费者执行的第一条指令就是完成刚才准备要做的sleep动作。至此，生产者和消费者都进入睡觉状态，不能唤醒对方而无法向前推进，系统发生了死锁。</li>
+</ol>
+<p>对于第一个问题，解决方案是加上锁。在进行对cnt的操作前后分别加上开锁和闭锁即可防止生产者和消费者同时访问cnt的情况出现。虽然一旦引入锁就必然伴随着等待，但实际上我们并非一刻也不愿等待，只是不愿意等太久。cnt的访问前后加上锁所造成的繁忙等待时间是很短的，完全可以接收。</p>
+<p>对于第二个问题，解决方案是不让二者同时睡觉。首先反思造成双方同时睡觉的原因是什么？原因正是生产者发出的叫醒信号丢失（此时对方并没有睡觉因此也无需唤醒）。解决思路如下：如果我们用某种方法将发出的信号积累起来，而不是直接丢弃，问题不就解决了吗？回顾死锁发生前的情景，试想如果消费者重新获得CPU并执行sleep语句后，生产者早前发送的叫醒信号还保留着，消费者就能及时获得这个信号而醒过来。</p>
+<p>能够将信号累计起来的操作系统原语就是信号量。信号和信号量是两个完全不同的概念：信号类似于软中断，进程接收到信号，相当于发生了中断。信号量是一个计数器，其取值为当前积累的信号数量。</p>
+<h2 id="8-5-信号量"><a href="#8-5-信号量" class="headerlink" title="8.5 信号量"></a>8.5 信号量</h2><h2 id="8-6-锁、睡觉与叫醒、信号量"><a href="#8-6-锁、睡觉与叫醒、信号量" class="headerlink" title="8.6 锁、睡觉与叫醒、信号量"></a>8.6 锁、睡觉与叫醒、信号量</h2><h2 id="8-7-管程"><a href="#8-7-管程" class="headerlink" title="8.7 管程"></a>8.7 管程</h2><h2 id="8-8-消息传递"><a href="#8-8-消息传递" class="headerlink" title="8.8 消息传递"></a>8.8 消息传递</h2><h2 id="8-9-栅栏"><a href="#8-9-栅栏" class="headerlink" title="8.9 栅栏"></a>8.9 栅栏</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/aaa3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/aaa3/" class="post-title-link" itemprop="url">线程概论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-15 17:09:00" itemprop="dateCreated datePublished" datetime="2021-03-15T17:09:00+08:00">2021-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/aaa3/" class="post-meta-item leancloud_visitors" data-flag-title="线程概论" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="07-线程概论"><a href="#07-线程概论" class="headerlink" title="#07 线程概论"></a>#07 线程概论</h1><p>进程希望自己在某些时候能够分身从而完成更加复杂的任务。从根本上说，线程是操作系统给进程模型提供并发能力的手段。虽然线程和进程出现的动机都是并发，但他们的并发层次不同：</p>
+<ul>
+<li>进程属于处理器级并发，即在处理器这一层次上提供并发的抽象；</li>
+<li>线程则属于进程级并发，即在进程这个层次上再提供一层并发的抽象；</li>
+<li>如果我们继续下到底层，进入计算机体系结构里就会发现，流水线提供的也是一种并发，不过是指令级并发。</li>
+</ul>
+<p>这样，流水线、进程、线程就从低到高在3个层次上提供了我们需要的并发。</p>
+<blockquote>
+<p>进程是资源分配的最小单位，线程是cpu调度的最小单位。</p>
+</blockquote>
+<h2 id="7-1-进程的分身术——线程"><a href="#7-1-进程的分身术——线程" class="headerlink" title="7.1 进程的分身术——线程"></a>7.1 进程的分身术——线程</h2><p>亚历山大的分身术：只要速度够快，就相当于拥有分身。</p>
+<p>将进程分解为线程可以有效地利用多处理器和多核计算机。在没有线程的情况下，增加一个处理器并不能提高一个进程的执行速度。但如果分解为多个线程，则可以让不同的线程同时运转在不同的处理器上，从而提高进程的执行速度。</p>
+<p>例如，当我们使用文字处理软件MicrosoftWord时，实际上是打开了多个线程。这些线程一个负责显示，一个接收输入，一个定时保存。这些线程运行在不同的处理器上，让我们感到输入和显示同时发生。</p>
+<h2 id="7-2-线程管理"><a href="#7-2-线程管理" class="headerlink" title="7.2 线程管理"></a>7.2 线程管理</h2><ul>
+<li>存放进程各种信息的数据结构称为进程表或进程控制块。</li>
+<li>存放线程各种信息的数据结构称为线程控制表或线程控制块。</li>
+</ul>
+<p>线程共享一个进程空间，因此许多资源是共享的。共享的资源不需要放在线程控制块里，而是放到进程控制块即可。但线程也有一些不能共享的资源，不被共享的资源和信息需要存放到线程控制块里。</p>
+<p>正确的设计思想是：应当让共享的资源越多越好，这是我们发明线程的主要动机之一。</p>
+<ul>
+<li>线程共享资源：地址空间、全局变量、打开的文件、子进程、闹铃、信号和信号服务程序、记账信息</li>
+<li>线程独享资源：程序计数器、寄存器、栈、状态字</li>
+</ul>
+<h2 id="7-3-线程实现模型"><a href="#7-3-线程实现模型" class="headerlink" title="7.3 线程实现模型"></a>7.3 线程实现模型</h2><p>线程在进程基础上提供第二次并发。由于线程之间的共享远比进程之间的共享丰富，因此线程在高度并发的环境下发挥着极为重要的作用。</p>
+<p>和进程一样，线程本身也对应着某种物理现实，也需要存储和调度。</p>
+<ul>
+<li>存储上，因为线程依附于进程而存在，所以无需额外设计，而是直接附于进程存储方案上。</li>
+<li>调度上，线程和进程有所不同。线程的调度既可以由进程负责，也可以由操作系统负责，这两种不同的调度推手形成了线程的两种实现：用户态实现和内核态实现。由进程自己管理就是用户态线程的实现，由操作系统管理就是内核态线程实现。用户态和内核态的判断以线程表所处的位置为依据：位于内核叫内核态实现，位于用户层叫用户态实现。</li>
+</ul>
+<p>为什么前面讲述进程时没有提到用户态和内核态的实现方式？因为进程是在CPU上实现并发的，而CPU是由操作系统管理的，因此进程的实现只有内核态实现，没有用户态实现。但线程不同于进程，线程是进程内部的东西，存在着由进程直接管理线程的可能性。因此线程有内核态和用户态两种实现方式。</p>
+<ul>
+<li>内核态线程实现：好处是用户编程简单，因为线程的复杂性由操作系统承担。另一个好处是如果一个线程执行阻塞操作，操作系统可以从容地调度另一个线程执行，因为操作系统有权监控和指挥所有的线程。缺点是效率较低，每次线程切换都需要陷入到内核，由操作系统来进行调度，而从用户态陷入到内核态是要花时间的。最致命的缺陷是：内核态实现需要修改操作系统，这一操作往往伴随着未知的风险。因此就有了线程的用户态实现。</li>
+<li>用户态线程实现：线程出现之初，研究人员无法说服操作系统研发商修改操作系统，把一个有效性未经证明的新概念加入其中，其实现的方式只能是用户态。用户态实现的优点是灵活，因为操作系统无须知道线程的存在，所以在任何操作系统上都能应用。其次是线程切换速度快，因为每次切换无需陷入内核。最后是不用修改操作系统，实现容易。缺点是编程变得诡异，用户态线程需要相互合作才能运转，一个线程受到阻塞将造成整个进程都受阻，这是用户态线程的致命弱点。解决思路有两个：一是不让线程阻塞，二是阻塞后想办法激活受阻进程的其他线程。事实上阻塞不可避免，一般考虑第二种思路，即线程阻塞后想办法激活受阻进程的其他线程。这种办法的实现依赖于OS。线程阻塞后CPU的控制权回到OS手中，此时让OS在进行进程切换时先不切换，而是通知受阻的进程执行系统，询问是否有其他线程可以执行，从而调度另一个可以执行的线程到CPU上。这种做法称为“第二机会”。该做法存在一个严重缺陷：违反了层次架构原则，即下层功能调用了上层功能（操作系统在下，执行系统在上）。这种违反上下有别的做法使得操作系统的设计和管理变得更加复杂。</li>
+</ul>
+<h2 id="7-4-现代操作系统的线程实现模型"><a href="#7-4-现代操作系统的线程实现模型" class="headerlink" title="7.4 现代操作系统的线程实现模型"></a>7.4 现代操作系统的线程实现模型</h2><p>现代操作系统将内核态和用户态结合起来使用。用户态的执行系统负责进程内部线程在非阻塞时的切换；内核态的操作系统负责阻塞线程的切换。即我们同时实现内核态和用户态线程管理。其中内核态线程数量较少，用户态线程数量较多。每个内核态线程可以服务一个或多个用户态线程，换句话说，用户态线程被多路复用到内核态线程上。如果进程内部一组线程中的某一个线程阻塞，则与其属于同一组的线程皆阻塞，但该进程内的另外一组线程仍可以继续执行。</p>
+<p>在分配线程时，我们可将需要执行阻塞操作的线程设为内核态线程，将不会执行阻塞操作的线程设为用户态线程。这样就结合了两种态势实现下的优点并避免其缺点。</p>
+<h2 id="7-5-多线程的关系"><a href="#7-5-多线程的关系" class="headerlink" title="7.5 多线程的关系"></a>7.5 多线程的关系</h2><p>推出线程模型的目的就是实现进程级并发。因为在一个进程中通常会出现多个线程，否则就没有必要搞什么线程了。<br>因此研究线程就必然要研究多线程，多个线程位于一个舞台，时而交互，时而独舞。<br>多线程共享一个地址空间的资源的过程中会产生矛盾，这些矛盾归结到下面两个根本问题：</p>
+<ol>
+<li>线程之间如何通信？</li>
+<li>线程之间如何同步？</li>
+</ol>
+<h2 id="7-6-讨论：从用户态进入（陷入）内核态"><a href="#7-6-讨论：从用户态进入（陷入）内核态" class="headerlink" title="7.6 讨论：从用户态进入（陷入）内核态"></a>7.6 讨论：从用户态进入（陷入）内核态</h2><p>程序在运行过程中发生中断或异常，系统将自动切换到内核态来运行中断或异常处理机制。此外，程序进行系统调用也将造成从用户态到内核态的转换。</p>
+<h2 id="7-7-讨论：线程的困惑——确定性与非确定性"><a href="#7-7-讨论：线程的困惑——确定性与非确定性" class="headerlink" title="7.7 讨论：线程的困惑——确定性与非确定性"></a>7.7 讨论：线程的困惑——确定性与非确定性</h2><p>有一种特殊观点是：线程带给我们的优势有限，而其造成的缺憾却巨大。</p>
+<p>从某种程度上说，线程与流水线分别是软件层和硬件层不确定性的根源。流水线使得我们可以在硬件指令执行上实现并发，线程则使我们在软件指令执行上实现并发。但其带来的操作系统、编译系统、指令集结构的高度复杂是否值得，这并不容易回答。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -577,112 +1246,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/7a1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/7a1/" class="post-title-link" itemprop="url">数据链路层</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-08 02:02:00" itemprop="dateCreated datePublished" datetime="2021-03-08T02:02:00+08:00">2021-03-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/7a1/" class="post-meta-item leancloud_visitors" data-flag-title="数据链路层" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="2-数据链路层"><a href="#2-数据链路层" class="headerlink" title="#2 数据链路层"></a>#2 数据链路层</h1><p>局域网虽然也是网络，但我们不在网络层讨论局域网。因为网络层主要讨论多个网络互连的问题，是讨论一个分组如何从一个网络通过路由器转发到另一个网络。本章中我们研究的是在同一个局域网中，分组如何从一台主机传送到另一台主机，但不经过路由器转发。从整个互联网的角度看，局域网仍属于数据链路层的范围。</p>
-<p>本章重要内容：</p>
-<ol>
-<li>数据链路层的两种信道：点对点信道 广播信道</li>
-<li>数据链路层的三个基本问题：封装成帧 透明传输 差错检测</li>
-<li>以太网MAC层的硬件地址。</li>
-<li>适配器、转发器、集线器、网桥、以太网交换机的作用和使用场合。</li>
-</ol>
-<p>可靠传输协议将在传输层介绍，本章介绍的链路层协议都不是可靠传输的协议。只包括最基本的差错检测。差错检测所检测的是比特差错，假定接收端收到的每一帧都没有比特差错，仍有可能出现帧丢失、帧重复、帧失序等传输差错。总之我们应当明确，“无比特差错”和“无传输差错”是不同的概念，在数据链路层使用CRC检测确实能够实现无比特差错的传输，但这还不是可靠传输。CRC=循环冗余检验。</p>
-<h2 id="点对点信道"><a href="#点对点信道" class="headerlink" title="点对点信道"></a>点对点信道</h2><h3 id="PPP——Point-to-Point-Protocol-点对点协议"><a href="#PPP——Point-to-Point-Protocol-点对点协议" class="headerlink" title="PPP——Point-to-Point Protocol 点对点协议"></a>PPP——Point-to-Point Protocol 点对点协议</h3><p>我们知道，用户需要连接到某个ISP才能接入互联网PPP协议就是用户计算机和ISP进行通信时所使用的链路层协议。点对点协议PPP是数据链路层使用最多的一种协议，它的特点是：简单；只检测差错而不纠正；不使用序号也不进行流量控制；可同时支持多种网络层协议。</p>
-<h2 id="广播信道"><a href="#广播信道" class="headerlink" title="广播信道"></a>广播信道</h2><h3 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h3><p>局域网可按网络拓扑分类，包括：星形网（使用集线器）、环形网、总线网。如今，以太网=局域网。</p>
-<p>局域网的优点：具有广博功能，从一个站点可很方便地访问全网；便于系统的扩展和逐渐演变；提高了系统的可靠性、可用性和生存性。</p>
-<h3 id="适配器的作用"><a href="#适配器的作用" class="headerlink" title="适配器的作用"></a>适配器的作用</h3><p>适配器是在主机箱内插入的一块网络接口板，又称网络接口卡或网卡。适配器和局域网之间的通信通过电缆或双绞线以串行传输方式进行。而适配器和计算机之间的通信则通过计算机主板上的I/O总线以并行传输方式进行。因此适配器的一个重要功能为：进行数据串行传输和并行传输的转换。计算机的硬件地址就在适配器的ROM中。</p>
-<ul>
-<li>适配器（网卡）——计算机的硬件地址——物理地址或MAC地址</li>
-<li>CPU和存储器——计算机的软件地址——IP地址</li>
-</ul>
-<h3 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h3><p>要点：多点接入（说明是总线型网络）、载波监听、碰撞检测（也称冲突检测，意思是边发送边监听）</p>
-<h3 id="使用集线器的星型拓扑"><a href="#使用集线器的星型拓扑" class="headerlink" title="使用集线器的星型拓扑"></a>使用集线器的星型拓扑</h3><p>集线器工作在物理层。</p>
-<h3 id="以太网的MAC地址"><a href="#以太网的MAC地址" class="headerlink" title="以太网的MAC地址"></a>以太网的MAC地址</h3><blockquote>
-<p>名字指出我们要寻找的那个资源，地址指出那个资源在何处，路由告诉我们如何到达该处。</p>
-</blockquote>
-<p>以太网的硬件地址即MAC地址实际上就是适配器地址或适配器标识符，与主机所在的地点无关。源地址和目的地址都是48位长。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/2a1b/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -886,6 +1449,112 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/7a1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/7a1/" class="post-title-link" itemprop="url">数据链路层</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-08 02:02:00" itemprop="dateCreated datePublished" datetime="2021-03-08T02:02:00+08:00">2021-03-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/7a1/" class="post-meta-item leancloud_visitors" data-flag-title="数据链路层" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="2-数据链路层"><a href="#2-数据链路层" class="headerlink" title="#2 数据链路层"></a>#2 数据链路层</h1><p>局域网虽然也是网络，但我们不在网络层讨论局域网。因为网络层主要讨论多个网络互连的问题，是讨论一个分组如何从一个网络通过路由器转发到另一个网络。本章中我们研究的是在同一个局域网中，分组如何从一台主机传送到另一台主机，但不经过路由器转发。从整个互联网的角度看，局域网仍属于数据链路层的范围。</p>
+<p>本章重要内容：</p>
+<ol>
+<li>数据链路层的两种信道：点对点信道 广播信道</li>
+<li>数据链路层的三个基本问题：封装成帧 透明传输 差错检测</li>
+<li>以太网MAC层的硬件地址。</li>
+<li>适配器、转发器、集线器、网桥、以太网交换机的作用和使用场合。</li>
+</ol>
+<p>可靠传输协议将在传输层介绍，本章介绍的链路层协议都不是可靠传输的协议。只包括最基本的差错检测。差错检测所检测的是比特差错，假定接收端收到的每一帧都没有比特差错，仍有可能出现帧丢失、帧重复、帧失序等传输差错。总之我们应当明确，“无比特差错”和“无传输差错”是不同的概念，在数据链路层使用CRC检测确实能够实现无比特差错的传输，但这还不是可靠传输。CRC=循环冗余检验。</p>
+<h2 id="点对点信道"><a href="#点对点信道" class="headerlink" title="点对点信道"></a>点对点信道</h2><h3 id="PPP——Point-to-Point-Protocol-点对点协议"><a href="#PPP——Point-to-Point-Protocol-点对点协议" class="headerlink" title="PPP——Point-to-Point Protocol 点对点协议"></a>PPP——Point-to-Point Protocol 点对点协议</h3><p>我们知道，用户需要连接到某个ISP才能接入互联网PPP协议就是用户计算机和ISP进行通信时所使用的链路层协议。点对点协议PPP是数据链路层使用最多的一种协议，它的特点是：简单；只检测差错而不纠正；不使用序号也不进行流量控制；可同时支持多种网络层协议。</p>
+<h2 id="广播信道"><a href="#广播信道" class="headerlink" title="广播信道"></a>广播信道</h2><h3 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h3><p>局域网可按网络拓扑分类，包括：星形网（使用集线器）、环形网、总线网。如今，以太网=局域网。</p>
+<p>局域网的优点：具有广博功能，从一个站点可很方便地访问全网；便于系统的扩展和逐渐演变；提高了系统的可靠性、可用性和生存性。</p>
+<h3 id="适配器的作用"><a href="#适配器的作用" class="headerlink" title="适配器的作用"></a>适配器的作用</h3><p>适配器是在主机箱内插入的一块网络接口板，又称网络接口卡或网卡。适配器和局域网之间的通信通过电缆或双绞线以串行传输方式进行。而适配器和计算机之间的通信则通过计算机主板上的I/O总线以并行传输方式进行。因此适配器的一个重要功能为：进行数据串行传输和并行传输的转换。计算机的硬件地址就在适配器的ROM中。</p>
+<ul>
+<li>适配器（网卡）——计算机的硬件地址——物理地址或MAC地址</li>
+<li>CPU和存储器——计算机的软件地址——IP地址</li>
+</ul>
+<h3 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h3><p>要点：多点接入（说明是总线型网络）、载波监听、碰撞检测（也称冲突检测，意思是边发送边监听）</p>
+<h3 id="使用集线器的星型拓扑"><a href="#使用集线器的星型拓扑" class="headerlink" title="使用集线器的星型拓扑"></a>使用集线器的星型拓扑</h3><p>集线器工作在物理层。</p>
+<h3 id="以太网的MAC地址"><a href="#以太网的MAC地址" class="headerlink" title="以太网的MAC地址"></a>以太网的MAC地址</h3><blockquote>
+<p>名字指出我们要寻找的那个资源，地址指出那个资源在何处，路由告诉我们如何到达该处。</p>
+</blockquote>
+<p>以太网的硬件地址即MAC地址实际上就是适配器地址或适配器标识符，与主机所在的地点无关。源地址和目的地址都是48位长。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8a9d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1027,559 +1696,6 @@
 </ol>
 <p>路由表最重要的信息是到某个网络的最短距离和应经过的下一跳地址。路由表更新的原则是找出到某个网络的最短距离，即距离向量算法。</p>
 <h2 id="虚拟专用网和网络地址转换"><a href="#虚拟专用网和网络地址转换" class="headerlink" title="虚拟专用网和网络地址转换"></a>虚拟专用网和网络地址转换</h2><h3 id="VPN——virtual-private-network-虚拟专用网"><a href="#VPN——virtual-private-network-虚拟专用网" class="headerlink" title="VPN——virtual private network 虚拟专用网"></a>VPN——virtual private network 虚拟专用网</h3><h3 id="NAT——network-address-translation-网络地址转换"><a href="#NAT——network-address-translation-网络地址转换" class="headerlink" title="NAT——network address translation 网络地址转换"></a>NAT——network address translation 网络地址转换</h3><p>NAT技术用于解决内网中的主机和互联网上的主机通信的问题。由NAT路由器将主机的本地IP地址转换为全球IP地址，这样可以在专用网络内部使用专用IP地址，而仅在连接到互联网的路由器使用全球IP地址，大大节约了宝贵的IP地址。这种技术被普遍使用在有多台主机但只通过一个公有IP地址访问互联网的私有网络中。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/fa4b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/fa4b/" class="post-title-link" itemprop="url">应用层</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-08 02:02:00" itemprop="dateCreated datePublished" datetime="2021-03-08T02:02:00+08:00">2021-03-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/fa4b/" class="post-meta-item leancloud_visitors" data-flag-title="应用层" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="5-应用层"><a href="#5-应用层" class="headerlink" title="#5 应用层"></a>#5 应用层</h1><p>在运输层协议之上，还需要有应用层协议。这是因为每个应用层协议都是为了解决某一类应用问题，而问题的解决又必须通过位于不同主机中的多个应用进程之间的通信和协同工作来完成。</p>
-<p>应用层的许多协议都是基于客户-服务器方式，即使是P2P对等通信方式，实质也是一种特殊的客户-服务器方式。</p>
-<blockquote>
-<p>实际上，P2P从本质上看仍然是使用客户-服务器方式，只是P2P中的每一台主机既是客户又同时是服务器。</p>
-</blockquote>
-<h2 id="域名系统-DNS"><a href="#域名系统-DNS" class="headerlink" title="域名系统 DNS"></a>域名系统 DNS</h2><h3 id="DNS——domainname-system-域名系统"><a href="#DNS——domainname-system-域名系统" class="headerlink" title="DNS——domainname system 域名系统"></a>DNS——domainname system 域名系统</h3><ul>
-<li>递归查询：主机向本地域名服务器的查询一般采用递归查询。</li>
-<li>迭代查询：本地域名服务器向根域名服务器的查询一般采用迭代查询。</li>
-</ul>
-<h2 id="文件传送协议-FTP"><a href="#文件传送协议-FTP" class="headerlink" title="文件传送协议 FTP"></a>文件传送协议 FTP</h2><h3 id="FTP——file-transfer-protocol-文件传输协议"><a href="#FTP——file-transfer-protocol-文件传输协议" class="headerlink" title="FTP——file transfer protocol 文件传输协议"></a>FTP——file transfer protocol 文件传输协议</h3><h2 id="远程终端协议-TELNET"><a href="#远程终端协议-TELNET" class="headerlink" title="远程终端协议 TELNET"></a>远程终端协议 TELNET</h2><h2 id="万维网-WWW"><a href="#万维网-WWW" class="headerlink" title="万维网 WWW"></a>万维网 WWW</h2><h3 id="HTTP——hyper-text-transfer-protocol-超文本传输协议"><a href="#HTTP——hyper-text-transfer-protocol-超文本传输协议" class="headerlink" title="HTTP——hyper text transfer protocol 超文本传输协议"></a>HTTP——hyper text transfer protocol 超文本传输协议</h3><p>问：请你说一说HTTP和HTTPS的不同？</p>
-<ol>
-<li>HTTP明文传输，数据未加密，安全性差。HTTPS加密传输，安全性好。</li>
-<li>使用HTTPS需要到CA申请证书，免费证书少，需要一定费用。</li>
-<li>HTTPS页面响应速度慢，因为HTTPS在TCP三次握手阶段之后，还需要进行SSL的握手。</li>
-<li>HTTP协议端口是80，HTTPS协议端口是443。</li>
-<li>HTTPS其实就是建构在SSL之上的HTTP协议，所以HTTPS更耗费服务器资源。</li>
-</ol>
-<h3 id="URL——统一资源定位符"><a href="#URL——统一资源定位符" class="headerlink" title="URL——统一资源定位符"></a>URL——统一资源定位符</h3><p>问：URI和URL的区别？</p>
-<ul>
-<li><p>URI(Uniform Resource Identifier)：中文全称为统一资源标志符，主要作用是唯一标识一个资源。</p>
-</li>
-<li><p>URL(Uniform Resource Location)：中文全称为统一资源定位符，主要作用是提供资源的路径。</p>
-<p>有个经典的比喻是URI像是身份证，可以唯一标识一个人，而URL像一个住址，可以通过URL找到这个人。</p>
-</li>
-</ul>
-<p>问：在浏览器中输⼊url地址到显示主⻚的过程？</p>
-<ol>
-<li>对输入到浏览器的url进行DNS解析，将域名转换为IP地址。</li>
-<li>和目的服务器建立TCP连接。</li>
-<li>向目的服务器发送HTTP请求。</li>
-<li>服务器处理请求并返回HTTP报文。</li>
-<li>浏览器解析并渲染页面。</li>
-</ol>
-<h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><h3 id="SMTP——simple-mail-transfer-protocol-简单邮件传送协议"><a href="#SMTP——simple-mail-transfer-protocol-简单邮件传送协议" class="headerlink" title="SMTP——simple mail transfer protocol 简单邮件传送协议"></a>SMTP——simple mail transfer protocol 简单邮件传送协议</h3><h3 id="IMAP——internet-message-access-protocol-互联网邮件访问协议"><a href="#IMAP——internet-message-access-protocol-互联网邮件访问协议" class="headerlink" title="IMAP——internet message access protocol 互联网邮件访问协议"></a>IMAP——internet message access protocol 互联网邮件访问协议</h3><h3 id="POP3——post-office-protocal-version3-邮局协议3-0"><a href="#POP3——post-office-protocal-version3-邮局协议3-0" class="headerlink" title="POP3——post office protocal-version3 邮局协议3.0"></a>POP3——post office protocal-version3 邮局协议3.0</h3><h3 id="MIME——通用互联网邮件扩充"><a href="#MIME——通用互联网邮件扩充" class="headerlink" title="MIME——通用互联网邮件扩充"></a>MIME——通用互联网邮件扩充</h3><h2 id="动态主机配置协议-DHCP"><a href="#动态主机配置协议-DHCP" class="headerlink" title="动态主机配置协议 DHCP"></a>动态主机配置协议 DHCP</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8882/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/8882/" class="post-title-link" itemprop="url">运输层</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-08 02:02:00" itemprop="dateCreated datePublished" datetime="2021-03-08T02:02:00+08:00">2021-03-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/8882/" class="post-meta-item leancloud_visitors" data-flag-title="运输层" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="4-运输层"><a href="#4-运输层" class="headerlink" title="#4 运输层"></a>#4 运输层</h1><p>重要概念：</p>
-<ol>
-<li>运输层为相互通信的应用进程提供逻辑通信。</li>
-<li>端口和套接字的意义。</li>
-<li>无连接的UDP的特点。</li>
-<li>面向连接的TCP的特点。</li>
-<li>在不可靠的网络上实现可靠传输的工作原理，停止等待协议和ARQ协议。</li>
-<li>TCP的滑动窗口、流量控制、拥塞控制、连接管理。</li>
-</ol>
-<h2 id="运输层协议概述"><a href="#运输层协议概述" class="headerlink" title="运输层协议概述"></a>运输层协议概述</h2><p>网络层为主机之间提供逻辑通信，而运输层为应用进程之间提供端到端的逻辑通信。</p>
-<blockquote>
-<p>“逻辑通信”的意思是“好像是这样通信，但事实上并非真的这样通信”。</p>
-</blockquote>
-<p>运输层要对收到的报文进行差错检测。而网络层只检测首部不检测数据部分。</p>
-<p>根据应用进程的不同需求，运输层有两种不同的运输协议：面向连接的TCP和无连接的UDP。</p>
-<p>PDU：根据所使用的协议是TCP或UDP，协议数据单元分别称之为TCP报文段或UDP用户数据报。</p>
-<h2 id="用户数据报协议UDP"><a href="#用户数据报协议UDP" class="headerlink" title="用户数据报协议UDP"></a>用户数据报协议UDP</h2><p>UDP的主要特点：</p>
-<ol>
-<li>无连接。即发送数据之前不需要建立连接，当然发送数据结束时也没有连接可释放。因此减少了开销和发送数据之前的时延。</li>
-<li>尽最大努力交付。即不保证可靠性交付，因此主机不需要维持复杂的链接状态表。</li>
-<li>面向报文。对于发送方的应用层交下来的报文，UDP只添加首部后就原封不动地交付给下面的IP层。对于接收时从IP层交上来地UDP用户数据报，去除首部后就原封不动地交付给上面的应用层中的应用程序。即，UDP一次交付一个完整报文，因此应用程序必须选择合适大小的报文。</li>
-<li>无拥塞控制。因此网络中的拥塞不会使源主机地发送速率降低，很多实时应用要求源主机以恒定速率发送数据，并允许在网络发生拥塞时丢失一些数据，但不允许数据有太大延迟（比如实时视频会议）。UDP正好适合这种。</li>
-<li>支持一对一、一对多、多对一和多对多的交互通信。</li>
-<li>首部开销小。</li>
-</ol>
-<p>UDP的首部格式：</p>
-<p>​    用户数据报UDP有两个字段：首部字段和数据字段。首部分成4个字段，分别如下：</p>
-<ol start="0">
-<li>伪首部：伪首部并不是UDP用户数据报真正的首部。只是在计算检验和时，临时添加在UDP用户数据报前面，得到一个临时的UDP用户数据报。检验和就是按照这个临时的UDP用户数据报来计算的。伪首部既不向下传送也不向上递交，而仅仅是为了计算检验和。</li>
-<li>源端口：源端口号，在需要对方回信时选用，不需要回信则可全用0。</li>
-<li>目的端口：目的端口号，在终点交付报文时必须使用。</li>
-<li>长度：UDP用户数据报的长度，最小是是8（仅有首部）。</li>
-<li>校验和：检测UDP用户数据报在传输中是否有错，是的话丢弃。</li>
-</ol>
-<h2 id="传输控制协议TCP"><a href="#传输控制协议TCP" class="headerlink" title="传输控制协议TCP"></a>传输控制协议TCP</h2><p>TCP的主要特点：</p>
-<ol>
-<li><p>面向连接。</p>
-</li>
-<li><p>提供可靠交付的服务。通过TCP链接传送的数据，无差错、不丢失、不重复、按序到达。</p>
-</li>
-<li><p>面向字节流。</p>
-</li>
-<li><p>每条TCP连接只能是点对点的（一对一）。</p>
-<p>TCP连接的端点不是主机，不是主机的IP地址，不是应用进程，也不是运输层的协议端口。</p>
-<p>TCP连接的端点叫套接字或插口。套接字=IP地址:端口号</p>
-<p>TCP连接={套接字1,套接字2}={(IP地址1:端口号1),(IP地址2:端口号2)}</p>
-</li>
-<li><p>提供全双工通信。</p>
-</li>
-</ol>
-<h2 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h2><p>TCP发送的报文段是交给网络层传送的，但网络层只能提供尽最大努力交付，也就是说网络层及以下提供不可靠传输。因此TCP必须采取措施使两个运输层之间的通信变得可靠。</p>
-<p>理想的传输条件满足两个特点：</p>
-<ol>
-<li>传输信道不产生差错。</li>
-<li>不管发送方以多快的速度发送数据，接收方总来得及处理收到的数据。</li>
-</ol>
-<p>理想条件下不需要任何措施就能实现可靠传输。但实际网络都不具备上面的理想条件，因此就需要使用一些可靠传输协议。</p>
-<ol>
-<li>当出现差错时让发送方重传发生错误的数据。</li>
-<li>当接收方来不及处理收到的数据时及时通知发送方降低发送速率。</li>
-</ol>
-<p>这样就能在不可靠的传输信道上实现可靠传输。下面从最简单的停止等待协议讲起。</p>
-<h3 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h3><p>“停止等待”就是每发送完一个分组就停止发送，等待对方的确认。在收到确认后再发送下一个分组。</p>
-<ol>
-<li><p>无差错情况</p>
-</li>
-<li><p>出现差错</p>
-<p>超时重传：A只要超过了一段时间仍然没有收到确认，就认为刚才发送的分组丢失了，因而重传前面发送过的分组。这就叫做超时重传。要实现超时重传，就要在每发送完一个分组时设置一个超时计时器。如果在超时计时器到期之前收到了对方的确认，就撤销已设置的超时计时器。</p>
-</li>
-<li><p>确认丢失和确认迟到</p>
-<p>确认丢失：</p>
-<p>A在设定的超时重传时间内没有收到确认，并无法知道是自己发送的分组是出错还是丢失，或是B发送的确认丢失了。因此A在超时计时器到期后就要重传M1。</p>
-<p>假定B又收到了重传的分组M1。则B应该丢弃这个重复的分组M1，不向上层交付，然后向A发送确认（不能认为已经发送过（丢失了的）确认就不再发送，因为A之所以重传M1就是因为A没有收到对M1的确认）。</p>
-<p>确认迟到：</p>
-<p>传输过程中没有出现差错，但B对分组M1的确认虽未丢失，但是迟到了。于是A在计时器到期后因为还未收到迟到的对M1的确认而重发M1。B最终会收到两次M1并先后发出两次确认，而A最终也会收到重复的对M1的确认。A对重复的确认的处理很简单：收下后就丢弃。B同样要丢弃重复收到的发送M1，并重传确认分组。</p>
-<p>归纳：不管发送的分组丢失了还是迟到了，A这边一定时间没收到就自动重传，B那边对于同一个信息，收到一次就确认一次。不管哪边，收到重复分组就丢弃该分组，但同时还要发送确认。</p>
-</li>
-</ol>
-<p>这种可靠传输协议常称为自动重传请求ARQ（AutomaticRepeatreQuest）。意思是重传的请求是自动进行的，接收方不需要请求发送方重传某个出错的特定分组。使用上述的确认和重传机制，我们就可以在不可靠的传输网络上实现可靠的通信。</p>
-<p>停止等待协议的优点是简单，但缺点是信道利用率太低。为了提高传输效率，发送方可以不使用低效率的停止等待协议，而是采用流水线传输。</p>
-<p>流水线传输就是发送方可连续发送多个分组，不必每发完一个分组就停顿下来等待对方的确认。这样可使信道上一直有数据不间断地在传送。显然，这种传输方式可以获得很高的信道利用率。当使用流水线传输时，就要使用下面介绍的连续ARQ协议和滑动窗口协议。</p>
-<h3 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h3><p>连续ARQ协议可提高信道利用率。发送方维持一个发送窗口，凡位于发送窗口内的分组都可连续发送出去，而不需要等待对方的确认。接收方一般采用累积确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已正确收到了。</p>
-<p>如果发送方发送了前5个分组，而中间的第3个分组丢失了。这时接收方只能对前两个分组发出确认。发送方无法知道后面三个分组的下落，而只好把后面的三个分组都再重传一次。这就叫做Go-back-N（回退N），表示需要再退回来重传已发送过的N个分组。因此当通信线路质量不好时，连续ARQ协议会带来负面的影响。</p>
-<p>在深入讨论TCP的可靠传输问题之前，必须先了解TCP的报文段首部的格式。</p>
-<h2 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h2><p>TCP虽然是面向字节流的，但TCP传送的数据单元却是报文段。一个TCP报文段分为首部和数据两部分，而TCP的全部功能都体现在它首部中各字段的作用。因此，只有弄清TCP首部各字段的作用才能掌握TCP的工作原理。首部固定部分各字段如下：</p>
-<ol>
-<li><p>源端口目的端口</p>
-</li>
-<li><p>序号（seq）：首部中的序号字段值指的是本报文段所发送的数据的第一个字节的序号。</p>
-</li>
-<li><p>确认号（ack）：TCP首部中的确认号是期望收到对方下一个报文段的第一个数据字节的序号。应记住：若确认号＝N，则表明：到序号N–1为止的所有数据都已正确收到。</p>
-</li>
-<li><p>数据偏移：指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。这个字段实际上是指出TCP报文段的首部长度。由于首部中还有长度不确定的选项字段，因此数据偏移字段是必要的。</p>
-</li>
-<li><p>保留：保留为今后使用，但目前应置为0。</p>
-</li>
-<li><p>6个控制位</p>
-<ol>
-<li>紧急URG（URGent）：告诉系统此报文段中有紧急数据，应尽快传送（相当于高优先级的数据），而不要按原来的排队顺序来传送。</li>
-<li>确认ACK（ACKnowledgment）：TCP规定，在连接建立后所有传送的报文段都必须把ACK置1。</li>
-<li>推送PSH（PuSH）：尽快地（即“推送”向前）交付接收应用进程，而不再等到整个缓存都填满了后再向上交付。注意将推动PSH与紧急URG区分，推送并不改变相对顺序，只是希望立即得到对方响应。推送操作很少使用。</li>
-<li>复位RST（ReSeT）：表明TCP连接中出现严重差错（比如主机崩溃），必须释放连接，然后再重新建立运输连接。</li>
-<li>同步SYN（SYNchronization）：在连接建立时用来同步序号。当SYN＝1而ACK＝0时，表明这是一个连接请求报文段（连接还没有建立起来）。对方若同意建立连接，则应在响应的报文段中使SYN＝1和ACK＝1。因此，SYN置为1就表示这是一个连接请求或连接接受报文。</li>
-<li>终止FIN（FINis，意思是“完”、“终”）：用来释放一个连接。表明此报文段的发送方的数据已发送完毕，并要求释放运输连接。</li>
-</ol>
-</li>
-<li><p>窗口：窗口字段明确指出了现在允许对方发送的数据量。窗口值经常在动态变化着。</p>
-</li>
-<li><p>检验和</p>
-</li>
-<li><p>紧急指针</p>
-</li>
-<li><p>选项</p>
-</li>
-</ol>
-<h2 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h2><h3 id="以字节为单位的滑动窗口"><a href="#以字节为单位的滑动窗口" class="headerlink" title="以字节为单位的滑动窗口"></a>以字节为单位的滑动窗口</h3><p>TCP使用滑动窗口机制。发送窗口里面的序号表示允许发送的序号。发送窗口后沿的后面部分表示已发送且已收到了确认，而发送窗口前沿的前面部分表示不允许发送。发送窗口后沿的变化情况有两种可能，即不动（没有收到新的确认）和前移（收到了新的确认）。发送窗口前沿通常是不断向前移动的。</p>
-<h3 id="超时重传时间的选择"><a href="#超时重传时间的选择" class="headerlink" title="超时重传时间的选择"></a>超时重传时间的选择</h3><p>TCP的发送方在规定的时间内没有收到确认就要重传已发送的报文段。这种重传的概念很简单，但重传时间的选择却是TCP最复杂的问题之一。</p>
-<p>由于TCP的下层是互联网环境，互联网由多种异构网络互连组成，异构决定了互联网环境的复杂性，发送的报文段可能只经过一个高速率的局域网，也可能经过多个低速率的网络，并且每个IP数据报所选择的路由还可能不同。如果把超时重传时间设置得太短，就会引起很多报文段的不必要的重传，使网络负荷增大。如果把超时重传时间设置得过长，则又使网络的空闲时间增大，降低了传输效率。</p>
-<p>那么，运输层的超时计时器的超时重传时间究竟应设置为多大呢？TCP采用了一种自适应算法，它记录一个报文段发出的时间，以及收到相应的确认的时间。这两个时间之差就是报文段的往返时间RTT。通过复杂的修正算法，可以使超时重传时间的估测和计算更加合理。</p>
-<h2 id="TCP的流量控制"><a href="#TCP的流量控制" class="headerlink" title="TCP的流量控制"></a>TCP的流量控制</h2><p>流量控制就是让发送方的发送速率不要太快，要让接收方来得及接收。利用滑动窗口机制可以很方便地在TCP连接上实现对发送方的流量控制。</p>
-<h2 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h2><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，就会出现拥塞。拥塞控制就是防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。</p>
-<p>流量控制是一个端到端的问题，是接收端抑制发送端发送数据的速率，以便使接收端来得及接收。而拥塞控制是一个全局性的过程，涉及到所有的主机、所有的路由器，以及与降低网络传输性能有关的所有因素。</p>
-<p>为了进行拥塞控制，TCP的发送方要维持一个拥塞窗口cwnd的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口取为拥塞窗口和接收方的接收窗口中较小的一个。</p>
-<p>TCP的拥塞控制采用了四种算法，即慢开始、拥塞避免、快重传和快恢复。在网络层，也可以使路由器采用适当的分组丢弃策略（如主动队列管理AQM），以减少网络拥塞的发生。</p>
-<h3 id="慢开始和拥塞避免"><a href="#慢开始和拥塞避免" class="headerlink" title="慢开始和拥塞避免"></a>慢开始和拥塞避免</h3><p>也叫做基于窗口的拥塞控制。为此，发送方维持一个叫做拥塞窗口cwnd（congestion window）的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口等于拥塞窗口。</p>
-<p>发送方控制拥塞窗口的原则是：只要网络没有出现拥塞，拥塞窗口就可以再增大一些，以便把更多的分组发送出去，这样就可以提高网络的利用率。但只要网络出现拥塞或有可能出现拥塞，就必须把拥塞窗口减小一些，以减少注入到网络中的分组数，以便缓解网络出现的拥塞。</p>
-<p>发送方又是如何知道网络发生了拥塞呢？我们知道，当网络发生拥塞时，路由器就要丢弃分组。因此只要发送方没有按时收到应当到达的确认报文，也就是说，只要出现了超时，就可以猜想网络可能出现了拥塞。现在通信线路的传输质量一般都很好，因传输出差错而丢弃分组的概率是很小的（远小于1％）。因此，判断网络拥塞的依据就是出现了超时。</p>
-<p>下面将讨论拥塞窗口cwnd的大小是怎样变化的。我们从“慢开始算法”讲起。</p>
-<p>慢开始算法的思路：当主机开始发送数据时，由于不清楚网络的负荷情况，所以如果立即把大量数据字节注入到网络，有可能引起网络发生拥塞。经验证明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是说，由小到大逐渐增大拥塞窗口数值。（永远从小到大，从头开始试探）</p>
-<p>拥塞避免算法的思路：让拥塞窗口cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1，而不是像慢开始阶段那样加倍增长。这表明在拥塞避免阶段，拥塞窗口cwnd按线性规律缓慢增长，比慢开始算法的拥塞窗口增长速率缓慢得多。</p>
-<p>图为TCP拥塞窗口cwnd在拥塞控制时的变化情况。</p>
-<h3 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h3><p>背景：有时，只有个别报文段会在网络中丢失，但实际上网络并未发生拥塞。如果发送方迟迟收不到确认，就会产生超时，然后误认为网络发生了拥塞，导致发送方错误地启动慢开始，把拥塞窗口cwnd又设置为1，因而降低了传输效率。</p>
-<p>采用快重传算法可以让发送方尽早知道发生了个别报文段的丢失。当接收方收到失序的报文段时立即发出对已收到的报文段的重复确认。例如，现在收到了M1、M2、M4，但是M3丢失了，于是接收方收到（失序的报文段）M4时重传对（已收到的报文段）M2的确认（而不是确认M4），收到M5、M6时同理也重传对M2的确认而不确认M5、M6。接收方从首次收到M2到收到M6时，一共进行了4次对M2的重复确认，其中后3次确认是重复确认。</p>
-<p>快重传算法规定，发送方只要连续收到3个重复确认，就知道接收方确实没有收到报文段M3，应当立即进行重传（即快重传），这样就不会出现超时，发送方也不就会误认为出现了网络拥塞。使用快重传可以使整个网络的吞吐量提高约20％。</p>
-<h3 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h3><p>如果发送方知道现在只是丢失了个别报文段，没有出现拥塞。那么就不启动慢开始，而是执行快恢复算法。此时令发送方调整门限值ssthresh＝cwnd/2，同时设置拥塞窗口cwnd＝ssthresh，然后执行线性增长的拥塞避免算法（而非指数增长的慢开始算法）。</p>
-<h2 id="TCP的运输连接管理"><a href="#TCP的运输连接管理" class="headerlink" title="TCP的运输连接管理"></a>TCP的运输连接管理</h2><p>运输连接有三个阶段，即：连接建立、数据传送和连接释放。运输连接的管理就是使运输连接的建立和释放都能正常地进行。</p>
-<p>在TCP连接建立过程中要解决以下三个问题：</p>
-<ol>
-<li>要使每一方能够确知对方的存在。</li>
-<li>要允许双方协商一些参数（如最大窗口值、是否使用窗口扩大选项和时间戳选项以及服务质量等）。</li>
-<li>能够对运输实体资源（如缓存大小、连接表中的项目等）进行分配。</li>
-</ol>
-<p>TCP连接的建立采用C/S方式。主动发起连接建立的应用进程叫做客户，被动等待连接建立的应用进程叫做服务器。</p>
-<h3 id="握手"><a href="#握手" class="headerlink" title="握手"></a>握手</h3><p>TCP建立连接的过程叫做握手，握手需要在客户和服务器之间交换三个TCP报文段。</p>
-<ol>
-<li>A打算建立TCP连接时，向B发出连接请求报文段，这时首部中的同步位SYN＝1，同时选择一个初始序号seq＝x。TCP规定，SYN＝1的报文段不能携带数据，但要消耗掉一个序号。这时，TCP客户进程进入SYN-SENT（同步已发送）状态。</li>
-<li>B收到连接请求报文段后，如果同意建立连接，则向A发送确认。在确认报文段中应把SYN位和ACK位都置1，确认号是ack＝x＋1，同时也为自己选择一个初始序号seq＝y。请注意，这个报文段也不能携带数据，但同样要消耗掉一个序号。这时TCP服务器进程进入SYN-RCVD（同步收到）状态。</li>
-<li>TCP客户进程收到B的确认后，还要向B给出确认。确认报文段的ACK置1，确认号ack＝y＋1，而自己的序号seq＝x＋1。TCP的标准规定，ACK报文段可以携带数据。但如果不携带数据则不消耗序号，在这种情况下，下一个数据报文段的序号仍是seq＝x＋1。这时，TCP连接已经建立，A进入ESTABLISHED（已建立连接）状态。当B收到A的确认后，也进入ESTABLISHED状态。</li>
-</ol>
-<p>总结：TCP的连接建立采用三报文握手机制。服务器要确认客户的连接请求，然后客户要对服务器的确认进行确认。</p>
-<ul>
-<li>问：为什么是三次握手而不是四次握手？</li>
-</ul>
-<p>上面给出的连接建立过程叫做三报文握手。请注意，B发送给A的报文段，也可拆成两个报文段。可以先发送一个确认报文段（ACK＝1，ack＝x＋1），然后再发送一个同步报文段（SYN＝1，seq＝y）。这样的过程就变成了四报文握手，但效果是一样的。</p>
-<ul>
-<li>问：为什么是三次握手而不是两次握手？即，为什么A最后还要发送一次确认？</li>
-</ul>
-<p>这主要是为了防止已失效的连接请求报文段突然又传送到了B，因而产生错误。</p>
-<p>所谓“已失效的连接请求报文段”是这样产生的：</p>
-<p>先考虑一种正常情况，A发出连接请求，但因连接请求报文丢失而未收到确认。于是A再重传一次连接请求。后来收到了确认，建立了连接。数据传输完毕后，就释放了连接。A共发送了两个连接请求报文段，其中第一个丢失，第二个到达了B，没有“已失效的连接请求报文段”。</p>
-<p>现假定出现一种异常情况，即A发出的第一个连接请求报文段并没有丢失，而是在某些网络结点长时间滞留了，以致延误到连接释放以后的某个时间才到达B。本来这是一个早已失效的报文段。但B收到此失效的连接请求报文段后，就误认为是A又发出一次新的连接请求。于是就向A发出确认报文段，同意建立连接。假定不采用报文握手，那么只要B发出确认，新的连接就建立了。由于现在A并没有发出建立连接的请求，因此不会理睬B的确认，也不会向B发送数据。但B却以为新的运输连接已经建立了，并一直等待A发来数据。B的许多资源就这样白白浪费了。</p>
-<p>采用三报文握手的办法，可以防止上述现象的发生。在刚才的异常情况下，A不会向B的确认发出确认。B由于收不到确认，就知道A并没有要求建立连接。</p>
-<h3 id="挥手"><a href="#挥手" class="headerlink" title="挥手"></a>挥手</h3><p>TCP连接释放过程比较复杂。</p>
-<ol>
-<li><p>数据传输结束后，通信的双方都可释放连接。现在A和B都处于ESTABLISHED（已建立连接）状态。A先发出连接释放报文段，并停止发送数据，主动关闭TCP连接。A把连接释放报文段首部的终止控制位FIN置1，其序号seq＝u，它等于前面已传送过的数据的最后一个字节的序号加1。这时A进入FIN-WAIT-1（终止等待1）状态，等待B的确认。</p>
-</li>
-<li><p>B收到连接释放报文段后即发出确认，确认号是ack＝u＋1，而这个报文段自己的序号是v，等于B前面已传送过的数据的最后一个字节的序号加1。然后B就进入CLOSE-WAIT（关闭等待）状态。TCP服务器进程这时应通知高层应用进程，因而从A到B这个方向的连接就释放了，这时的TCP连接处于半关闭（half-close）状态，即A已经没有数据要发送了，但B若发送数据，A仍要接收。也就是说，从B到A这个方向的连接并未关闭，这个状态可能会持续一段时间。</p>
-</li>
-</ol>
-<p>（A收到来自B的确认后，就进入FIN-WAIT-2（终止等待2）状态，等待B发出的连接释放报文段。）</p>
-<ol start="3">
-<li>若B已经没有要向A发送的数据了，其应用进程就通知TCP释放连接。这时B发出的连接释放报文段必须使FIN＝1。现假定B的序号为w（在半关闭状态B可能又发送了一些数据）。B还必须重复上次已发送过的确认号ack＝u＋1。这时B就进入LAST-ACK（最后确认）状态，等待A的确认。</li>
-<li>A在收到B的连接释放报文段后，必须对此发出确认。在确认报文段中把ACK置1，确认号ack＝w＋1，而自己的序号是seq＝u＋1（根据TCP标准，前面发送过的FIN报文段要消耗一个序号）。然后进入到TIME-WAIT（时间等待）状态。请注意，现在TCP连接还没有释放掉。必须经过时间等待计时器（TIME-WAITtimer）设置的时间2MSL后，A才进入到CLOSED状态。当A撤销相应的传输控制块TCB后，就结束了这次的TCP连接。</li>
-</ol>
-<p>总结：TCP的连接释放采用四报文握手机制。任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后就进入半关闭状态。当另一方也没有数据再发送时，则发送连接释放通知，对方确认后就完全关闭了TCP连接。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/32846/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/32846/" class="post-title-link" itemprop="url">LC217 存在重复元素</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-04T00:00:00+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/32846/" class="post-meta-item leancloud_visitors" data-flag-title="LC217 存在重复元素" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组，判断是否存在重复元素。<br>如果存在一值在数组中出现至少两次，函数返回true。如果数组中每个元素都不相同，则返回false 。</p>
-<p>输入: [1,2,3,1]<br>输出: true</p>
-<p>输入：[]<br>返回：false </p>
-<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p>两层for</p>
-<h2 id="解法2：排序"><a href="#解法2：排序" class="headerlink" title="解法2：排序"></a>解法2：排序</h2><p>先排序，在遍历，只遍历一遍</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsDuplicate</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/49631/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/49631/" class="post-title-link" itemprop="url">LC232 用栈实现队列</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-04T00:00:00+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/49631/" class="post-meta-item leancloud_visitors" data-flag-title="LC232 用栈实现队列" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用两个栈实现先入先出队列。<br>队列应当支持一般队列的支持的所有操作(push、pop、peek、empty)。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>By making pop operation costly</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s2;</span><br><span class="line">    <span class="keyword">int</span> front;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyQueue</span>() &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>()) front = x;</span><br><span class="line">        s1.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>() &amp;&amp; s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                s2.<span class="built_in">push</span>(s1.<span class="built_in">top</span>());</span><br><span class="line">                s1.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> x = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!s2.<span class="built_in">empty</span>()) <span class="keyword">return</span> s2.<span class="built_in">top</span>();</span><br><span class="line">        <span class="keyword">return</span> front;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s1.<span class="built_in">empty</span>() &amp;&amp; s2.<span class="built_in">empty</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释</strong></p>
-<p>额外维护一个整型变量front，用以保存队头元素。</p>
 
       
     </div>

@@ -70,7 +70,7 @@
       <h1 class="site-title">月夜海</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">当空皓月 木已成舟</p>
+      <p class="site-subtitle" itemprop="description">Einmal ist keinmal.</p>
   </div>
 
   <div class="site-nav-right">
@@ -87,8 +87,8 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书架</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书架</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">176</span>
+          <span class="site-state-item-count">180</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -217,6 +217,397 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/63e2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/63e2/" class="post-title-link" itemprop="url">HJ10 字符个数统计</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-30 20:41:24" itemprop="dateCreated datePublished" datetime="2021-04-30T20:41:24+08:00">2021-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/63e2/" class="post-meta-item leancloud_visitors" data-flag-title="HJ10 字符个数统计" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，计算字符串中含有的不同字符的个数。字符在ACSII码范围内(0~127)，换行表示结束符，不算在字符里。不在范围内的不作统计。多个相同的字符只计算一次<br>例如，对于字符串abaca而言，有a、b、c三种不同的字符，因此输出3。</p>
+<p>输入：<br>输入一行没有空格的字符串。<br>输出：<br>输出范围在(0~127)字符的个数。</p>
+<h2 id="解法：哈希"><a href="#解法：哈希" class="headerlink" title="解法：哈希"></a>解法：哈希</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    set&lt;<span class="keyword">char</span>&gt; res;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">getline</span>(cin, s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : s) &#123;</span><br><span class="line">        <span class="keyword">if</span> (c &gt;= <span class="number">0</span> &amp;&amp; c &lt;= <span class="number">128</span>) res.<span class="built_in">insert</span>(c);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/1010/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/1010/" class="post-title-link" itemprop="url">LC8 字符串转换整数(atoi)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-30 17:42:03" itemprop="dateCreated datePublished" datetime="2021-04-30T17:42:03+08:00">2021-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/1010/" class="post-meta-item leancloud_visitors" data-flag-title="LC8 字符串转换整数(atoi)" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你来实现一个myAtoi(string s) 函数，使其能将字符串转换成一个32位有符号整数（类似C/C++中的atoi函数）。</p>
+<p>函数 myAtoi(string s)的算法如下：</p>
+<p>读入字符串并丢弃无用的前导空格。<br>检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。确定最终结果是负数还是正数。如果两者都不存在，则假定结果为正。<br>读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。<br>将前面步骤读入的这些数字转换为整数（即，”123”-&gt;123，”0032”-&gt;32）。如果没有读入数字，则整数为0。必要时更改符号（从步骤2开始）。<br>如果整数数超过32位有符号整数范围<code>[−2^31,2^31−1]</code>，需要截断这个整数，使其保持在这个范围内。具体来说，小于−2^31的整数应该被固定为−2^31，大于2^31−1的整数应该被固定为2^31−1。<br>返回整数作为最终结果。<br>注意：</p>
+<p>本题中的空白字符只包括空格字符’ ‘。<br>除前导空格或数字后的其余字符串外，请勿忽略任何其他字符。</p>
+<h2 id="解法1：阅读理解"><a href="#解法1：阅读理解" class="headerlink" title="解法1：阅读理解"></a>解法1：阅读理解</h2><p>对着case改了8遍后才通过。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(string&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (s[<span class="number">0</span>] == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">            s.<span class="built_in">erase</span>(s.<span class="built_in">begin</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">char</span> symbol;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">&#x27;-&#x27;</span>) &#123;</span><br><span class="line">            symbol = <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">            s = s.<span class="built_in">substr</span>(<span class="number">1</span>, s.<span class="built_in">length</span>() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">&#x27;+&#x27;</span>) &#123;</span><br><span class="line">            symbol = <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">            s = s.<span class="built_in">substr</span>(<span class="number">1</span>, s.<span class="built_in">length</span>() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isdigit</span>(s[<span class="number">0</span>])) symbol = <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        s = s.<span class="built_in">substr</span>(<span class="number">0</span>, s.<span class="built_in">find_first_not_of</span>(<span class="string">&quot;0123456789&quot;</span>));</span><br><span class="line">        <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (res &gt;= INT32_MAX) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                res *= <span class="number">10</span>;</span><br><span class="line">                res += c - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (symbol == <span class="string">&#x27;-&#x27;</span>) res *= <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span> res *= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (res &lt;= INT32_MIN) <span class="keyword">return</span> INT32_MIN;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (res &gt;= INT32_MAX) <span class="keyword">return</span> INT32_MAX;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>貌似有更优美的解法，有空再去评论区学习一下。<br>有正则表达式做的，还有编译原理里面一个方法做的。</p>
+<p>著名的erase-remove惯用法，可以熟记或者背诵。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">string s = <span class="string">&quot;lixing&quot;</span>;</span><br><span class="line">s.<span class="built_in">erase</span>(<span class="built_in">remove</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>(), <span class="string">&#x27;i&#x27;</span>), s.<span class="built_in">end</span>());</span><br><span class="line">cout &lt;&lt; s &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<p>输出为lxng</p>
+<p>但是本题没有用到。（本来用到了，结果发现只让修掉开头的空格而非全部的空格，所以又重新写别的了）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c8ac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c8ac/" class="post-title-link" itemprop="url">LC0005 最长回文子串</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-30 15:44:46" itemprop="dateCreated datePublished" datetime="2021-04-30T15:44:46+08:00">2021-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/c8ac/" class="post-meta-item leancloud_visitors" data-flag-title="LC0005 最长回文子串" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
+<h2 id="解法1：暴力（超时）"><a href="#解法1：暴力（超时）" class="headerlink" title="解法1：暴力（超时）"></a>解法1：暴力（超时）</h2><p>暴力不行，虽然在NC可以通过，但是NC的用例简单，而且时间没啥限制（1000ms），而LC就比较严格，在LC做题不要想着用暴力。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (s[i] != s[s.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        ios_base::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">        cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        string tmp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = s.<span class="built_in">length</span>(); len &gt; <span class="number">0</span>; len--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> it = <span class="number">0</span>; it &lt;= s.<span class="built_in">length</span>() - len; it++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">isPalindrome</span>(s.<span class="built_in">substr</span>(it, len))) &#123;</span><br><span class="line">                    tmp = s.<span class="built_in">substr</span>(it, len);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!tmp.<span class="built_in">empty</span>()) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/968c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/968c/" class="post-title-link" itemprop="url">HJ66 配置文件恢复</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-30 14:15:29" itemprop="dateCreated datePublished" datetime="2021-04-30T14:15:29+08:00">2021-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/968c/" class="post-meta-item leancloud_visitors" data-flag-title="HJ66 配置文件恢复" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有6条配置命令，它们执行的结果分别是：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>执行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>reset</td>
+<td>reset what</td>
+</tr>
+<tr>
+<td>reset board</td>
+<td>board fault</td>
+</tr>
+<tr>
+<td>board add</td>
+<td>where to add</td>
+</tr>
+<tr>
+<td>board delete</td>
+<td>no board at all</td>
+</tr>
+<tr>
+<td>reboot backplane</td>
+<td>impossible</td>
+</tr>
+<tr>
+<td>backplane abort</td>
+<td>install first</td>
+</tr>
+<tr>
+<td>he he</td>
+<td>unknown command</td>
+</tr>
+</tbody></table>
+<p>注意：he he不是命令。</p>
+<p>为了简化输入，方便用户，以“最短唯一匹配原则”匹配：<br>1、若只输入一字串，则只匹配一个关键字的命令行。例如输入：r，根据该规则，匹配命令reset，执行结果为：reset what；输入：res，根据该规则，匹配命令reset，执行结果为：reset what；<br>2、若只输入一字串，但本条命令有两个关键字，则匹配失败。例如输入：reb，可以找到命令reboot backpalne，但是该命令有两个关键词，所有匹配失败，执行结果为：unknown command<br>3、若输入两字串，则先匹配第一关键字，如果有匹配但不唯一，继续匹配第二关键字，如果仍不唯一，匹配失败。例如输入：r b，找到匹配命令reset board 和 reboot backplane，执行结果为：unknown command。<br>4、若输入两字串，则先匹配第一关键字，如果有匹配但不唯一，继续匹配第二关键字，如果唯一，匹配成功。例如输入：b a，无法确定是命令board add还是backplane abort，匹配失败。<br>5、若输入两字串，第一关键字匹配成功，则匹配第二关键字，若无匹配，失败。例如输入：bo a，确定是命令board add，匹配成功。<br>6、若匹配失败，打印“unknown command”</p>
+<p>输入：<br>多行字符串，每行字符串一条命令<br>输出：<br>执行结果，每条命令输出一行</p>
+<h2 id="解法：阅读理解，外加一些小技巧"><a href="#解法：阅读理解，外加一些小技巧" class="headerlink" title="解法：阅读理解，外加一些小技巧"></a>解法：阅读理解，外加一些小技巧</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">match</span><span class="params">(string str, string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.<span class="built_in">find</span>(s) != string::npos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string cmd[<span class="number">6</span>] = &#123;</span><br><span class="line">        <span class="string">&quot;reset&quot;</span>,</span><br><span class="line">        <span class="string">&quot;reset board&quot;</span>,</span><br><span class="line">        <span class="string">&quot;board add&quot;</span>,</span><br><span class="line">        <span class="string">&quot;board delete&quot;</span>,</span><br><span class="line">        <span class="string">&quot;reboot backplane&quot;</span>,</span><br><span class="line">        <span class="string">&quot;backplane abort&quot;</span> &#125;;</span><br><span class="line">    string exe[<span class="number">7</span>] = &#123;</span><br><span class="line">        <span class="string">&quot;reset what&quot;</span>,</span><br><span class="line">        <span class="string">&quot;board fault&quot;</span>,</span><br><span class="line">        <span class="string">&quot;where to add&quot;</span>,</span><br><span class="line">        <span class="string">&quot;no board at all&quot;</span>,</span><br><span class="line">        <span class="string">&quot;impossible&quot;</span>,</span><br><span class="line">        <span class="string">&quot;install first&quot;</span>,</span><br><span class="line">        <span class="string">&quot;unknown command&quot;</span> &#125;;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(cin, str)) &#123;</span><br><span class="line">        string s1, s2, tmp1, tmp2;</span><br><span class="line">        <span class="function">stringstream <span class="title">ss</span><span class="params">(str)</span></span>;</span><br><span class="line">        ss &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">        <span class="keyword">int</span> exei = <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">if</span> (s2.<span class="built_in">empty</span>()) <span class="comment">// 若只输入一字串，则只匹配一个关键字的命令行。</span></span><br><span class="line">            <span class="built_in">match</span>(cmd[<span class="number">0</span>], s1) ? exei = <span class="number">0</span> : exei = <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123; <span class="comment">// 若输入两字串</span></span><br><span class="line">            <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">                <span class="function">stringstream <span class="title">bincmd</span><span class="params">(cmd[i])</span></span>;</span><br><span class="line">                bincmd &gt;&gt; tmp1 &gt;&gt; tmp2;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">match</span>(tmp1, s1) &amp;&amp; <span class="built_in">match</span>(tmp2, s2)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</span><br><span class="line">                        flag = <span class="literal">true</span>;</span><br><span class="line">                        exei = i;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        exei = <span class="number">6</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; exe[exei] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>知识点1：<code>string::npos</code>表示没搜索到的情况。<br>知识点2：<code>stringstream</code>用来再处理已有的字符串，比如最自然的用法是让它以空格为界自动分成几个小字符串。<br>知识点3：<code>bool flag</code>用来描述状态是否改变过或现在是否满足要求。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -367,7 +758,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>近期压力过于大了。内心的压力，父母的压力，企业的压力。于是近来很久没有做过梦，总感觉少了什么。昨晚一番暴食，撑着胃入睡，已经是凌晨两点了，又在床上看了一小时Unix源码后，终于如愿以偿。<br>第一个梦是lzh，wy，场景在铁二小。大概事情就是在学生楼里玩闹，大家在操场和学生楼里跑进跑出，这个梦我反复地做过许多次，其实没什么意义，但就是无忧无虑，十分快乐，可能真正的快乐才能在无意识中不断在梦中复现。lzh在现实中随时都在无条件地支持我，安慰我，就算在梦里也在做着差不多的事，作为朋友，可以说很伟大了。<br>第二个梦是lyy，dcy，场景记不清了，她俩是非常非常好的朋友，和她俩呆在一起时总是快乐的，她们喜欢开我玩笑，但很有分寸，我也喜欢适当回应。世界上的小伙伴总是两三个、三四个成一群，如果她们还能想起我的话，我们三个也算一组很好的小伙伴了。但最后见面已是四五年前，我们的最后几次碰面总是不十分愉快，我和lyy有些难以启齿但其实异常朴素的误解，出于各种事情，也不太善于和dcy说话。我清楚的知道我怀念的是更早时候的她们和我，但初二那段时间对于我来说实在模糊到想不起来了。作为老同学，我很想念lyy，我记得她去了西南财经政法，希望她开心顺利。<br>第三个梦是llp和shw，梦里在他们租的地方一起跨年。其实我和他们跨年的事已经有过一次，那次是在出租车上，0点的时候他们突然异常开心，祝贺我新年快乐，也大声祝福出租车上的陌生司机，我也很开心，但我更加晕车，所以没怎么搭理他们。可耳边环绕的西南官话让我这个中原人倍感亲切，我蜷缩在副驾驶上，胃里翻江倒海，心里温暖到有点想哭。那段时间是我非常低落的时间之一，即便今天也还没有走出，所以我更加感谢他俩。<br>我发觉自己梦中的关系都是三人一组，也许三个人的友谊才是最稳定的友谊吗。就像段、王、我、李一起出门，如果是三个人，一般可以很快决定要去哪里，而如果凑齐四人，做出决策反而更慢。<br>范杉杉 2021年4月30日 于郑州</p>
+          <p>近期压力过于大了。内心的压力，父母的压力，企业的压力。于是近来很久没有做过梦，总感觉少了什么。昨晚一顿暴饮暴食，饱腹入睡，已经是凌晨两点，又在床上看了一小时Unix源码后，终于如愿以偿。</p>
+<p>第一个梦是lzh，wy，场景在铁二小。大概事情就是在学生楼里玩闹，大家在操场和学生楼里跑进跑出，这个梦我反复地做过许多次，其实没什么意义，只是无忧无虑，颇为快乐。可能真正的快乐才能在无意识中不断在梦中复现。lzh在现实中随时都在无条件地支持我，安慰我，就算在梦里也在做着差不多的事，作为朋友，可以说很伟大了。</p>
+<p>第二个梦是lyy，dcy，场景记不清了，她俩是非常非常好的朋友，和她俩聊天时总是快乐的，她们喜欢开我玩笑，但很有分寸，我也乐于适当回应。世界上的小伙伴总是两三个、三四个成一群，我以前总觉得我们三个也算一组很好的小伙伴了。但最后见面已是四五年前，我们的最后几次碰面总是不十分愉快，我和lyy有些难以启齿但其实异常朴素的误解，出于各种事情，也不太善于和dcy说话。我清楚的知道我怀念的是更早时候的她们和我，但初二那段时间对于我来说实在模糊到想不起来了。作为老同学，我很想念lyy，我记得她去了西南财经政法，希望她开心顺利。</p>
+<p>第三个梦是llp和shw，梦里在他们租的地方一起跨年。其实我和他们跨年的事已经有过一次，那次是在出租车上，0点的时候他们突然异常开心，祝贺我新年快乐，也大声祝福出租车上的陌生司机，我也很开心，但我更加晕车，所以没怎么搭理他们。可耳边环绕的西南官话让我这个中原人倍感亲切，我蜷缩在副驾驶上，胃里翻江倒海，心里温暖到有点想哭。那段时间是我非常低落的时间之一，即便今天也还没有走出，所以我更加感谢他俩。</p>
+<p>我发觉自己梦中的关系都是三人一组，也许三个人的友谊才是最稳定的友谊吗。就像段、王、我、李一起出门，如果是三个人，一般可以很快决定要去哪里，而如果凑齐四人，做出决策反而更慢。</p>
+<p>范杉杉 2021年4月30日 于郑州</p>
 
       
     </div>
@@ -743,390 +1139,6 @@
 <p>给定3个数字（1,3,5），求出这三个数字任意组合相加得出目标数字的组合数，这三种数字可以任意混合和重复。</p>
 <p>如：1,3,5组合出6的方式有8种：<br>1+1+1+1+1+1<br>1+1+1+3<br>1+1+3+1<br>1+3+1+1<br>3+1+1+1<br>3+3<br>1+5<br>5+1</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// initialize to -1</span></span><br><span class="line"><span class="keyword">int</span> dp[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="comment">// this function returns the number of arrangements to form &#x27;n&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// base case</span></span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// checking if already calculated</span></span><br><span class="line">    <span class="keyword">if</span> (dp[n] != <span class="number">-1</span>) <span class="keyword">return</span> dp[n];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// storing the result and returning</span></span><br><span class="line">    <span class="keyword">return</span> dp[n] = <span class="built_in">solve</span>(n - <span class="number">1</span>) + <span class="built_in">solve</span>(n - <span class="number">3</span>) + <span class="built_in">solve</span>(n - <span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/cb23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/cb23/" class="post-title-link" itemprop="url">动态规划的最优子结构性质 DP_Set2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-29 16:28:03" itemprop="dateCreated datePublished" datetime="2021-04-29T16:28:03+08:00">2021-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/cb23/" class="post-meta-item leancloud_visitors" data-flag-title="动态规划的最优子结构性质 DP_Set2" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>动态规划（DP）是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：</p>
-<p>重叠子问题<br>最优子结构性质</p>
-<p>最优子结构：如果给定问题的最优解可以由其子问题的最优解得到，则给定问题具有最优子结构性质。</p>
-<p>例如，最短路径问题具有以下最优子结构性质：<br>如果节点x位于从源节点u到目的节点v的最短路径中，则从u到v的最短路径是从u到x的最短路径和从x到v的最短路径的组合。像Floyd–Warshall和Bellman–Ford等标准的最短路径算法都是动态规划的典型例子。</p>
-<p>另一方面，最长路径问题则不具有最优子结构性质。这里所说的最长路径是指两个节点之间最长的简单路径（没有循环的路径）。考虑CLRS手册中给出的以下未加权图。从q到t有两条最长的路径：q→r→t和q→s→t。与最短路径不同，这些最长路径不具有最优子结构特性。<br>例如，最长路径q→r→t不是从q到r的最长路径和从r到t的最长路径的组合<br>因为从q到r的最长路径是q→s→t→r<br>　而从r到t的最长路径是r→q→s→t。</p>
-<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/LongestPath.gif"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/f5af/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/f5af/" class="post-title-link" itemprop="url">动态规划中重叠子问题的性质 DP_Set1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-29 15:40:16" itemprop="dateCreated datePublished" datetime="2021-04-29T15:40:16+08:00">2021-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/f5af/" class="post-meta-item leancloud_visitors" data-flag-title="动态规划中重叠子问题的性质 DP_Set1" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>动态规划是一种算法范式，它通过将给定的复杂问题分解为子问题来求解，并存储子问题的结果，以避免再次计算相同的结果。下面是一个问题的两个主要性质，表明给定的问题可以用动态规划来解决。</p>
-<p>在这篇文章中，我们将详细讨论第一个属性（重叠子问题）。下一篇文章将讨论动态规划的第二个性质，见<a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/dynamic-programming-set-2-optimal-substructure-property/">Set2</a>。</p>
-<ol>
-<li>重叠子问题 Overlapping Subproblems</li>
-<li>最优子结构 Optimal Substructure</li>
-</ol>
-<h2 id="重叠子问题"><a href="#重叠子问题" class="headerlink" title="重叠子问题"></a>重叠子问题</h2><p>像分而治之一样，动态规划将解决方案结合到子问题中。动态规划主要用于需要反复求解同一子问题时。在动态规划中，子问题的计算解存储在一个表中，这样就不必重新计算。因此，当没有公共（重叠）子问题时，动态规划是没有用的，因为如果不再需要这些解决方案，就没有必要存储解决方案。例如，二分查找就没有公共子问题。以斐波那契数的递推程序为例，有许多子问题需要反复求解。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* simple recursive program for Fibonacci numbers */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">fib</span>(n - <span class="number">1</span>) + <span class="built_in">fib</span>(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>fib(5)执行的递归树：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">                         fib(5)</span><br><span class="line">                     &#x2F;             \</span><br><span class="line">               fib(4)                fib(3)</span><br><span class="line">             &#x2F;      \                &#x2F;     \</span><br><span class="line">         fib(3)      fib(2)         fib(2)    fib(1)</span><br><span class="line">        &#x2F;     \        &#x2F;    \       &#x2F;    \</span><br><span class="line">  fib(2)   fib(1)  fib(1) fib(0) fib(1) fib(0)</span><br><span class="line">  &#x2F;    \</span><br><span class="line">fib(1) fib(0)</span><br></pre></td></tr></table></figure>
-
-<p>我们可以看到函数fib(3)被调用了两次。如果我们存储了fib(3)的值，那么我们就可以重用旧的存储值，而不是再次计算它。有以下两种不同的方法来存储值，以便可以重用这些值：</p>
-<ol>
-<li>Memoization (Top Down) - 记忆化（自上而下）</li>
-<li>Tabulation (Bottom Up) - 表格化（自下而上）</li>
-</ol>
-<h3 id="记忆化"><a href="#记忆化" class="headerlink" title="记忆化"></a>记忆化</h3><p>一个问题的记忆程序类似于递归版本，只是做了一个小小的修改，即在计算解决方案之前先查看查找表。我们初始化一个所有初始值都为NIL的查找数组。每当我们需要子问题的解决方案时，我们首先查看查找表。如果存在预先计算的值，则返回该值，否则，计算该值并将结果放入查找表中，以便以后可以重用。</p>
-<p>注：NIL好像是pascal里的东西，大概理解成相当于C++的NULL吧。</p>
-<p>下面是第n个斐波那契数的记忆版本。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NIL -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> lookup[MAX];</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _initialize() &#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; MAX; i++)</span><br><span class="line">        lookup[i] = NIL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (lookup[n] == NIL) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) lookup[n] = n;</span><br><span class="line">        <span class="keyword">else</span> lookup[n] = <span class="built_in">fib</span>(n - <span class="number">1</span>) + <span class="built_in">fib</span>(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lookup[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">40</span>;</span><br><span class="line">    _initialize();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Fibonacci number is &quot;</span> &lt;&lt; <span class="built_in">fib</span>(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="制表化"><a href="#制表化" class="headerlink" title="制表化"></a>制表化</h3><p>针对给定问题的制表程序以自下而上的方式构建一个表，并从表中返回最后一个条目。例如，对于相同的Fibonacci数，我们首先计算fib(0)，然后计算fib(1)，然后计算fib(2)，然后计算fib(3)，依此类推。所以从字面上说，我们是自下而上建立子问题的解决方案。<br>下面是第n个斐波那契数的表格版本。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* C program for Tabulated version */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> f[n + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">0</span>; f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        f[i] = f[i - <span class="number">1</span>] + f[i - <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Fibonacci number is %d &quot;</span>, <span class="built_in">fib</span>(n));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>表格化和记忆化存储子问题的解。在记忆化中，表格是按需填写的，而在表格化中，从第一个条目开始，所有条目都是逐个填写的。与表格化的版本不同，查寻表的所有条目不一定都填写在记忆化的版本中。例如，LCS（最长公共子串）问题的记忆解决方案不一定会填满所有条目。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/779e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/779e/" class="post-title-link" itemprop="url">HJ74 参数解析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-29 15:01:56" itemprop="dateCreated datePublished" datetime="2021-04-29T15:01:56+08:00">2021-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/779e/" class="post-meta-item leancloud_visitors" data-flag-title="HJ74 参数解析" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在命令行输入如下命令：<br><code>xcopy /s c:\ d:\</code></p>
-<p>各个参数如下：<br>参数1：命令字xcopy<br>参数2：字符串/s<br>参数3：字符串c:<br>参数4: 字符串d:\</p>
-<p>请编写一个参数解析程序，实现将命令行各个参数解析出来。</p>
-<p>解析规则：</p>
-<p>1.参数分隔符为空格<br>2.对于用””包含起来的参数，如果中间有空格，不能解析为多个参数。比如在命令行输入xcopy /s “C:\program files” “d:&quot;时，参数仍然是4个，第3个参数应该是字符串C:\program files，而不是C:\program，注意输出参数时，需要将””去掉，引号不存在嵌套情况。<br>3.参数不定长<br>4.输入由用例保证，不会出现不符合要求的输入</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;string&gt; <span class="title">split</span><span class="params">(<span class="keyword">const</span> string&amp; str)</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; res;</span><br><span class="line">    string strtmp;</span><br><span class="line">    <span class="keyword">int</span> quoflag = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">length</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str[i] == <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (quoflag == <span class="number">-1</span>) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(strtmp);</span><br><span class="line">                strtmp.<span class="built_in">clear</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> strtmp += str[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (str[i] == <span class="string">&#x27;&quot;&#x27;</span>) quoflag *= <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span> strtmp += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!strtmp.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        res.<span class="built_in">push_back</span>(strtmp);</span><br><span class="line">        strtmp.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printv</span><span class="params">(vector&lt;string&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; str : strs)</span><br><span class="line">        cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="built_in">getline</span>(cin, str);</span><br><span class="line">    vector&lt;string&gt; strs = <span class="built_in">split</span>(str);</span><br><span class="line">    cout &lt;&lt; strs.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">printv</span>(strs);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>两个注意点</p>
-<ol>
-<li>getline()在string头文件里，不是iostream</li>
-<li>if else要规范写法，不要一直ififif</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/ac32/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/ac32/" class="post-title-link" itemprop="url">HJ91 走方格的方案数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-29 12:05:26" itemprop="dateCreated datePublished" datetime="2021-04-29T12:05:26+08:00">2021-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/ac32/" class="post-meta-item leancloud_visitors" data-flag-title="HJ91 走方格的方案数" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请计算n*m的棋盘格子（n为横向的格子数，m为竖向的格子数）沿着各自边缘线从左上角走到右下角，总共有多少种走法，要求不能走回头路，即：只能往右和往下走，不能往左和往上走。</p>
-<p>本题含有多组样例输入。<br>输入：<br>每组样例输入两个正整数n和m，用空格隔开。(1≤n,m≤8)<br>输出：<br>每组样例输出一行结果</p>
-<p>示例<br>输入：<br>2 2<br>1 2<br>输出：<br>6<br>3</p>
-<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span> || n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 只有一条直路可以走到左或上边界的点</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">uniquePaths</span>(m - <span class="number">1</span>, n) + <span class="built_in">uniquePaths</span>(m, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m, n;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &gt;&gt; m) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">uniquePaths</span>(m, n) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法2：DP"><a href="#解法2：DP" class="headerlink" title="解法2：DP"></a>解法2：DP</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* (0,0)</span></span><br><span class="line"><span class="comment">*               (i-1,j)</span></span><br><span class="line"><span class="comment">*       (i,j-1) (i,  j)</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*                           (m-1,n-1)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123; <span class="comment">// m行 n列</span></span><br><span class="line">    <span class="comment">// dp[i][j]表示到该达点的走法数，注意它是路径数而非步骤数。</span></span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">dp</span>(m, vector&lt;<span class="keyword">int</span>&gt;(n, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) dp[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">            dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i][j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m, n;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &gt;&gt; m) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">uniquePaths</span>(m + <span class="number">1</span>, n + <span class="number">1</span>) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>为什么传入是m+1和n+1？因为牛客这道题走的是边缘线，而力扣上这道题走的是格子。</p>
-
       
     </div>
 
