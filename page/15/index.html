@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">182</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -217,6 +217,192 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/10400/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/10400/" class="post-title-link" itemprop="url">LC191 位1的个数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-22 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-22T00:00:00+08:00">2021-02-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/10400/" class="post-meta-item leancloud_visitors" data-flag-title="LC191 位1的个数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>) count++;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：消1技巧"><a href="#解法2：消1技巧" class="headerlink" title="解法2：消1技巧"></a>解法2：消1技巧</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">            n = n &amp; (n - <span class="number">1</span>);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>位操作的小技巧：n&amp;(n-1)可以将n的二进制表示中的最低位的1改为0<br>重复上述操作，最终将使n消成0</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/16786/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/16786/" class="post-title-link" itemprop="url">LC1 两数之和</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-21T00:00:00+08:00">2021-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/16786/" class="post-meta-item leancloud_visitors" data-flag-title="LC1 两数之和" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案，但是数组中同一个元素不能使用两遍。</p>
+<h2 id="解法1：暴力法"><a href="#解法1：暴力法" class="headerlink" title="解法1：暴力法"></a>解法1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    res.<span class="built_in">push_back</span>(i);</span><br><span class="line">                    res.<span class="built_in">push_back</span>(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：哈希"><a href="#解法2：哈希" class="headerlink" title="解法2：哈希"></a>解法2：哈希</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.<span class="built_in">find</span>(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.<span class="built_in">end</span>()) <span class="keyword">return</span> &#123; it-&gt;second, i &#125;;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>map内部实现：<br>map內部的实现自建一颗红黑树，这颗树具有对数据自动排序的功能。因此在map内部所有的数据都是有序的。</p>
+<p>map.find()用法：<br>map.find()返回数据所在位置的迭代器，如果map中没有要查找的数据，它返回的迭代器等于end()函数返回的迭代器。end()函数返回的迭代器指向map的最后一个元素之后的地址。</p>
+<p>map[]下标操作：<br>利用[]下标操作的含义是：如果这个key存在，就更新value；如果key不存在，就创建这个键值对。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -951,213 +1137,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/a6f7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/a6f7/" class="post-title-link" itemprop="url">二叉查找树的插入</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-20 21:54:00" itemprop="dateCreated datePublished" datetime="2021-02-20T21:54:00+08:00">2021-02-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/a6f7/" class="post-meta-item leancloud_visitors" data-flag-title="二叉查找树的插入" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="二叉查找树-插入"><a href="#二叉查找树-插入" class="headerlink" title="二叉查找树 插入"></a>二叉查找树 插入</h1><p>BST的定义：结点的左子树只包含键小于结点键的结点。结点的右子树仅包含键大于结点键的结点。左右子树也必须是BST。不能有重复的结点。</p>
-<p>查找操作，返回目标结点地址。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">struct node* <span class="title">search</span><span class="params">(struct node* root, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span> || root-&gt;key == key) <span class="keyword">return</span> root;</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;key &lt; key) <span class="keyword">return</span> <span class="built_in">search</span>(root-&gt;right, key);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">search</span>(root-&gt;left, key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>插入操作，返回新插入结点地址。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     100                               100</span><br><span class="line">    &#x2F;   \        Insert 40            &#x2F;    \</span><br><span class="line">  20     500    ---------&gt;          20     500 </span><br><span class="line"> &#x2F;  \                              &#x2F;  \  </span><br><span class="line">10   30                           10   30</span><br><span class="line">                                          \   </span><br><span class="line">                                          40</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++ program to demonstrate insertion in a BST recursively.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BST</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    BST* left, * right;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Default constructor.</span></span><br><span class="line">    <span class="built_in">BST</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Parameterized constructor.</span></span><br><span class="line">    <span class="built_in">BST</span>(<span class="keyword">int</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Insert function.</span></span><br><span class="line">    <span class="function">BST* <span class="title">Insert</span><span class="params">(BST*, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Inorder traversal.</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Inorder</span><span class="params">(BST*)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Default Constructor definition.</span></span><br><span class="line">BST::<span class="built_in">BST</span>() : <span class="built_in">data</span>(<span class="number">0</span>), <span class="built_in">left</span>(<span class="literal">NULL</span>), <span class="built_in">right</span>(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Parameterized Constructor definition.</span></span><br><span class="line">BST::<span class="built_in">BST</span>(<span class="keyword">int</span> value) &#123;</span><br><span class="line">    data = value;</span><br><span class="line">    left = right = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert function definition.</span></span><br><span class="line"><span class="function">BST* <span class="title">BST::Insert</span><span class="params">(BST* root, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">// Insert the first node, if root is NULL.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">BST</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Insert data.</span></span><br><span class="line">    <span class="keyword">if</span> (value &gt; root-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Insert right node data, if the &#x27;value&#x27;</span></span><br><span class="line">        <span class="comment">// to be inserted is greater than &#x27;root&#x27; node data.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Process right nodes.</span></span><br><span class="line">        root-&gt;right = <span class="built_in">Insert</span>(root-&gt;right, value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Insert left node data, if the &#x27;value&#x27;</span></span><br><span class="line">        <span class="comment">// to be inserted is greater than &#x27;root&#x27; node data.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Process left nodes.</span></span><br><span class="line">        root-&gt;left = <span class="built_in">Insert</span>(root-&gt;left, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Return &#x27;root&#x27; node, after insertion.</span></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Inorder traversal function.</span></span><br><span class="line"><span class="comment">// This gives data in sorted order.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BST::Inorder</span><span class="params">(BST* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Inorder</span>(root-&gt;left);</span><br><span class="line">    cout &lt;&lt; root-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="built_in">Inorder</span>(root-&gt;right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver code</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    BST b, * root = <span class="literal">NULL</span>;</span><br><span class="line">    root = b.<span class="built_in">Insert</span>(root, <span class="number">50</span>);</span><br><span class="line">    b.<span class="built_in">Insert</span>(root, <span class="number">30</span>);</span><br><span class="line">    b.<span class="built_in">Insert</span>(root, <span class="number">20</span>);</span><br><span class="line">    b.<span class="built_in">Insert</span>(root, <span class="number">40</span>);</span><br><span class="line">    b.<span class="built_in">Insert</span>(root, <span class="number">70</span>);</span><br><span class="line">    b.<span class="built_in">Insert</span>(root, <span class="number">60</span>);</span><br><span class="line">    b.<span class="built_in">Insert</span>(root, <span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">    b.<span class="built_in">Inorder</span>(root);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This code is contributed by pkthapa</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="有趣的事实"><a href="#有趣的事实" class="headerlink" title="有趣的事实"></a>有趣的事实</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/total-number-of-possible-binary-search-trees-using-catalan-number/">Number of unique BSTs with n distinct keys is Catalan Number</a></li>
-</ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/">https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/51f1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/51f1/" class="post-title-link" itemprop="url">二叉树的非递归后序遍历</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-20 19:05:00" itemprop="dateCreated datePublished" datetime="2021-02-20T19:05:00+08:00">2021-02-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/51f1/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树的非递归后序遍历" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="后序遍历-非递归"><a href="#后序遍历-非递归" class="headerlink" title="后序遍历 非递归"></a>后序遍历 非递归</h1><h2 id="方法1-双栈"><a href="#方法1-双栈" class="headerlink" title="方法1 双栈"></a>方法1 双栈</h2><h3 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    stack&lt;Node*&gt; s1, s2;</span><br><span class="line"></span><br><span class="line">    s1.<span class="built_in">push</span>(root);</span><br><span class="line">    Node* node;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        node = s1.<span class="built_in">top</span>();</span><br><span class="line">        s1.<span class="built_in">pop</span>();</span><br><span class="line">        s2.<span class="built_in">push</span>(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;left) s1.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;right) s1.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        node = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        cout &lt;&lt; node-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>我们可以做类似迭代前序遍历的操作，但有以下区别：</p>
-<p>a）我们不打印项目，而是将其压入堆栈。</p>
-<p>b）我们令左子树在右子树之前进栈。</p>
-<p>以下是完整的算法。在步骤2之后，我们在第二个堆栈中得到了后遍历的相反结果。我们使用第一个堆栈来获取正确的顺序。</p>
-<p>总结一下就是：根先从S1进到S2，所以最后从S2出来。左右压到S1中，再按右左弹到S2中，S2最后POP时，顺序还是左右。根结点总是最后打印。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. Push root to first stack.</span><br><span class="line">2. Loop while first stack is not empty</span><br><span class="line">   2.1 Pop a node from first stack and push it to second stack</span><br><span class="line">   2.2 Push left and right children of the popped node to first stack</span><br><span class="line">3. Print contents of second stack</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/BinaryTree.png" alt="img"></p>
-<p>下面是使用两个堆栈打印上述树的后序遍历的步骤。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. Push 1 to first stack.</span><br><span class="line">      First stack: 1</span><br><span class="line">      Second stack: Empty</span><br><span class="line"></span><br><span class="line">2. Pop 1 from first stack and push it to second stack. </span><br><span class="line">   Push left and right children of 1 to first stack</span><br><span class="line">      First stack: 2, 3</span><br><span class="line">      Second stack: 1</span><br><span class="line"></span><br><span class="line">3. Pop 3 from first stack and push it to second stack. </span><br><span class="line">   Push left and right children of 3 to first stack</span><br><span class="line">      First stack: 2, 6, 7</span><br><span class="line">      Second stack: 1, 3</span><br><span class="line"></span><br><span class="line">4. Pop 7 from first stack and push it to second stack.</span><br><span class="line">      First stack: 2, 6</span><br><span class="line">      Second stack: 1, 3, 7</span><br><span class="line"></span><br><span class="line">5. Pop 6 from first stack and push it to second stack.</span><br><span class="line">      First stack: 2</span><br><span class="line">      Second stack: 1, 3, 7, 6</span><br><span class="line"></span><br><span class="line">6. Pop 2 from first stack and push it to second stack. </span><br><span class="line">   Push left and right children of 2 to first stack</span><br><span class="line">      First stack: 4, 5</span><br><span class="line">      Second stack: 1, 3, 7, 6, 2</span><br><span class="line"></span><br><span class="line">7. Pop 5 from first stack and push it to second stack.</span><br><span class="line">      First stack: 4</span><br><span class="line">      Second stack: 1, 3, 7, 6, 2, 5</span><br><span class="line"></span><br><span class="line">8. Pop 4 from first stack and push it to second stack.</span><br><span class="line">      First stack: Empty</span><br><span class="line">      Second stack: 1, 3, 7, 6, 2, 5, 4</span><br><span class="line"></span><br><span class="line">The algorithm stops here since there are no more items in the first stack. </span><br><span class="line">Observe that the contents of second stack are in postorder fashion. Print them. </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// A tree node</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    Node* left, * right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function to create a new node with the given data</span></span><br><span class="line"><span class="function">Node* <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node* node = <span class="keyword">new</span> Node;</span><br><span class="line">    node-&gt;data = data;</span><br><span class="line">    node-&gt;left = node-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// An iterative function to do post order</span></span><br><span class="line"><span class="comment">// traversal of a given binary tree</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create two stacks</span></span><br><span class="line">    stack&lt;Node*&gt; s1, s2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// push root to first stack</span></span><br><span class="line">    s1.<span class="built_in">push</span>(root);</span><br><span class="line">    Node* node;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Run while first stack is not empty</span></span><br><span class="line">    <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="comment">// Pop an item from s1 and push it to s2</span></span><br><span class="line">        node = s1.<span class="built_in">top</span>();</span><br><span class="line">        s1.<span class="built_in">pop</span>();</span><br><span class="line">        s2.<span class="built_in">push</span>(node);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Push left and right children</span></span><br><span class="line">        <span class="comment">// of removed item to s1</span></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;left)</span><br><span class="line">            s1.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;right)</span><br><span class="line">            s1.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Print all elements of second stack</span></span><br><span class="line">    <span class="keyword">while</span> (!s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        node = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        cout &lt;&lt; node-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver code</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Let us construct the tree</span></span><br><span class="line">    <span class="comment">// shown in above figure</span></span><br><span class="line">    Node* root = <span class="literal">NULL</span>;</span><br><span class="line">    root = <span class="built_in">newNode</span>(<span class="number">1</span>);</span><br><span class="line">    root-&gt;left = <span class="built_in">newNode</span>(<span class="number">2</span>);</span><br><span class="line">    root-&gt;right = <span class="built_in">newNode</span>(<span class="number">3</span>);</span><br><span class="line">    root-&gt;left-&gt;left = <span class="built_in">newNode</span>(<span class="number">4</span>);</span><br><span class="line">    root-&gt;left-&gt;right = <span class="built_in">newNode</span>(<span class="number">5</span>);</span><br><span class="line">    root-&gt;right-&gt;left = <span class="built_in">newNode</span>(<span class="number">6</span>);</span><br><span class="line">    root-&gt;right-&gt;right = <span class="built_in">newNode</span>(<span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">postOrderIterative</span>(root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法2-单栈"><a href="#方法2-单栈" class="headerlink" title="方法2 单栈"></a>方法2 单栈</h2><h3 id="正文-1"><a href="#正文-1" class="headerlink" title="正文"></a>正文</h3><p><img data-src="image-20210220195311451.png" alt="image-20210220195311451"></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// create a postorder class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostOrder</span></span></span><br><span class="line"><span class="class"></span>&#123; </span><br><span class="line">    Node root;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// An iterative function to do postorder traversal </span></span><br><span class="line">    <span class="comment">// of a given binary tree</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(root != <span class="keyword">null</span>) &#123;</span><br><span class="line">                stack.push(root);</span><br><span class="line">                stack.push(root);</span><br><span class="line">                root = root.left;</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">// Check for empty stack</span></span><br><span class="line">            <span class="keyword">if</span>(stack.empty()) <span class="keyword">return</span>;</span><br><span class="line">            root = stack.pop();</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">if</span>(!stack.empty() &amp;&amp; stack.peek() == root) root = root.right;</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                 </span><br><span class="line">                System.out.print(root.data + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                root = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">stack进行pop前，刚刚结束了循环，此时当前结点curr指向某个空的左子树；</span><br><span class="line">然后弹出一次堆栈，并把弹出的结点送给curr，立刻进行判断：</span><br><span class="line">因为压入的时候是复数次操作，每个根结点压入了两次，</span><br><span class="line">当curr&#x3D;&#x3D;s.peek时，说明此时是第一次回到根结点，是从左子树回来的，还没有去过右子树，</span><br><span class="line">此时不能打印根结点，应该转向去右边，然后在“相对而言的”右边再重复双压入的循环，逐渐走到新的左下角（左子树为null）的结点。</span><br><span class="line">第二次回到根结点时，才是从右结点回来的，此时才能输出根。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    Node* curr = root;</span><br><span class="line">    stack&lt;Node*&gt; s;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (curr) &#123;</span><br><span class="line">            s.<span class="built_in">push</span>(curr);</span><br><span class="line">            s.<span class="built_in">push</span>(curr);</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">        curr = s.<span class="built_in">top</span>();</span><br><span class="line">        s.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!s.<span class="built_in">empty</span>() &amp;&amp; s.<span class="built_in">top</span>() == curr) curr = curr-&gt;right;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">            curr = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/iterative-postorder-traversal/">https://www.geeksforgeeks.org/iterative-postorder-traversal/</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/">https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/</a></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>
