@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">191</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,7 +174,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,6 +217,896 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/cf5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/cf5/" class="post-title-link" itemprop="url">双端队列的双链表实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-14 00:46:00" itemprop="dateCreated datePublished" datetime="2021-02-14T00:46:00+08:00">2021-02-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/cf5/" class="post-meta-item leancloud_visitors" data-flag-title="双端队列的双链表实现" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="双端队列-双链表实现"><a href="#双端队列-双链表实现" class="headerlink" title="双端队列 双链表实现"></a>双端队列 双链表实现</h1><p>头————尾（allows insert and delete at both ends）</p>
+<h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">insertFront() : Adds an item at the front of Deque.</span><br><span class="line">insertRear()  : Adds an item at the rear of Deque.</span><br><span class="line">deleteFront() : Deletes an item from front of Deque.</span><br><span class="line">deleteRear()  : Deletes an item from rear of Deque.</span><br><span class="line"></span><br><span class="line">getFront() : Gets the front item from queue.</span><br><span class="line">getRear()  : Gets the last item from queue.</span><br><span class="line">isEmpty()  : Checks whether Deque is empty or not.</span><br><span class="line">size()     : Gets number of elements in Deque.</span><br><span class="line">erase()    : Deletes all the elements from Deque.</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://media.geeksforgeeks.org/wp-content/uploads/deque_dll.jpg" alt="img"></p>
+<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p><strong>Insertion at Front end</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Allocate space for a newNode of doubly linked list.</span><br><span class="line">IF newNode &#x3D;&#x3D; NULL, then &#x2F;&#x2F; 内存不够分配新结点</span><br><span class="line">    print &quot;Overflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    IF front &#x3D;&#x3D; NULL, then &#x2F;&#x2F; 空队列</span><br><span class="line">        rear &#x3D; front &#x3D; newNode</span><br><span class="line">    ELSE &#x2F;&#x2F; 非空队列</span><br><span class="line">      newNode-&gt;next &#x3D; front &#x2F;&#x2F; 前后结点桥接</span><br><span class="line">      front-&gt;prev &#x3D; newNode</span><br><span class="line">      front &#x3D; newNode &#x2F;&#x2F; 改变端点指针指向</span><br></pre></td></tr></table></figure>
+
+<p><strong>Insertion at Rear end</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Allocate space for a newNode of doubly linked list.</span><br><span class="line">IF newNode &#x3D;&#x3D; NULL, then</span><br><span class="line">    print &quot;Overflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    IF rear &#x3D;&#x3D; NULL, then</span><br><span class="line">        front &#x3D; rear &#x3D; newNode</span><br><span class="line">    ELSE</span><br><span class="line">        newNode-&gt;prev &#x3D; rear</span><br><span class="line">        rear-&gt;next &#x3D; newNode</span><br><span class="line">        rear &#x3D; newNode</span><br></pre></td></tr></table></figure>
+
+<p><strong>Deletion from Front end</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IF front &#x3D;&#x3D; NULL</span><br><span class="line">    print &quot;Underflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    Initialize temp &#x3D; front</span><br><span class="line">    front &#x3D; front-&gt;next</span><br><span class="line">    IF front &#x3D;&#x3D; NULL</span><br><span class="line">        rear &#x3D; NULL</span><br><span class="line">    ELSE</span><br><span class="line">        front-&gt;prev &#x3D; NULL &#x2F;&#x2F; 容易遗漏这句，头结点前面没有结点，但头结点的prev指针域还是要记得置为NULL</span><br><span class="line">    Deallocate space for temp</span><br></pre></td></tr></table></figure>
+
+<p><strong>Deletion from Rear end</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IF front &#x3D;&#x3D; NULL</span><br><span class="line">    print &quot;Underflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    Initialize temp &#x3D; rear</span><br><span class="line">    rear &#x3D; rear-&gt;prev</span><br><span class="line">    IF rear &#x3D;&#x3D; NULL</span><br><span class="line">        front &#x3D; NULL</span><br><span class="line">    ELSE</span><br><span class="line">        rear-&gt;next &#x3D; NULL</span><br><span class="line">    Deallocate space for temp</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/60ff/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/60ff/" class="post-title-link" itemprop="url">栈中最小元素</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-12 14:24:00" itemprop="dateCreated datePublished" datetime="2021-02-12T14:24:00+08:00">2021-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/60ff/" class="post-meta-item leancloud_visitors" data-flag-title="栈中最小元素" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="栈-最小元素"><a href="#栈-最小元素" class="headerlink" title="栈 最小元素"></a>栈 最小元素</h1><p>实现功能getMin以返回当前栈中最小元素。</p>
+<p><strong>Question:</strong> Design a Data Structure SpecialStack that supports all the stack operations like push(), pop(), isEmpty(), isFull() and an additional operation getMin() which should return minimum element from the SpecialStack. All these operations of SpecialStack must be O(1). To implement SpecialStack, you should only use standard Stack data structure and no other data structure like arrays, list, .. etc. </p>
+<p><strong>Solution:</strong> Use two stacks: one to store actual stack elements and the other as an auxiliary stack to store minimum values. The idea is to do push() and pop() operations in such a way that the top of the auxiliary stack is always the minimum. Let us see how push() and pop() operations work.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">STACK MIN</span><br><span class="line">15 15</span><br><span class="line">29 18</span><br><span class="line">19 18</span><br><span class="line">18 18</span><br></pre></td></tr></table></figure>
+
+<p>MIN[]中保存的是：”到目前为止“最小的元素。注意理解”到目前为止“的含义即可。getMin()的关键在于push()。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> max = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">int</span> arr[max] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">int</span> top;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Stack</span>() &#123; top = <span class="number">-1</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isFull</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Stack::peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top &lt; <span class="number">0</span>) <span class="keyword">return</span> INT_MIN;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> x = arr[top];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stack::isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top == <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stack::isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top == max - <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Stack::pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isEmpty</span>()) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Stack Underflow&quot;</span>;</span><br><span class="line">        <span class="built_in">abort</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> x = arr[top];</span><br><span class="line">    top--;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stack::push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isFull</span>()) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Stack Overflow&quot;</span>;</span><br><span class="line">        <span class="built_in">abort</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    top++;</span><br><span class="line">    arr[top] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpecialStack</span> :</span> <span class="keyword">public</span> Stack &#123;</span><br><span class="line">    Stack min;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SpecialStack::push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="comment">/* 核心！ */</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isEmpty</span>()) &#123;</span><br><span class="line">        Stack::<span class="built_in">push</span>(x);</span><br><span class="line">        min.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Stack::<span class="built_in">push</span>(x);</span><br><span class="line">        <span class="keyword">int</span> y = min.<span class="built_in">peek</span>();</span><br><span class="line">        <span class="keyword">if</span> (x &lt; y) min.<span class="built_in">push</span>(x);</span><br><span class="line">        <span class="keyword">else</span> min.<span class="built_in">push</span>(y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SpecialStack::pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = Stack::<span class="built_in">pop</span>();</span><br><span class="line">    min.<span class="built_in">pop</span>();</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SpecialStack::getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = min.<span class="built_in">peek</span>();</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SpecialStack s;</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">10</span>);</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">20</span>);</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">30</span>);</span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">getMin</span>() &lt;&lt; endl;</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">5</span>);</span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">getMin</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/">https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/2a48/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/2a48/" class="post-title-link" itemprop="url">队列的栈实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-12 01:31:00" itemprop="dateCreated datePublished" datetime="2021-02-12T01:31:00+08:00">2021-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/2a48/" class="post-meta-item leancloud_visitors" data-flag-title="队列的栈实现" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="队列-栈实现"><a href="#队列-栈实现" class="headerlink" title="队列 栈实现"></a>队列 栈实现</h1><h2 id="Method-1-By-making-enQueue-operation-costly"><a href="#Method-1-By-making-enQueue-operation-costly" class="headerlink" title="Method 1 (By making enQueue operation costly)"></a>Method 1 (By making enQueue operation costly)</h2><p>这个方法理解有点别扭，看第二个。</p>
+<h2 id="Method-2-By-making-deQueue-operation-costly"><a href="#Method-2-By-making-deQueue-operation-costly" class="headerlink" title="Method 2 (By making deQueue operation costly)"></a>Method 2 (By making deQueue operation costly)</h2><p><img data-src="https://i.stack.imgur.com/xyWPR.png" alt="enter image description here"></p>
+<p><img data-src="https://i.stack.imgur.com/lX1EP.png" alt="enter image description here"></p>
+<p><img data-src="https://i.stack.imgur.com/9f03R.png" alt="enter image description here"></p>
+<p>注意一点，S2不为空时，就不能继续让S1向S2转移，必须把S2中的元素De完再继续S1向S2转移。比如input1 2 3，如果S2中1 2出列，3还留在里面，此时input4 5，整体来看一共input了1 2 3 4 5，应该output1 2 3 4 5，所以4 5不能压在S2中仅存的3的上面，一定要把S2容器De空，然后再继续转移。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Queue</span> &#123;</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s1, s2; <span class="comment">// s2|s1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Enqueue an item to the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enQueue</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Push item into the first stack</span></span><br><span class="line">        s1.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Dequeue an item from the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deQueue</span><span class="params">()</span> </span>&#123; <span class="comment">/*不新传入任何参数*/</span></span><br><span class="line">        <span class="comment">// if both stacks are empty</span></span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>() &amp;&amp; s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Q is empty&quot;</span>;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if s2 is empty, move</span></span><br><span class="line">        <span class="comment">// elements from s1</span></span><br><span class="line">        <span class="keyword">if</span> (s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                s2.<span class="built_in">push</span>(s1.<span class="built_in">top</span>());</span><br><span class="line">                s1.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// return the top item from s2</span></span><br><span class="line">        <span class="keyword">int</span> x = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Implementation-of-method-2-using-Function-Call-Stack"><a href="#Implementation-of-method-2-using-Function-Call-Stack" class="headerlink" title="Implementation of method 2 using Function Call Stack"></a>Implementation of method 2 using Function Call Stack</h2><p>法二的另一种实现方式，使用了递归思路，也不容易理清，还是推荐第二种办法。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Queue</span> &#123;</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Enqueue an item to the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enQueue</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        s.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Dequeue an item from the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Q is empty&quot;</span>;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// pop an item from the stack</span></span><br><span class="line">        <span class="keyword">int</span> x = s.<span class="built_in">top</span>();</span><br><span class="line">        s.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if stack becomes empty, return</span></span><br><span class="line">        <span class="comment">// the popped item</span></span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) <span class="keyword">return</span> x;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// recursive call</span></span><br><span class="line">        <span class="keyword">int</span> item = <span class="built_in">deQueue</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// push popped item back to the stack</span></span><br><span class="line">        s.<span class="built_in">push</span>(x);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// return the result of deQueue() call</span></span><br><span class="line">        <span class="keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.thinbug.com/q/69192">https://www.thinbug.com/q/69192</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/queue-using-stacks/">https://www.geeksforgeeks.org/queue-using-stacks/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/a076/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/a076/" class="post-title-link" itemprop="url">栈的介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-11 03:59:00" itemprop="dateCreated datePublished" datetime="2021-02-11T03:59:00+08:00">2021-02-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/a076/" class="post-meta-item leancloud_visitors" data-flag-title="栈的介绍" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="栈-介绍"><a href="#栈-介绍" class="headerlink" title="栈 介绍"></a>栈 介绍</h1><p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/stack.png" alt="img"></p>
+<h2 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h2><p>Push()、Pop()、Peek()、isEmpty()</p>
+<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/">符号匹配</a></li>
+<li><a target="_blank" rel="noopener" href="http://quiz.geeksforgeeks.org/stack-set-2-infix-to-postfix/">中缀转后缀</a>或前缀</li>
+<li>重做、撤销功能。在诸如editors, photoshop等许多场合。</li>
+<li>前进、后退功能。在web浏览器中。</li>
+<li>应用于许多算法，如<a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/recursive-functions/">Tower of Hanoi</a>, <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/618/">tree traversals</a>, <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/the-stock-span-problem/">stock span problem</a>, <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/largest-rectangular-area-in-a-histogram-set-1/">histogram problem</a>.</li>
+<li>回溯法。为了从当前状态恢复过来，我们需要存储先前的状态，为此我们需要堆栈。</li>
+<li>图的算法。拓扑排序和强连通分量。</li>
+<li>内存管理。在内存管理中，任何现代计算机都将堆栈用作运行目的的主要管理方法。计算机系统中运行的每个程序都有自己的内存分配。</li>
+<li>字符串反转。</li>
+</ul>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><h3 id="用数组"><a href="#用数组" class="headerlink" title="用数组"></a>用数组</h3><p>容易实现。但是非动态。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 1000</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> top;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> a[MAX] = &#123;&#125;;</span><br><span class="line">    <span class="built_in">Stack</span>() &#123; top = <span class="number">-1</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stack::push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top &gt;= (MAX - <span class="number">1</span>)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        a[++top] = x;</span><br><span class="line">        cout &lt;&lt; x &lt;&lt; <span class="string">&quot; pushed into stack\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Stack::pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> x = a[top--];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Stack::peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> x = a[top];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stack::isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (top &lt; <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Stack s;</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">10</span>);</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">20</span>);</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">30</span>);</span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">pop</span>() &lt;&lt; <span class="string">&quot; Popped from stack\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用链表"><a href="#用链表" class="headerlink" title="用链表"></a>用链表</h3><p>动态大小。但是需要额外内存开销。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StackNode</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    StackNode* next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">StackNode* <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">    StackNode* stackNode = <span class="keyword">new</span> <span class="built_in">StackNode</span>();</span><br><span class="line">    stackNode-&gt;data = data;</span><br><span class="line">    stackNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> stackNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(StackNode* top)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> top == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(StackNode** top, <span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">    StackNode* stackNode = <span class="built_in">newNode</span>(data);</span><br><span class="line">    stackNode-&gt;next = *top;</span><br><span class="line">    *top = stackNode;</span><br><span class="line">    cout &lt;&lt; data &lt;&lt; <span class="string">&quot; pushed to stack.\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 这是自己实现的，其实标准库中自带的是void pop()，不是int pop()，因此不能顺便借用pop的返回值 */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(StackNode** top)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isEmpty</span>(*top)) <span class="keyword">return</span> INT_MIN;</span><br><span class="line">    StackNode* temp = *top;</span><br><span class="line">    *top = (*top)-&gt;next;</span><br><span class="line">    <span class="keyword">int</span> popped = temp-&gt;data;</span><br><span class="line">    <span class="built_in">free</span>(temp);</span><br><span class="line">    <span class="keyword">return</span> popped;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">(StackNode* top)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isEmpty</span>(top)) <span class="keyword">return</span> INT_MIN;</span><br><span class="line">    <span class="keyword">return</span> top-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    StackNode* top = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">push</span>(&amp;top, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">push</span>(&amp;top, <span class="number">20</span>);</span><br><span class="line">    <span class="built_in">push</span>(&amp;top, <span class="number">30</span>);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">pop</span>(&amp;top) &lt;&lt; <span class="string">&quot; popped from stack.\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Top element is &quot;</span> &lt;&lt; <span class="built_in">peek</span>(top) &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; (<span class="built_in">isEmpty</span>(top) ? <span class="string">&quot;Empty.&quot;</span> : <span class="string">&quot;NonEmpty.&quot;</span>) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/stack-data-structure-introduction-program/">https://www.geeksforgeeks.org/stack-data-structure-introduction-program/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/3eb1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/3eb1/" class="post-title-link" itemprop="url">循环链表的遍历</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-11 01:26:00" itemprop="dateCreated datePublished" datetime="2021-02-11T01:26:00+08:00">2021-02-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/3eb1/" class="post-meta-item leancloud_visitors" data-flag-title="循环链表的遍历" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="循环链表-遍历"><a href="#循环链表-遍历" class="headerlink" title="循环链表 遍历"></a>循环链表 遍历</h1><p>In a conventional linked list, we traverse the list from the head node and stop the traversal when we reach NULL. In a circular linked list, we stop traversal when we reach the first node again.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">    Node* temp = head;</span><br><span class="line">    <span class="keyword">if</span> (head != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            cout &lt;&lt; temp-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">while</span> (temp != head);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为初始时temp=head，编译器无法分辨此时是否是temp第二次追上head，所以要用do-while语句，在循环判断前先执行一轮。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/circular-linked-list-set-2-traversal/">https://www.geeksforgeeks.org/circular-linked-list-set-2-traversal/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/4e92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/4e92/" class="post-title-link" itemprop="url">双链表的翻转</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-10 15:53:00" itemprop="dateCreated datePublished" datetime="2021-02-10T15:53:00+08:00">2021-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/4e92/" class="post-meta-item leancloud_visitors" data-flag-title="双链表的翻转" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="双链表-反转"><a href="#双链表-反转" class="headerlink" title="双链表 反转"></a>双链表 反转</h1><p><img data-src="https://media.geeksforgeeks.org/wp-content/uploads/reverse_lincked-list1.jpg" alt="img"></p>
+<p><img data-src="https://media.geeksforgeeks.org/wp-content/uploads/reverse_lincked-list2.jpg" alt="img"></p>
+<h2 id="方法1-简单方法"><a href="#方法1-简单方法" class="headerlink" title="方法1 简单方法"></a>方法1 简单方法</h2><p>对于每一个结点，交换其两个指针域的内容。最后将头指针指向尾结点。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(Node** head_ref)</span> </span>&#123;</span><br><span class="line">    Node* temp = <span class="literal">NULL</span>;</span><br><span class="line">    Node* current = *head_ref;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123; <span class="comment">/* swap */</span></span><br><span class="line">        temp = current-&gt;prev;</span><br><span class="line">        current-&gt;prev = current-&gt;next;</span><br><span class="line">        current-&gt;next = temp;</span><br><span class="line"></span><br><span class="line">        current = current-&gt;prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (temp != <span class="literal">NULL</span>) *head_ref = temp-&gt;prev;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法2-使用堆栈"><a href="#方法2-使用堆栈" class="headerlink" title="方法2 使用堆栈"></a>方法2 使用堆栈</h2><p>将结点的数据域连续压入栈中，然后不断弹出元素并更新双链表。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/reverse-a-doubly-linked-list/">https://www.geeksforgeeks.org/reverse-a-doubly-linked-list/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8a2b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/8a2b/" class="post-title-link" itemprop="url">双链表的删除</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-10 01:04:00" itemprop="dateCreated datePublished" datetime="2021-02-10T01:04:00+08:00">2021-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/8a2b/" class="post-meta-item leancloud_visitors" data-flag-title="双链表的删除" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="双链表-删除"><a href="#双链表-删除" class="headerlink" title="双链表 删除"></a>双链表 删除</h1><h2 id="删除具体结点"><a href="#删除具体结点" class="headerlink" title="删除具体结点"></a>删除具体结点</h2><p>删除问题按删除位置可归为三类：删头，删尾，删中间结点。如果已知待删除结点和头结点，上述三类问题均可以用两步处理。</p>
+<ol>
+<li>如果是头结点被删，需要重新改变头指针</li>
+<li>结点被删除后，前后结点要重新链接</li>
+</ol>
+<p>算法：</p>
+<p>如果头结点是被删除结点，则重新使头指针指向被删除结点的后继结点。（暂且只做这一步）</p>
+<p>如果被删除结点不是第一个，说明前面还有结点，前指后。</p>
+<p>如果被删除结点不是最后一个，说明后面还有结点，后指前。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(Node** head_ref, Node* del)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (*head_ref == <span class="literal">NULL</span> || del == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (*head_ref == del) <span class="comment">/*A*/</span></span><br><span class="line">        *head_ref = del-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (del-&gt;prev != <span class="literal">NULL</span>) <span class="comment">/*B*/</span></span><br><span class="line">        del-&gt;prev-&gt;next = del-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (del-&gt;next != <span class="literal">NULL</span>) <span class="comment">/*C*/</span></span><br><span class="line">        del-&gt;next-&gt;prev = del-&gt;prev;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(del);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解释一下，这段代码逻辑其实类似甘氏图：</p>
+<p>A的情境：精确删头。</p>
+<p>B的情境：待删除结点的左邻域不为空，即中间结点或尾结点，此时可以从前面的结点伸出next指向后面（如果是中间结点则del.next为后继结点，如果是尾结点则del.next为NULL）。</p>
+<p>C的情境：待删除结点的右邻域不为空，即中间结点或头结点，此时可以从后面的结点伸出prev只想前面（如果是中间结点则del.prev为前驱结点，如果是头结点则del.prev为NULL）。</p>
+<p>综上所述，传入结点是头结点会走A+C这条路，传入中间结点走B+C，传入尾结点走B。这种巧妙写法同时具有逻辑上的美感和形式上的工整，应学习品味。</p>
+<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/03/DLL1.png" alt="dll"></p>
+<p>为什么传入尾结点与其他两者不太一样？观察上图容易发现，头结点和中间结点均有4条相关指针，而尾结点只有3条相关指针。当结点D准备被删除时，存放在类D中的D-&gt;prev和D-&gt;next都会自由，紧接着C成为事实上的新任尾结点，C-&gt;next=D-&gt;next=NULL，（因此时D-&gt;prev和D-&gt;next只是断开，还没有物理上清空，因此D-&gt;next的内容仍然是NULL），直到free(D)，至此，与D相关的一切（data、prev、next）才都被抹去。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/">https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c299/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c299/" class="post-title-link" itemprop="url">双链表的插入</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-09 18:05:00" itemprop="dateCreated datePublished" datetime="2021-02-09T18:05:00+08:00">2021-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/c299/" class="post-meta-item leancloud_visitors" data-flag-title="双链表的插入" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="双链表-插入"><a href="#双链表-插入" class="headerlink" title="双链表 插入"></a>双链表 插入</h1><p>双链表（DLL）有四种方式插入结点：</p>
+<h2 id="在表头插入"><a href="#在表头插入" class="headerlink" title="在表头插入"></a>在表头插入</h2><p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/03/DLL_add_front1.png" alt="dll_add_front"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(Node** head_ref, <span class="keyword">int</span> new_data)</span> </span>&#123;</span><br><span class="line">    Node* new_node = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    new_node-&gt;data = new_data;</span><br><span class="line">    new_node-&gt;next = (*head_ref);</span><br><span class="line">    new_node-&gt;prev = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((*head_ref) != <span class="literal">NULL</span>) </span><br><span class="line">        (*head_ref)-&gt;prev = new_node;</span><br><span class="line"></span><br><span class="line">    (*head_ref) = new_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在表尾插入"><a href="#在表尾插入" class="headerlink" title="在表尾插入"></a>在表尾插入</h2><p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/03/DLL_add_end1.png" alt="dll_add_end"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">append</span><span class="params">(Node** head_ref, <span class="keyword">int</span> new_data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node* new_node = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    Node* last = *head_ref;</span><br><span class="line">    new_node-&gt;data = new_data;</span><br><span class="line">    new_node-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (*head_ref == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        new_node-&gt;prev = <span class="literal">NULL</span>;</span><br><span class="line">        *head_ref = new_node;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (last-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">        last = last-&gt;next;</span><br><span class="line"></span><br><span class="line">    last-&gt;next = new_node;</span><br><span class="line">    new_node-&gt;prev = last;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在某点前插入"><a href="#在某点前插入" class="headerlink" title="在某点前插入"></a>在某点前插入</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertBefore</span><span class="params">(Node** head_ref, Node* next_node, <span class="keyword">int</span> new_data)</span> <span class="comment">/* 将给定的结点称为next_node */</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (next_node == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    Node* new_node = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    new_node-&gt;data = new_data;</span><br><span class="line"></span><br><span class="line">    new_node-&gt;prev = next_node-&gt;prev;</span><br><span class="line"></span><br><span class="line">    new_node-&gt;next = next_node;</span><br><span class="line">    <span class="keyword">if</span> (new_node-&gt;prev != <span class="literal">NULL</span>) &#123; <span class="comment">/* 考虑给定结点左边是否指向NULL */</span></span><br><span class="line">        next_node-&gt;prev = new_node;</span><br><span class="line">        new_node-&gt;prev-&gt;next = new_node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> *head_ref = new_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在某点后插入"><a href="#在某点后插入" class="headerlink" title="在某点后插入"></a>在某点后插入</h2><p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/03/DLL_add_middle1.png" alt="dll_add_middle"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertAfter</span><span class="params">(Node* prev_node, <span class="keyword">int</span> new_data)</span> </span>&#123; <span class="comment">// 将给定的结点称为prev_node</span></span><br><span class="line">    <span class="keyword">if</span> (prev_node == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    Node* new_node = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    new_node-&gt;data = new_data;</span><br><span class="line"></span><br><span class="line">    new_node-&gt;prev = prev_node;</span><br><span class="line">    new_node-&gt;next = prev_node-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (new_node-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">        new_node-&gt;next-&gt;prev = new_node;</span><br><span class="line"></span><br><span class="line">    prev_node-&gt;next = new_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="补充两条个人技巧"><a href="#补充两条个人技巧" class="headerlink" title="补充两条个人技巧"></a>补充两条个人技巧</h2><ol>
+<li>因为双链表的插入操作需要按照正确的顺序断开或重新赋值某些指针，因此记忆这些操作的先后顺序可以提高一些效率。操作顺序为<code>4 1 2 3</code>。</li>
+<li>前插记得考虑左空的情况，后插记得考虑右空的情况，两端插入需要考虑是否为空表。</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/doubly-linked-list/">https://www.geeksforgeeks.org/doubly-linked-list/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8489/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/8489/" class="post-title-link" itemprop="url">单链表的查找</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-08 19:11:00" itemprop="dateCreated datePublished" datetime="2021-02-08T19:11:00+08:00">2021-02-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/8489/" class="post-meta-item leancloud_visitors" data-flag-title="单链表的查找" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="单链表-查找"><a href="#单链表-查找" class="headerlink" title="单链表 查找"></a>单链表 查找</h1><h2 id="查找符合条件的结点是否存在"><a href="#查找符合条件的结点是否存在" class="headerlink" title="查找符合条件的结点是否存在"></a>查找符合条件的结点是否存在</h2><p>编写一个函数，在给定的单链表中搜索给定的键值。如果在链表中，则该函数应返回true，否则返回false。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(Node *head, <span class="keyword">int</span> x)</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-迭代方法"><a href="#1-迭代方法" class="headerlink" title="1.迭代方法"></a>1.迭代方法</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(Node* head, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    Node* current = head;</span><br><span class="line">    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (current-&gt;data == x) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-递归方法"><a href="#2-递归方法" class="headerlink" title="2.递归方法"></a>2.递归方法</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(Node* head, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (head-&gt;data == x) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">search</span>(head-&gt;next, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取链表中第N个结点"><a href="#获取链表中第N个结点" class="headerlink" title="获取链表中第N个结点"></a>获取链表中第N个结点</h2><p>编写一个GetNth()函数，该函数接受一个链表和一个整数索引，并返回存储在该索引位置的结点中的数据域。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getNth</span><span class="params">(Node* head, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    Node* current = head;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (current) &#123;</span><br><span class="line">        <span class="keyword">if</span> (count == index) <span class="keyword">return</span> current-&gt;data;</span><br><span class="line">        count++;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另一种思路（递归）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">getnth(node,n)</span><br><span class="line">1. Initialize count &#x3D; 1</span><br><span class="line">2. if count&#x3D;&#x3D;n</span><br><span class="line">     return node-&gt;data</span><br><span class="line">3. else</span><br><span class="line">    return getnth(node-&gt;next,n-1)</span><br></pre></td></tr></table></figure>
+
+<p>具体实现</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetNth</span><span class="params">(Node* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (count == n) <span class="keyword">return</span> head-&gt;data;</span><br><span class="line">    <span class="comment">// recursively decrease n and increase head to next pointer</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">GetNth</span>(head-&gt;next, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方法并没有什么优势，逻辑也不是很直观，浅尝辄止了解即可。</p>
+<h2 id="获取链表中倒数第N个结点"><a href="#获取链表中倒数第N个结点" class="headerlink" title="获取链表中倒数第N个结点"></a>获取链表中倒数第N个结点</h2><p>例如倒数第三个结点是B。</p>
+<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist.png" alt="linkedlist"></p>
+<h3 id="方法1-利用链表长度"><a href="#方法1-利用链表长度" class="headerlink" title="方法1 利用链表长度"></a>方法1 利用链表长度</h3><p>主要思路</p>
+<ol>
+<li><p>计算链表的长度。让长度为len。</p>
+</li>
+<li><p>从链表的开头出发，打印第<code>len – n + 1</code>个结点。</p>
+</li>
+</ol>
+<p>具体实现</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getNthR</span><span class="params">(Node* head, <span class="keyword">int</span> n)</span> </span>&#123; <span class="comment">/* R = Reciprocal 倒数 */</span></span><br><span class="line">    Node* temp = head;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">getCount</span>(head);</span><br><span class="line">    <span class="keyword">if</span> (len &lt; n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    temp = head;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len - n + <span class="number">1</span>; i++)</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    <span class="keyword">return</span> temp-&gt;data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法2-使用两个指针"><a href="#方法2-使用两个指针" class="headerlink" title="方法2 使用两个指针"></a>方法2 使用两个指针</h3><p>维护两个指针：main指针和reference指针。</p>
+<p>初始化这两个指针使其指向head。首先，将reference指针从head开始出发移动n个结点。这一步使得main和ref拉开了n的距离，而“倒数第n”的意义正是目标结点与倒数第0的距离，倒数第1是尾结点，则倒数第0正是尾结点指针域所指向的null。所以接下来只需同时移动两个指针并保持此时的间距即可，移动的目的是：把ref从“正数第n”转变成“倒数第0”。换句话说，变动参考系。</p>
+<p>然后，逐一移动两个指针，直到ref指针到达null为止。现在，main指针将恰好指向从右数起第n个结点。返回main指针即可。</p>
+<p>下图是上述方法的模拟：</p>
+<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190624163533/Nth-node-from-end-of-the-Linked-List.png" alt="img"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getNthR</span><span class="params">(Node* head, <span class="keyword">int</span> n)</span> </span>&#123; <span class="comment">/* R=Reciprocal 倒数 */</span></span><br><span class="line">    Node* main_ptr = head;</span><br><span class="line">    Node* ref_ptr = head;</span><br><span class="line">    <span class="keyword">int</span> diff = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (head != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (diff++ &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ref_ptr != <span class="literal">NULL</span>) ref_ptr = ref_ptr-&gt;next;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (ref_ptr != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            main_ptr = main_ptr-&gt;next;</span><br><span class="line">            ref_ptr = ref_ptr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (main_ptr != <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> main_ptr-&gt;data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/search-an-element-in-a-linked-list-iterative-and-recursive/">https://www.geeksforgeeks.org/search-an-element-in-a-linked-list-iterative-and-recursive/</a><br><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/">https://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/</a><br><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/">https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/</a></p>
+<p>2021年2月8日</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -315,880 +1205,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/7041/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/7041/" class="post-title-link" itemprop="url">单链表的删除</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-07 22:45:00" itemprop="dateCreated datePublished" datetime="2021-02-07T22:45:00+08:00">2021-02-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/7041/" class="post-meta-item leancloud_visitors" data-flag-title="单链表的删除" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="单链表-删除"><a href="#单链表-删除" class="headerlink" title="单链表 删除"></a>单链表 删除</h1><h2 id="删除第一个匹配的目标结点"><a href="#删除第一个匹配的目标结点" class="headerlink" title="删除第一个匹配的目标结点"></a>删除第一个匹配的目标结点</h2><p>让我们制定问题陈述以了解删除过程。给定一个“键值”，删除该键在链表中的第一个匹配项。要从链表中删除结点，我们需要执行以下步骤。</p>
-<ol>
-<li>查找待删除的结点的前驱结点</li>
-<li>更改前驱结点的指针域</li>
-<li>释放目标结点所占内存</li>
-</ol>
-<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/05/Linkedlist_deletion.png" alt="linkedlist_deletion"></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(Node** head_ref, <span class="keyword">int</span> key)</span> <span class="comment">/* 可能会改变头指针（目标结点是头结点） */</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node* temp = *head_ref; <span class="comment">/* 保存头指针，待会儿遍历用 */</span></span><br><span class="line">    Node* prev = <span class="literal">NULL</span>; <span class="comment">/* 保存前驱结点 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data == key) <span class="comment">/* 如果链表非空且头结点正好是待删除结点， */</span></span><br><span class="line">    &#123;</span><br><span class="line">        *head_ref = temp-&gt;next; <span class="comment">// 更新head</span></span><br><span class="line">        <span class="keyword">delete</span> temp; <span class="comment">// 释放旧head</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> <span class="comment">/* 链表非空且目标结点不是头结点 */</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data != key) <span class="comment">/* 查找满足条件的第一个结点，直至查找成功或者temp出界（指向null） */</span></span><br><span class="line">        &#123;</span><br><span class="line">            prev = temp; <span class="comment">/* 当前结点存到前驱结点中 */</span></span><br><span class="line">            temp = temp-&gt;next; <span class="comment">/* 当前结点向后顺移，遍历结束时，prev是末尾结点，temp是末尾结点-&gt;next，即null */</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (temp == <span class="literal">NULL</span>) <span class="comment">// 两种情况到达这里：链表一开始就为空。或者链表直到遍历结束也未找到目标 */</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Unlink the node from linked list. unlink 解开链条，很生动</span></span><br><span class="line">        prev-&gt;next = temp-&gt;next; <span class="comment">/* 让前驱结点不再指向待删除结点，而是指向待删除结点的后继结点，即孤立目标结点 */</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">delete</span> temp; <span class="comment">/* 释放内存 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除指定位置的结点"><a href="#删除指定位置的结点" class="headerlink" title="删除指定位置的结点"></a>删除指定位置的结点</h2><p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: position &#x3D; 1, Linked List &#x3D; 8-&gt;2-&gt;3-&gt;1-&gt;7</span><br><span class="line">Output: Linked List &#x3D;  8-&gt;3-&gt;1-&gt;7</span><br><span class="line"></span><br><span class="line">Input: position &#x3D; 0, Linked List &#x3D; 8-&gt;2-&gt;3-&gt;1-&gt;7</span><br><span class="line">Output: Linked List &#x3D; 2-&gt;3-&gt;1-&gt;7</span><br></pre></td></tr></table></figure>
-
-<p>如果待删除的结点是头结点，正常删除就行。</p>
-<p>如果待删除的结点不是头结点，则必须维护一个指针，这个指针指向待删除结点的前驱结点。因此如果待删除结点的索引不是0，则我们需要循环position-1次来使指针找到这个前驱结点。</p>
-<p>以下是上面思路的具体实现细节。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(Node** head_ref, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 如果链表为空</span></span><br><span class="line">    <span class="keyword">if</span> (*head_ref == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    Node* temp = *head_ref; <span class="comment">// 保存头结点，稍后遍历用</span></span><br><span class="line">    <span class="comment">// 如果要删除的结点是头结点</span></span><br><span class="line">    <span class="keyword">if</span> (position == <span class="number">0</span>) &#123;</span><br><span class="line">        *head_ref = temp-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> temp;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果要删除的结点不是头结点，则将temp遍历至目标位置的前一个位置，此时temp的意义是待删除结点的前驱。</span></span><br><span class="line">    <span class="comment">// 也可能pos远超出链表长度了，则temp停留在尾结点后面的null处。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; temp != <span class="literal">NULL</span> &amp;&amp; i &lt; position - <span class="number">1</span>; i++)</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    <span class="comment">// temp==null说明pos远远超出链表长度，temp-&gt;next==null说明pos刚好超过链表长度，两种情况都任务失败。</span></span><br><span class="line">    <span class="keyword">if</span> (temp == <span class="literal">NULL</span> || temp-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 如果一切正常，则此时temp停留在待删除结点的前驱结点，temp-&gt;next正是目标结点。</span></span><br><span class="line">    <span class="comment">// 为了删除目标结点，我们要先存下来目标结点的next指针域所指之处，方便跟前驱衔接。</span></span><br><span class="line">    Node* next = temp-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">delete</span> temp-&gt;next; <span class="comment">// 释放目标结点内存</span></span><br><span class="line">    temp-&gt;next = next; <span class="comment">// 桥接（前驱直接指向后继）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>思考：</p>
-<ol>
-<li>最后两条语句为什么不能交换位置？两个temp-&gt;next有什么区别？<br>temp保存的是前驱，delete temp-&gt;next是目标结点。而第二个temp-&gt;next的意义是前驱重新伸出来的的指针域指向倒数第三句保存的后继结点。（前驱 目标 后继）</li>
-<li>返回值类型为void的函数，究竟返回的是什么东西？删除函数为我们输出了什么？<br>就像做菜一样，形参Node** head_ref和int position是对食材的描绘，而实参&amp;head和2就是真实的食材，我们不需要在意自己写的函数做出了什么菜，只要知道自己亲手传入的食材确实被处理了（假设函数功能一切正常），并且处理结果保留了下来，即可。其他函数也需要使用他们的时候自然会接手这些处理过的食材继续进行别的加工。从这个角度看待，也可以如此理解：返回值类型为void的函数不生产任何新的东西，只是在后厨改造了我们传进去的参数，并且将其作为遗产又确确实实留给了我们（传引用）。</li>
-</ol>
-<h2 id="销毁链表"><a href="#销毁链表" class="headerlink" title="销毁链表"></a>销毁链表</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteList</span><span class="params">(Node** head_ref)</span> </span>&#123;</span><br><span class="line">    Node* current = *head_ref;</span><br><span class="line">    Node* next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">/* (current) -&gt; next */</span></span><br><span class="line">        next = current-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> current;</span><br><span class="line">        current = next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *head_ref = <span class="literal">NULL</span>; <span class="comment">/* 全部删完后记得将头指针置NULL */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/linked-list-set-3-deleting-node/">https://www.geeksforgeeks.org/linked-list-set-3-deleting-node/</a><br><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/delete-a-linked-list-node-at-a-given-position/">https://www.geeksforgeeks.org/delete-a-linked-list-node-at-a-given-position/</a><br><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/write-a-function-to-delete-a-linked-list/">https://www.geeksforgeeks.org/write-a-function-to-delete-a-linked-list/</a></p>
-<p>2021年2月7日</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/61194/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/61194/" class="post-title-link" itemprop="url">深入理解二级指针</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-07 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-07T00:00:00+08:00">2021-02-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/61194/" class="post-meta-item leancloud_visitors" data-flag-title="深入理解二级指针" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="二级指针概念"><a href="#二级指针概念" class="headerlink" title="二级指针概念"></a>二级指针概念</h2><p>一级指针存储变量的地址，二级指针存储一级指针的地址。当我们想通过函数改变某个变量的值时，我们向函数传递指向该变量的指针；而如果我们想改变一个指针的值（例如改变指针的指向），此时我们传递指向该指针的指针，即二级指针。</p>
-<p>总体应上把握住一个原则：将指针作为函数参数时，看是为了修改指针指向的值，还是为了修改指针本身。前者传入一级指针，后者传入二级指针。指针本身也是一种变量，它也有相应的地址，对指针取地址就得到了指针这个对象的地址。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/61194/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/38f3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/38f3/" class="post-title-link" itemprop="url">单链表的插入</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-06 12:08:00" itemprop="dateCreated datePublished" datetime="2021-02-06T12:08:00+08:00">2021-02-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/38f3/" class="post-meta-item leancloud_visitors" data-flag-title="单链表的插入" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="单链表-插入"><a href="#单链表-插入" class="headerlink" title="单链表 插入"></a>单链表 插入</h1><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>本文讨论的所有程序均基于下面的链结点表示形式。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    Node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>本文讨论在链表中插入新结点的方法。可以通过三种方式添加结点：</p>
-<ol>
-<li>在链表的最前面</li>
-<li>在给定结点之后</li>
-<li>在链表的最末尾</li>
-</ol>
-<h2 id="在表首插入"><a href="#在表首插入" class="headerlink" title="在表首插入"></a>在表首插入</h2><p>新结点始终添加在给定链表的头结点之前，新近添加的结点将成为新的头结点。让我们将添加到链表最前面的函数称为push()，push()必须接收一个指向头指针的指针，因为push()必须使头结点指针指向新结点。(See <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/how-to-write-functions-that-modify-the-head-pointer-of-a-linked-list/">this</a>)</p>
-<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist_insert_at_start.png" alt="linkedlist_insert_at_start"></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 这里用到了二级指针 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(Node** head_ref, <span class="keyword">int</span> new_data)</span> </span>&#123;</span><br><span class="line">    Node* new_node = <span class="keyword">new</span> <span class="built_in">Node</span>(); <span class="comment">/* 分配空间 */</span></span><br><span class="line">    new_node-&gt;data = new_data; <span class="comment">/* 向新结点的数据域存入数据 */</span></span><br><span class="line">    new_node-&gt;next = (*head_ref); <span class="comment">/* 让新结点的指针域指向原来的头结点 */</span></span><br><span class="line">    (*head_ref) = new_node; <span class="comment">/* 将头指针移动到新结点处 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">对上边代码片段的一些注解：</span><br><span class="line">链表中第一个结点的存储位置叫做头指针，链表中可以没有头结点，但不能没有头指针。</span><br><span class="line">根据初始化语句Node* head = NULL可知，head的类型是Node*，即结构体指针</span><br><span class="line">head意义为指向头结点的指针/头指针，head内容为头结点地址，因此<span class="built_in">&amp;</span>head表示头结点地址的地址</span><br><span class="line">new<span class="built_in">_</span>node的类型是Node*，任何一个结点的类型都是Node*，任何一个结点的第一属性都是结点所在地址</span><br><span class="line">箭头左边的next与右边的矩形边界看似分割，其实完全是一体。</span><br><span class="line">head<span class="built_in">_</span>ref的类型是Node**，即指向指针的指针，也就是指针的地址</span><br><span class="line">传入参数是<span class="built_in">&amp;</span>head，即Node** head<span class="built_in">_</span>ref = <span class="built_in">&amp;</span>head（本质为指针的指针 = 头结点地址的地址）。可推出：</span><br><span class="line">head<span class="built_in">_</span>ref=<span class="built_in">&amp;</span>head</span><br><span class="line">*head<span class="built_in">_</span>ref=head，即*head<span class="built_in">_</span>ref=头指针</span><br><span class="line">因此，new<span class="built_in">_</span>node-&gt;next = *head<span class="built_in">_</span>ref = head，即将新结点指向原头结点（第一个=是赋值，第二个=是等于）</span><br><span class="line">进而，*head<span class="built_in">_</span>ref = head = new<span class="built_in">_</span>node，即将头指针更新为新结点处的地址</span><br></pre></td></tr></table></figure>
-
-<p>头指针中保存着头结点的地址，二级指针head_ref为指向指针的指针，head_ref解引用一次表示头指针，即头结点的地址，因此new_node-&gt;next = *head_ref表示将原头结点的地址赋值给新结点的指针域，即新结点指向头结点。</p>
-<p>对二级指针的深入理解，参见： <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88.md">深入理解二级指针.md</a> </p>
-<h2 id="在特定结点后插入"><a href="#在特定结点后插入" class="headerlink" title="在特定结点后插入"></a>在特定结点后插入</h2><p>我们得到了某个结点的指针，新结点将插入到给定结点的后面。</p>
-<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist_insert_middle.png" alt="linkedlist_insert_middle"></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 在给定结点之后插入一个结点 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertAfter</span><span class="params">(Node* prev_node, <span class="keyword">int</span> new_data)</span> </span>&#123;</span><br><span class="line">    Node* new_node = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    new_node-&gt;data = new_data;</span><br><span class="line">    new_node-&gt;next = prev_node-&gt;next;</span><br><span class="line">    prev_node-&gt;next = new_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="在表尾插入"><a href="#在表尾插入" class="headerlink" title="在表尾插入"></a>在表尾插入</h2><p>由于链表通常由头指针表示，因此我们必须遍历该链表直至结束，然后将最后一个结点的next指针域更改为新结点的地址。</p>
-<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist_insert_last.png" alt="linkedlist_insert_last"></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在链表的最末尾添加一个结点</span></span><br><span class="line"><span class="comment">// 给定对列表头部的引用（指向指针的指针）和一个int，在链表末尾追加一个新结点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">append</span><span class="params">(Node** head_ref, <span class="keyword">int</span> new_data)</span> </span>&#123;</span><br><span class="line">    Node* new_node = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    Node* last = *head_ref; <span class="comment">/*last此时暂时指向头结点，稍后将遍历至尾结点*/</span></span><br><span class="line">    new_node-&gt;data = new_data;</span><br><span class="line">    new_node-&gt;next = <span class="literal">NULL</span>; <span class="comment">/*待插入的新结点将成为新的末尾结点，因此将其next指针域置为NULL*/</span></span><br><span class="line">    <span class="comment">// 如果链表为空，则使新结点作为头结点</span></span><br><span class="line">    <span class="keyword">if</span> (*head_ref == <span class="literal">NULL</span>) <span class="comment">/*为什么append要使用二级指针做形参？头指针不是没变吗？原因在这块，若链表为空时插入，头指针是会变的！*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        *head_ref = new_node;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果链表非空，则遍历其直至last指向最后一个结点</span></span><br><span class="line">    <span class="keyword">while</span> (last-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">        last = last-&gt;next;</span><br><span class="line">    <span class="comment">// 将遍历得到的尾结点指向新插入的结点，新结点成为新的尾巴</span></span><br><span class="line">    last-&gt;next = new_node;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>为什么第二个函数没有使用二级指针？</p>
-<p>三个函数中，在头部新加结点一定会使头指针改变，在尾部添加结点也可能会使头指针改变（当链表本来为空），因此这两种情况都使用了二级指针。而在给定结点后面插入新结点则一定不会改变头指针，因此不需要使用二级指针。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printList</span><span class="params">(Node* node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; node-&gt;data;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Node* head = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">append</span>(&amp;head, <span class="number">6</span>);</span><br><span class="line">    <span class="built_in">push</span>(&amp;head, <span class="number">7</span>);</span><br><span class="line">    <span class="built_in">push</span>(&amp;head, <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">append</span>(&amp;head, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">insertAfter</span>(head-&gt;next, <span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Created Linked list is:&quot;</span>;</span><br><span class="line">    <span class="built_in">printList</span>(head);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/linked-list-set-2-inserting-a-node/">https://www.geeksforgeeks.org/linked-list-set-2-inserting-a-node/</a></p>
-<p>2021年2月6日</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/11ed/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/11ed/" class="post-title-link" itemprop="url">旋转数组</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-06 11:11:00" itemprop="dateCreated datePublished" datetime="2021-02-06T11:11:00+08:00">2021-02-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/11ed/" class="post-meta-item leancloud_visitors" data-flag-title="旋转数组" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="数组-旋转数组"><a href="#数组-旋转数组" class="headerlink" title="数组 旋转数组"></a>数组 旋转数组</h1><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>将一个长度为n的数组arr[]左旋d个位置。例如初始数组为：1 2 3 4 5 6 7</p>
-<p>例如，将上面的数组左旋2个位置得到下面的数组：3 4 5 6 7 1 2</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 绕第1个元素左旋（除第1个外其余元素依次左移，首元素arr[0]交换到最右端 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotatebyOne</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = arr[<span class="number">0</span>], i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">        arr[i] = arr[i + <span class="number">1</span>];</span><br><span class="line">    arr[i] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 第d个元素的索引是arr[d-1],从arr[0]到arr[d-1]依次调用leftRotatebyOne() */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotate</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n, <span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d; i++)</span><br><span class="line">        <span class="built_in">leftRotatebyOne</span>(arr, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 打印数组 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printArray</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cout &lt;&lt; arr[i] &lt;&lt; (i != n - <span class="number">1</span> ? <span class="string">&quot; &quot;</span> : <span class="string">&quot;&quot;</span>);</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 主函数 */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in"><span class="keyword">sizeof</span></span>(arr) / <span class="built_in"><span class="keyword">sizeof</span></span>(arr[<span class="number">0</span>]); <span class="comment">/* n:数组长度 */</span></span><br><span class="line">    <span class="built_in">leftRotate</span>(arr, n, <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">printArray</span>(arr, n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/array-rotation/">https://www.geeksforgeeks.org/array-rotation/</a></p>
-<p>2021年2月4日</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/527c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/527c/" class="post-title-link" itemprop="url">2021年度计划</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-01-01 18:15:26" itemprop="dateCreated datePublished" datetime="2021-01-01T18:15:26+08:00">2021-01-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%90%86%E6%83%B3%E5%9B%BD/" itemprop="url" rel="index"><span itemprop="name">理想国</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%90%86%E6%83%B3%E5%9B%BD/%E5%B9%B4%E5%BA%A6%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">年度系列</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/527c/" class="post-meta-item leancloud_visitors" data-flag-title="2021年度计划" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>伊曼努爾·康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
-</blockquote>
-<h1 id="全年"><a href="#全年" class="headerlink" title="全年"></a>全年</h1><h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p>CS：LeetCode刷到400题<br>CS：C++ Primer翻烂<br>CS：操作系统概念翻烂<br>CS：清华大学操作系统课程实验</p>
-<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><p>刚　需：买双跑鞋<br>刚　需：换个书包（国家地理） - 0.5k<br>半刚需：mi6平稳过渡到年后，有点想换新三星 - 7k<br>半刚需：攒台整机，但不要赶在矿潮 - 1w</p>
-<h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><p>出行：成都大熊貓繁育研究基地</p>
-<h1 id="平时"><a href="#平时" class="headerlink" title="平时"></a>平时</h1><h2 id="每日作息"><a href="#每日作息" class="headerlink" title="每日作息"></a>每日作息</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">起床两小时</span><br><span class="line">06:00-06:20 - 起床，解手，温水+蜂蜜，换运动衣服</span><br><span class="line">06:20-06:50 - 五公里</span><br><span class="line">06:50-07:00 - 早餐</span><br><span class="line">07:00-07:30 - 洗澡，洗运动衣服</span><br><span class="line">07:30-08:00 - 每日一题</span><br><span class="line">08:00-09:00 - 出门上班，地铁上背10个单词</span><br><span class="line"></span><br><span class="line">工作以外的时间</span><br><span class="line">平日 - 下班回家，看CS书+写博客+写题</span><br><span class="line">假日 - 呆在家里，看CS书+做实验，社交，下厨</span><br><span class="line"></span><br><span class="line">最后一刻钟</span><br><span class="line">23:45-00:00 - 泡脚，看一集动画片，上床睡觉</span><br></pre></td></tr></table></figure>
-
-<h2 id="每月任务"><a href="#每月任务" class="headerlink" title="每月任务"></a>每月任务</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">每月看完一本书（全年共_3_本）</span><br><span class="line">    1月：C++ Primer(1~7)</span><br><span class="line">    2月：计算机网络 - 谢希仁</span><br><span class="line">    3月：操作系统之哲学原理 - 邹恒明</span><br><span class="line">    4月：C++ Primer(8~12)</span><br><span class="line"></span><br><span class="line">每月练好一道菜</span><br><span class="line"></span><br><span class="line">每月末跑一次半马</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>斯波：人们高估了一天的改变，也低估了一年的改变。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/4067/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/4067/" class="post-title-link" itemprop="url">大学要多读硬书——给新生的一点忠告</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-09-15 09:16:06" itemprop="dateCreated datePublished" datetime="2019-09-15T09:16:06+08:00">2019-09-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E6%96%87%E6%91%98/" itemprop="url" rel="index"><span itemprop="name">文摘</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/4067/" class="post-meta-item leancloud_visitors" data-flag-title="大学要多读硬书——给新生的一点忠告" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>● 罗卫东</p>
-<p>　　2019级新生陆续入学了，激动人心的时刻也过去了，周围的一切复归平静。<br>　　<br>　　接下来几天，每个大学都会给新入学的同学安排始业教育，指导新生如何尽早适应大学阶段的学习，尽快调整自己的身心状态，开始人生新一阶段的奋斗。<br>　　<br>　　始业教育的内容不无外乎以下几个方面，告诉大家，大学与高中的不同，如何变被动为主动；讲解本学校的现状、历史文化和精神价值观；介绍学校、学院、学科的特色和优势；提出对新生的德智体美劳各个方面的要求。有的也会告诫新生要注意的一些问题，正确择友、构建良好的同学关系、身心健康、养成良好学习和生活习惯，诸如此类，内容丰富，面面俱到。这里，无需我重复了。<br>　　<br>　　如果有谁问我，最想告诫新生们的是什么，那么，我只想告诫大家一点。这一点就是，作为一个大学生，在本科四年时间里，一定要读几本硬书。
-　　</p>
-<h2 id="何为硬书？"><a href="#何为硬书？" class="headerlink" title="何为硬书？"></a>何为硬书？</h2><p>　　<br>　　“硬书”，这个说法不太常见，是我借用北方地区聚宴时“硬菜”的说法而起的名字。<br>　　<br>　　我自己这样来定义它。<br>　　<br>　　所谓的“硬书”：<br>　　<br>　　首先，是公认的重要。学术经典、思想经典、文学艺术经典等等，它在我们人类历史上发挥过启迪思想、净化心灵、构建文明、推动进步等等的重大作用，甚至是文明的奠基之作。<br>　　<br>　　其次，是公认的难懂。它的思想密度高，原创性强，表述独特。它是高营养的、不容易消化吸收。硬书，无论篇幅体例，有多大的差异，但无一例外都是思想深刻、旨意丰富的。要么深奥晦涩、要么微言大义、要么体宏思精，若无名师高人指点，自己又静不下心来，就读不进，更看不懂。
-　　</p>
-<h2 id="为什么一定要读硬书？"><a href="#为什么一定要读硬书？" class="headerlink" title="为什么一定要读硬书？"></a>为什么一定要读硬书？</h2><p>　　<br>　　先打个比方，一个国家要使自己的经济体系变得强大，就必须首先建造重要的基础设施，交通运输、电力能源等，这是任何产业发展都要用到的通用资产；还要投资建造核心技术支撑的巨型成套设备，这是经济发展的重资产。缺乏这两类资产，自主、自强、自立的产业体系便是空中楼阁。硬书，就是你作为独立自主自强的人，必须准备的基础设施，是硬资产，是通用资产。一个人，有了精神的基础设施，有了能力的重型装备，就能够作为屹立于社会。没有硬资产的人，是立不起来的。<br>　　<br>　　硬书，一旦看懂了，吸收了，转化了，就会成为你思想进步的主引擎，人生旅途的指南针，安身立命的坚实基础。<br>　　<br>　　能让你变得强大并持续一生的，只有硬书中的道理，因为，它建设了你作为人的基础设施和重型通用资产。一个大学生，要成为具有正确的批评与自我批评能力的现代公民，公忠坚毅的社会精英，最需要的不是水课和软文、不是鸡零狗碎的知识和信息，而是硬书，是硬书！<br>　　<br>　　一句话，“强国须造重器，大学要读硬书”！
-　　</p>
-<h2 id="为什么要在大学读硬书？"><a href="#为什么要在大学读硬书？" class="headerlink" title="为什么要在大学读硬书？"></a>为什么要在大学读硬书？</h2><p>　　<br>　　简单地说，有几点：<br>　　<br>　　第一，大学是人生中各种观念成型的关键阶段，此时的认识歪了和偏了，以后纠正起来就难了。这四年，书读对了，读懂了，读好了，今后的路子就对了、宽了。<br>　　<br>　　第二，大学生的身心发展已经到了可以接受更深更难思想的阶段。<br>　　<br>　　第三，硬书难读，难懂，需要花费时间，需要高人指点。只有在大学阶段，才有相对完整和充裕的阅读、思考、讨论时间，才有学养深厚的导师。在大学之前的基础教育阶段，虽然也是读书，但以成熟知识的接受和文化基础的训练为主，身心发展都还不具备读硬书的条件。离开大学走上社会以后，不可能给你读硬书所需要的大块时间和心境，身边更不可能有你可以随时请教的老师和互动研讨的同学。<br>　　<br>　　第四，中学生要高考，大学毕业后要谋生。只有大学时代，人的功利心最弱，可以正心诚意、轻装上阵、全力以赴去进行思想的探险。<br>　　<br>　　很多大学生，受社会思潮的影响，认为花大量时间去读硬书，是得不偿失的，宁可把时间花在刷绩点、泡水课、挣学分、考技能上，认为这样做最实用，岂不知，这是舍本求末的认识，结果是得不偿失。它也许拿到了高学分，却浪费了人生最宝贵的资源，就是时间；更令人痛心的是由此错过了人生最好的读硬书的窗口期。<br>　　<br>　　我不否认学分、绩点、技能的重要性，现实生活需要这些。但与读硬书获得的持久能力相比，这些仍然是次要的。如果年轻时本末倒置，错误地配置了时间和精力，到人生的中后程，就很难扳回来，一切悔之晚矣。<br>　　<br>　　虽说难读的不一定是硬书，但硬书多半难读。舍得时间、耐得寂寞、沉得下心、放得下脸，这是读硬书的几大要求。前面三点，一看便知，毋须说明。这第四点放得下脸，指的是不要碍于虚荣，或者碍于面子，而失去向高人名师求教的机会。
-　　</p>
-<h2 id="哪些是必读的硬书？"><a href="#哪些是必读的硬书？" class="headerlink" title="哪些是必读的硬书？"></a>哪些是必读的硬书？</h2><p>　　<br>　　这并无完全一致的答案。每一个导师都有自己心目中的硬书。公认的硬书更像是处在大多数好老师开出书单的交集上的那些书。比如梁启超、胡适、钱穆、傅斯年这些民国时代的大学者都曾经给大学生青年开过书单，内容有差异，但其中都有《四书五经》，则基本可以确定，这是必读的经典。<br>　　<br>　　朋友圈也在转发世界著名大学必读书单。你找那些被选中的次数最多、入选时间最长，基本不会错。比如，哈佛、普林斯顿、耶鲁、斯坦福、哥伦比亚、剑桥、牛津等等的名校，图书馆借书中位居前列的十种，各校有差异，但都列入了柏拉图的《理想国》，则基本能够确认，这是重要的经典。<br>　　<br>　　作为一名经济学从业人员，其他学科哪些是硬书，我发表的意见，肯定不作数。仅就经济学而言，《国富论》、《资本论》、《经济学原理》、《通论》，这四本是必读的硬书。<br>　　<br>　　41年前，我进入大学学习，那时候诱惑应酬少，读书风气好，四年里花在读书上的时间和精力是有保证的。今天回想起来，总体来说很是欣慰和庆幸，但也不是完全没有遗憾。庆幸的是大学时代还真是读了几部硬书的，欣慰的是读的这些硬书对自己后来的发展帮助很大。略有遗憾的是，这样有用的硬书，当时读的还是不够多。<br>　　<br>　　现在，虽然韶华已逝，时间精力都与大学时代不能同日而语，但我还要努力减少遗憾。<br>　　<br>　　亲爱的大学生们，请静下心、沉住气，多读几本硬书吧！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/bc1a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/bc1a/" class="post-title-link" itemprop="url">虚幻的“爱情”与被曲解的“情欲”</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2016-09-13 14:55:49" itemprop="dateCreated datePublished" datetime="2016-09-13T14:55:49+08:00">2016-09-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E6%96%87%E6%91%98/" itemprop="url" rel="index"><span itemprop="name">文摘</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/bc1a/" class="post-meta-item leancloud_visitors" data-flag-title="虚幻的“爱情”与被曲解的“情欲”" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>● 吕嘉健</p>
-<blockquote>
-<p>他虽然每次总是狂热地爱着一个女子，似乎至死不渝，终生不二，但一生中却总免不了一次次地变换恋人。从其他方面的精神分析中，我们曾发现过这样一个铁定的规律：人的潜意识中对某种独一无二、不能替代的东西的热恋，会表现为一种永无休止的追寻活动。这是因为，替身终归是替身，它永远不能像真身那样满足他的渴求。 —— 弗洛伊德</p>
-</blockquote>
-<p>　　“爱情”具有绝对迷魂的影响力，它是神话化的理想主义传奇意境，这是人类命定的心理挫折经验过程：先要经历过对美丽爱情心魔的迷狂，才会回归到实实在在的情欲世界。你愿意陶醉在一个虚幻的爱情心理呢，还是愿意适度地平衡自我的情欲心理？——在情欲人生观方面的反思和进化，势必重新塑造一个人的自由主义心性。<br>　　<br>　　本文打算对“爱情”这个过度美好的概念祛魅，为被误读和被曲解的“情欲”一词正名。简言之，本文意欲证明“爱情”这一说法无非是审美心理道德化的产物，即将情欲之美感心理神话化而引导至高尚道德的境界，而“情欲”一词则是现实主义素描下中性表述的实际情形。二者都是“亲密关系”的类属，内里隐藏着生活政治的本质。
-　　</p>
-<h2 id="情欲寻常事，曲解乃醉翁之意"><a href="#情欲寻常事，曲解乃醉翁之意" class="headerlink" title="情欲寻常事，曲解乃醉翁之意"></a>情欲寻常事，曲解乃醉翁之意</h2><p>　　<br>　　人总是不知不觉地误读和曲解真相和对真相命名的概念，而且是故意的曲解，即使经验事实无数次地证伪了人自己的曲解，他们也无法觉悟。被曲解了的东西成了我们潜移默化的心性。被固置的概念成了一种观念，形成了一种心理定势，决定了我们如何处理实际生活中的事情。在文学中，未经理性严格审察追究的“爱情故事”之误读解释尤其严重，习以为常、一如既往地被读者和作家歪曲传播。文学传播担负了生活教科书的责任。<br>　　<br>　　一般惯例是：凡是正面描写的美人儿帅哥哥的迷人情欲故事，都会被幻想性地拔高了，誉之为“永恒爱情”，像罗密欧与朱丽叶、崔莺莺和杜丽娘一类；凡是人物性格不怎么美和不高尚的，就会不假思索把他们的“情欲”当作淫賤下流的动物性欲望，例如潘金莲。如果从严格的社会规范来看，无论是崔莺莺、杜丽娘或者是罗密欧、朱丽叶，他们都与潘金莲一样，是不道德的：或者违反贵族礼教，或者对抗家族利益，或者背叛婚姻，然而他们的情欲动机完全一样。读过《西厢记》的读者，会发现莺莺“情欲发姣”已经到了神魂荡漾、风骚万种的状况，恨不得顷刻献身，哪里有与张生精神之爱的任何铺垫！至于杜丽娘无中生有的情淫幻想，更是性成熟春困而饱受压抑的结果。如果说礼教和家族仇恨都是扼杀人性的，那么潘金莲被强加的与武大郎的婚姻也是不人道的。崔莺莺、杜丽娘与潘金莲都是同样层次上的情欲迷狂者。当然我不会用道德观来批判崔莺莺们，我只是指出基本事实而已。但是即使再怎样的观念更新，人们的潜意识里还是把崔莺莺、杜丽娘和罗密欧朱丽叶誉为美好的爱情之神，而将潘金莲看作丑陋的淫荡妖妇。这样的污名化，再过一千年，也难以改变人们的固执心理。一旦误读和曲解，便是永远的命名。<br>　　<br>　　解读名著的文学评论家常常是经学家、意识形态专家或者是痴性单纯的书生，还有一辈子一听说爱情就肃然起敬的情欲洁癖者，带着特殊的漂白眼镜误读人间常识事。他们不是对人性情欲有智障，就是常常将生命分裂成身体行为与精神心理两极，二者老死不相往来。作为一种文化社会心理的精神分裂症其实很普遍，为了保护自己脆弱的神经和道德高尚感觉，将他人的艳福看作是下流，以此反证自己的洁癖。将崔莺莺、杜丽娘的欲火焚身说成是追求爱情自由，因为“爱情”二字带着灿烂迷人的美感。“爱情”二字已将低级趣味完全解构。<br>　　<br>　　最善于审美心理道德化的爱情表现就是以诗意的描写来形容醉人的情欲，刻画得越华美雅致，越是用欲隐欲现的美感暗示，越是能够将庸俗的情欲行为道德化，这是雅化惯例。请看王实甫《西厢记》怎样写张生和莺莺做爱：<br>　　<br>　　张生：我这里软玉温香抱满怀。呀，阮肇到天台。春至人间花弄色，将柳腰款摆，花心轻拆，露滴牡丹开。蘸着些儿麻上来，鱼水得和谐，嫩蕊娇香蝶恣采。半推半就，又惊又爱，檀口搵香腮。……（看手帕科）春罗原莹白，早見红香点嫩色。（莺莺云）羞人答答的，看做甚么。（张生唱）灯下偷睛觑，胸前着肉揣。畅奇哉，浑身通泰，不知春从何处来。（第四本第一折）<br>　　<br>　　文学艺术经常表现人性里肉欲与情致、身体生理与精神心理得到高峰体验和谐渾融的状态。在性、爱欲这类事情中，这两者既可以分裂，也可以共赴仙境，水乳交融。张生说“畅奇哉，浑身通泰，不知春从何处来”，就是获得性高潮的身心诗意满足的形容。心理学家霭理士这样形容情、欲同时得到满足的生理美感：<br>　　<br>　　对于男子除了消释积欲过程中所蓄聚的紧张的状态而外，除了减低血压与恢复肌肉系统的休息而外，它可以取得一种精神上的满足，一种通体安闲的感觉，一种舒适的懒散的心情，一种心神解放、了无罣挂、万物自得、天地皆春的观感。…女子经过一度满足的解欲以后，也往往有如饮酒适如其量后的一种感觉，即相当的醉而不至于迷糊；这种感觉可以维持到好几小时…<br>　　<br>　　假如将迷人的诗意完全荡涤，以毫不掩饰的写实主义表现情欲，会对一般人的道德和审美心理构成考验挑战。试看看《红楼梦》里这一段描述：<br>　　<br>　　那贾琏只离了凤姐，便要寻事，独寝了两夜，十分难熬，只得暂将小厮内清俊的选来出火。（以下写贾琏勾引上了妖调轻狂的淫妇多姑娘儿尽情放荡了几天，后来贾琏和凤姐的女儿病好了，贾琏搬回去住，凤姐让平儿好好检查贾琏的东西，平儿发现了多姑娘儿的一缕青丝，贾琏追逐着平儿要夺回证物，平儿帮贾琏打了掩护，贾琏十分感激，搂着平儿眉开眼笑）贾琏见她娇俏动情，便搂着求欢，平儿夺手跑出来，急的贾琏弯着腰恨道：“死促狹小娼妇儿！一定浪上人的火来，他又跑了。”平儿在窗外笑道：“我浪我的，谁叫你动火？难道图你舒服，叫他知道了，又不待见我呀！”<br>　　<br>　　一般的阅读惯例把这一段看作下流情节，把贾琏看作放纵情欲的堕落贵族。其实贾琏并不算下流，贾琏情欲的强旺也是一个正常青年贵族男子的优质标志。读者如果有平常心的话，可以读读贾母的评论：“什么要紧的事！小孩子们年轻，馋嘴猫儿似的，那里保的住呢？从小儿人人都打这么过。”（第四十四回，P544）<br>　　<br>　　不够知己的读者很少会同时反思自我，想想自己同样也具有相类似的情欲，像上面所引一段，离了身边的女人，就十分难熬，要找替代物来“出火”，找着了一个浪荡的性伙伴，会觉得极度享受。和身边的美人一调情，就会浪出火来。还有，像平儿这样明白事理又品格端正的美人胚子，在日常生活里顺任天性地显现出妩媚娇妙的情态动作，令人触目生春，这是上天赋予女子美感的“浪荡轻佻习性”，是生气盎然的意境，男人见了，情不自禁性起，都是非常符合人性常情的，为什么一定要用高尚的道德去否定我们自己也会这样做的事情呢？——《红楼梦》里这样的情节细节多的是，宝玉看到宝钗浑圆丰腴雪白妩媚的膀子，就想能够摸一摸是多么的惬意，甚至号称最雅洁的出家人妙玉，也免不了有强烈的情欲心魔。<br>　　<br>　　由此可知：我们情不自禁的误读，源于道德化的集体无意识。人类有一个自我束缚的意识形态路径依赖：泛滥的道德化。道德本来是自律的精神心理意识，但是善于制约人们心灵的精神导师，一定会将道德他律化。为了从心理上制裁着普通人，势必将正常的东西曲解，将世俗高尚化，不允许人们自由。只许州官放火，不许百姓点灯。<br>　　<br>　　因此，总之，“情欲”被误读和被曲解成了“爱情”，已经成了文化惯例。在爱情故事里，最具有意识形态强奸意味的是“革命+爱情”的模式，在这类生活形式以至故事里，情欲本质之被误读和被曲解严重到无以复加。例如5、60年代风靡一时的革命爱情小说《青春之歌》，女主人公林道静投海自尽，被北大学生余永泽所救，林后来为余永泽“诗人兼骑士”的风度所迷醉，和余产生了“爱情”而同居。随着林道静和革命知识分子频繁接触，被风起云涌的革命时髦所裹挟，林的灵魂逐渐迷醉于革命加爱情的浪漫主义心魔，开始对身边专心于学术专业的丈夫不满而厌恶起来，和革命党人卢嘉川接触之后，卢对她灌输革命道理，借给她许多革命书籍，两人“畅谈革命，纵论人生”，卢嘉川的气质心性与林道静非常匹配，两个小资产阶级革命知识分子的革命浪漫情愫像野草一样疯长，林渐渐移情别恋，日益鄙视书生余永泽，视之为自私迂腐。由于卢嘉川不能在余家留宿，在外逃亡而被捕，林道静因此将责任归咎于余永泽，最终离开了余。后来林道静再遇到革命者江华，两人一拍即合并“幸福地结合在一起”。<br>　　<br>　　在那个时代里，所有读者并不会将林道静视作出轨、婚外恋或者乱搞男女关系的水性杨花女人，“革命”是最时髦的事情，它本身具有高尚道德和强大的审美功能，凡在革命风暴中作为弄潮儿的年轻人，同时也会在爱情的天平上具有无可阻挡的迷人的性感魅力。有一个革命志同道合的高大尚的理由，下半身的发挥就变得合乎道德且通体舒泰了。可怜余永泽作为正常人的人生行为，就变成了道德卑鄙和落后于时代、不爱国的低级角色。这种情欲观念的异化，成为中国普适的道德和意识形态误读模式，渐渐异化了多数人的文化心理，扭曲了国人的常识和公正意识。随着观念的异化，人们的理智也会丧失掉形式逻辑的监督，只能产生特殊的认同逻辑，和革命的非理性，我们整个时代的不讲理心性就是这样建构起来的。<br>　　<br>　　革命+爱情，青春荷尔蒙的情欲，在高尚名义下，生理行为就升华为激动人心的献身了。一切情欲心理甚至人性心态，无不如此，只要有正当的因果理由说法，合乎时髦，就赋予了世俗生活一种精神价值。这是给自我一个心理解释和慰藉。如果没有这种精神之恋的解释，急吼吼地上床，或者是被强奸，或者是苟且淫荡。“几乎可以说，所有‘真正的’革命者在对待性的态度上，都是杯水主义者。在革命者的眼中，革命才是第一位的，其他的一切，都只能放在次要的位置上。这就注定了，粗鄙的革命者多是无耻之徒。”、“抗战年代，一批青年女学生因为理想的激发，纷纷前往革命圣地延安。结果到延安之后，才发现轰轰烈烈的浪漫革命离她们是那么遥远，她们的主要任务，是和一批大他们不少的大老粗结婚，解决革命者们的性饥渴问题。直到那时她们才知道，革命者们也是有鸡巴的；而凡是带着家伙的，基本都不是传说中那么安生的。”
-　　</p>
-<h2 id="在爱情神话背后的情欲真相"><a href="#在爱情神话背后的情欲真相" class="headerlink" title="在爱情神话背后的情欲真相"></a>在爱情神话背后的情欲真相</h2><p>　　<br>　　从词义学来看，“爱情”单纯从心理角度来表述，是一种喜欢到极致而使当事人神魂颠倒丧失理智的情感。它只表述了“爱”这种“情”致，而有意识地隐藏了“欲望”的内涵。多数人可能没有追究过真实的意义，爱情其实源于“色”的刺激即性感和美感，并融合了双方性情、直觉的投缘与欣赏。很多人在这种短暂时段的情感高潮中，因为沉醉不知归路，而盲目地以为这是我对对方、或双方很纯洁的精神之恋与美好情感的缘分，忽略了下半身的强大主导力。当然，迷情人获得了审美的高峰体验。爱情会使当事人产生自我感动之高尚美好的道德意境，使人堕入迷狂的心理醉状。这种极致陶醉的美感，念念不忘的缠绵之感，无限珍惜欣赏不已的拥有心理，会将对方崇拜为纯洁天使或理想人物，此即“审美心理道德化的爱情”。<br>　　<br>　　而“情欲”这个说法呢？它不仅表述了双方直觉上投缘的情致，也标示真实状况是，下半身欲望的神秘影响力。欲望是什么呢？包括生理上的力比多和向外放射的旺盛的生命力，与性感、美感刺激下渴望与对方发生亲密性关系的人性文化心理希冀。在复杂欲望的引导下，“爱情”并不那么纯洁和高尚，它需要发泄和满足欲望，越是现代人越实际。情欲就是情欲，它尽量不要道德高尚化。不过文化是一种惯性，审美心理道德化是一种集体无意识，在文化无意识的控制下，对爱情神化和对情欲曲解是一体两面的惯例。<br>　　<br>　　关于“欲”字，值得从心理学的角度诠释一下。英国著名的性心理学家霭理士用了两个概念来解释性冲动的本质：积欲和解欲。“积欲在文学上或社会学上我们也叫做求爱；一个男子，因性冲动的力量，而向女子接近，就是求爱。”、“积欲的过程，若从外面来说，是各种官能的印象直接或间接所引起的。官能接受外来的印象，印象造成刺激，刺激唤起反应，反应就是积欲。冒尔所说的厮磨，就是通常一性对于另一性的刺激所造成的一切身心两方面的印象的总和。一个异性的人，最能供给合意的印象的，就是中选的人，这就叫做性选择。”<br>　　<br>　　霭理士很好地解释了一个异性在美感、性感、社会性格等给另一个异性的好印象之刺激，使之产生了合意情欲的“积欲”，当然还结合着他本人内部的性生理和性心理的要求，于是为了解欲，才会去求爱。所以“情欲”二字根本上比“爱情”二字是更科学准确的描述。<br>　　<br>　　在爱情文化惯例里，往往意味着为了对方可以牺牲自我，要完全满足对方的要求，摘星星攀月亮都勉为其难去做到，为了得到对方的欢心，怎么委屈自己都是爱的表示。爱情这种审美心理指导下的讨好情感值得反思。满足了对方的要求才能获得一种爱（亲近）的权利，说到底还是为了满足自我情欲的愿望，无故殷勤背后掩藏着欲望渴求。满足一方的过度要求而牺牲另一方的权利，一方压迫着另一方，蔑视了TA的尊严，这种爱情不平等。你不珍惜我，总有一天我也不会珍惜你。你的爱的任性伤害了我，你的爱是施舍的，当我审美疲劳并满足了情欲之后，厌恶和疏远就会产生。可见单方面殷勤的恋爱是自我想象性情欲的膨胀，是自恋的投射，同时丧失了对对方傲慢、勉强和无理的敏锐认知。讨好意味着他日的遗弃。假如爱情需要道德的话，那么这和自由原理一样：责任和权利对等，忠诚的律令就在其中。—— 在情欲文化里，同样有深刻的政治学内涵。然而，给爱情祛魅，局外人可以，当局者迷其实是一种心理享受。<br>　　<br>　　爱情的审美心理道德化本身具有一种自我解构的危机：越是狂热的爱恋，越是容易消退。所以从心理学的角度认识爱情是最重要的，社会学的解释尚在其次。弗洛伊德说：“他虽然每次总是狂热地爱着一个女子，似乎至死不渝，终生不二，但一生中却总免不了一次次地变换恋人。从其他方面的精神分析中，我们曾发现过这样一个铁定的规律：人的潜意识中对某种独一无二、不能替代的东西的热恋，会表现为一种永无休止的追寻活动。这是因为，替身终归是替身，它永远不能像真身那样满足他的渴求。”<br>　　<br>　　深刻理解弗洛伊德上述论断有助于给爱情祛魅。在爱情中，对于当事人的那个“情”的真实内涵值得分析和弄清楚，这可能是一个母亲或父亲的替代者，可能是一个文学形象或前世美感概念在心中的幻想，即使是一个恋爱者心仪的理想物，只要它一旦现实化，审美距离消失了之后，TA的恋爱狂热就会失望。这个事实告诉我们：人们所爱的具体对象背后应该是一个抽象的爱的理想范型，恰好在某一个一见钟情或者机缘成就的亲近中，让TA的这个理想范型具体化了。一旦这个具体爱人渐渐露出真面目，与TA的爱人范型不吻合了，TA就开始感到陌生和厌恶了。一个人所爱的那个真实的东西是什么，常常经不起拷问。《安娜·卡列尼娜》中的列文新婚后所面对的天使吉提，就是令列文失望的庸俗版本。即使对于安娜和渥伦斯基而言，情欲满足之后，当初双方那种无比迷人的美感，在零审美距离中，全部化为硝烟。<br>　　<br>　　所以，人类高度赞美的“爱情”被误读为高尚纯洁的精神之恋，完全是为了满足审美性心理之陶醉感而已。某些确实净化到只剩下精神之恋的“爱情”，仅仅是现实条件抑制或阻碍了性欲的满足而已，“所谓伊人，在水一方。溯迴从之，道阻且长。”有不少中毒的年青人被道德化的爱情害得失去了享受情欲的能力。“能力”是非常关键的，没有某种能力就没有资格做某类事情，例如没有爱国的能力，就无法理性地爱国；没有享受情欲的能力，就不能健康地进入欢乐的情欲天地。人类美化了几千年的“爱情”如果仅仅只是一个精神之恋的话，那不是实事求是而且会使人在自欺欺人中屡屡受害的。<br>　　<br>　　从“爱情”和“情欲”的关系可以解释一个规律：凡是男女双方激情恋爱期都不要过长，要在双方还处于迷恋阶段内结婚。相处越长，渐入冷静期，慢慢地，双方逐渐消褪掉爱情的迷幻感觉，除了生理上解欲的需求，只剩下了看到对方所有性格缺点的不满。年纪越大，成婚的机率越低，结婚的目的只剩下寻求性欲满足和家庭生活合作的需求。没有了爱欲审美迷幻感，就像做交易一样审视对方，很难找到一个对眼的生活合作者。<br>　　<br>　　荣格说过很重要的话：“身体是一位靠不住的朋友，因为它生产我们不喜欢的东西；关于身体有很多很多的东西是不能被提及的，身体常常是自我这个阴影的化身。”我猜想人类喜欢“爱情”这个说法而不喜欢“情欲”这个概念，就是荣格所指出的原因。假如我坦率地采用一种不加雅化的说法，那么“情欲”的定义完全可以这样来做：情欲是一种生理和心理能量，它强烈地促使双方建立亲密关系，然后去做性欲里想做的任何下流事情，否则则不可以。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/b9a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/b9a/" class="post-title-link" itemprop="url">一位社会学家眼中的爱情——论爱情中的交换与权力</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2014-10-10 10:45:27" itemprop="dateCreated datePublished" datetime="2014-10-10T10:45:27+08:00">2014-10-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E6%96%87%E6%91%98/" itemprop="url" rel="index"><span itemprop="name">文摘</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/b9a/" class="post-meta-item leancloud_visitors" data-flag-title="一位社会学家眼中的爱情——论爱情中的交换与权力" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>● 布劳  </p>
-<p>　　注：本文节选自美国社会学家彼得-布劳《社会生活中的交换与权力》中关于爱情的附论。由译言网网友Sophiezzl翻译。布劳是社会交换理论的主要倡导者之一。他从微观社会中的人际交往出发，研究在社会交往中交换与权力的发展，并将其推广到更大的群体以及整个宏观社会建构当中，其对交换理论的创建给西方社会学界以及相关学科造成了巨大的影响。他还对官僚制组织的各种情况进行过深入分析，并出任过1973至1974年度美国社会学会的主席。现在我们来看看在这位大师的眼中，人类生活中最为变幻莫测的爱情究竟是何模样。</p>
-<p>　　爱情是内在吸引的极端情况。由于在母子关系中无疑会发现爱情的最纯粹表现，所以作为两个独立个体相互间日益吸引的结果，它的发展在一种浪漫关系中可以最清楚的表现出来。爱情似乎可以使人变得无私，因为他们自己为能使自己所爱的人愉快而感到高兴。但是，这种无私的奉献一般依赖于对维持别人的爱情感兴趣。甚至母亲对其子女们的奉献也很少能完全摆脱维持他们对她的依恋这种愿望。交换过程出现在恋爱关系中，也出现在仅有外在意义的社会交往中。然而，它们的发展动态不同，因为被交换的特殊报酬在爱情关系中仅仅是产生内在吸引的终极报酬的手段，而在纯粹作为手段的社会关系中，特殊报酬的交换时交往本身的目的。正如先前我们指出的：在内在的爱情依恋中，每个人给另一个人报酬不是为了按比例获得外在利益来作为回报，而是为了表示和证实他自己的责任感并且促使别人对该交往产生责任感。一项对爱情的分析表明：交换成分甚至出自有内在意义的交往及其不同本性。</p>
-<p>　　如果一位女性的吸引力在一位男性眼里已经变成唯一，这位男性就会坠入情网。“一切必然的事情在于，我们对她的兴趣应该变成排他性的。”普罗斯特继续说，当我们开始体验到一种“针对她的无情的、使人极度痛苦的欲望”时，这种情况就发生了。如果一位女性给一位男性的印象是：她是一份不易获得的、极令人向往的爱情财富，同时她也表示出，最终赢得她感情的充分利益并非完全无法实现，那么该女性就有可能点燃他的爱情之火。她对他的吸引使他为了重要报酬而服从她的意愿，并且渴望给她留有深刻印象和使她高兴，以便激发一种能保证他获得这些报酬的交互情感。</p>
-<p>　　在坠入情网的初期，由于害怕被拒绝以及因吸引不断增强而产生的依赖感促使每个恋人对对方隐瞒TA的情感的强烈程度，也可能对TA自己隐瞒这种情感程度。调情在很大程度上是以一种半真半假或固定不变的方式来表现吸引，这样做是为了在本人承担一种严肃的责任之前探出对方是否承担某种责任。如果他们未能从对方的反应中得到线索，那么玩笑以及由调情所暗示的模糊责任就可能被一笑了之。或者如果对方承担了责任，那么他们就会使这种责任稳固起来。但是只要这两个人都继续对另一方隐瞒他们感情的强烈程度，而同时他们又变得日益依赖于对方的情感，那么他们就会互相阻挠。在随后一般要发生的恋人争吵中，正如有学者曾经指出过的那样：“每个伴侣都用短暂撤退或分开的方法去检验对方对该关系的依赖性。”当双方都受到这些争吵的威胁而有可能使他们的关系告吹时，为了保持关系，他们才不得不表示出足够的责任感。当然，有人可能不准备这么做，于是冲突便可能结束这一关系。</p>
-<p>　　人们显然从为自己所爱的人做事中获得愉快，有时还为他们作出巨大牺牲。这种倾向部分来自爱情所引起的与对方的认同，来自期望对方能对自己的贡献做出象征性的表示，来自提供报酬对于加强一个被爱者对自己的依恋所具有的功能，也许部分地来自前面所讲的逆次级强化的过程。在为使所爱者高兴而做过许多事情之后，一个被爱者的更多依恋对于当事人说来就是一种报酬。反复体验到接受报酬可能具有下述效果：是被爱者感到愉快变成了使人内在满足的报酬。进一步的反馈效果也可能发生。因为施惠和馈赠是爱情的表示，所以一个男子献给一个女子的礼物和为她做出的努力可能会激起他自己对她的感情以及她对他的感情。一个女性可能会鼓励一个男性给她送东西和为她做事，这基本上不是出于对物质利益的兴趣，而是为了培养他对她的爱情。“与那些接受了利益的人对于那些贡献出这些利益的人的爱情相比，贡献者似乎更爱那些接受他们贡献的人。”（引自亚里士多德《尼各马可伦理学》）</p>
-<p>　　一个人越是爱另一个人，TA可能越专心致志于使另一个人高兴。因此，那个在爱情关系上陷得较浅的人就处于一个有利地位，因为另一个人较为关心继续保持该关系使TA自己产生了依赖性，并给陷得较浅的人以权力。瓦勒称之为“最小利益原则”。这种权力可以用来剥削另一个人，一位女子为经济利益而利用一个男人对她的感情以及男子在性方面利用一个深深爱着他的女孩都是明显的事例。也许，最小利益原则的最普遍的表现是：对另一个人自发感情较为强烈的那个人必须依从另一个人的愿望并作出特殊的努力让另一个人高兴。这种权力和外在报酬的不平衡常常是长久相互爱恋的根源并且一直是它的基础。因此，没有早早表示出无保留的感情的恋人在已经建立的人际关系中获得了利益。的确，较为克制的恋人也似乎有较好的机会激发另一个人对TA的爱情。</p>
-<p>　　代价高的财产是最珍贵的，在爱情上和别的方面都是这样。一个男子对一个女子的内在吸引（以及她对他的吸引）依赖于他期望在一种与她的相爱关系中所体验到的报酬。一种分析上的区别可以再他的实际感受–来自她的支援、她的动人谈话、她的吻，等等–以及他对于这些与她在一起的感受的评价同他与其他女性在一起的类似体验加以对比。他的满足是这些体验本身和他对它们的评价的产物。然而，他轻易获得她的爱情报酬往往会贬低这些报酬对于他的价值。这是爱情的两难困境，它与前面讨论过的赞同的两难困境类似。正如一个人被期望着给他的伙伴们以赞同一样，他的这种过分慷慨的做法将贬低他的赞同的价值，处在要对她的敬慕者拿出她爱情证据的压力之下的一位女性也是如此。但是，如果她过分容易这样做了，那么她对他的感情的价值将要遭到损害。</p>
-<p>　　一个女子作为一个男子的恋爱对象有多珍贵，这在很大程度上取决于她与其他男人在一起的表面受欢迎程度。在没有明确标准的情况下，很难评价任何事物，个体们如果出现在这样一种模糊不清的情境中，往往会受到用以下判断的社会规范的任何指示量度的强烈影响。评价一位女性的内在称心程度就是这样一种模糊不清的情况。在这种情况下，任何一位男子都强烈地受到她在男人们中普遍受到欢迎的影响，这种名望可以从社会角度证实她作为一个恋爱对象的价值。当然，一位姑娘一位对许多特定的男子具有吸引力，只能变得一般的有名，但她对任何人的吸引力部分取决于其他人认为其具有吸引力这个证据。长相漂亮构成这样的证据，她在约会时的行为也是如此。</p>
-<p>　　一位女性的爱情如果在男人中间有很大需求，那么她就不可能很快作出坚定的许诺，因为她有这么多有吸引力的选择对象供她在许诺之前权衡，不受欢迎的女人更加依赖于一个带她出去的男人，并且有更多理由对他作出许诺。因此，如果一个女性轻易地表明她对一个男人的感情，那么她就为她不太得吸引人提供了推测的依据，并会使她对他的感情贬值。相反，她如果抗拒他征服她的企图，那就意味着很多人都需要她，她有许多可供选择的对象。这些都有可能提高她在他心目中的惹人喜爱的程度。她不愿意作承诺，这有助于证实她的感情价值，部分原因是他把这当作她惹人喜爱的表示，尤其在对于她在其他男子中显得有多惹人喜爱缺少直接了解的情况下更是如此。可以肯定，男人之间经常讨论女人、她们惹人喜爱的程度，甚至她们在约会时的行为。</p>
-<p>　　为了保护她的情感价值，一个女性在表达情感方面必须吝啬，必须使她产生爱情的任何证据都成为一种不能轻易获得的珍贵奖赏。可以肯定，一个男人对一个女人的爱情归根结底取决于她在性满足和她的情感的其他表现形式方面为他提供唯一报酬的能力和甘心情愿的程度。这并不是说，一个不为一个男子提供性满足和情感满足的女子比一个这样做的女子更可能赢得他的爱情。情况无疑相反，因为这样的满足是一种持久爱恋的主要源泉。因此，更确切地说，一个男人深深爱上一个女人不仅取决于这些报酬性的体验本身，而且也取决于他对这些体验的评价；一个克制自己、不随意表现自己情感的女性，在她真正给予自己的感情时，就能增加这些表现的价值。当然，除非她最终确实赠予这些报酬，否则她从这些报酬的增值中就得不到利益。这的确就是该两难困境的原因。一个女子通过给一个男子以性和其他的恩惠去促进爱情，作为她的感情的表现以及作为使得与她交往对他特别富有报酬的手段。然而，如果她很容易地赠予这些恩惠–给许多男人或过早地给某个确定的男人，那么她就降低了它们的价值以及它们所产生的一种持久依恋的力量。</p>
-<p>　　社会压力增强了不早早表示出深厚感情的倾向。如果一个社区中的大多数女孩不得不在她们第一次约会时亲吻男孩子并在不久之后就施与性恩惠，而且还是在男孩子尚未承担起确定的责任之前，那么这将在社区中降低这些报酬的价格，使一个女孩子很难用答应发生性关系从一个男孩子那里获得一种坚定的承诺，因为性满足可以用很低的价格得到。女孩子们在保护性恩惠不贬值方面的利益可以再女孩子中间形成不得轻易给予这些恩惠的社会压力。这种社会压力有助于维持女孩的性恩惠与男孩的持久责任相称，它加强了女孩在求爱市场上与男孩的交换关系中的地位。男孩子之间的情况时互补性的，这意味着这里的社会压力阻止早期的承诺。在求爱中，两性的目标都是提供引诱另一方足够的报酬，但又不足够到降低它们的价值的地步。然而，由这两个条件确定的界线经常是察觉不到的。</p>
-<p>　　征服的挑战是恋爱关系形成阶段中的一种重要成分，它的意义对于产生持久依恋来说是一种催化剂，如果征服过于容易，就会使这种征服失掉意义。青年人之间偶然约会的一个基本功能，是为他们提供弄清他们自己作为恋人的吸引力以及他们在争夺称心如意的伴侣的竞争中的机会。在约会中–在某种程度上还有在亲密的社交中普遍存在，一个人把自己的自我吸引力放在市场上（可以这么说），这就使他的自我概念获得了极其重要的成功。在征服异性方面多次获得成功的男孩或女孩证实了他们在自己心目中以及其他人心目中的吸引力。因此，在非正式约会中，男孩和女孩通过相互征服用对方去检验他们自己的吸引力。一个女孩抗拒轻易被征服则是拒绝让她自己成为这样一个检验对象和一种对于她付出感情的一个条件的最低责任感的要求。通过延长该追逐的挑战，直到一个男孩内在地被她吸引为止，一个女孩利用征服的意义去促进一种能使这种与她约会地诱因成为奢侈品的更为基本的依恋。因为对于征服的某种兴趣可能使一位男子向一个女子求爱的基本原始理由。所以，一次轻易的征服会过早地使他失去继续保持这种关系的诱因。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/5b48/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/5b48/" class="post-title-link" itemprop="url">镇命歌·陌路</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-02-09 11:46:00" itemprop="dateCreated datePublished" datetime="2013-02-09T11:46:00+08:00">2013-02-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书札记</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E6%96%87%E6%91%98/" itemprop="url" rel="index"><span itemprop="name">文摘</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/5b48/" class="post-meta-item leancloud_visitors" data-flag-title="镇命歌·陌路" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>唱：禁酒隐<br>词：泉竹闲家</p>
-<p>三生命定 六道难解难梳<br>情深缘浅 奈何一步两殊途<br>前尘往事 可还记得当初<br>举袂遥祝 别后旦行莫回顾<br>故地依旧 芳草滋味暗浮<br>花似人面 垂眸浅笑似当初<br>故人何在 衣袂翻红默舞<br>人如花语 风住落英悄低诉<br>同采一捧 浅清醉薄 花颜欲夺目<br>扶风摇蕊 犹说 当年共甘苦<br>独捻一指 馥郁胭脂 依稀还相熟<br>好景犹在 却道 如今已陌路</p>
-<p>故地依旧 芳草滋味暗浮<br>花似人面 垂眸浅笑似当初<br>故人何在 衣袂翻红默舞<br>人如花语 风住落英悄低诉<br>同采一捧 浅清醉薄 花颜欲夺目<br>扶风摇蕊 犹说 当年共甘苦<br>独捻一指 馥郁胭脂 依稀还相熟<br>好景犹在 却道 如今已陌路</p>
-<p>林荫斑驳 树影描金 古庙隐落木（有灵保兮 寿夭在彼 珠兮玉兮光陆离）<br>阶前又生新苔 年年春来住（有女茕独不群兮 阴阳御兮明晦齐）<br>桔花噙露 雀鸟踟蹰 垂紫泪楚楚（有灵保兮 寿夭在彼 珠兮玉兮光陆离）<br>好景犹在 却道 如今人已故（驭赤豹兮驱玄云 乘游龙兮引清气）<br>有灵保兮 云袖被被 珠兮玉兮光陆离<br>攀杜若兮长独立 不见君子絓结兮<br>有灵保兮 云袖翳翳 珠兮玉兮光陆离<br>风飘飘兮为太息 落英兮捐水裔<br>有灵保兮 寿夭在彼 珠兮玉兮光陆离<br>有女茕独不群兮 阴阳御兮明晦齐<br>有灵保兮 寿夭在彼 珠兮玉兮光陆离<br>驭赤豹兮驱玄云 乘游龙兮引清气</p>
-<img data-src="/posts/5b48/957385_inuyasha-backgrounds-wallpapers-cave_2109x1500_h.jpg" class="" title="最爱的一张海报">
-
-<p>歌曲链接<br><a target="_blank" rel="noopener" href="http://5sing.kugou.com/fc/8725728.html">http://5sing.kugou.com/fc/8725728.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">191</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,7 +174,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,6 +217,833 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/6125/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/6125/" class="post-title-link" itemprop="url">如何解决一个DP问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 16:42:08" itemprop="dateCreated datePublished" datetime="2021-04-29T16:42:08+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/6125/" class="post-meta-item leancloud_visitors" data-flag-title="如何解决一个DP问题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>动态规划（DP）是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：<br>重叠子问题<br>最佳子结构属性</p>
+<p>解决DP的步骤：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 确定是否是DP问题</span><br><span class="line">2. 确定带有最少参数的状态表达式</span><br><span class="line">3. 写出状态关系</span><br><span class="line">4. 表格化或记忆化</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何将问题归类为动态规划问题？"><a href="#如何将问题归类为动态规划问题？" class="headerlink" title="如何将问题归类为动态规划问题？"></a>如何将问题归类为动态规划问题？</h2><p>通常情况下，所有需要最大化或最小化一定数量的问题或计数问题，即在一定条件下或一定概率下的安排计数问题，都可以用动态规划来解决。</p>
+<p>所有的动态规划问题都满足重叠子问题的性质，而大多数经典的动态规划问题也满足最优子结构的性质。一旦我们在给定的问题中观察到这些性质，就要确保它可以用DP来解决。</p>
+<h2 id="决定状态"><a href="#决定状态" class="headerlink" title="决定状态"></a>决定状态</h2><p>DP问题都是关于状态及其转换的。这是必须非常小心地完成的最基本的步骤，因为状态转换取决于所做的状态定义的选择。那么，让我们看看“state”这个词是什么意思。</p>
+<p>状态可以定义为一组参数，这些参数可以唯一地标识给定问题中的某个位置或站姿。这组参数应尽可能小，以减少状态空间。</p>
+<p>例如：在我们著名的背包问题中，我们用两个参数指标和权重来定义我们的状态，即<code>DP[index][weight]</code>。这里<code>DP[index][weight]</code>告诉我们，通过从0到具有袋重容量的索引，它可以获得最大利润。因此，这里的参数索引和权重可以唯一地识别背包问题的一个子问题。</p>
+<p>因此，我们的第一步将是在确定问题是DP问题之后确定问题的状态。</p>
+<p>正如我们所知道的，DP是所有关于使用已计算结果来制定最终结果。<br>所以，我们的下一步将是找到先前状态之间的关系，以达到当前状态。</p>
+<h2 id="状态关系"><a href="#状态关系" class="headerlink" title="状态关系"></a>状态关系</h2><p>这部分是解决DP问题最难的部分，需要大量的直觉、观察和实践。让我们通过考虑一个示例问题来理解它。</p>
+<p>给定3个数字（1,3,5），求出这三个数字任意组合相加得出目标数字的组合数，这三种数字可以任意混合和重复。</p>
+<p>如：1,3,5组合出6的方式有8种：<br>1+1+1+1+1+1<br>1+1+1+3<br>1+1+3+1<br>1+3+1+1<br>3+1+1+1<br>3+3<br>1+5<br>5+1</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// initialize to -1</span></span><br><span class="line"><span class="keyword">int</span> dp[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="comment">// this function returns the number of arrangements to form &#x27;n&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// base case</span></span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// checking if already calculated</span></span><br><span class="line">    <span class="keyword">if</span> (dp[n] != <span class="number">-1</span>) <span class="keyword">return</span> dp[n];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// storing the result and returning</span></span><br><span class="line">    <span class="keyword">return</span> dp[n] = <span class="built_in">solve</span>(n - <span class="number">1</span>) + <span class="built_in">solve</span>(n - <span class="number">3</span>) + <span class="built_in">solve</span>(n - <span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/cb23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/cb23/" class="post-title-link" itemprop="url">动态规划的最优子结构性质 DP_Set2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 16:28:03" itemprop="dateCreated datePublished" datetime="2021-04-29T16:28:03+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/cb23/" class="post-meta-item leancloud_visitors" data-flag-title="动态规划的最优子结构性质 DP_Set2" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>动态规划（DP）是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：</p>
+<p>重叠子问题<br>最优子结构性质</p>
+<p>最优子结构：如果给定问题的最优解可以由其子问题的最优解得到，则给定问题具有最优子结构性质。</p>
+<p>例如，最短路径问题具有以下最优子结构性质：<br>如果节点x位于从源节点u到目的节点v的最短路径中，则从u到v的最短路径是从u到x的最短路径和从x到v的最短路径的组合。像Floyd–Warshall和Bellman–Ford等标准的最短路径算法都是动态规划的典型例子。</p>
+<p>另一方面，最长路径问题则不具有最优子结构性质。这里所说的最长路径是指两个节点之间最长的简单路径（没有循环的路径）。考虑CLRS手册中给出的以下未加权图。从q到t有两条最长的路径：q→r→t和q→s→t。与最短路径不同，这些最长路径不具有最优子结构特性。<br>例如，最长路径q→r→t不是从q到r的最长路径和从r到t的最长路径的组合<br>因为从q到r的最长路径是q→s→t→r<br>　而从r到t的最长路径是r→q→s→t。</p>
+<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/LongestPath.gif"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/f5af/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/f5af/" class="post-title-link" itemprop="url">动态规划中重叠子问题的性质 DP_Set1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 15:40:16" itemprop="dateCreated datePublished" datetime="2021-04-29T15:40:16+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/f5af/" class="post-meta-item leancloud_visitors" data-flag-title="动态规划中重叠子问题的性质 DP_Set1" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>动态规划是一种算法范式，它通过将给定的复杂问题分解为子问题来求解，并存储子问题的结果，以避免再次计算相同的结果。下面是一个问题的两个主要性质，表明给定的问题可以用动态规划来解决。</p>
+<p>在这篇文章中，我们将详细讨论第一个属性（重叠子问题）。下一篇文章将讨论动态规划的第二个性质，见<a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/dynamic-programming-set-2-optimal-substructure-property/">Set2</a>。</p>
+<ol>
+<li>重叠子问题 Overlapping Subproblems</li>
+<li>最优子结构 Optimal Substructure</li>
+</ol>
+<h2 id="重叠子问题"><a href="#重叠子问题" class="headerlink" title="重叠子问题"></a>重叠子问题</h2><p>像分而治之一样，动态规划将解决方案结合到子问题中。动态规划主要用于需要反复求解同一子问题时。在动态规划中，子问题的计算解存储在一个表中，这样就不必重新计算。因此，当没有公共（重叠）子问题时，动态规划是没有用的，因为如果不再需要这些解决方案，就没有必要存储解决方案。例如，二分查找就没有公共子问题。以斐波那契数的递推程序为例，有许多子问题需要反复求解。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* simple recursive program for Fibonacci numbers */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">fib</span>(n - <span class="number">1</span>) + <span class="built_in">fib</span>(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>fib(5)执行的递归树：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">                         fib(5)</span><br><span class="line">                     &#x2F;             \</span><br><span class="line">               fib(4)                fib(3)</span><br><span class="line">             &#x2F;      \                &#x2F;     \</span><br><span class="line">         fib(3)      fib(2)         fib(2)    fib(1)</span><br><span class="line">        &#x2F;     \        &#x2F;    \       &#x2F;    \</span><br><span class="line">  fib(2)   fib(1)  fib(1) fib(0) fib(1) fib(0)</span><br><span class="line">  &#x2F;    \</span><br><span class="line">fib(1) fib(0)</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到函数fib(3)被调用了两次。如果我们存储了fib(3)的值，那么我们就可以重用旧的存储值，而不是再次计算它。有以下两种不同的方法来存储值，以便可以重用这些值：</p>
+<ol>
+<li>Memoization (Top Down) - 记忆化（自上而下）</li>
+<li>Tabulation (Bottom Up) - 表格化（自下而上）</li>
+</ol>
+<h3 id="记忆化"><a href="#记忆化" class="headerlink" title="记忆化"></a>记忆化</h3><p>一个问题的记忆程序类似于递归版本，只是做了一个小小的修改，即在计算解决方案之前先查看查找表。我们初始化一个所有初始值都为NIL的查找数组。每当我们需要子问题的解决方案时，我们首先查看查找表。如果存在预先计算的值，则返回该值，否则，计算该值并将结果放入查找表中，以便以后可以重用。</p>
+<p>注：NIL好像是pascal里的东西，大概理解成相当于C++的NULL吧。</p>
+<p>下面是第n个斐波那契数的记忆版本。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NIL -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> lookup[MAX];</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _initialize() &#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; MAX; i++)</span><br><span class="line">        lookup[i] = NIL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (lookup[n] == NIL) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) lookup[n] = n;</span><br><span class="line">        <span class="keyword">else</span> lookup[n] = <span class="built_in">fib</span>(n - <span class="number">1</span>) + <span class="built_in">fib</span>(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lookup[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">40</span>;</span><br><span class="line">    _initialize();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Fibonacci number is &quot;</span> &lt;&lt; <span class="built_in">fib</span>(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="制表化"><a href="#制表化" class="headerlink" title="制表化"></a>制表化</h3><p>针对给定问题的制表程序以自下而上的方式构建一个表，并从表中返回最后一个条目。例如，对于相同的Fibonacci数，我们首先计算fib(0)，然后计算fib(1)，然后计算fib(2)，然后计算fib(3)，依此类推。所以从字面上说，我们是自下而上建立子问题的解决方案。<br>下面是第n个斐波那契数的表格版本。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* C program for Tabulated version */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> f[n + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">0</span>; f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        f[i] = f[i - <span class="number">1</span>] + f[i - <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Fibonacci number is %d &quot;</span>, <span class="built_in">fib</span>(n));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>表格化和记忆化存储子问题的解。在记忆化中，表格是按需填写的，而在表格化中，从第一个条目开始，所有条目都是逐个填写的。与表格化的版本不同，查寻表的所有条目不一定都填写在记忆化的版本中。例如，LCS（最长公共子串）问题的记忆解决方案不一定会填满所有条目。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/779e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/779e/" class="post-title-link" itemprop="url">HJ74 参数解析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 15:01:56" itemprop="dateCreated datePublished" datetime="2021-04-29T15:01:56+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/779e/" class="post-meta-item leancloud_visitors" data-flag-title="HJ74 参数解析" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在命令行输入如下命令：<br><code>xcopy /s c:\ d:\</code></p>
+<p>各个参数如下：<br>参数1：命令字xcopy<br>参数2：字符串/s<br>参数3：字符串c:<br>参数4: 字符串d:\</p>
+<p>请编写一个参数解析程序，实现将命令行各个参数解析出来。</p>
+<p>解析规则：</p>
+<p>1.参数分隔符为空格<br>2.对于用””包含起来的参数，如果中间有空格，不能解析为多个参数。比如在命令行输入xcopy /s “C:\program files” “d:&quot;时，参数仍然是4个，第3个参数应该是字符串C:\program files，而不是C:\program，注意输出参数时，需要将””去掉，引号不存在嵌套情况。<br>3.参数不定长<br>4.输入由用例保证，不会出现不符合要求的输入</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;string&gt; <span class="title">split</span><span class="params">(<span class="keyword">const</span> string&amp; str)</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; res;</span><br><span class="line">    string strtmp;</span><br><span class="line">    <span class="keyword">int</span> quoflag = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">length</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str[i] == <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (quoflag == <span class="number">-1</span>) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(strtmp);</span><br><span class="line">                strtmp.<span class="built_in">clear</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> strtmp += str[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (str[i] == <span class="string">&#x27;&quot;&#x27;</span>) quoflag *= <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span> strtmp += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!strtmp.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        res.<span class="built_in">push_back</span>(strtmp);</span><br><span class="line">        strtmp.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printv</span><span class="params">(vector&lt;string&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; str : strs)</span><br><span class="line">        cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="built_in">getline</span>(cin, str);</span><br><span class="line">    vector&lt;string&gt; strs = <span class="built_in">split</span>(str);</span><br><span class="line">    cout &lt;&lt; strs.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">printv</span>(strs);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两个注意点</p>
+<ol>
+<li>getline()在string头文件里，不是iostream</li>
+<li>if else要规范写法，不要一直ififif</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/ac32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/ac32/" class="post-title-link" itemprop="url">HJ91 走方格的方案数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 12:05:26" itemprop="dateCreated datePublished" datetime="2021-04-29T12:05:26+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/ac32/" class="post-meta-item leancloud_visitors" data-flag-title="HJ91 走方格的方案数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请计算n*m的棋盘格子（n为横向的格子数，m为竖向的格子数）沿着各自边缘线从左上角走到右下角，总共有多少种走法，要求不能走回头路，即：只能往右和往下走，不能往左和往上走。</p>
+<p>本题含有多组样例输入。<br>输入：<br>每组样例输入两个正整数n和m，用空格隔开。(1≤n,m≤8)<br>输出：<br>每组样例输出一行结果</p>
+<p>示例<br>输入：<br>2 2<br>1 2<br>输出：<br>6<br>3</p>
+<h2 id="解法1：递归"><a href="#解法1：递归" class="headerlink" title="解法1：递归"></a>解法1：递归</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span> || n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 只有一条直路可以走到左或上边界的点</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">uniquePaths</span>(m - <span class="number">1</span>, n) + <span class="built_in">uniquePaths</span>(m, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m, n;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &gt;&gt; m) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">uniquePaths</span>(m, n) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法2：DP"><a href="#解法2：DP" class="headerlink" title="解法2：DP"></a>解法2：DP</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* (0,0)</span></span><br><span class="line"><span class="comment">*               (i-1,j)</span></span><br><span class="line"><span class="comment">*       (i,j-1) (i,  j)</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*                           (m-1,n-1)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123; <span class="comment">// m行 n列</span></span><br><span class="line">    <span class="comment">// dp[i][j]表示到该达点的走法数，注意它是路径数而非步骤数。</span></span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">dp</span>(m, vector&lt;<span class="keyword">int</span>&gt;(n, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) dp[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">            dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i][j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m, n;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &gt;&gt; m) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">uniquePaths</span>(m + <span class="number">1</span>, n + <span class="number">1</span>) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么传入是m+1和n+1？因为牛客这道题走的是边缘线，而力扣上这道题走的是格子。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/e9b0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/e9b0/" class="post-title-link" itemprop="url">HJ56 iNOC产品部-完全数计数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 11:31:17" itemprop="dateCreated datePublished" datetime="2021-04-29T11:31:17+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/e9b0/" class="post-meta-item leancloud_visitors" data-flag-title="HJ56 iNOC产品部-完全数计数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>完全数（Perfect number），又称完美数或完备数，是一些特殊的自然数。<br>它所有的真因子（即除了自身以外的约数）的和（即因子函数），恰好等于它本身。<br>例如：28，它有约数1、2、4、7、14、28，除去它本身28外，其余5个数相加，1+2+4+7+14=28。<br>输入n，请输出n以内(含n)完全数的个数。计算范围, 0 &lt; n &lt;= 500000<br>本题输入含有多组样例。</p>
+<h2 id="解法：暴力"><a href="#解法：暴力" class="headerlink" title="解法：暴力"></a>解法：暴力</h2><p>代码</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isperfect</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="built_in">sqrt</span>(n); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) sum += i + n / i;</span><br><span class="line">    &#125;</span><br><span class="line">    sum -= n; <span class="comment">// 除去它自身外</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">pow</span>(<span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(<span class="built_in">sqrt</span>(n)), <span class="number">2</span>) == n) sum -= <span class="built_in">sqrt</span>(n);</span><br><span class="line">    <span class="keyword">if</span> (n == sum) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n) &#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (n &gt; <span class="number">500000</span> || n &lt; <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;-1&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isperfect</span>(i)) cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; cnt &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/9a2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/9a2/" class="post-title-link" itemprop="url">HJ75 公共串计算</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-29 01:16:30" itemprop="dateCreated datePublished" datetime="2021-04-29T01:16:30+08:00">2021-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/9a2/" class="post-meta-item leancloud_visitors" data-flag-title="HJ75 公共串计算" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个只包含小写字母的字符串，计算两个字符串的最大公共子串的长度。<br>注：子串的定义指一个字符串删掉其部分前缀和后缀（也可以不删）后形成的字符串。</p>
+<p>示例<br>输入：<br>asdfas<br>werasdfaswer<br>输出：<br>6</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>暴力法</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">issub</span><span class="params">(string str1, string str2)</span> </span>&#123; <span class="comment">// 判断str1整体是否为str2的子串</span></span><br><span class="line">    <span class="keyword">int</span> len1 = str1.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> len2 = str2.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= (len2 - len1); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str1 == str2.<span class="built_in">substr</span>(i, len1)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxcommonsubstr</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len0 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> len1 = s1.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> len2 = s2.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len1; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= len1 - i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">issub</span>(s1.<span class="built_in">substr</span>(j, i), s2)) &#123;</span><br><span class="line">                len0 = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len0) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    <span class="keyword">int</span> len1 = s1.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> len2 = s2.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">if</span> (len1 &gt;= len2) <span class="built_in">swap</span>(s1, s2); <span class="comment">// 之后按s1短s2长进行调用</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">maxcommonsubstr</span>(s1, s2) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/1f5f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/1f5f/" class="post-title-link" itemprop="url">HJ37 统计每个月兔子的总数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 23:18:40" itemprop="dateCreated datePublished" datetime="2021-04-28T23:18:40+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/1f5f/" class="post-meta-item leancloud_visitors" data-flag-title="HJ37 统计每个月兔子的总数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有一只兔子，从出生后第3个月起每个月都生一只兔子，小兔子长到第三个月后每个月又生一只兔子，假如兔子都不死，问每个月的兔子总数为多少？<br>本题有多组数据。</p>
+<p>输入：<br>输入int型表示month<br>输出：<br>输出兔子总数int型</p>
+<p>示例<br>输入：<br>9<br>输出：<br>34</p>
+<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>这道题与其说是找规律，不如说就是DP的思想。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; m) &#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">0</span>, c = <span class="number">0</span>; <span class="comment">// a:一个月兔子数，b：两个月兔子数，c：三个月兔子个数</span></span><br><span class="line">        <span class="keyword">while</span> (--m) &#123; <span class="comment">// 每过一个月兔子数变化</span></span><br><span class="line">            c += b;</span><br><span class="line">            b = a;</span><br><span class="line">            a = c;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; a + b + c &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c13b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c13b/" class="post-title-link" itemprop="url">HJ8 合并表记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-28 23:14:46" itemprop="dateCreated datePublished" datetime="2021-04-28T23:14:46+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/c13b/" class="post-meta-item leancloud_visitors" data-flag-title="HJ8 合并表记录" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>数据表记录包含表索引和数值（int范围的正整数），请对表索引相同的记录进行合并，即将相同索引的数值进行求和运算，输出按照key值升序进行输出。</p>
+<p>输入：<br>先输入键值对的个数<br>然后输入成对的index和value值，以空格隔开<br>输出：<br>输出合并后的键值对（多行）</p>
+<p>示例<br>输入：<br>4<br>0 1<br>0 2<br>1 2<br>3 4<br>输出：<br>0 3<br>1 2<br>3 4</p>
+<h2 id="解法：map"><a href="#解法：map" class="headerlink" title="解法：map"></a>解法：map</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; iimap;</span><br><span class="line">    <span class="keyword">int</span> key, value;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        cin &gt;&gt; key &gt;&gt; value;</span><br><span class="line">        iimap[key] += value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> it = iimap.<span class="built_in">begin</span>(); it != iimap.<span class="built_in">end</span>(); ++it) &#123;</span><br><span class="line">        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -329,934 +1156,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c223/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/c223/" class="post-title-link" itemprop="url">HJ73 计算日期到天数转换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-28 21:06:39" itemprop="dateCreated datePublished" datetime="2021-04-28T21:06:39+08:00">2021-04-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/c223/" class="post-meta-item leancloud_visitors" data-flag-title="HJ73 计算日期到天数转换" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>根据输入的日期，计算是这一年的第几天。。<br>测试用例有多组，注意循环输入</p>
-<p>输入<br>2012 12 31<br>输出<br>366</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isleap</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (y % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; y % <span class="number">100</span> != <span class="number">0</span> || y % <span class="number">400</span> == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> days[<span class="number">12</span>] = &#123; <span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> y, m, d;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; y &gt;&gt; m &gt;&gt; d) &#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            num += days[i];</span><br><span class="line">        &#125;</span><br><span class="line">        num += d;</span><br><span class="line">        <span class="keyword">if</span> (m &gt; <span class="number">2</span> &amp;&amp; <span class="built_in">isleap</span>(y)) num += <span class="number">1</span>;</span><br><span class="line">        cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/7621/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/7621/" class="post-title-link" itemprop="url">HJ85 字符串运用-密码截取（最长回文子串）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-28 20:40:58" itemprop="dateCreated datePublished" datetime="2021-04-28T20:40:58+08:00">2021-04-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/7621/" class="post-meta-item leancloud_visitors" data-flag-title="HJ85 字符串运用-密码截取（最长回文子串）" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个仅包含小写字母的字符串，求它的最长回文子串的长度。<br>所谓回文串，指左右对称的字符串。<br>所谓子串，指一个字符串删掉其部分前缀和后缀（也可以不删）的字符串<br>（注意：记得加上while处理多个测试用例）</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>() / <span class="number">2</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (s[i] != s[s.<span class="built_in">size</span>() - <span class="number">1</span> - i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; str) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len0 = str.<span class="built_in">length</span>(); len0 &gt;= <span class="number">0</span>; len0--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="number">0</span>; it &lt;= str.<span class="built_in">length</span>() - len0; it++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">isPalindrome</span>(str.<span class="built_in">substr</span>(it, len0))) &#123;</span><br><span class="line">                    len = len0;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (len) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; len;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/35e4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/35e4/" class="post-title-link" itemprop="url">更相减损法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-28 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-28T00:00:00+08:00">2021-04-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/35e4/" class="post-meta-item leancloud_visitors" data-flag-title="更相减损法" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>一个优于辗转相除法求最大公因数的方法。<br>出自九章算术。<br>熟记。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x);</span><br><span class="line">    <span class="keyword">return</span> y == <span class="number">0</span> ? x : <span class="built_in">gcd</span>(y, x - y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>大在前，小在后；<br>小为0，输出大；<br>小非0，递小差。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/5f54/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/5f54/" class="post-title-link" itemprop="url">虚函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-27 20:35:11" itemprop="dateCreated datePublished" datetime="2021-04-27T20:35:11+08:00">2021-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/5f54/" class="post-meta-item leancloud_visitors" data-flag-title="虚函数" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>虚函数是运行时多态，不是编译时。<br>在继承机制中，规定：基类指针可以指向派生类对象。（把男女老少当人，把金毛泰迪当狗）<br>虚函数这里，需要注意的是使用基类指针调用派生类的函数。<br>其思想是，根据指向或引用的对象实例的类型调用虚拟函数，而不是根据指针或引用的类型。</p>
-<p>先举一个没用到虚函数的例子</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Shape</span>(<span class="keyword">int</span> l, <span class="keyword">int</span> w) :<span class="built_in">length</span>(l), <span class="built_in">width</span>(w) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get_Area</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;调用基类Shape的求面积函数&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> length, width;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> :</span> <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Square</span>(<span class="keyword">int</span> l = <span class="number">0</span>, <span class="keyword">int</span> w = <span class="number">0</span>) : <span class="built_in">Shape</span>(l, w) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get_Area</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Square area: &quot;</span> &lt;&lt; length * width &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> :</span> <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Rectangle</span>(<span class="keyword">int</span> l = <span class="number">0</span>, <span class="keyword">int</span> w = <span class="number">0</span>) : <span class="built_in">Shape</span>(l, w) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get_Area</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Rectangle area: &quot;</span> &lt;&lt; length * width &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    Shape* s;</span><br><span class="line">    <span class="function">Square <span class="title">sq</span><span class="params">(<span class="number">5</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="function">Rectangle <span class="title">rec</span><span class="params">(<span class="number">4</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    s = &amp;sq;</span><br><span class="line">    s-&gt;<span class="built_in">get_Area</span>();<span class="comment">//调用基类Shape的求面积函数</span></span><br><span class="line">    s = &amp;rec;</span><br><span class="line">    s-&gt;<span class="built_in">get_Area</span>();<span class="comment">//调用基类Shape的求面积函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这段程序的原意是调用各子类的求面积函数求出并打印面积。但实际运行结果只是调用了两次基类面积函数。</p>
-<p>为了达成初衷，只需要改写基类中的getArea函数如下：<br><code>virtual void get_Area() &#123; cout &lt;&lt; &quot;调用基类Shape的求面积函数&quot; &lt;&lt; endl; &#125;</code></p>
-<p>虚函数应用例子</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">raiseSalary</span><span class="params">()</span> </span>&#123; <span class="comment">/* 涨薪 */</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">promote</span><span class="params">()</span> </span>&#123; <span class="comment">/* 升职 */</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Manager</span> :</span> <span class="keyword">public</span> Employee &#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">raiseSalary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">/* Manager specific raise salary code, may contain</span></span><br><span class="line"><span class="comment">        increment of manager specific incentives*/</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">promote</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">/* Manager specific promote */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Similarly, there may be other types of employees</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// We need a very simple function</span></span><br><span class="line"><span class="comment">// to increment the salary of all employees</span></span><br><span class="line"><span class="comment">// Note that emp[] is an array of pointers</span></span><br><span class="line"><span class="comment">// and actual pointed objects can</span></span><br><span class="line"><span class="comment">// be any type of employees.</span></span><br><span class="line"><span class="comment">// This function should ideally</span></span><br><span class="line"><span class="comment">// be in a class like Organization,</span></span><br><span class="line"><span class="comment">// we have made it global to keep things simple</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">globalRaiseSalary</span><span class="params">(Employee* emp[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Polymorphic Call: Calls raiseSalary()</span></span><br><span class="line">        <span class="comment">// according to the actual object, not</span></span><br><span class="line">        <span class="comment">// according to the type of pointer</span></span><br><span class="line">        emp[i]-&gt;<span class="built_in">raiseSalary</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="编译器如何执行运行时解析？"><a href="#编译器如何执行运行时解析？" class="headerlink" title="编译器如何执行运行时解析？"></a>编译器如何执行运行时解析？</h2><p>编译器维护两件事来实现此目的：</p>
-<p>1.vtable：指向虚函数的指针的表格，按类维护。<br>2.vptr：指向vtable的指针，按对象实例维护（参见<a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/c-virtual-functions-question-12/">此</a>示例）。</p>
-<p>预测下面程序的输出：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="built_in"><span class="keyword">sizeof</span></span>(A), b = <span class="built_in"><span class="keyword">sizeof</span></span>(B);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a == b) cout &lt;&lt; <span class="string">&quot;a == b&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) cout &lt;&lt; <span class="string">&quot;a &gt; b&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;a &lt; b&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果：a&gt;b<br>分析：A类有一个在B类中不存在的VPTR。在虚拟函数的典型实现中，编译器为每个对象放置一个VPTR。编译器秘密地在每个构造函数中添加一些代码。</p>
-<h2 id="默认参数和虚函数"><a href="#默认参数和虚函数" class="headerlink" title="默认参数和虚函数"></a>默认参数和虚函数</h2><p>考虑下面程序的运行结果：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x = <span class="number">0</span>)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Base::fun(), x = &quot;</span> &lt;&lt; x &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> :</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Derived::fun(), x = &quot;</span> &lt;&lt; x &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Derived d1;</span><br><span class="line">    Base* bp = &amp;d1;</span><br><span class="line">    bp-&gt;<span class="built_in">fun</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Derived::fun(), x &#x3D; 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
-
-<p>默认参数不参与函数签名。因此，基类和派生类中fun()的签名被认为是相同的，因此基类的fun()被重写。另外，默认值在编译时使用。当编译器发现函数调用中缺少参数时，它将替换给定的默认值。因此，在上述程序中，x的值在编译时被替换，并在运行时调用派生类的fun()。</p>
-<p>现在稍加变动后，预测以下程序的输出。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x = <span class="number">0</span>)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Base::fun(), x = &quot;</span> &lt;&lt; x &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> :</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x = <span class="number">10</span>)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Derived::fun(), x = &quot;</span> &lt;&lt; x &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Derived d1;</span><br><span class="line">    Base* bp = &amp;d1;</span><br><span class="line">    bp-&gt;<span class="built_in">fun</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Derived::fun(), x &#x3D; 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
-<p>原因跟上一个相同，默认值在编译时被替换。fun()在基类型的指针bp上调用。所以编译器将其替换为0（不是10）。</p>
-<p>注意一点，编译时用基类默认值替换，不妨碍运行时调用的是派生类的函数。<br>正如这篇文章开头所说的：<br>使用基类指针调用派生类的函数的思想是，根据指向或引用的对象实例的类型调用虚拟函数，而不是根据指针或引用的类型。</p>
-<p>调用发生在运行时，静态替换发生在编译时。<br>C++里跟静态两个字沾边的术语，其背后多多少少都是编译时实现或者发生的。</p>
-<p>想起来去年接触的一句话：数学公式里有pi的地方背后一定藏着一个圈，即使这个公式和圆看起来八竿子打不着。</p>
-<p>总结：通常，最佳做法是避免使用虚函数中的默认值，以免造成混淆。</p>
-<h2 id="派生类中的虚函数"><a href="#派生类中的虚函数" class="headerlink" title="派生类中的虚函数"></a>派生类中的虚函数</h2><p>在C++中，一旦在基类中将成员函数声明为虚函数，则该函数在从该基类派生的每个类中都将变为虚函数。换句话说，在声明虚拟基类函数的重新定义版本时，不必在派生类中使用关键字virtual。</p>
-<p>例如，以下程序将打印“C::fun() called”，因为B::fun()虽然没写virtual，但实质上已经自动变为虚了，所以自B派生出的C自然也是虚的fun()。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;\n A::fun() called &quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span> <span class="keyword">public</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;\n B::fun() called &quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> <span class="keyword">public</span> B &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;\n C::fun() called &quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    C c;</span><br><span class="line">    B* b = &amp;c;</span><br><span class="line">    b-&gt;<span class="built_in">fun</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="C-中的静态函数是否可以是虚拟的？"><a href="#C-中的静态函数是否可以是虚拟的？" class="headerlink" title="C++中的静态函数是否可以是虚拟的？"></a>C++中的静态函数是否可以是虚拟的？</h2><p>不能<br>C++中，类的静态成员函数不能是虚函数，也不能为const和volatile。<br>以下举个反例：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123; &#125; <span class="comment">// 错误1</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; &#125; <span class="comment">// 错误2</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码有编译错误。<br>分析一下：<br>错误1：仅非静态成员函数可以是虚拟的（要去掉virtual）<br>错误2：静态成员函数上不允许使用类型限定符（要去掉const）</p>
-<h2 id="虚析构函数"><a href="#虚析构函数" class="headerlink" title="虚析构函数"></a>虚析构函数</h2><p>使用具有非虚析构函数的基类类型指针删除派生类对象会导致未定义的行为。为了纠正这种情况，应该使用虚拟析构函数来定义基类。</p>
-<p>分析下面一段代码</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CPP program without virtual destructor causing undefined behavior</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing base \n&quot;</span>; &#125;</span><br><span class="line">    ~<span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing base \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">derived</span> :</span> <span class="keyword">public</span> base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing derived \n&quot;</span>; &#125;</span><br><span class="line">    ~<span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing derived \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    derived* d = <span class="keyword">new</span> <span class="built_in">derived</span>();</span><br><span class="line">    base* b = d;</span><br><span class="line">    <span class="keyword">delete</span> b;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Constructing base</span><br><span class="line">Constructing derived</span><br><span class="line">Destructing base</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
-
-<p>可以发现，派生类的析构函数没有被正确调用。基类指针b没有调用派生类析构函数。</p>
-<p>为了解决这个问题，应该让基类析构函数为虚，这样可以保证派生类的对象被正确地析构。即基类和派生类的析构函数都被调用。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A program with virtual destructor</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing base \n&quot;</span>; &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">base</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing base \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">derived</span> :</span> <span class="keyword">public</span> base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Constructing derived \n&quot;</span>; &#125;</span><br><span class="line">    ~<span class="built_in">derived</span>() &#123; cout &lt;&lt; <span class="string">&quot;Destructing derived \n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    derived* d = <span class="keyword">new</span> <span class="built_in">derived</span>();</span><br><span class="line">    base* b = d;</span><br><span class="line">    <span class="keyword">delete</span> b;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Constructing base</span><br><span class="line">Constructing derived</span><br><span class="line">Destructing derived</span><br><span class="line">Destructing base</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
-
-<p>原则上，任何时候在类中具有虚函数时，都应立即添加虚析构函数（即使它不执行任何操作）。这样，您可以确保以后不会出现任何意外情况。</p>
-<h2 id="虚构造函数"><a href="#虚构造函数" class="headerlink" title="虚构造函数"></a>虚构造函数</h2><p>我们可以在C++中使类构造函数虚拟化以创建多态对象吗？<br>不可以。<br>C++是静态类型的（RTTI的目的有所不同）语言，对于C++编译器来说，创建多态对象是没有意义的。编译器必须知道创建对象的类类型。换句话说，从C++编译器的角度来看，要创建哪种类型的对象是编译时的决定。如果我们将构造函数设为虚拟，则编译器会标记错误。实际上，除内联函数外，构造函数的声明中不允许使用其他关键字。<br>在实际场景中，我们需要基于一些输入在类层次结构中创建派生类对象。换言之，对象创建和对象类型紧密耦合，这迫使修改扩展。虚拟构造函数的目的是使对象创建与其类型脱钩。</p>
-<p>我们如何在运行时创建所需的对象类型？请参见下面的示例程序。</p>
-<p>回头再复习，先空着<br><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/advanced-c-virtual-constructor/">https://www.geeksforgeeks.org/advanced-c-virtual-constructor/</a></p>
-<h2 id="RTTI和dynamic-cast"><a href="#RTTI和dynamic-cast" class="headerlink" title="RTTI和dynamic_cast"></a>RTTI和dynamic_cast</h2><p>在C++中，RTTI（运行时类型信息）是一种在运行时公开有关对象数据类型的信息的机制，并且仅对具有至少一个虚函数的类可用。它允许在程序执行期间确定对象的类型。</p>
-<p>思考下面一段代码</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> &#123;</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> :</span> <span class="keyword">public</span> B &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    B* b = <span class="keyword">new</span> D;</span><br><span class="line">    D* d = <span class="keyword">dynamic_cast</span>&lt;D*&gt;(b);</span><br><span class="line">    <span class="keyword">if</span> (d != <span class="literal">NULL</span>) cout &lt;&lt; <span class="string">&quot;works&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;cannot cast B* to D*&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>报错<br>运行时 dynamic_cast 的操作数必须包含多态类类型<br>这是因为基类中没有虚函数。</p>
-<p>为了修正程序，应该在基类B中添加虚函数，如下</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> &#123;</span> <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123;&#125; &#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> :</span> <span class="keyword">public</span> B &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    B* b = <span class="keyword">new</span> D;</span><br><span class="line">    D* d = <span class="keyword">dynamic_cast</span>&lt;D*&gt;(b);</span><br><span class="line">    <span class="keyword">if</span> (d != <span class="literal">NULL</span>) cout &lt;&lt; <span class="string">&quot;works&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;cannot cast B* to D*&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>程序通过。</p>
-<h2 id="纯虚函数和抽象类"><a href="#纯虚函数和抽象类" class="headerlink" title="纯虚函数和抽象类"></a>纯虚函数和抽象类</h2><p>有时，由于我们不知道具体实现，因此无法在基类中提供所有功能的具体实现。这样的类称为抽象类。<br>例如，让Shape为基类。我们无法在Shape中提供功能draw()的实现，但是我们知道每个派生类都必须具有draw()的实现。同样，动物类也没有move()的实现（假设所有动物都在移动），但是所有动物都必须知道如何移动。我们不能创建抽象类的对象。（抽象类不能实例化）</p>
-<p>C++中的纯虚函数（或抽象函数）是一个虚拟函数，我们可以实现它，但是必须在派生类中重写该函数，否则，派生类也将成为抽象类（有关我们在何处为此类函数提供实现的更多信息，请参阅<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2089083/pure-virtual-function-with-implementation">https://stackoverflow.com/questions/2089083/pure-virtual-function-with-implementation</a>). 纯虚函数是通过在声明中赋值0来声明的。请参见下面的示例。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// An abstract class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">    <span class="comment">// Data members of class</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Pure Virtual Function</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/* Other members */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>一个完整的例子： <br>纯虚函数是由抽象类派生的类实现的。下面是一个简单的例子来说明同样的问题。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This class inherits from Base and implements fun()</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> :</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;fun() called&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    Derived d;</span><br><span class="line">    d.<span class="built_in">fun</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun() called请按任意键继续. . .</span><br></pre></td></tr></table></figure>
-
-<p>一些有趣的事实：<br>如果一个类至少有一个纯虚函数，那么它就是抽象的。<br>可以有抽象类类型的指针和引用。<br>如果不重写派生类中的纯虚函数，则派生类也会变成抽象类。<br>抽象类可以有构造函数。</p>
-<p>C++使用抽象类来实现接口。可以当成抽象类就是接口。设计面向对象的系统时可以使用一个抽象基类为所有的外部应用程序提供一个适当的、通用的、标准化的接口。然后，派生类通过继承抽象基类，就把所有类似的操作都继承下来。</p>
-<hr>
-<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>最后再趁热打铁复习一下以前背过的C++八股里的虚函数部分，加深一下理解。</p>
-<h4 id="为什么析构函数总是设为虚函数？如果这是必要的，那么为什么C-不把虚析构函数直接作为默认值？"><a href="#为什么析构函数总是设为虚函数？如果这是必要的，那么为什么C-不把虚析构函数直接作为默认值？" class="headerlink" title="为什么析构函数总是设为虚函数？如果这是必要的，那么为什么C++不把虚析构函数直接作为默认值？"></a>为什么析构函数总是设为虚函数？如果这是必要的，那么为什么C++不把虚析构函数直接作为默认值？</h4><p>将可能会被继承的基类的析构函数设置为虚函数，使用基类指针指向其子类对象，当释放基类指针时可以释放掉子类的空间，防止内存泄漏。</p>
-<p>C++默认的析构函数不是虚函数是因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存。因此C++默认的析构函数不是虚函数，而是只有当需要当作基类时，设置为虚函数。</p>
-<h4 id="请你来说一下静态函数和虚函数的区别"><a href="#请你来说一下静态函数和虚函数的区别" class="headerlink" title="请你来说一下静态函数和虚函数的区别"></a>请你来说一下静态函数和虚函数的区别</h4><p>静态函数在编译的时候就已经确定运行时机，虚函数在运行的时候动态绑定。虚函数因为用了虚函数表机制，调用的时候会增加一次内存开销。</p>
-<h4 id="C-中虚函数与纯虚函数的区别"><a href="#C-中虚函数与纯虚函数的区别" class="headerlink" title="C++中虚函数与纯虚函数的区别"></a>C++中虚函数与纯虚函数的区别</h4><p>子类可以不复写基类虚函数，但必须复写基类纯虚函数。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/55fa/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/55fa/" class="post-title-link" itemprop="url">运算符重载</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-27 17:49:24" itemprop="dateCreated datePublished" datetime="2021-04-27T17:49:24+08:00">2021-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/55fa/" class="post-meta-item leancloud_visitors" data-flag-title="运算符重载" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>C++中，运算符是作为函数被实现的。严格来说，运算符重载也是一种函数重载。</p>
-<p>当你看到a+b时，可以把它脑补成+(x,y)，其中+是函数名。</p>
-<p>通过重载运算符，可以让已有的运算符为用户定义的类工作<br>例如，我们可以在String之类的类中重载运算符+，以便仅使用+即可连接两个字符串。<br>算术运算符可能会重载的其他示例类是复数，小数，大整数等。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> real, imag;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Complex</span>(<span class="keyword">int</span> r = <span class="number">0</span>, <span class="keyword">int</span> i = <span class="number">0</span>) :<span class="built_in">real</span>(r), <span class="built_in">imag</span>(i) &#123; &#125;</span><br><span class="line">    <span class="comment">// 当加号+被用于两个复数对象时，下面代码会被自动调用</span></span><br><span class="line">    Complex <span class="keyword">operator</span> + (Complex <span class="keyword">const</span>&amp; obj) &#123;</span><br><span class="line">        Complex res;</span><br><span class="line">        res.real = real + obj.real;</span><br><span class="line">        res.imag = imag + obj.imag;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; cout &lt;&lt; real &lt;&lt; <span class="string">&quot; + i&quot;</span> &lt;&lt; imag &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Complex c1(10, 5), c2(2, 4);</span><br><span class="line">    Complex c3 = c1 + c2; <span class="comment">// An example call to &quot;operator+&quot;</span></span><br><span class="line">    c3.<span class="built_in">print</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：12+i9</p>
-<p>operator函数和普通函数的区别？</p>
-<p>一个全局运算符重载的例子</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> real, imag;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Complex</span>(<span class="keyword">int</span> r = <span class="number">0</span>, <span class="keyword">int</span> i = <span class="number">0</span>) &#123; real = r; imag = i; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; cout &lt;&lt; real &lt;&lt; <span class="string">&quot; + i&quot;</span> &lt;&lt; imag &lt;&lt; endl; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The global operator function is made friend of this class so</span></span><br><span class="line">    <span class="comment">// that it can access private members</span></span><br><span class="line">    <span class="keyword">friend</span> Complex <span class="keyword">operator</span> + (Complex <span class="keyword">const</span>&amp;, Complex <span class="keyword">const</span>&amp;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Complex <span class="keyword">operator</span> + (Complex <span class="keyword">const</span>&amp; c1, Complex <span class="keyword">const</span>&amp; c2) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Complex</span>(c1.real + c2.real, c1.imag + c2.imag);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Complex c1(10, 5), c2(2, 4);</span><br><span class="line">    Complex c3 = c1 + c2; <span class="comment">// An example call to &quot;operator+&quot;</span></span><br><span class="line">    c3.<span class="built_in">print</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上例中，通过将重载的运算符声明为类的友元，使其可以访问类中的私有成员。</p>
-<p>可以被重载的运算符：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+    -    *    &#x2F;      %        ^</span><br><span class="line">&amp;    |    ~    !,        &#x3D;</span><br><span class="line">    &#x3D;      ++        --</span><br><span class="line">    &#x3D;&#x3D;    !&#x3D;      &amp;&amp;        ||</span><br><span class="line">+&#x3D;    -&#x3D;    &#x2F;&#x3D;    %&#x3D;      ^&#x3D;        &amp;&#x3D;</span><br><span class="line">|&#x3D;    *&#x3D;    &#x3D;      []        ()</span><br><span class="line">-&gt;    -&gt;*    new    new []      delete    delete []</span><br></pre></td></tr></table></figure>
-
-<p>不能重载的运算符：<br>.(dot)<br>::<br>?:<br>sizeof</p>
-<p>运算符重载的一些要点</p>
-<ol>
-<li>为了使运算符重载起作用，至少一个操作数必须是用户定义的类对象。</li>
-<li>赋值运算符：编译器会自动为每个类创建一个默认的赋值运算符。默认的赋值运算符确实将右侧的所有成员分配到左侧，并且在大多数情况下都可以正常工作（此行为与复制构造函数相同）。</li>
-<li>转换运算符：我们还可以编写可用于将一种类型转换为另一种类型的转换运算符。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/5ad0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/5ad0/" class="post-title-link" itemprop="url">函数重载和函数重写</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-27 15:38:27" itemprop="dateCreated datePublished" datetime="2021-04-27T15:38:27+08:00">2021-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/5ad0/" class="post-meta-item leancloud_visitors" data-flag-title="函数重载和函数重写" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>函数重载在编译时实现。<br>它通过修改函数签名来提供函数的多种定义。比如参数个数、参数类型。<br>修改返回值类型不能实现重载。// functions can not be overloaded if they differ only in the return type.<br>它既可以在基类中也可以在派生类中完成。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">float</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">float</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">float</span> b = <span class="number">5.5</span>;</span><br><span class="line">    <span class="built_in">test</span>(a);</span><br><span class="line">    <span class="built_in">test</span>(b);</span><br><span class="line">    <span class="built_in">test</span>(a, b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> var)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Integer number: &quot;</span> &lt;&lt; var &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Method 2</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">float</span> var)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Float number: &quot;</span> &lt;&lt; var &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Method 3</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> var1, <span class="keyword">float</span> var2)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Integer number: &quot;</span> &lt;&lt; var1;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot; and float number: &quot;</span> &lt;&lt; var2 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>函数重写（在运行时实现）<br>它是基类函数在其派生类中的重新定义，具有相同的签名，即返回类型和参数。<br>它只能在派生类中完成。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CPP program to illustrate</span></span><br><span class="line"><span class="comment">// Function Overriding</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseClass</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Display</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;基类Display()\n&quot;</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Show</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;基类Show()\n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DerivedClass</span> :</span> <span class="keyword">public</span> BaseClass &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Display</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;子类Display()\n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver code</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    DerivedClass dr;</span><br><span class="line">    BaseClass&amp; bs = dr;</span><br><span class="line">    bs.<span class="built_in">Display</span>();</span><br><span class="line">    dr.<span class="built_in">Show</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上代码输出：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">子类Display()</span><br><span class="line">基类Show()</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
-
-<p>解释一下这条语句：<br><code>BaseClass&amp; bs = dr;</code></p>
-<p>调用函数的时候，关键看对象的类型。<br>调用函数的时候，关键看对象的类型。<br>调用函数的时候，关键看对象的类型！<br>记住是对象的类型，不管是指针还是引用（同样是对象的类型）。<br>比如，bs是对象dr的引用，bs调用display时，其实是bs引用的对象dr取调用display。所以输出：子类Display()</p>
-<p>或者看这句话：其思想是根据指向或引用的对象实例的类型调用虚拟函数，而不是根据指针或引用的类型。</p>
-<p>再看下面代码</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FunctionA</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;父类FunctionA&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">FunctionB</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;父类FunctionB&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> :</span> <span class="keyword">public</span> Father &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FunctionA</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;子类FunctionA&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">FunctionB</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;子类FunctionB&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在将父类对象的指针指向子类对象的时候<br><code>Father* father = new Child;</code><br>如father-&gt;FunctionA()，则执行的是Father中的实现；<br>father-&gt;FunctionB()，则执行的是Child中的实现。</p>
-<p>C++函数重载和const<br>C++ allows functions to be overloaded on the basis of const-ness of parameters only if the const parameter is a reference or a pointer.<br><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/function-overloading-and-const-functions/">https://www.geeksforgeeks.org/function-overloading-and-const-functions/</a></p>
-<p>不能重载的函数：</p>
-<ol>
-<li>不能重载只有返回值不同的两个函数</li>
-<li>不能重载具有相同参数类型的静态和非静态成员函数</li>
-<li>在参数声明中，一维数组和一级指针在参数声明中是等价的，在参数类型中，只有第二维和后续数组维才有意义。例如下面两个声明完全等价：<code>int fun(int* ptr);</code>和<code>int fun(int ptr[]);</code>（发生了重定义）</li>
-<li>参数const和非const</li>
-</ol>
-<p>不能重载的函数参见<br><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/function-overloading-in-c/">https://www.geeksforgeeks.org/function-overloading-in-c/</a></p>
-<p>重载可以与继承一起使用吗？</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;f(int): &quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> :</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">f</span><span class="params">(<span class="keyword">double</span> d)</span> </span>&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;f(double): &quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> d + <span class="number">3.3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Derived* dp = <span class="keyword">new</span> Derived;</span><br><span class="line">    cout &lt;&lt; dp-&gt;<span class="built_in">f</span>(<span class="number">3</span>) &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; dp-&gt;<span class="built_in">f</span>(<span class="number">3.3</span>) &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="keyword">delete</span> dp;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面程序输出：<br>f(double): 6.3<br>f(double): 6.6<br>请按任意键继续. . .</p>
-<p>可见，子类f遮蔽了父类f，在C++程序设计语言中，重载对派生类不起作用。基和派生之间没有重载解析。编译器检查派生函数的作用域，找到单个函数“double f（double）”并调用它。它从不干扰基础的（封闭的）范围。在C++中，跨范围没有重载——派生类作用域对这个一般规则也不例外。更多示例见此）</p>
-<p>结论：重载要限定在同一个作用域。父类和子类不在一个范围。</p>
-<p>重载的二义性</p>
-<p>观察下面代码：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">float</span> s, <span class="keyword">float</span> t)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Function with float called &quot;</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Function with int called &quot;</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">test</span>(<span class="number">3.5</span>, <span class="number">5.6</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>尝试编译它时会发生错误：test:对重载函数的调用不明确。有多个重载函数test实例与参数列表匹配。</p>
-<p>原因是：浮点数3.5和5.6通常是被编译器作为double对待的。<br>根据C++标准，除非后缀明确指定，否则浮点文字（编译时间常数）将被视为double（请参见此处的C +++标准2.14.4）。<br>由于编译器无法找到带有double参数的函数，因此如果将值从double转换为int或float会感到困惑。</p>
-<p>纠正错误的方法：(3.5f, 5.6f)即可</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/24cf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/24cf/" class="post-title-link" itemprop="url">C++资料汇总</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-27 15:26:37" itemprop="dateCreated datePublished" datetime="2021-04-27T15:26:37+08:00">2021-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/24cf/" class="post-meta-item leancloud_visitors" data-flag-title="C++资料汇总" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>拷贝构造函数</p>
-<p><a target="_blank" rel="noopener" href="http://www.fredosaurus.com/notes-cpp/oop-condestructors/copyconstructors.html">Fred Swartz - C++ Notes: OOP: Copy Constructors</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/f9f4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/f9f4/" class="post-title-link" itemprop="url">C++多态</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-27 12:22:39" itemprop="dateCreated datePublished" datetime="2021-04-27T12:22:39+08:00">2021-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/f9f4/" class="post-meta-item leancloud_visitors" data-flag-title="C++多态" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="什么是多态？"><a href="#什么是多态？" class="headerlink" title="什么是多态？"></a>什么是多态？</h2><p>多态（英语：polymorphism）指为不同数据类型的实体提供统一的接口。</p>
-<h2 id="为什么适用多态？"><a href="#为什么适用多态？" class="headerlink" title="为什么适用多态？"></a>为什么适用多态？</h2><ol>
-<li>封装可以隐藏实现细节，使代码模块化；</li>
-<li>继承可以拓展已存在的代码模块，实现代码重用；</li>
-<li>多态除了实现代码的复用外，还可以解决项目中紧耦合的问题，提高程序的可拓展性。</li>
-</ol>
-<h2 id="多态的实现"><a href="#多态的实现" class="headerlink" title="多态的实现"></a>多态的实现</h2><ul>
-<li><p>动态多态：也称运行时多态，通过类继承机制和虚函数机制生效于运行期。可以优雅地处理异质对象集合，只要其共同的基类定义了虚函数的接口。也被称为子类型多态或包含多态。在面向对象程序设计中，这被直接称为多态。</p>
-</li>
-<li><p>静态多态：也称编译时多态。静态多态主要是重载，包括函数重载和运算符重载。模板允许将不同的特殊行为和单个泛化记号相关联，由于这种关联处理于编译期而非运行期，因此被称为“静态”。可以用来实现类型安全、运行高效的同质对象集合操作。C++STL不采用动态多态来实现就是个例子。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c208/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/c208/" class="post-title-link" itemprop="url">C++虚拟继承</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-26 22:34:08" itemprop="dateCreated datePublished" datetime="2021-04-26T22:34:08+08:00">2021-04-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/c208/" class="post-meta-item leancloud_visitors" data-flag-title="C++虚拟继承" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>虚拟继承是面向对象编程中的一种技术，是指一个指定的基类，在继承体系结构中，将其成员数据实例共享给同样从这个基类型直接或间接派生的其它类。</p>
-<p>虚拟继承是多重继承中特有的概念。<br>虚拟基类是为解决多重继承中的钻石继承问题而出现的。</p>
-<p>虚拟继承又称作共享继承，这种共享其实也是编译期间实现的。</p>
-<p>首先还是先给出虚继承和虚基类的定义。<br>虚继承：在继承定义中包含了virtual关键字的继承关系。<br>虚基类：在虚继承体系中通过virtual继承而来的基类。</p>
-<p>需要注意的是：<br><code>class B : public virtual A &#123; &#125;;</code><br>其中A称之为B的虚基类，而不是说A就是个虚基类，因为A还可以作为不是虚继承体系中的基类。</p>
-<p>现在，B继承A的公共成员a时，继承的是a的本体，而非a的副本。（感觉有点像继承机制中的传引用）</p>
-<p>语义：此机制为何被称作虚继承？</p>
-<p>从语义上来讲什么是虚继承和虚基类呢？上面仅仅是从如何在C++语言中书写合法的虚继承类定义而已。首先来了解一下virtual这个关键字在C++中的公共含义，在C++语言中仅仅有两个地方可以使用virtual这个关键字，一个就是类成员虚函数和这里所讨论的虚继承。不要看这两种应用场合好像没什么关系，其实他们在背景语义上具有virtual这个词所代表的共同的含义，所以才会在这两种场合使用相同的关键字。</p>
-<p>那么virtual这个词的含义是什么呢？<br>virtual在《美国传统词典（双解）》中是这样定义的：</p>
-<p>adj.（形容词）</p>
-<ol>
-<li>Existing or resulting in essence or effect though not in actual fact, form, or name. 实质上的，实际上的：虽然没有实际的事实、形式或名义，但在实际上或效果上存在或产生的；</li>
-<li>Existing in the mind, especially as a product of the imagination. Used in literary criticism of text. 虚的，内心的：在头脑中存在的，尤指意想的产物。用于文学批评中。</li>
-</ol>
-<p>我们采用第一个定义，也就是说被virtual所修饰的事物或现象在本质上是存在的，但是没有直观的形式表现，无法直接描述或定义，需要通过其他的间接方式或手段才能够体现出其实际上的效果。</p>
-<p>那么在C++中就是采用了这个词意，不可以在语言模型中直接调用或体现的，但是确实是存在可以被间接的方式进行调用或体现的。比如：虚函数必须要通过一种间接的运行时（而不是编译时）机制才能够激活（调用）的函数，而虚继承也是必须在运行时才能够进行定位访问的一种体制。存在，但间接。其中关键就在于存在、间接和共享这三种特征。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>
