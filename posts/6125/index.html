@@ -23,15 +23,15 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
-<meta name="description" content="动态规划（DP）是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：重叠子问题最佳子结构属性 解决DP的步骤： 1. 确定是否是DP问题2. 确定带有最少参数的状态表达式3. 写出状态关系4. 表格化或记忆化  如何将问题归类为动态规划问题？通常情况下，所有需要最大化或最小化一定数量的问题或计数问题，即在一">
+<meta name="description" content="动态规划是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：重叠子问题最佳子结构属性 解决DP的步骤： 1. 确定是否是DP问题2. 写出带有最少参数的状态表达式3. 写出状态关系4. 表格化或记忆化  如何将问题归类为动态规划问题？通常情况下，所有需要最大化或最小化一定数量的问题或计数问题，即在一定条件下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何解决一个DP问题">
 <meta property="og:url" content="https://tsukiyokai.github.io/posts/6125/index.html">
 <meta property="og:site_name" content="月夜海">
-<meta property="og:description" content="动态规划（DP）是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：重叠子问题最佳子结构属性 解决DP的步骤： 1. 确定是否是DP问题2. 确定带有最少参数的状态表达式3. 写出状态关系4. 表格化或记忆化  如何将问题归类为动态规划问题？通常情况下，所有需要最大化或最小化一定数量的问题或计数问题，即在一">
+<meta property="og:description" content="动态规划是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：重叠子问题最佳子结构属性 解决DP的步骤： 1. 确定是否是DP问题2. 写出带有最少参数的状态表达式3. 写出状态关系4. 表格化或记忆化  如何将问题归类为动态规划问题？通常情况下，所有需要最大化或最小化一定数量的问题或计数问题，即在一定条件下">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-29T08:42:08.000Z">
-<meta property="article:modified_time" content="2021-04-29T09:08:51.560Z">
+<meta property="article:modified_time" content="2021-05-03T14:53:37.639Z">
 <meta property="article:author" content="充电的猫猫">
 <meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
@@ -167,7 +167,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-count">202</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -180,7 +180,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -290,9 +290,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>动态规划（DP）是一种在多项式时间内解决某些特定类型问题的技术。动态规划解的速度比指数暴力法快，并且易于证明其正确性。在研究如何动态思考问题之前，我们需要了解：<br>重叠子问题<br>最佳子结构属性</p>
+        <p>动态规划是一种在多项式时间内解决某些特定类型问题的技术。<br>动态规划解的速度比指数暴力法快，并且易于证明其正确性。<br>在研究如何动态思考问题之前，我们需要了解：<br>重叠子问题<br>最佳子结构属性</p>
 <p>解决DP的步骤：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 确定是否是DP问题</span><br><span class="line">2. 确定带有最少参数的状态表达式</span><br><span class="line">3. 写出状态关系</span><br><span class="line">4. 表格化或记忆化</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 确定是否是DP问题</span><br><span class="line">2. 写出带有最少参数的状态表达式</span><br><span class="line">3. 写出状态关系</span><br><span class="line">4. 表格化或记忆化</span><br></pre></td></tr></table></figure>
 
 <h2 id="如何将问题归类为动态规划问题？"><a href="#如何将问题归类为动态规划问题？" class="headerlink" title="如何将问题归类为动态规划问题？"></a>如何将问题归类为动态规划问题？</h2><p>通常情况下，所有需要最大化或最小化一定数量的问题或计数问题，即在一定条件下或一定概率下的安排计数问题，都可以用动态规划来解决。</p>
 <p>所有的动态规划问题都满足重叠子问题的性质，而大多数经典的动态规划问题也满足最优子结构的性质。一旦我们在给定的问题中观察到这些性质，就要确保它可以用DP来解决。</p>
@@ -337,8 +337,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/cb23/" rel="prev" title="动态规划的最优子结构性质 DP_Set2">
-                  <i class="fa fa-chevron-left"></i> 动态规划的最优子结构性质 DP_Set2
+                <a href="/posts/f996/" rel="prev" title="动态规划的重叠子问题和最优子结构">
+                  <i class="fa fa-chevron-left"></i> 动态规划的重叠子问题和最优子结构
                 </a>
             </div>
             <div class="post-nav-item">

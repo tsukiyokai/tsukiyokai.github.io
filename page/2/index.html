@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-count">202</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,7 +174,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -226,7 +226,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/bd97/">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/29f8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/haruna.png">
@@ -239,7 +239,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/bd97/" class="post-title-link" itemprop="url">竞争编程中STL的图形实现（无向无权图）</a>
+          <a href="/posts/29f8/" class="post-title-link" itemprop="url">HJ90 合法IP</a>
         </h2>
 
         <div class="post-meta-container">
@@ -250,7 +250,716 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-05-02 13:03:00" itemprop="dateCreated datePublished" datetime="2021-05-02T13:03:00+08:00">2021-05-02</time>
+      <time title="创建时间：2021-05-03 01:17:04" itemprop="dateCreated datePublished" datetime="2021-05-03T01:17:04+08:00">2021-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/29f8/" class="post-meta-item leancloud_visitors" data-flag-title="HJ90 合法IP" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目描述<br>现在IPV4下用一个32位无符号整数来表示，一般用点分方式来显示，点将IP地址分成4个部分，每个部分为8位，表示成一个无符号整数（因此不需要用正号出现），如10.137.17.1，是我们非常熟悉的IP地址，一个IP地址串中没有空格出现（因为要表示成一个32数字）。<br>现在需要你用程序来判断IP是否合法。</p>
+<p>注意本题有多组样例输入。</p>
+<p>输入描述:<br>输入一个ip地址，保证是xx.xx.xx.xx的形式（xx为整数）<br>输出描述:<br>返回判断的结果YES or NO</p>
+<p>示例1<br>输入<br>10.138.15.1<br>255.0.0.255<br>255.255.255.1000<br>输出<br>YES<br>YES<br>NO</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isright</span><span class="params">(string&amp; s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">stoi</span>(s) &gt;= <span class="number">0</span> &amp;&amp; <span class="built_in">stoi</span>(s) &lt;= <span class="number">255</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(cin, s)) &#123;</span><br><span class="line">        vector&lt;string&gt; v;</span><br><span class="line">        string tmp;</span><br><span class="line">        <span class="function">stringstream <span class="title">ss</span><span class="params">(s)</span></span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">getline</span>(ss, tmp, <span class="string">&#x27;.&#x27;</span>))</span><br><span class="line">            v.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (string&amp; str : v)</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">isright</span>(str)) &#123;</span><br><span class="line">                flag = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag == <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;NO&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;YES&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/ed4e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/ed4e/" class="post-title-link" itemprop="url">HJ20 密码验证合格程序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-03 00:33:08" itemprop="dateCreated datePublished" datetime="2021-05-03T00:33:08+08:00">2021-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/ed4e/" class="post-meta-item leancloud_visitors" data-flag-title="HJ20 密码验证合格程序" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目描述<br>密码要求:<br>1.长度超过8位<br>2.包括大小写字母.数字.其它符号,以上四种至少三种<br>3.不能有相同长度大于2的子串重复</p>
+<p>输入描述:<br>一组或多组长度超过2的字符串。每组占一行<br>输出描述:<br>如果符合要求输出：OK，否则输出NG</p>
+<p>示例1<br>输入<br>021Abc9000<br>021Abc9Abc1<br>021ABC9000<br>021$bc9000<br>输出<br>OK<br>NG<br>NG<br>OK</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">rule1</span><span class="params">(string&amp; s)</span> </span>&#123; <span class="keyword">return</span> s.<span class="built_in">length</span>() &gt; <span class="number">8</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">rule2</span><span class="params">(string&amp; s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> AA = <span class="number">0</span>, aa = <span class="number">0</span>, digit = <span class="number">0</span>, symbol = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span>&amp; c : s) &#123;</span><br><span class="line">        <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;Z&#x27;</span>) AA = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;z&#x27;</span>) aa = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span>) digit = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> symbol = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> AA + aa + digit + symbol &gt;= <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">rule3</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> len = <span class="number">3</span>; len &lt;= s.<span class="built_in">length</span>(); len++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> index = <span class="number">0</span>; index &lt;= s.<span class="built_in">length</span>() - len; index++)</span><br><span class="line">            <span class="comment">// if (s.find(s.substr(index, len), index + 1) != string::npos)</span></span><br><span class="line">            <span class="keyword">if</span> (s.<span class="built_in">substr</span>(index + <span class="number">1</span>).<span class="built_in">find</span>(s.<span class="built_in">substr</span>(index, len)) != string::npos)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(cin, s)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">rule1</span>(s) &amp;&amp; <span class="built_in">rule2</span>(s) &amp;&amp; <span class="built_in">rule3</span>(s))</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;OK&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;NG&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>rule3里面也可以写成注释的那句，用到了find的另一个重载：<br>find(string, int)：第一个参数用来指示要查找的目标串，第二个参数用来表示从字符串的何处开始查找子串(默认的查找位置是0)。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/3499/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/3499/" class="post-title-link" itemprop="url">HJ17 坐标移动</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-02 22:09:31" itemprop="dateCreated datePublished" datetime="2021-05-02T22:09:31+08:00">2021-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/3499/" class="post-meta-item leancloud_visitors" data-flag-title="HJ17 坐标移动" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目描述<br>开发一个坐标计算工具， A表示向左移动，D表示向右移动，W表示向上移动，S表示向下移动。从（0,0）点开始移动，从输入字符串里面读取一些坐标，并将最终输入结果输出到输出文件里面。</p>
+<p>输入：<br>合法坐标为A(或者D或者W或者S) + 数字（两位以内）<br>坐标之间以;分隔。<br>非法坐标点需要进行丢弃。如AA10;  A1A;  $%$;  YAD; 等。<br>下面是一个简单的例子 如：<br>A10;S20;W10;D30;X;A1A;B10A11;;A10;<br>处理过程：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">起点(0,0)</span><br><span class="line">A10&#x3D;(-10,0)</span><br><span class="line">S20&#x3D;(-10,-20)</span><br><span class="line">W10&#x3D;(-10,-10)</span><br><span class="line">D30&#x3D;(20,-10)</span><br><span class="line">x&#x3D;无效</span><br><span class="line">A1A&#x3D;无效</span><br><span class="line">B10A11&#x3D;无效</span><br><span class="line">一个空不影响</span><br><span class="line">A10&#x3D;(10,-10)</span><br><span class="line">结果(10,-10)</span><br></pre></td></tr></table></figure>
+<p>注意请处理多组输入输出</p>
+<p>输入描述:<br>一行字符串</p>
+<p>输出描述:<br>最终坐标，以逗号分隔</p>
+<p>示例1<br>输入<br>A10;S20;W10;D30;X;A1A;B10A11;;A10;<br>输出<br>10,-10</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isvalid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (s[<span class="number">0</span>] == <span class="string">&#x27;W&#x27;</span> || s[<span class="number">0</span>] == <span class="string">&#x27;A&#x27;</span> || s[<span class="number">0</span>] == <span class="string">&#x27;S&#x27;</span> || s[<span class="number">0</span>] == <span class="string">&#x27;D&#x27;</span>)</span><br><span class="line">        &amp;&amp; s.<span class="built_in">length</span>() &gt;= <span class="number">2</span> &amp;&amp; s.<span class="built_in">length</span>() &lt;= <span class="number">3</span></span><br><span class="line">        &amp;&amp; s.<span class="built_in">substr</span>(<span class="number">1</span>).<span class="built_in">find_first_not_of</span>(<span class="string">&quot;0123456789&quot;</span>) == string::npos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//void printv(vector&lt;string&gt; v) &#123;</span></span><br><span class="line"><span class="comment">//    for (string v0 : v) &#123;</span></span><br><span class="line"><span class="comment">//        cout &lt;&lt; v0 &lt;&lt; &#x27; &#x27;;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//    cout &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(cin, s)) &#123;</span><br><span class="line">        vector&lt;string&gt; v;</span><br><span class="line">        <span class="function">stringstream <span class="title">ss</span><span class="params">(s)</span></span>;</span><br><span class="line">        string tmps;</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">getline</span>(ss, tmps, <span class="string">&#x27;;&#x27;</span>)) &#123;</span><br><span class="line">            v.<span class="built_in">push_back</span>(tmps);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//printv(v);</span></span><br><span class="line">        unordered_map&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isvalid</span>(v[i])) &#123;</span><br><span class="line">                <span class="keyword">char</span> a = v[i][<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">int</span> b = <span class="built_in">stoi</span>(v[i].<span class="built_in">substr</span>(<span class="number">1</span>));</span><br><span class="line">                m[a] += b;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//for (auto m0 : m) &#123;</span></span><br><span class="line">        <span class="comment">//    cout &lt;&lt; m0.first &lt;&lt; &#x27; &#x27; &lt;&lt; m0.second &lt;&lt; endl;</span></span><br><span class="line">        <span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span> + m[<span class="string">&#x27;D&#x27;</span>] - m[<span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">        <span class="keyword">int</span> y = <span class="number">0</span> + m[<span class="string">&#x27;W&#x27;</span>] - m[<span class="string">&#x27;S&#x27;</span>];</span><br><span class="line">        cout &lt;&lt; x &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/963/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/963/" class="post-title-link" itemprop="url">HJ21 简单密码破解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-02 22:03:15" itemprop="dateCreated datePublished" datetime="2021-05-02T22:03:15+08:00">2021-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/963/" class="post-meta-item leancloud_visitors" data-flag-title="HJ21 简单密码破解" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目描述<br>密码是我们生活中非常重要的东东，我们的那么一点不能说的秘密就全靠它了。哇哈哈. 接下来渊子要在密码之上再加一套密码，虽然简单但也安全。</p>
+<p>假设渊子原来一个BBS上的密码为zvbo9441987,为了方便记忆，他通过一种算法把这个密码变换成YUANzhi1987，这个密码是他的名字和出生年份，怎么忘都忘不了，而且可以明目张胆地放在显眼的地方而不被别人知道真正的密码。</p>
+<p>他是这么变换的，大家都知道手机上的字母： 1–1， abc–2, def–3, ghi–4, jkl–5, mno–6, pqrs–7, tuv–8 wxyz–9, 0–0,就这么简单，渊子把密码中出现的小写字母都变成对应的数字，数字和其他的符号都不做变换，</p>
+<p>声明：密码中没有空格，而密码中出现的大写字母则变成小写之后往后移一位，如：X，先变成小写，再往后移一位，不就是y了嘛，简单吧。记住，z往后移是a哦。</p>
+<p>输入描述:<br>输入包括多个测试数据。输入是一个明文，密码长度不超过100个字符，输入直到文件结尾<br>输出描述:<br>输出渊子真正的密文</p>
+<p>示例1<br>输入<br>YUANzhi1987<br>输出<br>zvbo9441987</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; s) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;Z&#x27;</span>)</span><br><span class="line">                c = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>&gt;(<span class="string">&#x27;a&#x27;</span> + (<span class="built_in">tolower</span>(c) - <span class="string">&#x27;a&#x27;</span> + <span class="number">1</span>) % <span class="number">26</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;z&#x27;</span>) &#123;</span><br><span class="line">                <span class="built_in"><span class="keyword">switch</span></span> (c) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;a&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;b&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;c&#x27;</span>: c = <span class="string">&#x27;2&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;d&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;e&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;f&#x27;</span>: c = <span class="string">&#x27;3&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;g&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;h&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;i&#x27;</span>: c = <span class="string">&#x27;4&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;j&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;k&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;l&#x27;</span>: c = <span class="string">&#x27;5&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;m&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;n&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;o&#x27;</span>: c = <span class="string">&#x27;6&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;p&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;q&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;r&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;s&#x27;</span>: c = <span class="string">&#x27;7&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;t&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;u&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;v&#x27;</span>: c = <span class="string">&#x27;8&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;w&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;x&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;y&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;z&#x27;</span>: c = <span class="string">&#x27;9&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/9848/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/9848/" class="post-title-link" itemprop="url">HJ92 在字符串中找出连续最长的数字串</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-02 17:49:39" itemprop="dateCreated datePublished" datetime="2021-05-02T17:49:39+08:00">2021-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/9848/" class="post-meta-item leancloud_visitors" data-flag-title="HJ92 在字符串中找出连续最长的数字串" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目描述<br>输入一个字符串，返回其最长的数字子串，以及其长度。若有多个最长的数字子串，则将它们全部输出（按原字符串的相对位置）<br>本题含有多组样例输入。</p>
+<p>输入描述:<br>输入一个字符串。</p>
+<p>输出描述:<br>输出字符串中最长的数字字符串和它的长度，中间用逗号间隔。如果有相同长度的串，则要一块儿输出（中间不要输出空格）。</p>
+<p>示例1<br>输入<br>abcd12345ed125ss123058789<br>a8a72a6a5yy98y65ee1r2<br>输出<br>123058789,9<br>729865,2</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s1.<span class="built_in">length</span>() &gt; s2.<span class="built_in">length</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; s) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : s)</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">isdigit</span>(c)) c = <span class="string">&#x27; &#x27;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">stringstream <span class="title">ss</span><span class="params">(s)</span></span>;</span><br><span class="line">        string tmp;</span><br><span class="line">        vector&lt;string&gt; v;</span><br><span class="line">        <span class="keyword">while</span> (ss &gt;&gt; tmp)</span><br><span class="line">            v.<span class="built_in">push_back</span>(tmp);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), &amp;cmp);</span><br><span class="line">        <span class="keyword">size_t</span> len = v[<span class="number">0</span>].<span class="built_in">length</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; v[i].<span class="built_in">length</span>() == len; i++)</span><br><span class="line">            cout &lt;&lt; v[i];</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; len &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我这个思想非常巧妙<br>先让<br><code>abcd12345ed125ss123058789</code><br>变成<br><code>····12345··125··123058789</code><br>然后把它通过stringstream传进一个字符串数组里，对长度进行排序，最后输出</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/f2b4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/f2b4/" class="post-title-link" itemprop="url">HJ6 质数因子</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-02 17:17:35" itemprop="dateCreated datePublished" datetime="2021-05-02T17:17:35+08:00">2021-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/f2b4/" class="post-meta-item leancloud_visitors" data-flag-title="HJ6 质数因子" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目描述<br>功能:输入一个正整数，按照从小到大的顺序输出它的所有质因子（重复的也要列举）（如180的质因子为2 2 3 3 5 ）</p>
+<p>最后一个数后面也要有空格</p>
+<p>输入描述:<br>输入一个long型整数</p>
+<p>输出描述:<br>按照从小到大的顺序输出它的所有质数的因子，以空格隔开。最后一个数后面也要有空格。</p>
+<p>示例1<br>输入<br>180<br>输出<br>2 2 3 3 5</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span> (n != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</span><br><span class="line">                cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">                n /= i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以前可以通过，现在超时了</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c077/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c077/" class="post-title-link" itemprop="url">HJ9 提取不重复的整数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-02 16:32:39" itemprop="dateCreated datePublished" datetime="2021-05-02T16:32:39+08:00">2021-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/c077/" class="post-meta-item leancloud_visitors" data-flag-title="HJ9 提取不重复的整数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。<br>保证输入的整数最后一位不是0。<br>输入描述:<br>输入一个int型整数</p>
+<p>输出描述:<br>按照从右向左的阅读顺序，返回一个不含重复数字的新的整数</p>
+<p>输入：<br>1551<br>输出：<br>15</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string s = <span class="built_in">to_string</span>(n);</span><br><span class="line">    <span class="built_in">reverse</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">    string res;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : s)</span><br><span class="line">        <span class="keyword">if</span> (res.<span class="built_in">find</span>(c) == string::npos)</span><br><span class="line">            res += c;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="built_in">stoi</span>(res);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/69b5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/69b5/" class="post-title-link" itemprop="url">HJ0 机试小抄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-02 15:22:00" itemprop="dateCreated datePublished" datetime="2021-05-02T15:22:00+08:00">2021-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/69b5/" class="post-meta-item leancloud_visitors" data-flag-title="HJ0 机试小抄" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line">queue::<span class="built_in">push</span>(); 进队</span><br><span class="line">queue::<span class="built_in">pop</span>(); 出队</span><br><span class="line">queue::<span class="built_in">empty</span>(); 判空</span><br><span class="line">queue::<span class="built_in">back</span>(); 队尾</span><br><span class="line">queue::<span class="built_in">front</span>(); 对头</span><br><span class="line">queue::<span class="built_in">size</span>(); 队长</span><br></pre></td></tr></table></figure>
+
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line">s.<span class="built_in">find</span>(str)</span><br><span class="line">在s中找子串str；</span><br><span class="line">用s.<span class="built_in">find</span>(str) == string::npos表示找不到这样的子串</span><br><span class="line"></span><br><span class="line">s.<span class="built_in">find_first_not_of</span>(<span class="string">&quot;lixing&quot;</span>)</span><br><span class="line">在目标串s中进行查找，返回第一个与<span class="string">&quot;lixing&quot;</span>中任一字符都不匹配的元素的位置。</span><br><span class="line"></span><br><span class="line"><span class="built_in">stoi</span>(s)</span><br><span class="line">不能把空串转成数字，会跳异常</span><br><span class="line">string str = <span class="string">&quot;1010&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a = <span class="built_in">stoi</span>(str, <span class="number">0</span>, <span class="number">8</span>); <span class="comment">// a = 520</span></span><br><span class="line">把str即<span class="number">1010</span>从索引<span class="number">0</span>开始到末尾的串视为<span class="number">8</span>进制并转为<span class="number">10</span>进制整数，得<span class="number">8</span>^<span class="number">3</span>+<span class="number">8</span>^<span class="number">1</span>=<span class="number">520</span></span><br><span class="line">一般还是用单参数得比较多，而且第二个位置得<span class="number">0</span>最好不要轻易改动</span><br></pre></td></tr></table></figure>
+
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line">set是一个内部自动有序且不含重复元素的容器。</span><br><span class="line">set最主要的作用就是自动去重并按升序排序。</span><br><span class="line">适用于需要去重但是又不方便直接开数组的情况。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/840/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/840/" class="post-title-link" itemprop="url">图的广度优先遍历</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-02 15:14:05" itemprop="dateCreated datePublished" datetime="2021-05-02T15:14:05+08:00">2021-05-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,7 +976,7 @@
     </span>
 
   
-    <span id="/posts/bd97/" class="post-meta-item leancloud_visitors" data-flag-title="竞争编程中STL的图形实现（无向无权图）" title="阅读次数">
+    <span id="/posts/840/" class="post-meta-item leancloud_visitors" data-flag-title="图的广度优先遍历" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -283,19 +992,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>下面的DFS基于图的邻接表表示</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在VS中，下面构造邻接表的语句编译错误，因为VS要求<code>vector&lt;int&gt; adj[V];</code>表达式中必须含有常量值。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> V = <span class="number">5</span>;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; adj[V];</span><br></pre></td></tr></table></figure>
-
-<p>所以要用</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> V = <span class="number">5</span>;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;* adj = <span class="keyword">new</span> vector&lt;<span class="keyword">int</span>&gt;[V];</span><br></pre></td></tr></table></figure>
-
-<h2 id="vector-lt-int-gt-adj-和-vector-lt-vector-lt-int-gt-gt-adj-的区别"><a href="#vector-lt-int-gt-adj-和-vector-lt-vector-lt-int-gt-gt-adj-的区别" class="headerlink" title="vector&lt;int&gt; adj[] 和 vector&lt;vector&lt;int&gt;&gt; adj 的区别"></a><code>vector&lt;int&gt; adj[]</code> 和 <code>vector&lt;vector&lt;int&gt;&gt; adj</code> 的区别</h2><p>这个程序里用的是前者，我还第一次见到，在堆栈溢出上搜了一下，有一个比较好的回答：</p>
-<p><code>vector&lt;int&gt; adj[]</code> is an array of vectors.<br><code>vector&lt;vector&lt;int&gt;&gt; adj</code> is a vector of vectors.</p>
-<p>Using arrays are C-style coding, using vectors are C++-style coding.</p>
-<p>When you want to work with a fixed number of std::vector elements, you can use <code>vector&lt;int&gt; adj[]</code>.<br>When you want to work with a dynamic array of std::vector, you can use <code>vector&lt;vector&lt;int&gt;&gt; adj</code>.</p>
-<p>简单来说，因为这个程序里顶点数是固定的，最多会加几条边，<br>所以：<code>vector&lt;int&gt;* adj = new vector&lt;int&gt;[V];</code>中，邻接表的行数是固定的V，但是可以向后面无限拓展。<br>如果V不是固定的，就用vector of vectors，如果V是固定的，就用array of vectors。因为array是定长的，vector是变长的。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用STL的图的简单表示，用于编程竞赛。</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在无向图中添加边的一个辅助函数。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; adj[], <span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    adj[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">    adj[v].<span class="built_in">push_back</span>(u);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从给定顶点u递归地进行图DFS的一个辅助函数。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSUtil</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; adj[], <span class="keyword">int</span> u, vector&lt;<span class="keyword">bool</span>&gt;&amp; visited)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; u &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    visited[u] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; adj[u].<span class="built_in">size</span>(); i++)</span><br><span class="line">        <span class="keyword">if</span> (visited[adj[u][i]] == <span class="literal">false</span>)</span><br><span class="line">            <span class="built_in">DFSUtil</span>(adj, adj[u][i], visited);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 此函数对所有未访问的顶点执行DFSUtil()。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; adj[], <span class="keyword">int</span> V)</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">visited</span><span class="params">(V, <span class="literal">false</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; V; u++)</span><br><span class="line">        <span class="keyword">if</span> (visited[u] == <span class="literal">false</span>)</span><br><span class="line">            <span class="built_in">DFSUtil</span>(adj, u, visited);</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> V = <span class="number">5</span>;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;* adj = <span class="keyword">new</span> vector&lt;<span class="keyword">int</span>&gt;[V];</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">0</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">1</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">DFS</span>(adj, V);</span><br><span class="line">    <span class="keyword">delete</span>[]adj;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>图的BFS其实就是树的层序遍历，但是要加个访问标记位，因为图可能有环，而树一定没有环，标记位可以避免再次访问已经访问过的顶点。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graph</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> V;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;* adj;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Graph</span>(<span class="keyword">int</span> V);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span> s)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Graph::<span class="built_in">Graph</span>(<span class="keyword">int</span> V) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;V = V;</span><br><span class="line">    adj = <span class="keyword">new</span> vector&lt;<span class="keyword">int</span>&gt;[V];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Graph::addEdge</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    adj[v].<span class="built_in">push_back</span>(w); <span class="comment">// Add w to v’s queue.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Graph::BFS</span><span class="params">(<span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Mark all the vertices as not visited</span></span><br><span class="line">    <span class="keyword">bool</span>* visited = <span class="keyword">new</span> <span class="keyword">bool</span>[V];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; V; i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create a queue for BFS</span></span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; queue;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Mark the current node as visited and enqueue it</span></span><br><span class="line">    visited[s] = <span class="literal">true</span>;</span><br><span class="line">    queue.<span class="built_in">push</span>(s);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!queue.<span class="built_in">empty</span>()) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Dequeue a vertex from queue and print it</span></span><br><span class="line">        s = queue.<span class="built_in">front</span>();</span><br><span class="line">        cout &lt;&lt; s &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        queue.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将没访问过的顶点入队（入队前修改访问标记）</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it = adj[s].<span class="built_in">begin</span>(); it != adj[s].<span class="built_in">end</span>(); ++it) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!visited[*it]) &#123;</span><br><span class="line">                visited[*it] = <span class="literal">true</span>;</span><br><span class="line">                queue.<span class="built_in">push</span>(*it);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver program to test methods of graph class</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create a graph given in the above diagram</span></span><br><span class="line">    <span class="function">Graph <span class="title">graph</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line">    graph.<span class="built_in">addEdge</span>(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    graph.<span class="built_in">addEdge</span>(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">    graph.<span class="built_in">addEdge</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    graph.<span class="built_in">addEdge</span>(<span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">    graph.<span class="built_in">addEdge</span>(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">    graph.<span class="built_in">addEdge</span>(<span class="number">3</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;从顶点2开始的深度优先遍历如下：\n&quot;</span>;</span><br><span class="line">    graph.<span class="built_in">BFS</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -321,7 +1019,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/344a/">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/dce4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/haruna.png">
@@ -334,7 +1032,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/344a/" class="post-title-link" itemprop="url">排序代码汇总（冒泡插入选择快速）</a>
+          <a href="/posts/dce4/" class="post-title-link" itemprop="url">竞争编程中STL的图形实现（有向加权图）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -345,7 +1043,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-05-02 02:52:06" itemprop="dateCreated datePublished" datetime="2021-05-02T02:52:06+08:00">2021-05-02</time>
+      <time title="创建时间：2021-05-02 14:15:51" itemprop="dateCreated datePublished" datetime="2021-05-02T14:15:51+08:00">2021-05-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -357,12 +1055,12 @@
         </span>
           →
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
         </span>
     </span>
 
   
-    <span id="/posts/344a/" class="post-meta-item leancloud_visitors" data-flag-title="排序代码汇总（冒泡插入选择快速）" title="阅读次数">
+    <span id="/posts/dce4/" class="post-meta-item leancloud_visitors" data-flag-title="竞争编程中STL的图形实现（有向加权图）" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -378,742 +1076,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : arr)</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">bool</span> swapped;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        swapped = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(arr[j], arr[j + <span class="number">1</span>]);</span><br><span class="line">                swapped = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!swapped) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>])</span><br><span class="line">                <span class="built_in">swap</span>(arr[j], arr[j + <span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> min = i;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; N; j++)</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[min]) min = j;</span><br><span class="line">        <span class="built_in">swap</span>(arr[min], arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivot = arr[right];</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[left] &lt; pivot) left++;</span><br><span class="line">        arr[right] = arr[left];</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[right] &gt; pivot) right--;</span><br><span class="line">        arr[left] = arr[right];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[left] = pivot;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="built_in">partition</span>(arr, low, high);</span><br><span class="line">        <span class="built_in">quickSort</span>(arr, low, p - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">quickSort</span>(arr, p + <span class="number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = arr.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">quickSort</span>(arr, low, high);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tstart, tstop;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">arr</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">    <span class="built_in">srand</span>(<span class="keyword">static_cast</span>&lt;<span class="keyword">unsigned</span>&gt;(<span class="built_in">time</span>(<span class="number">0</span>)));</span><br><span class="line">    <span class="built_in">generate</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>(), rand);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;排序前: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">printArray</span>(arr);</span><br><span class="line">    tstart = <span class="built_in">clock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quickSort</span>(arr);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//sort(arr.begin(), arr.end());</span></span><br><span class="line">    tstop = <span class="built_in">clock</span>();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;排序后: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">printArray</span>(arr);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;排序时间：&quot;</span> &lt;&lt; endl &lt;&lt; tstop - tstart &lt;&lt; endl;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 排序1W数据耗时：</span></span><br><span class="line"><span class="comment">    * 冒泡 4900   ms</span></span><br><span class="line"><span class="comment">    * 插入 4100   ms</span></span><br><span class="line"><span class="comment">    * 选择 1700   ms</span></span><br><span class="line"><span class="comment">    * 标准   18   ms</span></span><br><span class="line"><span class="comment">    * 快速 递归太深，跑没了</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>C++标准库还是比我厉害的多啊。。。sort()就地排序只要18毫秒，比我写的强大百倍，我只会写分治的快排，不会写迭代的快排，分治法跑海量数据时直接跑没影了，递归调用太深了。<br>1.有空拜访一下stl源码。<br>2.有空学习一下堆栈溢出。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/2c2a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/2c2a/" class="post-title-link" itemprop="url">快速排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-02 01:15:30" itemprop="dateCreated datePublished" datetime="2021-05-02T01:15:30+08:00">2021-05-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/2c2a/" class="post-meta-item leancloud_visitors" data-flag-title="快速排序" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>快排是典型的分治算法，其中partition是关键<br>分区的目标是，经过一趟排序后使基准元素落在最终位置，同时，满足p左边都小于p和p右边都大于p两个要求。</p>
-<p>平均时间复杂度    Θ(nlogn)<br>最坏时间复杂度    Θ(n^2)<br>最优时间复杂度    Θ(nlogn)</p>
-<p>下面的快排算法是我长期总结下来的最适合记忆的，要熟悉到信手拈来。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivot = arr[right];</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[left] &lt; pivot) left++;</span><br><span class="line">        arr[right] = arr[left];</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[right] &gt; pivot) right--;</span><br><span class="line">        arr[left] = arr[right];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[left] = pivot;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSortu</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="comment">// p is partitioning index, arr[p] is now at right place</span></span><br><span class="line">        <span class="keyword">int</span> p = <span class="built_in">partition</span>(arr, low, high);</span><br><span class="line">        <span class="built_in">quickSortu</span>(arr, low, p - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">quickSortu</span>(arr, p + <span class="number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> low = <span class="number">0</span>, high = arr.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">quickSortu</span>(arr, low, high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>补充几个视频，曾经对我很有帮助</p>
-<p>C语言快速排序算法实现 - code_frank<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13E411d75X">https://www.bilibili.com/video/BV13E411d75X</a><br>45种常用算法的C++讲解<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nr4y1P7d6">https://www.bilibili.com/video/BV1nr4y1P7d6</a><br>快速排序算法 - 秒懂算法<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1at411T75o">https://www.bilibili.com/video/BV1at411T75o</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c803/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/c803/" class="post-title-link" itemprop="url">选择排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 23:52:58" itemprop="dateCreated datePublished" datetime="2021-05-01T23:52:58+08:00">2021-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/c803/" class="post-meta-item leancloud_visitors" data-flag-title="选择排序" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif"></p>
-<p>性质<br>平均时间复杂度    О(n²)<br>最坏时间复杂度    О(n²)<br>最优时间复杂度    О(n²)</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> N = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">size_t</span> i, j;</span><br><span class="line">    <span class="keyword">int</span> key;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i != N; i++) &#123;</span><br><span class="line">        key = arr[i];</span><br><span class="line">        j = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; key) &#123;</span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j + <span class="number">1</span>] = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>min表示最小值的下标</p>
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif"><br>红色表示当前最小值，<br>黄色表示已排序序列，<br>蓝色表示当前位置。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/c40e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/c40e/" class="post-title-link" itemprop="url">插入排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 22:54:43" itemprop="dateCreated datePublished" datetime="2021-05-01T22:54:43+08:00">2021-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/c40e/" class="post-meta-item leancloud_visitors" data-flag-title="插入排序" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif"></p>
-<p>插入排序可以类比打扑克时整理手牌。</p>
-<p>算法从index=1开始，即从第二项开始。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : arr)</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> N = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">size_t</span> i, j;</span><br><span class="line">    <span class="keyword">int</span> key;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i != N; i++) &#123;</span><br><span class="line">        key = arr[i];</span><br><span class="line">        j = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; key) &#123;</span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j + <span class="number">1</span>] = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">arr</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">    <span class="built_in">srand</span>(<span class="keyword">static_cast</span>&lt;<span class="keyword">unsigned</span>&gt;(<span class="built_in">time</span>(<span class="number">0</span>)));</span><br><span class="line">    <span class="built_in">generate</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>(), rand);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;排序前: &quot;</span>;</span><br><span class="line">    <span class="built_in">printArray</span>(arr);</span><br><span class="line">    <span class="built_in">insertionSort</span>(arr);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;排序后: &quot;</span>;</span><br><span class="line">    <span class="built_in">printArray</span>(arr);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>插入排序相关性质<br>最差时间复杂度：O(n^2)<br>最好：O(n)</p>
-<p>使用：当元素数较少时，使用插入排序。当输入数组几乎有序时，只有很少的元素在完整的大数组中错放了，它也很有用。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/52f6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/52f6/" class="post-title-link" itemprop="url">冒泡排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 22:16:44" itemprop="dateCreated datePublished" datetime="2021-05-01T22:16:44+08:00">2021-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/52f6/" class="post-meta-item leancloud_visitors" data-flag-title="冒泡排序" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif"></p>
-<p>冒泡排序1</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> N = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; N - <span class="number">1</span>; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> j = <span class="number">0</span>; j &lt; N - <span class="number">1</span> - i; j++)</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) <span class="built_in">swap</span>(arr[j], arr[j + <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : arr)</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; arr = &#123; <span class="number">64</span>, <span class="number">34</span>, <span class="number">25</span>, <span class="number">12</span>, <span class="number">22</span>, <span class="number">11</span>, <span class="number">90</span> &#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;冒泡排序前: &quot;</span>;</span><br><span class="line">    <span class="built_in">printArray</span>(arr);</span><br><span class="line">    <span class="built_in">bubbleSort</span>(arr);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;冒泡排序后: &quot;</span>;</span><br><span class="line">    <span class="built_in">printArray</span>(arr);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>备注<br>如果传入数组，比如int arr[]，就已经相当于传地址了，不是传参，所以可以原地修改。<br>而如果传入容器<code>vector&lt;int&gt;</code>，就一定要记得写成传引用。不然就成传引用了，不能原地修改了。</p>
-<p>冒泡排序2</p>
-<p>上面的排序中，哪怕对初始有序的数组排序，也始终持有n^2的时间复杂度。<br>我们希望算法少做无用功。</p>
-<p>当某趟排序中，只有比较，没有交换，说明此时已经有序了，后面的循环部分就不需要再继续下去。</p>
-<p>只更改上面程序中的bubbleSort函数体。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> N = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">bool</span> swapped;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; N - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        swapped = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> j = <span class="number">0</span>; j &lt; N - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(arr[j], arr[j + <span class="number">1</span>]);</span><br><span class="line">                swapped = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!swapped) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在的最差和平均时间复杂度都是(n^2)，最好时间复杂度是(1)，即数组已经排序的情况。</p>
-<p>应用和变体</p>
-<p>冒泡是最简单的排序算法，所以没什么性能优势。它一般用来引入排序算法的概念。但它真的没用吗？<br>其实还是有点用的。<br>In computer graphics bubble sort is popular for its capability to detect a very small error (like swap of just two elements) in almost-sorted arrays and fix it with just linear complexity (2n). For example, it is used in a polygon filling algorithm, where bounding lines are sorted by their x coordinate at a specific scan line (a line parallel to the x axis) and with incrementing y their order changes (two elements are swapped) only at intersections of two lines. Bubble sort is a stable sort algorithm, like insertion sort.</p>
-<p>Variations<br>Odd–even sort is a parallel version of bubble sort, for message passing systems.<br>Passes can be from right to left, rather than left to right. This is more efficient for lists with unsorted items added to the end.<br>Cocktail shaker sort alternates leftwards and rightwards passes.</p>
-<p>助记码，来自中文维基：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">i∈[<span class="number">0</span>,N<span class="number">-1</span>)               <span class="comment">//循环N-1遍</span></span><br><span class="line">    j∈[<span class="number">0</span>,N<span class="number">-1</span>-i)         <span class="comment">//每遍循环要处理的无序部分</span></span><br><span class="line">        <span class="built_in">swap</span>(j,j+<span class="number">1</span>)     <span class="comment">//两两排序（升序/降序）</span></span><br></pre></td></tr></table></figure>
-
-<p>示意图</p>
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/6/6e/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/d12b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/d12b/" class="post-title-link" itemprop="url">HJ4 字符串分割</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 14:09:00" itemprop="dateCreated datePublished" datetime="2021-05-01T14:09:00+08:00">2021-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/d12b/" class="post-meta-item leancloud_visitors" data-flag-title="HJ4 字符串分割" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目描述<br>连续输入字符串，请按长度为8拆分每个字符串后输出到新的字符串数组；<br>长度不是8整数倍的字符串请在后面补数字0，空字符串不处理。</p>
-<p>输入描述:<br>连续输入字符串(输入多次,每个字符串长度小于100)</p>
-<p>输出描述:<br>输出到长度为8的新字符串数组</p>
-<p>示例1<br>输入<br>复制<br>abc<br>123456789<br>输出<br>复制<br>abc00000<br>12345678<br>90000000</p>
-<p>代码</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; s) &#123;</span><br><span class="line">        <span class="keyword">while</span> (s.<span class="built_in">length</span>() &gt; <span class="number">8</span>) &#123;</span><br><span class="line">            cout &lt;&lt; s.<span class="built_in">substr</span>(<span class="number">0</span>, <span class="number">8</span>) &lt;&lt; endl;</span><br><span class="line">            s = s.<span class="built_in">substr</span>(<span class="number">8</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        s.<span class="built_in">resize</span>(<span class="number">8</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>碰到的一个错误<br>这道题需要循环判定字符串的当前长度，所以不能输入之后直接求长度然后<code>while (len &gt; 8)</code>，这样判定的是静态的，而且会报错。</p>
-<p>学习一下resize用法<br>这个函数重定义容器大小，然后让新元素默认初始化为第二个参数<br>比如，<code>s.resize(8, &#39;0&#39;);</code>，就是让s长度变为固定8，然后让容器中新增的位置默认为’0’</p>
-<p>再复习一下substr的用法<br>s.substr(8)的意思是，s从第八位到最后构成的子串</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/6319/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/6319/" class="post-title-link" itemprop="url">HJ19 字符串排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 03:36:57" itemprop="dateCreated datePublished" datetime="2021-05-01T03:36:57+08:00">2021-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/6319/" class="post-meta-item leancloud_visitors" data-flag-title="HJ19 字符串排序" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定n个字符串，请对n个字符串按照字典序排列。<br>输入描述:<br>输入第一行为一个正整数n(1≤n≤1000),下面n行为n个字符串(字符串长度≤100),字符串中只含有大小写字母。<br>输出描述:<br>数据输出n行，输出结果为按照字典序排列的字符串。</p>
-<p>示例<br>输入：<br>9<br>cap<br>to<br>cat<br>card<br>two<br>too<br>up<br>boat<br>boot<br>输出：<br>boat<br>boot<br>cap<br>card<br>cat<br>to<br>too<br>two<br>up</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> string&amp; s1, <span class="keyword">const</span> string&amp; s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s1 &lt;= s2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    vector&lt;string&gt; v;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        string str;</span><br><span class="line">        cin &gt;&gt; str;</span><br><span class="line">        v.<span class="built_in">push_back</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), cmp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> word : v) &#123;</span><br><span class="line">        cout &lt;&lt; word &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>一个关键点是自己写sort的cmp函数<br>一个坑是while (n–)里面的cin &gt;&gt; str，我本来写的是getline 结果发现总是输入输出有问题。我突然想起来以前的笔记，cin&gt;&gt;和getline混用时的大坑。但是这里比那个写的还要复杂一点，因为不是严格混用。最后我还是改成cin&gt;&gt;str了，有时间再慢慢研究getline到底怎么用</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/3e76/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/3e76/" class="post-title-link" itemprop="url">HJ2 计算某字母出现次数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 02:38:43" itemprop="dateCreated datePublished" datetime="2021-05-01T02:38:43+08:00">2021-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/3e76/" class="post-meta-item leancloud_visitors" data-flag-title="HJ2 计算某字母出现次数" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>题目描述<br>写出一个程序，接受一个由字母、数字和空格组成的字符串，和一个字母，然后输出输入字符串中该字母的出现次数。不区分大小写，字符串长度小于500。</p>
-<p>输入描述:<br>第一行输入一个由字母和数字以及空格组成的字符串，第二行输入一个字母。</p>
-<p>输出描述:<br>输出输入字符串中含有该字符的个数。</p>
-<p>示例1<br>输入<br>ABCabc<br>A<br>输出<br>2</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="built_in">getline</span>(cin, str);</span><br><span class="line">    <span class="keyword">char</span> target;</span><br><span class="line">    cin &gt;&gt; target;</span><br><span class="line">    target = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>&gt;(<span class="built_in">tolower</span>(target));</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> c : str) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">tolower</span>(c) == target) num++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意点<br>1.tolower记得转成char<br>2.tolower在cctype里</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/dfb3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/dfb3/" class="post-title-link" itemprop="url">HJ5 进制转换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 01:14:07" itemprop="dateCreated datePublished" datetime="2021-05-01T01:14:07+08:00">2021-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/dfb3/" class="post-meta-item leancloud_visitors" data-flag-title="HJ5 进制转换" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>写出一个程序，接受一个十六进制的数，输出该数值的十进制表示。</p>
-<p>输入描述:<br>输入一个十六进制的数值字符串。<br>输出描述:<br>输出该数值的十进制字符串。不同组的测试用例用\n隔开。</p>
-<p>示例1<br>输入<br>0xA<br>0xAA<br>输出<br>10<br>170</p>
-<h2 id="解法：模拟-umap"><a href="#解法：模拟-umap" class="headerlink" title="解法：模拟+umap"></a>解法：模拟+umap</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string hex;</span><br><span class="line">    unordered_map&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; m = &#123;</span><br><span class="line">        &#123;<span class="string">&#x27;0&#x27;</span>,<span class="number">0</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;1&#x27;</span>,<span class="number">1</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;2&#x27;</span>,<span class="number">2</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;3&#x27;</span>,<span class="number">3</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;4&#x27;</span>,<span class="number">4</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;5&#x27;</span>,<span class="number">5</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;6&#x27;</span>,<span class="number">6</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;7&#x27;</span>,<span class="number">7</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;8&#x27;</span>,<span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;9&#x27;</span>,<span class="number">9</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;A&#x27;</span>,<span class="number">10</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;B&#x27;</span>,<span class="number">11</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;C&#x27;</span>,<span class="number">12</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;D&#x27;</span>,<span class="number">13</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;E&#x27;</span>,<span class="number">14</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;F&#x27;</span>,<span class="number">15</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; hex) &#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        hex.<span class="built_in">erase</span>(hex.<span class="built_in">begin</span>(), hex.<span class="built_in">begin</span>() + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; c : hex) &#123;</span><br><span class="line">            res *= <span class="number">16</span>;</span><br><span class="line">            res += m[c];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>没有自动排序需求的话，就不用map，而是用unordered_map，因为map内部是红黑树，而unordered_map内部是哈希，红黑树还是更复杂一些。</p>
-
+          <p>我们使用两个STL容器来表示图<br>vector：序列容器。这里我们使用它来存储所有顶点的邻接列表。我们使用顶点号作为这个向量的索引。<br>pair：存储一对元素的简单容器。这里我们用它来存储相邻顶点的个数和连接到相邻顶点的边的权重。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(vector&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; adj[], <span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    adj[u].<span class="built_in">push_back</span>(<span class="built_in">make_pair</span>(v, w));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printGraph</span><span class="params">(vector&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; adj[], <span class="keyword">int</span> V)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> v, w;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; V; u++) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;顶点 &quot;</span> &lt;&lt; u &lt;&lt; <span class="string">&quot; 可以指向 \n&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it = adj[u].<span class="built_in">begin</span>(); it != adj[u].<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">            v = it-&gt;first;</span><br><span class="line">            w = it-&gt;second;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;\t顶点 &quot;</span> &lt;&lt; v &lt;&lt; <span class="string">&quot;，其权重为 &quot;</span> &lt;&lt; w &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> V = <span class="number">5</span>;</span><br><span class="line">    vector&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;* adj = <span class="keyword">new</span> vector&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;[V];</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">0</span>, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">0</span>, <span class="number">4</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">1</span>, <span class="number">2</span>, <span class="number">30</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">1</span>, <span class="number">3</span>, <span class="number">40</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">1</span>, <span class="number">4</span>, <span class="number">50</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">2</span>, <span class="number">3</span>, <span class="number">60</span>);</span><br><span class="line">    <span class="built_in">addEdge</span>(adj, <span class="number">3</span>, <span class="number">4</span>, <span class="number">70</span>);</span><br><span class="line">    <span class="built_in">printGraph</span>(adj, V);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1132,7 +1096,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>
