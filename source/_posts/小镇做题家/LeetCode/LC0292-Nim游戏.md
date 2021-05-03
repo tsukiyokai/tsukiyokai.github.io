@@ -1,11 +1,11 @@
 ---
 title: LC292 Nim游戏
 categories:
-- 小镇做题家
-- LeetCode
-abbrlink: 1bb
-date: 2021-04-07 00:48:18
+  - 小镇做题家
+  - LeetCode
+abbrlink: 43b2
 tags: 找规律
+date: 2021-04-07 00:48:18
 ---
 
 ## 题目

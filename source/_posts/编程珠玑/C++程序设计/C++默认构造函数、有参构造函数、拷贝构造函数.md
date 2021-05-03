@@ -1,5 +1,5 @@
 ---
-abbrlink: 7a4a
+abbrlink: efe3
 title: C++默认构造函数、有参构造函数、拷贝构造函数
 categories:
   - 编程珠玑

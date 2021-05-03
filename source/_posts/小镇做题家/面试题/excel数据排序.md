@@ -3,7 +3,7 @@ title: 拓展式局部数据排序
 categories:
   - 小镇做题家
   - 面试题
-abbrlink: 76d7
+abbrlink: b43b
 tags:
   - 数组
   - 网易雷火

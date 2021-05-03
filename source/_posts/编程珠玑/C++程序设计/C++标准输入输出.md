@@ -1,9 +1,12 @@
 ---
 title: C++标准输入输出
-abbrlink: b9eb
+abbrlink: '7777'
+categories:
+  - 编程珠玑
+  - C++程序设计
+tags:
+  - 底层技术
 date: 2021-04-13 14:59:55
-categories: [编程珠玑,C++程序设计]
-tags: [底层技术]
 ---
 
 C++的IO发生在流中，流是字节序列。

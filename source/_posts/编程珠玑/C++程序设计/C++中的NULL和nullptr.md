@@ -3,7 +3,7 @@ title: C++中的NULL和nullptr
 categories:
   - 编程珠玑
   - C++程序设计
-abbrlink: d4e5
+abbrlink: 791c
 tags:
   - 底层技术
   - 指针

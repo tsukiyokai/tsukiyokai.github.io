@@ -1,5 +1,5 @@
 ---
-abbrlink: e1f4
+abbrlink: 3fe
 title: VS Code使用札记（本文已转型为正则表达式学习记录）
 categories:
   - 编程珠玑

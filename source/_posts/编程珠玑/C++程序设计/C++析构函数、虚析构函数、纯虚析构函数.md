@@ -1,5 +1,5 @@
 ---
-abbrlink: 48af
+abbrlink: 3d7b
 title: C++析构函数、虚析构函数、纯虚析构函数
 categories:
   - 编程珠玑

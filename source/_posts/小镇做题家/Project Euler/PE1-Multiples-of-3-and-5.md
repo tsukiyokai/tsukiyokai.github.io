@@ -1,10 +1,10 @@
 ---
 title: PE1 Multiples of 3 and 5
 categories:
-- 小镇做题家
-- Project Euler
+  - 小镇做题家
+  - Project Euler
 tags: 组合数学
-abbrlink: 18889
+abbrlink: '73e1'
 date: 2021-04-05 03:32:15
 ---
 

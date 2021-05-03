@@ -1,9 +1,9 @@
 ---
 title: LC557 反转字符串中的单词 III
-abbrlink: 52489
+abbrlink: 813d
 categories:
-- 小镇做题家
-- LeetCode
+  - 小镇做题家
+  - LeetCode
 tag: 字符串
 date: 2021-03-01 00:00:00
 ---

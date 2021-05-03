@@ -1,9 +1,12 @@
 ---
 title: ACM模式下C++标准输入输出惯用法汇总
-abbrlink: 860a
+abbrlink: 813a
+categories:
+  - 编程珠玑
+  - C++程序设计
+tags:
+  - ACM
 date: 2021-04-14 04:23:23
-categories: [编程珠玑,C++程序设计]
-tags: [ACM]
 ---
 
 ## 引言：从核心代码到ACM

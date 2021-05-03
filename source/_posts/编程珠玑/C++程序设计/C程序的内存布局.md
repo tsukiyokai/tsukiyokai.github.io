@@ -1,13 +1,13 @@
 ---
-abbrlink: 520a
+abbrlink: 1d2c
 title: C程序的内存布局
-date: 2021-04-17 14:54:52
 categories:
   - 编程珠玑
   - C++程序设计
 tags:
   - 底层技术
   - 内存
+date: 2021-04-17 14:54:52
 ---
 
 ## 存储时的3个区域
