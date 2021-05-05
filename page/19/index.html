@@ -161,7 +161,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">208</span>
+          <span class="site-state-item-count">211</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,7 +174,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,6 +217,304 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/51f1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/51f1/" class="post-title-link" itemprop="url">二叉树的非递归后序遍历</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-20 19:05:00" itemprop="dateCreated datePublished" datetime="2021-02-20T19:05:00+08:00">2021-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/51f1/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树的非递归后序遍历" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="后序遍历-非递归"><a href="#后序遍历-非递归" class="headerlink" title="后序遍历 非递归"></a>后序遍历 非递归</h1><h2 id="方法1-双栈"><a href="#方法1-双栈" class="headerlink" title="方法1 双栈"></a>方法1 双栈</h2><h3 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    stack&lt;Node*&gt; s1, s2;</span><br><span class="line"></span><br><span class="line">    s1.<span class="built_in">push</span>(root);</span><br><span class="line">    Node* node;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        node = s1.<span class="built_in">top</span>();</span><br><span class="line">        s1.<span class="built_in">pop</span>();</span><br><span class="line">        s2.<span class="built_in">push</span>(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;left) s1.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;right) s1.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        node = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        cout &lt;&lt; node-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>我们可以做类似迭代前序遍历的操作，但有以下区别：</p>
+<p>a）我们不打印项目，而是将其压入堆栈。</p>
+<p>b）我们令左子树在右子树之前进栈。</p>
+<p>以下是完整的算法。在步骤2之后，我们在第二个堆栈中得到了后遍历的相反结果。我们使用第一个堆栈来获取正确的顺序。</p>
+<p>总结一下就是：根先从S1进到S2，所以最后从S2出来。左右压到S1中，再按右左弹到S2中，S2最后POP时，顺序还是左右。根结点总是最后打印。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. Push root to first stack.</span><br><span class="line">2. Loop while first stack is not empty</span><br><span class="line">   2.1 Pop a node from first stack and push it to second stack</span><br><span class="line">   2.2 Push left and right children of the popped node to first stack</span><br><span class="line">3. Print contents of second stack</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/BinaryTree.png" alt="img"></p>
+<p>下面是使用两个堆栈打印上述树的后序遍历的步骤。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. Push 1 to first stack.</span><br><span class="line">      First stack: 1</span><br><span class="line">      Second stack: Empty</span><br><span class="line"></span><br><span class="line">2. Pop 1 from first stack and push it to second stack. </span><br><span class="line">   Push left and right children of 1 to first stack</span><br><span class="line">      First stack: 2, 3</span><br><span class="line">      Second stack: 1</span><br><span class="line"></span><br><span class="line">3. Pop 3 from first stack and push it to second stack. </span><br><span class="line">   Push left and right children of 3 to first stack</span><br><span class="line">      First stack: 2, 6, 7</span><br><span class="line">      Second stack: 1, 3</span><br><span class="line"></span><br><span class="line">4. Pop 7 from first stack and push it to second stack.</span><br><span class="line">      First stack: 2, 6</span><br><span class="line">      Second stack: 1, 3, 7</span><br><span class="line"></span><br><span class="line">5. Pop 6 from first stack and push it to second stack.</span><br><span class="line">      First stack: 2</span><br><span class="line">      Second stack: 1, 3, 7, 6</span><br><span class="line"></span><br><span class="line">6. Pop 2 from first stack and push it to second stack. </span><br><span class="line">   Push left and right children of 2 to first stack</span><br><span class="line">      First stack: 4, 5</span><br><span class="line">      Second stack: 1, 3, 7, 6, 2</span><br><span class="line"></span><br><span class="line">7. Pop 5 from first stack and push it to second stack.</span><br><span class="line">      First stack: 4</span><br><span class="line">      Second stack: 1, 3, 7, 6, 2, 5</span><br><span class="line"></span><br><span class="line">8. Pop 4 from first stack and push it to second stack.</span><br><span class="line">      First stack: Empty</span><br><span class="line">      Second stack: 1, 3, 7, 6, 2, 5, 4</span><br><span class="line"></span><br><span class="line">The algorithm stops here since there are no more items in the first stack. </span><br><span class="line">Observe that the contents of second stack are in postorder fashion. Print them. </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// A tree node</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    Node* left, * right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function to create a new node with the given data</span></span><br><span class="line"><span class="function">Node* <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node* node = <span class="keyword">new</span> Node;</span><br><span class="line">    node-&gt;data = data;</span><br><span class="line">    node-&gt;left = node-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// An iterative function to do post order</span></span><br><span class="line"><span class="comment">// traversal of a given binary tree</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create two stacks</span></span><br><span class="line">    stack&lt;Node*&gt; s1, s2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// push root to first stack</span></span><br><span class="line">    s1.<span class="built_in">push</span>(root);</span><br><span class="line">    Node* node;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Run while first stack is not empty</span></span><br><span class="line">    <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="comment">// Pop an item from s1 and push it to s2</span></span><br><span class="line">        node = s1.<span class="built_in">top</span>();</span><br><span class="line">        s1.<span class="built_in">pop</span>();</span><br><span class="line">        s2.<span class="built_in">push</span>(node);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Push left and right children</span></span><br><span class="line">        <span class="comment">// of removed item to s1</span></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;left)</span><br><span class="line">            s1.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;right)</span><br><span class="line">            s1.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Print all elements of second stack</span></span><br><span class="line">    <span class="keyword">while</span> (!s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        node = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        cout &lt;&lt; node-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver code</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Let us construct the tree</span></span><br><span class="line">    <span class="comment">// shown in above figure</span></span><br><span class="line">    Node* root = <span class="literal">NULL</span>;</span><br><span class="line">    root = <span class="built_in">newNode</span>(<span class="number">1</span>);</span><br><span class="line">    root-&gt;left = <span class="built_in">newNode</span>(<span class="number">2</span>);</span><br><span class="line">    root-&gt;right = <span class="built_in">newNode</span>(<span class="number">3</span>);</span><br><span class="line">    root-&gt;left-&gt;left = <span class="built_in">newNode</span>(<span class="number">4</span>);</span><br><span class="line">    root-&gt;left-&gt;right = <span class="built_in">newNode</span>(<span class="number">5</span>);</span><br><span class="line">    root-&gt;right-&gt;left = <span class="built_in">newNode</span>(<span class="number">6</span>);</span><br><span class="line">    root-&gt;right-&gt;right = <span class="built_in">newNode</span>(<span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">postOrderIterative</span>(root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法2-单栈"><a href="#方法2-单栈" class="headerlink" title="方法2 单栈"></a>方法2 单栈</h2><h3 id="正文-1"><a href="#正文-1" class="headerlink" title="正文"></a>正文</h3><p><img data-src="image-20210220195311451.png" alt="image-20210220195311451"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// create a postorder class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostOrder</span></span></span><br><span class="line"><span class="class"></span>&#123; </span><br><span class="line">    Node root;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// An iterative function to do postorder traversal </span></span><br><span class="line">    <span class="comment">// of a given binary tree</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(root != <span class="keyword">null</span>) &#123;</span><br><span class="line">                stack.push(root);</span><br><span class="line">                stack.push(root);</span><br><span class="line">                root = root.left;</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">// Check for empty stack</span></span><br><span class="line">            <span class="keyword">if</span>(stack.empty()) <span class="keyword">return</span>;</span><br><span class="line">            root = stack.pop();</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">if</span>(!stack.empty() &amp;&amp; stack.peek() == root) root = root.right;</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                 </span><br><span class="line">                System.out.print(root.data + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                root = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">stack进行pop前，刚刚结束了循环，此时当前结点curr指向某个空的左子树；</span><br><span class="line">然后弹出一次堆栈，并把弹出的结点送给curr，立刻进行判断：</span><br><span class="line">因为压入的时候是复数次操作，每个根结点压入了两次，</span><br><span class="line">当curr&#x3D;&#x3D;s.peek时，说明此时是第一次回到根结点，是从左子树回来的，还没有去过右子树，</span><br><span class="line">此时不能打印根结点，应该转向去右边，然后在“相对而言的”右边再重复双压入的循环，逐渐走到新的左下角（左子树为null）的结点。</span><br><span class="line">第二次回到根结点时，才是从右结点回来的，此时才能输出根。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrderIterative</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    Node* curr = root;</span><br><span class="line">    stack&lt;Node*&gt; s;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (curr) &#123;</span><br><span class="line">            s.<span class="built_in">push</span>(curr);</span><br><span class="line">            s.<span class="built_in">push</span>(curr);</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">        curr = s.<span class="built_in">top</span>();</span><br><span class="line">        s.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!s.<span class="built_in">empty</span>() &amp;&amp; s.<span class="built_in">top</span>() == curr) curr = curr-&gt;right;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">            curr = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/iterative-postorder-traversal/">https://www.geeksforgeeks.org/iterative-postorder-traversal/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/">https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/27b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/27b/" class="post-title-link" itemprop="url">二叉树的非递归前序遍历</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-20 15:42:00" itemprop="dateCreated datePublished" datetime="2021-02-20T15:42:00+08:00">2021-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/27b/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树的非递归前序遍历" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前序遍历-非递归"><a href="#前序遍历-非递归" class="headerlink" title="前序遍历 非递归"></a>前序遍历 非递归</h1><h2 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preorderIterative</span><span class="params">(Node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    stack&lt;Node*&gt; st;</span><br><span class="line">    Node* curr = root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (curr || !st.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (curr-&gt;right)</span><br><span class="line">                st.<span class="built_in">push</span>(curr-&gt;right);</span><br><span class="line"></span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!st.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            curr = st.<span class="built_in">top</span>();</span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Tree Node</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    Node* left, * right;</span><br><span class="line">    <span class="built_in">Node</span>(<span class="keyword">int</span> data)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;data = data;</span><br><span class="line">        <span class="keyword">this</span>-&gt;left = <span class="keyword">this</span>-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Iterative function to do Preorder traversal of the tree</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preorderIterative</span><span class="params">(Node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    stack&lt;Node*&gt; st;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// start from root node (set current node to root node)</span></span><br><span class="line">    Node* curr = root;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// run till stack is not empty or current is</span></span><br><span class="line">    <span class="comment">// not NULL</span></span><br><span class="line">    <span class="keyword">while</span> (curr || !st.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Print left children while exist</span></span><br><span class="line">        <span class="comment">// and keep pushing right into the</span></span><br><span class="line">        <span class="comment">// stack.</span></span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (curr-&gt;right) <span class="comment">// 搞清楚，这里curr并未移动，只是进行了判断和入栈的操作。要搞清楚什么呢？就是栈里存的东西究竟是什么。</span></span><br><span class="line">                <span class="comment">// 在inorder非递归中，当时栈里保存的是一路走过的根结点，然后再向左移动。之后这些保存在栈里的根结点需要在右子树操作前输出</span></span><br><span class="line">                <span class="comment">// 因此！无论in还是pre非递归用到的stack中保存的东西，就是需要在输出左结点之后的“第二时间”要输出的东西。</span></span><br><span class="line">                <span class="comment">// 例如inorder中，顺序为左根右，stack就保存到达左后第二时间要输出的（一路向左过程中所经过的）根结点</span></span><br><span class="line">                <span class="comment">// 则preorder中，顺序为根左右，stack就保存到达左后第二时间要输出的右子树结点（就像下面的st.push(curr-&gt;right);）</span></span><br><span class="line">                <span class="comment">// 因为紧挨着左后就要输出了，所以就需要再到达左之前就保存进栈里，到时候直接弹出即可</span></span><br><span class="line">                st.<span class="built_in">push</span>(curr-&gt;right);</span><br><span class="line"></span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// We reach when curr is NULL, so We</span></span><br><span class="line">        <span class="comment">// take out a right child from stack</span></span><br><span class="line">        <span class="keyword">if</span> (!st.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            curr = st.<span class="built_in">top</span>();</span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver Code</span></span><br><span class="line"><span class="comment">//          10</span></span><br><span class="line"><span class="comment">//        /    \</span></span><br><span class="line"><span class="comment">//       20    30</span></span><br><span class="line"><span class="comment">//      /  \   /</span></span><br><span class="line"><span class="comment">//     40  50 60</span></span><br><span class="line"><span class="comment">//    /  \</span></span><br><span class="line"><span class="comment">//   70  80</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node* root = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">10</span>);</span><br><span class="line">    root-&gt;left = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">20</span>);</span><br><span class="line">    root-&gt;right = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">30</span>);</span><br><span class="line">    root-&gt;left-&gt;left = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">40</span>);</span><br><span class="line">    root-&gt;left-&gt;left-&gt;left = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">70</span>);</span><br><span class="line">    root-&gt;left-&gt;right = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">50</span>);</span><br><span class="line">    root-&gt;right-&gt;left = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">60</span>);</span><br><span class="line">    root-&gt;left-&gt;left-&gt;right = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">preorderIterative</span>(root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/577c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/577c/" class="post-title-link" itemprop="url">二叉树的非递归中序遍历</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-20 03:09:00" itemprop="dateCreated datePublished" datetime="2021-02-20T03:09:00+08:00">2021-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/577c/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树的非递归中序遍历" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="中序遍历-非递归"><a href="#中序遍历-非递归" class="headerlink" title="中序遍历 非递归"></a>中序遍历 非递归</h1><h2 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(struct Node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    stack&lt;Node*&gt; s;</span><br><span class="line">    Node* curr = root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (curr != <span class="literal">NULL</span> || s.<span class="built_in">empty</span>() == <span class="literal">false</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            s.<span class="built_in">push</span>(curr);</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!s.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            curr = s.<span class="built_in">top</span>();</span><br><span class="line">            s.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line">            curr = curr-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>使用堆栈是遍历树而无需递归的明显方法。以下是使用堆栈遍历二叉树的算法。有关算法的逐步执行，请参见此内容。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1) Create an empty stack S.</span><br><span class="line">2) Initialize current node as root</span><br><span class="line">3) Push the current node to S and set current &#x3D; current-&gt;left until current is NULL</span><br><span class="line">4) If current is NULL and stack is not empty then </span><br><span class="line">     a) Pop the top item from stack.</span><br><span class="line">     b) Print the popped item, set current &#x3D; popped_item-&gt;right </span><br><span class="line">     c) Go to step 3.</span><br><span class="line">5) If current is NULL and stack is empty then we are done.</span><br></pre></td></tr></table></figure>
+
+<p>让我们以下面的树为例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">            1</span><br><span class="line">          &#x2F;   \</span><br><span class="line">        2      3</span><br><span class="line">      &#x2F;  \</span><br><span class="line">    4     5</span><br><span class="line"></span><br><span class="line">Step 1 Creates an empty stack: S &#x3D; NULL</span><br><span class="line"></span><br><span class="line">Step 2 sets current as address of root: current -&gt; 1</span><br><span class="line"></span><br><span class="line">Step 3 Pushes the current node and set current &#x3D; current-&gt;left </span><br><span class="line">       until current is NULL</span><br><span class="line"></span><br><span class="line">     current -&gt; 1</span><br><span class="line">     </span><br><span class="line">     push 1: Stack S -&gt; 1</span><br><span class="line">     current -&gt; 2</span><br><span class="line">     </span><br><span class="line">     push 2: Stack S -&gt; 2, 1</span><br><span class="line">     current -&gt; 4</span><br><span class="line">     </span><br><span class="line">     push 4: Stack S -&gt; 4, 2, 1</span><br><span class="line">     current &#x3D; NULL</span><br><span class="line"></span><br><span class="line">Step 4 pops from S</span><br><span class="line">     a) Pop 4: Stack S -&gt; 2, 1</span><br><span class="line">     b) print &quot;4&quot;</span><br><span class="line">     c) current &#x3D; NULL &#x2F;*right of 4 *&#x2F; and go to step 3</span><br><span class="line">Since current is NULL step 3 doesn&#39;t do anything. </span><br><span class="line"></span><br><span class="line">Step 4 pops again.</span><br><span class="line">     a) Pop 2: Stack S -&gt; 1</span><br><span class="line">     b) print &quot;2&quot;</span><br><span class="line">     c) current -&gt; 5&#x2F;*right of 2 *&#x2F; and go to step 3</span><br><span class="line"></span><br><span class="line">Step 3 pushes 5 to stack and makes current NULL</span><br><span class="line">     Stack S -&gt; 5, 1</span><br><span class="line">     current &#x3D; NULL</span><br><span class="line"></span><br><span class="line">Step 4 pops from S</span><br><span class="line">     a) Pop 5: Stack S -&gt; 1</span><br><span class="line">     b) print &quot;5&quot;</span><br><span class="line">     c) current &#x3D; NULL &#x2F;*right of 5 *&#x2F; and go to step 3</span><br><span class="line">Since current is NULL step 3 doesn&#39;t do anything</span><br><span class="line"></span><br><span class="line">Step 4 pops again.</span><br><span class="line">     a) Pop 1: Stack S -&gt; NULL</span><br><span class="line">     b) print &quot;1&quot;</span><br><span class="line">     c) current -&gt; 3 &#x2F;*right of 1 *&#x2F;  </span><br><span class="line"></span><br><span class="line">Step 3 pushes 3 to stack and makes current NULL</span><br><span class="line">     Stack S -&gt; 3</span><br><span class="line">     current &#x3D; NULL</span><br><span class="line"></span><br><span class="line">Step 4 pops from S</span><br><span class="line">     a) Pop 3: Stack S -&gt; NULL</span><br><span class="line">     b) print &quot;3&quot;</span><br><span class="line">     c) current &#x3D; NULL &#x2F;*right of 3 *&#x2F;  </span><br><span class="line"></span><br><span class="line">Traversal is done now as stack S is empty and current is NULL.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++ program to print inorder traversal using stack.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* A binary tree Node has data, pointer to left child and a pointer to right child */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">left</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">right</span>;</span></span><br><span class="line">    <span class="built_in">Node</span>(<span class="keyword">int</span> data)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;data = data;</span><br><span class="line">        left = right = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Iterative function for inorder tree traversal */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(struct Node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    stack&lt;Node*&gt; s;</span><br><span class="line">    Node* curr = root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (curr != <span class="literal">NULL</span> || s.<span class="built_in">empty</span>() == <span class="literal">false</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* Reach the left most Node of the curr Node */</span></span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* place pointer to a tree node on the stack before traversing the node&#x27;s left subtree */</span></span><br><span class="line">            <span class="comment">// 保存一路走过的根结点的理由是：中序遍历的需要，遍历完左子树后，需要借助根结点进入右子树。</span></span><br><span class="line">            s.<span class="built_in">push</span>(curr);</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125; <span class="comment">// 循环结束时，curr指向最左下结点的左子树（为NULL），而栈s中保存了从root到最坐下结点的所有结点</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/* Current must be NULL at this point */</span></span><br><span class="line">        curr = s.<span class="built_in">top</span>();</span><br><span class="line">        s.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* we have visited the node and its left subtree. Now, it&#x27;s right subtree&#x27;s turn */</span></span><br><span class="line">        curr = curr-&gt;right;</span><br><span class="line">    &#125; <span class="comment">/* end of while */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Driver program to test above functions*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* Constructed binary tree is</span></span><br><span class="line"><span class="comment">             1</span></span><br><span class="line"><span class="comment">            / \</span></span><br><span class="line"><span class="comment">           2   3</span></span><br><span class="line"><span class="comment">          / \</span></span><br><span class="line"><span class="comment">         4     5</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">root</span> =</span> <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">1</span>);</span><br><span class="line">    root-&gt;left = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">2</span>);</span><br><span class="line">    root-&gt;right = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">3</span>);</span><br><span class="line">    root-&gt;left-&gt;left = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">4</span>);</span><br><span class="line">    root-&gt;left-&gt;right = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">inOrder</span>(root);</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二叉树非递归遍历的整体思路"><a href="#二叉树非递归遍历的整体思路" class="headerlink" title="二叉树非递归遍历的整体思路"></a>二叉树非递归遍历的整体思路</h2><p>三道题的解决思路可统一，模板也极其相似，比九章提供的更漂亮。</p>
+<ol>
+<li>将二叉树分为“左”（包括一路向左，经过的所有实际左+根）、“右”（包括实际的右）两种结点</li>
+<li>使用同样的顺序将“左”结点入栈</li>
+<li>在合适的时机转向（转向后，“右”结点即成为“左”结点）、访问结点、或出栈</li>
+</ol>
+<p>比如{1,2,3}，当cur位于结点1时，1、2属于“左”结点，3属于“右”结点。DFS的非递归实现本质上是在协调入栈、出栈和访问，三种操作的顺序。上述统一使得我们不再需要关注入栈顺序，仅需要关注出栈和访问（第3点），随着更详细的分析，你将更加体会到这种简化带来的好处。</p>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903503807119374">https://juejin.cn/post/6844903503807119374</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangxiangdavaid/article/details/37115355">https://blog.csdn.net/zhangxiangdavaid/article/details/37115355</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -700,7 +998,7 @@
 <p>第二节。二叉树问题——按难度递增排列的一些实践问题。</p>
 <p>第三节。C/C++解决方案。（我把它合并在了第二节）</p>
 <p>第四节。Java版本（略）。</p>
-<h2 id="Stanford-CS-Education-Library-–-110"><a href="#Stanford-CS-Education-Library-–-110" class="headerlink" title="Stanford CS Education Library – #110"></a>Stanford CS Education Library – #110</h2><p>This is article #110 in the Stanford CS Education Library. This and other free CS materials are available at the library (<a target="_blank" rel="noopener" href="http://cslibrary.stanford.edu/">http://cslibrary.stanford.edu/</a>). That people seeking education should have the opportunity to find it. This article may be used, reproduced, excerpted, or sold so long as this paragraph is clearly reproduced. Copyright 2000-2001, Nick Parlante, <a href="mailto:&#110;&#105;&#x63;&#107;&#x2e;&#x70;&#97;&#114;&#x6c;&#x61;&#110;&#x74;&#x65;&#x40;&#x63;&#x73;&#46;&#x73;&#116;&#x61;&#110;&#102;&#x6f;&#x72;&#x64;&#46;&#101;&#100;&#117;">&#110;&#105;&#x63;&#107;&#x2e;&#x70;&#97;&#114;&#x6c;&#x61;&#110;&#x74;&#x65;&#x40;&#x63;&#x73;&#46;&#x73;&#116;&#x61;&#110;&#102;&#x6f;&#x72;&#x64;&#46;&#101;&#100;&#117;</a>.</p>
+<h2 id="Stanford-CS-Education-Library-–-110"><a href="#Stanford-CS-Education-Library-–-110" class="headerlink" title="Stanford CS Education Library – #110"></a>Stanford CS Education Library – #110</h2><p>This is article #110 in the Stanford CS Education Library. This and other free CS materials are available at the library (<a target="_blank" rel="noopener" href="http://cslibrary.stanford.edu/">http://cslibrary.stanford.edu/</a>). That people seeking education should have the opportunity to find it. This article may be used, reproduced, excerpted, or sold so long as this paragraph is clearly reproduced. Copyright 2000-2001, Nick Parlante, <a href="mailto:&#x6e;&#105;&#99;&#x6b;&#46;&#112;&#x61;&#x72;&#x6c;&#97;&#x6e;&#x74;&#101;&#64;&#x63;&#x73;&#x2e;&#115;&#116;&#97;&#110;&#x66;&#111;&#x72;&#x64;&#x2e;&#101;&#100;&#x75;">&#x6e;&#105;&#99;&#x6b;&#46;&#112;&#x61;&#x72;&#x6c;&#97;&#x6e;&#x74;&#101;&#64;&#x63;&#x73;&#x2e;&#115;&#116;&#97;&#110;&#x66;&#111;&#x72;&#x64;&#x2e;&#101;&#100;&#x75;</a>.</p>
 <h2 id="Section-1-–-Introduction-To-Binary-Trees"><a href="#Section-1-–-Introduction-To-Binary-Trees" class="headerlink" title="Section 1 – Introduction To Binary Trees"></a>Section 1 – Introduction To Binary Trees</h2><p>一棵二叉树有许多节点构成，其中每个节点包含一个左指针，一个右指针和一个数据元素。根指针指向树中位置最高的节点。左右指针递归地指向两侧的较小“子树”。空指针表示没有元素的二叉树，即空树。正式的递归定义是：二叉树或是空的（由空指针表示），或是由单个节点组成，其中左右指针皆递归地指向一棵二叉树。</p>
 <p><img data-src="http://cslibrary.stanford.edu/110/binarytree.gif" alt="a drawing of a little binary tree"></p>
 <p>“二叉查找树”或”有序二叉树“是二叉树的一种类型，其中每个节点按如下顺序排列：对于每个节点，其左子树中的所有元素都小于或等于该节点，其右子树中的所有元素都大于该节点。上图展示的就是一棵二叉查找树，根节点是5，其左子树上的节点1 3 4均&lt;=5，其右子树上的节点6 9均&gt;5。递归地，每棵子树也必须满足二分查找树的约束：在1 3 4子树中，3是根，1&lt;=3，4&gt;3。注意这里的准确描述：a “binary search tree” is different from a “binary tree”. 树底部边缘的节点具有空子树，称为叶节点（1 4 6），其他节点为内部节点（3 5 9）。</p>
@@ -1040,294 +1338,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/cf5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/cf5/" class="post-title-link" itemprop="url">双端队列的双链表实现</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-14 00:46:00" itemprop="dateCreated datePublished" datetime="2021-02-14T00:46:00+08:00">2021-02-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/cf5/" class="post-meta-item leancloud_visitors" data-flag-title="双端队列的双链表实现" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="双端队列-双链表实现"><a href="#双端队列-双链表实现" class="headerlink" title="双端队列 双链表实现"></a>双端队列 双链表实现</h1><p>头————尾（allows insert and delete at both ends）</p>
-<h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">insertFront() : Adds an item at the front of Deque.</span><br><span class="line">insertRear()  : Adds an item at the rear of Deque.</span><br><span class="line">deleteFront() : Deletes an item from front of Deque.</span><br><span class="line">deleteRear()  : Deletes an item from rear of Deque.</span><br><span class="line"></span><br><span class="line">getFront() : Gets the front item from queue.</span><br><span class="line">getRear()  : Gets the last item from queue.</span><br><span class="line">isEmpty()  : Checks whether Deque is empty or not.</span><br><span class="line">size()     : Gets number of elements in Deque.</span><br><span class="line">erase()    : Deletes all the elements from Deque.</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://media.geeksforgeeks.org/wp-content/uploads/deque_dll.jpg" alt="img"></p>
-<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p><strong>Insertion at Front end</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Allocate space for a newNode of doubly linked list.</span><br><span class="line">IF newNode &#x3D;&#x3D; NULL, then &#x2F;&#x2F; 内存不够分配新结点</span><br><span class="line">    print &quot;Overflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    IF front &#x3D;&#x3D; NULL, then &#x2F;&#x2F; 空队列</span><br><span class="line">        rear &#x3D; front &#x3D; newNode</span><br><span class="line">    ELSE &#x2F;&#x2F; 非空队列</span><br><span class="line">      newNode-&gt;next &#x3D; front &#x2F;&#x2F; 前后结点桥接</span><br><span class="line">      front-&gt;prev &#x3D; newNode</span><br><span class="line">      front &#x3D; newNode &#x2F;&#x2F; 改变端点指针指向</span><br></pre></td></tr></table></figure>
-
-<p><strong>Insertion at Rear end</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Allocate space for a newNode of doubly linked list.</span><br><span class="line">IF newNode &#x3D;&#x3D; NULL, then</span><br><span class="line">    print &quot;Overflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    IF rear &#x3D;&#x3D; NULL, then</span><br><span class="line">        front &#x3D; rear &#x3D; newNode</span><br><span class="line">    ELSE</span><br><span class="line">        newNode-&gt;prev &#x3D; rear</span><br><span class="line">        rear-&gt;next &#x3D; newNode</span><br><span class="line">        rear &#x3D; newNode</span><br></pre></td></tr></table></figure>
-
-<p><strong>Deletion from Front end</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IF front &#x3D;&#x3D; NULL</span><br><span class="line">    print &quot;Underflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    Initialize temp &#x3D; front</span><br><span class="line">    front &#x3D; front-&gt;next</span><br><span class="line">    IF front &#x3D;&#x3D; NULL</span><br><span class="line">        rear &#x3D; NULL</span><br><span class="line">    ELSE</span><br><span class="line">        front-&gt;prev &#x3D; NULL &#x2F;&#x2F; 容易遗漏这句，头结点前面没有结点，但头结点的prev指针域还是要记得置为NULL</span><br><span class="line">    Deallocate space for temp</span><br></pre></td></tr></table></figure>
-
-<p><strong>Deletion from Rear end</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IF front &#x3D;&#x3D; NULL</span><br><span class="line">    print &quot;Underflow&quot;</span><br><span class="line">ELSE</span><br><span class="line">    Initialize temp &#x3D; rear</span><br><span class="line">    rear &#x3D; rear-&gt;prev</span><br><span class="line">    IF rear &#x3D;&#x3D; NULL</span><br><span class="line">        front &#x3D; NULL</span><br><span class="line">    ELSE</span><br><span class="line">        rear-&gt;next &#x3D; NULL</span><br><span class="line">    Deallocate space for temp</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/60ff/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/60ff/" class="post-title-link" itemprop="url">栈中最小元素</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-12 14:24:00" itemprop="dateCreated datePublished" datetime="2021-02-12T14:24:00+08:00">2021-02-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/60ff/" class="post-meta-item leancloud_visitors" data-flag-title="栈中最小元素" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="栈-最小元素"><a href="#栈-最小元素" class="headerlink" title="栈 最小元素"></a>栈 最小元素</h1><p>实现功能getMin以返回当前栈中最小元素。</p>
-<p><strong>Question:</strong> Design a Data Structure SpecialStack that supports all the stack operations like push(), pop(), isEmpty(), isFull() and an additional operation getMin() which should return minimum element from the SpecialStack. All these operations of SpecialStack must be O(1). To implement SpecialStack, you should only use standard Stack data structure and no other data structure like arrays, list, .. etc. </p>
-<p><strong>Solution:</strong> Use two stacks: one to store actual stack elements and the other as an auxiliary stack to store minimum values. The idea is to do push() and pop() operations in such a way that the top of the auxiliary stack is always the minimum. Let us see how push() and pop() operations work.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">STACK MIN</span><br><span class="line">15 15</span><br><span class="line">29 18</span><br><span class="line">19 18</span><br><span class="line">18 18</span><br></pre></td></tr></table></figure>
-
-<p>MIN[]中保存的是：”到目前为止“最小的元素。注意理解”到目前为止“的含义即可。getMin()的关键在于push()。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> max = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">int</span> arr[max] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">int</span> top;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Stack</span>() &#123; top = <span class="number">-1</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isFull</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Stack::peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top &lt; <span class="number">0</span>) <span class="keyword">return</span> INT_MIN;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> x = arr[top];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stack::isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top == <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stack::isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top == max - <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Stack::pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isEmpty</span>()) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Stack Underflow&quot;</span>;</span><br><span class="line">        <span class="built_in">abort</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> x = arr[top];</span><br><span class="line">    top--;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stack::push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isFull</span>()) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Stack Overflow&quot;</span>;</span><br><span class="line">        <span class="built_in">abort</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    top++;</span><br><span class="line">    arr[top] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpecialStack</span> :</span> <span class="keyword">public</span> Stack &#123;</span><br><span class="line">    Stack min;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SpecialStack::push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="comment">/* 核心！ */</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isEmpty</span>()) &#123;</span><br><span class="line">        Stack::<span class="built_in">push</span>(x);</span><br><span class="line">        min.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Stack::<span class="built_in">push</span>(x);</span><br><span class="line">        <span class="keyword">int</span> y = min.<span class="built_in">peek</span>();</span><br><span class="line">        <span class="keyword">if</span> (x &lt; y) min.<span class="built_in">push</span>(x);</span><br><span class="line">        <span class="keyword">else</span> min.<span class="built_in">push</span>(y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SpecialStack::pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = Stack::<span class="built_in">pop</span>();</span><br><span class="line">    min.<span class="built_in">pop</span>();</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SpecialStack::getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = min.<span class="built_in">peek</span>();</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SpecialStack s;</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">10</span>);</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">20</span>);</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">30</span>);</span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">getMin</span>() &lt;&lt; endl;</span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">5</span>);</span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">getMin</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/">https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/2a48/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/2a48/" class="post-title-link" itemprop="url">队列的栈实现</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-12 01:31:00" itemprop="dateCreated datePublished" datetime="2021-02-12T01:31:00+08:00">2021-02-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/2a48/" class="post-meta-item leancloud_visitors" data-flag-title="队列的栈实现" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="队列-栈实现"><a href="#队列-栈实现" class="headerlink" title="队列 栈实现"></a>队列 栈实现</h1><h2 id="Method-1-By-making-enQueue-operation-costly"><a href="#Method-1-By-making-enQueue-operation-costly" class="headerlink" title="Method 1 (By making enQueue operation costly)"></a>Method 1 (By making enQueue operation costly)</h2><p>这个方法理解有点别扭，看第二个。</p>
-<h2 id="Method-2-By-making-deQueue-operation-costly"><a href="#Method-2-By-making-deQueue-operation-costly" class="headerlink" title="Method 2 (By making deQueue operation costly)"></a>Method 2 (By making deQueue operation costly)</h2><p><img data-src="https://i.stack.imgur.com/xyWPR.png" alt="enter image description here"></p>
-<p><img data-src="https://i.stack.imgur.com/lX1EP.png" alt="enter image description here"></p>
-<p><img data-src="https://i.stack.imgur.com/9f03R.png" alt="enter image description here"></p>
-<p>注意一点，S2不为空时，就不能继续让S1向S2转移，必须把S2中的元素De完再继续S1向S2转移。比如input1 2 3，如果S2中1 2出列，3还留在里面，此时input4 5，整体来看一共input了1 2 3 4 5，应该output1 2 3 4 5，所以4 5不能压在S2中仅存的3的上面，一定要把S2容器De空，然后再继续转移。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Queue</span> &#123;</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s1, s2; <span class="comment">// s2|s1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Enqueue an item to the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enQueue</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Push item into the first stack</span></span><br><span class="line">        s1.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Dequeue an item from the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deQueue</span><span class="params">()</span> </span>&#123; <span class="comment">/*不新传入任何参数*/</span></span><br><span class="line">        <span class="comment">// if both stacks are empty</span></span><br><span class="line">        <span class="keyword">if</span> (s1.<span class="built_in">empty</span>() &amp;&amp; s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Q is empty&quot;</span>;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if s2 is empty, move</span></span><br><span class="line">        <span class="comment">// elements from s1</span></span><br><span class="line">        <span class="keyword">if</span> (s2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!s1.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                s2.<span class="built_in">push</span>(s1.<span class="built_in">top</span>());</span><br><span class="line">                s1.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// return the top item from s2</span></span><br><span class="line">        <span class="keyword">int</span> x = s2.<span class="built_in">top</span>();</span><br><span class="line">        s2.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Implementation-of-method-2-using-Function-Call-Stack"><a href="#Implementation-of-method-2-using-Function-Call-Stack" class="headerlink" title="Implementation of method 2 using Function Call Stack"></a>Implementation of method 2 using Function Call Stack</h2><p>法二的另一种实现方式，使用了递归思路，也不容易理清，还是推荐第二种办法。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Queue</span> &#123;</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Enqueue an item to the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enQueue</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        s.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Dequeue an item from the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Q is empty&quot;</span>;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// pop an item from the stack</span></span><br><span class="line">        <span class="keyword">int</span> x = s.<span class="built_in">top</span>();</span><br><span class="line">        s.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if stack becomes empty, return</span></span><br><span class="line">        <span class="comment">// the popped item</span></span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) <span class="keyword">return</span> x;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// recursive call</span></span><br><span class="line">        <span class="keyword">int</span> item = <span class="built_in">deQueue</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// push popped item back to the stack</span></span><br><span class="line">        s.<span class="built_in">push</span>(x);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// return the result of deQueue() call</span></span><br><span class="line">        <span class="keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.thinbug.com/q/69192">https://www.thinbug.com/q/69192</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/queue-using-stacks/">https://www.geeksforgeeks.org/queue-using-stacks/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>
