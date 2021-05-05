@@ -72,6 +72,5 @@ ch = tolower(ch); // 将char型的ch转换成小写
 比如"9"变成"90000000"
 
 void* memset(void* str, int ch, size_t n); // 将str的前n个字符置为ch
-
 memset(a, -1, sizeof(a)); // 将数组a的所有元素置为-1，只能为0或-1
 ```
