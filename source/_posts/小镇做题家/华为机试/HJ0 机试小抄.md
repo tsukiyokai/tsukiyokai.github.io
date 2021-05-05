@@ -6,6 +6,7 @@ categories:
 abbrlink: 69b5
 date: 2021-05-02 15:22:00
 ---
+
 ## queue
 
 ```c++
@@ -56,19 +57,21 @@ set最主要的作用就是自动去重并按升序排序。
 
 ```c++
 while (cin >> s)
+
 getline(cin, str);
 ```
 
 ## 其它
 
 ```c++
-target = static_cast<char>(tolower(target));
-转成小写字母，注意点：
-1.tolower记得转成char
-2.tolower在cctype里
+ch = tolower(ch); // 将char型的ch转换成小写
 
 学习一下resize用法
 这个函数重定义容器大小，然后让新元素默认初始化为第二个参数
 比如，`s.resize(8, '0');`，就是让s长度变为固定8，然后让容器中新增的位置默认为'0'
 比如"9"变成"90000000"
+
+void* memset(void* str, int ch, size_t n); // 将str的前n个字符置为ch
+
+memset(a, -1, sizeof(a)); // 将数组a的所有元素置为-1，只能为0或-1
 ```

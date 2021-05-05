@@ -2,11 +2,10 @@
 title: 拓展式局部数据排序
 categories:
   - 小镇做题家
-  - 面试题
+  - 牛客
 abbrlink: b43b
 tags:
   - 数组
-  - 网易雷火
 date: 2021-04-24 18:48:23
 ---
 
