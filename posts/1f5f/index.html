@@ -23,18 +23,17 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;tsukiyokai.github.io&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:true,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:true,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:-1,&quot;unescape&quot;:true,&quot;preload&quot;:true}}">
-<meta name="description" content="题目有一只兔子，从出生后第3个月起每个月都生一只兔子，小兔子长到第三个月后每个月又生一只兔子，假如兔子都不死，问每个月的兔子总数为多少？本题有多组数据。 输入：输入int型表示month输出：输出兔子总数int型 示例输入：9输出：34 解法：找规律这道题与其说是找规律，不如说就是DP的思想。 代码 #include &lt;iostream&gt;using namespace std;int">
+<meta name="description" content="题目有一只兔子，从出生后第3个月起每个月都生一只兔子，小兔子长到第三个月后每个月又生一只兔子，假如兔子都不死，问每个月的兔子总数为多少？本题有多组数据。 输入：输入int型表示month输出：输出兔子总数int型 示例输入：9输出：34 解法：DP这道题与其说是找规律，不如说就是DP的思想。 代码 #include &lt;iostream&gt;using namespace std;int m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HJ37 统计每个月兔子的总数">
 <meta property="og:url" content="https://tsukiyokai.github.io/posts/1f5f/index.html">
 <meta property="og:site_name" content="月夜海">
-<meta property="og:description" content="题目有一只兔子，从出生后第3个月起每个月都生一只兔子，小兔子长到第三个月后每个月又生一只兔子，假如兔子都不死，问每个月的兔子总数为多少？本题有多组数据。 输入：输入int型表示month输出：输出兔子总数int型 示例输入：9输出：34 解法：找规律这道题与其说是找规律，不如说就是DP的思想。 代码 #include &lt;iostream&gt;using namespace std;int">
+<meta property="og:description" content="题目有一只兔子，从出生后第3个月起每个月都生一只兔子，小兔子长到第三个月后每个月又生一只兔子，假如兔子都不死，问每个月的兔子总数为多少？本题有多组数据。 输入：输入int型表示month输出：输出兔子总数int型 示例输入：9输出：34 解法：DP这道题与其说是找规律，不如说就是DP的思想。 代码 #include &lt;iostream&gt;using namespace std;int m">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-28T15:18:40.000Z">
-<meta property="article:modified_time" content="2021-05-03T03:51:49.327Z">
+<meta property="article:modified_time" content="2021-05-05T06:29:09.942Z">
 <meta property="article:author" content="充电的猫猫">
 <meta property="article:tag" content="DP">
-<meta property="article:tag" content="找规律">
 <meta name="twitter:card" content="summary">
 
 
@@ -152,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9A%E6%89%BE%E8%A7%84%E5%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">解法：找规律</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9ADP"><span class="nav-number">2.</span> <span class="nav-text">解法：DP</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,20 +167,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-count">208</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -294,7 +293,7 @@
         <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有一只兔子，从出生后第3个月起每个月都生一只兔子，小兔子长到第三个月后每个月又生一只兔子，假如兔子都不死，问每个月的兔子总数为多少？<br>本题有多组数据。</p>
 <p>输入：<br>输入int型表示month<br>输出：<br>输出兔子总数int型</p>
 <p>示例<br>输入：<br>9<br>输出：<br>34</p>
-<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>这道题与其说是找规律，不如说就是DP的思想。</p>
+<h2 id="解法：DP"><a href="#解法：DP" class="headerlink" title="解法：DP"></a>解法：DP</h2><p>这道题与其说是找规律，不如说就是DP的思想。</p>
 <p><strong>代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; m) &#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">0</span>, c = <span class="number">0</span>; <span class="comment">// a:一个月兔子数，b：两个月兔子数，c：三个月兔子个数</span></span><br><span class="line">        <span class="keyword">while</span> (--m) &#123; <span class="comment">// 每过一个月兔子数变化</span></span><br><span class="line">            c += b;</span><br><span class="line">            b = a;</span><br><span class="line">            a = c;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; a + b + c &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
@@ -323,7 +322,6 @@
 
           <div class="post-tags">
               <a href="/tags/DP/" rel="tag"><i class="fa fa-tag"></i> DP</a>
-              <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag"><i class="fa fa-tag"></i> 找规律</a>
           </div>
 
         

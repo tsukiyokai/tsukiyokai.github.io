@@ -169,20 +169,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-count">208</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -297,7 +297,7 @@
 <p>第二节。二叉树问题——按难度递增排列的一些实践问题。</p>
 <p>第三节。C/C++解决方案。（我把它合并在了第二节）</p>
 <p>第四节。Java版本（略）。</p>
-<h2 id="Stanford-CS-Education-Library-–-110"><a href="#Stanford-CS-Education-Library-–-110" class="headerlink" title="Stanford CS Education Library – #110"></a>Stanford CS Education Library – #110</h2><p>This is article #110 in the Stanford CS Education Library. This and other free CS materials are available at the library (<a target="_blank" rel="noopener" href="http://cslibrary.stanford.edu/">http://cslibrary.stanford.edu/</a>). That people seeking education should have the opportunity to find it. This article may be used, reproduced, excerpted, or sold so long as this paragraph is clearly reproduced. Copyright 2000-2001, Nick Parlante, <a href="mailto:&#110;&#x69;&#x63;&#107;&#x2e;&#x70;&#x61;&#x72;&#x6c;&#97;&#x6e;&#116;&#101;&#64;&#x63;&#x73;&#46;&#115;&#x74;&#x61;&#x6e;&#x66;&#x6f;&#114;&#x64;&#x2e;&#x65;&#x64;&#117;">&#110;&#x69;&#x63;&#107;&#x2e;&#x70;&#x61;&#x72;&#x6c;&#97;&#x6e;&#116;&#101;&#64;&#x63;&#x73;&#46;&#115;&#x74;&#x61;&#x6e;&#x66;&#x6f;&#114;&#x64;&#x2e;&#x65;&#x64;&#117;</a>.</p>
+<h2 id="Stanford-CS-Education-Library-–-110"><a href="#Stanford-CS-Education-Library-–-110" class="headerlink" title="Stanford CS Education Library – #110"></a>Stanford CS Education Library – #110</h2><p>This is article #110 in the Stanford CS Education Library. This and other free CS materials are available at the library (<a target="_blank" rel="noopener" href="http://cslibrary.stanford.edu/">http://cslibrary.stanford.edu/</a>). That people seeking education should have the opportunity to find it. This article may be used, reproduced, excerpted, or sold so long as this paragraph is clearly reproduced. Copyright 2000-2001, Nick Parlante, <a href="mailto:&#110;&#105;&#x63;&#107;&#x2e;&#x70;&#97;&#114;&#x6c;&#x61;&#110;&#x74;&#x65;&#x40;&#x63;&#x73;&#46;&#x73;&#116;&#x61;&#110;&#102;&#x6f;&#x72;&#x64;&#46;&#101;&#100;&#117;">&#110;&#105;&#x63;&#107;&#x2e;&#x70;&#97;&#114;&#x6c;&#x61;&#110;&#x74;&#x65;&#x40;&#x63;&#x73;&#46;&#x73;&#116;&#x61;&#110;&#102;&#x6f;&#x72;&#x64;&#46;&#101;&#100;&#117;</a>.</p>
 <h2 id="Section-1-–-Introduction-To-Binary-Trees"><a href="#Section-1-–-Introduction-To-Binary-Trees" class="headerlink" title="Section 1 – Introduction To Binary Trees"></a>Section 1 – Introduction To Binary Trees</h2><p>一棵二叉树有许多节点构成，其中每个节点包含一个左指针，一个右指针和一个数据元素。根指针指向树中位置最高的节点。左右指针递归地指向两侧的较小“子树”。空指针表示没有元素的二叉树，即空树。正式的递归定义是：二叉树或是空的（由空指针表示），或是由单个节点组成，其中左右指针皆递归地指向一棵二叉树。</p>
 <p><img data-src="http://cslibrary.stanford.edu/110/binarytree.gif" alt="a drawing of a little binary tree"></p>
 <p>“二叉查找树”或”有序二叉树“是二叉树的一种类型，其中每个节点按如下顺序排列：对于每个节点，其左子树中的所有元素都小于或等于该节点，其右子树中的所有元素都大于该节点。上图展示的就是一棵二叉查找树，根节点是5，其左子树上的节点1 3 4均&lt;=5，其右子树上的节点6 9均&gt;5。递归地，每棵子树也必须满足二分查找树的约束：在1 3 4子树中，3是根，1&lt;=3，4&gt;3。注意这里的准确描述：a “binary search tree” is different from a “binary tree”. 树底部边缘的节点具有空子树，称为叶节点（1 4 6），其他节点为内部节点（3 5 9）。</p>

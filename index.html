@@ -161,20 +161,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-count">208</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,6 +217,322 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8a1b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/8a1b/" class="post-title-link" itemprop="url">编辑距离</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-05 18:09:39" itemprop="dateCreated datePublished" datetime="2021-05-05T18:09:39+08:00">2021-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/8a1b/" class="post-meta-item leancloud_visitors" data-flag-title="编辑距离" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Given two strings str1 and str2 and below operations that can performed on str1. Find minimum number of edits (operations) required to convert ‘str1’ into ‘str2’.</p>
+<p>Insert<br>Remove<br>Replace<br>All of the above operations are of equal cost.</p>
+<p>递归解法</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">min</span>(<span class="built_in">min</span>(x, y), z); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">editDist</span><span class="params">(string str1, string str2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = str1.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> n = str2.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span> || n == <span class="number">0</span>) <span class="keyword">return</span> m == <span class="number">0</span> ? n : m;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (str1[m - <span class="number">1</span>] == str2[n - <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">editDist</span>(str1.<span class="built_in">substr</span>(<span class="number">0</span>, m - <span class="number">1</span>), str2.<span class="built_in">substr</span>(<span class="number">0</span>, n - <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> +</span><br><span class="line">        <span class="built_in">min</span>(<span class="built_in">editDist</span>(str1, str2.<span class="built_in">substr</span>(<span class="number">0</span>, n - <span class="number">1</span>)), <span class="comment">// Insert</span></span><br><span class="line">            <span class="built_in">editDist</span>(str1.<span class="built_in">substr</span>(<span class="number">0</span>, m - <span class="number">1</span>), str2), <span class="comment">// Remove</span></span><br><span class="line">            <span class="built_in">editDist</span>(str1.<span class="built_in">substr</span>(<span class="number">0</span>, m - <span class="number">1</span>), str2.<span class="built_in">substr</span>(<span class="number">0</span>, n - <span class="number">1</span>)) <span class="comment">// Replace</span></span><br><span class="line">        );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str1 = <span class="string">&quot;lixing&quot;</span>;</span><br><span class="line">    string str2 = <span class="string">&quot;fanshanshan&quot;</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="built_in">editDist</span>(str1, str2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：下面这个里面的1表示什么意思？<br>return 1 + min(editDist…<br>1本来是在min里面的，为了代码整洁才提到了外面。要清楚，“1”是已经确定的1种方式。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/90a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/90a8/" class="post-title-link" itemprop="url">面试中最常问的20个DP问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-05 14:38:28" itemprop="dateCreated datePublished" datetime="2021-05-05T14:38:28+08:00">2021-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/90a8/" class="post-meta-item leancloud_visitors" data-flag-title="面试中最常问的20个DP问题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li>Longest Common Subsequence 最长公共子序列 LCS</li>
+<li>Longest Increasing Subsequence 最长上升子序列 LIS</li>
+<li>Edit Distance 编辑距离</li>
+<li>Minimum Partition</li>
+<li>Ways to Cover a Distance</li>
+<li>Longest Path In Matrix</li>
+<li>Subset Sum Problem</li>
+<li>Optimal Strategy for a Game</li>
+<li>0-1 Knapsack Problem</li>
+<li>Boolean Parenthesization Problem</li>
+<li>Shortest Common Supersequence</li>
+<li>Matrix Chain Multiplication</li>
+<li>Partition problem</li>
+<li>Rod Cutting</li>
+<li>Coin change problem</li>
+<li>Word Break Problem</li>
+<li>Maximal Product when Cutting Rope</li>
+<li>Dice Throw Problem</li>
+<li>Box Stacking</li>
+<li>Egg Dropping Puzzle</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/1510/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/1510/" class="post-title-link" itemprop="url">最长公共子序列</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-05 14:34:28" itemprop="dateCreated datePublished" datetime="2021-05-05T14:34:28+08:00">2021-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">算法分析</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/1510/" class="post-meta-item leancloud_visitors" data-flag-title="最长公共子序列" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>LCS的定义</p>
+<p>The longest common subsequence (LCS) problem is the problem of finding the longest subsequence common to all sequences in a set of sequences (often just two sequences).</p>
+<p>也就是说寻找多个序列（通常是两个）之间的最长的公共子序列，输入是多个序列，输出是一个子序列。还有一个和这个很相似的问题：最长公共子串（Longest Common Substring），和 LCS 的区别就在于子序列不要求连续，而子串是要求连续的，即 subsequence 和 substring 的区别。例如 ABCBDAB 和 BDCABA，最长公共子序列是 BCBA，就是不连续的。</p>
+<p>LCS是经典的计算机科学问题，是diff（输出两个文件之间差异的文件比较程序）的基础，并已在生物信息学中得到应用。</p>
+<p>示例：<br>序列ABCDGH和AEDFHR的LCS是长度为3的ADH。<br>序列AGGTAB和GXTXAYB的LCS是长度为4的GTAB。</p>
+<p>这个题的朴素解法是暴力穷举出所有子序列后再进行判断，时间复杂度为指数级。</p>
+<p>本文主要分析DP解法。让我们看看这个问题如何同时具有DP问题的两个重要特性。</p>
+<p>最佳子结构</p>
+<p>假设输入序列分别为长度为m和n的X[0..m-1]和Y[0..n-1]。<br>设L(X[0..m-1],Y[0..n-1])是两个序列X和Y的LCS的长度。<br>以下是L(X[0..m-1],Y[0..n-1])的递归定义。</p>
+<p>若两个序列的最后一个字符匹配(X[m-1]==Y[n-1])，则<br>L(X[0..m-1],Y[0..n-1])=1+L(X[0..m-2],Y[0..n-2])</p>
+<p>若两个序列的最后一个字符不匹配(X[m-1]!=Y[n-1])，则<br>L(X[0..m-1],Y[0..n-1])=MAX(L(X[0..m-2],Y[0..n-1]),L(X[0..m-1],Y[0..n-2]))</p>
+<p>示例：</p>
+<p>考虑输入字符串“AGGTAB”和“GXTXAYB”。最后一个字符与字符串匹配。因此，LCS的长度可以写为：<br>L(“AGGTAB”,“GXTXAYB”)=1+L(“AGGTA”,“GXTXAY”)</p>
+<p>考虑输入字符串“ABCDGH”和“AEDFHR”。字符串的最后字符不匹配。因此，LCS的长度可以写为：<br>L(“ABCDGH”,“AEDFHR”)=MAX(L(“ABCDG”,“AEDFHR”),L(“ABCDGH”,“AEDFHR”))</p>
+<p>重叠子问题</p>
+<p>以下是LCS问题的简单递归实现。该实现仅遵循上述的朴素递归结构。</p>
+<p>LCS长度的递归解法</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcs</span><span class="params">(string X, string Y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = X.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> n = Y.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span> || n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (X[m - <span class="number">1</span>] == Y[n - <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">lcs</span>(X.<span class="built_in">substr</span>(<span class="number">0</span>, m - <span class="number">1</span>), Y.<span class="built_in">substr</span>(<span class="number">0</span>, n - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">lcs</span>(X, Y.<span class="built_in">substr</span>(<span class="number">0</span>, n - <span class="number">1</span>)), <span class="built_in">lcs</span>(X.<span class="built_in">substr</span>(<span class="number">0</span>, m - <span class="number">1</span>), Y));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string X = <span class="string">&quot;AGGTAB&quot;</span>;</span><br><span class="line">    string Y = <span class="string">&quot;GXTXAYB&quot;</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Length of LCS is &quot;</span> &lt;&lt; <span class="built_in">lcs</span>(X, Y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最坏情况下，上述朴素递归方法的时间复杂度为O(2^n)，最坏情况发生在X和Y的所有字符不匹配时，即LCS的长度为0。</p>
+<p>考虑到以上实现，下面是输入字符串“AXYT”和“AYZX”的部分递归树。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">                         lcs(&quot;AXYT&quot;, &quot;AYZX&quot;)</span><br><span class="line">                       &#x2F;                \ </span><br><span class="line">         lcs(&quot;AXY&quot;, &quot;AYZX&quot;)            lcs(&quot;AXYT&quot;, &quot;AYZ&quot;)</span><br><span class="line">         &#x2F;        \                     &#x2F;               \</span><br><span class="line">lcs(&quot;AX&quot;, &quot;AYZX&quot;) lcs(&quot;AXY&quot;, &quot;AYZ&quot;)   lcs(&quot;AXY&quot;, &quot;AYZ&quot;) lcs(&quot;AXYT&quot;, &quot;AY&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>在上面的部分递归树中，lcs(“AXY”,“AYZ”)被求解两次。如果我们绘制完整的递归树，则可以看到有很多子问题可以一次又一次地解决。因此，此问题具有“重叠子结构”属性，可以通过使用“记忆化”或“制表”来避免相同子问题的重新计算。以下是LCS问题的制表（自下而上）实现。</p>
+<p>LCS长度的DP解法：自底向上，无优化</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcs</span><span class="params">(string X, string Y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = X.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> n = Y.<span class="built_in">length</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">L</span>(m + <span class="number">1</span>, vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || j == <span class="number">0</span>)</span><br><span class="line">                L[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (X[i - <span class="number">1</span>] == Y[j - <span class="number">1</span>])</span><br><span class="line">                L[i][j] = L[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                L[i][j] = <span class="built_in">max</span>(L[i - <span class="number">1</span>][j], L[i][j - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> L[m][n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string X = <span class="string">&quot;AGGTAB&quot;</span>;</span><br><span class="line">    string Y = <span class="string">&quot;GXTXAYB&quot;</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Length of LCS is &quot;</span> &lt;&lt; <span class="built_in">lcs</span>(X, Y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Note that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1]<br>注意，L[i][j]并不是指某两个具体子序列的LCS长度，而是某两种子序列的LCS长度，一定要理解透彻。<br>上面一行说的不对，改正一下。Lij就是某两个具体子序列的LCS长度。<br>再改正一下，L[i][j]指的是X[0..i-1] and Y[0..j-1]这两个子串的最长公共子序列长度。再次区分一下子串和子序列的区别。</p>
+<p>上述实现的时间复杂度为O(mn)，这比Naive Recursive实现的最坏情况下的时间复杂度要好得多。</p>
+<p>上面的代码仅返回LCS的长度。请参阅其它文章以打印LCS。</p>
+<p>打印最长公共子序列</p>
+<p>以下是打印LCS的详细算法。它使用相同的2D表L[][]。</p>
+<p>1）使用先前文章中讨论的步骤构造L[m+1][n+1]。<br>2）值L[m][n]包含LCS的长度。创建一个字符数组lcs[]，其长度等于lcs的长度加1（一个额外的字符用于存储\0）。<br>3）从L[m][n]开始遍历二维数组。对每个单元格L[i][j]执行下列操作：<br>a）如果与L[i][j]对应的字符（在X和Y中）相同（X[i-1]==Y[j-1]），则将此字符作为LCS的一部分。<br>b）否则比较L[i-1][j]和L[i][j-1]的值并朝更大的值的方向前进。</p>
+<p>打印LCS的DP解法：自底向上，无优化</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">lcs</span><span class="params">(string X, string Y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = X.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">int</span> n = Y.<span class="built_in">length</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">L</span>(m + <span class="number">1</span>, vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || j == <span class="number">0</span>)</span><br><span class="line">                L[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (X[i - <span class="number">1</span>] == Y[j - <span class="number">1</span>])</span><br><span class="line">                L[i][j] = L[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                L[i][j] = <span class="built_in">max</span>(L[i - <span class="number">1</span>][j], L[i][j - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> index = L[m][n];</span><br><span class="line">    <span class="function">string <span class="title">res</span><span class="params">(index, <span class="string">&#x27;_&#x27;</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> i = m, j = n;</span><br><span class="line">    <span class="keyword">while</span> (i &gt; <span class="number">0</span> &amp;&amp; j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (X[i - <span class="number">1</span>] == Y[j - <span class="number">1</span>]) &#123;</span><br><span class="line">            res[index - <span class="number">1</span>] = X[i - <span class="number">1</span>];</span><br><span class="line">            i--; j--; index--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> L[i - <span class="number">1</span>][j] &gt; L[i][j - <span class="number">1</span>] ? i-- : j--;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string X = <span class="string">&quot;AGGTAB&quot;</span>;</span><br><span class="line">    string Y = <span class="string">&quot;GXTXAYB&quot;</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Length of LCS is &quot;</span> &lt;&lt; <span class="built_in">lcs</span>(X, Y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>空间优化版（从O(mn降到)O(n)）</p>
+<p>在上述简单实现中的一个重要观察是，在外循环的每次迭代中，我们只需要来自前一行的所有列的值。因此不需要存储DP矩阵中的所有行，我们可以一次存储两行并使用它们，这样使用的空间将从L[m+1][n+1]减少到L[2][n+1]。下面是上述思想的实现。</p>
+<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/space-optimized-solution-lcs/">https://www.geeksforgeeks.org/space-optimized-solution-lcs/</a></p>
+<p>另外注意，LCS可能不唯一，但本文的DP算法只能找到其中一种情况。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -829,284 +1145,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>题目描述<br>给定一个无序数组，包含正数、负数和0，要求从中找出3个数的乘积，使得乘积最大，要求时间复杂度：O(n)，空间复杂度：O(1)。<br>示例1<br>输入<br>复制<br>[3,4,1,2]<br>返回值<br>复制<br>24</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 最大乘积</span></span><br><span class="line"><span class="comment">     * @param A int整型一维数组</span></span><br><span class="line"><span class="comment">     * @param ALen int A数组长度</span></span><br><span class="line"><span class="comment">     * @return long长整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span>* A, <span class="keyword">int</span> ALen)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span> (ALen == <span class="number">3</span>) <span class="keyword">return</span> A[<span class="number">0</span>] * A[<span class="number">1</span>] * A[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> max1 = INT_MIN, max2 = INT_MIN, max3 = INT_MIN;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> min1 = INT_MAX, min2 = INT_MAX;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ALen; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A[i] &gt; max1) &#123; max3 = max2; max2 = max1; max1 = A[i]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (A[i] &gt; max2) &#123; max3 = max2; max2 = A[i]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (A[i] &gt; max3) max3 = A[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (A[i] &lt; min1) &#123; min2 = min1; min1 = A[i]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (A[i] &lt; min2) min2 = A[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(max1 * max2 * max3, max1 * min1 * min2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <p>题目描述<br>给定一个无序数组，包含正数、负数和0，要求从中找出3个数的乘积，使得乘积最大，要求时间复杂度：O(n)，空间复杂度：O(1)。<br>示例1<br>输入<br>[3,4,1,2]<br>返回值<br>24</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 最大乘积</span></span><br><span class="line"><span class="comment">     * @param A int整型一维数组</span></span><br><span class="line"><span class="comment">     * @param ALen int A数组长度</span></span><br><span class="line"><span class="comment">     * @return long长整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span>* A, <span class="keyword">int</span> ALen)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (ALen == <span class="number">3</span>) <span class="keyword">return</span> A[<span class="number">0</span>] * A[<span class="number">1</span>] * A[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> max1 = INT_MIN, max2 = INT_MIN, max3 = INT_MIN;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> min1 = INT_MAX, min2 = INT_MAX;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ALen; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A[i] &gt; max1) &#123; max3 = max2; max2 = max1; max1 = A[i]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (A[i] &gt; max2) &#123; max3 = max2; max2 = A[i]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (A[i] &gt; max3) max3 = A[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (A[i] &lt; min1) &#123; min2 = min1; min1 = A[i]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (A[i] &lt; min2) min2 = A[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(max1 * max2 * max3, max1 * min1 * min2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>用三个数 记录 前三大的正数<br>用两个数 记录 最小的两个 负数<br>就是三种情况<br>1、前三大的正数相乘<br>2、最大的正数 和 最小的两个负数 相乘</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/7967/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/7967/" class="post-title-link" itemprop="url">C++使用变量作为数组长度</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-03 23:48:13" itemprop="dateCreated datePublished" datetime="2021-05-03T23:48:13+08:00">2021-05-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">C++程序设计</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/7967/" class="post-meta-item leancloud_visitors" data-flag-title="C++使用变量作为数组长度" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>C++中一般是不能使用变量作为一个数组的长度的，必须使用常量。</p>
-<p>这是因为数组作为C++的内置数据类型，其空间分配在栈内存中，这部分空间的大小在编译时就要确定，不能等到运行时再分配。常量的值在编译时就能得到，而变量的值在运行时才能确定。</p>
-<p>但是仍然有办法使用变量作为数组的长度：绕过栈内存，将数组空间开辟在堆空间内：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>* a = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br></pre></td></tr></table></figure>
-
-<p>这样这块内存就是自己开辟的了，可以使用变量初始化数组的长度，内存空间会在运行时动态分配。</p>
-<p>注意：</p>
-<p>使用完这个数组后要delete掉，防止内存泄漏。<br>如果可能的话，使用STL容器替代内置的数组类型，能得到更好的性能和撸代码体验。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/e223/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/e223/" class="post-title-link" itemprop="url">HJ69 矩阵乘法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-03 21:59:15" itemprop="dateCreated datePublished" datetime="2021-05-03T21:59:15+08:00">2021-05-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/e223/" class="post-meta-item leancloud_visitors" data-flag-title="HJ69 矩阵乘法" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目描述<br>如果A是个x行y列的矩阵，B是个y行z列的矩阵，把A和B相乘，其结果将是另一个x行z列的矩阵C。</p>
-<p>矩阵的大小不超过100*100<br>输入描述:<br>输入包含多组数据，每组数据包含：<br>第一行包含一个正整数x，代表第一个矩阵的行数<br>第二行包含一个正整数y，代表第一个矩阵的列数和第二个矩阵的行数<br>第三行包含一个正整数z，代表第二个矩阵的列数<br>之后x行，每行y个整数，代表第一个矩阵的值<br>之后y行，每行z个整数，代表第二个矩阵的值</p>
-<p>输出描述:<br>对于每组输入数据，输出x行，每行z个整数，代表两个矩阵相乘的结果<br>示例1<br>输入<br>2<br>3<br>2<br>1 2 3<br>3 2 1<br>1 2<br>2 1<br>3 3<br>输出<br>14 13<br>10 11</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, y, z;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; x &gt;&gt; y &gt;&gt; z) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">arr1</span>(x, vector&lt;<span class="keyword">int</span>&gt;(y, <span class="number">0</span>));</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">arr2</span>(y, vector&lt;<span class="keyword">int</span>&gt;(z, <span class="number">0</span>));</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">res</span>(x, vector&lt;<span class="keyword">int</span>&gt;(z, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x; ++i) &#123; <span class="comment">// 录入矩阵1</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; y; ++j)</span><br><span class="line">                cin &gt;&gt; arr1[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; y; ++i) &#123; <span class="comment">// 录入矩阵2</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; z; ++j)</span><br><span class="line">                cin &gt;&gt; arr2[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x; ++i) &#123; <span class="comment">// 矩阵相乘</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; y; ++j)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; z; ++k)</span><br><span class="line">                    res[i][k] += arr1[i][j] * arr2[j][k];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x; ++i) &#123; <span class="comment">// 打印结果</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; z; ++j)</span><br><span class="line">                cout &lt;&lt; res[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line">            cout &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>二维数组的经典案例。<br>常看，熟记。<br>几个要点：<br>1 初始化二维数组<br>2 cin放到循环体内<br>3 矩阵相乘用三层for</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/31b6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/31b6/" class="post-title-link" itemprop="url">HJ64 MP3光标位置</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-03 21:05:03" itemprop="dateCreated datePublished" datetime="2021-05-03T21:05:03+08:00">2021-05-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">华为机试</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/31b6/" class="post-meta-item leancloud_visitors" data-flag-title="HJ64 MP3光标位置" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目描述<br>MP3 Player因为屏幕较小，显示歌曲列表的时候每屏只能显示几首歌曲，用户要通过上下键才能浏览所有的歌曲。为了简化处理，假设每屏只能显示4首歌曲，光标初始的位置为第1首歌。</p>
-<p>现在要实现通过上下键控制光标移动来浏览歌曲列表，控制逻辑如下：</p>
-<p>歌曲总数&lt;=4的时候，不需要翻页，只是挪动光标位置。<br>光标在第一首歌曲上时，按Up键光标挪到最后一首歌曲；光标在最后一首歌曲时，按Down键光标挪到第一首歌曲。<br>其他情况下用户按Up键，光标挪到上一首歌曲；用户按Down键，光标挪到下一首歌曲。</p>
-<p>歌曲总数大于4的时候（以一共有10首歌为例）：<br>特殊翻页：屏幕显示的是第一页（即显示第1 – 4首）时，光标在第一首歌曲上，用户按Up键后，屏幕要显示最后一页（即显示第7-10首歌），同时光标放到最后一首歌上。同样的，屏幕显示最后一页时，光标在最后一首歌曲上，用户按Down键，屏幕要显示第一页，光标挪到第一首歌上。<br>一般翻页：屏幕显示的不是第一页时，光标在当前屏幕显示的第一首歌曲时，用户按Up键后，屏幕从当前歌曲的上一首开始显示，光标也挪到上一首歌曲。光标当前屏幕的最后一首歌时的Down键处理也类似。<br>其他情况，不用翻页，只是挪动光标就行。</p>
-<p>输入描述:<br>输入说明：<br>1 输入歌曲数量<br>2 输入命令 U或者D</p>
-<p>本题含有多组输入数据！</p>
-<p>输出描述:<br>输出说明<br>1 输出当前列表<br>2 输出当前选中歌曲</p>
-<p>示例1<br>输入<br>10<br>UUUU<br>输出<br>7 8 9 10<br>7</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    string order;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &gt;&gt; order) &#123;</span><br><span class="line">        <span class="keyword">int</span> pos = <span class="number">1</span>, first = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; order.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (pos == <span class="number">1</span> &amp;&amp; order[i] == <span class="string">&#x27;U&#x27;</span>) pos = n;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (pos == n &amp;&amp; order[i] == <span class="string">&#x27;D&#x27;</span>) pos = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (order[i] == <span class="string">&#x27;U&#x27;</span>) pos--;</span><br><span class="line">                <span class="keyword">else</span>  pos++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            cout &lt;&lt; <span class="string">&#x27;\n&#x27;</span> &lt;&lt; pos &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; order.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (first == <span class="number">1</span> &amp;&amp; pos == <span class="number">1</span> &amp;&amp; order[i] == <span class="string">&#x27;U&#x27;</span>) &#123; first = n - <span class="number">3</span>; pos = n; &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (first == n - <span class="number">3</span> &amp;&amp; pos == n &amp;&amp; order[i] == <span class="string">&#x27;D&#x27;</span>) &#123; first = <span class="number">1</span>; pos = <span class="number">1</span>; &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (first != <span class="number">1</span> &amp;&amp; pos == first &amp;&amp; order[i] == <span class="string">&#x27;U&#x27;</span>) &#123; first--; pos--; &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (first != n - <span class="number">3</span> &amp;&amp; pos == first + <span class="number">3</span> &amp;&amp; order[i] == <span class="string">&#x27;D&#x27;</span>) &#123; first++; pos++; &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (order[i] == <span class="string">&#x27;U&#x27;</span>) pos--;</span><br><span class="line">                <span class="keyword">else</span> pos++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = first; i &lt;= first + <span class="number">3</span>; i++) cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            cout &lt;&lt; <span class="string">&#x27;\n&#x27;</span> &lt;&lt; pos &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>纯阅读理解题，不用总结啥规律，什么求余、循环啥的。只要ifelse够多，就能通过。<br>保持冷静和思路清晰很重要。<br>还有，要抓到关键，比如这个题里面，要把pos和first抽象出来，只要判断这两个记号的状态，就能分析出所有情况。因为一个屏幕内能容纳下的歌曲是固定的，所以不用额外维护一个last标记来指向屏幕下面的歌曲。</p>
+<p>用三个数记录前三大的正数<br>用两个数记录最小的两个负数<br>就是两种情况<br>1、前三大的正数相乘<br>2、最大的正数和最小的两个负数相乘</p>
 
       
     </div>

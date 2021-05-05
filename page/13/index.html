@@ -161,20 +161,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-count">208</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,264 +217,6 @@
 
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/8882/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/haruna.png">
-      <meta itemprop="name" content="充电的猫猫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月夜海">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/8882/" class="post-title-link" itemprop="url">运输层</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-08 02:02:00" itemprop="dateCreated datePublished" datetime="2021-03-08T02:02:00+08:00">2021-03-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/" itemprop="url" rel="index"><span itemprop="name">编程珠玑</span></a>
-        </span>
-          →
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/posts/8882/" class="post-meta-item leancloud_visitors" data-flag-title="运输层" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="4-运输层"><a href="#4-运输层" class="headerlink" title="#4 运输层"></a>#4 运输层</h1><p>重要概念：</p>
-<ol>
-<li>运输层为相互通信的应用进程提供逻辑通信。</li>
-<li>端口和套接字的意义。</li>
-<li>无连接的UDP的特点。</li>
-<li>面向连接的TCP的特点。</li>
-<li>在不可靠的网络上实现可靠传输的工作原理，停止等待协议和ARQ协议。</li>
-<li>TCP的滑动窗口、流量控制、拥塞控制、连接管理。</li>
-</ol>
-<h2 id="运输层协议概述"><a href="#运输层协议概述" class="headerlink" title="运输层协议概述"></a>运输层协议概述</h2><p>网络层为主机之间提供逻辑通信，而运输层为应用进程之间提供端到端的逻辑通信。</p>
-<blockquote>
-<p>“逻辑通信”的意思是“好像是这样通信，但事实上并非真的这样通信”。</p>
-</blockquote>
-<p>运输层要对收到的报文进行差错检测。而网络层只检测首部不检测数据部分。</p>
-<p>根据应用进程的不同需求，运输层有两种不同的运输协议：面向连接的TCP和无连接的UDP。</p>
-<p>PDU：根据所使用的协议是TCP或UDP，协议数据单元分别称之为TCP报文段或UDP用户数据报。</p>
-<h2 id="用户数据报协议UDP"><a href="#用户数据报协议UDP" class="headerlink" title="用户数据报协议UDP"></a>用户数据报协议UDP</h2><p>UDP的主要特点：</p>
-<ol>
-<li>无连接。即发送数据之前不需要建立连接，当然发送数据结束时也没有连接可释放。因此减少了开销和发送数据之前的时延。</li>
-<li>尽最大努力交付。即不保证可靠性交付，因此主机不需要维持复杂的链接状态表。</li>
-<li>面向报文。对于发送方的应用层交下来的报文，UDP只添加首部后就原封不动地交付给下面的IP层。对于接收时从IP层交上来地UDP用户数据报，去除首部后就原封不动地交付给上面的应用层中的应用程序。即，UDP一次交付一个完整报文，因此应用程序必须选择合适大小的报文。</li>
-<li>无拥塞控制。因此网络中的拥塞不会使源主机地发送速率降低，很多实时应用要求源主机以恒定速率发送数据，并允许在网络发生拥塞时丢失一些数据，但不允许数据有太大延迟（比如实时视频会议）。UDP正好适合这种。</li>
-<li>支持一对一、一对多、多对一和多对多的交互通信。</li>
-<li>首部开销小。</li>
-</ol>
-<p>UDP的首部格式：</p>
-<p>​    用户数据报UDP有两个字段：首部字段和数据字段。首部分成4个字段，分别如下：</p>
-<ol start="0">
-<li>伪首部：伪首部并不是UDP用户数据报真正的首部。只是在计算检验和时，临时添加在UDP用户数据报前面，得到一个临时的UDP用户数据报。检验和就是按照这个临时的UDP用户数据报来计算的。伪首部既不向下传送也不向上递交，而仅仅是为了计算检验和。</li>
-<li>源端口：源端口号，在需要对方回信时选用，不需要回信则可全用0。</li>
-<li>目的端口：目的端口号，在终点交付报文时必须使用。</li>
-<li>长度：UDP用户数据报的长度，最小是是8（仅有首部）。</li>
-<li>校验和：检测UDP用户数据报在传输中是否有错，是的话丢弃。</li>
-</ol>
-<h2 id="传输控制协议TCP"><a href="#传输控制协议TCP" class="headerlink" title="传输控制协议TCP"></a>传输控制协议TCP</h2><p>TCP的主要特点：</p>
-<ol>
-<li><p>面向连接。</p>
-</li>
-<li><p>提供可靠交付的服务。通过TCP链接传送的数据，无差错、不丢失、不重复、按序到达。</p>
-</li>
-<li><p>面向字节流。</p>
-</li>
-<li><p>每条TCP连接只能是点对点的（一对一）。</p>
-<p>TCP连接的端点不是主机，不是主机的IP地址，不是应用进程，也不是运输层的协议端口。</p>
-<p>TCP连接的端点叫套接字或插口。套接字=IP地址:端口号</p>
-<p>TCP连接={套接字1,套接字2}={(IP地址1:端口号1),(IP地址2:端口号2)}</p>
-</li>
-<li><p>提供全双工通信。</p>
-</li>
-</ol>
-<h2 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h2><p>TCP发送的报文段是交给网络层传送的，但网络层只能提供尽最大努力交付，也就是说网络层及以下提供不可靠传输。因此TCP必须采取措施使两个运输层之间的通信变得可靠。</p>
-<p>理想的传输条件满足两个特点：</p>
-<ol>
-<li>传输信道不产生差错。</li>
-<li>不管发送方以多快的速度发送数据，接收方总来得及处理收到的数据。</li>
-</ol>
-<p>理想条件下不需要任何措施就能实现可靠传输。但实际网络都不具备上面的理想条件，因此就需要使用一些可靠传输协议。</p>
-<ol>
-<li>当出现差错时让发送方重传发生错误的数据。</li>
-<li>当接收方来不及处理收到的数据时及时通知发送方降低发送速率。</li>
-</ol>
-<p>这样就能在不可靠的传输信道上实现可靠传输。下面从最简单的停止等待协议讲起。</p>
-<h3 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h3><p>“停止等待”就是每发送完一个分组就停止发送，等待对方的确认。在收到确认后再发送下一个分组。</p>
-<ol>
-<li><p>无差错情况</p>
-</li>
-<li><p>出现差错</p>
-<p>超时重传：A只要超过了一段时间仍然没有收到确认，就认为刚才发送的分组丢失了，因而重传前面发送过的分组。这就叫做超时重传。要实现超时重传，就要在每发送完一个分组时设置一个超时计时器。如果在超时计时器到期之前收到了对方的确认，就撤销已设置的超时计时器。</p>
-</li>
-<li><p>确认丢失和确认迟到</p>
-<p>确认丢失：</p>
-<p>A在设定的超时重传时间内没有收到确认，并无法知道是自己发送的分组是出错还是丢失，或是B发送的确认丢失了。因此A在超时计时器到期后就要重传M1。</p>
-<p>假定B又收到了重传的分组M1。则B应该丢弃这个重复的分组M1，不向上层交付，然后向A发送确认（不能认为已经发送过（丢失了的）确认就不再发送，因为A之所以重传M1就是因为A没有收到对M1的确认）。</p>
-<p>确认迟到：</p>
-<p>传输过程中没有出现差错，但B对分组M1的确认虽未丢失，但是迟到了。于是A在计时器到期后因为还未收到迟到的对M1的确认而重发M1。B最终会收到两次M1并先后发出两次确认，而A最终也会收到重复的对M1的确认。A对重复的确认的处理很简单：收下后就丢弃。B同样要丢弃重复收到的发送M1，并重传确认分组。</p>
-<p>归纳：不管发送的分组丢失了还是迟到了，A这边一定时间没收到就自动重传，B那边对于同一个信息，收到一次就确认一次。不管哪边，收到重复分组就丢弃该分组，但同时还要发送确认。</p>
-</li>
-</ol>
-<p>这种可靠传输协议常称为自动重传请求ARQ（AutomaticRepeatreQuest）。意思是重传的请求是自动进行的，接收方不需要请求发送方重传某个出错的特定分组。使用上述的确认和重传机制，我们就可以在不可靠的传输网络上实现可靠的通信。</p>
-<p>停止等待协议的优点是简单，但缺点是信道利用率太低。为了提高传输效率，发送方可以不使用低效率的停止等待协议，而是采用流水线传输。</p>
-<p>流水线传输就是发送方可连续发送多个分组，不必每发完一个分组就停顿下来等待对方的确认。这样可使信道上一直有数据不间断地在传送。显然，这种传输方式可以获得很高的信道利用率。当使用流水线传输时，就要使用下面介绍的连续ARQ协议和滑动窗口协议。</p>
-<h3 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h3><p>连续ARQ协议可提高信道利用率。发送方维持一个发送窗口，凡位于发送窗口内的分组都可连续发送出去，而不需要等待对方的确认。接收方一般采用累积确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已正确收到了。</p>
-<p>如果发送方发送了前5个分组，而中间的第3个分组丢失了。这时接收方只能对前两个分组发出确认。发送方无法知道后面三个分组的下落，而只好把后面的三个分组都再重传一次。这就叫做Go-back-N（回退N），表示需要再退回来重传已发送过的N个分组。因此当通信线路质量不好时，连续ARQ协议会带来负面的影响。</p>
-<p>在深入讨论TCP的可靠传输问题之前，必须先了解TCP的报文段首部的格式。</p>
-<h2 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h2><p>TCP虽然是面向字节流的，但TCP传送的数据单元却是报文段。一个TCP报文段分为首部和数据两部分，而TCP的全部功能都体现在它首部中各字段的作用。因此，只有弄清TCP首部各字段的作用才能掌握TCP的工作原理。首部固定部分各字段如下：</p>
-<ol>
-<li><p>源端口目的端口</p>
-</li>
-<li><p>序号（seq）：首部中的序号字段值指的是本报文段所发送的数据的第一个字节的序号。</p>
-</li>
-<li><p>确认号（ack）：TCP首部中的确认号是期望收到对方下一个报文段的第一个数据字节的序号。应记住：若确认号＝N，则表明：到序号N–1为止的所有数据都已正确收到。</p>
-</li>
-<li><p>数据偏移：指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。这个字段实际上是指出TCP报文段的首部长度。由于首部中还有长度不确定的选项字段，因此数据偏移字段是必要的。</p>
-</li>
-<li><p>保留：保留为今后使用，但目前应置为0。</p>
-</li>
-<li><p>6个控制位</p>
-<ol>
-<li>紧急URG（URGent）：告诉系统此报文段中有紧急数据，应尽快传送（相当于高优先级的数据），而不要按原来的排队顺序来传送。</li>
-<li>确认ACK（ACKnowledgment）：TCP规定，在连接建立后所有传送的报文段都必须把ACK置1。</li>
-<li>推送PSH（PuSH）：尽快地（即“推送”向前）交付接收应用进程，而不再等到整个缓存都填满了后再向上交付。注意将推动PSH与紧急URG区分，推送并不改变相对顺序，只是希望立即得到对方响应。推送操作很少使用。</li>
-<li>复位RST（ReSeT）：表明TCP连接中出现严重差错（比如主机崩溃），必须释放连接，然后再重新建立运输连接。</li>
-<li>同步SYN（SYNchronization）：在连接建立时用来同步序号。当SYN＝1而ACK＝0时，表明这是一个连接请求报文段（连接还没有建立起来）。对方若同意建立连接，则应在响应的报文段中使SYN＝1和ACK＝1。因此，SYN置为1就表示这是一个连接请求或连接接受报文。</li>
-<li>终止FIN（FINis，意思是“完”、“终”）：用来释放一个连接。表明此报文段的发送方的数据已发送完毕，并要求释放运输连接。</li>
-</ol>
-</li>
-<li><p>窗口：窗口字段明确指出了现在允许对方发送的数据量。窗口值经常在动态变化着。</p>
-</li>
-<li><p>检验和</p>
-</li>
-<li><p>紧急指针</p>
-</li>
-<li><p>选项</p>
-</li>
-</ol>
-<h2 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h2><h3 id="以字节为单位的滑动窗口"><a href="#以字节为单位的滑动窗口" class="headerlink" title="以字节为单位的滑动窗口"></a>以字节为单位的滑动窗口</h3><p>TCP使用滑动窗口机制。发送窗口里面的序号表示允许发送的序号。发送窗口后沿的后面部分表示已发送且已收到了确认，而发送窗口前沿的前面部分表示不允许发送。发送窗口后沿的变化情况有两种可能，即不动（没有收到新的确认）和前移（收到了新的确认）。发送窗口前沿通常是不断向前移动的。</p>
-<h3 id="超时重传时间的选择"><a href="#超时重传时间的选择" class="headerlink" title="超时重传时间的选择"></a>超时重传时间的选择</h3><p>TCP的发送方在规定的时间内没有收到确认就要重传已发送的报文段。这种重传的概念很简单，但重传时间的选择却是TCP最复杂的问题之一。</p>
-<p>由于TCP的下层是互联网环境，互联网由多种异构网络互连组成，异构决定了互联网环境的复杂性，发送的报文段可能只经过一个高速率的局域网，也可能经过多个低速率的网络，并且每个IP数据报所选择的路由还可能不同。如果把超时重传时间设置得太短，就会引起很多报文段的不必要的重传，使网络负荷增大。如果把超时重传时间设置得过长，则又使网络的空闲时间增大，降低了传输效率。</p>
-<p>那么，运输层的超时计时器的超时重传时间究竟应设置为多大呢？TCP采用了一种自适应算法，它记录一个报文段发出的时间，以及收到相应的确认的时间。这两个时间之差就是报文段的往返时间RTT。通过复杂的修正算法，可以使超时重传时间的估测和计算更加合理。</p>
-<h2 id="TCP的流量控制"><a href="#TCP的流量控制" class="headerlink" title="TCP的流量控制"></a>TCP的流量控制</h2><p>流量控制就是让发送方的发送速率不要太快，要让接收方来得及接收。利用滑动窗口机制可以很方便地在TCP连接上实现对发送方的流量控制。</p>
-<h2 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h2><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，就会出现拥塞。拥塞控制就是防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。</p>
-<p>流量控制是一个端到端的问题，是接收端抑制发送端发送数据的速率，以便使接收端来得及接收。而拥塞控制是一个全局性的过程，涉及到所有的主机、所有的路由器，以及与降低网络传输性能有关的所有因素。</p>
-<p>为了进行拥塞控制，TCP的发送方要维持一个拥塞窗口cwnd的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口取为拥塞窗口和接收方的接收窗口中较小的一个。</p>
-<p>TCP的拥塞控制采用了四种算法，即慢开始、拥塞避免、快重传和快恢复。在网络层，也可以使路由器采用适当的分组丢弃策略（如主动队列管理AQM），以减少网络拥塞的发生。</p>
-<h3 id="慢开始和拥塞避免"><a href="#慢开始和拥塞避免" class="headerlink" title="慢开始和拥塞避免"></a>慢开始和拥塞避免</h3><p>也叫做基于窗口的拥塞控制。为此，发送方维持一个叫做拥塞窗口cwnd（congestion window）的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口等于拥塞窗口。</p>
-<p>发送方控制拥塞窗口的原则是：只要网络没有出现拥塞，拥塞窗口就可以再增大一些，以便把更多的分组发送出去，这样就可以提高网络的利用率。但只要网络出现拥塞或有可能出现拥塞，就必须把拥塞窗口减小一些，以减少注入到网络中的分组数，以便缓解网络出现的拥塞。</p>
-<p>发送方又是如何知道网络发生了拥塞呢？我们知道，当网络发生拥塞时，路由器就要丢弃分组。因此只要发送方没有按时收到应当到达的确认报文，也就是说，只要出现了超时，就可以猜想网络可能出现了拥塞。现在通信线路的传输质量一般都很好，因传输出差错而丢弃分组的概率是很小的（远小于1％）。因此，判断网络拥塞的依据就是出现了超时。</p>
-<p>下面将讨论拥塞窗口cwnd的大小是怎样变化的。我们从“慢开始算法”讲起。</p>
-<p>慢开始算法的思路：当主机开始发送数据时，由于不清楚网络的负荷情况，所以如果立即把大量数据字节注入到网络，有可能引起网络发生拥塞。经验证明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是说，由小到大逐渐增大拥塞窗口数值。（永远从小到大，从头开始试探）</p>
-<p>拥塞避免算法的思路：让拥塞窗口cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1，而不是像慢开始阶段那样加倍增长。这表明在拥塞避免阶段，拥塞窗口cwnd按线性规律缓慢增长，比慢开始算法的拥塞窗口增长速率缓慢得多。</p>
-<p>图为TCP拥塞窗口cwnd在拥塞控制时的变化情况。</p>
-<h3 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h3><p>背景：有时，只有个别报文段会在网络中丢失，但实际上网络并未发生拥塞。如果发送方迟迟收不到确认，就会产生超时，然后误认为网络发生了拥塞，导致发送方错误地启动慢开始，把拥塞窗口cwnd又设置为1，因而降低了传输效率。</p>
-<p>采用快重传算法可以让发送方尽早知道发生了个别报文段的丢失。当接收方收到失序的报文段时立即发出对已收到的报文段的重复确认。例如，现在收到了M1、M2、M4，但是M3丢失了，于是接收方收到（失序的报文段）M4时重传对（已收到的报文段）M2的确认（而不是确认M4），收到M5、M6时同理也重传对M2的确认而不确认M5、M6。接收方从首次收到M2到收到M6时，一共进行了4次对M2的重复确认，其中后3次确认是重复确认。</p>
-<p>快重传算法规定，发送方只要连续收到3个重复确认，就知道接收方确实没有收到报文段M3，应当立即进行重传（即快重传），这样就不会出现超时，发送方也不就会误认为出现了网络拥塞。使用快重传可以使整个网络的吞吐量提高约20％。</p>
-<h3 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h3><p>如果发送方知道现在只是丢失了个别报文段，没有出现拥塞。那么就不启动慢开始，而是执行快恢复算法。此时令发送方调整门限值ssthresh＝cwnd/2，同时设置拥塞窗口cwnd＝ssthresh，然后执行线性增长的拥塞避免算法（而非指数增长的慢开始算法）。</p>
-<h2 id="TCP的运输连接管理"><a href="#TCP的运输连接管理" class="headerlink" title="TCP的运输连接管理"></a>TCP的运输连接管理</h2><p>运输连接有三个阶段，即：连接建立、数据传送和连接释放。运输连接的管理就是使运输连接的建立和释放都能正常地进行。</p>
-<p>在TCP连接建立过程中要解决以下三个问题：</p>
-<ol>
-<li>要使每一方能够确知对方的存在。</li>
-<li>要允许双方协商一些参数（如最大窗口值、是否使用窗口扩大选项和时间戳选项以及服务质量等）。</li>
-<li>能够对运输实体资源（如缓存大小、连接表中的项目等）进行分配。</li>
-</ol>
-<p>TCP连接的建立采用C/S方式。主动发起连接建立的应用进程叫做客户，被动等待连接建立的应用进程叫做服务器。</p>
-<h3 id="握手"><a href="#握手" class="headerlink" title="握手"></a>握手</h3><p>TCP建立连接的过程叫做握手，握手需要在客户和服务器之间交换三个TCP报文段。</p>
-<ol>
-<li>A打算建立TCP连接时，向B发出连接请求报文段，这时首部中的同步位SYN＝1，同时选择一个初始序号seq＝x。TCP规定，SYN＝1的报文段不能携带数据，但要消耗掉一个序号。这时，TCP客户进程进入SYN-SENT（同步已发送）状态。</li>
-<li>B收到连接请求报文段后，如果同意建立连接，则向A发送确认。在确认报文段中应把SYN位和ACK位都置1，确认号是ack＝x＋1，同时也为自己选择一个初始序号seq＝y。请注意，这个报文段也不能携带数据，但同样要消耗掉一个序号。这时TCP服务器进程进入SYN-RCVD（同步收到）状态。</li>
-<li>TCP客户进程收到B的确认后，还要向B给出确认。确认报文段的ACK置1，确认号ack＝y＋1，而自己的序号seq＝x＋1。TCP的标准规定，ACK报文段可以携带数据。但如果不携带数据则不消耗序号，在这种情况下，下一个数据报文段的序号仍是seq＝x＋1。这时，TCP连接已经建立，A进入ESTABLISHED（已建立连接）状态。当B收到A的确认后，也进入ESTABLISHED状态。</li>
-</ol>
-<p>总结：TCP的连接建立采用三报文握手机制。服务器要确认客户的连接请求，然后客户要对服务器的确认进行确认。</p>
-<ul>
-<li>问：为什么是三次握手而不是四次握手？</li>
-</ul>
-<p>上面给出的连接建立过程叫做三报文握手。请注意，B发送给A的报文段，也可拆成两个报文段。可以先发送一个确认报文段（ACK＝1，ack＝x＋1），然后再发送一个同步报文段（SYN＝1，seq＝y）。这样的过程就变成了四报文握手，但效果是一样的。</p>
-<ul>
-<li>问：为什么是三次握手而不是两次握手？即，为什么A最后还要发送一次确认？</li>
-</ul>
-<p>这主要是为了防止已失效的连接请求报文段突然又传送到了B，因而产生错误。</p>
-<p>所谓“已失效的连接请求报文段”是这样产生的：</p>
-<p>先考虑一种正常情况，A发出连接请求，但因连接请求报文丢失而未收到确认。于是A再重传一次连接请求。后来收到了确认，建立了连接。数据传输完毕后，就释放了连接。A共发送了两个连接请求报文段，其中第一个丢失，第二个到达了B，没有“已失效的连接请求报文段”。</p>
-<p>现假定出现一种异常情况，即A发出的第一个连接请求报文段并没有丢失，而是在某些网络结点长时间滞留了，以致延误到连接释放以后的某个时间才到达B。本来这是一个早已失效的报文段。但B收到此失效的连接请求报文段后，就误认为是A又发出一次新的连接请求。于是就向A发出确认报文段，同意建立连接。假定不采用报文握手，那么只要B发出确认，新的连接就建立了。由于现在A并没有发出建立连接的请求，因此不会理睬B的确认，也不会向B发送数据。但B却以为新的运输连接已经建立了，并一直等待A发来数据。B的许多资源就这样白白浪费了。</p>
-<p>采用三报文握手的办法，可以防止上述现象的发生。在刚才的异常情况下，A不会向B的确认发出确认。B由于收不到确认，就知道A并没有要求建立连接。</p>
-<h3 id="挥手"><a href="#挥手" class="headerlink" title="挥手"></a>挥手</h3><p>TCP连接释放过程比较复杂。</p>
-<ol>
-<li><p>数据传输结束后，通信的双方都可释放连接。现在A和B都处于ESTABLISHED（已建立连接）状态。A先发出连接释放报文段，并停止发送数据，主动关闭TCP连接。A把连接释放报文段首部的终止控制位FIN置1，其序号seq＝u，它等于前面已传送过的数据的最后一个字节的序号加1。这时A进入FIN-WAIT-1（终止等待1）状态，等待B的确认。</p>
-</li>
-<li><p>B收到连接释放报文段后即发出确认，确认号是ack＝u＋1，而这个报文段自己的序号是v，等于B前面已传送过的数据的最后一个字节的序号加1。然后B就进入CLOSE-WAIT（关闭等待）状态。TCP服务器进程这时应通知高层应用进程，因而从A到B这个方向的连接就释放了，这时的TCP连接处于半关闭（half-close）状态，即A已经没有数据要发送了，但B若发送数据，A仍要接收。也就是说，从B到A这个方向的连接并未关闭，这个状态可能会持续一段时间。</p>
-</li>
-</ol>
-<p>（A收到来自B的确认后，就进入FIN-WAIT-2（终止等待2）状态，等待B发出的连接释放报文段。）</p>
-<ol start="3">
-<li>若B已经没有要向A发送的数据了，其应用进程就通知TCP释放连接。这时B发出的连接释放报文段必须使FIN＝1。现假定B的序号为w（在半关闭状态B可能又发送了一些数据）。B还必须重复上次已发送过的确认号ack＝u＋1。这时B就进入LAST-ACK（最后确认）状态，等待A的确认。</li>
-<li>A在收到B的连接释放报文段后，必须对此发出确认。在确认报文段中把ACK置1，确认号ack＝w＋1，而自己的序号是seq＝u＋1（根据TCP标准，前面发送过的FIN报文段要消耗一个序号）。然后进入到TIME-WAIT（时间等待）状态。请注意，现在TCP连接还没有释放掉。必须经过时间等待计时器（TIME-WAITtimer）设置的时间2MSL后，A才进入到CLOSED状态。当A撤销相应的传输控制块TCB后，就结束了这次的TCP连接。</li>
-</ol>
-<p>总结：TCP的连接释放采用四报文握手机制。任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后就进入半关闭状态。当另一方也没有数据再发送时，则发送连接释放通知，对方确认后就完全关闭了TCP连接。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -1261,6 +1003,96 @@
 
 <p><strong>注释</strong></p>
 <p>LC415 字符串相加</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tsukiyokai.github.io/posts/ac4c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/haruna.png">
+      <meta itemprop="name" content="充电的猫猫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月夜海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/ac4c/" class="post-title-link" itemprop="url">LC88 合并两个有序数组</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-03 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-03T00:00:00+08:00">2021-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/" itemprop="url" rel="index"><span itemprop="name">小镇做题家</span></a>
+        </span>
+          →
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/ac4c/" class="post-meta-item leancloud_visitors" data-flag-title="LC88 合并两个有序数组" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个有序整数数组nums1和nums2，请你将nums2合并到nums1中，使nums1成为一个有序数组。<br>初始化nums1和nums2的元素数量分别为m和n。你可以假设nums1的空间大小等于m+n，这样它就有足够的空间保存来自nums2的元素。</p>
+<p>输入：nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3<br>输出：[1,2,2,3,5,6]</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, vector&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">trim</span>(nums1, m);</span><br><span class="line">        <span class="built_in">trim</span>(nums2, n);</span><br><span class="line">        <span class="keyword">while</span> (nums2.<span class="built_in">size</span>() != <span class="number">0</span>) &#123;</span><br><span class="line">            nums1.<span class="built_in">push_back</span>(*nums2.<span class="built_in">begin</span>());</span><br><span class="line">            nums2.<span class="built_in">erase</span>(nums2.<span class="built_in">begin</span>());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(nums1.<span class="built_in">begin</span>(), nums1.<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">trim</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() &gt; m) nums.<span class="built_in">erase</span>(nums.<span class="built_in">end</span>() - (nums.<span class="built_in">size</span>() - m), nums.<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong></p>
+<p>trim()用来修理掉所给数组右边的占位0</p>
 
       
     </div>
