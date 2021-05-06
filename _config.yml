@@ -37,7 +37,7 @@ future: true
 highlight:
   enable: true
   line_number: false
-  auto_detect: false
+  auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: true
@@ -62,7 +62,7 @@ pagination_dir: page
 include: null
 exclude: null
 ignore: null
-theme: next
+theme: paper
 math:
   engine: mathjax
   mathjax:
