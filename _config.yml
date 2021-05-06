@@ -64,10 +64,10 @@ exclude: null
 ignore: null
 theme: paper
 math:
-  engine: mathjax
+  engine: 'mathjax'
   mathjax:
-    src: >-
-      https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
+    enable: true
+    cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
 deploy:
   type: git
   repository: git@github.com:tsukiyokai/tsukiyokai.github.io.git

@@ -22,12 +22,12 @@ scripts_defer:
 
 social:
   Github: https://github.com/tsukiyokai
-  Mail: mailto:tsukiyokai@hotmail.com
+  电邮: mailto:tsukiyokai@hotmail.com
   # and more, you can add other link by the same way
 
 # Uncomment to disable sidebar
-# toc: false
-# link: false
+toc: false
+link: false
 # archives: false
 # categories: false
 # tags: false
