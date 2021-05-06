@@ -10,7 +10,7 @@ article.post-view__article .article__content h4,
 article.post-view__article .article__content h5,
 article.post-view__article .article__content h6,
 article.post-view__article .article__content p {
-  margin: 1em 0;
+  margin: 0.5em 0;
 }
 article.post-view__article .article__content small {
   font-size: 1rem;
