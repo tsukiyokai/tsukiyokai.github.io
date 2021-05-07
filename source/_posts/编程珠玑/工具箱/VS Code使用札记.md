@@ -1,5 +1,5 @@
 ---
-abbrlink: 3fe
+abbrlink: efbf
 title: VS Code正则札记
 categories:
   - 编程珠玑
@@ -44,6 +44,5 @@ $
 #### 选中含某个串的所有行
 
 ```tex
-^(.*)string(.*)\n
-string表示目标串
+^(.*)abbrlink(.*)\n
 ```

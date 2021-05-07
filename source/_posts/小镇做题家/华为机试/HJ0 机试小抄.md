@@ -3,7 +3,7 @@ title: HJ0 机试小抄
 categories:
   - 小镇做题家
   - 华为机试
-abbrlink: 69b5
+abbrlink: '3806'
 date: 2021-05-02 15:22:00
 ---
 
