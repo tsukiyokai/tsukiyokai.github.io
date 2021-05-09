@@ -1,5 +1,5 @@
 ---
-title: 编辑距离
+title: gfg-编辑距离
 abbrlink: ca4861d0
 categories:
   - 编程珠玑
@@ -10,12 +10,9 @@ date: 2021-05-05 18:09:39
 ---
 Given two strings str1 and str2 and below operations that can performed on str1. Find minimum number of edits (operations) required to convert str1 into str2.
 
-Insert
-Remove
-Replace
-All of the above operations are of equal cost.
+Insert\Remove\Replace. All of the above operations are of equal cost.
 
-递归解法
+#### 递归解法
 
 ```c++
 #include <bits/stdc++.h>
@@ -49,11 +46,9 @@ int main() {
     return 0;
 }
 ```
-注意：下面这个里面的1表示什么意思？
-return 1 + min(editDist...
-1本来是在min里面的，为了代码整洁才提到了外面。要清楚，“1”是已经确定的1种方式。
+这个里面的1表示什么意思？return 1 + min(editDist...1本来是在min里面的，为了代码整洁才提到了外面。要清楚，“1”是已经确定的1种方式。
 
-下面写一下DP解法的空间未优化版本的代码
+#### DP解法
 
 ```c++
 #include <bits/stdc++.h>
@@ -66,7 +61,6 @@ int editDist(string str1, string str2) {
     int n = str2.length();
     vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
 
-    // 自底向上，填充dp[][]
     for (int i = 0; i <= m; i++) {
         for (int j = 0; j <= n; j++) {
             if (i == 0)

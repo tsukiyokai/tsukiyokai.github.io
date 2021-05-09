@@ -1,5 +1,5 @@
 ---
-title: 图的广度优先遍历
+title: gfg-图的广度优先遍历
 abbrlink: 3acb628c
 categories:
   - 编程珠玑
@@ -8,13 +8,12 @@ tags:
   - 图
 date: 2021-05-02 15:14:05
 ---
-图的BFS其实就是树的层序遍历，但是要加个访问标记位，因为图可能有环，而树一定没有环，标记位可以避免再次访问已经访问过的顶点。
+图的BFS和树的层序遍历差不多，但是要加个访问标记位，因为图可能有环，而树一定没有环，标记位可以避免再次访问已经访问过的顶点。
 
 ```c++
 #include<iostream>
 #include<vector>
 #include<queue>
-
 using namespace std;
 
 class Graph {
@@ -32,31 +31,22 @@ Graph::Graph(int V) {
 }
 
 void Graph::addEdge(int v, int w) {
-    adj[v].push_back(w); // Add w to v’s queue.
+    adj[v].push_back(w);
 }
 
 void Graph::BFS(int s) {
-
-    // Mark all the vertices as not visited
     bool* visited = new bool[V];
     for (int i = 0; i < V; i++)
         visited[i] = false;
 
-    // Create a queue for BFS
     queue<int> queue;
-
-    // Mark the current node as visited and enqueue it
     visited[s] = true;
     queue.push(s);
 
     while (!queue.empty()) {
-
-        // Dequeue a vertex from queue and print it
         s = queue.front();
         cout << s << " ";
         queue.pop();
-
-        // 将没访问过的顶点入队（入队前修改访问标记）
         for (auto it = adj[s].begin(); it != adj[s].end(); ++it) {
             if (!visited[*it]) {
                 visited[*it] = true;
@@ -67,10 +57,7 @@ void Graph::BFS(int s) {
     cout << endl;
 }
 
-// Driver program to test methods of graph class
 int main() {
-
-    // Create a graph given in the above diagram
     Graph graph(4);
     graph.addEdge(0, 1);
     graph.addEdge(0, 2);
@@ -81,7 +68,6 @@ int main() {
 
     cout << "从顶点2开始的深度优先遍历如下：\n";
     graph.BFS(2);
-
     return 0;
 }
 ```

@@ -1,5 +1,5 @@
 ---
-title: 最长公共子序列
+title: 最长公共子序列 LCS
 abbrlink: dc6556d9
 categories:
   - 编程珠玑
