@@ -1,6 +1,6 @@
 ---
 title: 竞争编程中STL的图形实现（无向无权图）
-abbrlink: '827'
+abbrlink: 7904ec6b
 categories:
   - 编程珠玑
   - 数据结构

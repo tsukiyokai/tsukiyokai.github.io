@@ -3,7 +3,7 @@ title: HJ1 字符串最后一个单词的长度
 categories:
   - 小镇做题家
   - 华为机试
-abbrlink: '6e33'
+abbrlink: 3494f0ab
 tags:
   - 字符串
 date: 2021-05-01 00:59:49
@@ -24,7 +24,6 @@ int main() {
     while (getline(cin, s)) {
         cout << s.length() - s.find_last_of(" ") - 1 << endl;
     }
-
     return 0;
 }
 ```
@@ -37,17 +36,14 @@ int main() {
 #include<iostream>
 #include<string>
 #include<vector>
-
 using namespace std;
 
 int main() {
     string word;
     vector<string> vec;
-
     while (cin >> word) {
         vec.push_back(word);
     }
-
     cout << vec.back().size() << endl;
     return 0;
 }

@@ -1,6 +1,6 @@
 ---
 title: LC8 字符串转换整数(atoi)
-abbrlink: '9e31'
+abbrlink: 11334fc8
 categories:
   - 小镇做题家
   - LeetCode

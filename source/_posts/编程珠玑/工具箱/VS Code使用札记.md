@@ -1,11 +1,11 @@
 ---
-abbrlink: efbf
+abbrlink: bcc7a2a3
 title: VS Code正则札记
 categories:
   - 编程珠玑
   - 工具箱
 tags:
-  - 教程
+  - 正则表达式
 date: 2021-04-16 00:02:00
 ---
 

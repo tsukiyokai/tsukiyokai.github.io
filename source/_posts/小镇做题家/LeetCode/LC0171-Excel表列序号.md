@@ -1,6 +1,6 @@
 ---
 title: LC171 Excel表列序号
-abbrlink: '3407'
+abbrlink: 58bc01b9
 categories:
   - 小镇做题家
   - LeetCode

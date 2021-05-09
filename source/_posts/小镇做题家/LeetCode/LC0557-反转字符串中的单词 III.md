@@ -1,6 +1,6 @@
 ---
 title: LC557 反转字符串中的单词 III
-abbrlink: 813d
+abbrlink: f09e9031
 categories:
   - 小镇做题家
   - LeetCode

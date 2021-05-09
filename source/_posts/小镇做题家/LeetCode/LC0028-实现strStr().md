@@ -1,6 +1,6 @@
 ---
 title: LC28 实现strStr()
-abbrlink: 47ba
+abbrlink: 3613f304
 categories:
   - 小镇做题家
   - LeetCode

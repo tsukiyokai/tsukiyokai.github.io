@@ -3,7 +3,7 @@ title: HJ6 质数因子
 categories:
   - 小镇做题家
   - 华为机试
-abbrlink: f2b4
+abbrlink: '8e9984'
 tags:
   - 数学
 date: 2021-05-02 17:17:35

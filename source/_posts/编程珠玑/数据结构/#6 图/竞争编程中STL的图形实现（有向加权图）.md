@@ -1,6 +1,6 @@
 ---
 title: 竞争编程中STL的图形实现（有向加权图）
-abbrlink: dce4
+abbrlink: 1436d6ee
 categories:
   - 编程珠玑
   - 数据结构

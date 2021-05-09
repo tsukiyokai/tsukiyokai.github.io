@@ -3,7 +3,7 @@ title: HJ5 进制转换
 categories:
   - 小镇做题家
   - 华为机试
-abbrlink: dfb3
+abbrlink: 8635929c
 tags:
   - 字符串
   - 数学

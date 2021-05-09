@@ -3,7 +3,7 @@ title: LC292 Nim游戏
 categories:
   - 小镇做题家
   - LeetCode
-abbrlink: 43b2
+abbrlink: 9c301557
 tags: 找规律
 date: 2021-04-07 00:48:18
 ---

@@ -3,7 +3,7 @@ title: HJ56 iNOC产品部-完全数计数
 categories:
   - 小镇做题家
   - 华为机试
-abbrlink: e9b0
+abbrlink: 1d9cf0cc
 tags:
   - 字符串
 date: 2021-04-29 11:31:17

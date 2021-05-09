@@ -8,7 +8,7 @@ timezone: ''
 url: https://tsukiyokai.github.io/
 permalink: posts/:abbrlink/
 abbrlink:
-  alg: crc16
+  alg: crc32
   rep: hex
 permalink_defaults: null
 pretty_urls:

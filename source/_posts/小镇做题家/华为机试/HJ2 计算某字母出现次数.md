@@ -3,7 +3,7 @@ title: HJ2 计算某字母出现次数
 categories:
   - 小镇做题家
   - 华为机试
-abbrlink: '4834'
+abbrlink: c680c3f7
 tags:
   - 字符串
 date: 2021-05-01 02:38:43
