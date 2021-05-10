@@ -1,5 +1,5 @@
 ---
-title: 快速排序
+title: gfg-快速排序
 abbrlink: ff8068c0
 categories:
   - 编程珠玑
@@ -48,8 +48,8 @@ void quickSort(vector<int>& arr) {
 补充几个视频，曾经对我很有帮助
 
 C语言快速排序算法实现 - code_frank
-https://www.bilibili.com/video/BV13E411d75X
-45种常用算法的C++讲解
 https://www.bilibili.com/video/BV1nr4y1P7d6
+45种常用算法的C++讲解
+https://www.bilibili.com/video/BV13E411d75X
 快速排序算法 - 秒懂算法
 https://www.bilibili.com/video/BV1at411T75o

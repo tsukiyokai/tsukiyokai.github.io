@@ -1,5 +1,5 @@
 ---
-title: 面试最常问的20个DP问题
+title: gfg-面试最常问的20个DP问题
 abbrlink: 4377e4d4
 categories:
   - 编程珠玑

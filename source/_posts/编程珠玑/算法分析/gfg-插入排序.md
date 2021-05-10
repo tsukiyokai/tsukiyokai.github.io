@@ -1,5 +1,5 @@
 ---
-title: 插入排序
+title: gfg-插入排序
 abbrlink: 96555fb2
 categories:
   - 编程珠玑

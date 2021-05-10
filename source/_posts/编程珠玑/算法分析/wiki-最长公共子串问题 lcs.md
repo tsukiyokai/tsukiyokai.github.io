@@ -1,5 +1,5 @@
 ---
-title: WIKI-最长公共子串问题 lcs
+title: wiki-最长公共子串问题 lcs
 abbrlink: ec4d36e9
 categories:
   - 编程珠玑

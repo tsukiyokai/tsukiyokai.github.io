@@ -1,5 +1,5 @@
 ---
-title: 动态规划中的重叠子问题和最优子结构
+title: gfg-动态规划中的重叠子问题和最优子结构
 abbrlink: b329f463
 categories:
   - 编程珠玑

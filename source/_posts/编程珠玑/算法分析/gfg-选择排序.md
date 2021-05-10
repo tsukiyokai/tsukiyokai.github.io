@@ -1,5 +1,5 @@
 ---
-title: 选择排序
+title: gfg-选择排序
 abbrlink: 43d00a99
 categories:
   - 编程珠玑

@@ -1,5 +1,5 @@
 ---
-title: 冒泡排序
+title: gfg-冒泡排序
 abbrlink: 14e6f1eb
 categories:
   - 编程珠玑
