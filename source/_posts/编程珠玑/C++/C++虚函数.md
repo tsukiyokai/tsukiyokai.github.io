@@ -9,12 +9,12 @@ tags:
 date: 2021-04-27 20:35:11
 ---
 虚函数是运行时多态，不是编译时多态，编译时多态是函数重载和运算符重载。
-在继承机制中规定：基类指针可以指向派生类对象。
-一句话，把男女老少当人，把金毛泰迪当狗。
-虚函数这里，需要注意的是使用基类指针调用派生类函数的情况。
-其思想是，根据指向或引用的对象实例的类型调用来虚函数，而不是根据指针或引用的类型。
 
-先举一个没用到虚函数的例子
+继承机制中规定：基类指针可以指向派生类对象。一句话，把男女老少当人，把金毛泰迪当狗。
+
+虚函数这里需要注意的是使用基类指针调用派生类函数的情况。其思想是，根据指向或引用的对象实例的类型调用来虚函数，而非根据指针或引用的类型。
+
+先举个没用到虚函数的例子：
 
 ```c++
 #include <iostream>
@@ -50,9 +50,9 @@ int main(void) {
     Rectangle rec(4, 5);
 
     s = &sq;
-    s->get_Area();//调用基类Shape的求面积函数
+    s->get_Area(); // 调用基类Shape的求面积函数
     s = &rec;
-    s->get_Area();//调用基类Shape的求面积函数
+    s->get_Area(); // 调用基类Shape的求面积函数
 
     return 0;
 }
@@ -258,13 +258,11 @@ int main() {
 
 ## C++中的静态函数是否可以是虚拟的？
 
-不能
-C++中，类的静态成员函数不能是虚函数，也不能为const和volatile。
+不能。C++中，类的静态成员函数不能是虚函数，也不能为const和volatile。
 以下举个反例：
 
 ```c++
 #include<iostream>
-
 using namespace std;
 
 class Test {
@@ -286,9 +284,7 @@ public:
 分析下面一段代码
 
 ```c++
-// CPP program without virtual destructor causing undefined behavior
 #include<iostream>
-
 using namespace std;
 
 class base {
@@ -319,12 +315,9 @@ Destructing base
 请按任意键继续. . .
 ```
 
-可以发现，派生类的析构函数没有被正确调用。基类指针b没有调用派生类析构函数。
-
-为了解决这个问题，应该让基类析构函数为虚，这样可以保证派生类的对象被正确地析构。即基类和派生类的析构函数都被调用。
+可以发现，派生类的析构函数没有被正确调用。基类指针b没有调用派生类析构函数。为了解决这个问题，应该让基类析构函数为虚，这样可以保证派生类的对象被正确地析构。即基类和派生类的析构函数都被调用。
 
 ```c++
-// A program with virtual destructor
 #include<iostream>
 using namespace std;
 
@@ -363,8 +356,7 @@ Destructing base
 ## 虚构造函数
 
 我们可以在C++中使类构造函数虚拟化以创建多态对象吗？
-不可以。
-C++是静态类型的（RTTI的目的有所不同）语言，对于C++编译器来说，创建多态对象是没有意义的。编译器必须知道创建对象的类类型。换句话说，从C++编译器的角度来看，要创建哪种类型的对象是编译时的决定。如果我们将构造函数设为虚拟，则编译器会标记错误。实际上，除内联函数外，构造函数的声明中不允许使用其他关键字。
+不可以。C++是静态类型的（RTTI的目的有所不同）语言，对于C++编译器来说，创建多态对象是没有意义的。编译器必须知道创建对象的类类型。换句话说，从C++编译器的角度来看，要创建哪种类型的对象是编译时的决定。如果我们将构造函数设为虚拟，则编译器会标记错误。实际上，除内联函数外，构造函数的声明中不允许使用其他关键字。
 在实际场景中，我们需要基于一些输入在类层次结构中创建派生类对象。换言之，对象创建和对象类型紧密耦合，这迫使修改扩展。虚拟构造函数的目的是使对象创建与其类型脱钩。
 
 我们如何在运行时创建所需的对象类型？请参见下面的示例程序。
@@ -423,13 +415,9 @@ int main() {
 C++中的纯虚函数（或抽象函数）是一个虚拟函数，我们可以实现它，但是必须在派生类中重写该函数，否则，派生类也将成为抽象类（有关我们在何处为此类函数提供实现的更多信息，请参阅https://stackoverflow.com/questions/2089083/pure-virtual-function-with-implementation). 纯虚函数是通过在声明中赋值0来声明的。请参见下面的示例。
 
 ```c++
-// An abstract class
 class Test {
-    // Data members of class
 public:
-    // Pure Virtual Function
     virtual void show() = 0;
-    /* Other members */
 };
 ```
 一个完整的例子： 
@@ -446,7 +434,6 @@ public:
     int getX() { return x; }
 };
 
-// This class inherits from Base and implements fun()
 class Derived : public Base {
     int y;
 public:
