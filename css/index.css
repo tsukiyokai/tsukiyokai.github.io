@@ -85,20 +85,19 @@ article.post-view__article .article__content code.hljs {
   line-height: 2.2rem;
   width: 100%;
   max-width: 80rem;
-  padding: 0.5em 1em;
+  padding: 1em 1em;
   margin: 1em 0;
 }
 article.post-view__article .article__content table code.hljs {
   margin: 0;
 }
 article.post-view__article .article__content code:not(.hljs) {
-  font-size: 1.4rem;
-  line-height: 2.2rem;
+  font-size: 1rem;
   color: #333;
   font-weight: bold;
   border: 1px solid #6ba8a9;
   background: #fff;
-  box-shadow: 0.2em 0.2em 0 0 #6ba8a9;
+  box-shadow: 0.1em 0.1em 0 0 #6ba8a9;
   padding: 0.1em 0.4em;
   margin: 0 0.4em;
   vertical-align: bottom;
