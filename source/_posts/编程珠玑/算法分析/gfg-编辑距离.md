@@ -10,9 +10,13 @@ date: 2021-05-05 18:09:39
 ---
 Given two strings str1 and str2 and below operations that can performed on str1. Find minimum number of edits (operations) required to convert str1 into str2.
 
-Insert\Remove\Replace. All of the above operations are of equal cost.
+1. Insert
+2. Remove
+3. Replace
 
-#### 递归解法
+All of the above operations are of equal cost.
+
+## 递归解法
 
 ```c++
 #include <bits/stdc++.h>
@@ -28,7 +32,7 @@ int editDist(string str1, string str2) {
 
     if (str1[m - 1] == str2[n - 1])
         return editDist(str1.substr(0, m - 1),
-            str2.substr(0, n - 1));
+                        str2.substr(0, n - 1));
 
     return 1 +
         min(editDist(str1, str2.substr(0, n - 1)),
@@ -46,9 +50,9 @@ int main() {
     return 0;
 }
 ```
-这个里面的1表示什么意思？return 1 + min(editDist...1本来是在min里面的，为了代码整洁才提到了外面。要清楚，“1”是已经确定的1种方式。
+`1+min(editDist`里的1表示什么意思？它表示已经确定的1种方式。
 
-#### DP解法
+## DP解法
 
 ```c++
 #include <bits/stdc++.h>

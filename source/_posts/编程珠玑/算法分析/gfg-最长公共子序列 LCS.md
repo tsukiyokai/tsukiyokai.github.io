@@ -11,28 +11,28 @@ date: 2021-05-05 14:34:28
 
 The longest common subsequence (LCS) problem is the problem of finding the longest subsequence common to all sequences in a set of sequences (often just two sequences).
 
-示例
-
 序列ABCDGH和AEDFHR的LCS是长度为3的ADH。
 序列AGGTAB和GXTXAYB的LCS是长度为4的GTAB。
 
-这个题的朴素解法是暴力穷举出所有子序列后再进行判断，具有指数级时间复杂度。本文主要考虑DP解法。
+这个题的朴素解法是暴力穷举出所有子序列后再进行判断，具有指数级时间复杂度。本文主要考虑DP解法，因此需要从递归开始思考。
 
-假设输入序列分别为长度为m和n的X[0..m-1]和Y[0..n-1]。设L(X[0..m-1],Y[0..n-1])是两个序列X和Y的LCS的长度。以下是L(X[0..m-1],Y[0..n-1])的递归定义：
+假设输入序列分别为长度为m和n的`X[0..m-1]`和`Y[0..n-1]`。设`L(X[0..m-1],Y[0..n-1])`是两个序列X和Y的LCS的长度。以下是`L(X[0..m-1],Y[0..n-1])`的递归定义：
 
-若两个序列的最后一个字符匹配(X[m-1]==Y[n-1])，则：L(X[0..m-1],Y[0..n-1])=1+L(X[0..m-2],Y[0..n-2])
+若两个序列的最后一个字符匹配(X[m-1]==Y[n-1])，则：
+`L(X[0..m-1],Y[0..n-1])=1+L(X[0..m-2],Y[0..n-2])`
 
-若两个序列的最后一个字符不匹配(X[m-1]!=Y[n-1])，则：L(X[0..m-1],Y[0..n-1])=MAX(L(X[0..m-2],Y[0..n-1]),L(X[0..m-1],Y[0..n-2]))
+若两个序列的最后一个字符不匹配(X[m-1]!=Y[n-1])，则：
+`L(X[0..m-1],Y[0..n-1])=MAX(L(X[0..m-2],Y[0..n-1]),L(X[0..m-1],Y[0..n-2]))`
 
-示例：
+举例说明：
 
-考虑输入字符串“AGGTAB”和“GXTXAYB”。最后一个字符与字符串匹配。因此，LCS的长度可以写为：L(“AGGTAB”,“GXTXAYB”)=1+L(“AGGTA”,“GXTXAY”)
+考虑输入字符串“AGGTAB”和“GXTXAYB”。最后一个字符与字符串匹配。因此，LCS的长度可以写为：`L(“AGGTAB”,“GXTXAYB”)=1+L(“AGGTA”,“GXTXAY”)`
 
-考虑输入字符串“ABCDGH”和“AEDFHR”。字符串的最后字符不匹配。因此，LCS的长度可以写为：L(“ABCDGH”,“AEDFHR”)=MAX(L(“ABCDG”,“AEDFHR”),L(“ABCDGH”,“AEDFHR”))
+考虑输入字符串“ABCDGH”和“AEDFHR”。字符串的最后字符不匹配。因此，LCS的长度可以写为：`L(“ABCDGH”,“AEDFHR”)=MAX(L(“ABCDG”,“AEDFHR”),L(“ABCDGH”,“AEDFHR”))`
 
 以下是LCS问题的简单递归实现。该实现仅遵循上述的朴素递归结构。
 
-递归解法
+## 递归解法
 
 ```c++
 #include <bits/stdc++.h>
@@ -60,9 +60,7 @@ int main() {
 }
 ```
 
-最坏情况下，上述朴素递归方法的时间复杂度为O(2^n)，最坏情况发生在X和Y的所有字符不匹配时，即LCS的长度为0。
-
-考虑到以上实现，下面是输入字符串“AXYT”和“AYZX”的部分递归树。
+最坏情况下，上述朴素递归方法的时间复杂度为O(2^n)，最坏情况发生在X和Y的所有字符不匹配时，即LCS的长度为0。考虑到以上实现，下面是输入字符串“AXYT”和“AYZX”的部分递归树。
 
 ```
                          lcs("AXYT", "AYZX")
@@ -72,9 +70,9 @@ int main() {
 lcs("AX", "AYZX") lcs("AXY", "AYZ")   ...
 ```
 
-在上面的部分递归树中，lcs(“AXY”,“AYZ”)被求解两次。如果我们绘制完整的递归树，则可以看到有很多子问题可以一次又一次地解决。因此，此问题具有“重叠子结构”属性，可以通过使用“记忆化”或“制表”来避免相同子问题的重新计算。以下是LCS问题的制表（自下而上）实现。
+在上面的部分递归树中，lcs(“AXY”,“AYZ”)被求解两次。如果我们绘制完整的递归树，则可以看到有很多子问题可以一次又一次地解决。因此，此问题具有“重叠子结构”属性，可以通过使用“记忆化”或“制表”来避免相同子问题的重新计算。以下是LCS问题的制表法实现。
 
-DP解法（自底向上，无优化）
+## DP解法
 
 ```c++
 #include <bits/stdc++.h>
@@ -106,60 +104,5 @@ int main() {
 ```
 
 Note that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1].
-注意，L[i][j]并不是指某两个具体子序列的LCS长度，而是某两种子序列的LCS长度，一定要理解透彻。/上面一行说的不对，改正一下。Lij就是某两个具体子序列的LCS长度。/再改正一下，L[i][j]指的是X[0..i-1] and Y[0..j-1]这两个子串的最长公共子序列长度。再次区分一下子串和子序列的区别。
 
 上述实现的时间复杂度为O(m*n)，这比朴素递归实现的最坏情况下的时间复杂度要好得多。
-
-上面的代码仅返回LCS的长度。以下是打印LCS的详细算法。它使用相同的2D表L[][]。
-
-1. 使用先前文章中讨论的步骤构造L[m+1][n+1]。
-2. 值L[m][n]包含LCS的长度。创建一个字符数组lcs[]，其长度等于lcs的长度加1（一个额外的字符用于存储\0）。
-3. 从L[m][n]开始遍历二维数组。对每个单元格L[i][j]执行下列操作：
-    1. 如果与L[i][j]对应的字符（在X和Y中）相同（X[i-1]==Y[j-1]），则将此字符作为LCS的一部分。
-    2. 否则比较L[i-1][j]和L[i][j-1]的值并朝更大的值的方向前进。
-
-打印LCS的DP解法：自底向上，无优化
-
-```c++
-#include <bits/stdc++.h>
-using namespace std;
-
-string lcs(string X, string Y) {
-    int m = X.length();
-    int n = Y.length();
-    vector<vector<int>> L(m + 1, vector<int>(n + 1, 0));
-    for (int i = 0; i <= m; i++) {
-        for (int j = 0; j <= n; j++) {
-            if (i == 0 || j == 0)
-                L[i][j] = 0;
-            else if (X[i - 1] == Y[j - 1])
-                L[i][j] = L[i - 1][j - 1] + 1;
-            else
-                L[i][j] = max(L[i - 1][j], L[i][j - 1]);
-        }
-    }
-
-    int index = L[m][n];
-    string res(index, '_');
-    int i = m, j = n;
-    while (i > 0 && j > 0) {
-        if (X[i - 1] == Y[j - 1]) {
-            res[index - 1] = X[i - 1];
-            i--; j--; index--;
-        }
-        else L[i - 1][j] > L[i][j - 1] ? i-- : j--;
-    }
-    return res;
-}
-
-int main() {
-    string X = "AGGTAB";
-    string Y = "GXTXAYB";
-    cout << "Length of LCS is " << lcs(X, Y);
-    return 0;
-}
-```
-
-动态规划的算法可以把空间复杂度从m*n降到n，在上述简单实现中的一个重要观察是，在外循环的每次迭代中，我们只需要来自前一行的所有列的值。因此不需要存储DP矩阵中的所有行，我们可以一次存储两行并使用它们，这样使用的空间将从L[m+1][n+1]减少到L[2][n+1]。下面的链接是具体的实现方式。https://www.geeksforgeeks.org/space-optimized-solution-lcs/
-
-另外注意一下，具有最大长度的LCS可能不唯一，但本文的DP算法只能找到其中一种情况。

@@ -1,5 +1,5 @@
 ---
-title: gfg-排序代码小汇总（冒泡 插入 选择 快速）
+title: gfg-排序代码汇总(冒泡 插入 选择 快速)
 abbrlink: db86f573
 categories:
   - 编程珠玑
