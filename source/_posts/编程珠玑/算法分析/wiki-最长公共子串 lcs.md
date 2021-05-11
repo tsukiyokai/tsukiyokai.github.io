@@ -1,6 +1,6 @@
 ---
 title: wiki-最长公共子串 lcs
-abbrlink: ec4d36e9
+abbrlink: 104c52bc
 categories:
   - 编程珠玑
   - 算法分析

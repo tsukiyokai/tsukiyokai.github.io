@@ -1,6 +1,6 @@
 ---
 title: gfg-快速排序
-abbrlink: ff8068c0
+abbrlink: d1d00f7b
 categories:
   - 编程珠玑
   - 算法分析

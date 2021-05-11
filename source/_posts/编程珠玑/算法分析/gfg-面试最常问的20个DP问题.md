@@ -1,6 +1,6 @@
 ---
 title: gfg-面试最常问的20个DP问题
-abbrlink: 4377e4d4
+abbrlink: 3d1859dd
 categories:
   - 编程珠玑
   - 算法分析

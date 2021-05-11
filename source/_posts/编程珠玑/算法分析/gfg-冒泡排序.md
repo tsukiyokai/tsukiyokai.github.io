@@ -1,6 +1,6 @@
 ---
 title: gfg-冒泡排序
-abbrlink: 14e6f1eb
+abbrlink: 3ab69650
 categories:
   - 编程珠玑
   - 算法分析

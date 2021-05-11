@@ -1,6 +1,6 @@
 ---
 title: gfg-动态规划中的重叠子问题和最优子结构
-abbrlink: b329f463
+abbrlink: e74d463b
 categories:
   - 编程珠玑
   - 算法分析

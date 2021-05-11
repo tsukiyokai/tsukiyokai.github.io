@@ -1,6 +1,6 @@
 ---
 title: gfg-插入排序
-abbrlink: 96555fb2
+abbrlink: b8053809
 categories:
   - 编程珠玑
   - 算法分析

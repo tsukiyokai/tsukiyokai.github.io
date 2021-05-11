@@ -1,6 +1,6 @@
 ---
 title: gfg-排序代码汇总(冒泡 插入 选择 快速)
-abbrlink: db86f573
+abbrlink: 29a11833
 categories:
   - 编程珠玑
   - 算法分析

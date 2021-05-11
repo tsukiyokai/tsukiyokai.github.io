@@ -1,6 +1,6 @@
 ---
 title: gfg-图的广度优先遍历
-abbrlink: 3acb628c
+abbrlink: b57fc3a4
 categories:
   - 编程珠玑
   - 数据结构

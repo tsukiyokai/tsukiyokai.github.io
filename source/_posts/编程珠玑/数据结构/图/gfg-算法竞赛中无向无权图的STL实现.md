@@ -1,6 +1,6 @@
 ---
 title: gfg-算法竞赛中无向无权图的STL实现
-abbrlink: 7904ec6b
+abbrlink: 9c1f087d
 categories:
   - 编程珠玑
   - 数据结构

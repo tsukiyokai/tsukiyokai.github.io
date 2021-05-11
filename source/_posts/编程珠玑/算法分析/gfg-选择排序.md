@@ -1,6 +1,6 @@
 ---
 title: gfg-选择排序
-abbrlink: 43d00a99
+abbrlink: 6d806d22
 categories:
   - 编程珠玑
   - 算法分析

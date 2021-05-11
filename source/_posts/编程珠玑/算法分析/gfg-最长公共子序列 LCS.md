@@ -1,6 +1,6 @@
 ---
 title: gfg-最长公共子序列 LCS
-abbrlink: dc6556d9
+abbrlink: 4078a159
 categories:
   - 编程珠玑
   - 算法分析

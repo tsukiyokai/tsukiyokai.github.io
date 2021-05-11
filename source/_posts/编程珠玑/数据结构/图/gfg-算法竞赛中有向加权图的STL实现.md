@@ -1,6 +1,6 @@
 ---
 title: gfg-算法竞赛中有向加权图的STL实现
-abbrlink: 1436d6ee
+abbrlink: 2f46aa37
 categories:
   - 编程珠玑
   - 数据结构
