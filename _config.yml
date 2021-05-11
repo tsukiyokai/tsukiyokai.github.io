@@ -1,6 +1,6 @@
 title: 月夜海
-subtitle: Einmal ist keinmal.
-description: ''
+subtitle:
+description: Einmal ist keinmal.
 keywords: null
 author: 充电的猫猫
 language: zh-CN
@@ -37,7 +37,7 @@ future: true
 highlight:
   enable: true
   line_number: false
-  auto_detect: true
+  auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: true
@@ -67,7 +67,7 @@ math:
   engine: 'mathjax'
   mathjax:
     enable: true
-    cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
+    cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js
 deploy:
   type: git
   repository: git@github.com:tsukiyokai/tsukiyokai.github.io.git

@@ -25,7 +25,7 @@ date: 2021-04-28 22:51:14
 ForwardIterator1 find_first_of(ForwardIterator1 first1,
                                ForwardIterator1 last1,
                                ForwardIterator2 first2, 
-                               ForwardIterator2 last2 );
+                               ForwardIterator2 last2);
 
 first1: 一个正向迭代器，指向第一个范围里的第一个元素。
 last1: 一个正向迭代器，指向第一个范围里的最后一个元素。
@@ -44,11 +44,9 @@ int main() {
     vector<int>v = { 1, 3, 3, 3, 10, 1, 3, 3, 7, 7, 8 }, i;
     vector<int>v1 = { 1, 3, 10 };
     vector<int>::iterator ip;
-    ip = std::find_first_of(v.begin(), v.end(),
-                            v1.begin(), v1.end());
+    ip = std::find_first_of(v.begin(), v.end(), v1.begin(), v1.end());
     cout << *ip << "\n"; // 1
-    ip = std::find_first_of(ip + 1, v.end(),
-                            v1.begin(), v1.end());
+    ip = std::find_first_of(ip + 1, v.end(), v1.begin(), v1.end());
     cout << *ip << "\n"; // 3
 
     return 0;
@@ -98,9 +96,7 @@ int main() {
     vector<int>::iterator ip;
 
     // Using std::find_first_of
-    ip = std::find_first_of(v.begin(), v.end(),
-                            v1.begin(), v1.end(),
-                            Pred);
+    ip = std::find_first_of(v.begin(), v.end(), v1.begin(), v1.end(), Pred);
 
     // 显示首个满足Pred()要求的元素
     cout << *ip << "\n";
@@ -109,10 +105,7 @@ int main() {
 }
 ```
 
-pred函数返回布尔类型，它希望a是b的整数倍。
-a代表第一个容器里的数据，b代表第二个容器里的数据。
-这个程序返回指向v1中第一个满足是v2中任一元素整数倍的元素的迭代器。
-在此例中，程序输出15，因为15是第一个v1中元素之一（3）的倍数，而1、5、7、11、13均不是v2中哪个元素的整数倍。
+pred函数返回布尔类型，它希望a是b的整数倍。a代表第一个容器里的数据，b代表第二个容器里的数据。这个程序返回指向v1中第一个满足是v2中任一元素整数倍的元素的迭代器。在此例中，程序输出15，因为15是第一个v1中元素之一（3）的倍数，而1、5、7、11、13均不是v2中哪个元素的整数倍。
 
 这两个基本用法可以延伸出一些实际应用：
 
@@ -132,12 +125,9 @@ int main() {
     string s1 = "You are reading about std::find_first_of";
     string s2 = {'a','A','e','E','i','I','o','O','u','U'};
 
-    auto ip = std::find_first_of(s1.begin(), s1.end(),
-                                 s2.begin(), s2.end());
+    auto ip = std::find_first_of(s1.begin(), s1.end(), s2.begin(), s2.end());
 
-    // 显示搜索到的第一个元音字母
-    cout << "First vowel found at index "
-         << (ip - s1.begin()) << endl;
+    cout << "First vowel found at index " << (ip - s1.begin()) << endl;
     return 0;
 }
 ```
@@ -150,12 +140,12 @@ int main() {
 using namespace std;
 
 bool pred(int a, int b) {
-    if (a % b != 0) return 1; // 找到奇数为真
+    if (a % b != 0) return 1;
     else return 0;
 }
 
 bool pred1(int a, int b) {
-    if (a % b == 0) return 1; // 找到偶数为真
+    if (a % b == 0) return 1;
     else return 0;
 }
 
@@ -164,19 +154,13 @@ int main() {
     vector<int>v2 = { 2 };
 
     vector<int>::iterator ip;
-    ip = std::find_first_of(v1.begin(), v1.end(),
-                            v2.begin(), v2.end(),
-                            pred);
+    ip = std::find_first_of(v1.begin(), v1.end(), v2.begin(), v2.end(), pred);
 
-    cout << "First odd occurs at index "
-         << (ip - v1.begin()) << endl;
+    cout << "First odd occurs at index " << (ip - v1.begin()) << endl;
 
-    ip = std::find_first_of(v1.begin(), v1.end(),
-                            v2.begin(), v2.end(),
-                            pred1);
+    ip = std::find_first_of(v1.begin(), v1.end(), v2.begin(), v2.end(), pred1);
 
-    cout << "First even occurs at index "
-         << (ip - v1.begin()) << endl;
+    cout << "First even occurs at index " << (ip - v1.begin()) << endl;
 
     return 0;
 }

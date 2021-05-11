@@ -12,11 +12,11 @@ stylesheets:
 
 stylesheets_preload:
 - https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha0/styles/stackoverflow-dark.min.css
-- https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap # for font
+- https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap # for font
 
 # scripts loaded in the end of the body
 scripts_defer:
-- https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js # for highlight
+- https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha0/highlight.min.js # for highlight
 - /js/paper.js # for basic script
 
 
