@@ -14,7 +14,7 @@ date: 2021-04-17 14:54:52
 
 一个存储着数据但处于未运行状态的程序（它可以被编译过，但没有执行，注意编译和运行的差别），其存储结构分为三个部分：
 
-```
+```tex
 3: Uninitialized data segment (BSS)
 2: Initialized data segment (Data)
 1: Text segment (Text)
@@ -25,7 +25,7 @@ date: 2021-04-17 14:54:52
 一个正在运行着的C编译程序占用的内存可以分为5个部分：
 注：从下到上，1为低地址，5为高地址。
 
-```
+```tex
 5: Stack (Stack) ↓
 4: Heap (Heap) ↑
 3: Uninitialized data segment (BSS)
