@@ -28,9 +28,8 @@ gtag('config', 'xx-xxxxxxx-xx');</script><link rel="stylesheet" href="/css/tocbo
     orderedList: false,
     collapseDepth: 2,
   });
-})</script><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">月夜海</a></h1><p></p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">深入理解二级指针</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">深入理解二级指针</a></h2><span class="post__date">2021-02-07</span><a href="/tags/%E5%BA%95%E5%B1%82%E6%8A%80%E6%9C%AF/"><span class="post__tags">#底层技术</span></a><a href="/tags/%E6%8C%87%E9%92%88/"><span class="post__tags">#指针</span></a></div></div><div class="article__content"><h2 id="二级指针概念"><a href="#二级指针概念" class="headerlink" title="二级指针概念"></a>二级指针概念</h2><p>一级指针存储变量的地址，二级指针存储一级指针的地址。当我们想通过函数改变某个变量的值时，我们向函数传递指向该变量的指针；而如果我们想改变一个指针的值（例如改变指针的指向），此时我们传递指向该指针的指针，即二级指针。</p>
-<p>总体应上把握住一个原则：将指针作为函数参数时，看是为了修改指针指向的值，还是为了修改指针本身。前者传入一级指针，后者传入二级指针。指针本身也是一种变量，它也有相应的地址，对指针取地址就得到了指针这个对象的地址。</p>
-<p>下面以具体代码来解释各级指针的含义。</p>
+})</script><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">月夜海</a></h1><p></p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">深入理解二级指针</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">深入理解二级指针</a></h2><span class="post__date">2021-02-07</span><a href="/tags/%E5%BA%95%E5%B1%82%E6%8A%80%E6%9C%AF/"><span class="post__tags">#底层技术</span></a><a href="/tags/%E6%8C%87%E9%92%88/"><span class="post__tags">#指针</span></a></div></div><div class="article__content"><h2 id="二级指针概念"><a href="#二级指针概念" class="headerlink" title="二级指针概念"></a>二级指针概念</h2><p>一级指针存储变量的地址，二级指针存储一级指针的地址。当我们想通过函数改变某个变量的值时，我们向函数传递指向该变量的指针；而如果我们想改变一个指针的值，例如改变指针的指向，此时我们传递指向该指针的指针，即二级指针。</p>
+<p>总体上应把握住这样一个原则：将指针作为函数参数时，看是为了修改指针指向的值，还是为了修改指针本身。前者传入一级指针，后者传入二级指针。因为指针本身也是一种变量，它也有相应的地址，对指针取地址就得到了指针这个对象的地址。下面以具体代码来解释各级指针的含义。</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">int</span>* p = &amp;a;<br>    <span class="hljs-keyword">int</span>** q = &amp;p;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a   = %d\n&quot;</span>, a);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&amp;a  = %p\n&quot;</span>, &amp;a);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p   = %p\n&quot;</span>, p);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&amp;p  = %p\n&quot;</span>, &amp;p);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*p  = %d\n&quot;</span>, *p);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;q   = %p\n&quot;</span>, q);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&amp;q  = %p\n&quot;</span>, &amp;q);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*q  = %p\n&quot;</span>, *q);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;**q = %d\n&quot;</span>, **q);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <div class="table-container">
 <table>
@@ -42,60 +41,57 @@ gtag('config', 'xx-xxxxxxx-xx');</script><link rel="stylesheet" href="/css/tocbo
 </thead>
 <tbody>
 <tr>
-<td>int a = 10;</td>
-<td>a的类型为int，值为10。</td>
+<td>int a= 10</td>
+<td>a的类型为int，值为10</td>
 </tr>
 <tr>
-<td>int* p = &a;</td>
-<td>p的类型为int*，值为a的地址。</td>
+<td>int* p= &amp;a</td>
+<td>p的类型为指向int的指针，值为a的地址</td>
 </tr>
 <tr>
-<td>int** q = &p;</td>
-<td>q的类型为int**，值为p的地址。</td>
+<td>int** q= &amp;p</td>
+<td>q的类型为指向指向int的指针的指针，值为p的地址</td>
 </tr>
 <tr>
 <td>a</td>
-<td>a的内容。</td>
+<td>a的内容</td>
 </tr>
 <tr>
 <td>&amp;a</td>
-<td>a的地址。</td>
+<td>a的地址</td>
 </tr>
 <tr>
 <td>p</td>
-<td>p的内容，即a的地址。</td>
+<td>p的内容，即a的地址</td>
 </tr>
 <tr>
 <td>&amp;p</td>
-<td>p的地址。</td>
+<td>p的地址</td>
 </tr>
 <tr>
 <td>*p</td>
-<td>p解引用，相当于a先取地址再解引用，即a。</td>
+<td>p解引用，相当于a先取地址再解引用，即a</td>
 </tr>
 <tr>
 <td>q</td>
-<td>q的内容，即p的地址。</td>
+<td>q的内容，即p的地址</td>
 </tr>
 <tr>
 <td>&amp;q</td>
-<td>q的地址。</td>
+<td>q的地址</td>
 </tr>
 <tr>
 <td>*q</td>
-<td>q解引用，相当于p先取地址再解引用，即p，即a的地址。</td>
+<td>q解引用，即p先取地址再解引用，即p，即a的地址</td>
 </tr>
 <tr>
 <td>**q</td>
-<td>q解引用两次，相当于p先取地址再解引用再解引用，即p解引用，即a先取地址再解引用，即a。</td>
+<td>q解引用两次，即a先取地址再解引用，即a</td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>可见，二级指针也是指针，用指针的思想来理解这个问题就好，区别只是在于一级指针是由于存放普通变量的地址的，二级指针是由于存放指针变量的地址的。另外需要注意的就是C语言在进行函数调用时，实参的传递采用的是实参值的一份拷贝。如果要在函数内部改变变量的值，就要传入指针，如果要在函数内部改变指针的值，就需要传入二级指针。</p>
-<h2 id="二级指针应用"><a href="#二级指针应用" class="headerlink" title="二级指针应用"></a>二级指针应用</h2><ol>
-<li>作为函数参数。在函数外部定义一个指针p，在函数内给指针赋值，函数结束后对指针p生效，此时需要二级指针。</li>
-<li>各种链表操作。链表操作可能会改变头指针的实际指向。简单来说，修改头指针则必须传递头指针的地址，否只修改指针指向的对象，则传递头指针即可。这与普通变量类似，当需要修改普通变量的值，需传递该普通变量的地址，否则传递这个变量的拷贝。使用二级指针，很方便就修改了传入的结点一级指针的值。 如果用一级指针，则只能通过指针修改指针所指内容，却无法修改指针的值，也就是指针所指的内存块。所以创建链表和销毁链表需要二级指针或者一级指针引用。</li>
-</ol>
+<h2 id="二级指针应用"><a href="#二级指针应用" class="headerlink" title="二级指针应用"></a>二级指针应用</h2><p>首先，二级指针作为函数参数。在函数外部定义一个指针p，在函数内给指针赋值，函数结束后对指针p生效，此时需要二级指针。其次，二级指针可用于各种链表操作。链表操作可能会改变头指针的实际指向。简单来说，修改头指针则必须传递头指针的地址，若只修改指针指向的对象，则传递头指针即可。这与普通变量类似，当需要修改普通变量的值，需传递该普通变量的地址，否则传递这个变量的拷贝。使用二级指针，很方便就修改了传入的结点一级指针的值。如果用一级指针，则只能通过指针修改指针所指内容，却无法修改指针的值，也就是指针所指的内存块。所以创建链表和销毁链表需要二级指针或者一级指针引用。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/how-to-write-functions-that-modify-the-head-pointer-of-a-linked-list">https://www.geeksforgeeks.org/how-to-write-functions-that-modify-the-head-pointer-of-a-linked-list</a><br><a target="_blank" rel="noopener" href="http://hczhcz.github.io/2015/11/19/double-pointers-in-linked-list-modification.html">http://hczhcz.github.io/2015/11/19/double-pointers-in-linked-list-modification.html</a></p>
 </div></article><div class="post-view__sidebar"><div class="sidebar"><h2>Archives</h2><div class="sidebar__archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a></li></ul></div><h2>Categories</h2><div class="sidebar__categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/">小镇做题家</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/">华为机试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E6%AC%A7%E6%8B%89%E8%AE%A1%E5%88%92/">欧拉计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%95%87%E5%81%9A%E9%A2%98%E5%AE%B6/%E7%89%9B%E5%AE%A2/">牛客</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%81%E5%85%89%E5%BE%98%E5%BE%8A/">流光徘徊</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/">编程珠玑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E5%B7%A5%E5%85%B7%E7%AE%B1/">工具箱</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/">算法分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%8F%A0%E7%8E%91/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E7%94%B1%E7%8E%8B%E5%9B%BD/">自由王国</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A1%A8%E5%8D%95/">表单</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/">读书札记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E4%B9%A6%E6%91%98/">书摘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/%E6%96%87%E6%91%98/">文摘</a></li></ul></li></ul></div><h2>Tags</h2><div class="sidebar__tags"><ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PC/" rel="tag">PC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98/" rel="tag">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB%E6%B3%95/" rel="tag">分治法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E4%B8%BA/" rel="tag">华为</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C/" rel="tag">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%95%E5%B1%82%E6%8A%80%E6%9C%AF/" rel="tag">底层技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%95%E7%94%A8/" rel="tag">引用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%8C%E8%AF%8D/" rel="tag">歌词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%B1%E6%83%85/" rel="tag">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB/" rel="tag">类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag">组合数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6/" rel="tag">读书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%AD%E4%BB%A3/" rel="tag">迭代</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合</a></li></ul></div></div></div></div><div class="horizontal-line" style="height: 1px"></div><div class="main__bottom"><div class="pre-next"><a class="pre-button" href="/posts/19ba73bc/">单链表的删除</a><a class="next-button" href="/posts/ef467987/">单链表的插入</a></div></div></div></div><div class="footer"><span>©️2017-2021</span></div><div class="darkmode-mask" id="darkmode-mask"></div><div class="sidebar__button"></div></body></html>
