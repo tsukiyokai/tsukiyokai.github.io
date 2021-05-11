@@ -11,7 +11,7 @@ menu:
 stylesheets:
 
 stylesheets_preload:
-- https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css # for highlight
+- https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha0/styles/stackoverflow-dark.min.css
 - https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap # for font
 
 # scripts loaded in the end of the body
@@ -22,15 +22,15 @@ scripts_defer:
 
 social:
   Github: https://github.com/tsukiyokai
-  电邮: mailto:tsukiyokai@hotmail.com
+  E-mail: mailto:tsukiyokai@hotmail.com
   # and more, you can add other link by the same way
 
 # Uncomment to disable sidebar
-toc: false
-link: false
-# archives: false
-# categories: false
-# tags: false
+#toc: false
+#link: false
+#archives: false
+#categories: false
+#tags: false
 
 # theme color
 main_color: forest # forest | grass | sky | sun | sea
