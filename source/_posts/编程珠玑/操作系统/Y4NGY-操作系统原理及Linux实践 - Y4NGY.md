@@ -78,3 +78,85 @@ Hardwares
   - a user friendly graphical user interface.
 - Batch 批处理
   - it is a file which contains commands and directives.
+
+什么是接口？接口就是交界处，并非一定要插进什么地方才能叫接口。从这个意义上讲，USB和API是同一种东西，USB工作在硬件与硬件的交界处，API工作在硬件与软件或软件与软件的交界处，他们都是接口。
+
+### 系统调用
+
+- 系统调用提供了访问和使用操作系统所提供的服务的接口。
+  - 系统调用的实现代码是操作系统级的
+  - 这个接口通常是面向程序员的
+- API指明了参数和返回值的一组函数。
+  - 应用程序App的开发人员透过API间接访问了系统调用
+  - Windows API/POSIX API/JAVA API
+
+### 标准C程序
+
+- printf是standard C Library提供的API
+- printf函数的调用引发了对应的系统调用write的执行（把显示器当成一个文件，对这个文件执行写的命令，结果就是显示器显示出我们写的内容）
+- write执行结束时的返回值（成功输出的字符的个数）传递回标准C库，标准C库再返回给用户程序的。
+
+### 双重模式 DUAL MODE
+
+- MOS有一个特殊的硬件，用于划分系统运行的状态，至少有两种单独运行模式：
+  - 用户模式：执行用户代码
+  - 内核模式：执行OS代码
+
+- 目的：确保操作系统正确的运行，特权指令不能让用户程序随便运行
+- 实现方式
+ - 用一个硬件模式位来表示当前模式：0表示内核模式，1表示用户模式
+
+### 运行模式的切换
+
+- sys call需要在哪种模式下执行？kernel mode
+- 捏的应用程序运行在哪种模式下？user mode
+- 调用API函数printf时，运行模式如何切换？
+
+### TRAP MECHANISM 陷阱机制
+
+陷入 mode bit置0
+返回 mode bit置1
+
+### 系统调用的实现机制
+
+- 每个系统调用都有一个唯一的数字编号，被称为系统调用号。
+- 用户代码调用API时，API会向系统调用接口指明其所要用的系统调用号，操作系统内核中维护了一张索引表，依据这个调用号可以检索到访系统调用代码在内核中的位置。
+
+### OS的构建方式（设计模式）
+
+- MULTICS SYSTEM 多路信息计算系统
+
+### OS设计成为一门学科
+
+- 多道系统涉及的思想使用操作系统的复杂性变得难以控制。
+  - MULTICS
+  - OS 360
+- 操作系统设计逐渐形成一门学科
+  - 如何处理硬件的复杂性？
+  - UNIX基于MULTICS系统开发，但已经大大简化
+
+## OS的设计思路
+
+- 设计目标
+  - 用户目标
+  - 系统目标
+- 机制与策略分离
+  - 机制：如何做
+  - 策略：做什么
+  - 微内核操作系统Mach->Darwin->macOS（核心极小，策略不属于微内核，可以灵活加载，微内核OS是机制与策略分离的成功代表）
+
+## GNU/Linux
+
+- Open-source, closed-source, hybrid OS (L\W\M)
+- Source code (高级语言) and binary code (01)
+  源码编译链接到binarycode容易，反编译很难（逆向工程）
+  如果不开源就很难知道代码的原理。
+
+## 开源历史
+
+- 初衷：自由分享
+- 阻碍：版权保护和商业利益
+- 1983年GNU项目（GNU = GNU is Not Unix），旨在创建一个免费开源兼容的Unix的操作系统。
+- GPL（GNU General Public License）：源码和二进制码一起发布，源码任何修改应按照同样的GPL许可发布。
+- 1990年第一个GNU核心（Alix）Hurd完成开发
+- 1991年Linus开发出类Unix内核的Linux并于次年开源，GNU系统和Linux合并后成为今日的GNU/Linux
