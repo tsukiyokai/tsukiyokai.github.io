@@ -11,12 +11,17 @@ menu:
 stylesheets:
 
 stylesheets_preload:
-- https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha0/styles/stackoverflow-dark.min.css
-- https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap # for font
+#- https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha0/styles/stackoverflow-dark.min.css
+#- //cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
+#- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/zenburn.min.css
+- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/school-book.min.css
+#- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/gradient-light.min.css
+- https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@600&display=swap
 
 # scripts loaded in the end of the body
 scripts_defer:
-- https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha0/highlight.min.js # for highlight
+#- https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.0-alpha0/highlight.min.js # for highlight
+- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
 - /js/paper.js # for basic script
 
 
