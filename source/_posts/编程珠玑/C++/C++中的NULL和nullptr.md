@@ -5,7 +5,7 @@ categories:
   - C++
 abbrlink: 45f33b90
 tags:
-  - 底层技术
+  - 语法
   - 指针
 date: 2021-04-23 18:51:07
 ---
