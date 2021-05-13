@@ -1,5 +1,5 @@
 ---
-title: Y4NGY-OS原理及Linux实践 CH2
+title: Y4NGY-CH2 操作系统结构
 abbrlink: 26a4cad
 categories:
   - 编程珠玑
@@ -159,4 +159,4 @@ Hardwares
 - 1983年GNU项目（GNU = GNU is Not Unix），旨在创建一个免费开源兼容的Unix的操作系统。
 - GPL（GNU General Public License）：源码和二进制码一起发布，源码任何修改应按照同样的GPL许可发布。
 - 1990年第一个GNU核心（Alix）Hurd完成开发
-- 1991年Linus开发出类Unix内核的Linux并于次年开源，GNU系统和Linux合并后成为今日的GNU/Linux
+- 1991年Linus开发出类Unix内核的Linux并于次年开源，GNU系统和Linux合并后成为今日的GNU/Linux。
