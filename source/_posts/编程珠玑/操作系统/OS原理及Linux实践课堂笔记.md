@@ -1,5 +1,5 @@
 ---
-title: OS原理及Linux实践-CH23
+title: OS原理及Linux实践课堂笔记
 abbrlink: af3f7656
 categories:
   - 编程珠玑

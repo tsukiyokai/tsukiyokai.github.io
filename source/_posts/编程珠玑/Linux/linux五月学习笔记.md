@@ -10,23 +10,31 @@ date: 2021-05-14 16:13:03
 ---
 > 刚开始linux复建，记点东西。
 
+#### 进入界面
+
 进入ubt子系统的图形界面
 
 ```shell
 $ xfce4-session
 ```
 
-获取系统中包的更新信息并进行更新
+#### Super User DO
+
+获取包的更新信息并安装更新
 
 ```shell
 $ sudo apt-get update && sudo apt-get upgrade
 ```
 
-查看ascii详细信息
+#### man
+
+ascii表
 
 ```shell
 $ man ascii
 ```
+
+#### cal|calendar|date
 
 历史上的今天
 
@@ -39,3 +47,5 @@ $ calendar -t 1997.04.09
 ```shell
 $ cal 1997
 ```
+
+#### gcc|g++

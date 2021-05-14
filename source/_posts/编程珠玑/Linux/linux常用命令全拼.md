@@ -64,7 +64,7 @@ date: 2021-05-14 17:05:50
 |PHP|Personal Home Page Tools|
 |PS|Prompt String|
 |Perl|“Pratical Extraction and Report Language”(实际的抽取和报告语言)|
-|Python|得名于电视剧 Monty Python’s Flying Circus|
+|Python|得名于电视剧 Monty Python's Flying Circus|
 |Tcl|Tool Command Language|
 |Tk|ToolKit|
 |VT|Video Terminal|
@@ -91,7 +91,7 @@ date: 2021-05-14 17:05:50
 |cp|Copy|
 |cpio|CoPy In and Out|
 |cpp|C Pre Processor|
-|cron|Chronos 希腊文时间|
+|cron|Chronos (希腊文时间)|
 |cups|Common Unix Printing System|
 |cvs|Current Version System|
 |daemon|Disk And Execution MONitor|
@@ -120,9 +120,9 @@ date: 2021-05-14 17:05:50
 |gpg|GNU Privacy Guard|
 |groff|GNU troff|
 |hal|Hardware Abstraction Layer|
-|joe|Joe’s Own Editor|
+|joe|Joe's Own Editor|
 |ksh|Korn SHell|
-|lame|Lame Ain’t an MP3 Encoder|
+|lame|Lame Ain't an MP3 Encoder|
 |lex|LEXical analyser|
 |lisp|LISt Processing|
 |ln|Link|
@@ -131,7 +131,7 @@ date: 2021-05-14 17:05:50
 |lsof|LiSt Open Files|
 |m4|Macro processor Version 4|
 |man|MANual pages|
-|mawk|Mike Brennan’s AWK|
+|mawk|Mike Brennan's AWK|
 |mc|Midnight Commander|
 |mkfs|MaKe FileSystem|
 |mknod|Make Node|
@@ -139,7 +139,7 @@ date: 2021-05-14 17:05:50
 |mozilla|MOsaic GodZILLa|
 |mtab|Mount TABle|
 |mv|Move|
-|nano|Nano’s ANOther editor|
+|nano|Nano's ANOther editor|
 |nawk|New AWK|
 |nl|Number of Lines|
 |nm|names|
@@ -148,7 +148,7 @@ date: 2021-05-14 17:05:50
 |od|Octal Dump|
 |passwd|Passwd|
 |pg|pager|
-|pico|PIne’s message COmposition editor|
+|pico|PIne's message COmposition editor|
 |pine|Program for Internet News & Email (Pine is not Elm)|
 |ping|Packet Internet Grouper|
 |pirntcap|PRINTer CAPability|
@@ -167,7 +167,7 @@ date: 2021-05-14 17:05:50
 |rpm|RedHat Package Manager|
 |rsh,rlogin,rvim的r|Remote|
 |rxvt|ouR XVT|
-|seamoneky|我|
+|seamoneky|(我)|
 |sed|Stream Editor|
 |seq|SEQuence|
 |shar|Shell ARchive|
@@ -188,11 +188,11 @@ date: 2021-05-14 17:05:50
 |troff|Typesetter new ROFF|
 |tsort|Topological SORT|
 |tty|TeleTypewriter|
-|twm|Tom’s Window Manager|
+|twm|Tom's Window Manager|
 |tz|TimeZone|
 |udev|Userspace DEV|
-|ulimit|User’s LIMIT|
-|umask|User’s MASK|
+|ulimit|User's LIMIT|
+|umask|User's MASK|
 |uniq|UNIQue|
 |vim|Vi IMproved|
 |wall|write all|
