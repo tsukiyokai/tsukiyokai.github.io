@@ -1,5 +1,5 @@
 ---
-title: linux五月笔记
+title: linux五月学习笔记
 abbrlink: f3bf7ee2
 categories:
   - 编程珠玑
