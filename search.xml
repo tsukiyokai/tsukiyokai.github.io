@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2021华为成研院无线OD面试经验</title>
+    <url>/posts/1eb3926f/</url>
+    <content><![CDATA[<h2 id="5-6-机试"><a href="#5-6-机试" class="headerlink" title="5.6 机试"></a>5.6 机试</h2><p>笔试三题，共400分，名单学校150合格，其他学校320，前两道一星题各100分，力扣简单难度，第三道二星题200分，力扣中等难度。我的第一题是子串分割匹配处理，AC90%。第二题滑动窗口裸题，AC100%，第三题复杂字符串处理+阅读理解题，压根没做，直接交卷了。</p>
+<h2 id="5-7-性格测试"><a href="#5-7-性格测试" class="headerlink" title="5.7 性格测试"></a>5.7 性格测试</h2><p>早上对面查分190顺利通过，给我推到了北京的华为2012实验室（高斯实验室），大概是做数据库的。后来我找人重新推回了成都无线技术，7号当天下午收到性格测试邮件，通过。我和成都那边对接的人约定次日上午10点视频会议，走完一二轮技术面试。如果面试结果不好的话就不上传记录。我觉得我的运气比较好。</p>
+<h2 id="5-8-一天三面"><a href="#5-8-一天三面" class="headerlink" title="5.8 一天三面"></a>5.8 一天三面</h2><h3 id="上午10点-技术一面"><a href="#上午10点-技术一面" class="headerlink" title="上午10点 技术一面"></a>上午10点 技术一面</h3><p>上午十点开始，大概一轮40min，一面主要问基础，C++、OS、网络、设计模式。设计模式我说不太熟悉，平时用的很少，所以就没问。C++问OOP，虚函数，内存管理、野指针，OS问进程线程区别、进程通信、死锁，网络问三次握手四次挥手，然后白板写一道代码题，共享屏幕，题目是链表去重，限时20min，我写了一分钟就交卷了，但是我没释放节点，就让我又改了改。一面我答得很好，问的也算比较细，我基础很牢固，说起来滔滔不绝，就过去了。</p>
+<h3 id="上午11点-技术二面"><a href="#上午11点-技术二面" class="headerlink" title="上午11点 技术二面"></a>上午11点 技术二面</h3><p>一面结束三分钟后就是二面，二面先问了我简历上的项目，然后深挖操作系统知识，这位老哥估计是搞嵌入式的，操作系统问的很深很细，稍微深一点的我就完全答不上来，他一直往深了问，我一直往浅了答。还问了我内存管理模型，赋值0和赋值1在内存中存在一个位置吗，我复习过，但是只记住了一半，其实bss区存的是未初始化的数据和初始化为0的数据，我以为初始化为0也是初始化，就答错了。最后代码题，自己造一个数据结构，要做个锁，考虑竞争临界区资源的情况，本来以为是C++题，结果还是OS的题，做的不好，就讲了讲我的理解，差不多就结束了。反问环节，我问他成都无线平时用C++还是C比较多，他说都用，我又问做什么的，他说做基站、5G、嵌入式这些。具体的东西可以等你来了之后具体了解。我感觉他话里有话，索性直接问自己表现怎么样，他说表现很好，但是来了之后还需要进一步学习。另外这几天保持电话畅通，会有HR的电话面试。</p>
+<h3 id="晚上8点-HR面"><a href="#晚上8点-HR面" class="headerlink" title="晚上8点 HR面"></a>晚上8点 HR面</h3><p>晚上8点左右HR电话面，HR不是特别友好，一直强调我的劣势，11分钟左右的电话面试强调了四五次，（我就想说，我这个学历如果没劣势的话还会来你这里吗……）。最后是反问环节，我问了事先准备好的几个不痛不痒的问题，毕竟该了解的事先都了解差不多了，结束前突然问了一下我的期望薪资，我回答12-14K，他说你这数字是从哪得来的，我说校友信息。就这么结束了。可能是传说中的压力面试？不过llp和shw觉得是打压工资。我觉得可能两者兼有吧。半小时后我问了一下和我对接的老哥，说是通过了。但我总还是有些忐忑。晚上问了一下那边，说如果一切顺利的话Offer要一星期就可以落定了，且看看是不是画饼吧。</p>
+<h2 id="5-10-主管面"><a href="#5-10-主管面" class="headerlink" title="5.10 主管面"></a>5.10 主管面</h2><p>通知今晚7点左右主管面。听说因为最近加急审批，所以不用等特别久Offer。今晚可能会谈工资，所以提前做了点功课，华为应届生正常是D13，开到12k，特别优秀的本科生和硕士生是D14，开到14K以上。主管面比hr友好多了。你平时怎么跟朋友保持联系的？你平时逛什么技术论坛？你读英语文档溜不溜？你家在哪，觉得成都远不远，父母有没有意见？结婚了没，有兄弟姐妹没？问了问毕设做的东西，怎么认识学术界和工业界的差别？聊了聊工资，我说期望10-12K，他说14K应该是没问题的，有个工资计算公式，会考虑到你的毕业学校和机考分数，向上浮动。夸了夸我的机试代码写的规范，问我为什么没做最后一题，我说战略性放弃。讲了讲他们平时做的东西，主要是操作系统，做驱动啥的，5G基站啥的。转正之后周末和节假日才有加班费，平时加班没有。A是4个月年终奖 B是2个月，C是1个月，D是妹有。大部分人是两个多月的年终奖。大概就这些了，剩下的就是耐心等Offer。</p>
+]]></content>
+      <categories>
+        <category>人月神话</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021年度计划</title>
+    <url>/posts/2457fd8d/</url>
+    <content><![CDATA[<blockquote>
+<p>伊曼努爾·康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
+</blockquote>
+<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">LeetCode刷到400题<br>C++ Primer翻烂<br></code></pre></td></tr></table></figure>
+<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">跑鞋<br>眼镜<br>书包 - 国家地理<br>手机 - S21u<br>整机 - 老电脑拿来玩Linux<br></code></pre></td></tr></table></figure>
+<h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">成都大熊貓繁育研究基地<br></code></pre></td></tr></table></figure>
+<h2 id="每日作息"><a href="#每日作息" class="headerlink" title="每日作息"></a>每日作息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">5:45-6:00  起床，解手，温水蜂蜜，运动衣裤<br>6:00-6:30  拉伸，慢跑<br>6:30-7:00  早餐，洗澡，洗衣刷牙<br>7:00-8:00  开机，每日一题<br>8:00  出门上班，通勤路上复习一篇日志<br><br>平日  看书、博客、刷题<br>假日  看书、实验，竞赛，社交，下厨<br><br>23:45-00:00  泡脚，看一集动画，上床睡觉<br></code></pre></td></tr></table></figure>
+<h2 id="每月主线"><a href="#每月主线" class="headerlink" title="每月主线"></a>每月主线</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">01月：读C++ PrimerⅠ；去成都玩<br>02月：读谢希仁计算机网络<br>03月：读邹恒明操作系统；考研调剂<br>04月：读C++ PrimerⅡ；面试大厂<br>05月：刷华为机试；面试华为；等待Offer落地<br>06月：<br>07月：<br>08月：<br>09月：<br>10月：<br>11月：<br>12月：<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>斯波：人们高估了一天的改变，也低估了一年的改变。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>年度系列</category>
+      </categories>
+      <tags>
+        <tag>计划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>稚嫩的职业规划</title>
     <url>/posts/8ed50579/</url>
     <content><![CDATA[<blockquote>
@@ -41,45 +80,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2021华为成研院无线OD面试经验</title>
-    <url>/posts/1eb3926f/</url>
-    <content><![CDATA[<h2 id="5-6-机试"><a href="#5-6-机试" class="headerlink" title="5.6 机试"></a>5.6 机试</h2><p>笔试三题，共400分，名单学校150合格，其他学校320，前两道一星题各100分，力扣简单难度，第三道二星题200分，力扣中等难度。我的第一题是子串分割匹配处理，AC90%。第二题滑动窗口裸题，AC100%，第三题复杂字符串处理+阅读理解题，压根没做，直接交卷了。</p>
-<h2 id="5-7-性格测试"><a href="#5-7-性格测试" class="headerlink" title="5.7 性格测试"></a>5.7 性格测试</h2><p>早上对面查分190顺利通过，给我推到了北京的华为2012实验室（高斯实验室），大概是做数据库的。后来我找人重新推回了成都无线技术，7号当天下午收到性格测试邮件，通过。我和成都那边对接的人约定次日上午10点视频会议，走完一二轮技术面试。如果面试结果不好的话就不上传记录。我觉得我的运气比较好。</p>
-<h2 id="5-8-一天三面"><a href="#5-8-一天三面" class="headerlink" title="5.8 一天三面"></a>5.8 一天三面</h2><h3 id="上午10点-技术一面"><a href="#上午10点-技术一面" class="headerlink" title="上午10点 技术一面"></a>上午10点 技术一面</h3><p>上午十点开始，大概一轮40min，一面主要问基础，C++、OS、网络、设计模式。设计模式我说不太熟悉，平时用的很少，所以就没问。C++问OOP，虚函数，内存管理、野指针，OS问进程线程区别、进程通信、死锁，网络问三次握手四次挥手，然后白板写一道代码题，共享屏幕，题目是链表去重，限时20min，我写了一分钟就交卷了，但是我没释放节点，就让我又改了改。一面我答得很好，问的也算比较细，我基础很牢固，说起来滔滔不绝，就过去了。</p>
-<h3 id="上午11点-技术二面"><a href="#上午11点-技术二面" class="headerlink" title="上午11点 技术二面"></a>上午11点 技术二面</h3><p>一面结束三分钟后就是二面，二面先问了我简历上的项目，然后深挖操作系统知识，这位老哥估计是搞嵌入式的，操作系统问的很深很细，稍微深一点的我就完全答不上来，他一直往深了问，我一直往浅了答。还问了我内存管理模型，赋值0和赋值1在内存中存在一个位置吗，我复习过，但是只记住了一半，其实bss区存的是未初始化的数据和初始化为0的数据，我以为初始化为0也是初始化，就答错了。最后代码题，自己造一个数据结构，要做个锁，考虑竞争临界区资源的情况，本来以为是C++题，结果还是OS的题，做的不好，就讲了讲我的理解，差不多就结束了。反问环节，我问他成都无线平时用C++还是C比较多，他说都用，我又问做什么的，他说做基站、5G、嵌入式这些。具体的东西可以等你来了之后具体了解。我感觉他话里有话，索性直接问自己表现怎么样，他说表现很好，但是来了之后还需要进一步学习。另外这几天保持电话畅通，会有HR的电话面试。</p>
-<h3 id="晚上8点-HR面"><a href="#晚上8点-HR面" class="headerlink" title="晚上8点 HR面"></a>晚上8点 HR面</h3><p>晚上8点左右HR电话面，HR不是特别友好，一直强调我的劣势，11分钟左右的电话面试强调了四五次，（我就想说，我这个学历如果没劣势的话还会来你这里吗……）。最后是反问环节，我问了事先准备好的几个不痛不痒的问题，毕竟该了解的事先都了解差不多了，结束前突然问了一下我的期望薪资，我回答12-14K，他说你这数字是从哪得来的，我说校友信息。就这么结束了。可能是传说中的压力面试？不过llp和shw觉得是打压工资。我觉得可能两者兼有吧。半小时后我问了一下和我对接的老哥，说是通过了。但我总还是有些忐忑。晚上问了一下那边，说如果一切顺利的话Offer要一星期就可以落定了，且看看是不是画饼吧。</p>
-<h2 id="5-10-主管面"><a href="#5-10-主管面" class="headerlink" title="5.10 主管面"></a>5.10 主管面</h2><p>通知今晚7点左右主管面。听说因为最近加急审批，所以不用等特别久Offer。今晚可能会谈工资，所以提前做了点功课，华为应届生正常是D13，开到12k，特别优秀的本科生和硕士生是D14，开到14K以上。主管面比hr友好多了。你平时怎么跟朋友保持联系的？你平时逛什么技术论坛？你读英语文档溜不溜？你家在哪，觉得成都远不远，父母有没有意见？结婚了没，有兄弟姐妹没？问了问毕设做的东西，怎么认识学术界和工业界的差别？聊了聊工资，我说期望10-12K，他说14K应该是没问题的，有个工资计算公式，会考虑到你的毕业学校和机考分数，向上浮动。夸了夸我的机试代码写的规范，问我为什么没做最后一题，我说战略性放弃。讲了讲他们平时做的东西，主要是操作系统，做驱动啥的，5G基站啥的。转正之后周末和节假日才有加班费，平时加班没有。A是4个月年终奖 B是2个月，C是1个月，D是妹有。大部分人是两个多月的年终奖。大概就这些了，剩下的就是耐心等Offer。</p>
-]]></content>
-      <categories>
-        <category>人月神话</category>
-      </categories>
-      <tags>
-        <tag>工作</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2021年度计划</title>
-    <url>/posts/2457fd8d/</url>
-    <content><![CDATA[<blockquote>
-<p>伊曼努爾·康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
-</blockquote>
-<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">LeetCode刷到400题<br>C++ Primer翻烂<br></code></pre></td></tr></table></figure>
-<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">跑鞋<br>眼镜<br>书包 - 国家地理<br>手机 - S21u<br>整机 - 老电脑拿来玩Linux<br></code></pre></td></tr></table></figure>
-<h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">成都大熊貓繁育研究基地<br></code></pre></td></tr></table></figure>
-<h2 id="每日作息"><a href="#每日作息" class="headerlink" title="每日作息"></a>每日作息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">5:45-6:00  起床，解手，温水蜂蜜，运动衣裤<br>6:00-6:30  拉伸，慢跑<br>6:30-7:00  早餐，洗澡，洗衣刷牙<br>7:00-8:00  开机，每日一题<br>8:00  出门上班，通勤路上复习一篇日志<br><br>平日  看书、博客、刷题<br>假日  看书、实验，竞赛，社交，下厨<br><br>23:45-00:00  泡脚，看一集动画，上床睡觉<br></code></pre></td></tr></table></figure>
-<h2 id="每月主线"><a href="#每月主线" class="headerlink" title="每月主线"></a>每月主线</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">01月：读C++ PrimerⅠ；去成都玩<br>02月：读谢希仁计算机网络<br>03月：读邹恒明操作系统；考研调剂<br>04月：读C++ PrimerⅡ；面试大厂<br>05月：刷华为机试；面试华为；等待Offer落地<br>06月：<br>07月：<br>08月：<br>09月：<br>10月：<br>11月：<br>12月：<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>斯波：人们高估了一天的改变，也低估了一年的改变。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>年度系列</category>
-      </categories>
-      <tags>
-        <tag>计划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC1 两数之和</title>
     <url>/posts/999da6e9/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案，但是数组中同一个元素不能使用两遍。</p>
@@ -98,6 +98,23 @@
       </categories>
       <tags>
         <tag>哈希</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC2 两数相加</title>
+    <url>/posts/8a342e0d/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
+<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> len1 = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> len2 = <span class="hljs-number">0</span>;<br>        ListNode* p = l1;<br>        ListNode* q = l2;<br>        <span class="hljs-keyword">while</span> (p-&gt;next) &#123;<br>            len1++;<br>            p = p-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (q-&gt;next) &#123;<br>            len2++;<br>            q = q-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (len1 &gt; len2) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= len1 - len2; i++) &#123;<br>                q-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>                q = q-&gt;next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= len2 - len1; i++) &#123;<br>                p-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>                p = p-&gt;next;<br>            &#125;<br>        &#125;<br>        p = l1;<br>        q = l2;<br>        <span class="hljs-keyword">bool</span> count = <span class="hljs-literal">false</span>;<br>        ListNode* l3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">-1</span>);<br>        ListNode* w = l3;<br>        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (p != <span class="hljs-literal">NULL</span> &amp;&amp; q != <span class="hljs-literal">NULL</span>) &#123;<br>            i = count + p-&gt;val + q-&gt;val;<br>            w-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(i % <span class="hljs-number">10</span>);<br>            count = i &gt;= <span class="hljs-number">10</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;<br>            w = w-&gt;next;<br>            p = p-&gt;next;<br>            q = q-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (count) &#123;<br>            w-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">1</span>);<br>            w = w-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> l3-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -124,23 +141,6 @@
       <tags>
         <tag>字符串</tag>
         <tag>滑动窗口</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC2 两数相加</title>
-    <url>/posts/8a342e0d/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个结点只能存储一位数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字0之外，这两个数都不会以0开头。</p>
-<h2 id="解法：模拟"><a href="#解法：模拟" class="headerlink" title="解法：模拟"></a>解法：模拟</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> len1 = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> len2 = <span class="hljs-number">0</span>;<br>        ListNode* p = l1;<br>        ListNode* q = l2;<br>        <span class="hljs-keyword">while</span> (p-&gt;next) &#123;<br>            len1++;<br>            p = p-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (q-&gt;next) &#123;<br>            len2++;<br>            q = q-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (len1 &gt; len2) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= len1 - len2; i++) &#123;<br>                q-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>                q = q-&gt;next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= len2 - len1; i++) &#123;<br>                p-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>                p = p-&gt;next;<br>            &#125;<br>        &#125;<br>        p = l1;<br>        q = l2;<br>        <span class="hljs-keyword">bool</span> count = <span class="hljs-literal">false</span>;<br>        ListNode* l3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">-1</span>);<br>        ListNode* w = l3;<br>        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (p != <span class="hljs-literal">NULL</span> &amp;&amp; q != <span class="hljs-literal">NULL</span>) &#123;<br>            i = count + p-&gt;val + q-&gt;val;<br>            w-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(i % <span class="hljs-number">10</span>);<br>            count = i &gt;= <span class="hljs-number">10</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;<br>            w = w-&gt;next;<br>            p = p-&gt;next;<br>            q = q-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (count) &#123;<br>            w-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">1</span>);<br>            w = w-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> l3-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>模拟进位比转换成字符串处理复杂了不是一星半点儿，做起来怪怪的。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -495,6 +495,24 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC88 合并两个有序数组</title>
+    <url>/posts/a32f263e/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个有序整数数组nums1和nums2，请你将nums2合并到nums1中，使nums1成为一个有序数组。初始化nums1和nums2的元素数量分别为m和n。你可以假设nums1的空间大小等于m+n，这样它就有足够的空间保存来自nums2的元素。</p>
+<p>输入：nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3<br>输出：[1,2,2,3,5,6]</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums1, <span class="hljs-keyword">int</span> m, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums2, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-built_in">trim</span>(nums1, m);<br>        <span class="hljs-built_in">trim</span>(nums2, n);<br>        <span class="hljs-keyword">while</span> (nums2.<span class="hljs-built_in">size</span>() != <span class="hljs-number">0</span>) &#123;<br>            nums1.<span class="hljs-built_in">push_back</span>(*nums2.<span class="hljs-built_in">begin</span>());<br>            nums2.<span class="hljs-built_in">erase</span>(nums2.<span class="hljs-built_in">begin</span>());<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(nums1.<span class="hljs-built_in">begin</span>(), nums1.<span class="hljs-built_in">end</span>());<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">trim</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> m)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (nums.<span class="hljs-built_in">size</span>() &gt; m) nums.<span class="hljs-built_in">erase</span>(nums.<span class="hljs-built_in">end</span>() - (nums.<span class="hljs-built_in">size</span>() - m), nums.<span class="hljs-built_in">end</span>());<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>trim()用来修理掉所给数组右边的占位0</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC70 爬楼梯</title>
     <url>/posts/bbfd6b35/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设你正在爬楼梯。需要n阶你才能到达楼顶。<br>每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
@@ -516,24 +534,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>DP</tag>
         <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC88 合并两个有序数组</title>
-    <url>/posts/a32f263e/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个有序整数数组nums1和nums2，请你将nums2合并到nums1中，使nums1成为一个有序数组。初始化nums1和nums2的元素数量分别为m和n。你可以假设nums1的空间大小等于m+n，这样它就有足够的空间保存来自nums2的元素。</p>
-<p>输入：nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3<br>输出：[1,2,2,3,5,6]</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums1, <span class="hljs-keyword">int</span> m, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums2, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-built_in">trim</span>(nums1, m);<br>        <span class="hljs-built_in">trim</span>(nums2, n);<br>        <span class="hljs-keyword">while</span> (nums2.<span class="hljs-built_in">size</span>() != <span class="hljs-number">0</span>) &#123;<br>            nums1.<span class="hljs-built_in">push_back</span>(*nums2.<span class="hljs-built_in">begin</span>());<br>            nums2.<span class="hljs-built_in">erase</span>(nums2.<span class="hljs-built_in">begin</span>());<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(nums1.<span class="hljs-built_in">begin</span>(), nums1.<span class="hljs-built_in">end</span>());<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">trim</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> m)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (nums.<span class="hljs-built_in">size</span>() &gt; m) nums.<span class="hljs-built_in">erase</span>(nums.<span class="hljs-built_in">end</span>() - (nums.<span class="hljs-built_in">size</span>() - m), nums.<span class="hljs-built_in">end</span>());<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>trim()用来修理掉所给数组右边的占位0</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -968,27 +968,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC203 移除链表元素</title>
-    <url>/posts/48cc124d/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>删除链表中等于给定值val的所有结点。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">hasVal</span>(head, val) == <span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-built_in">deleteNode</span>(&amp;head, val);<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">hasVal</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<br>        ListNode* curr = head;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">if</span> (curr-&gt;val == val) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode** head_ref, <span class="hljs-keyword">int</span> key)</span> </span>&#123;<br>        ListNode* temp = *head_ref;<br>        ListNode* prev = <span class="hljs-literal">NULL</span>;<br>        <span class="hljs-keyword">if</span> (temp != <span class="hljs-literal">NULL</span> &amp;&amp; temp-&gt;val == key) &#123;<br>            *head_ref = temp-&gt;next;<br>            <span class="hljs-keyword">delete</span> temp;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">while</span> (temp != <span class="hljs-literal">NULL</span> &amp;&amp; temp-&gt;val != key) &#123;<br>                prev = temp;<br>                temp = temp-&gt;next;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (temp == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>            prev-&gt;next = temp-&gt;next;<br>            <span class="hljs-keyword">delete</span> temp;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>分析</strong></p>
-<p>这是最笨的代码，显然超时。时间复杂度爆表，而且做了极多的重复劳动。</p>
-<p><strong>优化</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">NULL</span> &amp;&amp; head-&gt;val == val) &#123;<br>            ListNode* tmp = head;<br>            head = head-&gt;next;<br>            <span class="hljs-keyword">delete</span> tmp;<br>        &#125;<br>        ListNode* cur = head;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">NULL</span> &amp;&amp; cur-&gt;next != <span class="hljs-literal">NULL</span>) &#123;<br>            <span class="hljs-keyword">if</span> (cur-&gt;next-&gt;val == val) &#123;<br>                ListNode* tmp = cur-&gt;next;<br>                cur-&gt;next = cur-&gt;next-&gt;next;<br>                <span class="hljs-keyword">delete</span> tmp;<br>            &#125;<br>            <span class="hljs-keyword">else</span> cur = cur-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>分析</strong></p>
-<p>原地操作</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC204 计数质数</title>
     <url>/posts/2c2e56af/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>统计所有小于非负整数n的质数的数量。</p>
@@ -1013,6 +992,27 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC203 移除链表元素</title>
+    <url>/posts/48cc124d/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>删除链表中等于给定值val的所有结点。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">hasVal</span>(head, val) == <span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-built_in">deleteNode</span>(&amp;head, val);<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">hasVal</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<br>        ListNode* curr = head;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">if</span> (curr-&gt;val == val) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode** head_ref, <span class="hljs-keyword">int</span> key)</span> </span>&#123;<br>        ListNode* temp = *head_ref;<br>        ListNode* prev = <span class="hljs-literal">NULL</span>;<br>        <span class="hljs-keyword">if</span> (temp != <span class="hljs-literal">NULL</span> &amp;&amp; temp-&gt;val == key) &#123;<br>            *head_ref = temp-&gt;next;<br>            <span class="hljs-keyword">delete</span> temp;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">while</span> (temp != <span class="hljs-literal">NULL</span> &amp;&amp; temp-&gt;val != key) &#123;<br>                prev = temp;<br>                temp = temp-&gt;next;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (temp == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>            prev-&gt;next = temp-&gt;next;<br>            <span class="hljs-keyword">delete</span> temp;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<p>这是最笨的代码，显然超时。时间复杂度爆表，而且做了极多的重复劳动。</p>
+<p><strong>优化</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">NULL</span> &amp;&amp; head-&gt;val == val) &#123;<br>            ListNode* tmp = head;<br>            head = head-&gt;next;<br>            <span class="hljs-keyword">delete</span> tmp;<br>        &#125;<br>        ListNode* cur = head;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">NULL</span> &amp;&amp; cur-&gt;next != <span class="hljs-literal">NULL</span>) &#123;<br>            <span class="hljs-keyword">if</span> (cur-&gt;next-&gt;val == val) &#123;<br>                ListNode* tmp = cur-&gt;next;<br>                cur-&gt;next = cur-&gt;next-&gt;next;<br>                <span class="hljs-keyword">delete</span> tmp;<br>            &#125;<br>            <span class="hljs-keyword">else</span> cur = cur-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<p>原地操作</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -1122,23 +1122,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC234 回文链表</title>
-    <url>/posts/ef65f1b5/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请判断一个链表是否为回文链表。<br>你能否用O(n)时间复杂度和O(1)空间复杂度解决此题？</p>
-<h2 id="解法1：利用数组"><a href="#解法1：利用数组" class="headerlink" title="解法1：利用数组"></a>解法1：利用数组</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; vals;<br>        <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">nullptr</span>) &#123;<br>            vals.<span class="hljs-built_in">emplace_back</span>(head-&gt;val);<br>            head = head-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = vals.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &lt; j; ++i, --j) &#123;<br>            <span class="hljs-keyword">if</span> (vals[i] != vals[j]) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法2：双指针"><a href="#解法2：双指针" class="headerlink" title="解法2：双指针"></a>解法2：双指针</h2><p>把链表分成两段，然后比较前一段和反转后的后一段是否相等。<br>注意：1221是回文，121也是回文。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><br>        ListNode* firstHalfEnd = <span class="hljs-built_in">endOfFirstHalf</span>(head);<br>        ListNode* secondHalfStart = <span class="hljs-built_in">reverseList</span>(firstHalfEnd-&gt;next);<br><br>        ListNode* p1 = head;<br>        ListNode* p2 = secondHalfStart;<br>        <span class="hljs-keyword">while</span> (p2 != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">if</span> (p1-&gt;val != p2-&gt;val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            p1 = p1-&gt;next;<br>            p2 = p2-&gt;next;<br>        &#125;<br><br>        firstHalfEnd-&gt;next = <span class="hljs-built_in">reverseList</span>(secondHalfStart);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* prev = <span class="hljs-literal">nullptr</span>;<br>        ListNode* curr = head;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            ListNode* nextTemp = curr-&gt;next;<br>            curr-&gt;next = prev;<br>            prev = curr;<br>            curr = nextTemp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> prev;<br>    &#125;<br><br>    <span class="hljs-function">ListNode* <span class="hljs-title">endOfFirstHalf</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* fast = head;<br>        ListNode* slow = head;<br>        <span class="hljs-keyword">while</span> (fast-&gt;next != <span class="hljs-literal">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="hljs-literal">nullptr</span>) &#123;<br>            fast = fast-&gt;next-&gt;next;<br>            slow = slow-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> slow;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>双指针</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC237 删除链表中的节点</title>
     <url>/posts/e851fc62/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供head。</p>
@@ -1182,6 +1165,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC234 回文链表</title>
+    <url>/posts/ef65f1b5/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请判断一个链表是否为回文链表。<br>你能否用O(n)时间复杂度和O(1)空间复杂度解决此题？</p>
+<h2 id="解法1：利用数组"><a href="#解法1：利用数组" class="headerlink" title="解法1：利用数组"></a>解法1：利用数组</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; vals;<br>        <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">nullptr</span>) &#123;<br>            vals.<span class="hljs-built_in">emplace_back</span>(head-&gt;val);<br>            head = head-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = vals.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &lt; j; ++i, --j) &#123;<br>            <span class="hljs-keyword">if</span> (vals[i] != vals[j]) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法2：双指针"><a href="#解法2：双指针" class="headerlink" title="解法2：双指针"></a>解法2：双指针</h2><p>把链表分成两段，然后比较前一段和反转后的后一段是否相等。<br>注意：1221是回文，121也是回文。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><br>        ListNode* firstHalfEnd = <span class="hljs-built_in">endOfFirstHalf</span>(head);<br>        ListNode* secondHalfStart = <span class="hljs-built_in">reverseList</span>(firstHalfEnd-&gt;next);<br><br>        ListNode* p1 = head;<br>        ListNode* p2 = secondHalfStart;<br>        <span class="hljs-keyword">while</span> (p2 != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">if</span> (p1-&gt;val != p2-&gt;val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            p1 = p1-&gt;next;<br>            p2 = p2-&gt;next;<br>        &#125;<br><br>        firstHalfEnd-&gt;next = <span class="hljs-built_in">reverseList</span>(secondHalfStart);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* prev = <span class="hljs-literal">nullptr</span>;<br>        ListNode* curr = head;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            ListNode* nextTemp = curr-&gt;next;<br>            curr-&gt;next = prev;<br>            prev = curr;<br>            curr = nextTemp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> prev;<br>    &#125;<br><br>    <span class="hljs-function">ListNode* <span class="hljs-title">endOfFirstHalf</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* fast = head;<br>        ListNode* slow = head;<br>        <span class="hljs-keyword">while</span> (fast-&gt;next != <span class="hljs-literal">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="hljs-literal">nullptr</span>) &#123;<br>            fast = fast-&gt;next-&gt;next;<br>            slow = slow-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> slow;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC258 各位相加</title>
     <url>/posts/853fb8a2/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数num，反复将各个位上的数字相加，直到结果为一位数。</p>
@@ -1213,6 +1213,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC292 Nim游戏</title>
+    <url>/posts/9c301557/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>你和你的朋友，两个人一起玩Nim游戏：桌子上有一堆石头，你们轮流进行自己的回合，你作为先手。每一回合，轮到的人拿掉1-3块石头。拿掉最后一块石头的人就是获胜者。假设你们每一步都是最优解。<br>请编写一个函数，来判断你是否可以在给定石头数量为n的情况下赢得游戏。如果可以赢，返回true；否则，返回false。</p>
+<p>输入：n=4<br>输出：false<br>解释：如果堆中有4块石头，那么你永远不会赢得比赛。因为无论你拿走1块、2块还是3块石头，最后一块石头总是会被你的朋友拿走。</p>
+<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>石头总数等于4的倍数时先手必输。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">canWinNim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> n % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>找规律</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC283 移动零</title>
     <url>/posts/11f99145/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个数组nums，编写一个函数将所有0移动到数组的末尾，同时保持非零元素的相对顺序。</p>
@@ -1228,21 +1243,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC292 Nim游戏</title>
-    <url>/posts/9c301557/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>你和你的朋友，两个人一起玩Nim游戏：桌子上有一堆石头，你们轮流进行自己的回合，你作为先手。每一回合，轮到的人拿掉1-3块石头。拿掉最后一块石头的人就是获胜者。假设你们每一步都是最优解。<br>请编写一个函数，来判断你是否可以在给定石头数量为n的情况下赢得游戏。如果可以赢，返回true；否则，返回false。</p>
-<p>输入：n=4<br>输出：false<br>解释：如果堆中有4块石头，那么你永远不会赢得比赛。因为无论你拿走1块、2块还是3块石头，最后一块石头总是会被你的朋友拿走。</p>
-<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>石头总数等于4的倍数时先手必输。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">canWinNim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> n % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
@@ -1638,12 +1638,13 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ20 密码验证合格程序</title>
-    <url>/posts/2eedb083/</url>
-    <content><![CDATA[<p>密码要求:<br>1.长度超过8位<br>2.包括大小写字母.数字.其它符号,以上四种至少三种<br>3.不能有相同长度大于2的子串重复</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">rule1</span><span class="hljs-params">(string&amp; s)</span> </span>&#123; <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">length</span>() &gt; <span class="hljs-number">8</span>; &#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">rule2</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>    <span class="hljs-keyword">bool</span> AA = <span class="hljs-number">0</span>, aa = <span class="hljs-number">0</span>, digit = <span class="hljs-number">0</span>, symbol = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span>&amp; c : s) &#123;<br>        <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>) AA = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) aa = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;9&#x27;</span>) digit = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> symbol = <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> AA + aa + digit + symbol &gt;= <span class="hljs-number">3</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">rule3</span><span class="hljs-params">(string s)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> len = <span class="hljs-number">3</span>; len &lt;= s.<span class="hljs-built_in">length</span>(); len++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> index = <span class="hljs-number">0</span>; index &lt;= s.<span class="hljs-built_in">length</span>() - len; index++)<br>            <span class="hljs-comment">// if (s.find(s.substr(index, len), index + 1) != string::npos)</span><br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">substr</span>(index + <span class="hljs-number">1</span>).<span class="hljs-built_in">find</span>(s.<span class="hljs-built_in">substr</span>(index, len)) != string::npos)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(cin, s)) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">rule1</span>(s) &amp;&amp; <span class="hljs-built_in">rule2</span>(s) &amp;&amp; <span class="hljs-built_in">rule3</span>(s))<br>            cout &lt;&lt; <span class="hljs-string">&quot;OK&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;NG&quot;</span> &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>rule3里面也可以写成注释的那句，用到了find的另一个重载：<br>find(string, int)：第一个参数用来指示要查找的目标串，第二个参数用来表示从字符串的何处开始查找子串(默认的查找位置是0)。</p>
-]]></content>
+    <title>HJ21 简单密码破解</title>
+    <url>/posts/ebffc38c/</url>
+    <content><![CDATA[<p>密码是我们生活中非常重要的东东，我们的那么一点不能说的秘密就全靠它了。哇哈哈. 接下来渊子要在密码之上再加一套密码，虽然简单但也安全。</p>
+<p>假设渊子原来一个BBS上的密码为zvbo9441987,为了方便记忆，他通过一种算法把这个密码变换成YUANzhi1987，这个密码是他的名字和出生年份，怎么忘都忘不了，而且可以明目张胆地放在显眼的地方而不被别人知道真正的密码。</p>
+<p>他是这么变换的，大家都知道手机上的字母： 1—1， abc—2, def—3, ghi—4, jkl—5, mno—6, pqrs—7, tuv—8 wxyz—9, 0—0,就这么简单，渊子把密码中出现的小写字母都变成对应的数字，数字和其他的符号都不做变换，</p>
+<p>声明：密码中没有空格，而密码中出现的大写字母则变成小写之后往后移一位，如：X，先变成小写，再往后移一位，不就是y了嘛，简单吧。记住，z往后移是a哦。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; s) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s) &#123;<br>            <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>)<br>                c = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">char</span>&gt;(<span class="hljs-string">&#x27;a&#x27;</span> + (<span class="hljs-built_in">tolower</span>(c) - <span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-number">1</span>) % <span class="hljs-number">26</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) &#123;<br>                <span class="hljs-built_in"><span class="hljs-keyword">switch</span></span> (c) &#123;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;a&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;b&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;c&#x27;</span>: c = <span class="hljs-string">&#x27;2&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;d&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;e&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;f&#x27;</span>: c = <span class="hljs-string">&#x27;3&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;g&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;h&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;i&#x27;</span>: c = <span class="hljs-string">&#x27;4&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;j&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;k&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;l&#x27;</span>: c = <span class="hljs-string">&#x27;5&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;m&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;n&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;o&#x27;</span>: c = <span class="hljs-string">&#x27;6&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;p&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;q&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;r&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;s&#x27;</span>: c = <span class="hljs-string">&#x27;7&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;t&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;u&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;v&#x27;</span>: c = <span class="hljs-string">&#x27;8&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;w&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;x&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;y&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;z&#x27;</span>: c = <span class="hljs-string">&#x27;9&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">default</span>:  <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        cout &lt;&lt; s;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>华为机试</category>
@@ -1653,13 +1654,12 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ21 简单密码破解</title>
-    <url>/posts/ebffc38c/</url>
-    <content><![CDATA[<p>密码是我们生活中非常重要的东东，我们的那么一点不能说的秘密就全靠它了。哇哈哈. 接下来渊子要在密码之上再加一套密码，虽然简单但也安全。</p>
-<p>假设渊子原来一个BBS上的密码为zvbo9441987,为了方便记忆，他通过一种算法把这个密码变换成YUANzhi1987，这个密码是他的名字和出生年份，怎么忘都忘不了，而且可以明目张胆地放在显眼的地方而不被别人知道真正的密码。</p>
-<p>他是这么变换的，大家都知道手机上的字母： 1—1， abc—2, def—3, ghi—4, jkl—5, mno—6, pqrs—7, tuv—8 wxyz—9, 0—0,就这么简单，渊子把密码中出现的小写字母都变成对应的数字，数字和其他的符号都不做变换，</p>
-<p>声明：密码中没有空格，而密码中出现的大写字母则变成小写之后往后移一位，如：X，先变成小写，再往后移一位，不就是y了嘛，简单吧。记住，z往后移是a哦。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; s) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s) &#123;<br>            <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>)<br>                c = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">char</span>&gt;(<span class="hljs-string">&#x27;a&#x27;</span> + (<span class="hljs-built_in">tolower</span>(c) - <span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-number">1</span>) % <span class="hljs-number">26</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) &#123;<br>                <span class="hljs-built_in"><span class="hljs-keyword">switch</span></span> (c) &#123;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;a&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;b&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;c&#x27;</span>: c = <span class="hljs-string">&#x27;2&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;d&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;e&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;f&#x27;</span>: c = <span class="hljs-string">&#x27;3&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;g&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;h&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;i&#x27;</span>: c = <span class="hljs-string">&#x27;4&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;j&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;k&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;l&#x27;</span>: c = <span class="hljs-string">&#x27;5&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;m&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;n&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;o&#x27;</span>: c = <span class="hljs-string">&#x27;6&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;p&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;q&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;r&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;s&#x27;</span>: c = <span class="hljs-string">&#x27;7&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;t&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;u&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;v&#x27;</span>: c = <span class="hljs-string">&#x27;8&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;w&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;x&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;y&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;z&#x27;</span>: c = <span class="hljs-string">&#x27;9&#x27;</span>; <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">default</span>:  <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        cout &lt;&lt; s;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    <title>HJ20 密码验证合格程序</title>
+    <url>/posts/2eedb083/</url>
+    <content><![CDATA[<p>密码要求:<br>1.长度超过8位<br>2.包括大小写字母.数字.其它符号,以上四种至少三种<br>3.不能有相同长度大于2的子串重复</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">rule1</span><span class="hljs-params">(string&amp; s)</span> </span>&#123; <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">length</span>() &gt; <span class="hljs-number">8</span>; &#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">rule2</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>    <span class="hljs-keyword">bool</span> AA = <span class="hljs-number">0</span>, aa = <span class="hljs-number">0</span>, digit = <span class="hljs-number">0</span>, symbol = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span>&amp; c : s) &#123;<br>        <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>) AA = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) aa = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;9&#x27;</span>) digit = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> symbol = <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> AA + aa + digit + symbol &gt;= <span class="hljs-number">3</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">rule3</span><span class="hljs-params">(string s)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> len = <span class="hljs-number">3</span>; len &lt;= s.<span class="hljs-built_in">length</span>(); len++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> index = <span class="hljs-number">0</span>; index &lt;= s.<span class="hljs-built_in">length</span>() - len; index++)<br>            <span class="hljs-comment">// if (s.find(s.substr(index, len), index + 1) != string::npos)</span><br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">substr</span>(index + <span class="hljs-number">1</span>).<span class="hljs-built_in">find</span>(s.<span class="hljs-built_in">substr</span>(index, len)) != string::npos)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(cin, s)) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">rule1</span>(s) &amp;&amp; <span class="hljs-built_in">rule2</span>(s) &amp;&amp; <span class="hljs-built_in">rule3</span>(s))<br>            cout &lt;&lt; <span class="hljs-string">&quot;OK&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;NG&quot;</span> &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>rule3里面也可以写成注释的那句，用到了find的另一个重载：<br>find(string, int)：第一个参数用来指示要查找的目标串，第二个参数用来表示从字符串的何处开始查找子串(默认的查找位置是0)。</p>
+]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>华为机试</category>
@@ -1772,8 +1772,8 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
         <category>华为机试</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>模拟</tag>
+        <tag>字符串</tag>
         <tag>数学</tag>
       </tags>
   </entry>
@@ -1820,21 +1820,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ61 放苹果</title>
-    <url>/posts/cc7d867/</url>
-    <content><![CDATA[<p>把m个同样的苹果放在n个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？（用K表示）5，1，1和1，5，1 是同一种分法。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (m == <span class="hljs-number">0</span> || m == <span class="hljs-number">1</span> || n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (m &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fun</span>(m, n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">fun</span>(m - n, n);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> m, n;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; m &gt;&gt; n) &#123;<br>        cout &lt;&lt; <span class="hljs-built_in">fun</span>(m, n) &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>分析<br>写状态转移方程：有盘子（至少一个）为空 和 无盘子为空<br>找递归边界</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>DP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HJ64 MP3光标位置</title>
     <url>/posts/c8a39177/</url>
     <content><![CDATA[<p>MP3 Player因为屏幕较小，显示歌曲列表的时候每屏只能显示几首歌曲，用户要通过上下键才能浏览所有的歌曲。为了简化处理，假设每屏只能显示4首歌曲，光标初始的位置为第1首歌。</p>
@@ -1850,6 +1835,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HJ61 放苹果</title>
+    <url>/posts/cc7d867/</url>
+    <content><![CDATA[<p>把m个同样的苹果放在n个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？（用K表示）5，1，1和1，5，1 是同一种分法。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (m == <span class="hljs-number">0</span> || m == <span class="hljs-number">1</span> || n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (m &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fun</span>(m, n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">fun</span>(m - n, n);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> m, n;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; m &gt;&gt; n) &#123;<br>        cout &lt;&lt; <span class="hljs-built_in">fun</span>(m, n) &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>分析<br>写状态转移方程：有盘子（至少一个）为空 和 无盘子为空<br>找递归边界</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -3480,224 +3480,810 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
   <entry>
     <title>linux常用命令全拼</title>
     <url>/posts/648b5ed5/</url>
-    <content><![CDATA[<p>命令缩写：</p>
-<p>pwd:print work directory 打印当前目录 显示出当前工作目录的绝对路径</p>
-<p>ps: process status(进程状态，类似于windows的任务管理器)</p>
-<p>常用参数：－auxf</p>
-<p>ps -auxf 显示进程状态</p>
-<p>df: disk free 其功能是显示磁盘可用空间数目信息及空间结点信息。换句话说，就是报告在任何安装的设备或目录中，还剩多少自由的空间。</p>
-<p>du: Disk usage</p>
-<p>rpm：即RedHat Package Management，是RedHat的发明之一</p>
-<p>rmdir：Remove Directory（删除目录）</p>
-<p>rm：Remove（删除目录或文件）</p>
-<p>cat: concatenate 连锁</p>
-<p>cat file1file2&gt;&gt;file3 把文件1和文件2的内容联合起来放到file3中</p>
-<p>insmod: install module,载入模块</p>
-<p>ln -s : link -soft 创建一个软链接，相当于创建一个快捷方式</p>
-<p>mkdir：Make Directory(创建目录)</p>
-<p>touch</p>
-<p>man: Manual</p>
-<p>su：Swith user(切换用户)</p>
-<p>cd：Change directory</p>
-<p>ls：List files</p>
-<p>ps：Process Status</p>
-<p>mkdir：Make directory</p>
-<p>rmdir：Remove directory</p>
-<p>mkfs: Make file system</p>
-<p>fsck：File system check</p>
-<p>uname: Unix name</p>
-<p>lsmod: List modules</p>
-<p>mv: Move file</p>
-<p>rm: Remove file</p>
-<p>cp: Copy file</p>
-<p>ln: Link files</p>
-<p>fg: Foreground</p>
-<p>bg: Background</p>
-<p>chown: Change owner</p>
-<p>chgrp: Change group</p>
-<p>chmod: Change mode</p>
-<p>umount: Unmount</p>
-<p>dd: 本来应根据其功能描述“Convert an copy”命名为“cc”，但“cc”已经被用以代表“CComplier”，所以命名为“dd”</p>
-<p>tar：Tape archive （磁带档案）</p>
-<p>ldd：List dynamic dependencies</p>
-<p>insmod：Install module</p>
-<p>rmmod：Remove module</p>
-<p>lsmod：List module</p>
-<p>文件结尾的”rc”（如.bashrc、.xinitrc等）：Resource configuration</p>
-<p>Knnxxx /Snnxxx（位于rcx.d目录下）：K（Kill）；S(Service)；</p>
-<p>nn（执行顺序号）；xxx（服务标识）</p>
-<p>.a（扩展名a）：Archive，static library</p>
-<p>.so（扩展名so）：Shared object，dynamically linked library</p>
-<p>.o（扩展名o）：Object file，complied result of C/C++ source file</p>
-<p>RPM：Red hat package manager</p>
-<p>dpkg：Debian package manager</p>
-<p>apt：Advanced package tool（Debian或基于Debian的发行版中提供）</p>
-<p>部分Linux命令缩写</p>
-<p>bin = Binaries (二进制文件)</p>
-<p>/dev = Devices (设备)</p>
-<p>/etc = Etcetera (等等)</p>
-<p>/lib = LIBrary</p>
-<p>/proc = Processes</p>
-<p>/sbin = Superuser Binaries (超级用户的二进制文件)</p>
-<p>/tmp = Temporary (临时)</p>
-<p>/usr = Unix Shared Resources</p>
-<p>/var = Variable (变量)</p>
-<p>FIFO = First In, First Out</p>
-<p>GRUB = GRand Unified Bootloader</p>
-<p>IFS= Internal Field Seperators</p>
-<p>LILO = LInux LOader</p>
-<p>MySQL = My 是最初作者女儿的名字，</p>
-<p>SQL = Structured QueryLanguage</p>
-<p>PHP = Personal Home Page Tools = PHP HypertextPreprocessor</p>
-<p>PS = Prompt String</p>
-<p>Perl = “Pratical Extraction and Report Language”(实际的抽取和报告语言) =”Pathologically Eclectic Rubbish Lister”</p>
-<p>Python 得名于电视剧Monty Python’s Flying Circus</p>
-<p>Tcl = Tool Command Language</p>
-<p>Tk = ToolKit</p>
-<p>VT = Video Terminal</p>
-<p>YaST = Yet Another Setup Tool</p>
-<p>apache = “a patchy” server</p>
-<p>apt = Advanced Packaging Tool</p>
-<p>ar = archiver</p>
-<p>as = assembler</p>
-<p>awk = “Aho Weiberger and Kernighan”三个作者的姓的第一个字母</p>
-<p>bash = Bourne Again SHell</p>
-<p>bc = Basic (Better) Calculator</p>
-<p>bg = BackGround</p>
-<p>biff = 作者HeidiStettner在U.C.Berkely养的一条狗,喜欢对邮递员汪汪叫。</p>
-<p>cal = Calendar (日历)</p>
-<p>cat = Catenate (链接)</p>
-<p>cd = Change Directory</p>
-<p>chgrp = Change Group</p>
-<p>chmod = Change Mode</p>
-<p>chown = Change Owner</p>
-<p>chsh = Change Shell</p>
-<p>cmp = compare</p>
-<p>cobra = Common Object Request BrokerArchitecture</p>
-<p>comm = common</p>
-<p>cp = Copy</p>
-<p>cpio = CoPy In and Out</p>
-<p>cpp = C Pre Processor</p>
-<p>cron = Chronos 希腊文时间</p>
-<p>cups = Common Unix Printing System</p>
-<p>cvs = Current Version System</p>
-<p>daemon = Disk And Execution MONitor</p>
-<p>dc = Desk Calculator</p>
-<p>dd = Disk Dump (磁盘转储)</p>
-<p>df = Disk Free</p>
-<p>diff = Difference</p>
-<p>dmesg = diagnostic message</p>
-<p>du = Disk Usage</p>
-<p>ed = editor</p>
-<p>egrep = Extended GREP</p>
-<p>elf = Extensible Linking Format</p>
-<p>elm = ELectronic Mail</p>
-<p>emacs = Editor MACroS</p>
-<p>eval = EVALuate</p>
-<p>ex = EXtended</p>
-<p>exec = EXECute (执行)</p>
-<p>fd = file descriptors</p>
-<p>fg = ForeGround</p>
-<p>fgrep = Fixed GREP</p>
-<p>fmt = format</p>
-<p>fsck = File System ChecK</p>
-<p>fstab = FileSystem TABle</p>
-<p>fvwm = F<em>*</em> Virtual Window Manager</p>
-<p>gawk = GNU AWK</p>
-<p>gpg = GNU Privacy Guard</p>
-<p>groff = GNU troff</p>
-<p>hal = Hardware Abstraction Layer</p>
-<p>joe = Joe’s Own Editor</p>
-<p>ksh = Korn SHell</p>
-<p>lame = Lame Ain’t an MP3 Encoder</p>
-<p>lex = LEXical analyser</p>
-<p>lisp = LISt Processing = Lots of IrritatingSuperfluous Parentheses</p>
-<p>ln = Link</p>
-<p>lpr = Line PRint</p>
-<p>ls = list</p>
-<p>lsof = LiSt Open Files</p>
-<p>m4 = Macro processor Version 4</p>
-<p>man = MANual pages</p>
-<p>mawk = Mike Brennan’s AWK</p>
-<p>mc = Midnight Commander</p>
-<p>mkfs = MaKe FileSystem</p>
-<p>mknod = Make Node</p>
-<p>motd = Message of The Day</p>
-<p>mozilla = MOsaic GodZILLa</p>
-<p>mtab = Mount TABle</p>
-<p>mv = Move</p>
-<p>nano = Nano’s ANOther editor</p>
-<p>nawk = New AWK</p>
-<p>nl = Number of Lines</p>
-<p>nm = names</p>
-<p>nohup = No HangUP</p>
-<p>nroff = New ROFF</p>
-<p>od = Octal Dump</p>
-<p>passwd = Passwd</p>
-<p>pg = pager</p>
-<p>pico = PIne’s message COmposition editor</p>
-<p>pine = “Program for Internet News &amp;Email” = “Pine is not Elm”</p>
-<p>ping = 拟声 又 = Packet Internet Grouper</p>
-<p>pirntcap = PRINTer CAPability</p>
-<p>popd = POP Directory</p>
-<p>pr = pre</p>
-<p>printf = Print Formatted</p>
-<p>ps = Processes Status</p>
-<p>pty = pseudo tty</p>
-<p>pushd = PUSH Directory</p>
-<p>pwd = Print Working Directory</p>
-<p>rc = runcom = run command, rc还是plan9的shell</p>
-<p>rev = REVerse</p>
-<p>rm = ReMove</p>
-<p>rn = Read News</p>
-<p>roff = RunOFF</p>
-<p>rpm = RPM Package Manager = RedHat PackageManager</p>
-<p>rsh, rlogin, rvim中的</p>
-<p>r = Remote</p>
-<p>rxvt = ouR XVT</p>
-<p>seamoneky = 我</p>
-<p>sed = Stream Editor</p>
-<p>seq = SEQuence</p>
-<p>shar = Shell ARchive</p>
-<p>slrn = S-Lang rn</p>
-<p>ssh = Secure Shell</p>
-<p>ssl = Secure Sockets Layer</p>
-<p>stty = Set TTY</p>
-<p>su = Substitute User</p>
-<p>svn = SubVersion</p>
-<p>tar = Tape ARchive</p>
-<p>tcsh = TENEX C shell</p>
-<p>tee = T (T形水管接口)</p>
-<p>telnet = TEminaL over Network</p>
-<p>termcap = terminal capability</p>
-<p>terminfo = terminal information</p>
-<p>tex = τέχνη的缩写，希腊文art</p>
-<p>tr = traslate</p>
-<p>troff = Typesetter new ROFF</p>
-<p>tsort = Topological SORT</p>
-<p>tty = TeleTypewriter</p>
-<p>twm = Tom’s Window Manager</p>
-<p>tz = TimeZone</p>
-<p>udev = Userspace DEV</p>
-<p>ulimit = User’s LIMIT</p>
-<p>umask = User’s MASK</p>
-<p>uniq = UNIQue</p>
-<p>i = VIsual = Very Inconvenient</p>
-<p>vim = Vi IMproved</p>
-<p>wall = write all</p>
-<p>wc = Word Count</p>
-<p>wine = WINE Is Not an Emulator</p>
-<p>xargs = eXtended ARGuments</p>
-<p>xdm = X Display Manager</p>
-<p>xlfd = X Logical Font Description</p>
-<p>xmms = X Multimedia System</p>
-<p>xrdb = X Resources DataBase</p>
-<p>xwd = X Window Dump</p>
-<p>yacc = yet another compiler compiler</p>
-<p>Fish = the Friendly Interactive SHell</p>
-<p>su = Switch User</p>
-<p>MIME = Multipurpose Internet Mail Extensions</p>
-<p>ECMA = European Computer ManufacturersAssociation</p>
+    <content><![CDATA[<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>全拼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>man</td>
+<td>manual</td>
+</tr>
+<tr>
+<td>su</td>
+<td>swith user (切换用户)</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>change directory</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>list files</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>process status</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>make directory</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>remove directory</td>
+</tr>
+<tr>
+<td>mkfs</td>
+<td>make file system</td>
+</tr>
+<tr>
+<td>fsck</td>
+<td>file system check</td>
+</tr>
+<tr>
+<td>uname</td>
+<td>Unix name</td>
+</tr>
+<tr>
+<td>lsmod</td>
+<td>list modules</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>Move file</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>Remove file</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>Copy file</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>Link files</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>Foreground</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>Background</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>Change owner</td>
+</tr>
+<tr>
+<td>chgrp</td>
+<td>Change group</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td>Change mode</td>
+</tr>
+<tr>
+<td>umount</td>
+<td>Unmount</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>本来应根据其功能描述“Convert an copy”命名为“cc”，但“cc”已经被用以代表“CComplier”，所以命名为“dd”</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>Tape archive (磁带档案)</td>
+</tr>
+<tr>
+<td>ldd</td>
+<td>List dynamic dependencies</td>
+</tr>
+<tr>
+<td>insmod</td>
+<td>Install module</td>
+</tr>
+<tr>
+<td>rmmod</td>
+<td>Remove module</td>
+</tr>
+<tr>
+<td>lsmod</td>
+<td>List module</td>
+</tr>
+<tr>
+<td>文件结尾的rc(如.bashrc、.xinitrc等)</td>
+<td>Resource configuration</td>
+</tr>
+<tr>
+<td>Knnxxx /Snnxxx (位于rcx.d目录下)</td>
+<td>K (Kill)；S (Service)；nn (执行顺序号)；xxx (服务标识)</td>
+</tr>
+<tr>
+<td>.a (扩展名a)</td>
+<td>Archive，static library</td>
+</tr>
+<tr>
+<td>.so (扩展名so)</td>
+<td>Shared object，dynamically linked library</td>
+</tr>
+<tr>
+<td>.o (扩展名o)</td>
+<td>Object file，complied result of C/C++ source file</td>
+</tr>
+<tr>
+<td>RPM</td>
+<td>Red hat package manager</td>
+</tr>
+<tr>
+<td>dpkg</td>
+<td>Debian package manager</td>
+</tr>
+<tr>
+<td>apt</td>
+<td>Advanced package tool (Debian或基于Debian的发行版中提供)</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>Binaries (二进制文件)</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>Devices (设备)</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>Etcetera (等等)</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>LIBrary</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>Processes</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>Superuser Binaries (超级用户的二进制文件)</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>Temporary (临时)</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>Unix Shared Resources</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>Variable (变量)</td>
+</tr>
+<tr>
+<td>FIFO</td>
+<td>First In, First Out</td>
+</tr>
+<tr>
+<td>GRUB</td>
+<td>GRand Unified Bootloader</td>
+</tr>
+<tr>
+<td>IFS</td>
+<td>Internal Field Seperators</td>
+</tr>
+<tr>
+<td>LILO</td>
+<td>LInux LOader</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>My 是最初作者女儿的名字，</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>Structured QueryLanguage</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>Personal Home Page Tools</td>
+</tr>
+<tr>
+<td>PS</td>
+<td>Prompt String</td>
+</tr>
+<tr>
+<td>Perl</td>
+<td>“Pratical Extraction and Report Language”(实际的抽取和报告语言)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>得名于电视剧 Monty Python’s Flying Circus</td>
+</tr>
+<tr>
+<td>Tcl</td>
+<td>Tool Command Language</td>
+</tr>
+<tr>
+<td>Tk</td>
+<td>ToolKit</td>
+</tr>
+<tr>
+<td>VT</td>
+<td>Video Terminal</td>
+</tr>
+<tr>
+<td>YaST</td>
+<td>Yet Another Setup Tool</td>
+</tr>
+<tr>
+<td>apache</td>
+<td>“a patchy” server</td>
+</tr>
+<tr>
+<td>apt</td>
+<td>Advanced Packaging Tool</td>
+</tr>
+<tr>
+<td>ar</td>
+<td>archiver</td>
+</tr>
+<tr>
+<td>as</td>
+<td>assembler</td>
+</tr>
+<tr>
+<td>awk</td>
+<td>“Aho Weiberger and Kernighan”三个作者的姓的第一个字母</td>
+</tr>
+<tr>
+<td>bash</td>
+<td>Bourne Again SHell</td>
+</tr>
+<tr>
+<td>bc</td>
+<td>Basic (Better) Calculator</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>BackGround</td>
+</tr>
+<tr>
+<td>biff</td>
+<td>作者HeidiStettner在U.C.Berkely养的一条狗，喜欢对邮递员汪汪叫。</td>
+</tr>
+<tr>
+<td>cal</td>
+<td>Calendar (日历)</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>Catenate (链接)</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>Change Directory</td>
+</tr>
+<tr>
+<td>chgrp</td>
+<td>Change Group</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td>Change Mode</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>Change Owner</td>
+</tr>
+<tr>
+<td>chsh</td>
+<td>Change Shell</td>
+</tr>
+<tr>
+<td>cmp</td>
+<td>compare</td>
+</tr>
+<tr>
+<td>cobra</td>
+<td>Common Object Request BrokerArchitecture</td>
+</tr>
+<tr>
+<td>comm</td>
+<td>common</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>Copy</td>
+</tr>
+<tr>
+<td>cpio</td>
+<td>CoPy In and Out</td>
+</tr>
+<tr>
+<td>cpp</td>
+<td>C Pre Processor</td>
+</tr>
+<tr>
+<td>cron</td>
+<td>Chronos 希腊文时间</td>
+</tr>
+<tr>
+<td>cups</td>
+<td>Common Unix Printing System</td>
+</tr>
+<tr>
+<td>cvs</td>
+<td>Current Version System</td>
+</tr>
+<tr>
+<td>daemon</td>
+<td>Disk And Execution MONitor</td>
+</tr>
+<tr>
+<td>dc</td>
+<td>Desk Calculator</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>Disk Dump (磁盘转储)</td>
+</tr>
+<tr>
+<td>df</td>
+<td>Disk Free</td>
+</tr>
+<tr>
+<td>diff</td>
+<td>Difference</td>
+</tr>
+<tr>
+<td>dmesg</td>
+<td>diagnostic message</td>
+</tr>
+<tr>
+<td>du</td>
+<td>Disk Usage</td>
+</tr>
+<tr>
+<td>ed</td>
+<td>editor</td>
+</tr>
+<tr>
+<td>egrep</td>
+<td>Extended GREP</td>
+</tr>
+<tr>
+<td>elf</td>
+<td>Extensible Linking Format</td>
+</tr>
+<tr>
+<td>elm</td>
+<td>ELectronic Mail</td>
+</tr>
+<tr>
+<td>emacs</td>
+<td>Editor MACroS</td>
+</tr>
+<tr>
+<td>eval</td>
+<td>EVALuate</td>
+</tr>
+<tr>
+<td>ex</td>
+<td>EXtended</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>EXECute (执行)</td>
+</tr>
+<tr>
+<td>fd</td>
+<td>file descriptors</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>ForeGround</td>
+</tr>
+<tr>
+<td>fgrep</td>
+<td>Fixed GREP</td>
+</tr>
+<tr>
+<td>fmt</td>
+<td>format</td>
+</tr>
+<tr>
+<td>fsck</td>
+<td>File System ChecK</td>
+</tr>
+<tr>
+<td>fstab</td>
+<td>FileSystem TABle</td>
+</tr>
+<tr>
+<td>fvwm</td>
+<td>F<em>*</em> Virtual Window Manager</td>
+</tr>
+<tr>
+<td>gawk</td>
+<td>GNU AWK</td>
+</tr>
+<tr>
+<td>gpg</td>
+<td>GNU Privacy Guard</td>
+</tr>
+<tr>
+<td>groff</td>
+<td>GNU troff</td>
+</tr>
+<tr>
+<td>hal</td>
+<td>Hardware Abstraction Layer</td>
+</tr>
+<tr>
+<td>joe</td>
+<td>Joe’s Own Editor</td>
+</tr>
+<tr>
+<td>ksh</td>
+<td>Korn SHell</td>
+</tr>
+<tr>
+<td>lame</td>
+<td>Lame Ain’t an MP3 Encoder</td>
+</tr>
+<tr>
+<td>lex</td>
+<td>LEXical analyser</td>
+</tr>
+<tr>
+<td>lisp</td>
+<td>LISt Processing</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>Link</td>
+</tr>
+<tr>
+<td>lpr</td>
+<td>Line PRint</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>list</td>
+</tr>
+<tr>
+<td>lsof</td>
+<td>LiSt Open Files</td>
+</tr>
+<tr>
+<td>m4</td>
+<td>Macro processor Version 4</td>
+</tr>
+<tr>
+<td>man</td>
+<td>MANual pages</td>
+</tr>
+<tr>
+<td>mawk</td>
+<td>Mike Brennan’s AWK</td>
+</tr>
+<tr>
+<td>mc</td>
+<td>Midnight Commander</td>
+</tr>
+<tr>
+<td>mkfs</td>
+<td>MaKe FileSystem</td>
+</tr>
+<tr>
+<td>mknod</td>
+<td>Make Node</td>
+</tr>
+<tr>
+<td>motd</td>
+<td>Message of The Day</td>
+</tr>
+<tr>
+<td>mozilla</td>
+<td>MOsaic GodZILLa</td>
+</tr>
+<tr>
+<td>mtab</td>
+<td>Mount TABle</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>Move</td>
+</tr>
+<tr>
+<td>nano</td>
+<td>Nano’s ANOther editor</td>
+</tr>
+<tr>
+<td>nawk</td>
+<td>New AWK</td>
+</tr>
+<tr>
+<td>nl</td>
+<td>Number of Lines</td>
+</tr>
+<tr>
+<td>nm</td>
+<td>names</td>
+</tr>
+<tr>
+<td>nohup</td>
+<td>No HangUP</td>
+</tr>
+<tr>
+<td>nroff</td>
+<td>New ROFF</td>
+</tr>
+<tr>
+<td>od</td>
+<td>Octal Dump</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>Passwd</td>
+</tr>
+<tr>
+<td>pg</td>
+<td>pager</td>
+</tr>
+<tr>
+<td>pico</td>
+<td>PIne’s message COmposition editor</td>
+</tr>
+<tr>
+<td>pine</td>
+<td>Program for Internet News &amp; Email (Pine is not Elm)</td>
+</tr>
+<tr>
+<td>ping</td>
+<td>Packet Internet Grouper</td>
+</tr>
+<tr>
+<td>pirntcap</td>
+<td>PRINTer CAPability</td>
+</tr>
+<tr>
+<td>popd</td>
+<td>POP Directory</td>
+</tr>
+<tr>
+<td>pr</td>
+<td>pre</td>
+</tr>
+<tr>
+<td>printf</td>
+<td>Print Formatted</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>Processes Status</td>
+</tr>
+<tr>
+<td>pty</td>
+<td>pseudo tty</td>
+</tr>
+<tr>
+<td>pushd</td>
+<td>PUSH Directory</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Print Working Directory</td>
+</tr>
+<tr>
+<td>rc,runcom</td>
+<td>run command</td>
+</tr>
+<tr>
+<td>rev</td>
+<td>REVerse</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>ReMove</td>
+</tr>
+<tr>
+<td>rn</td>
+<td>Read News</td>
+</tr>
+<tr>
+<td>roff</td>
+<td>RunOFF</td>
+</tr>
+<tr>
+<td>rpm</td>
+<td>RedHat Package Manager</td>
+</tr>
+<tr>
+<td>rsh,rlogin,rvim的r</td>
+<td>Remote</td>
+</tr>
+<tr>
+<td>rxvt</td>
+<td>ouR XVT</td>
+</tr>
+<tr>
+<td>seamoneky</td>
+<td>我</td>
+</tr>
+<tr>
+<td>sed</td>
+<td>Stream Editor</td>
+</tr>
+<tr>
+<td>seq</td>
+<td>SEQuence</td>
+</tr>
+<tr>
+<td>shar</td>
+<td>Shell ARchive</td>
+</tr>
+<tr>
+<td>slrn</td>
+<td>S-Lang rn</td>
+</tr>
+<tr>
+<td>ssh</td>
+<td>Secure Shell</td>
+</tr>
+<tr>
+<td>ssl</td>
+<td>Secure Sockets Layer</td>
+</tr>
+<tr>
+<td>stty</td>
+<td>Set TTY</td>
+</tr>
+<tr>
+<td>su</td>
+<td>Substitute User</td>
+</tr>
+<tr>
+<td>svn</td>
+<td>SubVersion</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>Tape ARchive</td>
+</tr>
+<tr>
+<td>tcsh</td>
+<td>TENEX C shell</td>
+</tr>
+<tr>
+<td>tee</td>
+<td>T (T形水管接口)</td>
+</tr>
+<tr>
+<td>telnet</td>
+<td>TEminaL over Network</td>
+</tr>
+<tr>
+<td>termcap</td>
+<td>terminal capability</td>
+</tr>
+<tr>
+<td>terminfo</td>
+<td>terminal information</td>
+</tr>
+<tr>
+<td>tex</td>
+<td>τέχνη的缩写，希腊文art</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>traslate</td>
+</tr>
+<tr>
+<td>troff</td>
+<td>Typesetter new ROFF</td>
+</tr>
+<tr>
+<td>tsort</td>
+<td>Topological SORT</td>
+</tr>
+<tr>
+<td>tty</td>
+<td>TeleTypewriter</td>
+</tr>
+<tr>
+<td>twm</td>
+<td>Tom’s Window Manager</td>
+</tr>
+<tr>
+<td>tz</td>
+<td>TimeZone</td>
+</tr>
+<tr>
+<td>udev</td>
+<td>Userspace DEV</td>
+</tr>
+<tr>
+<td>ulimit</td>
+<td>User’s LIMIT</td>
+</tr>
+<tr>
+<td>umask</td>
+<td>User’s MASK</td>
+</tr>
+<tr>
+<td>uniq</td>
+<td>UNIQue</td>
+</tr>
+<tr>
+<td>vim</td>
+<td>Vi IMproved</td>
+</tr>
+<tr>
+<td>wall</td>
+<td>write all</td>
+</tr>
+<tr>
+<td>wc</td>
+<td>Word Count</td>
+</tr>
+<tr>
+<td>wine</td>
+<td>WINE Is Not an Emulator</td>
+</tr>
+<tr>
+<td>xargs</td>
+<td>eXtended ARGuments</td>
+</tr>
+<tr>
+<td>xdm</td>
+<td>X Display Manager</td>
+</tr>
+<tr>
+<td>xlfd</td>
+<td>X Logical Font Description</td>
+</tr>
+<tr>
+<td>xmms</td>
+<td>X Multimedia System</td>
+</tr>
+<tr>
+<td>xrdb</td>
+<td>X Resources DataBase</td>
+</tr>
+<tr>
+<td>xwd</td>
+<td>X Window Dump</td>
+</tr>
+<tr>
+<td>yacc</td>
+<td>yet another compiler compiler</td>
+</tr>
+<tr>
+<td>Fish</td>
+<td>the Friendly Interactive SHell</td>
+</tr>
+<tr>
+<td>su</td>
+<td>Switch User</td>
+</tr>
+<tr>
+<td>MIME</td>
+<td>Multipurpose Internet Mail Extensions</td>
+</tr>
+<tr>
+<td>ECMA</td>
+<td>European Computer Manufacturers Association</td>
+</tr>
+</tbody>
+</table>
+</div>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -4736,6 +5322,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>二叉树的非递归前序遍历</title>
+    <url>/posts/a4a0d723/</url>
+    <content><![CDATA[<h2 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">preorderIterative</span><span class="hljs-params">(Node* root)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br><br>    stack&lt;Node*&gt; st;<br>    Node* curr = root;<br><br>    <span class="hljs-keyword">while</span> (curr || !st.<span class="hljs-built_in">empty</span>()) &#123;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">NULL</span>) &#123;<br>            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br><br>            <span class="hljs-keyword">if</span> (curr-&gt;right)<br>                st.<span class="hljs-built_in">push</span>(curr-&gt;right);<br><br>            curr = curr-&gt;left;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (!st.<span class="hljs-built_in">empty</span>()) &#123;<br>            curr = st.<span class="hljs-built_in">top</span>();<br>            st.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// Tree Node</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    <span class="hljs-keyword">int</span> data;<br>    Node* left, * right;<br>    <span class="hljs-built_in">Node</span>(<span class="hljs-keyword">int</span> data) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;data = data;<br>        <span class="hljs-keyword">this</span>-&gt;left = <span class="hljs-keyword">this</span>-&gt;right = <span class="hljs-literal">NULL</span>;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// Iterative function to do Preorder traversal of the tree</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">preorderIterative</span><span class="hljs-params">(Node* root)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br><br>    stack&lt;Node*&gt; st;<br><br>    <span class="hljs-comment">// start from root node (set current node to root node)</span><br>    Node* curr = root;<br><br>    <span class="hljs-comment">// run till stack is not empty or current is not NULL</span><br>    <span class="hljs-keyword">while</span> (curr || !st.<span class="hljs-built_in">empty</span>()) &#123;<br>        <span class="hljs-comment">// Print left children while exist</span><br>        <span class="hljs-comment">// and keep pushing right into the stack.</span><br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">NULL</span>) &#123;<br>            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br><br>            <span class="hljs-keyword">if</span> (curr-&gt;right)<br>                st.<span class="hljs-built_in">push</span>(curr-&gt;right);<br><br>            curr = curr-&gt;left;<br>        &#125;<br><br>        <span class="hljs-comment">// We reach when curr is NULL, so We</span><br>        <span class="hljs-comment">// take out a right child from stack</span><br>        <span class="hljs-keyword">if</span> (!st.<span class="hljs-built_in">empty</span>()) &#123;<br>            curr = st.<span class="hljs-built_in">top</span>();<br>            st.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// Driver Code</span><br><span class="hljs-comment">//          10</span><br><span class="hljs-comment">//        /    \</span><br><span class="hljs-comment">//       20    30</span><br><span class="hljs-comment">//      /  \   /</span><br><span class="hljs-comment">//     40  50 60</span><br><span class="hljs-comment">//    /  \</span><br><span class="hljs-comment">//   70  80</span><br><span class="hljs-comment">//</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Node* root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">10</span>);<br>    root-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">20</span>);<br>    root-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">30</span>);<br>    root-&gt;left-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">40</span>);<br>    root-&gt;left-&gt;left-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">70</span>);<br>    root-&gt;left-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">50</span>);<br>    root-&gt;right-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">60</span>);<br>    root-&gt;left-&gt;left-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">80</span>);<br><br>    <span class="hljs-built_in">preorderIterative</span>(root);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>搞清楚，这里curr并未移动，只是进行了判断和入栈的操作。要搞清楚什么呢？就是栈里存的东西究竟是什么。在inorder非递归中，当时栈里保存的是一路走过的根结点，然后再向左移动。之后这些保存在栈里的根结点需要在右子树操作前输出。因此！无论in还是pre非递归用到的stack中保存的东西，就是需要在输出左结点之后的“第二时间”要输出的东西。例如inorder中，顺序为左根右，stack就保存到达左后第二时间要输出的（一路向左过程中所经过的）根结点。则preorder中，顺序为根左右，stack就保存到达左后第二时间要输出的右子树结点（就像下面的st.push(curr-&gt;right);）。因为紧挨着左后就要输出了，所以就需要再到达左之前就保存进栈里，到时候直接弹出即可</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>二叉树的非递归中序遍历</title>
     <url>/posts/99bc0c40/</url>
     <content><![CDATA[<h2 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">inOrder</span><span class="hljs-params">(struct Node* root)</span> </span>&#123;<br>    stack&lt;Node*&gt; s;<br>    Node* curr = root;<br><br>    <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">NULL</span> || s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">NULL</span>) &#123;<br>            s.<span class="hljs-built_in">push</span>(curr);<br>            curr = curr-&gt;left;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (!s.<span class="hljs-built_in">empty</span>()) &#123;<br>            curr = s.<span class="hljs-built_in">top</span>();<br>            s.<span class="hljs-built_in">pop</span>();<br><br>            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br><br>            curr = curr-&gt;right;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -4748,21 +5349,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p>将二叉树分为“左”（包括一路向左，经过的所有实际左+根）、“右”（包括实际的右）两种结点<br>使用同样的顺序将“左”结点入栈<br>在合适的时机转向（转向后，“右”结点即成为“左”结点）、访问结点、或出栈</p>
 <p>比如{1,2,3}，当cur位于结点1时，1、2属于“左”结点，3属于“右”结点。DFS的非递归实现本质上是在协调入栈、出栈和访问，三种操作的顺序。上述统一使得我们不再需要关注入栈顺序，仅需要关注出栈和访问（第3点），随着更详细的分析，你将更加体会到这种简化带来的好处。</p>
 <h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a href="https://juejin.cn/post/6844903503807119374">https://juejin.cn/post/6844903503807119374</a><br><a href="https://blog.csdn.net/zhangxiangdavaid/article/details/37115355">https://blog.csdn.net/zhangxiangdavaid/article/details/37115355</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二叉树的非递归前序遍历</title>
-    <url>/posts/a4a0d723/</url>
-    <content><![CDATA[<h2 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">preorderIterative</span><span class="hljs-params">(Node* root)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br><br>    stack&lt;Node*&gt; st;<br>    Node* curr = root;<br><br>    <span class="hljs-keyword">while</span> (curr || !st.<span class="hljs-built_in">empty</span>()) &#123;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">NULL</span>) &#123;<br>            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br><br>            <span class="hljs-keyword">if</span> (curr-&gt;right)<br>                st.<span class="hljs-built_in">push</span>(curr-&gt;right);<br><br>            curr = curr-&gt;left;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (!st.<span class="hljs-built_in">empty</span>()) &#123;<br>            curr = st.<span class="hljs-built_in">top</span>();<br>            st.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// Tree Node</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    <span class="hljs-keyword">int</span> data;<br>    Node* left, * right;<br>    <span class="hljs-built_in">Node</span>(<span class="hljs-keyword">int</span> data) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;data = data;<br>        <span class="hljs-keyword">this</span>-&gt;left = <span class="hljs-keyword">this</span>-&gt;right = <span class="hljs-literal">NULL</span>;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// Iterative function to do Preorder traversal of the tree</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">preorderIterative</span><span class="hljs-params">(Node* root)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br><br>    stack&lt;Node*&gt; st;<br><br>    <span class="hljs-comment">// start from root node (set current node to root node)</span><br>    Node* curr = root;<br><br>    <span class="hljs-comment">// run till stack is not empty or current is not NULL</span><br>    <span class="hljs-keyword">while</span> (curr || !st.<span class="hljs-built_in">empty</span>()) &#123;<br>        <span class="hljs-comment">// Print left children while exist</span><br>        <span class="hljs-comment">// and keep pushing right into the stack.</span><br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">NULL</span>) &#123;<br>            cout &lt;&lt; curr-&gt;data &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br><br>            <span class="hljs-keyword">if</span> (curr-&gt;right)<br>                st.<span class="hljs-built_in">push</span>(curr-&gt;right);<br><br>            curr = curr-&gt;left;<br>        &#125;<br><br>        <span class="hljs-comment">// We reach when curr is NULL, so We</span><br>        <span class="hljs-comment">// take out a right child from stack</span><br>        <span class="hljs-keyword">if</span> (!st.<span class="hljs-built_in">empty</span>()) &#123;<br>            curr = st.<span class="hljs-built_in">top</span>();<br>            st.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// Driver Code</span><br><span class="hljs-comment">//          10</span><br><span class="hljs-comment">//        /    \</span><br><span class="hljs-comment">//       20    30</span><br><span class="hljs-comment">//      /  \   /</span><br><span class="hljs-comment">//     40  50 60</span><br><span class="hljs-comment">//    /  \</span><br><span class="hljs-comment">//   70  80</span><br><span class="hljs-comment">//</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Node* root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">10</span>);<br>    root-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">20</span>);<br>    root-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">30</span>);<br>    root-&gt;left-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">40</span>);<br>    root-&gt;left-&gt;left-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">70</span>);<br>    root-&gt;left-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">50</span>);<br>    root-&gt;right-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">60</span>);<br>    root-&gt;left-&gt;left-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">80</span>);<br><br>    <span class="hljs-built_in">preorderIterative</span>(root);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>搞清楚，这里curr并未移动，只是进行了判断和入栈的操作。要搞清楚什么呢？就是栈里存的东西究竟是什么。在inorder非递归中，当时栈里保存的是一路走过的根结点，然后再向左移动。之后这些保存在栈里的根结点需要在右子树操作前输出。因此！无论in还是pre非递归用到的stack中保存的东西，就是需要在输出左结点之后的“第二时间”要输出的东西。例如inorder中，顺序为左根右，stack就保存到达左后第二时间要输出的（一路向左过程中所经过的）根结点。则preorder中，顺序为根左右，stack就保存到达左后第二时间要输出的右子树结点（就像下面的st.push(curr-&gt;right);）。因为紧挨着左后就要输出了，所以就需要再到达左之前就保存进栈里，到时候直接弹出即可</p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -5224,6 +5810,25 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>栈中最小元素</title>
+    <url>/posts/221f5b82/</url>
+    <content><![CDATA[<p>实现功能getMin以返回当前栈中最小元素。</p>
+<p><strong>Question:</strong> Design a Data Structure SpecialStack that supports all the stack operations like push(), pop(), isEmpty(), isFull() and an additional operation getMin() which should return minimum element from the SpecialStack. All these operations of SpecialStack must be O(1). To implement SpecialStack, you should only use standard Stack data structure and no other data structure like arrays, list, .. etc. </p>
+<p><strong>Solution:</strong> Use two stacks: one to store actual stack elements and the other as an auxiliary stack to store minimum values. The idea is to do push() and pop() operations in such a way that the top of the auxiliary stack is always the minimum. Let us see how push() and pop() operations work.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">STACK MIN<br>15    15<br>29    18<br>19    18<br>18    18<br></code></pre></td></tr></table></figure>
+<p>MIN[]中保存的是”到目前为止“最小的元素。getMin()的关键在于push()。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> max = <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">int</span> arr[max] = &#123;&#125;;<br>    <span class="hljs-keyword">int</span> top;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Stack</span>() &#123; top = <span class="hljs-number">-1</span>; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isFull</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Stack::peek</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (top &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> INT_MIN;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">int</span> x = arr[top];<br>        <span class="hljs-keyword">return</span> x;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Stack::isEmpty</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (top == <span class="hljs-number">-1</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Stack::isFull</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (top == max - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Stack::pop</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isEmpty</span>()) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Stack Underflow&quot;</span>;<br>        <span class="hljs-built_in">abort</span>();<br>    &#125;<br>    <span class="hljs-keyword">int</span> x = arr[top];<br>    top--;<br>    <span class="hljs-keyword">return</span> x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Stack::push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isFull</span>()) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Stack Overflow&quot;</span>;<br>        <span class="hljs-built_in">abort</span>();<br>    &#125;<br>    top++;<br>    arr[top] = x;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpecialStack</span> :</span> <span class="hljs-keyword">public</span> Stack &#123;<br>    Stack min;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SpecialStack::push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isEmpty</span>()) &#123;<br>        Stack::<span class="hljs-built_in">push</span>(x);<br>        min.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        Stack::<span class="hljs-built_in">push</span>(x);<br>        <span class="hljs-keyword">int</span> y = min.<span class="hljs-built_in">peek</span>();<br>        <span class="hljs-keyword">if</span> (x &lt; y) min.<span class="hljs-built_in">push</span>(x);<br>        <span class="hljs-keyword">else</span> min.<span class="hljs-built_in">push</span>(y);<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">SpecialStack::pop</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> x = Stack::<span class="hljs-built_in">pop</span>();<br>    min.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">return</span> x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">SpecialStack::getMin</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> x = min.<span class="hljs-built_in">peek</span>();<br>    <span class="hljs-keyword">return</span> x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    SpecialStack s;<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">10</span>);<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">20</span>);<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">30</span>);<br>    cout &lt;&lt; s.<span class="hljs-built_in">getMin</span>() &lt;&lt; endl;<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">5</span>);<br>    cout &lt;&lt; s.<span class="hljs-built_in">getMin</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/">https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>栈的介绍</title>
     <url>/posts/ac930640/</url>
     <content><![CDATA[<p><img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/stack.png" alt="img"></p>
@@ -5244,25 +5849,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <h3 id="用链表"><a href="#用链表" class="headerlink" title="用链表"></a>用链表</h3><p>动态大小。但是需要额外内存开销。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StackNode</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">int</span> data;<br>    StackNode* next;<br>&#125;;<br><br><span class="hljs-function">StackNode* <span class="hljs-title">newNode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> data)</span> </span>&#123;<br>    StackNode* stackNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">StackNode</span>();<br>    stackNode-&gt;data = data;<br>    stackNode-&gt;next = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">return</span> stackNode;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">(StackNode* top)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> top == <span class="hljs-literal">NULL</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(StackNode** top, <span class="hljs-keyword">int</span> data)</span> </span>&#123;<br>    StackNode* stackNode = <span class="hljs-built_in">newNode</span>(data);<br>    stackNode-&gt;next = *top;<br>    *top = stackNode;<br>    cout &lt;&lt; data &lt;&lt; <span class="hljs-string">&quot; pushed to stack.\n&quot;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">(StackNode** top)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isEmpty</span>(*top)) <span class="hljs-keyword">return</span> INT_MIN;<br>    StackNode* temp = *top;<br>    *top = (*top)-&gt;next;<br>    <span class="hljs-keyword">int</span> popped = temp-&gt;data;<br>    <span class="hljs-built_in">free</span>(temp);<br>    <span class="hljs-keyword">return</span> popped;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">peek</span><span class="hljs-params">(StackNode* top)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isEmpty</span>(top)) <span class="hljs-keyword">return</span> INT_MIN;<br>    <span class="hljs-keyword">return</span> top-&gt;data;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    StackNode* top = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-built_in">push</span>(&amp;top, <span class="hljs-number">10</span>);<br>    <span class="hljs-built_in">push</span>(&amp;top, <span class="hljs-number">20</span>);<br>    <span class="hljs-built_in">push</span>(&amp;top, <span class="hljs-number">30</span>);<br>    cout &lt;&lt; <span class="hljs-built_in">pop</span>(&amp;top) &lt;&lt; <span class="hljs-string">&quot; popped from stack.\n&quot;</span>;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Top element is &quot;</span> &lt;&lt; <span class="hljs-built_in">peek</span>(top) &lt;&lt; endl;<br>    cout &lt;&lt; (<span class="hljs-built_in">isEmpty</span>(top) ? <span class="hljs-string">&quot;Empty.&quot;</span> : <span class="hljs-string">&quot;NonEmpty.&quot;</span>) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/stack-data-structure-introduction-program/">https://www.geeksforgeeks.org/stack-data-structure-introduction-program/</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>栈中最小元素</title>
-    <url>/posts/221f5b82/</url>
-    <content><![CDATA[<p>实现功能getMin以返回当前栈中最小元素。</p>
-<p><strong>Question:</strong> Design a Data Structure SpecialStack that supports all the stack operations like push(), pop(), isEmpty(), isFull() and an additional operation getMin() which should return minimum element from the SpecialStack. All these operations of SpecialStack must be O(1). To implement SpecialStack, you should only use standard Stack data structure and no other data structure like arrays, list, .. etc. </p>
-<p><strong>Solution:</strong> Use two stacks: one to store actual stack elements and the other as an auxiliary stack to store minimum values. The idea is to do push() and pop() operations in such a way that the top of the auxiliary stack is always the minimum. Let us see how push() and pop() operations work.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">STACK MIN<br>15    15<br>29    18<br>19    18<br>18    18<br></code></pre></td></tr></table></figure>
-<p>MIN[]中保存的是”到目前为止“最小的元素。getMin()的关键在于push()。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> max = <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">int</span> arr[max] = &#123;&#125;;<br>    <span class="hljs-keyword">int</span> top;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Stack</span>() &#123; top = <span class="hljs-number">-1</span>; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isFull</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Stack::peek</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (top &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> INT_MIN;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">int</span> x = arr[top];<br>        <span class="hljs-keyword">return</span> x;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Stack::isEmpty</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (top == <span class="hljs-number">-1</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Stack::isFull</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (top == max - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Stack::pop</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isEmpty</span>()) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Stack Underflow&quot;</span>;<br>        <span class="hljs-built_in">abort</span>();<br>    &#125;<br>    <span class="hljs-keyword">int</span> x = arr[top];<br>    top--;<br>    <span class="hljs-keyword">return</span> x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Stack::push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isFull</span>()) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Stack Overflow&quot;</span>;<br>        <span class="hljs-built_in">abort</span>();<br>    &#125;<br>    top++;<br>    arr[top] = x;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpecialStack</span> :</span> <span class="hljs-keyword">public</span> Stack &#123;<br>    Stack min;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SpecialStack::push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isEmpty</span>()) &#123;<br>        Stack::<span class="hljs-built_in">push</span>(x);<br>        min.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        Stack::<span class="hljs-built_in">push</span>(x);<br>        <span class="hljs-keyword">int</span> y = min.<span class="hljs-built_in">peek</span>();<br>        <span class="hljs-keyword">if</span> (x &lt; y) min.<span class="hljs-built_in">push</span>(x);<br>        <span class="hljs-keyword">else</span> min.<span class="hljs-built_in">push</span>(y);<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">SpecialStack::pop</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> x = Stack::<span class="hljs-built_in">pop</span>();<br>    min.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">return</span> x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">SpecialStack::getMin</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> x = min.<span class="hljs-built_in">peek</span>();<br>    <span class="hljs-keyword">return</span> x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    SpecialStack s;<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">10</span>);<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">20</span>);<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">30</span>);<br>    cout &lt;&lt; s.<span class="hljs-built_in">getMin</span>() &lt;&lt; endl;<br>    s.<span class="hljs-built_in">push</span>(<span class="hljs-number">5</span>);<br>    cout &lt;&lt; s.<span class="hljs-built_in">getMin</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/">https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/</a></p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
