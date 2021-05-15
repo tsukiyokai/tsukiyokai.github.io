@@ -28,7 +28,7 @@ $ sudo apt-get update && sudo apt-get upgrade
 
 #### man
 
-ascii表
+查看ascii表
 
 ```shell
 $ man ascii
@@ -36,16 +36,30 @@ $ man ascii
 
 #### cal|calendar|date
 
-历史上的今天
+查看历史上的今天
 
 ```shell
 $ calendar -t 1997.04.09
 ```
 
-万年历
+查看万年历
 
 ```shell
 $ cal 1997
 ```
 
 #### gcc|g++
+
+```shell
+$ g++ lixing.cpp -o lixing
+```
+
+gcc = GNU Compiler Collection
+g++是它的C++版
+`-o`标志用来指明编译后所输出文件的名字
+
+```shell
+$ ./lixing
+```
+
+`./`的意思是执行当前目录下的某个可执行文件
