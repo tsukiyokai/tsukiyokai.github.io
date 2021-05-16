@@ -41,7 +41,7 @@ int main() {
 #include <iostream>
 using namespace std;
 
-// 求N以内（不含N）n的倍数之和
+// 求N以内所有n的倍数之和
 unsigned sumu(int n, const int N) {
     // (首项n+末项)*项数/2
     return (n + (N - 1) / n * n) * ((N - 1) / n) / 2;

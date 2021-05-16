@@ -8,12 +8,13 @@ tags:
   - 排序
 date: 2021-05-01 23:52:58
 ---
+
 ![](https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif)
 
 性质
-平均时间复杂度	О(n²)
-最坏时间复杂度	О(n²)
-最优时间复杂度	О(n²)
+平均时间复杂度 О(n²)
+最坏时间复杂度 О(n²)
+最优时间复杂度 О(n²)
 
 ```c++
 void insertionSort(vector<int>& arr) {
@@ -32,7 +33,7 @@ void insertionSort(vector<int>& arr) {
 }
 ```
 
-min表示最小值的下标
+min 表示最小值的下标
 
 ![](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
 红色表示当前最小值，

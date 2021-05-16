@@ -8,11 +8,12 @@ tags:
   - STL
 date: 2021-04-28 22:51:14
 ---
+
 `std::find_first_of`用于比较两个容器之间的元素。它将[first1，last1)范围内的所有元素与[first2，last2)范围内的所有元素进行比较：
 
 如果在第一个范围内找到第二个范围内的任何元素，则返回一个指向第一个容器中的该元素的迭代器。
 如果两个范围中有多个公共元素，则返回第一个容器中第一个公共元素的迭代器。
-如果没有匹配项，则返回指向last1的迭代器。
+如果没有匹配项，则返回指向 last1 的迭代器。
 
 有下面两种用法：
 
@@ -24,7 +25,7 @@ date: 2021-04-28 22:51:14
 模板
 ForwardIterator1 find_first_of(ForwardIterator1 first1,
                                ForwardIterator1 last1,
-                               ForwardIterator2 first2, 
+                               ForwardIterator2 first2,
                                ForwardIterator2 last2);
 
 first1: 一个正向迭代器，指向第一个范围里的第一个元素。
@@ -59,9 +60,9 @@ int main() {
 
 ```
 Template
-   ForwardIterator1 find_first_of (ForwardIterator1 first1, 
+   ForwardIterator1 find_first_of (ForwardIterator1 first1,
                                    ForwardIterator1 last1,
-                                   ForwardIterator2 first2, 
+                                   ForwardIterator2 first2,
                                    ForwardIterator2 last2,
                                    BinaryPredicate pred );
 
@@ -71,7 +72,6 @@ Template
 注
 
 Pred: Binary function that accepts two elements as arguments (one of each of the two sequences, in the same order), and returns a value convertible to bool. The value returned indicates whether the elements are considered to match in the context of this function.The function shall not modify any of its arguments. This can either be a function pointer or a function object.
-
 
 代码
 
@@ -105,13 +105,13 @@ int main() {
 }
 ```
 
-pred函数返回布尔类型，它希望a是b的整数倍。a代表第一个容器里的数据，b代表第二个容器里的数据。这个程序返回指向v1中第一个满足是v2中任一元素整数倍的元素的迭代器。在此例中，程序输出15，因为15是第一个v1中元素之一（3）的倍数，而1、5、7、11、13均不是v2中哪个元素的整数倍。
+pred 函数返回布尔类型，它希望 a 是 b 的整数倍。a 代表第一个容器里的数据，b 代表第二个容器里的数据。这个程序返回指向 v1 中第一个满足是 v2 中任一元素整数倍的元素的迭代器。在此例中，程序输出 15，因为 15 是第一个 v1 中元素之一（3）的倍数，而 1、5、7、11、13 均不是 v2 中哪个元素的整数倍。
 
 这两个基本用法可以延伸出一些实际应用：
 
 ## 应用
 
-std::find_first_of可用于查找另一个容器中存在的任一元素的第一次出现位置。
+std::find_first_of 可用于查找另一个容器中存在的任一元素的第一次出现位置。
 
 1.比如找出句子中的第一个元音字母。
 
@@ -131,6 +131,7 @@ int main() {
     return 0;
 }
 ```
+
 2.用于查找列表中出现的第一个奇数或偶数。
 
 ```c++
@@ -174,4 +175,4 @@ First even occurs at index 2
 请按任意键继续. . .
 ```
 
-最后，std::find_first_of()的时间复杂度为：O(n1*n2)，n1和n2分别为两个区间中的元素数。
+最后，std::find_first_of()的时间复杂度为：O(n1\*n2)，n1 和 n2 分别为两个区间中的元素数。

@@ -6,3 +6,7 @@ date: 2021-04-01
 <center>粉红自干五，小镇做题家。</center>
 <br />
 <center><img src="http://ghchart.rshah.org/tsukiyokai" alt="tsukiyokai's Github chart" /></center>
+
+```re
+^(.*)abbrlink(.*)\n
+```

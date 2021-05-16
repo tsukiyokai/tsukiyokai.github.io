@@ -12,9 +12,10 @@ stylesheets:
 
 stylesheets_preload:
 #- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/stackoverflow-dark.min.css
-- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/zenburn.min.css
+#- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/zenburn.min.css
+#- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs2015.min.css
 #- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/school-book.min.css
-#- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/gradient-light.min.css
+- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/gradient-light.min.css
 #- https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/an-old-hope.min.css
 - https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Long+Cang&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap
 
@@ -38,17 +39,19 @@ social:
 #tags: false
 
 # theme color
-main_color: grass # forest | grass | sky | sun | sea
+main_color: forest # forest | grass | sky | sun | sea
 
 # google Analytics
 google_analytics_id: xx-xxxxxxx-xx
 
 # commend module
 comment:
-  enable: false
-  appId: your-app-id
-  appKey: your-app-key
-  placeholder: say something
+  enable: true
+  appId: MENt3xxaJlxkVFyePnJeEmA5-gzGzoHsz
+  appKey: nFiJhyLSqoN3ExuFMOhcy4fS
+  placeholder: 点击此处留言
   notify: false
   verify: false
-  avatar: mp
+  avatar: hide
+  pageSize: 99
+  

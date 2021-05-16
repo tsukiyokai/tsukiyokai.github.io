@@ -1,6 +1,6 @@
 ---
 title: OS原理及Linux实践课堂笔记
-abbrlink: af3f7656
+abbrlink: 1086390c
 categories:
   - 编程珠玑
   - 操作系统
