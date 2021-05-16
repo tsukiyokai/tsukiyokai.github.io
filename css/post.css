@@ -12,6 +12,13 @@ article.post-view__article .article__content h6,
 article.post-view__article .article__content p {
   margin: 0.5em 0;
 }
+article.post-view__article .article__content p,
+article.post-view__article .article__content li,
+article.post-view__article .article__content ol,
+article.post-view__article .article__content table,
+article.post-view__article .article__content code {
+  font-weight: 600;
+}
 article.post-view__article .article__content small {
   font-size: 1rem;
 }
@@ -25,6 +32,7 @@ article.post-view__article .article__content a:hover {
 }
 article.post-view__article .article__content blockquote {
   border-left: 1rem solid $color-black-2;
+  font-weight: 600;
   font-family: Consolas, "Noto Serif SC";
   padding: 0em 1rem;
 }
@@ -67,7 +75,7 @@ article.post-view__article .article__content ol li {
 article.post-view__article .article__content img {
   width: auto;
   max-width: 100%;
-  margin: 2rem 0;
+  margin: 0rem 0;
 }
 article.post-view__article .article__content .highlight table {
   width: 100%;

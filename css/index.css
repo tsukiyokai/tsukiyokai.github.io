@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 html {
-  font-size: 100%;
+  font-size: 90%;
 }
 body {
   width: 100%;
@@ -58,6 +58,7 @@ article.post-view__article .article__content table,
 article.post-view__article .article__content code {
   font-size: 1.4rem;
   line-height: 2.2rem;
+  font-weight: 600;
 }
 article.post-view__article .article__content small {
   font-size: 1rem;
@@ -68,10 +69,11 @@ article.post-view__article .article__content a {
   text-decoration: none;
 }
 article.post-view__article .article__content a:hover {
-  box-shadow: inset 0 -0.8em 0 #9dab86;
+  box-shadow: inset 0 -0.8em 0 #6ba8a9;
 }
 article.post-view__article .article__content blockquote {
   border-left: 1rem solid #333;
+  font-weight: 600;
   font-family: Consolas, "Noto Serif SC";
   padding: 0em 1rem;
 }
@@ -96,9 +98,9 @@ article.post-view__article .article__content table code.hljs {
 article.post-view__article .article__content code:not(.hljs) {
   font-size: 1.2rem;
   color: #333;
-  border: 1px solid #9dab86;
+  border: 1px solid #6ba8a9;
   background: #fff;
-  box-shadow: 0.1em 0.1em 0 0 #9dab86;
+  box-shadow: 0.1em 0.1em 0 0 #6ba8a9;
   padding: 0.1em 0.4em;
   margin: 0 0.4em;
   vertical-align: bottom;
@@ -116,7 +118,7 @@ article.post-view__article .article__content ol li {
 article.post-view__article .article__content img {
   width: auto;
   max-width: 100%;
-  margin: 2rem 0;
+  margin: 0rem 0;
 }
 article.post-view__article .article__content .highlight table {
   width: 100%;
@@ -172,7 +174,7 @@ article.post-view__article .article__content .mjx-chtml {
 .footer {
   text-align: center;
   padding: 3rem 0;
-  background: #9dab86;
+  background: #6ba8a9;
   font-size: 1.4rem;
   line-height: 2.2rem;
 }
@@ -259,7 +261,7 @@ article.post-view__article .article__content .mjx-chtml {
   background-position: center;
 }
 .posts-item:hover h2 a {
-  box-shadow: inset 0 -0.8em 0 #9dab86;
+  box-shadow: inset 0 -0.8em 0 #6ba8a9;
 }
 .posts-item__title {
   font-size: 3rem;
@@ -270,7 +272,7 @@ article.post-view__article .article__content .mjx-chtml {
 }
 .posts-item__title a {
   text-decoration: none;
-  box-shadow: inset 0 -0.3em 0 #9dab86;
+  box-shadow: inset 0 -0.3em 0 #6ba8a9;
   transition: box-shadow 0.5s cubic-bezier(0.71, 0, 0, 0.99);
 }
 .posts-item__title--image {
@@ -323,7 +325,6 @@ article.post-view__article .article__content .mjx-chtml {
 .post__tags {
   padding-left: 1.4em;
   padding-right: 0.8em;
-  text-decoration: underline;
 }
 .post__tags::before {
   background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUyLjIgKDY3MTQ1KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5pY29uLXRhZzwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJEZXNrdG9wIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjczLjAwMDAwMCwgLTY4Ny4wMDAwMDApIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgPGcgaWQ9InBvc3QiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDc4LjAwMDAwMCwgNDgzLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAxOTguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5My4wMDAwMDAsIDAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJUYWcsLWxhYmVsLC1lLWNvbW1lcmNlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJpY29uLXRhZyI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgb3BhY2l0eT0iMCIgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIj48L3JlY3Q+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTE2LjY2NjYsMS45OTk4IEwxMS4xMjQ4LDEuOTk5OCBDMTAuNzU4MiwxLjk5OTggMTAuMjQ1OCwyLjIxMiA5Ljk4NjgsMi40NzEgTDIuMzg5LDEwLjA2OTYgQzEuODcwMiwxMC41ODggMS44NzAyLDExLjQzNjggMi4zODksMTEuOTU1MiBMOC4wNDYyLDE3LjYxMTYgQzguNTYzOCwxOC4xMjk4IDkuNDEyNiwxOC4xMjk4IDkuOTMxLDE3LjYxMTYgTDE3LjUyODgsMTAuMDE1IEMxNy43ODc2LDkuNzU1OCAxOCw5LjI0MjggMTgsOC44NzcgTDE4LDMuMzMzMiBDMTgsMi42MDA4IDE3LjM5OTgsMS45OTk4IDE2LjY2NjYsMS45OTk4IFogTTE2LjY2NjYsOC45OTA4IEw4Ljk4ODIsMTYuNjY4OCBMMy4zMzE4LDExLjAxMjQgTDcuMzY2NCw2Ljk3NzIgQzkuMjY0Miw1LjA4IDEwLjM0OCwzLjk5NiAxMC45NjcyLDMuMzMzMiBMMTYuNjY2NiwzLjMzMzIgTDE2LjY2NjYsOC45OTA4IFogTTE1LjMzMzQsNi4wMDA0IEMxNS4zMzM0LDYuNzM2MiAxNC43MzYyLDcuMzMzOCAxMy45OTk4LDcuMzMzOCBDMTMuMjYzNCw3LjMzMzggMTIuNjY2NCw2LjczNjIgMTIuNjY2NCw2LjAwMDQgQzEyLjY2NjQsNS4yNjM0IDEzLjI2MzQsNC42NjcgMTMuOTk5OCw0LjY2NyBDMTQuNzM2Miw0LjY2NyAxNS4zMzM0LDUuMjYzNiAxNS4zMzM0LDYuMDAwNCBaIiBmaWxsLXJ1bGU9Im5vbnplcm8iPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+");
@@ -389,7 +390,6 @@ article.post-view__article .article__content .mjx-chtml {
 .sidebar__archives a,
 .sidebar__categories a,
 .sidebar__tags a {
-  box-shadow: inset 0 -0.1em 0 #333;
   transition: all 0.3s cubic-bezier(0.71, 0, 0, 0.99);
   text-decoration: none;
 }
@@ -397,7 +397,7 @@ article.post-view__article .article__content .mjx-chtml {
 .sidebar__archives a:hover,
 .sidebar__categories a:hover,
 .sidebar__tags a:hover {
-  box-shadow: inset 0 -0.8em 0 #9dab86;
+  box-shadow: inset 0 -0.8em 0 #6ba8a9;
 }
 .sidebar__tags li {
   display: inline-block;
@@ -429,7 +429,7 @@ article.post-view__article .article__content .mjx-chtml {
     display: block;
     width: 3rem;
     height: 3rem;
-    background: #9dab86;
+    background: #6ba8a9;
     background-image: url("../../img/icon-menu-sprite.svg");
     background-position: center 100%;
     background-size: 100% auto;
@@ -457,7 +457,7 @@ article.post-view__article .article__content .mjx-chtml {
   text-decoration: none;
   padding: 0.2rem 0.4rem;
   border: 2px solid #333;
-  background: #9dab86;
+  background: #6ba8a9;
 }
 .paginator .prev::before,
 .paginator .next::before {
@@ -641,7 +641,7 @@ article.post-view__article .article__content .mjx-chtml {
   left: 1rem;
 }
 .tocbot .is-active-link::before {
-  background: #9dab86;
+  background: #6ba8a9;
 }
 @media screen and (max-width: 780px) {
   .tocbot {
@@ -662,7 +662,7 @@ article.post-view__article .article__content .mjx-chtml {
   content: '';
   width: 100%;
   height: 100vh;
-  border: 1rem #9dab86 solid;
+  border: 1rem #6ba8a9 solid;
   position: fixed;
   top: 0;
   left: 0;
@@ -690,6 +690,6 @@ article.post-view__article .article__content .mjx-chtml {
 }
 @media screen and (max-width: 1080px) {
   .mask-border::before {
-    border: 0.8rem #9dab86 solid;
+    border: 0.8rem #6ba8a9 solid;
   }
 }
