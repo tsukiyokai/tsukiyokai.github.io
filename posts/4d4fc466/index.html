@@ -107,7 +107,7 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 <ul>
 <li><strong>ls 可以列出从 / 出发任何路径下的文件，而无需亲自进入那个路径</strong></li>
 </ul>
-<p>注意，是列出文件，而不是列出文件和文件夹。为什么这么强调呢？因为要加深一个印象：Linux 下，万物皆文件。<br>文件是文件，文件夹也是文件，IO 设备也是文件。<br>万物的物是一切实体，不包括权限这种抽象的东西。</p>
+<p>注意，是列出文件，而不是列出文件和文件夹。为什么这么强调呢？因为要加深一个印象：Linux 下，万物皆文件。文件是文件，文件夹也是文件，IO 设备也是文件。万物的物是一切实体，不包括权限这种抽象的东西。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span><br>Desktop  Documents  Downloads  Music  Pictures等<br><span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span> /<br>boot  etc  init  lib32  libx32  mnt  proc  run  snap  sys  usr等<br><span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span> /home<br>tsukiyokai<br><span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span> /home/tsukiyokai/Documents/<br>test1  test2<br><span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span> /home/tsukiyokai/Documents<br>test1  test2<br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>將 test.ls 進行複製 (copy)，產生一個 test.ls.copy 的副本</strong></li>
