@@ -45,12 +45,14 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 <li>相同优先级的元素按照在队列中的顺序进行操作。</li>
 </ol>
 <h2 id="优先级队列的操作"><a href="#优先级队列的操作" class="headerlink" title="优先级队列的操作"></a>优先级队列的操作</h2><p>典型的优先级队列支持以下操作：<br><code>insert(item, priority)</code> 插入具有指定优先级的项<br><code>getHighestPriority()</code> 返回优先级最高的项<br><code>deleteHighestPriority()</code> 删除优先级最高的项</p>
-<h2 id="优先级队列的实现"><a href="#优先级队列的实现" class="headerlink" title="优先级队列的实现"></a>优先级队列的实现</h2><h3 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h3><p>一个简单的实现途径是使用具有以下结构的数组。<br><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">item</span> &#123;</span><br>    <span class="hljs-keyword">int</span> item;<br>    <span class="hljs-keyword">int</span> priority;<br>&#125;<br></code></pre></td></tr></table></figure><br>使用数组时，插入操作复杂度为O(1)，取最高优先级元素的操作和删除最高优先级元素的操作复杂度都为O(n)。如果使用链表代替数组，插入和取的复杂度不变，删除操作变得简单一些，因为不用大面积移动元素。</p>
-<h3 id="使用堆"><a href="#使用堆" class="headerlink" title="使用堆"></a>使用堆</h3><p>堆通常是优先队列实现的首选，因为堆提供了比数组或链表更好的性能。在二叉堆中，getHighestPriority()可以在O(1)时间内实现，insert()可以在O(logn)时间内实现，deleteHighestPriority()也可以在O(logn)时间内实现。<br>更进一步，对于Fibonacci堆，insert()和getHighestPriority()都可以在O(1)摊销时间内实现，deleteHighestPriority()可以在O(logn)摊销时间内实现。</p>
-<p>补充一点，算法中的amortized time，即摊销时间，它和平均时间是略有不同的。<br>定义：Amortized time is the way to express the time complexity when an algorithm has the very bad time complexity only once in a while besides the time complexity that happens most of time.</p>
+<h2 id="优先级队列的实现"><a href="#优先级队列的实现" class="headerlink" title="优先级队列的实现"></a>优先级队列的实现</h2><h3 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h3><p>一个简单的实现途径是使用具有以下结构的数组。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">item</span> &#123;</span><br>    <span class="hljs-keyword">int</span> item;<br>    <span class="hljs-keyword">int</span> priority;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用数组时，插入操作复杂度为 O(1)，取最高优先级元素的操作和删除最高优先级元素的操作复杂度都为 O(n)。如果使用链表代替数组，插入和取的复杂度不变，删除操作变得简单一些，因为不用大面积移动元素。</p>
+<h3 id="使用堆"><a href="#使用堆" class="headerlink" title="使用堆"></a>使用堆</h3><p>堆通常是优先队列实现的首选，因为堆提供了比数组或链表更好的性能。在二叉堆中，getHighestPriority()可以在 O(1)时间内实现，insert()可以在 O(logn)时间内实现，deleteHighestPriority()也可以在 O(logn)时间内实现。<br>更进一步，对于 Fibonacci 堆，insert()和 getHighestPriority()都可以在 O(1)摊销时间内实现，deleteHighestPriority()可以在 O(logn)摊销时间内实现。</p>
+<p>补充一点，算法中的 amortized time，即摊销时间，它和平均时间是略有不同的。<br>定义：Amortized time is the way to express the time complexity when an algorithm has the very bad time complexity only once in a while besides the time complexity that happens most of time.</p>
 <h2 id="优先级队列的应用"><a href="#优先级队列的应用" class="headerlink" title="优先级队列的应用"></a>优先级队列的应用</h2><ol>
-<li>CPU调度</li>
-<li>图算法，如Dijkstra最短路径算法，Prim最小生成树算法等</li>
+<li>CPU 调度</li>
+<li>图算法，如 Dijkstra 最短路径算法，Prim 最小生成树算法等</li>
 <li>所有涉及优先级的队列应用</li>
 </ol>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/</a></p>

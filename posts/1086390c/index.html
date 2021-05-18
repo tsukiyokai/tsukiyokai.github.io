@@ -38,7 +38,7 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
     orderedList: false,
     collapseDepth: 2,
   });
-})</script><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/gradient-light.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/gradient-light.min.css"><link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Long+Cang&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;700&amp;family=Noto+Serif+SC:wght@400;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Long+Cang&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;700&amp;family=Noto+Serif+SC:wght@400;700&amp;display=swap"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">月夜海的个人网站</a></h1><p>An expert is a person who has made all the mistakes that can be made in a very narrow field.</p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">OS原理及Linux实践课堂笔记</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">OS原理及Linux实践课堂笔记</a></h2><span class="post__date">2021-05-13</span><a href="/tags/OS/"><span class="post__tags">#OS</span></a></div></div><div class="article__content"><h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p>OS is a INTERRUPT driven system.<br>中断之于OS正如矛盾之于事物。</p>
+})</script><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/gradient-light.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/gradient-light.min.css"><link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Long+Cang&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;700&amp;family=Noto+Serif+SC:wght@400;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Long+Cang&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;700&amp;family=Noto+Serif+SC:wght@400;700&amp;display=swap"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">月夜海的个人网站</a></h1><p>An expert is a person who has made all the mistakes that can be made in a very narrow field.</p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">OS原理及Linux实践课堂笔记</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">OS原理及Linux实践课堂笔记</a></h2><span class="post__date">2021-05-13</span><a href="/tags/OS/"><span class="post__tags">#OS</span></a></div></div><div class="article__content"><h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p>OS is a INTERRUPT driven system.<br>中断之于 OS 正如矛盾之于事物。</p>
 <h3 id="存储层次图"><a href="#存储层次图" class="headerlink" title="存储层次图"></a>存储层次图</h3><p><strong>volatile memory 易失性存储</strong></p>
 <ul>
 <li>register 寄存器</li>
@@ -55,28 +55,28 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 <h3 id="计算机体系结构"><a href="#计算机体系结构" class="headerlink" title="计算机体系结构"></a>计算机体系结构</h3><ul>
 <li>单处理器系统</li>
 <li>多处理器系统<ul>
-<li>非对称处理（一个主CPU和一些从CPU）</li>
-<li>对称处理（所有CPU互相独立，现代OS使用）</li>
+<li>非对称处理（一个主 CPU 和一些从 CPU）</li>
+<li>对称处理（所有 CPU 互相独立，现代 OS 使用）</li>
 </ul>
 </li>
 <li>集群系统 clustered system<br>集群系统由若干节点通过网络连接在一起，每个节点可为单或多处理器系统，节点之间是松耦合关系。适用于高可用性、高性能计算。集群系统演变出了现代的云计算。</li>
 </ul>
 <h3 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h3><ul>
 <li>单用户单道模式</li>
-<li>多道程序设计（处理机和IO设备具备并行工作能力）</li>
+<li>多道程序设计（处理机和 IO 设备具备并行工作能力）</li>
 <li>分时系统（是多道程序设计思想的自然延伸，也称多任务系统）<ul>
-<li>CPU调度：暂时不用或长时间不用的进程，交换出去到虚拟内存</li>
+<li>CPU 调度：暂时不用或长时间不用的进程，交换出去到虚拟内存</li>
 <li>虚拟内存：所有东西进入内存才能被执行；处于虚拟内存中的指令不可以马上被执行。</li>
 <li>磁盘、File</li>
 <li>同步=有商量，有通信的，有联系的；<br>异步=随机，不经过商量的，不知道下一秒会发生什么的。</li>
 </ul>
 </li>
 </ul>
-<h3 id="OS提供哪些服务？"><a href="#OS提供哪些服务？" class="headerlink" title="OS提供哪些服务？"></a>OS提供哪些服务？</h3><p>USER INTERFACE(面对USER)<br>GUI+batch+command_line</p>
-<p>system call(面对PROGRAMMER)<br>services: 程序执行+IO操作+文件系统+通信(IPC)+资源分配+记账+错误检测+安全机制</p>
+<h3 id="OS-提供哪些服务？"><a href="#OS-提供哪些服务？" class="headerlink" title="OS 提供哪些服务？"></a>OS 提供哪些服务？</h3><p>USER INTERFACE(面对 USER)<br>GUI+batch+command_line</p>
+<p>system call(面对 PROGRAMMER)<br>services: 程序执行+IO 操作+文件系统+通信(IPC)+资源分配+记账+错误检测+安全机制</p>
 <p>OS</p>
 <p>Hardwares</p>
-<h3 id="USER-INTERFACE"><a href="#USER-INTERFACE" class="headerlink" title="USER INTERFACE"></a>USER INTERFACE</h3><p>为用户与OS交互提供方式。</p>
+<h3 id="USER-INTERFACE"><a href="#USER-INTERFACE" class="headerlink" title="USER INTERFACE"></a>USER INTERFACE</h3><p>为用户与 OS 交互提供方式。</p>
 <ul>
 <li>CLI 命令行接口<ul>
 <li>command interpreter(shell 壳)</li>
@@ -91,52 +91,50 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 </ul>
 </li>
 </ul>
-<p>什么是接口？接口就是交界处，并非一定要插进什么地方才能叫接口。从这个意义上讲，USB和API是同一种东西，USB工作在硬件与硬件的交界处，API工作在硬件与软件或软件与软件的交界处，他们都是接口。</p>
+<p>什么是接口？接口就是交界处，并非一定要插进什么地方才能叫接口。从这个意义上讲，USB 和 API 是同一种东西，USB 工作在硬件与硬件的交界处，API 工作在硬件与软件或软件与软件的交界处，他们都是接口。</p>
 <h3 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h3><ul>
 <li>系统调用提供了访问和使用操作系统所提供的服务的接口。<ul>
 <li>系统调用的实现代码是操作系统级的</li>
 <li>这个接口通常是面向程序员的</li>
 </ul>
 </li>
-<li>API指明了参数和返回值的一组函数。<ul>
-<li>应用程序App的开发人员透过API间接访问了系统调用</li>
+<li>API 指明了参数和返回值的一组函数。<ul>
+<li>应用程序 App 的开发人员透过 API 间接访问了系统调用</li>
 <li>Windows API/POSIX API/JAVA API</li>
 </ul>
 </li>
 </ul>
-<h3 id="标准C程序"><a href="#标准C程序" class="headerlink" title="标准C程序"></a>标准C程序</h3><ul>
-<li>printf是standard C Library提供的API</li>
-<li>printf函数的调用引发了对应的系统调用write的执行（把显示器当成一个文件，对这个文件执行写的命令，结果就是显示器显示出我们写的内容）</li>
-<li>write执行结束时的返回值（成功输出的字符的个数）传递回标准C库，标准C库再返回给用户程序的。</li>
+<h3 id="标准-C-程序"><a href="#标准-C-程序" class="headerlink" title="标准 C 程序"></a>标准 C 程序</h3><ul>
+<li>printf 是 standard C Library 提供的 API</li>
+<li>printf 函数的调用引发了对应的系统调用 write 的执行（把显示器当成一个文件，对这个文件执行写的命令，结果就是显示器显示出我们写的内容）</li>
+<li>write 执行结束时的返回值（成功输出的字符的个数）传递回标准 C 库，标准 C 库再返回给用户程序的。</li>
 </ul>
 <h3 id="双重模式-DUAL-MODE"><a href="#双重模式-DUAL-MODE" class="headerlink" title="双重模式 DUAL MODE"></a>双重模式 DUAL MODE</h3><ul>
-<li><p>MOS有一个特殊的硬件，用于划分系统运行的状态，至少有两种单独运行模式：</p>
+<li><p>MOS 有一个特殊的硬件，用于划分系统运行的状态，至少有两种单独运行模式：</p>
 <ul>
 <li>用户模式：执行用户代码</li>
-<li>内核模式：执行OS代码</li>
+<li>内核模式：执行 OS 代码</li>
 </ul>
 </li>
 <li><p>目的：确保操作系统正确的运行，特权指令不能让用户程序随便运行</p>
 </li>
-<li>实现方式<ul>
-<li>用一个硬件模式位来表示当前模式：0表示内核模式，1表示用户模式</li>
-</ul>
-</li>
+<li>实现方式</li>
+<li>用一个硬件模式位来表示当前模式：0 表示内核模式，1 表示用户模式</li>
 </ul>
 <h3 id="运行模式的切换"><a href="#运行模式的切换" class="headerlink" title="运行模式的切换"></a>运行模式的切换</h3><ul>
-<li>sys call需要在哪种模式下执行？kernel mode</li>
+<li>sys call 需要在哪种模式下执行？kernel mode</li>
 <li>捏的应用程序运行在哪种模式下？user mode</li>
-<li>调用API函数printf时，运行模式如何切换？</li>
+<li>调用 API 函数 printf 时，运行模式如何切换？</li>
 </ul>
-<h3 id="TRAP-MECHANISM-陷阱机制"><a href="#TRAP-MECHANISM-陷阱机制" class="headerlink" title="TRAP MECHANISM 陷阱机制"></a>TRAP MECHANISM 陷阱机制</h3><p>陷入 mode bit置0<br>返回 mode bit置1</p>
+<h3 id="TRAP-MECHANISM-陷阱机制"><a href="#TRAP-MECHANISM-陷阱机制" class="headerlink" title="TRAP MECHANISM 陷阱机制"></a>TRAP MECHANISM 陷阱机制</h3><p>陷入 mode bit 置 0<br>返回 mode bit 置 1</p>
 <h3 id="系统调用的实现机制"><a href="#系统调用的实现机制" class="headerlink" title="系统调用的实现机制"></a>系统调用的实现机制</h3><ul>
 <li>每个系统调用都有一个唯一的数字编号，被称为系统调用号。</li>
-<li>用户代码调用API时，API会向系统调用接口指明其所要用的系统调用号，操作系统内核中维护了一张索引表，依据这个调用号可以检索到访系统调用代码在内核中的位置。</li>
+<li>用户代码调用 API 时，API 会向系统调用接口指明其所要用的系统调用号，操作系统内核中维护了一张索引表，依据这个调用号可以检索到访系统调用代码在内核中的位置。</li>
 </ul>
-<h3 id="OS的构建方式（设计模式）"><a href="#OS的构建方式（设计模式）" class="headerlink" title="OS的构建方式（设计模式）"></a>OS的构建方式（设计模式）</h3><ul>
+<h3 id="OS-的构建方式（设计模式）"><a href="#OS-的构建方式（设计模式）" class="headerlink" title="OS 的构建方式（设计模式）"></a>OS 的构建方式（设计模式）</h3><ul>
 <li>MULTICS SYSTEM 多路信息计算系统</li>
 </ul>
-<h3 id="OS设计成为一门学科"><a href="#OS设计成为一门学科" class="headerlink" title="OS设计成为一门学科"></a>OS设计成为一门学科</h3><ul>
+<h3 id="OS-设计成为一门学科"><a href="#OS-设计成为一门学科" class="headerlink" title="OS 设计成为一门学科"></a>OS 设计成为一门学科</h3><ul>
 <li>多道系统涉及的思想使用操作系统的复杂性变得难以控制。<ul>
 <li>MULTICS</li>
 <li>OS 360</li>
@@ -144,11 +142,11 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 </li>
 <li>操作系统设计逐渐形成一门学科<ul>
 <li>如何处理硬件的复杂性？</li>
-<li>UNIX基于MULTICS系统开发，但已经大大简化</li>
+<li>UNIX 基于 MULTICS 系统开发，但已经大大简化</li>
 </ul>
 </li>
 </ul>
-<h2 id="OS的设计思路"><a href="#OS的设计思路" class="headerlink" title="OS的设计思路"></a>OS的设计思路</h2><ul>
+<h2 id="OS-的设计思路"><a href="#OS-的设计思路" class="headerlink" title="OS 的设计思路"></a>OS 的设计思路</h2><ul>
 <li>设计目标<ul>
 <li>用户目标</li>
 <li>系统目标</li>
@@ -157,21 +155,21 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 <li>机制与策略分离<ul>
 <li>机制：如何做</li>
 <li>策略：做什么</li>
-<li>微内核操作系统Mach-&gt;Darwin-&gt;macOS（核心极小，策略不属于微内核，可以灵活加载，微内核OS是机制与策略分离的成功代表）</li>
+<li>微内核操作系统 Mach-&gt;Darwin-&gt;macOS（核心极小，策略不属于微内核，可以灵活加载，微内核 OS 是机制与策略分离的成功代表）</li>
 </ul>
 </li>
 </ul>
 <h2 id="GNU-Linux"><a href="#GNU-Linux" class="headerlink" title="GNU/Linux"></a>GNU/Linux</h2><ul>
 <li>Open-source, closed-source, hybrid OS (L\W\M)</li>
-<li>Source code (高级语言) and binary code (01)<br>源码编译链接到binarycode容易，反编译很难（逆向工程）<br>如果不开源就很难知道代码的原理。</li>
+<li>Source code (高级语言) and binary code (01)<br>源码编译链接到 binarycode 容易，反编译很难（逆向工程）<br>如果不开源就很难知道代码的原理。</li>
 </ul>
 <h2 id="开源历史"><a href="#开源历史" class="headerlink" title="开源历史"></a>开源历史</h2><ul>
 <li>初衷：自由分享</li>
 <li>阻碍：版权保护和商业利益</li>
-<li>1983年GNU项目（GNU = GNU is Not Unix），旨在创建一个免费开源兼容的Unix的操作系统。</li>
-<li>GPL（GNU General Public License）：源码和二进制码一起发布，源码任何修改应按照同样的GPL许可发布。</li>
-<li>1990年第一个GNU核心（Alix）Hurd完成开发</li>
-<li>1991年Linus开发出类Unix内核的Linux并于次年开源，GNU系统和Linux合并后成为今日的GNU/Linux。</li>
+<li>1983 年 GNU 项目（GNU = GNU is Not Unix），旨在创建一个免费开源兼容的 Unix 的操作系统。</li>
+<li>GPL（GNU General Public License）：源码和二进制码一起发布，源码任何修改应按照同样的 GPL 许可发布。</li>
+<li>1990 年第一个 GNU 核心（Alix）Hurd 完成开发</li>
+<li>1991 年 Linus 开发出类 Unix 内核的 Linux 并于次年开源，GNU 系统和 Linux 合并后成为今日的 GNU/Linux。</li>
 </ul>
 <h2 id="程序和进程"><a href="#程序和进程" class="headerlink" title="程序和进程"></a>程序和进程</h2><ul>
 <li><p>a program is a passive entity, such as a file containing a list of instructions stored on disk(often called an executable file).</p>
@@ -182,8 +180,8 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 </li>
 </ul>
 <h2 id="PROGRAM-COUNTER"><a href="#PROGRAM-COUNTER" class="headerlink" title="PROGRAM COUNTER"></a>PROGRAM COUNTER</h2><ul>
-<li>PC是一个CPU中的寄存器，里面存放着下一条要执行指令的内存地址。在Intel x86和Itanium微处理器中，它叫做指令指针（Instruction Pointer, IP），又称指令地址寄存器、指令计数器。</li>
-<li>通常，CPU在取完一条指令之后会将PC寄存器的值+1，以计算下条要执行指令的地址。PC=PC+1，对指针+1其实不是指向原先后面，而是移动一整个指针的大小。</li>
+<li>PC 是一个 CPU 中的寄存器，里面存放着下一条要执行指令的内存地址。在 Intel x86 和 Itanium 微处理器中，它叫做指令指针（Instruction Pointer, IP），又称指令地址寄存器、指令计数器。</li>
+<li>通常，CPU 在取完一条指令之后会将 PC 寄存器的值+1，以计算下条要执行指令的地址。PC=PC+1，对指针+1 其实不是指向原先后面，而是移动一整个指针的大小。</li>
 </ul>
 <h2 id="POCESS-IN-MEMORY"><a href="#POCESS-IN-MEMORY" class="headerlink" title="POCESS IN MEMORY"></a>POCESS IN MEMORY</h2><p>STACK 存放局部变量、函数返回地址<br>HEAP 运行时（而非编译时）的动态内存分配<br>DATA 全局和静态变量数据<br>TEXT 代码</p>
 <h2 id="并发的进程"><a href="#并发的进程" class="headerlink" title="并发的进程"></a>并发的进程</h2><ul>
@@ -192,9 +190,9 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 <li>进程并发的动机：多道程序设计</li>
 <li>为什么不叫“并行的进程”？并发：宏观上共存，但微观上轮流执行。</li>
 </ul>
-<h2 id="并发进程共享CPU"><a href="#并发进程共享CPU" class="headerlink" title="并发进程共享CPU"></a>并发进程共享CPU</h2><ul>
+<h2 id="并发进程共享-CPU"><a href="#并发进程共享-CPU" class="headerlink" title="并发进程共享 CPU"></a>并发进程共享 CPU</h2><ul>
 <li>并发进程可能无法一次性执行完毕，会走走停停</li>
-<li>一个进程在执行过程中可能会被另一个进程替换并占有CPU，这个过程称作“进程切换”。</li>
+<li>一个进程在执行过程中可能会被另一个进程替换并占有 CPU，这个过程称作“进程切换”。</li>
 </ul>
 <h2 id="进程的定义"><a href="#进程的定义" class="headerlink" title="进程的定义"></a>进程的定义</h2><ul>
 <li>进程是一个程序的依次执行过程<ul>
@@ -203,24 +201,24 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 <li>执行过程是可并发的</li>
 </ul>
 </li>
-<li>进程是资源分配的最小单位。（线程是CPU调度的最小单位）</li>
+<li>进程是资源分配的最小单位。（线程是 CPU 调度的最小单位）</li>
 </ul>
 <h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><ul>
 <li>进程有三种基本状态<ul>
 <li>运行态（running）</li>
-<li>就绪态（ready） 等待CPU</li>
-<li>阻塞态、等待态（waiting）等待某些事件的发生比如IO</li>
+<li>就绪态（ready） 等待 CPU</li>
+<li>阻塞态、等待态（waiting）等待某些事件的发生比如 IO</li>
 </ul>
 </li>
 </ul>
-<h2 id="进程何时离开CPU？"><a href="#进程何时离开CPU？" class="headerlink" title="进程何时离开CPU？"></a>进程何时离开CPU？</h2><ul>
+<h2 id="进程何时离开-CPU？"><a href="#进程何时离开-CPU？" class="headerlink" title="进程何时离开 CPU？"></a>进程何时离开 CPU？</h2><ul>
 <li>内部事件<ul>
-<li>进程主动放弃（yield）CPU进入阻塞、终止状态</li>
-<li>e.g. 使用IO设备</li>
+<li>进程主动放弃（yield）CPU 进入阻塞、终止状态</li>
+<li>e.g. 使用 IO 设备</li>
 </ul>
 </li>
 <li>外部事件<ul>
-<li>进程被剥夺CPU使用权进入就绪态。这个动作叫抢占（preempt）。</li>
+<li>进程被剥夺 CPU 使用权进入就绪态。这个动作叫抢占（preempt）。</li>
 <li>e.g.最常见的情况：时间片到达，高优先级进程到达。</li>
 </ul>
 </li>
