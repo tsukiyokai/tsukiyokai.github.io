@@ -197,8 +197,6 @@ $ getconf PAGESIZE
 
 {% asset_img subsys.png %}
 
-
-
 参考资料
 
 https://arkingc.github.io/2017/11/30/2017-11-30-linux-du/

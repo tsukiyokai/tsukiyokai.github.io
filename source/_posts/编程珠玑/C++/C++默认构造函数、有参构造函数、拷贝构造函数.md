@@ -12,7 +12,7 @@ date: 2021-04-22 00:03:12
 
 ## 什么是构造函数？
 
-构造函数是类的成员函数，用于初始化类的对象。在C++中，创建对象（类的实例）时会自动调用Constructor。它是该类的特殊成员函数。
+构造函数是类的成员函数，用于初始化类的对象。在 C++中，创建对象（类的实例）时会自动调用 Constructor。它是该类的特殊成员函数。
 
 ## 构造函数与普通成员函数有何不同？
 
@@ -27,11 +27,11 @@ date: 2021-04-22 00:03:12
 2. 有参构造函数
 3. 拷贝构造函数
 
-gfg有上一个非常好的比喻，没有生词，我就不翻译了，试着翻了一下感觉没有原文生动。
+gfg 有上一个非常好的比喻，没有生词，我就不翻译了，试着翻了一下感觉没有原文生动。
 
 Let us understand the types of constructors in C++ by taking a real-world example.
 
-Suppose you went to a shop to buy a marker. When you want to buy a marker, what are the options? 
+Suppose you went to a shop to buy a marker. When you want to buy a marker, what are the options?
 
 The first one you go to a shop and say give me a marker. So just saying give me a marker mean that you did not set which brand name and which color, you didn’t mention anything just say you want a marker. So when we said just I want a marker so whatever the frequently sold marker is there in the market or in his shop he will simply hand over that. And this is what a default constructor is!（默认构造函数）
 
@@ -94,6 +94,7 @@ Example e(0, 50); // 隐式调用
 ```
 
 有参构造函数的使用
+
 1. 创建对象时，使用它来初始化具有不同值的不同对象的各种数据元素。
 2. 它用于重载构造函数。
 
@@ -102,7 +103,7 @@ Example e(0, 50); // 隐式调用
 
 构造函数重载
 
-在C++中，我们可以在一个同名的类中拥有多个构造函数，只要每个构造函数具有不同的参数列表即可。
+在 C++中，我们可以在一个同名的类中拥有多个构造函数，只要每个构造函数具有不同的参数列表即可。
 
 ```c++
 #include <iostream>
@@ -179,31 +180,32 @@ int main(void) {
 }
 ```
 
-错误：E0291	类 "point" 不存在默认构造函数
+错误：E0291 类 "point" 不存在默认构造函数
 
 #### 什么时候需要用户定义的拷贝构造函数？
 
-如果我们不定义自己的拷贝构造函数，则C++编译器会为每个类创建一个默认的拷贝构造函数，以在对象之间进行成员级复制。编译器创建的拷贝构造函数通常可以正常工作。仅当对象具有指针或文件句柄，网络连接等资源的任何运行时分配（runtime allocation）时，才需要定义我们自己的拷贝构造函数。
+如果我们不定义自己的拷贝构造函数，则 C++编译器会为每个类创建一个默认的拷贝构造函数，以在对象之间进行成员级复制。编译器创建的拷贝构造函数通常可以正常工作。仅当对象具有指针或文件句柄，网络连接等资源的任何运行时分配（runtime allocation）时，才需要定义我们自己的拷贝构造函数。
 
 默认构造函数只执行浅拷贝。
 只有用户定义的拷贝构造函数才可以进行深层复制。
 
-#### 拷贝构造函数vs赋值语句
+#### 拷贝构造函数 vs 赋值语句
 
 ```c++
 MyClass t1, t2;
 MyClass t3 = t1;
 t2 = t1;
 ```
+
 赋值只能是两个已存在的对象，而拷贝构造可以是正在声明的对象。
 
 #### 为什么必须将拷贝构造函数的参数作为引用传递？
 
 按值传递对象时，将调用拷贝构造函数。拷贝构造函数本身就是一个函数。因此，如果我们在拷贝构造函数中按值传递参数，则将调用拷贝构造函数来调用拷贝构造函数，这将成为一个无终止的调用链。因此，编译器不允许参数按值传递。
 
-#### 为什么拷贝构造函数参数应为const？
+#### 为什么拷贝构造函数参数应为 const？
 
-1. 我们应尽可能在C++中使用const，以免意外修改对象。
+1. 我们应尽可能在 C++中使用 const，以免意外修改对象。
 2. 修改编译器创建的临时对象是没有意义的，因为它们随时都可能死亡。
 
 ## C++的内部视角：默认构造函数

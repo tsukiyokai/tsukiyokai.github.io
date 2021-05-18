@@ -12,9 +12,9 @@ date: 2021-04-05 03:32:15
 
 If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.
 
-如果我们列出所有低于10的自然数，它们是3或5的倍数，则得到3、5、6和9。这些倍数的总和为23。求1000以下所有3或5的倍数之和。
+如果我们列出所有低于 10 的自然数，它们是 3 或 5 的倍数，则得到 3、5、6 和 9。这些倍数的总和为 23。求 1000 以下所有 3 或 5 的倍数之和。
 
-## 解法1：暴力
+## 解法 1：暴力
 
 **代码**
 
@@ -33,7 +33,7 @@ int main() {
 }
 ```
 
-## 解法2：容斥原理
+## 解法 2：容斥原理
 
 **代码**
 

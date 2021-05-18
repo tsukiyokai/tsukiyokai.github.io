@@ -8,12 +8,13 @@ tags:
   - 排序
 date: 2021-05-02 01:15:30
 ---
-快排是典型的分治算法，其中partition是关键
-分区的目标是，经过一趟排序后使基准元素落在最终位置，同时，满足p左边都小于p和p右边都大于p两个要求。
 
-平均时间复杂度	Θ(nlogn)
-最坏时间复杂度	Θ(n^2)
-最优时间复杂度	Θ(nlogn)
+快排是典型的分治算法，其中 partition 是关键
+分区的目标是，经过一趟排序后使基准元素落在最终位置，同时，满足 p 左边都小于 p 和 p 右边都大于 p 两个要求。
+
+平均时间复杂度 Θ(nlogn)
+最坏时间复杂度 Θ(n^2)
+最优时间复杂度 Θ(nlogn)
 
 下面的快排算法是我长期总结下来的最适合记忆的，要熟悉到信手拈来。
 
@@ -47,9 +48,9 @@ void quickSort(vector<int>& arr) {
 
 补充几个视频，曾经对我很有帮助
 
-C语言快速排序算法实现 - code_frank
+C 语言快速排序算法实现 - code_frank
 https://www.bilibili.com/video/BV1nr4y1P7d6
-45种常用算法的C++讲解
+45 种常用算法的 C++讲解
 https://www.bilibili.com/video/BV13E411d75X
 快速排序算法 - 秒懂算法
 https://www.bilibili.com/video/BV1at411T75o

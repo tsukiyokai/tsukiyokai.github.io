@@ -8,6 +8,7 @@ tags:
   - OOP
 date: 2021-04-27 15:38:27
 ---
+
 函数重载在编译时实现。
 它通过修改函数签名来提供函数的多种定义。比如参数个数、参数类型。
 修改返回值类型不能实现重载。// functions can not be overloaded if they differ only in the return type.
@@ -92,7 +93,7 @@ int main() {
 调用函数的时候，关键看对象的类型。
 调用函数的时候，关键看对象的类型！
 记住是对象的类型，不管是指针还是引用（同样是对象的类型）。
-比如，bs是对象dr的引用，bs调用display时，其实是bs引用的对象dr取调用display。所以输出：子类Display()
+比如，bs 是对象 dr 的引用，bs 调用 display 时，其实是 bs 引用的对象 dr 取调用 display。所以输出：子类 Display()
 
 或者看这句话：其思想是根据指向或引用的对象实例的类型调用虚拟函数，而不是根据指针或引用的类型。
 
@@ -110,20 +111,22 @@ public:
     virtual void FunctionB() const { cout << "子类FunctionB" << endl; }
 };
 ```
+
 在将父类对象的指针指向子类对象的时候
 `Father* father = new Child;`
-如father->FunctionA()，则执行的是Father中的实现；
-father->FunctionB()，则执行的是Child中的实现。
+如 father->FunctionA()，则执行的是 Father 中的实现；
+father->FunctionB()，则执行的是 Child 中的实现。
 
-C++函数重载和const
+C++函数重载和 const
 C++ allows functions to be overloaded on the basis of const-ness of parameters only if the const parameter is a reference or a pointer.
 https://www.geeksforgeeks.org/function-overloading-and-const-functions/
 
 不能重载的函数：
+
 1. 不能重载只有返回值不同的两个函数
 2. 不能重载具有相同参数类型的静态和非静态成员函数
 3. 在参数声明中，一维数组和一级指针在参数声明中是等价的，在参数类型中，只有第二维和后续数组维才有意义。例如下面两个声明完全等价：`int fun(int* ptr);`和`int fun(int ptr[]);`（发生了重定义）
-4. 参数const和非const
+4. 参数 const 和非 const
 
 不能重载的函数参见
 https://www.geeksforgeeks.org/function-overloading-in-c/
@@ -161,7 +164,7 @@ f(double): 6.3
 f(double): 6.6
 请按任意键继续. . .
 
-可见，子类f遮蔽了父类f，在C++语言中，重载对派生类不起作用。基和派生之间没有重载解析。编译器检查派生函数的作用域，找到单个函数“double f（double）”并调用它。它从不干扰基础的（封闭的）范围。在C++中，跨范围没有重载——派生类作用域对这个一般规则也不例外。更多示例见此）
+可见，子类 f 遮蔽了父类 f，在 C++语言中，重载对派生类不起作用。基和派生之间没有重载解析。编译器检查派生函数的作用域，找到单个函数“double f（double）”并调用它。它从不干扰基础的（封闭的）范围。在 C++中，跨范围没有重载——派生类作用域对这个一般规则也不例外。更多示例见此）
 
 结论：重载要限定在同一个作用域。父类和子类不在一个范围。
 
@@ -182,10 +185,10 @@ int main() {
 }
 ```
 
-尝试编译它时会发生错误：test:对重载函数的调用不明确。有多个重载函数test实例与参数列表匹配。
+尝试编译它时会发生错误：test:对重载函数的调用不明确。有多个重载函数 test 实例与参数列表匹配。
 
-原因是：浮点数3.5和5.6通常是被编译器作为double对待的。
-根据C++标准，除非后缀明确指定，否则浮点文字（编译时间常数）将被视为double（请参见此处的C +++标准2.14.4）。
-由于编译器无法找到带有double参数的函数，因此如果将值从double转换为int或float会感到困惑。
+原因是：浮点数 3.5 和 5.6 通常是被编译器作为 double 对待的。
+根据 C++标准，除非后缀明确指定，否则浮点文字（编译时间常数）将被视为 double（请参见此处的 C +++标准 2.14.4）。
+由于编译器无法找到带有 double 参数的函数，因此如果将值从 double 转换为 int 或 float 会感到困惑。
 
 纠正错误的方法：(3.5f, 5.6f)即可

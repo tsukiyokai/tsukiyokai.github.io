@@ -8,12 +8,14 @@ tags:
   - OOP
 date: 2021-04-26 19:45:47
 ---
-访问修饰符用于实现OOP的一个重要方面——数据封装。
+
+访问修饰符用于实现 OOP 的一个重要方面——数据封装。
 
 类中的访问修饰符或访问说明符用于将可访问性分配给类成员。
 也就是说，它对类成员设置了一些限制，使其不能被外部函数随意访问。
 
-There are 3 types of access modifiers available in C++: 
+There are 3 types of access modifiers available in C++:
+
 - Public
 - Private
 - Protected
@@ -66,7 +68,8 @@ int main() {
     return 0;
 }
 ```
-这段程序发生编译错误：E0265	成员 "Circle::radius" (已声明 所在行数:6) 不可访问
+
+这段程序发生编译错误：E0265 成员 "Circle::radius" (已声明 所在行数:6) 不可访问
 
 但是，我们可以通过类的公共成员函数来间接访问类的私有数据成员。例如：
 

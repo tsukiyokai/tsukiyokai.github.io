@@ -8,6 +8,7 @@ tags:
   - DP
 date: 2021-05-05 18:09:39
 ---
+
 Given two strings str1 and str2 and below operations that can performed on str1. Find minimum number of edits (operations) required to convert str1 into str2.
 
 1. Insert
@@ -50,9 +51,10 @@ int main() {
     return 0;
 }
 ```
-`1+min(editDist`里的1表示什么意思？它表示已经确定的1种方式。
 
-## DP解法
+`1+min(editDist`里的 1 表示什么意思？它表示已经确定的 1 种方式。
+
+## DP 解法
 
 ```c++
 #include <bits/stdc++.h>

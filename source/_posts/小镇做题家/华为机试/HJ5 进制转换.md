@@ -10,6 +10,7 @@ tags:
   - 模拟
 date: 2021-05-01 01:14:07
 ---
+
 ## 题目
 
 写出一个程序，接受一个十六进制的数，输出该数值的十进制表示。
@@ -20,7 +21,6 @@ date: 2021-05-01 01:14:07
 #include<iostream>
 #include<string>
 #include<unordered_map>
-
 using namespace std;
 
 int main() {
@@ -56,4 +56,4 @@ int main() {
 }
 ```
 
-没有自动排序需求的话，就不用map，而是用unordered_map，因为map内部是红黑树，而unordered_map内部是哈希，红黑树还是更复杂一些。
+没有自动排序需求的话，就不用 map，而是用 unordered_map，因为 map 内部是红黑树，而 unordered_map 内部是哈希，红黑树还是更复杂一些。

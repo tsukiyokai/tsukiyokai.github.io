@@ -1,5 +1,5 @@
 ---
-title: 'C++ std::find_first_of'
+title: "C++ std::find_first_of"
 abbrlink: cec9b026
 categories:
   - 编程珠玑
