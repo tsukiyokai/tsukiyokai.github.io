@@ -133,6 +133,22 @@
       </tags>
   </entry>
   <entry>
+    <title>LC5 最长回文子串</title>
+    <url>/posts/8b9667aa/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
+<h2 id="解法-1：暴力（超时）"><a href="#解法-1：暴力（超时）" class="headerlink" title="解法 1：暴力（超时）"></a>解法 1：暴力（超时）</h2><p>暴力不行，虽然在 NC 可以通过，但是 NC 的用例简单，而且时间没啥限制（1000ms），而 LC 就比较严格，在 LC 做题不要想着用暴力。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>; i++)<br>            <span class="hljs-keyword">if</span> (s[i] != s[s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span> - i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        ios_base::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>        cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br><br>        string tmp;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> len = s.<span class="hljs-built_in">length</span>(); len &gt; <span class="hljs-number">0</span>; len--) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> it = <span class="hljs-number">0</span>; it &lt;= s.<span class="hljs-built_in">length</span>() - len; it++) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPalindrome</span>(s.<span class="hljs-built_in">substr</span>(it, len))) &#123;<br>                    tmp = s.<span class="hljs-built_in">substr</span>(it, len);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (!tmp.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> tmp;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>DP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC3 无重复字符的最长子串</title>
     <url>/posts/95bffdcb/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。</p>
@@ -156,22 +172,6 @@
       <tags>
         <tag>字符串</tag>
         <tag>滑动窗口</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC5 最长回文子串</title>
-    <url>/posts/8b9667aa/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
-<h2 id="解法-1：暴力（超时）"><a href="#解法-1：暴力（超时）" class="headerlink" title="解法 1：暴力（超时）"></a>解法 1：暴力（超时）</h2><p>暴力不行，虽然在 NC 可以通过，但是 NC 的用例简单，而且时间没啥限制（1000ms），而 LC 就比较严格，在 LC 做题不要想着用暴力。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>; i++)<br>            <span class="hljs-keyword">if</span> (s[i] != s[s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span> - i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        ios_base::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>        cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br><br>        string tmp;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> len = s.<span class="hljs-built_in">length</span>(); len &gt; <span class="hljs-number">0</span>; len--) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> it = <span class="hljs-number">0</span>; it &lt;= s.<span class="hljs-built_in">length</span>() - len; it++) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPalindrome</span>(s.<span class="hljs-built_in">substr</span>(it, len))) &#123;<br>                    tmp = s.<span class="hljs-built_in">substr</span>(it, len);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (!tmp.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> tmp;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -215,21 +215,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC9 回文数</title>
-    <url>/posts/4a95d995/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数 x，如果 x 是一个回文整数，返回 true；否则，返回 false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121 是回文，而 123 不是。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        string str = <span class="hljs-built_in">to_string</span>(x);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>; i++)<br>            <span class="hljs-keyword">if</span> (str[i] != str[str.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span> - i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC11 盛最多水的容器</title>
     <url>/posts/90544af4/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你 n 个非负整数 a1,a2,…，an，每个数代表坐标中的一个点(i,ai)。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为(i,ai)和(i,0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
@@ -256,6 +241,21 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC9 回文数</title>
+    <url>/posts/4a95d995/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数 x，如果 x 是一个回文整数，返回 true；否则，返回 false 。<br>回文数是指正序和倒序读都是一样的整数。例如，121 是回文，而 123 不是。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        string str = <span class="hljs-built_in">to_string</span>(x);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>; i++)<br>            <span class="hljs-keyword">if</span> (str[i] != str[str.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span> - i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -893,27 +893,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC169 多数元素</title>
-    <url>/posts/bbf3a336/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个大小为 n 的数组，找到其中的多数元素。多数元素是指在数组中出现次数大于 n/2 的元素。你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
-<h2 id="解法-1：排序"><a href="#解法-1：排序" class="headerlink" title="解法 1：排序"></a>解法 1：排序</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">return</span> nums[nums.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>用 std::sort()给数组排序，升序降序无所谓。正中间元素的右邻域那个元素一定是所谓的多数元素。注意一点，size()的范围是从 1 到 n，如果数组非空的话。而 nums[]索引的范围是 0~n-1。</p>
-<h2 id="解法-2：摩尔投票法"><a href="#解法-2：摩尔投票法" class="headerlink" title="解法 2：摩尔投票法"></a>解法 2：摩尔投票法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> res = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (res == nums[i]) count++;<br>            <span class="hljs-keyword">else</span> count--;<br>            <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>) res = nums[i + <span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>假设首元素是多数元素，从首元素开始遍历，遇到相同元素 count+1，遇到不同元素 count-1。当 count 减到 0 时，更新存储多数元素的变量为下一个元素。遍历结束时，最后留下的元素就是多数元素。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC171 Excel表列序号</title>
     <url>/posts/58bc01b9/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个 Excel 表格中的列名称，返回其相应的列序号。</p>
@@ -935,6 +914,27 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC169 多数元素</title>
+    <url>/posts/bbf3a336/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个大小为 n 的数组，找到其中的多数元素。多数元素是指在数组中出现次数大于 n/2 的元素。你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
+<h2 id="解法-1：排序"><a href="#解法-1：排序" class="headerlink" title="解法 1：排序"></a>解法 1：排序</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">return</span> nums[nums.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>用 std::sort()给数组排序，升序降序无所谓。正中间元素的右邻域那个元素一定是所谓的多数元素。注意一点，size()的范围是从 1 到 n，如果数组非空的话。而 nums[]索引的范围是 0~n-1。</p>
+<h2 id="解法-2：摩尔投票法"><a href="#解法-2：摩尔投票法" class="headerlink" title="解法 2：摩尔投票法"></a>解法 2：摩尔投票法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> res = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (res == nums[i]) count++;<br>            <span class="hljs-keyword">else</span> count--;<br>            <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>) res = nums[i + <span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>假设首元素是多数元素，从首元素开始遍历，遇到相同元素 count+1，遇到不同元素 count-1。当 count 减到 0 时，更新存储多数元素的变量为下一个元素。遍历结束时，最后留下的元素就是多数元素。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -1117,20 +1117,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC231 2的幂</title>
-    <url>/posts/8e812d9/</url>
-    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC232 用栈实现队列</title>
     <url>/posts/b43e0dd9/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用两个栈实现先入先出队列。<br>队列应当支持一般队列的支持的所有操作(push、pop、peek、empty)。</p>
@@ -1147,6 +1133,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>栈</tag>
         <tag>队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC231 2的幂</title>
+    <url>/posts/8e812d9/</url>
+    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1213,6 +1213,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC258 各位相加</title>
+    <url>/posts/853fb8a2/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
+<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC263 丑数</title>
     <url>/posts/366238ee/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序判断给定的数是否为丑数。<br>丑数就是只包含质因数 2,3,5 的正整数。<br>说明：1 是丑数</p>
@@ -1226,21 +1241,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC258 各位相加</title>
-    <url>/posts/853fb8a2/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
-<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1649,6 +1649,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>HJ2 计算某字母出现次数</title>
+    <url>/posts/c680c3f7/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>写出一个程序，接受一个由字母、数字和空格组成的字符串，和一个字母，然后输出输入字符串中该字母的出现次数。不区分大小写，字符串长度小于 500。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cctype&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-built_in">getline</span>(cin, str);<br>    <span class="hljs-keyword">char</span> target;<br>    cin &gt;&gt; target;<br>    target = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">char</span>&gt;(<span class="hljs-built_in">tolower</span>(target));<br>    <span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : str) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">tolower</span>(c) == target) num++;<br>    &#125;<br>    cout &lt;&lt; num;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注意点<br>1.tolower 记得转成 char<br>2.tolower 在 cctype 里</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HJ19 字符串排序</title>
     <url>/posts/48639b35/</url>
     <content><![CDATA[<p>给定 n 个字符串，请对 n 个字符串按照字典序排列。</p>
@@ -1662,21 +1677,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>字符串</tag>
         <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HJ2 计算某字母出现次数</title>
-    <url>/posts/c680c3f7/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>写出一个程序，接受一个由字母、数字和空格组成的字符串，和一个字母，然后输出输入字符串中该字母的出现次数。不区分大小写，字符串长度小于 500。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cctype&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-built_in">getline</span>(cin, str);<br>    <span class="hljs-keyword">char</span> target;<br>    cin &gt;&gt; target;<br>    target = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">char</span>&gt;(<span class="hljs-built_in">tolower</span>(target));<br>    <span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : str) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">tolower</span>(c) == target) num++;<br>    &#125;<br>    cout &lt;&lt; num;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>注意点<br>1.tolower 记得转成 char<br>2.tolower 在 cctype 里</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -2218,6 +2218,25 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>PE1 Multiples of 3 and 5</title>
+    <url>/posts/f5248637/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</p>
+<p>如果我们列出所有低于 10 的自然数，它们是 3 或 5 的倍数，则得到 3、5、6 和 9。这些倍数的总和为 23。求 1000 以下所有 3 或 5 的倍数之和。</p>
+<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i)<br>        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> || i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>)<br>            sum += i;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：容斥原理"><a href="#解法-2：容斥原理" class="headerlink" title="解法 2：容斥原理"></a>解法 2：容斥原理</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 求N以内所有n的倍数之和</span><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">sumu</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>    <span class="hljs-comment">// (首项n+末项)*项数/2</span><br>    <span class="hljs-keyword">return</span> (n + (N - <span class="hljs-number">1</span>) / n * n) * ((N - <span class="hljs-number">1</span>) / n) / <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">unsigned</span> sum_3 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">3</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_5 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">5</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_15 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">15</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum = sum_3 + sum_5 - sum_15;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.xarg.org/puzzle/project-euler/problem-1/">https://www.xarg.org/puzzle/project-euler/problem-1/</a></p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>欧拉计划</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JZ49 丑数</title>
     <url>/posts/1512fb53/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子 2,3 和 5 的数称作丑数。求按从小到大的顺序的第 n 个丑数。第 150 个丑数为 5832。</p>
@@ -2337,25 +2356,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>PE1 Multiples of 3 and 5</title>
-    <url>/posts/f5248637/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>如果我们列出所有低于 10 的自然数，它们是 3 或 5 的倍数，则得到 3、5、6 和 9。这些倍数的总和为 23。求 1000 以下所有 3 或 5 的倍数之和。</p>
-<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i)<br>        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> || i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>)<br>            sum += i;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：容斥原理"><a href="#解法-2：容斥原理" class="headerlink" title="解法 2：容斥原理"></a>解法 2：容斥原理</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 求N以内所有n的倍数之和</span><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">sumu</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>    <span class="hljs-comment">// (首项n+末项)*项数/2</span><br>    <span class="hljs-keyword">return</span> (n + (N - <span class="hljs-number">1</span>) / n * n) * ((N - <span class="hljs-number">1</span>) / n) / <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">unsigned</span> sum_3 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">3</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_5 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">5</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_15 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">15</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum = sum_3 + sum_5 - sum_15;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.xarg.org/puzzle/project-euler/problem-1/">https://www.xarg.org/puzzle/project-euler/problem-1/</a></p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>欧拉计划</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ACM模式下C++标准输入输出惯用法汇总</title>
     <url>/posts/dc62c34d/</url>
     <content><![CDATA[<h2 id="引言：从核心代码到-ACM"><a href="#引言：从核心代码到-ACM" class="headerlink" title="引言：从核心代码到 ACM"></a>引言：从核心代码到 ACM</h2><p>现在主流的在线编程环境分为两种：核心代码模式和 ACM 模式。</p>
@@ -2466,7 +2466,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>C++ string::find的五种写法</title>
+    <title>C++中string::find的五种写法</title>
     <url>/posts/8b37e32e/</url>
     <content><![CDATA[<p><code>find()</code> 在一个字符串中查找一个指定的单个字符或字符数组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，就返回 string::npos。</p>
 <p><code>find_first_of()</code> 在一个目标串中进行查找，返回值是第一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
@@ -2778,7 +2778,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
     <title>C++多态</title>
     <url>/posts/75300d42/</url>
     <content><![CDATA[<h2 id="什么是多态？"><a href="#什么是多态？" class="headerlink" title="什么是多态？"></a>什么是多态？</h2><p>多态（英语：polymorphism）指为不同数据类型的实体提供统一的接口。</p>
-<h2 id="为什么适用多态？"><a href="#为什么适用多态？" class="headerlink" title="为什么适用多态？"></a>为什么适用多态？</h2><ol>
+<h2 id="为什么需要多态？"><a href="#为什么需要多态？" class="headerlink" title="为什么需要多态？"></a>为什么需要多态？</h2><ol>
 <li>封装可以隐藏实现细节，使代码模块化；</li>
 <li>继承可以拓展已存在的代码模块，实现代码重用；</li>
 <li>多态除了实现代码的复用外，还可以解决项目中紧耦合的问题，提高程序的可拓展性。</li>
@@ -3141,7 +3141,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p>首先还是先给出虚继承和虚基类的定义。<br>虚继承：在继承定义中包含了 virtual 关键字的继承关系。<br>虚基类：在虚继承体系中通过 virtual 继承而来的基类。</p>
 <p>需要注意的是：<br><code>class B : public virtual A &#123; &#125;;</code><br>其中 A 称之为 B 的虚基类，而不是说 A 就是个虚基类，因为 A 还可以作为不是虚继承体系中的基类。</p>
 <p>现在，B 继承 A 的公共成员 a 时，继承的是 a 的本体，而非 a 的副本。（感觉有点像继承机制中的传引用）</p>
-<p>语义：此机制为何被称作虚继承？</p>
 <p>从语义上来讲什么是虚继承和虚基类呢？上面仅仅是从如何在 C++语言中书写合法的虚继承类定义而已。首先来了解一下 virtual 这个关键字在 C++中的公共含义，在 C++语言中仅仅有两个地方可以使用 virtual 这个关键字，一个就是类成员虚函数和这里所讨论的虚继承。不要看这两种应用场合好像没什么关系，其实他们在背景语义上具有 virtual 这个词所代表的共同的含义，所以才会在这两种场合使用相同的关键字。</p>
 <p>那么 virtual 这个词的含义是什么呢？<br>virtual 在《美国传统词典（双解）》中是这样定义的：</p>
 <p>adj.（形容词）</p>
@@ -3257,48 +3256,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>C程序的内存布局</title>
-    <url>/posts/45cdd624/</url>
-    <content><![CDATA[<h2 id="存储时的-3-个区域"><a href="#存储时的-3-个区域" class="headerlink" title="存储时的 3 个区域"></a>存储时的 3 个区域</h2><p>一个存储着数据但处于未运行状态的程序（它可以被编译过，但没有执行，注意编译和运行的差别），其存储结构分为三个部分：</p>
-<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">3: Uninitialized data segment (BSS)<br>2: Initialized data segment (Data)<br>1: Text segment (Text)<br></code></pre></td></tr></table></figure>
-<h2 id="运行时的-5-个区域"><a href="#运行时的-5-个区域" class="headerlink" title="运行时的 5 个区域"></a>运行时的 5 个区域</h2><p>一个正在运行着的 C 编译程序占用的内存可以分为 5 个部分：<br>注：从下到上，1 为低地址，5 为高地址。</p>
-<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">5: Stack (Stack) ↓<br>4: Heap (Heap) ↑<br>3: Uninitialized data segment (BSS)<br>2: Initialized data segment (Data)<br>1: Text segment (Text)<br></code></pre></td></tr></table></figure>
-<p>5 以上是各种命令行参数和环境变量<br>5 栈向低地址增长<br>4 堆向高地址增长<br>3 由 exec 函数族初始化为 0<br>1 和 2 由 exec 函数族从程序文件中读入</p>
-<p>接下来自底向上依次说明。</p>
-<h2 id="Text-代码段"><a href="#Text-代码段" class="headerlink" title="Text / 代码段"></a>Text / 代码段</h2><p>内存模型中的代码段部分是目标文件或内存中程序的一部分，其中包含可执行指令。</p>
-<p>作为一片内存区域，文本段最好放置在堆或栈的下面，以防堆栈溢出覆盖它。（堆栈以低地址为自己的底部，所以是向上发生溢出的。如果代码段设置在堆栈上面，就会有被覆盖的危险）</p>
-<p>通常来说，文本段是可被共享的，所以内存中只需要有一个副本，就能满足频繁执行的程序的需求（如文本编辑器、C 编译器、shell 等）。此外，文本段一般是只读的，以防内容被意外修改。</p>
-<h2 id="Data-数据段"><a href="#Data-数据段" class="headerlink" title="Data / 数据段"></a>Data / 数据段</h2><p>已初始化的数据段，通常简称为数据段。包含已经由程序员初始化的全局变量和静态变量。例如，任何位置的 static int i = 10 都将存储在数据段中，而全局的 int i = 10 也将存储在数据段中。</p>
-<p>请注意，数据段不是只读的，因为它可以在运行时更改变量的值。但该段也可以进一步细分为已初始化只读区和已初始化读写区。</p>
-<h2 id="BSS-BSS-段"><a href="#BSS-BSS-段" class="headerlink" title="BSS / BSS 段"></a>BSS / BSS 段</h2><p>未初始化的数据段通常称为 bss 段，以一个古老的汇编程序运算符命名，意思是 block started by symbol（以符号开头的块）。</p>
-<p>bss 中的数据的地址从 Data 段的末尾开始增长，bss 包含所有初始化为零或在源代码中没有显式初始化的全局变量和静态变量。这个段中的数据将会在程序开始执行前由内核初始化为算术 0。bss 段属于静态内存分配，只存在于编译时，不存在于运行时。一旦程序开始运行，在 bss 内存区进入程序的地址空间后，这个段的数据将全部清零，包含 data 和 bss 段的整个区段此时统称为数据区。注意这里清零的意思就是置零。</p>
-<p>既然一开始执行程序就要清零 bss 段，那它为何还要存在？原因是：bss 段并不给该段的数据分配空间，它的作用是记录数据所需空间的大小。</p>
-<p>举例说明</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 程序1</span><br><span class="hljs-keyword">int</span> ar[<span class="hljs-number">30000</span>];<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	...<br>&#125;<br><br><span class="hljs-comment">// 程序2</span><br><span class="hljs-keyword">int</span> ar[<span class="hljs-number">30000</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	...<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>编译之后发现程序 2 的可执行文件比程序 1 大得多。这是因为程序 1 的数组 ar 位于 bss 段，bss 不占用可执行文件空间，其内容由操作系统初始化（清零）。而程序 2 位于 data 段，data 段需要占用可执行文件空间，其内容由程序初始化。</p>
-<p>一个程序本质上是由 bss 段、data 段、text 段三个组成的。在一个 C 程序编译完成之后正式执行之前，已初始化的全局变量保存在 data 段中，未初始化的全局变量保存在 bss 段中。text 和 data 段都在可执行文件中（在嵌入式系统里一般是固化在镜像文件中），由系统从可执行文件中加载；而 bss 段不在可执行文件中，由系统初始化。</p>
-<p>例如一个变量声明为<code>static int i</code>或<code>int j</code>，那么它将被包含在 bss 段中。</p>
-<h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>堆是动态内存分配行为频发的段。</p>
-<p>堆区域开始于 bss 段的结尾处，并从那里扩展到更大的地址。堆区域由 new 和 delete，malloc，realloc 和 free 管理，它们可以使用 brk 和 sbrk 系统调用来调整其大小。堆区域由进程中所有共享库和动态加载的模块共享。</p>
-<p>一定记得使用完后及时释放空间。</p>
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>栈区域在传统上与堆区域相邻，并以相反的方向增长，当栈指针遇到堆指针时，可用内存耗尽。（借助现代的大型地址空间和虚拟内存技术，堆区和栈区几乎可以放置在任何地方，但它们一般还是沿相反的方向生长。）</p>
-<p>之前看到的一种说法是，当初的内存容量小，栈是从地址最高位向低位分配，而堆是从最低位向高位分配，这样可以最大化压榨内存。</p>
-<p>栈区域包含栈数据结构，一种后进先出结构，它通常位于内存的较高部分。在标准的 PC x86 计算机体系结构上，它朝着地址 0 增长；在其他一些架构上，它则朝着相反的方向增长。栈顶指针寄存器跟踪着栈顶的位置，每次新值入栈时都会对其进行调整。为了完成一次函数调用而推入的一组值称为“栈帧”，栈帧也叫过程活动记录，是编译器用来实现函数调用的一种数据结构。栈帧至少包含一个返回地址。</p>
-<p>栈用于存储自动变量以及每次调用函数时保存的信息。每次调用函数时，返回位置的地址和调用者环境的某些信息（例如某些机器寄存器）都保存在栈中。接着新调用的函数在栈上为其自动和临时变量分配空间。这就是 C 中的递归函数的工作方式。递归函数每次调用自己时，都会使用一个新的栈帧，这样一组变量就不会干扰来自该函数另一个实例的变量。</p>
-<p>注：自动变量就是普通的局部变量，前面不带 static。自动指的是局部变量离开块作用域自动销毁，临时指的是局部变量具有（短暂的）自动存储期限。由此可见，栈区域主要是用来存放函数内的局部变量，在函数执行结束时自动释放。栈内存的分配运算内置于处理器的指令集中，效率很高，但是可以分配的内存容量十分有限。</p>
-<p>题外话：注意区分内存模型中的栈区域和数据结构中的栈结构。stack 这种 LIFO 结构由于比较复杂的历史和现实因素在国内普遍被翻译为堆栈，实在是有些误人子弟（台湾人背锅），即使在我的母校吉林大学，老师们一个个也乐此不疲地一口一个“堆栈”。学生自己还是要清楚：栈 is 栈，堆 is 堆，由计算机科学技术名词审定委员会编撰完成的《计算机科学技术名词》一书里完全就没有堆栈这个名词。不过话说回来，如果你真的能完全把堆栈和堆这两个东西当成两件事，那喊栈为堆栈也没什么大问题。私下里我还是觉得规范化用语比较好。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>语法</tag>
-        <tag>内存</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mutable关键字与概念上的“常量”</title>
+    <title>mutable关键字与概念上的“常量性”</title>
     <url>/posts/4edf765f/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>I’ve seen too many tutorials and lessons that get the “mutable” keyword in C++ entirely wrong. The result is terrible C++ code. Here’s my attempt to clear things up: “C++’s mutable and conceptual constness.”</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>关键字 mutable 用于允许修改 const 对象的特定数据成员。如果大多数成员应该是常量，但少数成员需要是可更新的，则这一点特别有用。假设我们在 Employee 类中添加一个 salary 成员。虽然员工姓名和 id 可能是固定的，但工资不应该是固定的。</p>
@@ -3569,6 +3527,47 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>C程序的内存布局</title>
+    <url>/posts/45cdd624/</url>
+    <content><![CDATA[<h2 id="存储时的-3-个区域"><a href="#存储时的-3-个区域" class="headerlink" title="存储时的 3 个区域"></a>存储时的 3 个区域</h2><p>一个存储着数据但处于未运行状态的程序（它可以被编译过，但没有执行，注意编译和运行的差别），其存储结构分为三个部分：</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">3: Uninitialized data segment (BSS)<br>2: Initialized data segment (Data)<br>1: Text segment (Text)<br></code></pre></td></tr></table></figure>
+<h2 id="运行时的-5-个区域"><a href="#运行时的-5-个区域" class="headerlink" title="运行时的 5 个区域"></a>运行时的 5 个区域</h2><p>一个正在运行着的 C 编译程序占用的内存可以分为 5 个部分：<br>注：从下到上，1 为低地址，5 为高地址。</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">5: Stack (Stack) ↓<br>4: Heap (Heap) ↑<br>3: Uninitialized data segment (BSS)<br>2: Initialized data segment (Data)<br>1: Text segment (Text)<br></code></pre></td></tr></table></figure>
+<p>5 以上是各种命令行参数和环境变量<br>5 栈向低地址增长<br>4 堆向高地址增长<br>3 由 exec 函数族初始化为 0<br>1 和 2 由 exec 函数族从程序文件中读入</p>
+<p>接下来自底向上依次说明。</p>
+<h2 id="Text-代码段"><a href="#Text-代码段" class="headerlink" title="Text 代码段"></a>Text 代码段</h2><p>内存模型中的代码段部分是目标文件或内存中程序的一部分，其中包含可执行指令。</p>
+<p>作为一片内存区域，文本段最好放置在堆或栈的下面，以防堆栈溢出覆盖它。（堆栈以低地址为自己的底部，所以是向上发生溢出的。如果代码段设置在堆栈上面，就会有被覆盖的危险）</p>
+<p>通常来说，文本段是可被共享的，所以内存中只需要有一个副本，就能满足频繁执行的程序的需求（如文本编辑器、C 编译器、shell 等）。此外，文本段一般是只读的，以防内容被意外修改。</p>
+<h2 id="Data-数据段"><a href="#Data-数据段" class="headerlink" title="Data 数据段"></a>Data 数据段</h2><p>已初始化的数据段，通常简称为数据段。包含已经由程序员初始化的全局变量和静态变量。例如，任何位置的 static int i = 10 都将存储在数据段中，而全局的 int i = 10 也将存储在数据段中。</p>
+<p>请注意，数据段不是只读的，因为它可以在运行时更改变量的值。但该段也可以进一步细分为已初始化只读区和已初始化读写区。</p>
+<h2 id="BSS-BSS-段"><a href="#BSS-BSS-段" class="headerlink" title="BSS BSS 段"></a>BSS BSS 段</h2><p>未初始化的数据段通常称为 bss 段，以一个古老的汇编程序运算符命名，意思是 block started by symbol（以符号开头的块）。</p>
+<p>bss 中的数据的地址从 Data 段的末尾开始增长，bss 包含所有初始化为零或在源代码中没有显式初始化的全局变量和静态变量。这个段中的数据将会在程序开始执行前由内核初始化为算术 0。bss 段属于静态内存分配，只存在于编译时，不存在于运行时。一旦程序开始运行，在 bss 内存区进入程序的地址空间后，这个段的数据将全部清零，包含 data 和 bss 段的整个区段此时统称为数据区。注意这里清零的意思就是置零。</p>
+<p>既然一开始执行程序就要清零 bss 段，那它为何还要存在？原因是：bss 段并不给该段的数据分配空间，它的作用是记录数据所需空间的大小。</p>
+<p>举例说明</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 程序1</span><br><span class="hljs-keyword">int</span> ar[<span class="hljs-number">30000</span>];<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	...<br>&#125;<br><br><span class="hljs-comment">// 程序2</span><br><span class="hljs-keyword">int</span> ar[<span class="hljs-number">30000</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>编译之后发现程序 2 的可执行文件比程序 1 大得多。这是因为程序 1 的数组 ar 位于 bss 段，bss 不占用可执行文件空间，其内容由操作系统初始化（清零）。而程序 2 位于 data 段，data 段需要占用可执行文件空间，其内容由程序初始化。</p>
+<p>一个程序本质上是由 bss 段、data 段、text 段三个组成的。在一个 C 程序编译完成之后正式执行之前，已初始化的全局变量保存在 data 段中，未初始化的全局变量保存在 bss 段中。text 和 data 段都在可执行文件中（在嵌入式系统里一般是固化在镜像文件中），由系统从可执行文件中加载；而 bss 段不在可执行文件中，由系统初始化。</p>
+<p>例如一个变量声明为<code>static int i</code>或<code>int j</code>，那么它将被包含在 bss 段中。</p>
+<h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>堆是动态内存分配行为频发的段。</p>
+<p>堆区域开始于 bss 段的结尾处，并从那里扩展到更大的地址。堆区域由 new 和 delete，malloc，realloc 和 free 管理，它们可以使用 brk 和 sbrk 系统调用来调整其大小。堆区域由进程中所有共享库和动态加载的模块共享。</p>
+<p>一定记得使用完后及时释放空间。</p>
+<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>栈区域在传统上与堆区域相邻，并以相反的方向增长，当栈指针遇到堆指针时，可用内存耗尽。（借助现代的大型地址空间和虚拟内存技术，堆区和栈区几乎可以放置在任何地方，但它们一般还是沿相反的方向生长。）</p>
+<p>之前看到的一种说法是，当初的内存容量小，栈是从地址最高位向低位分配，而堆是从最低位向高位分配，这样可以最大化压榨内存。</p>
+<p>栈区域包含栈数据结构，一种后进先出结构，它通常位于内存的较高部分。在标准的 PC x86 计算机体系结构上，它朝着地址 0 增长；在其他一些架构上，它则朝着相反的方向增长。栈顶指针寄存器跟踪着栈顶的位置，每次新值入栈时都会对其进行调整。为了完成一次函数调用而推入的一组值称为“栈帧”，栈帧也叫过程活动记录，是编译器用来实现函数调用的一种数据结构。栈帧至少包含一个返回地址。</p>
+<p>栈用于存储自动变量以及每次调用函数时保存的信息。每次调用函数时，返回位置的地址和调用者环境的某些信息（例如某些机器寄存器）都保存在栈中。接着新调用的函数在栈上为其自动和临时变量分配空间。这就是 C 中的递归函数的工作方式。递归函数每次调用自己时，都会使用一个新的栈帧，这样一组变量就不会干扰来自该函数另一个实例的变量。</p>
+<p>注：自动变量就是普通的局部变量，前面不带 static。自动指的是局部变量离开块作用域自动销毁，临时指的是局部变量具有（短暂的）自动存储期限。由此可见，栈区域主要是用来存放函数内的局部变量，在函数执行结束时自动释放。栈内存的分配运算内置于处理器的指令集中，效率很高，但是可以分配的内存容量十分有限。</p>
+<p>题外话：注意区分内存模型中的栈区域和数据结构中的栈结构。stack 这种 LIFO 结构由于比较复杂的历史和现实因素在国内普遍被翻译为堆栈，实在是有些误人子弟（台湾人背锅），即使在我的母校吉林大学，老师们一个个也乐此不疲地一口一个“堆栈”。学生自己还是要清楚：栈 is 栈，堆 is 堆，由计算机科学技术名词审定委员会编撰完成的《计算机科学技术名词》一书里完全就没有堆栈这个名词。不过话说回来，如果你真的能完全把堆栈和堆这两个东西当成两件事，那喊栈为堆栈也没什么大问题。私下里我还是觉得规范化用语比较好。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
+        <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux复健记录</title>
     <url>/posts/4d4fc466/</url>
     <content><![CDATA[<blockquote>
@@ -3629,7 +3628,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <li><strong>在当前目录下创建一个名为 test.new 的新文件</strong></li>
 </ul>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> touch test.new<br></code></pre></td></tr></table></figure>
-<p>这个 touch 关键词的命名真的很浪漫，让人想起来那副著名壁画《创造亚当》。程序员就像上帝，通过触碰就可以创造新的文件，颇有点石成金、妙笔生花之韵味。</p>
+<p>这个 touch 关键词的命名真的很浪漫，让人想起来那副著名壁画《创造亚当》。程序员就像上帝，通过触碰就可以创造新的文件，颇有点石成金、落笔生花之韵味。</p>
 <img src="/posts/4d4fc466/Creaci%C3%B3n_de_Ad%C3%A1n_(Miguel_%C3%81ngel).jpg" class="">
 <p>touch 还可以用來更新檔案的最後修改時間（如果檔案已经存在的話）。这个微小的变化是通过 <code>stat lixing.cpp</code> 命令来查看的。此用法只更新修改时间而不涉及文件内容。</p>
 <ul>
@@ -4379,6 +4378,188 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>书单</title>
+    <url>/posts/e8a1470d/</url>
+    <content><![CDATA[<blockquote>
+<p>根深叶茂，本固枝荣。</p>
+</blockquote>
+<h3 id="计算机科学-CS-37-本"><a href="#计算机科学-CS-37-本" class="headerlink" title="计算机科学 CS 37 本"></a>计算机科学 CS 37 本</h3><h4 id="语言-C-C-Python-6-本"><a href="#语言-C-C-Python-6-本" class="headerlink" title="语言 C/C++/Python 6 本"></a>语言 C/C++/Python 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- C语言程序设计：现代方法 -- K. N. King -- 2020.11<br>- C和指针<br>- C++ Primer -- Stanley B. Lippman<br>- Effective C++：改善程序与设计的55个具体做法 -- Scott Meyers<br>- STL源码剖析 -- 侯捷<br>- Inside the C++ Object Model -- Stanley B. Lippman<br></code></pre></td></tr></table></figure>
+<h4 id="算法-algorithm-5-本"><a href="#算法-algorithm-5-本" class="headerlink" title="算法 algorithm 5 本"></a>算法 algorithm 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 算法导论（CLRS）<br>- 计算机程序设计艺术（TAOCP）<br>- 算法 -- Robert Sedgewick<br>- 算法竞赛入门经典 -- 刘汝佳<br>- 算法竞赛入门经典：训练指南 -- 刘汝佳<br></code></pre></td></tr></table></figure>
+<h4 id="计算机系统应用-csa-8-本"><a href="#计算机系统应用-csa-8-本" class="headerlink" title="计算机系统应用 csa 8 本"></a>计算机系统应用 csa 8 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 深入理解计算机系统（CSAPP）<br>- 操作系统之哲学原理 -- 邹恒明 -- 2021.3<br>- 鳥哥的 Linux 私房菜 -- 2021.5<br>- UNIX环境高级编程（APUE）<br>- UNIX网络编程（UNP）<br>- 计算机网络 -- 谢希仁 -- 2021.2<br>- 5G NR标准：下一代无线通信技术<br>- 数据库系统概念<br></code></pre></td></tr></table></figure>
+<h4 id="理论计算机科学-tcs-2-本"><a href="#理论计算机科学-tcs-2-本" class="headerlink" title="理论计算机科学 tcs 2 本"></a>理论计算机科学 tcs 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 计算机程序的构造和解释（SICP，魔法书）<br>- 编译原理（龙书）<br></code></pre></td></tr></table></figure>
+<h4 id="数学-math-7-本"><a href="#数学-math-7-本" class="headerlink" title="数学 math 7 本"></a>数学 math 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 数学之美<br>- 线性代数及其应用 -- David C. Lay<br>- 概率论与数理统计教程 -- 茆诗松<br>- 概率论与数理统计 -- 陈希孺<br>- 随机过程 -- Ross<br>- 离散数学及其应用<br>- 具体数学：计算机科学基础<br></code></pre></td></tr></table></figure>
+<h4 id="软件工程-se-7-本"><a href="#软件工程-se-7-本" class="headerlink" title="软件工程 se 7 本"></a>软件工程 se 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 设计模式<br>- 代码大全<br>- 程序员修炼之道<br>- 人月神话 -- 弗雷德里克·布鲁克斯<br>- 编程珠玑<br>- 编程之美<br>- 人件<br></code></pre></td></tr></table></figure>
+<h4 id="人工智能-ai-2-本"><a href="#人工智能-ai-2-本" class="headerlink" title="人工智能 ai 2 本"></a>人工智能 ai 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 人工智能：一种现代方法（AIMA） -- Stuart J. Russell<br>- 机器学习（西瓜书） -- 周志华<br></code></pre></td></tr></table></figure>
+<h3 id="人文社科-48-本"><a href="#人文社科-48-本" class="headerlink" title="人文社科 48 本"></a>人文社科 48 本</h3><h4 id="哲学-4-本"><a href="#哲学-4-本" class="headerlink" title="哲学 4 本"></a>哲学 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 西方哲学史 -- 罗素<br>- 中国哲学简史 -- 冯友兰<br>- 物种起源 -- 达尔文<br>- 自然哲学的数学原理 -- 牛顿<br></code></pre></td></tr></table></figure>
+<h4 id="心理-4-本"><a href="#心理-4-本" class="headerlink" title="心理 4 本"></a>心理 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 自私的基因<br>- 乌合之众：大众心理研究<br>- 人性的弱点<br>- 梦的解析 -- 弗洛伊德<br></code></pre></td></tr></table></figure>
+<h4 id="小说-17-本"><a href="#小说-17-本" class="headerlink" title="小说 17 本"></a>小说 17 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 安娜·卡列尼娜 -- 托尔斯泰<br>- 百年孤独 -- 马尔克斯<br>- 不能承受的生命之轻（许均 译） -- 米兰·昆德拉<br>- 人间失格 -- 太宰治<br>- 三体 -- 刘慈欣<br>- 越女剑 -- 金庸<br>- 天龙八部 -- 金庸<br>- 射雕英雄传 -- 金庸<br>- 神雕侠侣 -- 金庸<br>- 倚天屠龙记 -- 金庸<br>- 鹿鼎记 -- 金庸<br>- 化物语 -- 西尾维新<br>- The Lord of the Rings: The Fellowship of the Ring -- 托尔金<br>- The Lord of the Rings: The Two Towers -- 托尔金<br>- The Lord of the Rings: The Return of the King -- 托尔金<br>- The Hobbit（霍比特人） -- 托尔金<br>- 精灵宝钻 -- 托尔金<br>- 中洲历史 -- 托尔金<br></code></pre></td></tr></table></figure>
+<h4 id="古典-12-本"><a href="#古典-12-本" class="headerlink" title="古典 12 本"></a>古典 12 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 论语<br>- 孟子<br>- 道德经<br>- 庄子<br>- 诗经<br>- 周易<br>- 花间集<br>- 人间词话<br>- 西厢记<br>- 水浒传<br>- 红楼梦<br>- 圣经（旧约的创世纪、出埃及记、约伯传、颂诗）<br></code></pre></td></tr></table></figure>
+<h4 id="经济-5-本"><a href="#经济-5-本" class="headerlink" title="经济 5 本"></a>经济 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 国富论 -- 亚当·斯密<br>- 1844年经济学哲学手稿 -- 马克思<br>- 资本论 -- 马克思<br>- 经济学原理 -- 曼昆<br>- 就业、利息和货币通论 -- 凯恩斯<br></code></pre></td></tr></table></figure>
+<h4 id="政治-6-本"><a href="#政治-6-本" class="headerlink" title="政治 6 本"></a>政治 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 文明的冲突与世界秩序的重建 -- 塞缪尔·亨廷顿<br>- 美国反对美国 -- 王沪宁<br>- 理想国 -- 柏拉图<br>- 君主论 -- 马基雅维利<br>- 共产党宣言 -- 马克思，恩格斯<br>- 国际政治理论 -- 华尔兹<br></code></pre></td></tr></table></figure>
+<h3 id="准则-3-条"><a href="#准则-3-条" class="headerlink" title="准则 3 条"></a>准则 3 条</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">1. 若无必要，勿增实体。<br>2. Einmal ist keinmal.<br>3. 从感性到理性，从理性到实践。两次飞跃，无限反复，不断发展。<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>人月神话</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>技术栈</title>
+    <url>/posts/c420bf1b/</url>
+    <content><![CDATA[<h1 id="学术"><a href="#学术" class="headerlink" title="学术"></a>学术</h1><ul>
+<li><p>数学</p>
+<ul>
+<li>线性代数</li>
+<li>概率论与数理统计</li>
+</ul>
+</li>
+<li><p>ds&amp;aa</p>
+<ul>
+<li>数据结构<ul>
+<li>平衡二叉树</li>
+<li>红黑树</li>
+<li>B-树</li>
+<li>KMP</li>
+<li>栈/队列</li>
+<li>布隆过滤器</li>
+</ul>
+</li>
+<li>算法分析<ul>
+<li>查找<ul>
+<li>二分法 √</li>
+</ul>
+</li>
+<li>排序<ul>
+<li>冒泡排序 √</li>
+<li>插入排序 √</li>
+<li>选择排序 √</li>
+<li>快速排序 √</li>
+<li>基数排序</li>
+<li>谢尔排序</li>
+<li>归并排序</li>
+<li>堆排序</li>
+<li>桶排序</li>
+</ul>
+</li>
+<li>图相关<ul>
+<li>BFS</li>
+<li>DFS</li>
+</ul>
+</li>
+<li>字符串相关<ul>
+<li>KMP</li>
+</ul>
+</li>
+<li>DP √</li>
+<li>贪心</li>
+<li>回溯</li>
+<li>推荐算法</li>
+<li>布隆过滤器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作系统</p>
+<ul>
+<li>Linux<ul>
+<li>re</li>
+<li>grep</li>
+<li>sed</li>
+<li>awk</li>
+</ul>
+</li>
+<li>IPC</li>
+</ul>
+</li>
+<li><p>计算机网络</p>
+<ul>
+<li>网络基础<ul>
+<li>物理层 √</li>
+<li>数据链路层 √</li>
+<li>网络层 √</li>
+<li>传输层 √</li>
+<li>应用层 √</li>
+</ul>
+</li>
+<li>网络协议<ul>
+<li>TCP/IP</li>
+</ul>
+</li>
+<li>网络编程<ul>
+<li>Socket 编程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>AI</p>
+<ul>
+<li>Python</li>
+<li>GA</li>
+</ul>
+</li>
+</ul>
+<h1 id="工业"><a href="#工业" class="headerlink" title="工业"></a>工业</h1><ul>
+<li><p>C</p>
+</li>
+<li><p>C++</p>
+<ul>
+<li>库<ul>
+<li>STL</li>
+<li>Boost</li>
+</ul>
+</li>
+<li>思想<ul>
+<li>OOP</li>
+<li>泛型编程</li>
+<li>函数式编程</li>
+</ul>
+</li>
+<li>能力<ul>
+<li>代码风格</li>
+<li>性能分析</li>
+<li>多线程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SE</p>
+<ul>
+<li>设计模式<ul>
+<li>单例模式</li>
+</ul>
+</li>
+<li>项目管理<ul>
+<li>人月神话</li>
+<li>人件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发工具</p>
+<ul>
+<li>Git</li>
+<li>Docker</li>
+</ul>
+</li>
+<li><p>DB</p>
+<ul>
+<li>MySQL</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>人月神话</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VS Code正则札记</title>
     <url>/posts/bcc7a2a3/</url>
     <content><![CDATA[<h4 id="批量删除注释"><a href="#批量删除注释" class="headerlink" title="批量删除注释"></a>批量删除注释</h4><figure class="highlight re"><table><tr><td class="code"><pre><code class="hljs re">行注释<br><span class="hljs-comment">//[\s\S]*?\n</span><br><br>块注释<br>/\*(.<span class="hljs-pattern-match">|\r\n|\n)<span class="hljs-operator">*</span>?\<span class="hljs-operator">*</span><span class="hljs-operator">/</span></span><br><span class="hljs-pattern-match"></span><br><span class="hljs-pattern-match">所有注释</span><br><span class="hljs-pattern-match">\<span class="hljs-operator">/</span>\<span class="hljs-operator">*</span>[\s\<span class="hljs-constructor">S</span>]<span class="hljs-operator">*</span>\<span class="hljs-operator">*</span>\<span class="hljs-operator">/</span>|\<span class="hljs-operator">/</span>\<span class="hljs-operator">/</span>.<span class="hljs-operator">*</span></span><br><span class="hljs-pattern-match"></span><br><span class="hljs-pattern-match">html注释</span><br><span class="hljs-pattern-match">&lt;!--([\s\<span class="hljs-constructor">S</span>|\r]<span class="hljs-operator">*</span>?)--&gt;</span><br></code></pre></td></tr></table></figure>
@@ -4391,35 +4572,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>互联网资源</title>
-    <url>/posts/b6593712/</url>
-    <content><![CDATA[<h2 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h2><p>cplusplus<br><a href="http://www.cplusplus.com/">http://www.cplusplus.com/</a></p>
-<p>cppreference 中文版<br><a href="http://www.cplusplus.com/">http://www.cplusplus.com/</a></p>
-<p>C++标准化组织<br><a href="https://isocpp.org/">https://isocpp.org/</a></p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>Dictionary of Algorithms and Data Structures<br><a href="https://xlinux.nist.gov/dads/">https://xlinux.nist.gov/dads/</a></p>
-<p>Open Data Structures<br><a href="http://opendatastructures.org/">http://opendatastructures.org/</a></p>
-<p>GeeksforGeeks<br><a href="https://www.geeksforgeeks.org/">https://www.geeksforgeeks.org/</a></p>
-<p>CodeForces<br><a href="http://codeforces.com/">http://codeforces.com/</a></p>
-<p>背包问题九讲.pdf<br><a href="https://comzyh.com/blog/archives/178/">https://comzyh.com/blog/archives/178/</a></p>
-<p>欧拉计划<br><a href="https://projecteuler.net/">https://projecteuler.net/</a></p>
-<p>LeetCode<br><a href="https://leetcode-cn.com/">https://leetcode-cn.com/</a></p>
-<h2 id="tcs"><a href="#tcs" class="headerlink" title="tcs"></a>tcs</h2><p>SICP 解题集<br><a href="https://sicp.readthedocs.io/">https://sicp.readthedocs.io/</a></p>
-<h2 id="se"><a href="#se" class="headerlink" title="se"></a>se</h2><p>鳥哥的 Linux 私房菜<br><a href="http://linux.vbird.org/">http://linux.vbird.org/</a></p>
-<p>Google Style Guides<br><a href="https://google.github.io/styleguide/">https://google.github.io/styleguide/</a></p>
-<p>Google 开源项目风格指南 (中文版)<br><a href="https://zh-google-styleguide.readthedocs.io/">https://zh-google-styleguide.readthedocs.io/</a></p>
-<h2 id="刊物和组织"><a href="#刊物和组织" class="headerlink" title="刊物和组织"></a>刊物和组织</h2><p>计算机学报<br><a href="http://www.jos.org.cn/">http://www.jos.org.cn/</a></p>
-<p>软件学报<br><a href="http://cjc.ict.ac.cn/">http://cjc.ict.ac.cn/</a></p>
-<p>康奈尔大学计算机系<br><a href="https://arxiv.org/list/cs/recent">https://arxiv.org/list/cs/recent</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>工具箱</category>
-      </categories>
-      <tags>
-        <tag>自习</tag>
       </tags>
   </entry>
   <entry>
@@ -4648,188 +4800,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>书单</title>
-    <url>/posts/e8a1470d/</url>
-    <content><![CDATA[<blockquote>
-<p>根深叶茂，本固枝荣。</p>
-</blockquote>
-<h3 id="计算机科学-CS-37-本"><a href="#计算机科学-CS-37-本" class="headerlink" title="计算机科学 CS 37 本"></a>计算机科学 CS 37 本</h3><h4 id="语言-C-C-Python-6-本"><a href="#语言-C-C-Python-6-本" class="headerlink" title="语言 C/C++/Python 6 本"></a>语言 C/C++/Python 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- C语言程序设计：现代方法 -- K. N. King -- 2020.11<br>- C和指针<br>- C++ Primer -- Stanley B. Lippman<br>- Effective C++：改善程序与设计的55个具体做法 -- Scott Meyers<br>- STL源码剖析 -- 侯捷<br>- Inside the C++ Object Model -- Stanley B. Lippman<br></code></pre></td></tr></table></figure>
-<h4 id="算法-algorithm-5-本"><a href="#算法-algorithm-5-本" class="headerlink" title="算法 algorithm 5 本"></a>算法 algorithm 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 算法导论（CLRS）<br>- 计算机程序设计艺术（TAOCP）<br>- 算法 -- Robert Sedgewick<br>- 算法竞赛入门经典 -- 刘汝佳<br>- 算法竞赛入门经典：训练指南 -- 刘汝佳<br></code></pre></td></tr></table></figure>
-<h4 id="计算机系统应用-csa-8-本"><a href="#计算机系统应用-csa-8-本" class="headerlink" title="计算机系统应用 csa 8 本"></a>计算机系统应用 csa 8 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 深入理解计算机系统（CSAPP）<br>- 操作系统之哲学原理 -- 邹恒明 -- 2021.3<br>- 鳥哥的 Linux 私房菜 -- 2021.5<br>- UNIX环境高级编程（APUE）<br>- UNIX网络编程（UNP）<br>- 计算机网络 -- 谢希仁 -- 2021.2<br>- 5G NR标准：下一代无线通信技术<br>- 数据库系统概念<br></code></pre></td></tr></table></figure>
-<h4 id="理论计算机科学-tcs-2-本"><a href="#理论计算机科学-tcs-2-本" class="headerlink" title="理论计算机科学 tcs 2 本"></a>理论计算机科学 tcs 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 计算机程序的构造和解释（SICP，魔法书）<br>- 编译原理（龙书）<br></code></pre></td></tr></table></figure>
-<h4 id="数学-math-7-本"><a href="#数学-math-7-本" class="headerlink" title="数学 math 7 本"></a>数学 math 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 数学之美<br>- 线性代数及其应用 -- David C. Lay<br>- 概率论与数理统计教程 -- 茆诗松<br>- 概率论与数理统计 -- 陈希孺<br>- 随机过程 -- Ross<br>- 离散数学及其应用<br>- 具体数学：计算机科学基础<br></code></pre></td></tr></table></figure>
-<h4 id="软件工程-se-7-本"><a href="#软件工程-se-7-本" class="headerlink" title="软件工程 se 7 本"></a>软件工程 se 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 设计模式<br>- 代码大全<br>- 程序员修炼之道<br>- 人月神话 -- 弗雷德里克·布鲁克斯<br>- 编程珠玑<br>- 编程之美<br>- 人件<br></code></pre></td></tr></table></figure>
-<h4 id="人工智能-ai-2-本"><a href="#人工智能-ai-2-本" class="headerlink" title="人工智能 ai 2 本"></a>人工智能 ai 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 人工智能：一种现代方法（AIMA） -- Stuart J. Russell<br>- 机器学习（西瓜书） -- 周志华<br></code></pre></td></tr></table></figure>
-<h3 id="人文社科-48-本"><a href="#人文社科-48-本" class="headerlink" title="人文社科 48 本"></a>人文社科 48 本</h3><h4 id="哲学-4-本"><a href="#哲学-4-本" class="headerlink" title="哲学 4 本"></a>哲学 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 西方哲学史 -- 罗素<br>- 中国哲学简史 -- 冯友兰<br>- 物种起源 -- 达尔文<br>- 自然哲学的数学原理 -- 牛顿<br></code></pre></td></tr></table></figure>
-<h4 id="心理-4-本"><a href="#心理-4-本" class="headerlink" title="心理 4 本"></a>心理 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 自私的基因<br>- 乌合之众：大众心理研究<br>- 人性的弱点<br>- 梦的解析 -- 弗洛伊德<br></code></pre></td></tr></table></figure>
-<h4 id="小说-17-本"><a href="#小说-17-本" class="headerlink" title="小说 17 本"></a>小说 17 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 安娜·卡列尼娜 -- 托尔斯泰<br>- 百年孤独 -- 马尔克斯<br>- 不能承受的生命之轻（许均 译） -- 米兰·昆德拉<br>- 人间失格 -- 太宰治<br>- 三体 -- 刘慈欣<br>- 越女剑 -- 金庸<br>- 天龙八部 -- 金庸<br>- 射雕英雄传 -- 金庸<br>- 神雕侠侣 -- 金庸<br>- 倚天屠龙记 -- 金庸<br>- 鹿鼎记 -- 金庸<br>- 化物语 -- 西尾维新<br>- The Lord of the Rings: The Fellowship of the Ring -- 托尔金<br>- The Lord of the Rings: The Two Towers -- 托尔金<br>- The Lord of the Rings: The Return of the King -- 托尔金<br>- The Hobbit（霍比特人） -- 托尔金<br>- 精灵宝钻 -- 托尔金<br>- 中洲历史 -- 托尔金<br></code></pre></td></tr></table></figure>
-<h4 id="古典-12-本"><a href="#古典-12-本" class="headerlink" title="古典 12 本"></a>古典 12 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 论语<br>- 孟子<br>- 道德经<br>- 庄子<br>- 诗经<br>- 周易<br>- 花间集<br>- 人间词话<br>- 西厢记<br>- 水浒传<br>- 红楼梦<br>- 圣经（旧约的创世纪、出埃及记、约伯传、颂诗）<br></code></pre></td></tr></table></figure>
-<h4 id="经济-5-本"><a href="#经济-5-本" class="headerlink" title="经济 5 本"></a>经济 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 国富论 -- 亚当·斯密<br>- 1844年经济学哲学手稿 -- 马克思<br>- 资本论 -- 马克思<br>- 经济学原理 -- 曼昆<br>- 就业、利息和货币通论 -- 凯恩斯<br></code></pre></td></tr></table></figure>
-<h4 id="政治-6-本"><a href="#政治-6-本" class="headerlink" title="政治 6 本"></a>政治 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 文明的冲突与世界秩序的重建 -- 塞缪尔·亨廷顿<br>- 美国反对美国 -- 王沪宁<br>- 理想国 -- 柏拉图<br>- 君主论 -- 马基雅维利<br>- 共产党宣言 -- 马克思，恩格斯<br>- 国际政治理论 -- 华尔兹<br></code></pre></td></tr></table></figure>
-<h3 id="准则-3-条"><a href="#准则-3-条" class="headerlink" title="准则 3 条"></a>准则 3 条</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">1. 若无必要，勿增实体。<br>2. Einmal ist keinmal.<br>3. 从感性到理性，从理性到实践。两次飞跃，无限反复，不断发展。<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>人月神话</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>技术栈</title>
-    <url>/posts/c420bf1b/</url>
-    <content><![CDATA[<h1 id="学术"><a href="#学术" class="headerlink" title="学术"></a>学术</h1><ul>
-<li><p>数学</p>
-<ul>
-<li>线性代数</li>
-<li>概率论与数理统计</li>
-</ul>
-</li>
-<li><p>ds&amp;aa</p>
-<ul>
-<li>数据结构<ul>
-<li>平衡二叉树</li>
-<li>红黑树</li>
-<li>B-树</li>
-<li>KMP</li>
-<li>栈/队列</li>
-<li>布隆过滤器</li>
-</ul>
-</li>
-<li>算法分析<ul>
-<li>查找<ul>
-<li>二分法 √</li>
-</ul>
-</li>
-<li>排序<ul>
-<li>冒泡排序 √</li>
-<li>插入排序 √</li>
-<li>选择排序 √</li>
-<li>快速排序 √</li>
-<li>基数排序</li>
-<li>谢尔排序</li>
-<li>归并排序</li>
-<li>堆排序</li>
-<li>桶排序</li>
-</ul>
-</li>
-<li>图相关<ul>
-<li>BFS</li>
-<li>DFS</li>
-</ul>
-</li>
-<li>字符串相关<ul>
-<li>KMP</li>
-</ul>
-</li>
-<li>DP √</li>
-<li>贪心</li>
-<li>回溯</li>
-<li>推荐算法</li>
-<li>布隆过滤器</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>操作系统</p>
-<ul>
-<li>Linux<ul>
-<li>re</li>
-<li>grep</li>
-<li>sed</li>
-<li>awk</li>
-</ul>
-</li>
-<li>IPC</li>
-</ul>
-</li>
-<li><p>计算机网络</p>
-<ul>
-<li>网络基础<ul>
-<li>物理层 √</li>
-<li>数据链路层 √</li>
-<li>网络层 √</li>
-<li>传输层 √</li>
-<li>应用层 √</li>
-</ul>
-</li>
-<li>网络协议<ul>
-<li>TCP/IP</li>
-</ul>
-</li>
-<li>网络编程<ul>
-<li>Socket 编程</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>AI</p>
-<ul>
-<li>Python</li>
-<li>GA</li>
-</ul>
-</li>
-</ul>
-<h1 id="工业"><a href="#工业" class="headerlink" title="工业"></a>工业</h1><ul>
-<li><p>C</p>
-</li>
-<li><p>C++</p>
-<ul>
-<li>库<ul>
-<li>STL</li>
-<li>Boost</li>
-</ul>
-</li>
-<li>思想<ul>
-<li>OOP</li>
-<li>泛型编程</li>
-<li>函数式编程</li>
-</ul>
-</li>
-<li>能力<ul>
-<li>代码风格</li>
-<li>性能分析</li>
-<li>多线程</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>SE</p>
-<ul>
-<li>设计模式<ul>
-<li>单例模式</li>
-</ul>
-</li>
-<li>项目管理<ul>
-<li>人月神话</li>
-<li>人件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>开发工具</p>
-<ul>
-<li>Git</li>
-<li>Docker</li>
-</ul>
-</li>
-<li><p>DB</p>
-<ul>
-<li>MySQL</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>人月神话</category>
-      </categories>
-      <tags>
-        <tag>工作</tag>
       </tags>
   </entry>
   <entry>
@@ -6532,6 +6502,34 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>《美国反对美国》读书笔记</title>
+    <url>/posts/db236340/</url>
+    <content><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>《美国反对美国》，大概是一个奇怪而又颇为费解的书名。我起进个书名的用意在于表明，美国不是一个简单的均质的整体，用一句话就可以打发掉。在过去的年代，人们从教条主义的观念出发，把美国仅伩看成是“剥削剩余价值”，“资产阶级专政”，看得一无是处，那么现实的美国同样反对这祥的“美国”、僵化观念中的美国。如今又出现了另一种极端，有的人把美国想象成富丽天堂，十全十美，那么现实的美国同样反对这样的“美国”、理想化的美国。包括美国社会本身，它有它的肯定性力量，也有它的否定性力量，凡是在能发现肯定性力量的地方，都能发现否定性的力量。这便是《美国反对美国》的基本意蕴。</p>
+<p>本书共有十一章，我想在这里扼要点明一下：<br>（1）社会不均衡发展及其诸特点；<br>（2）主导政治生活的价值观念及其流变；<br>（3）民族的多样性格及其社会功效；<br>（4）调节人们社会活动的正式和非正式的机制；<br>（5）在社会上活跃的政治力量及其关系；<br>（6）竞选中的民主和非民主因素；<br>（7）自上而下的政治运作及其特征；<br>（8）非政治的协调机制及社会化的管制；<br>（9）文化、价值观念乃至制度的复制与教育的关联；<br>（10）思想在社会发展和管理中的作甩；<br>（11）危及未来发展的种种潜流。</p>
+<p>王沪宁 1989 年 4 月 1 日 于复旦大学国际政治系</p>
+<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><ul>
+<li>国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</li>
+<li>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</li>
+<li>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</li>
+<li>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</li>
+<li>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</li>
+</ul>
+<h2 id="古老的政治精神"><a href="#古老的政治精神" class="headerlink" title="古老的政治精神"></a>古老的政治精神</h2><h3 id="美国精神"><a href="#美国精神" class="headerlink" title="美国精神"></a>美国精神</h3><ul>
+<li>有时候，可以这样说，社会生活本无精神，等你去发现了，它便有了。或者说，世界上本来就有精神，问题是有没有发现。黑格尔就坚信他发现了“绝对精神”。美国人的精神就是没有“绝对精神”。</li>
+</ul>
+<h3 id="五月花号"><a href="#五月花号" class="headerlink" title="五月花号"></a>五月花号</h3><ul>
+<li>“五月花号”船于 1620 年将最早的移民送到美洲大陆。这是近代美国的肇始。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>书摘</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>996夹缝中的理想生活</title>
     <url>/posts/a5f58a96/</url>
     <content><![CDATA[<blockquote>
@@ -6591,34 +6589,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
         <category>读书札记</category>
         <category>文摘</category>
       </categories>
-  </entry>
-  <entry>
-    <title>《美国反对美国》读书笔记</title>
-    <url>/posts/db236340/</url>
-    <content><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>《美国反对美国》，大概是一个奇怪而又颇为费解的书名。我起进个书名的用意在于表明，美国不是一个简单的均质的整体，用一句话就可以打发掉。在过去的年代，人们从教条主义的观念出发，把美国仅伩看成是“剥削剩余价值”，“资产阶级专政”，看得一无是处，那么现实的美国同样反对这祥的“美国”、僵化观念中的美国。如今又出现了另一种极端，有的人把美国想象成富丽天堂，十全十美，那么现实的美国同样反对这样的“美国”、理想化的美国。包括美国社会本身，它有它的肯定性力量，也有它的否定性力量，凡是在能发现肯定性力量的地方，都能发现否定性的力量。这便是《美国反对美国》的基本意蕴。</p>
-<p>本书共有十一章，我想在这里扼要点明一下：<br>（1）社会不均衡发展及其诸特点；<br>（2）主导政治生活的价值观念及其流变；<br>（3）民族的多样性格及其社会功效；<br>（4）调节人们社会活动的正式和非正式的机制；<br>（5）在社会上活跃的政治力量及其关系；<br>（6）竞选中的民主和非民主因素；<br>（7）自上而下的政治运作及其特征；<br>（8）非政治的协调机制及社会化的管制；<br>（9）文化、价值观念乃至制度的复制与教育的关联；<br>（10）思想在社会发展和管理中的作甩；<br>（11）危及未来发展的种种潜流。</p>
-<p>王沪宁 1989 年 4 月 1 日 于复旦大学国际政治系</p>
-<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><ul>
-<li>国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</li>
-<li>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</li>
-<li>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</li>
-<li>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</li>
-<li>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</li>
-</ul>
-<h2 id="古老的政治精神"><a href="#古老的政治精神" class="headerlink" title="古老的政治精神"></a>古老的政治精神</h2><h3 id="美国精神"><a href="#美国精神" class="headerlink" title="美国精神"></a>美国精神</h3><ul>
-<li>有时候，可以这样说，社会生活本无精神，等你去发现了，它便有了。或者说，世界上本来就有精神，问题是有没有发现。黑格尔就坚信他发现了“绝对精神”。美国人的精神就是没有“绝对精神”。</li>
-</ul>
-<h3 id="五月花号"><a href="#五月花号" class="headerlink" title="五月花号"></a>五月花号</h3><ul>
-<li>“五月花号”船于 1620 年将最早的移民送到美洲大陆。这是近代美国的肇始。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>读书札记</category>
-        <category>书摘</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
-      </tags>
   </entry>
   <entry>
     <title>歌词-可曾记得爱</title>
