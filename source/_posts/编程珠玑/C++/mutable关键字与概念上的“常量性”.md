@@ -1,5 +1,5 @@
 ---
-title: mutable关键字与概念上的“常量”
+title: mutable关键字与概念上的“常量性”
 abbrlink: 4edf765f
 categories:
   - 编程珠玑

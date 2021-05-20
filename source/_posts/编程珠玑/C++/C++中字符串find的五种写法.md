@@ -1,6 +1,6 @@
 ---
+title: C++中string::find的五种写法
 abbrlink: 8b37e32e
-title: "C++ string::find的五种写法"
 categories:
   - 编程珠玑
   - C++
