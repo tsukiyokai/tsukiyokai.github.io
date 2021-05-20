@@ -65,201 +65,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>人月神话</category>
-      </categories>
-      <tags>
-        <tag>工作</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2021年春・稚嫩的职业生涯规划</title>
-    <url>/posts/c4a8ae69/</url>
-    <content><![CDATA[<blockquote>
-<p>根深叶茂，本固枝荣。</p>
-</blockquote>
-<p>不出意外本月末我就要去成研院了，耽误了一段时间后，最终还是踏上了早就该踏上的路。趁着我的思想仍然幼稚，不妨先写下一些未经污染的思想，希望以后有机会回顾起来，常常有些新的收获。</p>
-<h4 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h4><p>C++、Python<br>Linux、多线程、高并发<br>网络协议、Socket、TCP\IP<br>概率论与数理统计、线性代数<br>人工智能、机器学习、深度学习</p>
-<h4 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h4><ul>
-<li>C++（高频交易策略）</li>
-<li>Python（中低频交易策略）</li>
-</ul>
-<h4 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h4><ul>
-<li>概率论与数理统计</li>
-<li>线性代数</li>
-</ul>
-<h4 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h4><ul>
-<li>项目经验以多线程高并发为主</li>
-<li>精通 Linux 系统架构</li>
-</ul>
-<h4 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h4><ul>
-<li>精通网络协议及其实现，能够分析网络协议，熟悉 socket 和 TCP/IP 开发</li>
-</ul>
-<h4 id="ML"><a href="#ML" class="headerlink" title="ML"></a>ML</h4><ul>
-<li>负责支持亿级别样本处理的分布式机器学习平台的高性能优化问题</li>
-<li>支持量化策略研究各种复杂的机器学习任务</li>
-<li>优化机器学习平台的易用性、稳定性和可拓展性</li>
-<li>能够快速阅读理解统计人工智能领域的 paper，并在较短时间内复现实验结果</li>
-<li>对机器学习和深度学习方面的理论基础，概率统计能力有较高要求</li>
-</ul>
-<h4 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h4><p>量化这种半金融半互联网模式的职位以后说可能会比较热门，如果养老的话金融（风控、量化之类）比外企好，工作强度比互联网低，但比较大的问题是头部团队都是走小而精的路线，我的学历是个比较大的问题，也没有论文。</p>
-<p>最近正在思考的道路是 21 年入职华为成研院无线 OD，一年后一定要转正，然后以华为员工的身份再工作两年，一共三年，期间把网络、OS、通信三个领域的能力夯实，做到基本精通 C++。然后跳到大厂里某几个学术氛围较为浓厚的部门，静下心来学习一段时间（据我所知华为 2012 实验室就是一个很大的平台），学习算法和 ML，产出一些内容，积累一部分高层次的人脉资源，特别是收束一下 985 的校友资源关系。这个时间点我大约已经 29 或 30 岁了。此时可以正式进行下一个五年的规划。就算我只是个本土的 985 小科班生，也不可妄自菲薄，作为一个开发人员也非常需要具备能够将算法顺利落地的能力。</p>
-<p>我很希望自己能和好朋友好同学一起努力，但我已经和师凯杰杨葵莲这些最优秀的朋友们渐行渐远了，曾经我周围的人很优秀，比我聪明的多，只要我不付出更多的时间和代价，就一定赶不上他们的，不能自信地站在他们的身边。除非我足够强大，在某个技术领域少有能完全代替我的人，我才能自信的站在优秀的人中间。不然我就会一直妄自菲薄。</p>
-<p>人一能之，己百之；人十能之，己千之。果能此通矣，虽愚必明，虽柔必强。</p>
-]]></content>
-      <categories>
-        <category>人月神话</category>
-      </categories>
-      <tags>
-        <tag>工作</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>技术栈</title>
-    <url>/posts/c420bf1b/</url>
-    <content><![CDATA[<h1 id="学术"><a href="#学术" class="headerlink" title="学术"></a>学术</h1><ul>
-<li><p>数学</p>
-<ul>
-<li>线性代数</li>
-<li>概率论与数理统计</li>
-</ul>
-</li>
-<li><p>863</p>
-<ul>
-<li>操作系统<ul>
-<li>Linux<ul>
-<li>re</li>
-<li>grep</li>
-<li>sed</li>
-<li>awk</li>
-</ul>
-</li>
-<li>IPC</li>
-</ul>
-</li>
-<li>计算机网络<ul>
-<li>网络基础<ul>
-<li>物理层</li>
-<li>数据链路层</li>
-<li>网络层</li>
-<li>传输层</li>
-<li>应用层</li>
-</ul>
-</li>
-<li>网络协议<ul>
-<li>TCP/IP</li>
-</ul>
-</li>
-<li>网络编程<ul>
-<li>Socket 编程</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>ds&amp;aa</p>
-<ul>
-<li>数据结构<ul>
-<li>平衡二叉树</li>
-<li>红黑树</li>
-<li>B-树</li>
-<li>KMP</li>
-<li>栈/队列</li>
-<li>布隆过滤器</li>
-</ul>
-</li>
-<li>算法分析<ul>
-<li>查找<ul>
-<li>二分法</li>
-</ul>
-</li>
-<li>排序<ul>
-<li>冒泡排序</li>
-<li>插入排序</li>
-<li>选择排序</li>
-<li>快速排序</li>
-<li>基数排序</li>
-<li>谢尔排序</li>
-<li>归并排序</li>
-<li>堆排序</li>
-<li>桶排序</li>
-</ul>
-</li>
-<li>图相关<ul>
-<li>BFS</li>
-<li>DFS</li>
-</ul>
-</li>
-<li>字符串相关<ul>
-<li>KMP</li>
-</ul>
-</li>
-<li>DP</li>
-<li>贪心</li>
-<li>回溯</li>
-<li>推荐算法</li>
-<li>布隆过滤器</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>AI</p>
-<ul>
-<li>Python</li>
-<li>GA</li>
-</ul>
-</li>
-</ul>
-<h1 id="工业"><a href="#工业" class="headerlink" title="工业"></a>工业</h1><ul>
-<li><p>C/C++</p>
-<ul>
-<li>库<ul>
-<li>STL</li>
-<li>Boost</li>
-</ul>
-</li>
-<li>思想<ul>
-<li>OOP</li>
-<li>泛型编程</li>
-<li>函数式编程</li>
-</ul>
-</li>
-<li>能力<ul>
-<li>代码风格</li>
-<li>性能分析</li>
-<li>多线程</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>SE</p>
-<ul>
-<li>设计模式<ul>
-<li>单例模式</li>
-</ul>
-</li>
-<li>项目管理<ul>
-<li>人月神话</li>
-<li>人件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>开发工具</p>
-<ul>
-<li>Git</li>
-<li>Docker</li>
-</ul>
-</li>
-<li><p>DB</p>
-<ul>
-<li>MySQL</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>人月神话</category>
+        <category>流光徘徊</category>
       </categories>
       <tags>
         <tag>工作</tag>
@@ -754,6 +560,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC94 二叉树的中序遍历</title>
+    <url>/posts/362ff0e5/</url>
+    <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-built_in">fun</span>(root-&gt;left, a);<br>        a.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">fun</span>(root-&gt;right, a);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：迭代"><a href="#解法-2：迭代" class="headerlink" title="解法 2：迭代"></a>解法 2：迭代</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        stack&lt;TreeNode*&gt; s;<br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span> || curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>                s.<span class="hljs-built_in">push</span>(curr);<br>                curr = curr-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>                curr = s.<span class="hljs-built_in">top</span>(); s.<span class="hljs-built_in">pop</span>();<br>                a.<span class="hljs-built_in">push_back</span>(curr-&gt;val);<br>                curr = curr-&gt;right;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>迭代</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC98 验证二叉搜索树</title>
     <url>/posts/21ace0e4/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，判断其是否是一个有效的二叉查找树。</p>
@@ -769,23 +592,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC94 二叉树的中序遍历</title>
-    <url>/posts/362ff0e5/</url>
-    <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-built_in">fun</span>(root-&gt;left, a);<br>        a.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">fun</span>(root-&gt;right, a);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：迭代"><a href="#解法-2：迭代" class="headerlink" title="解法 2：迭代"></a>解法 2：迭代</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        stack&lt;TreeNode*&gt; s;<br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span> || curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>                s.<span class="hljs-built_in">push</span>(curr);<br>                curr = curr-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>                curr = s.<span class="hljs-built_in">top</span>(); s.<span class="hljs-built_in">pop</span>();<br>                a.<span class="hljs-built_in">push_back</span>(curr-&gt;val);<br>                curr = curr-&gt;right;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-        <tag>迭代</tag>
       </tags>
   </entry>
   <entry>
@@ -1407,21 +1213,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC258 各位相加</title>
-    <url>/posts/853fb8a2/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
-<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC263 丑数</title>
     <url>/posts/366238ee/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序判断给定的数是否为丑数。<br>丑数就是只包含质因数 2,3,5 的正整数。<br>说明：1 是丑数</p>
@@ -1435,6 +1226,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC258 各位相加</title>
+    <url>/posts/853fb8a2/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
+<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1779,20 +1585,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ10 字符个数统计</title>
-    <url>/posts/38cce817/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，计算字符串中含有的不同字符的个数。字符在 ACSII 码范围内(0~127)，换行表示结束符，不算在字符里。不在范围内的不作统计。多个相同的字符只计算一次。例如，对于字符串 abaca 而言，有 a、b、c 三种不同的字符，因此输出 3。</p>
-<h2 id="解法：哈希"><a href="#解法：哈希" class="headerlink" title="解法：哈希"></a>解法：哈希</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    set&lt;<span class="hljs-keyword">char</span>&gt; res;<br>    string s;<br>    <span class="hljs-built_in">getline</span>(cin, s);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s) &#123;<br>        <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-number">0</span> &amp;&amp; c &lt;= <span class="hljs-number">128</span>) res.<span class="hljs-built_in">insert</span>(c);<br>    &#125;<br>    cout &lt;&lt; res.<span class="hljs-built_in">size</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>哈希</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HJ1 字符串最后一个单词的长度</title>
     <url>/posts/3494f0ab/</url>
     <content><![CDATA[<p>计算字符串最后一个单词的长度，单词以空格隔开，字符串长度小于 5000。</p>
@@ -1806,6 +1598,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HJ10 字符个数统计</title>
+    <url>/posts/38cce817/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，计算字符串中含有的不同字符的个数。字符在 ACSII 码范围内(0~127)，换行表示结束符，不算在字符里。不在范围内的不作统计。多个相同的字符只计算一次。例如，对于字符串 abaca 而言，有 a、b、c 三种不同的字符，因此输出 3。</p>
+<h2 id="解法：哈希"><a href="#解法：哈希" class="headerlink" title="解法：哈希"></a>解法：哈希</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    set&lt;<span class="hljs-keyword">char</span>&gt; res;<br>    string s;<br>    <span class="hljs-built_in">getline</span>(cin, s);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s) &#123;<br>        <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-number">0</span> &amp;&amp; c &lt;= <span class="hljs-number">128</span>) res.<span class="hljs-built_in">insert</span>(c);<br>    &#125;<br>    cout &lt;&lt; res.<span class="hljs-built_in">size</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>哈希</tag>
       </tags>
   </entry>
   <entry>
@@ -2412,25 +2218,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>PE1 Multiples of 3 and 5</title>
-    <url>/posts/f5248637/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>如果我们列出所有低于 10 的自然数，它们是 3 或 5 的倍数，则得到 3、5、6 和 9。这些倍数的总和为 23。求 1000 以下所有 3 或 5 的倍数之和。</p>
-<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i)<br>        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> || i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>)<br>            sum += i;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：容斥原理"><a href="#解法-2：容斥原理" class="headerlink" title="解法 2：容斥原理"></a>解法 2：容斥原理</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 求N以内所有n的倍数之和</span><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">sumu</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>    <span class="hljs-comment">// (首项n+末项)*项数/2</span><br>    <span class="hljs-keyword">return</span> (n + (N - <span class="hljs-number">1</span>) / n * n) * ((N - <span class="hljs-number">1</span>) / n) / <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">unsigned</span> sum_3 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">3</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_5 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">5</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_15 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">15</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum = sum_3 + sum_5 - sum_15;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.xarg.org/puzzle/project-euler/problem-1/">https://www.xarg.org/puzzle/project-euler/problem-1/</a></p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>欧拉计划</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JZ49 丑数</title>
     <url>/posts/1512fb53/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子 2,3 和 5 的数称作丑数。求按从小到大的顺序的第 n 个丑数。第 150 个丑数为 5832。</p>
@@ -2547,6 +2334,25 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE1 Multiples of 3 and 5</title>
+    <url>/posts/f5248637/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</p>
+<p>如果我们列出所有低于 10 的自然数，它们是 3 或 5 的倍数，则得到 3、5、6 和 9。这些倍数的总和为 23。求 1000 以下所有 3 或 5 的倍数之和。</p>
+<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i)<br>        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> || i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>)<br>            sum += i;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：容斥原理"><a href="#解法-2：容斥原理" class="headerlink" title="解法 2：容斥原理"></a>解法 2：容斥原理</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 求N以内所有n的倍数之和</span><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">sumu</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>    <span class="hljs-comment">// (首项n+末项)*项数/2</span><br>    <span class="hljs-keyword">return</span> (n + (N - <span class="hljs-number">1</span>) / n * n) * ((N - <span class="hljs-number">1</span>) / n) / <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">unsigned</span> sum_3 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">3</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_5 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">5</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_15 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">15</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum = sum_3 + sum_5 - sum_15;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.xarg.org/puzzle/project-euler/problem-1/">https://www.xarg.org/puzzle/project-euler/problem-1/</a></p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>欧拉计划</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -2993,33 +2799,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>C++智能指针</title>
-    <url>/posts/99c27b28/</url>
-    <content><![CDATA[<h2 id="指针的重要性"><a href="#指针的重要性" class="headerlink" title="指针的重要性"></a>指针的重要性</h2><p>指针用于访问程序外部的资源，如堆内存。因此，如果在堆内存中创建了任何内容，则使用指针访问堆内存。</p>
-<h2 id="普通指针出现的问题"><a href="#普通指针出现的问题" class="headerlink" title="普通指针出现的问题"></a>普通指针出现的问题</h2><p>普通指针需要手动释放内存。</p>
-<h2 id="引入智能指针"><a href="#引入智能指针" class="headerlink" title="引入智能指针"></a>引入智能指针</h2><p>使用智能指针，我们可以使指针不需要以显式调用 delete 的方式工作。智能指针是指针的包装类，带有*和-&gt;重载的运算符。智能指针类的对象看起来像一个指针，但是可以执行普通指针无法完成的许多自动销毁操作和引用计数等。</p>
-<p>其思想是采用一个带有指针、析构函数和重载运算符（如*和-&gt;）的类。由于对象超出作用域时自会动调用析构函数，因此动态分配的内存将自动删除（或者可以减少引用计数）。考虑以下简单的智能 ptr 类。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmartPtr</span> &#123;</span><br>    <span class="hljs-keyword">int</span>* ptr;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">SmartPtr</span><span class="hljs-params">(<span class="hljs-keyword">int</span>* p = <span class="hljs-literal">NULL</span>)</span> </span>&#123; ptr = p; &#125;<br>    ~<span class="hljs-built_in">SmartPtr</span>() &#123; <span class="hljs-keyword">delete</span> ptr; &#125;<br>    <span class="hljs-keyword">int</span>&amp; <span class="hljs-keyword">operator</span>*() &#123; <span class="hljs-keyword">return</span> *ptr; &#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">SmartPtr <span class="hljs-title">ptr</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>())</span></span>;<br>    *ptr = <span class="hljs-number">20</span>;<br>    cout &lt;&lt; *ptr &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>编写一个适用于所有类型的智能指针类。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmartPtr</span> &#123;</span><br>T* ptr; <span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">SmartPtr</span><span class="hljs-params">(T* p = <span class="hljs-literal">NULL</span>)</span> </span>&#123; ptr = p; &#125;<br>    ~<span class="hljs-built_in">SmartPtr</span>() &#123; <span class="hljs-built_in"><span class="hljs-keyword">delete</span></span> (ptr); &#125;<br>    T&amp; <span class="hljs-keyword">operator</span>*() &#123; <span class="hljs-keyword">return</span> *ptr; &#125;<br>    T* <span class="hljs-keyword">operator</span>-&gt;() &#123; <span class="hljs-keyword">return</span> ptr; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">SmartPtr&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">ptr</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>())</span></span>;<br>    *ptr = <span class="hljs-number">20</span>;<br>    cout &lt;&lt; *ptr &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>注：智能指针在资源管理（例如文件句柄或网络套接字）中也很有用。</p>
-<h2 id="智能指针的类型"><a href="#智能指针的类型" class="headerlink" title="智能指针的类型"></a>智能指针的类型</h2><h3 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h3><p>如果使用唯一指针（独享内存的智能指针），则如果创建了一个对象并且指针 P1 指向该对象，则一次只能有一个指针可以指向该对象。因此我们无法与其他指针共享，但是我们可以通过删除 P1 来讲控制权转移到 P2。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span> &#123;</span><br>    <span class="hljs-keyword">int</span> length;<br>    <span class="hljs-keyword">int</span> width;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Rectangle</span>(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> w) &#123; length = l; width = w; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">area</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> length * width; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">unique_ptr&lt;Rectangle&gt; <span class="hljs-title">P1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> Rectangle(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>))</span></span>;<br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    unique_ptr&lt;Rectangle&gt; P2;<br>    P2 = <span class="hljs-built_in">move</span>(P1); <span class="hljs-comment">// 把P1拥有的对某块内存的控制权移交出来，赋给P2</span><br>    cout &lt;&lt; P2-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h3><p>如果您使用的是 shared_ptr，那么一次可以有多个指针指向这一个对象，它将使用 use_count()方法来维护一个引用计数器（有几个指针指向这个对象）。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;memory&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span> &#123;</span><br>    <span class="hljs-keyword">int</span> length;<br>    <span class="hljs-keyword">int</span> breadth;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Rectangle</span>(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> b) &#123; length = l; breadth = b; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">area</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> length * breadth; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">shared_ptr&lt;Rectangle&gt; <span class="hljs-title">P1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> Rectangle(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>))</span></span>;<br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    shared_ptr&lt;Rectangle&gt; P2;<br>    P2 = P1;<br>    cout &lt;&lt; P2-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    cout &lt;&lt; P1.<span class="hljs-built_in">use_count</span>() &lt;&lt; endl; <span class="hljs-comment">// 2</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h3><p>除了不维护引用计数器外，它与 shared_ptr 非常相似。在这种情况下，指针不会对对象产生强烈的影响。原因是如果假设指针持有该对象并请求其他对象，则它们可能会形成死锁。</p>
-<p>最后，C++库已经以 auto_ptr，unique_ptr，shared_ptr 和 weak_ptr 的形式提供了智能指针的实现。</p>
-<p>注：auto_ptr 是一个 C++标准库中的早期类模板，现在已经被 unique_ptr 类所取代了。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>指针</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++引用</title>
     <url>/posts/101de459/</url>
     <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>引用是已存在的对象的别名。</p>
@@ -3086,6 +2865,33 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>指针</tag>
         <tag>引用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++智能指针</title>
+    <url>/posts/99c27b28/</url>
+    <content><![CDATA[<h2 id="指针的重要性"><a href="#指针的重要性" class="headerlink" title="指针的重要性"></a>指针的重要性</h2><p>指针用于访问程序外部的资源，如堆内存。因此，如果在堆内存中创建了任何内容，则需要使用指针访问堆内存。</p>
+<h2 id="普通指针出现的问题"><a href="#普通指针出现的问题" class="headerlink" title="普通指针出现的问题"></a>普通指针出现的问题</h2><p>普通指针需要手动释放内存。</p>
+<h2 id="智能指针的引入"><a href="#智能指针的引入" class="headerlink" title="智能指针的引入"></a>智能指针的引入</h2><p>使用智能指针，我们可以使指针不需要以显式调用 delete 的方式工作。智能指针是指针的包装类，带有*和-&gt;重载的运算符。智能指针类的对象看起来像一个指针，但是可以执行普通指针无法完成的许多自动销毁操作和引用计数等。</p>
+<p>它的思想是采用一个带有指针、析构函数和重载运算符（如*和-&gt;）的类。由于对象超出作用域时自会动调用析构函数，因此在堆内存中动态分配的内存将自动删除（或者可以减少引用计数）。考虑下面一个简单的智能指针类。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmartPtr</span> &#123;</span><br>    <span class="hljs-keyword">int</span>* ptr;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">SmartPtr</span><span class="hljs-params">(<span class="hljs-keyword">int</span>* p = <span class="hljs-literal">NULL</span>)</span> </span>&#123; ptr = p; &#125;<br>    ~<span class="hljs-built_in">SmartPtr</span>() &#123; <span class="hljs-keyword">delete</span> ptr; &#125;<br>    <span class="hljs-keyword">int</span>&amp; <span class="hljs-keyword">operator</span>*() &#123; <span class="hljs-keyword">return</span> *ptr; &#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">SmartPtr <span class="hljs-title">ptr</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>())</span></span>;<br>    *ptr = <span class="hljs-number">20</span>;<br>    cout &lt;&lt; *ptr &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>编写一个适用于所有类型的智能指针类。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmartPtr</span> &#123;</span><br>T* ptr; <span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">SmartPtr</span><span class="hljs-params">(T* p = <span class="hljs-literal">NULL</span>)</span> </span>&#123; ptr = p; &#125;<br>    ~<span class="hljs-built_in">SmartPtr</span>() &#123; <span class="hljs-built_in"><span class="hljs-keyword">delete</span></span> (ptr); &#125;<br>    T&amp; <span class="hljs-keyword">operator</span>*() &#123; <span class="hljs-keyword">return</span> *ptr; &#125;<br>    T* <span class="hljs-keyword">operator</span>-&gt;() &#123; <span class="hljs-keyword">return</span> ptr; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">SmartPtr&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">ptr</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>())</span></span>;<br>    *ptr = <span class="hljs-number">20</span>;<br>    cout &lt;&lt; *ptr &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注：智能指针在资源管理（例如文件句柄或网络套接字）中也很有用。</p>
+<h2 id="智能指针的类型"><a href="#智能指针的类型" class="headerlink" title="智能指针的类型"></a>智能指针的类型</h2><h3 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h3><p>如果使用唯一指针（独享内存的智能指针），则如果创建了一个对象并且指针 P1 指向该对象，则一次只能有一个指针可以指向该对象。因此我们无法与其他指针共享，但是我们可以通过删除 P1 来讲控制权转移到 P2。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span> &#123;</span><br>    <span class="hljs-keyword">int</span> length;<br>    <span class="hljs-keyword">int</span> width;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Rectangle</span>(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> w) &#123; length = l; width = w; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">area</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> length * width; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">unique_ptr&lt;Rectangle&gt; <span class="hljs-title">P1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> Rectangle(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>))</span></span>;<br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    unique_ptr&lt;Rectangle&gt; P2;<br>    P2 = <span class="hljs-built_in">move</span>(P1); <span class="hljs-comment">// 把P1拥有的对某块内存的控制权移交出来，赋给P2</span><br>    cout &lt;&lt; P2-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h3><p>如果您使用的是 shared_ptr，那么一次可以有多个指针指向这一个对象，它将使用 use_count()方法来维护一个引用计数器（有几个指针指向这个对象）。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span> &#123;</span><br>    <span class="hljs-keyword">int</span> length;<br>    <span class="hljs-keyword">int</span> breadth;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Rectangle</span>(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> b) &#123; length = l; breadth = b; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">area</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> length * breadth; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">shared_ptr&lt;Rectangle&gt; <span class="hljs-title">P1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> Rectangle(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>))</span></span>;<br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    shared_ptr&lt;Rectangle&gt; P2;<br>    P2 = P1;<br>    cout &lt;&lt; P2-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    cout &lt;&lt; P1-&gt;<span class="hljs-built_in">area</span>() &lt;&lt; endl; <span class="hljs-comment">// 50</span><br>    cout &lt;&lt; P1.<span class="hljs-built_in">use_count</span>() &lt;&lt; endl; <span class="hljs-comment">// 2</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h3><p>除了不维护引用计数器外，它与 shared_ptr 非常相似。在这种情况下，指针不会对对象产生强烈的影响。原因是如果假设指针持有该对象并请求其他对象，则它们可能会形成死锁。</p>
+<p>最后，C++库已经以 auto_ptr，unique_ptr，shared_ptr 和 weak_ptr 的形式提供了智能指针的实现。</p>
+<p>注：auto_ptr 是一个 C++标准库中的早期类模板，现在已经被 unique_ptr 类所取代了。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>指针</tag>
       </tags>
   </entry>
   <entry>
@@ -3489,6 +3295,61 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>语法</tag>
         <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mutable关键字与概念上的“常量”</title>
+    <url>/posts/4edf765f/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>I’ve seen too many tutorials and lessons that get the “mutable” keyword in C++ entirely wrong. The result is terrible C++ code. Here’s my attempt to clear things up: “C++’s mutable and conceptual constness.”</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>关键字 mutable 用于允许修改 const 对象的特定数据成员。如果大多数成员应该是常量，但少数成员需要是可更新的，则这一点特别有用。假设我们在 Employee 类中添加一个 salary 成员。虽然员工姓名和 id 可能是固定的，但工资不应该是固定的。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    string _name;<br>    string _id;<br>    <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">double</span> _salary;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Employee</span>(string name = <span class="hljs-string">&quot;No Name&quot;</span>, string id = <span class="hljs-string">&quot;000-00-0000&quot;</span>, <span class="hljs-keyword">double</span> salary = <span class="hljs-number">0</span>) : _name(name), _id(id) &#123; _salary = salary; &#125;<br>    <span class="hljs-function">string <span class="hljs-title">getName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _name; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(string name)</span> </span>&#123; _name = name; &#125;<br>    <span class="hljs-function">string <span class="hljs-title">getid</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _id; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setid</span><span class="hljs-params">(string id)</span> </span>&#123; _id = id; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _salary; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> salary)</span> </span>&#123; _salary = salary; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">promote</span><span class="hljs-params">(<span class="hljs-keyword">double</span> salary)</span> <span class="hljs-keyword">const</span> </span>&#123; _salary = salary; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>现在，即使对于以常量描述的 Employee 对象，也可以修改 salary：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">const</span> Employee <span class="hljs-title">john</span><span class="hljs-params">(<span class="hljs-string">&quot;JOHN&quot;</span>, <span class="hljs-string">&quot;007&quot;</span>, <span class="hljs-number">5000.0</span>)</span></span>;<br>john.<span class="hljs-built_in">promote</span>(<span class="hljs-number">20000.0</span>);<br></code></pre></td></tr></table></figure>
+<p>大部分介绍 mutable 的网站和文章都是对其作如上解释的。</p>
+<p>不，不！一千次，不！</p>
+<p>我以前见过这种可怕的想法。这种疯狂导致代码错误，并破坏了 C++ 中 CONST 的全部目的。我只能得出结论，写这种废话的人自己并不理解 mutable 的目的。所以他们会犯这个错误，把这个废话传给下一组 C++程序员。这必须停止。</p>
+<p>当标记变量 const 时，您承诺（并要求 C++强制执行）您将永远不会在逻辑上修改该对象的内容。这样做的最有用的原因可能是当您通过引用或指针将对象传递到函数中时。通过使其为常量，该函数保证不会与您的对象混淆。例如，假设您有一个从 Person 继承的 Robot 类。您想将您的机器人对象作为参数传递给函数 take_pulse。您希望 take_pulse 使用 Robot 的重写方法，因此 take_pulse 通过引用获取对象。因为它是 const，所以您可以确信 take_pulse 不会修改机器人，只需从中读取：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">has_pulse</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_name</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-comment">/* ... */</span> &#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Robot</span> :</span> <span class="hljs-keyword">public</span> Person &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">has_pulse</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_name</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-comment">/* ... */</span> &#125;<br>&#125;;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">Because Person is const, take_pulse cannot call set_name().</span><br><span class="hljs-comment">Because Person is a reference, we can pass in a Robot robot and get the correct answer (false).</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">take_pulse</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Person&amp; X)</span> </span>&#123; <span class="hljs-keyword">return</span> X.<span class="hljs-built_in">has_pulse</span>(); &#125;<br><span class="hljs-comment">// const对象只能调用cosnt函数，所以常对象X只能调用常成员函数has而不能调用set。</span><br></code></pre></td></tr></table></figure>
+<p>It’s nonsense to make the salary mutable; you’re just making it possible for code that gets a constant object to mess with the salary. If the employee is constant, you shouldn’t be messing with his salary.</p>
+<p>那么，如果你想让员工的姓名和身份证维持 const，而不是工资呢？好吧，就这么说吧！</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">const</span> string _name;<br>    <span class="hljs-keyword">const</span> string _id;<br>    <span class="hljs-keyword">double</span> _salary;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Employee</span>(string name = <span class="hljs-string">&quot;No Name&quot;</span>, string id = <span class="hljs-string">&quot;000-00-0000&quot;</span>, <span class="hljs-keyword">double</span> salary = <span class="hljs-number">0</span>) : _name(name), _id(id) &#123; _salary = salary; &#125;<br>    <span class="hljs-function">string <span class="hljs-title">getName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _name; &#125;<br>    <span class="hljs-function">string <span class="hljs-title">getid</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _id; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _salary; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> salary)</span> </span>&#123; _salary = salary; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">promote</span><span class="hljs-params">(<span class="hljs-keyword">double</span> salary)</span> </span>&#123; _salary = salary; &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>现在它们是恒定的。当然，这意味着您只能在构造函数中设置它们。</p>
+<p>所以，如果上述疯狂不是 mutable 的目的，那它是为了什么？这里有一个微妙的例子：mutable 是指一个对象在逻辑上是常量，但实际上需要改变的情况。这些案例很少，但确实存在。</p>
+<blockquote>
+<p>mutable is for the case where an object is logically constant, but in practice needs to change.</p>
+</blockquote>
+<p>这是一个示例：您有一个常量对象，但是出于调试目的，想要跟踪在其上调用常量方法的频率。从逻辑上讲，您没有更改对象。请注意，如果您是基于可变变量在程序中进行决策，则几乎可以肯定您违反了逻辑常数，需要重新考虑。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    string _name;<br>    <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">int</span> _access_count;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Employee</span>(<span class="hljs-keyword">const</span> string&amp; name) : _name(name), _access_count(<span class="hljs-number">0</span>) &#123; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_name</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string&amp; name)</span> </span>&#123; _name = name; &#125;<br>    <span class="hljs-function">string <span class="hljs-title">get_name</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123;<br>        _access_count++;<br>        <span class="hljs-keyword">return</span> _name;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_access_count</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _access_count; &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>作为一个更复杂的示例，您可能希望缓存代价高昂的操作的结果：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MathObject</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">bool</span> pi_cached;<br>    <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">double</span> pi;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MathObject</span>() : <span class="hljs-built_in">pi_cached</span>(<span class="hljs-literal">false</span>) &#123; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">pi</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!pi_cached) &#123;<br>            <span class="hljs-comment">/* This is an insanely slow way to calculate pi. */</span><br>            pi = <span class="hljs-number">4</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">long</span> step = <span class="hljs-number">3</span>; step &lt; <span class="hljs-number">1000000000</span>; step += <span class="hljs-number">4</span>)<br>                pi += ((<span class="hljs-number">-4.0</span> / (<span class="hljs-keyword">double</span>)step) + (<span class="hljs-number">4.0</span> / ((<span class="hljs-keyword">double</span>)step + <span class="hljs-number">2</span>)));<br>            pi_cached = <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> pi;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>Now we don’t calculate pi until someone asks for it, but when they do we cache the result, which is good because we’re calculating it in a really slow and stupid way. Logically the function is still const (pi isn’t about to change).</p>
+<p>Ultimately you almost certainly do not need mutable at any given moment. I’ve gone years between wanting the mutable keyword. If you think you need mutable, think twice. Be sure that the object will still be logically constant, even as its internals change.</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p><strong>成员函数定义后面加 const 是什么意思？</strong></p>
+<ol>
+<li>c++的一个机制，让该函数的权限为只读，禁止改变成员变量的值。</li>
+<li>同时，如果一个对象为 const，它只有权利调用 const 函数，因为成员变量不能改变。</li>
+</ol>
+<p><strong>C++中的 mutable 存储类说明符</strong></p>
+<p>auto、register、static 和 extern 是 C 中的存储类说明符。typedef 在 C 中也被认为是存储类说明符。C++支持所有这些存储类说明符。此外 C++还添加了一个重要的存储类说明符，名为 mutable。</p>
+<p><strong>有什么是需要 mutable 的？</strong></p>
+<p>有时，即使您不希望一个函数更新类或结构体的其他成员，也需要通过 const 函数来修改类或结构体的一个或多个数据成员。使用 mutable 关键字可以轻松地执行此任务。</p>
+<p>关键字 mutable 主要用于允许修改 const 对象的特定数据成员。当我们将函数声明为 const 时，传递给函数的 this 指针就变成了 const。向变量添加 mutable 允许常量指针更改成员。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.highprogrammer.com/alan/rants/mutable.html#aboutbroken">http://www.highprogrammer.com/alan/rants/mutable.html#aboutbroken</a></p>
+<h2 id="堆栈溢出"><a href="#堆栈溢出" class="headerlink" title="堆栈溢出"></a>堆栈溢出</h2><p>C++ class methods have an implicit this parameter which comes before all the explicit ones. So a function declared within a class like this:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> &#123;</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>You can imagine really looks like this:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(C* <span class="hljs-keyword">this</span>, <span class="hljs-keyword">int</span> x)</span></span>;<br></code></pre></td></tr></table></figure>
+<p>Now, if you declare it this way:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> <span class="hljs-keyword">const</span></span>;<br></code></pre></td></tr></table></figure>
+<p>It’s as if you wrote this:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">const</span> C* <span class="hljs-keyword">this</span>, <span class="hljs-keyword">int</span> x)</span></span>;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
       </tags>
   </entry>
   <entry>
@@ -4533,35 +4394,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>书单</title>
-    <url>/posts/e8a1470d/</url>
-    <content><![CDATA[<blockquote>
-<p>根深叶茂，本固枝荣。</p>
-</blockquote>
-<h3 id="计算机科学-CS-37-本"><a href="#计算机科学-CS-37-本" class="headerlink" title="计算机科学 CS 37 本"></a>计算机科学 CS 37 本</h3><h4 id="语言-C-C-Python-6-本"><a href="#语言-C-C-Python-6-本" class="headerlink" title="语言 C/C++/Python 6 本"></a>语言 C/C++/Python 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- C语言程序设计：现代方法 -- K. N. King -- 2020.11<br>- C和指针<br>- C++ Primer -- Stanley B. Lippman<br>- Effective C++：改善程序与设计的55个具体做法 -- Scott Meyers<br>- STL源码剖析 -- 侯捷<br>- Inside the C++ Object Model -- Stanley B. Lippman<br></code></pre></td></tr></table></figure>
-<h4 id="算法-algorithm-5-本"><a href="#算法-algorithm-5-本" class="headerlink" title="算法 algorithm 5 本"></a>算法 algorithm 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 算法导论（CLRS）<br>- 计算机程序设计艺术（TAOCP）<br>- 算法 -- Robert Sedgewick<br>- 算法竞赛入门经典 -- 刘汝佳<br>- 算法竞赛入门经典：训练指南 -- 刘汝佳<br></code></pre></td></tr></table></figure>
-<h4 id="计算机系统应用-csa-8-本"><a href="#计算机系统应用-csa-8-本" class="headerlink" title="计算机系统应用 csa 8 本"></a>计算机系统应用 csa 8 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 深入理解计算机系统（CSAPP）<br>- 操作系统之哲学原理 -- 邹恒明 -- 2021.3<br>- 鳥哥的 Linux 私房菜 -- 2021.5<br>- UNIX环境高级编程（APUE）<br>- UNIX网络编程（UNP）<br>- 计算机网络 -- 谢希仁 -- 2021.2<br>- 5G NR标准：下一代无线通信技术<br>- 数据库系统概念<br></code></pre></td></tr></table></figure>
-<h4 id="理论计算机科学-tcs-2-本"><a href="#理论计算机科学-tcs-2-本" class="headerlink" title="理论计算机科学 tcs 2 本"></a>理论计算机科学 tcs 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 计算机程序的构造和解释（SICP，魔法书）<br>- 编译原理（龙书）<br></code></pre></td></tr></table></figure>
-<h4 id="数学-math-7-本"><a href="#数学-math-7-本" class="headerlink" title="数学 math 7 本"></a>数学 math 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 数学之美<br>- 线性代数及其应用 -- David C. Lay<br>- 概率论与数理统计教程 -- 茆诗松<br>- 概率论与数理统计 -- 陈希孺<br>- 随机过程 -- Ross<br>- 离散数学及其应用<br>- 具体数学：计算机科学基础<br></code></pre></td></tr></table></figure>
-<h4 id="软件工程-se-7-本"><a href="#软件工程-se-7-本" class="headerlink" title="软件工程 se 7 本"></a>软件工程 se 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 设计模式<br>- 代码大全<br>- 程序员修炼之道<br>- 人月神话 -- 弗雷德里克·布鲁克斯<br>- 编程珠玑<br>- 编程之美<br>- 人件<br></code></pre></td></tr></table></figure>
-<h4 id="人工智能-ai-2-本"><a href="#人工智能-ai-2-本" class="headerlink" title="人工智能 ai 2 本"></a>人工智能 ai 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 人工智能：一种现代方法（AIMA） -- Stuart J. Russell<br>- 机器学习（西瓜书） -- 周志华<br></code></pre></td></tr></table></figure>
-<h3 id="人文社科-48-本"><a href="#人文社科-48-本" class="headerlink" title="人文社科 48 本"></a>人文社科 48 本</h3><h4 id="哲学-4-本"><a href="#哲学-4-本" class="headerlink" title="哲学 4 本"></a>哲学 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 西方哲学史 -- 罗素<br>- 中国哲学简史 -- 冯友兰<br>- 物种起源 -- 达尔文<br>- 自然哲学的数学原理 -- 牛顿<br></code></pre></td></tr></table></figure>
-<h4 id="心理-4-本"><a href="#心理-4-本" class="headerlink" title="心理 4 本"></a>心理 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 自私的基因<br>- 乌合之众：大众心理研究<br>- 人性的弱点<br>- 梦的解析 -- 弗洛伊德<br></code></pre></td></tr></table></figure>
-<h4 id="小说-17-本"><a href="#小说-17-本" class="headerlink" title="小说 17 本"></a>小说 17 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 安娜·卡列尼娜 -- 托尔斯泰<br>- 百年孤独 -- 马尔克斯<br>- 不能承受的生命之轻（许均 译） -- 米兰·昆德拉<br>- 人间失格 -- 太宰治<br>- 三体 -- 刘慈欣<br>- 越女剑 -- 金庸<br>- 天龙八部 -- 金庸<br>- 射雕英雄传 -- 金庸<br>- 神雕侠侣 -- 金庸<br>- 倚天屠龙记 -- 金庸<br>- 鹿鼎记 -- 金庸<br>- 化物语 -- 西尾维新<br>- The Lord of the Rings: The Fellowship of the Ring -- 托尔金<br>- The Lord of the Rings: The Two Towers -- 托尔金<br>- The Lord of the Rings: The Return of the King -- 托尔金<br>- The Hobbit（霍比特人） -- 托尔金<br>- 精灵宝钻 -- 托尔金<br>- 中洲历史 -- 托尔金<br></code></pre></td></tr></table></figure>
-<h4 id="古典-12-本"><a href="#古典-12-本" class="headerlink" title="古典 12 本"></a>古典 12 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 论语<br>- 孟子<br>- 道德经<br>- 庄子<br>- 诗经<br>- 周易<br>- 花间集<br>- 人间词话<br>- 西厢记<br>- 水浒传<br>- 红楼梦<br>- 圣经（旧约的创世纪、出埃及记、约伯传、颂诗）<br></code></pre></td></tr></table></figure>
-<h4 id="经济-5-本"><a href="#经济-5-本" class="headerlink" title="经济 5 本"></a>经济 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 国富论 -- 亚当·斯密<br>- 1844年经济学哲学手稿 -- 马克思<br>- 资本论 -- 马克思<br>- 经济学原理 -- 曼昆<br>- 就业、利息和货币通论 -- 凯恩斯<br></code></pre></td></tr></table></figure>
-<h4 id="政治-6-本"><a href="#政治-6-本" class="headerlink" title="政治 6 本"></a>政治 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 文明的冲突与世界秩序的重建 -- 塞缪尔·亨廷顿<br>- 美国反对美国 -- 王沪宁<br>- 理想国 -- 柏拉图<br>- 君主论 -- 马基雅维利<br>- 共产党宣言 -- 马克思，恩格斯<br>- 国际政治理论 -- 华尔兹<br></code></pre></td></tr></table></figure>
-<h3 id="准则-3-条"><a href="#准则-3-条" class="headerlink" title="准则 3 条"></a>准则 3 条</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">1. 若无必要，勿增实体。<br>2. Einmal ist keinmal.<br>3. 从感性到理性，从理性到实践。两次飞跃，无限反复，不断发展。<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>工具箱</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>互联网资源</title>
     <url>/posts/b6593712/</url>
     <content><![CDATA[<h2 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h2><p>cplusplus<br><a href="http://www.cplusplus.com/">http://www.cplusplus.com/</a></p>
@@ -4816,6 +4648,188 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>书单</title>
+    <url>/posts/e8a1470d/</url>
+    <content><![CDATA[<blockquote>
+<p>根深叶茂，本固枝荣。</p>
+</blockquote>
+<h3 id="计算机科学-CS-37-本"><a href="#计算机科学-CS-37-本" class="headerlink" title="计算机科学 CS 37 本"></a>计算机科学 CS 37 本</h3><h4 id="语言-C-C-Python-6-本"><a href="#语言-C-C-Python-6-本" class="headerlink" title="语言 C/C++/Python 6 本"></a>语言 C/C++/Python 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- C语言程序设计：现代方法 -- K. N. King -- 2020.11<br>- C和指针<br>- C++ Primer -- Stanley B. Lippman<br>- Effective C++：改善程序与设计的55个具体做法 -- Scott Meyers<br>- STL源码剖析 -- 侯捷<br>- Inside the C++ Object Model -- Stanley B. Lippman<br></code></pre></td></tr></table></figure>
+<h4 id="算法-algorithm-5-本"><a href="#算法-algorithm-5-本" class="headerlink" title="算法 algorithm 5 本"></a>算法 algorithm 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 算法导论（CLRS）<br>- 计算机程序设计艺术（TAOCP）<br>- 算法 -- Robert Sedgewick<br>- 算法竞赛入门经典 -- 刘汝佳<br>- 算法竞赛入门经典：训练指南 -- 刘汝佳<br></code></pre></td></tr></table></figure>
+<h4 id="计算机系统应用-csa-8-本"><a href="#计算机系统应用-csa-8-本" class="headerlink" title="计算机系统应用 csa 8 本"></a>计算机系统应用 csa 8 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 深入理解计算机系统（CSAPP）<br>- 操作系统之哲学原理 -- 邹恒明 -- 2021.3<br>- 鳥哥的 Linux 私房菜 -- 2021.5<br>- UNIX环境高级编程（APUE）<br>- UNIX网络编程（UNP）<br>- 计算机网络 -- 谢希仁 -- 2021.2<br>- 5G NR标准：下一代无线通信技术<br>- 数据库系统概念<br></code></pre></td></tr></table></figure>
+<h4 id="理论计算机科学-tcs-2-本"><a href="#理论计算机科学-tcs-2-本" class="headerlink" title="理论计算机科学 tcs 2 本"></a>理论计算机科学 tcs 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 计算机程序的构造和解释（SICP，魔法书）<br>- 编译原理（龙书）<br></code></pre></td></tr></table></figure>
+<h4 id="数学-math-7-本"><a href="#数学-math-7-本" class="headerlink" title="数学 math 7 本"></a>数学 math 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 数学之美<br>- 线性代数及其应用 -- David C. Lay<br>- 概率论与数理统计教程 -- 茆诗松<br>- 概率论与数理统计 -- 陈希孺<br>- 随机过程 -- Ross<br>- 离散数学及其应用<br>- 具体数学：计算机科学基础<br></code></pre></td></tr></table></figure>
+<h4 id="软件工程-se-7-本"><a href="#软件工程-se-7-本" class="headerlink" title="软件工程 se 7 本"></a>软件工程 se 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 设计模式<br>- 代码大全<br>- 程序员修炼之道<br>- 人月神话 -- 弗雷德里克·布鲁克斯<br>- 编程珠玑<br>- 编程之美<br>- 人件<br></code></pre></td></tr></table></figure>
+<h4 id="人工智能-ai-2-本"><a href="#人工智能-ai-2-本" class="headerlink" title="人工智能 ai 2 本"></a>人工智能 ai 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 人工智能：一种现代方法（AIMA） -- Stuart J. Russell<br>- 机器学习（西瓜书） -- 周志华<br></code></pre></td></tr></table></figure>
+<h3 id="人文社科-48-本"><a href="#人文社科-48-本" class="headerlink" title="人文社科 48 本"></a>人文社科 48 本</h3><h4 id="哲学-4-本"><a href="#哲学-4-本" class="headerlink" title="哲学 4 本"></a>哲学 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 西方哲学史 -- 罗素<br>- 中国哲学简史 -- 冯友兰<br>- 物种起源 -- 达尔文<br>- 自然哲学的数学原理 -- 牛顿<br></code></pre></td></tr></table></figure>
+<h4 id="心理-4-本"><a href="#心理-4-本" class="headerlink" title="心理 4 本"></a>心理 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 自私的基因<br>- 乌合之众：大众心理研究<br>- 人性的弱点<br>- 梦的解析 -- 弗洛伊德<br></code></pre></td></tr></table></figure>
+<h4 id="小说-17-本"><a href="#小说-17-本" class="headerlink" title="小说 17 本"></a>小说 17 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 安娜·卡列尼娜 -- 托尔斯泰<br>- 百年孤独 -- 马尔克斯<br>- 不能承受的生命之轻（许均 译） -- 米兰·昆德拉<br>- 人间失格 -- 太宰治<br>- 三体 -- 刘慈欣<br>- 越女剑 -- 金庸<br>- 天龙八部 -- 金庸<br>- 射雕英雄传 -- 金庸<br>- 神雕侠侣 -- 金庸<br>- 倚天屠龙记 -- 金庸<br>- 鹿鼎记 -- 金庸<br>- 化物语 -- 西尾维新<br>- The Lord of the Rings: The Fellowship of the Ring -- 托尔金<br>- The Lord of the Rings: The Two Towers -- 托尔金<br>- The Lord of the Rings: The Return of the King -- 托尔金<br>- The Hobbit（霍比特人） -- 托尔金<br>- 精灵宝钻 -- 托尔金<br>- 中洲历史 -- 托尔金<br></code></pre></td></tr></table></figure>
+<h4 id="古典-12-本"><a href="#古典-12-本" class="headerlink" title="古典 12 本"></a>古典 12 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 论语<br>- 孟子<br>- 道德经<br>- 庄子<br>- 诗经<br>- 周易<br>- 花间集<br>- 人间词话<br>- 西厢记<br>- 水浒传<br>- 红楼梦<br>- 圣经（旧约的创世纪、出埃及记、约伯传、颂诗）<br></code></pre></td></tr></table></figure>
+<h4 id="经济-5-本"><a href="#经济-5-本" class="headerlink" title="经济 5 本"></a>经济 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 国富论 -- 亚当·斯密<br>- 1844年经济学哲学手稿 -- 马克思<br>- 资本论 -- 马克思<br>- 经济学原理 -- 曼昆<br>- 就业、利息和货币通论 -- 凯恩斯<br></code></pre></td></tr></table></figure>
+<h4 id="政治-6-本"><a href="#政治-6-本" class="headerlink" title="政治 6 本"></a>政治 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 文明的冲突与世界秩序的重建 -- 塞缪尔·亨廷顿<br>- 美国反对美国 -- 王沪宁<br>- 理想国 -- 柏拉图<br>- 君主论 -- 马基雅维利<br>- 共产党宣言 -- 马克思，恩格斯<br>- 国际政治理论 -- 华尔兹<br></code></pre></td></tr></table></figure>
+<h3 id="准则-3-条"><a href="#准则-3-条" class="headerlink" title="准则 3 条"></a>准则 3 条</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">1. 若无必要，勿增实体。<br>2. Einmal ist keinmal.<br>3. 从感性到理性，从理性到实践。两次飞跃，无限反复，不断发展。<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>人月神话</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>技术栈</title>
+    <url>/posts/c420bf1b/</url>
+    <content><![CDATA[<h1 id="学术"><a href="#学术" class="headerlink" title="学术"></a>学术</h1><ul>
+<li><p>数学</p>
+<ul>
+<li>线性代数</li>
+<li>概率论与数理统计</li>
+</ul>
+</li>
+<li><p>ds&amp;aa</p>
+<ul>
+<li>数据结构<ul>
+<li>平衡二叉树</li>
+<li>红黑树</li>
+<li>B-树</li>
+<li>KMP</li>
+<li>栈/队列</li>
+<li>布隆过滤器</li>
+</ul>
+</li>
+<li>算法分析<ul>
+<li>查找<ul>
+<li>二分法 √</li>
+</ul>
+</li>
+<li>排序<ul>
+<li>冒泡排序 √</li>
+<li>插入排序 √</li>
+<li>选择排序 √</li>
+<li>快速排序 √</li>
+<li>基数排序</li>
+<li>谢尔排序</li>
+<li>归并排序</li>
+<li>堆排序</li>
+<li>桶排序</li>
+</ul>
+</li>
+<li>图相关<ul>
+<li>BFS</li>
+<li>DFS</li>
+</ul>
+</li>
+<li>字符串相关<ul>
+<li>KMP</li>
+</ul>
+</li>
+<li>DP √</li>
+<li>贪心</li>
+<li>回溯</li>
+<li>推荐算法</li>
+<li>布隆过滤器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作系统</p>
+<ul>
+<li>Linux<ul>
+<li>re</li>
+<li>grep</li>
+<li>sed</li>
+<li>awk</li>
+</ul>
+</li>
+<li>IPC</li>
+</ul>
+</li>
+<li><p>计算机网络</p>
+<ul>
+<li>网络基础<ul>
+<li>物理层 √</li>
+<li>数据链路层 √</li>
+<li>网络层 √</li>
+<li>传输层 √</li>
+<li>应用层 √</li>
+</ul>
+</li>
+<li>网络协议<ul>
+<li>TCP/IP</li>
+</ul>
+</li>
+<li>网络编程<ul>
+<li>Socket 编程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>AI</p>
+<ul>
+<li>Python</li>
+<li>GA</li>
+</ul>
+</li>
+</ul>
+<h1 id="工业"><a href="#工业" class="headerlink" title="工业"></a>工业</h1><ul>
+<li><p>C</p>
+</li>
+<li><p>C++</p>
+<ul>
+<li>库<ul>
+<li>STL</li>
+<li>Boost</li>
+</ul>
+</li>
+<li>思想<ul>
+<li>OOP</li>
+<li>泛型编程</li>
+<li>函数式编程</li>
+</ul>
+</li>
+<li>能力<ul>
+<li>代码风格</li>
+<li>性能分析</li>
+<li>多线程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SE</p>
+<ul>
+<li>设计模式<ul>
+<li>单例模式</li>
+</ul>
+</li>
+<li>项目管理<ul>
+<li>人月神话</li>
+<li>人件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发工具</p>
+<ul>
+<li>Git</li>
+<li>Docker</li>
+</ul>
+</li>
+<li><p>DB</p>
+<ul>
+<li>MySQL</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>人月神话</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
       </tags>
   </entry>
   <entry>
@@ -5873,6 +5887,24 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>双链表的翻转</title>
+    <url>/posts/d1fac59b/</url>
+    <content><![CDATA[<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/reverse_lincked-list1.jpg" alt="img"></p>
+<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/reverse_lincked-list2.jpg" alt="img"></p>
+<h2 id="朴素方法"><a href="#朴素方法" class="headerlink" title="朴素方法"></a>朴素方法</h2><p>对于每一个结点，交换其两个指针域的内容。最后将头指针指向尾结点。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reverse</span><span class="hljs-params">(Node** head_ref)</span> </span>&#123;<br>    Node* temp = <span class="hljs-literal">NULL</span>;<br>    Node* current = *head_ref;<br><br>    <span class="hljs-keyword">while</span> (current != <span class="hljs-literal">NULL</span>) &#123; <span class="hljs-comment">/* swap */</span><br>        temp = current-&gt;prev;<br>        current-&gt;prev = current-&gt;next;<br>        current-&gt;next = temp;<br><br>        current = current-&gt;prev;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (temp != <span class="hljs-literal">NULL</span>) *head_ref = temp-&gt;prev;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="使用堆栈"><a href="#使用堆栈" class="headerlink" title="使用堆栈"></a>使用堆栈</h2><p>将结点的数据域连续压入栈中，然后不断弹出元素并更新双链表。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/reverse-a-doubly-linked-list/">https://www.geeksforgeeks.org/reverse-a-doubly-linked-list/</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>双链表的插入</title>
     <url>/posts/26d900/</url>
     <content><![CDATA[<p>双链表（DLL）有四种方式插入结点：</p>
@@ -5888,24 +5920,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <li>前插记得考虑左空的情况，后插记得考虑右空的情况，两端插入需要考虑是否为空表。</li>
 </ol>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/doubly-linked-list/">https://www.geeksforgeeks.org/doubly-linked-list/</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>双链表的翻转</title>
-    <url>/posts/d1fac59b/</url>
-    <content><![CDATA[<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/reverse_lincked-list1.jpg" alt="img"></p>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/reverse_lincked-list2.jpg" alt="img"></p>
-<h2 id="朴素方法"><a href="#朴素方法" class="headerlink" title="朴素方法"></a>朴素方法</h2><p>对于每一个结点，交换其两个指针域的内容。最后将头指针指向尾结点。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reverse</span><span class="hljs-params">(Node** head_ref)</span> </span>&#123;<br>    Node* temp = <span class="hljs-literal">NULL</span>;<br>    Node* current = *head_ref;<br><br>    <span class="hljs-keyword">while</span> (current != <span class="hljs-literal">NULL</span>) &#123; <span class="hljs-comment">/* swap */</span><br>        temp = current-&gt;prev;<br>        current-&gt;prev = current-&gt;next;<br>        current-&gt;next = temp;<br><br>        current = current-&gt;prev;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (temp != <span class="hljs-literal">NULL</span>) *head_ref = temp-&gt;prev;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="使用堆栈"><a href="#使用堆栈" class="headerlink" title="使用堆栈"></a>使用堆栈</h2><p>将结点的数据域连续压入栈中，然后不断弹出元素并更新双链表。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/reverse-a-doubly-linked-list/">https://www.geeksforgeeks.org/reverse-a-doubly-linked-list/</a></p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -6518,34 +6532,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>《美国反对美国》读书笔记</title>
-    <url>/posts/db236340/</url>
-    <content><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>《美国反对美国》，大概是一个奇怪而又颇为费解的书名。我起进个书名的用意在于表明，美国不是一个简单的均质的整体，用一句话就可以打发掉。在过去的年代，人们从教条主义的观念出发，把美国仅伩看成是“剥削剩余价值”，“资产阶级专政”，看得一无是处，那么现实的美国同样反对这祥的“美国”、僵化观念中的美国。如今又出现了另一种极端，有的人把美国想象成富丽天堂，十全十美，那么现实的美国同样反对这样的“美国”、理想化的美国。包括美国社会本身，它有它的肯定性力量，也有它的否定性力量，凡是在能发现肯定性力量的地方，都能发现否定性的力量。这便是《美国反对美国》的基本意蕴。</p>
-<p>本书共有十一章，我想在这里扼要点明一下：<br>（1）社会不均衡发展及其诸特点；<br>（2）主导政治生活的价值观念及其流变；<br>（3）民族的多样性格及其社会功效；<br>（4）调节人们社会活动的正式和非正式的机制；<br>（5）在社会上活跃的政治力量及其关系；<br>（6）竞选中的民主和非民主因素；<br>（7）自上而下的政治运作及其特征；<br>（8）非政治的协调机制及社会化的管制；<br>（9）文化、价值观念乃至制度的复制与教育的关联；<br>（10）思想在社会发展和管理中的作甩；<br>（11）危及未来发展的种种潜流。</p>
-<p>王沪宁 1989 年 4 月 1 日 于复旦大学国际政治系</p>
-<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><ul>
-<li>国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</li>
-<li>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</li>
-<li>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</li>
-<li>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</li>
-<li>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</li>
-</ul>
-<h2 id="古老的政治精神"><a href="#古老的政治精神" class="headerlink" title="古老的政治精神"></a>古老的政治精神</h2><h3 id="美国精神"><a href="#美国精神" class="headerlink" title="美国精神"></a>美国精神</h3><ul>
-<li>有时候，可以这样说，社会生活本无精神，等你去发现了，它便有了。或者说，世界上本来就有精神，问题是有没有发现。黑格尔就坚信他发现了“绝对精神”。美国人的精神就是没有“绝对精神”。</li>
-</ul>
-<h3 id="五月花号"><a href="#五月花号" class="headerlink" title="五月花号"></a>五月花号</h3><ul>
-<li>“五月花号”船于 1620 年将最早的移民送到美洲大陆。这是近代美国的肇始。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>读书札记</category>
-        <category>书摘</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>996夹缝中的理想生活</title>
     <url>/posts/a5f58a96/</url>
     <content><![CDATA[<blockquote>
@@ -6605,6 +6591,34 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
         <category>读书札记</category>
         <category>文摘</category>
       </categories>
+  </entry>
+  <entry>
+    <title>《美国反对美国》读书笔记</title>
+    <url>/posts/db236340/</url>
+    <content><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>《美国反对美国》，大概是一个奇怪而又颇为费解的书名。我起进个书名的用意在于表明，美国不是一个简单的均质的整体，用一句话就可以打发掉。在过去的年代，人们从教条主义的观念出发，把美国仅伩看成是“剥削剩余价值”，“资产阶级专政”，看得一无是处，那么现实的美国同样反对这祥的“美国”、僵化观念中的美国。如今又出现了另一种极端，有的人把美国想象成富丽天堂，十全十美，那么现实的美国同样反对这样的“美国”、理想化的美国。包括美国社会本身，它有它的肯定性力量，也有它的否定性力量，凡是在能发现肯定性力量的地方，都能发现否定性的力量。这便是《美国反对美国》的基本意蕴。</p>
+<p>本书共有十一章，我想在这里扼要点明一下：<br>（1）社会不均衡发展及其诸特点；<br>（2）主导政治生活的价值观念及其流变；<br>（3）民族的多样性格及其社会功效；<br>（4）调节人们社会活动的正式和非正式的机制；<br>（5）在社会上活跃的政治力量及其关系；<br>（6）竞选中的民主和非民主因素；<br>（7）自上而下的政治运作及其特征；<br>（8）非政治的协调机制及社会化的管制；<br>（9）文化、价值观念乃至制度的复制与教育的关联；<br>（10）思想在社会发展和管理中的作甩；<br>（11）危及未来发展的种种潜流。</p>
+<p>王沪宁 1989 年 4 月 1 日 于复旦大学国际政治系</p>
+<h2 id="不均匀的土地"><a href="#不均匀的土地" class="headerlink" title="不均匀的土地"></a>不均匀的土地</h2><ul>
+<li>国人讲创新，并不在于反对传统。美国人的传统和创新如同一物，今日的传统只不过是三五十年前的创新。</li>
+<li>商品化具有惊人的力量，它推使人们走向每一块有利可图的地方。</li>
+<li>商品化的真正本质不在于每样东西都成为商品，而在于商品处在合理的运转机制之中。</li>
+<li>美国社会的一些管理方法实际上是不加管理。这在某种条件下是一种较有效的管理方法。</li>
+<li>城乡生活水准的差异，必定会在不同的人口之间构成紧张态势。这种紧张态势出现的时机有早有晚，但现代化过程中最终总要遇到这个挑战。问题不在于乡村发展了多少，而在于矛盾化解了多少，化解矛盾的方法是否产生新的矛盾。</li>
+</ul>
+<h2 id="古老的政治精神"><a href="#古老的政治精神" class="headerlink" title="古老的政治精神"></a>古老的政治精神</h2><h3 id="美国精神"><a href="#美国精神" class="headerlink" title="美国精神"></a>美国精神</h3><ul>
+<li>有时候，可以这样说，社会生活本无精神，等你去发现了，它便有了。或者说，世界上本来就有精神，问题是有没有发现。黑格尔就坚信他发现了“绝对精神”。美国人的精神就是没有“绝对精神”。</li>
+</ul>
+<h3 id="五月花号"><a href="#五月花号" class="headerlink" title="五月花号"></a>五月花号</h3><ul>
+<li>“五月花号”船于 1620 年将最早的移民送到美洲大陆。这是近代美国的肇始。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>读书札记</category>
+        <category>书摘</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
   </entry>
   <entry>
     <title>歌词-可曾记得爱</title>
