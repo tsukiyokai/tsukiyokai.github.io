@@ -1,0 +1,53 @@
+---
+title: Windows常用软件
+abbrlink: dec36813
+categories:
+  - 自由王国
+  - 清单
+tags:
+  - PC
+date: 2021-04-18 21:33:34
+---
+
+> 工欲善其事，必先利其器。
+
+| Software Name                | Version          | Publisher              |
+| ---------------------------- | ---------------- | ---------------------- |
+| 7-Zip 21.01 alpha            | 21.01 alpha      | Igor Pavlov            |
+| AquaSnap 1.23.10             | 1.23.10          | Nurgo Software         |
+| Ashampoo WinOptimizer 15     | 15.00.04         | Ashampoo GmbH & Co. KG |
+| AutoHotkey 1.1.32.00         | 1.1.32.00        | Lexikos                |
+| BitComet 1.74                | 1.74             | CometNetwork           |
+| Cacheman                     | 10               | Outertech              |
+| CrystalDiskInfo Shizuku      | 8.11.2           | Crystal Dew World      |
+| Everything 1.4.1.1005        | 1.4.1.1005       | voidtools              |
+| foobar2000 v1.6.4            | 1.6.4            | Peter Pawlowski        |
+| Git version 2.31.1           | 2.31.1           | Git                    |
+| GitHub Desktop               | 2.7.2            | GitHub, Inc.           |
+| Google Chrome                | 89.0.4389.128    | Google LLC             |
+| Honeyview                    | 5.35             | Bandisoft.com          |
+| LAV Filters 0.74.1           | 0.74.1           | Hendrik Leppkes        |
+| MacType                      | 2019.1-beta6     | FlyingSnow             |
+| Microsoft Edge Dev           | 91.0.852.0       | Microsoft Corporation  |
+| Microsoft Office 2016        | 16.0.11231.20174 | Microsoft Corporation  |
+| Microsoft Visual Studio Code | 1.55.2           | Microsoft Corporation  |
+| Node.js                      | 12.22.0          | Node.js Foundation     |
+| NVM for Windows 1.1.7        | 1.1.7            | Ecor Ventures LLC      |
+| PotPlayer-64 bit             | 210209           | Kakao Corp.            |
+| Sigil 1.5.1                  | -                | Sigil-Ebook            |
+| SumatraPDF                   | 3.2              | Krzysztof Kowalczyk    |
+| TeraCopy version 3.26        | 3.26             | Code Sector            |
+| Typora version 0.9.98        | 0.9.98           | typora.io              |
+| Unlocker 1.9.2               | 1.9.2            | Cedrick Collomb        |
+| Visual Studio Community 2019 | 16.10.31025.218  | Microsoft Corporation  |
+| 微软 Windows 10 易升         | 1.4.9200.23258   | Microsoft Corporation  |
+| 哔哩哔哩动画                 | 2.13.16.0        | bilibili               |
+| SquirrelVPN                  | 1.0.123.0        | Vinsider Inc           |
+| Dolby Atmos                  | 3.20500.501.0    | Dolby Laboratories     |
+| Hourglass                    |                  |                        |
+| Blumind                      |                  |                        |
+| IObitUninstaller             |                  |                        |
+| 软媒清理大师                 |                  | 青岛软媒               |
+| griefsyndrome.exe            |                  |                        |
+| dism++                       |                  |                        |
+| XMind                        |                  |                        |
