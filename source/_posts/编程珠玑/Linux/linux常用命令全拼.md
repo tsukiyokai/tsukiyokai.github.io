@@ -2,10 +2,10 @@
 title: linux常用命令全拼
 abbrlink: 648b5ed5
 categories:
-  - 编程珠玑
-  - Linux
+    - 编程珠玑
+    - Linux
 tags:
-  - OS
+    - OS
 date: 2021-05-14 17:05:50
 ---
 

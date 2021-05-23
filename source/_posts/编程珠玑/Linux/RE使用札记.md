@@ -1,11 +1,11 @@
 ---
-title: RE札记
+title: RE使用札记
 abbrlink: bcc7a2a3
 categories:
-  - 编程珠玑
-  - Linux
+    - 编程珠玑
+    - Linux
 tags:
-  - 正则表达式
+    - 正则表达式
 date: 2021-04-16 00:02:00
 ---
 
@@ -35,7 +35,7 @@ html注释
 $
 ```
 
-#### 选中含某个串的所有行
+#### 选中所有包含某个串的行
 
 ```re
 ^(.*)abbrlink(.*)\n

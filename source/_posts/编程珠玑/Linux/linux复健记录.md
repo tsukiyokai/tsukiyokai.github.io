@@ -2,10 +2,10 @@
 title: linux复健记录
 abbrlink: 4d4fc466
 categories:
-  - 编程珠玑
-  - Linux
+    - 编程珠玑
+    - Linux
 tags:
-  - OS
+    - OS
 date: 2021-05-14 16:13:03
 ---
 
