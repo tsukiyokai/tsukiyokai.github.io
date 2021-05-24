@@ -2,14 +2,12 @@
 title: linux复健记录
 abbrlink: 4d4fc466
 categories:
-    - 编程珠玑
-    - Linux
-tags:
-    - OS
+  - 编程珠玑
+  - Linux
 date: 2021-05-14 16:13:03
 ---
 
-> 最近开始 linux 复建，记点东西。
+最近开始 linux 复建，记点东西。
 
 - **进入 ubt 子系统的图形界面**
 
@@ -197,6 +195,6 @@ $ getconf PAGESIZE
 
 {% asset_img subsys.png %}
 
-参考资料
+**参考资料**
 
 https://arkingc.github.io/2017/11/30/2017-11-30-linux-du/

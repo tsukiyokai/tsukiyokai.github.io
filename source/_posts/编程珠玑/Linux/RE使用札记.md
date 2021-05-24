@@ -2,10 +2,10 @@
 title: RE使用札记
 abbrlink: bcc7a2a3
 categories:
-    - 编程珠玑
-    - Linux
+  - 编程珠玑
+  - Linux
 tags:
-    - 正则表达式
+  - 正则表达式
 date: 2021-04-16 00:02:00
 ---
 

@@ -4,8 +4,6 @@ abbrlink: 3a072bdd
 categories:
   - 编程珠玑
   - 操作系统
-tags:
-  - OS
 date: 2021-03-17 18:11:00
 ---
 

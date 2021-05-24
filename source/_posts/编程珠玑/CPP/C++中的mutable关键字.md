@@ -1,11 +1,11 @@
 ---
-title: mutable关键字与概念上的“常量性”
+title: C++中的mutable关键字
 abbrlink: 4edf765f
 categories:
   - 编程珠玑
   - CPP
 tags:
-  - C++语法
+  - 语法
 date: 2021-05-18 20:03:02
 ---
 

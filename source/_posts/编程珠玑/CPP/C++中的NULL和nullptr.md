@@ -5,7 +5,7 @@ categories:
     - CPP
 abbrlink: 45f33b90
 tags:
-    - C++语法
+    - 语法
 date: 2021-04-23 18:51:07
 ---
 

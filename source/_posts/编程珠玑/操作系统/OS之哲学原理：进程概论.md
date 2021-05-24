@@ -4,8 +4,6 @@ abbrlink: 9be380c3
 categories:
   - 编程珠玑
   - 操作系统
-tags:
-  - OS
 date: 2021-03-14 20:46:00
 ---
 

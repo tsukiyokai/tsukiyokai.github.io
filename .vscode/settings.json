@@ -1,5 +1,7 @@
 {
     "pangu.auto_space_on_save": true,
     "beautify.config": "",
-    "prettier.tabWidth": 4
+    "files.autoSave": "afterDelay",
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.tabCompletion": "on"
 }

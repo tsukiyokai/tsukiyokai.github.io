@@ -10,9 +10,10 @@
 
 ## 目录
 
+- [目录](#目录)
 - [如何使用](#如何使用)
-  - [安装](#安装)
-  - [配置项](#配置项)
+    - [安装](#安装)
+    - [配置项](#配置项)
 - [效果预览](#效果预览)
 - [update](#update)
 - [移植版](#移植版)
@@ -158,18 +159,25 @@ comment:
 - 开启数学公式
 
 1. 卸载 hexo-math
+
 ```bash
 npm uninstall hexo-math
 ```
+
 2. 卸载 hexo-renderer-marked
+
 ```bash
 npm uninstall hexo-renderer-marked
 ```
+
 3. 安装 hexo-renderer-kramed
+
 ```bash
 npm install hexo-renderer-kramed --save
 ```
-4. 更新 _config.yml
+
+4. 更新 \_config.yml
+
 ```bash
 # 添加
 math:
@@ -178,7 +186,9 @@ math:
     enable: true
     cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
 ```
+
 5. 最后
+
 ```
 hexo clean
 hexo server

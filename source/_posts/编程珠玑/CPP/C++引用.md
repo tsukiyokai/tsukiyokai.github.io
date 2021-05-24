@@ -5,7 +5,7 @@ categories:
   - 编程珠玑
   - CPP
 tags:
-  - C++语法
+  - 语法
 date: 2021-04-18 22:35:02
 ---
 
@@ -291,27 +291,6 @@ This is Pet class
 如果我们在上述程序中改成使用按引用传递，则它会正确打印 This is Dog Class。请参阅以下修改的程序。
 
 ```c++
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-class Pet {
-public:
-    virtual string getDescription() const
-    {
-        return "This is Pet class";
-    }
-};
-
-class Dog : public Pet {
-public:
-    virtual string getDescription() const
-    {
-        return "This is Dog class";
-    }
-};
-
 void describe(const Pet& p)
 { // Doesn't slice the derived class object.
     cout << p.getDescription() << endl;
@@ -334,11 +313,16 @@ This is Dog class
 
 值得注意的是，这一点也对基本数据类型无效。仅对结构体和类变量有效。
 
-4.在函数中实现运行时多态（Run Time Polymorphism）
+尝试做一个小的归纳：
+
+- 传值：基类对象会以自己为标准切割派生类对象。
+- 传地址：基类指针可以指向派生类对象（把男女老少当人，把金毛泰迪当狗。）。虚函数这里需要注意的是使用基类指针调用派生类函数时遵循的中心思想是——根据指向或引用的对象实例的类型调用来虚函数，而非根据指针或引用的类型。
+
+4.在函数中实现运行时多态（RunTime Polymorphism）
 
 多态分为运行时多态和编译时多态。
 
-通过将对象作为引用或指针传递给函数，我们可以使函数具有多态性。
+通过将对象作为引用或指针传递给函数，我们可以使函数具有多态性。其原理依旧是上面基类指针指向派生类对象时调用派生类函数的叙述。
 
 例如，在下面的程序中，print()接收对基类对象的引用。如果传递了基类对象，print()调用基类中的 show()，如果传递了派生类对象，则调用派生类中的 show()。
 

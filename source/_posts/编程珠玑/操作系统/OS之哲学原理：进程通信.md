@@ -2,10 +2,8 @@
 title: OS之哲学原理：进程通信
 abbrlink: 613f845a
 categories:
-    - 编程珠玑
-    - 操作系统
-tags:
-    - OS
+  - 编程珠玑
+  - 操作系统
 date: 2021-03-15 16:35:00
 ---
 
