@@ -12,13 +12,6 @@ article.post-view__article .article__content h6,
 article.post-view__article .article__content p {
   margin: 0.5em 0;
 }
-article.post-view__article .article__content p,
-article.post-view__article .article__content li,
-article.post-view__article .article__content ol,
-article.post-view__article .article__content table,
-article.post-view__article .article__content code {
-  font-weight: 500;
-}
 article.post-view__article .article__content small {
   font-size: 1rem;
 }
