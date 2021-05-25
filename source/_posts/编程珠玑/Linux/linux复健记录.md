@@ -195,6 +195,22 @@ $ getconf PAGESIZE
 
 {% asset_img subsys.png %}
 
+**File Permissions in Linux**
+
+Read (r)
+Reading the contents of the file
+The ability to read the names of files stored in this directory.
+
+Write (w)
+Writing contents to the file
+The ability to rename files in the directory, create new files, or delete existing files, if you also have Execute permissions. If you don't have execute perms, then write perms are meaningless.
+
+Execute (x)
+Execute the file
+The ability to cd into this directory, and access the files in this directory.
+
+假设存在一个目录 dir1，如果它的权限表示为`drw-rw-rw-`，此时执行`mkdir dir1/sample`，出现错误：mkdir: cannot create directory ‘dir1/sample/’: Permission denied. 这是因为这个目录不具有执行权限，不能 cd 进去创建子目录。这点一开始我还挺疑惑的，归根结底是没有理解`-x`的真正含义，以为 cd 的权利的理所应当就有的，实际上 cd 的权利是执行权利的体现。
+
 **参考资料**
 
 https://arkingc.github.io/2017/11/30/2017-11-30-linux-du/
