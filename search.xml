@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2021年春・华为成研院面试经验</title>
+    <title>21春华为成研院面试经验</title>
     <url>/posts/7aec2cd4/</url>
     <content><![CDATA[<h2 id="大致时间"><a href="#大致时间" class="headerlink" title="大致时间"></a>大致时间</h2><div class="table-container">
 <table>
@@ -30,15 +30,19 @@
 </tr>
 <tr>
 <td>05.08 晚上</td>
-<td>HR面</td>
+<td>HR 面</td>
 </tr>
 <tr>
 <td>05.10 晚上</td>
 <td>主管面</td>
 </tr>
 <tr>
-<td></td>
+<td>05.27</td>
 <td>收到 Offer</td>
+</tr>
+<tr>
+<td>06.08</td>
+<td>入职</td>
 </tr>
 </tbody>
 </table>
@@ -47,8 +51,8 @@
 <h2 id="性格测试"><a href="#性格测试" class="headerlink" title="性格测试"></a>性格测试</h2><p>早上对面查分 190 顺利通过，给我推到了北京的华为 2012 实验室（高斯实验室），据说是给国企做数据库的。后来我拜托另一个人帮我重新推回了成都的无线部门。下午收到性格测试邮件，通过。我和成都那边对接的人约定次日上午 10 点视频会议，走完一二轮技术面试。如果面试结果不好的话就不上传记录。可能我的运气比较好，这个老哥挺好说话的，也不打压我或者吹嘘自己。</p>
 <h2 id="技术一面"><a href="#技术一面" class="headerlink" title="技术一面"></a>技术一面</h2><p>上午十点开始，大概一轮 40min，一面主要问基础，C++、OS、网络、设计模式。设计模式我说不太熟悉，平时用的很少，所以就没问。C++ 问 OOP，虚函数，内存管理、野指针，OS 问进程线程区别、进程通信、死锁，网络问三次握手四次挥手，然后白板写一道代码题，共享屏幕，题目是链表去重，限时 20min，我写了一分钟就交卷了，但是我没释放节点，就让我又改了改。一面我答得很好，问的也算比较细，我基础很牢固，说起来滔滔不绝，就过去了。</p>
 <h2 id="技术二面"><a href="#技术二面" class="headerlink" title="技术二面"></a>技术二面</h2><p>一面结束三分钟后就是二面，二面先问了我简历上的项目，然后深挖操作系统知识，这位老哥估计是搞嵌入式的，操作系统问的很深很细，稍微深一点的我就完全答不上来，他一直往深了问，我一直往浅了答。还问了我内存管理模型，赋值 0 和赋值 1 在内存中存在一个位置吗，我复习过，但是只记住了一半，其实 bss 区存的是未初始化的数据和初始化为 0 的数据，我以为初始化为 0 也是初始化，就答错了。最后代码题，自己造一个数据结构，要做个锁，考虑竞争临界区资源的情况，本来以为是 C++ 题，结果还是 OS 的题，做的不好，就讲了讲我的理解，差不多就结束了。反问环节，我问他成都无线平时用 C++ 还是 C 比较多，他说都用，我又问做什么的，他说做基站、5G、嵌入式这些。具体的东西可以等你来了之后具体了解。我感觉他话里有话，索性直接问自己表现怎么样，他说表现很好，但是来了之后还需要进一步学习。另外这几天保持电话畅通，会有 HR 的电话面试。</p>
-<h2 id="HR面"><a href="#HR面" class="headerlink" title="HR面"></a>HR面</h2><p>晚上 8 点左右 HR 电话面，HR 不是特别友好，一直强调我的劣势，11 分钟左右的电话面试强调了四五次，（我就想说，我学历如果没其它劣势的话还会来你这里吗？）。最后是反问环节，我问了事先准备好的几个不痛不痒的问题，毕竟该了解的事先都了解差不多了，结束前突然问了一下我的期望薪资，我回答 12-14K，他说你这数字是从哪得来的，我说校友信息。就这么结束了。可能是传说中的压力面试？不过 llp 和 shw 觉得是打压工资。我觉得可能两者兼有吧。半小时后我问了一下和我对接的老哥，说是通过了。但我总还是有些忐忑。晚上问了一下那边，说如果一切顺利的话 Offer 要一星期就可以落定了，且看看是不是画饼吧。</p>
-<h2 id="主管面"><a href="#主管面" class="headerlink" title="主管面"></a>主管面</h2><p>通知今晚 7 点左右主管面。听说因为最近加急审批，所以 Offer 不用等特别久。今晚可能会谈工资，所以提前做了点功课，华为应届生正常是 D13，开到 12k，特别优秀的本科生和硕士生是 D14，开到 14K 以上。主管面比 hr 友好多了。你平时怎么跟朋友保持联系的？你平时逛什么技术论坛？你读英语文档溜不溜？你家在哪，成都远不远，父母有没有意见？结婚了没，有兄弟姐妹没？问了问毕设做的东西，怎么认识学术界和工业界的差别？聊了聊工资，我说 12K，他说 14K 没问题的，有个工资计算公式，可能会给你向上再浮动一点。夸了夸我的机试代码写的规范，问我为什么没做最后一题，我说战略性放弃。讲了讲他们平时做的东西，主要是操作系统，写写驱动啥的，还有 5G 基站。转正之后的周末和节假日才有加班费，平时义务加班。年终奖看绩效，A 是 4 个月，B 是 2 个月，C 是 1 个月，D 是妹有。大部分人是两个多月的年终奖。大概就这些了，剩下的就是耐心等 Offer。</p>
+<h2 id="HR-面"><a href="#HR-面" class="headerlink" title="HR 面"></a>HR 面</h2><p>晚 8 点左右 HR 电话面，HR 不是特别友好，一直强调我的劣势，11 分钟左右的电话面试强调了四五次，（我就想说，我学历如果没其它劣势的话还会来你这里吗？）。最后是反问环节，我问了事先准备好的几个不痛不痒的问题，毕竟该了解的事先都了解差不多了，结束前突然问了一下我的期望薪资，我回答 12-14K，他说你这数字是从哪得来的，我说校友信息。就这么结束了。可能是传说中的压力面试？不过 llp 和 shw 觉得是打压工资。我觉得可能两者兼有吧。</p>
+<h2 id="主管面"><a href="#主管面" class="headerlink" title="主管面"></a>主管面</h2><p>通知晚 7 点左右主管面。听说因为最近加急审批，所以 Offer 不用等特别久。今晚可能会谈工资，所以提前做了点功课，华为应届生正常是 D13，开到 12k，特别优秀的本科生和硕士生是 D14，开到 14K 以上。主管面比 hr 友好多了。你平时怎么跟朋友保持联系的？你平时逛什么技术论坛？你读英语文档溜不溜？你家在哪，成都远不远，父母有没有意见？结婚了没，有兄弟姐妹没？问了问毕设做的东西，怎么认识学术界和工业界的差别？聊了聊工资，我说 12K，他说 14K 没问题的，有个工资计算公式，可能会给你向上再浮动一点。夸了夸我的机试代码写的规范，问我为什么没做最后一题，我说战略性放弃。讲了讲他们平时做的东西，主要是操作系统，写写驱动啥的，还有 5G 基站。转正之后的周末和节假日才有加班费，平时义务加班。年终奖看绩效，A 是 4 个月，B 是 2 个月，C 是 1 个月，D 是妹有。大部分人是两个多月的年终奖。大概就这些了，剩下的就是耐心等 Offer。</p>
 <h2 id="租房清单"><a href="#租房清单" class="headerlink" title="租房清单"></a>租房清单</h2><blockquote>
 <p>若无必要，勿增实体。</p>
 </blockquote>
@@ -519,6 +523,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC94 二叉树的中序遍历</title>
+    <url>/posts/362ff0e5/</url>
+    <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-built_in">fun</span>(root-&gt;left, a);<br>        a.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">fun</span>(root-&gt;right, a);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：迭代"><a href="#解法-2：迭代" class="headerlink" title="解法 2：迭代"></a>解法 2：迭代</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        stack&lt;TreeNode*&gt; s;<br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span> || curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>                s.<span class="hljs-built_in">push</span>(curr);<br>                curr = curr-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>                curr = s.<span class="hljs-built_in">top</span>(); s.<span class="hljs-built_in">pop</span>();<br>                a.<span class="hljs-built_in">push_back</span>(curr-&gt;val);<br>                curr = curr-&gt;right;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>迭代</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC88 合并两个有序数组</title>
     <url>/posts/a32f263e/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。初始化 nums1 和 nums2 的元素数量分别为 m 和 n。你可以假设 nums1 的空间大小等于 m+n，这样它就有足够的空间保存来自 nums2 的元素。</p>
@@ -534,23 +555,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC94 二叉树的中序遍历</title>
-    <url>/posts/362ff0e5/</url>
-    <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-built_in">fun</span>(root-&gt;left, a);<br>        a.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">fun</span>(root-&gt;right, a);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：迭代"><a href="#解法-2：迭代" class="headerlink" title="解法 2：迭代"></a>解法 2：迭代</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        stack&lt;TreeNode*&gt; s;<br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span> || curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>                s.<span class="hljs-built_in">push</span>(curr);<br>                curr = curr-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>                curr = s.<span class="hljs-built_in">top</span>(); s.<span class="hljs-built_in">pop</span>();<br>                a.<span class="hljs-built_in">push_back</span>(curr-&gt;val);<br>                curr = curr-&gt;right;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-        <tag>迭代</tag>
       </tags>
   </entry>
   <entry>
@@ -609,22 +613,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC104 二叉树的最大深度</title>
-    <url>/posts/4f3b745d/</url>
-    <content><![CDATA[<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> ldepth = <span class="hljs-built_in">maxDepth</span>(root-&gt;left);<br>    <span class="hljs-keyword">int</span> rdepth = <span class="hljs-built_in">maxDepth</span>(root-&gt;right);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(ldepth, rdepth) + <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>返回值类型：int<br>函数名：maxDepth<br>传入参数：根结点<br>向函数传入根结点。<br>如果当前结点为空，说明是空树，此时最大深度为0，返回0；<br>如果当前结点不为空，说明不是空树，<br>设，左子树最大深度为ldepth，右子树最大深度为rdepth；<br>如果（左子树深度&gt;右子树深度），返回左深度+1；<br>如果（左子树深度&lt;右子树深度），返回右深度+1；</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC102 二叉树的层序遍历</title>
     <url>/posts/3e6b56c6/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉树，请你返回其按层序遍历得到的节点值。<br>即逐层地从左到右访问所有节点。</p>
@@ -638,6 +626,22 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>树</tag>
         <tag>队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC104 二叉树的最大深度</title>
+    <url>/posts/4f3b745d/</url>
+    <content><![CDATA[<h2 id="解法：递归"><a href="#解法：递归" class="headerlink" title="解法：递归"></a>解法：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> ldepth = <span class="hljs-built_in">maxDepth</span>(root-&gt;left);<br>    <span class="hljs-keyword">int</span> rdepth = <span class="hljs-built_in">maxDepth</span>(root-&gt;right);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(ldepth, rdepth) + <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>返回值类型：int<br>函数名：maxDepth<br>传入参数：根结点<br>向函数传入根结点。<br>如果当前结点为空，说明是空树，此时最大深度为0，返回0；<br>如果当前结点不为空，说明不是空树，<br>设，左子树最大深度为ldepth，右子树最大深度为rdepth；<br>如果（左子树深度&gt;右子树深度），返回左深度+1；<br>如果（左子树深度&lt;右子树深度），返回右深度+1；</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -690,24 +694,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC136 只出现一次的数字</title>
-    <url>/posts/5ae0bf6f/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
-<h2 id="解法：位运算"><a href="#解法：位运算" class="headerlink" title="解法：位运算"></a>解法：位运算</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> res = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            res = res ^ nums[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>常规操作是一边遍历数组一边用哈希表统计元素出现的次数，最后再遍历哈希表，看看哪个数只出现了一次。<br>时间复杂度为 O(n)，空间复杂度为 O(n)。</p>
-<p>异或的性质<br>性质 1：两个相同的数进行异或，运算结果为 0<br>性质 2：任何数和 0 进行异或，运算结果不变<br>性质 3：支持交换律和结合律</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC121 买卖股票的最佳时机</title>
     <url>/posts/54cc8510/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个数组 prices，它的第 i 个元素 prices[i]表示一支给定股票第 i 天的价格。<br>你只能选择某一天买入这只股票，并选择在未来的某一个不同的日子卖出该股票。设计一个算法来计算你所能获取的最大利润。<br>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0。<br>注意卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</p>
@@ -726,6 +712,24 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC136 只出现一次的数字</title>
+    <url>/posts/5ae0bf6f/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
+<h2 id="解法：位运算"><a href="#解法：位运算" class="headerlink" title="解法：位运算"></a>解法：位运算</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> res = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            res = res ^ nums[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>常规操作是一边遍历数组一边用哈希表统计元素出现的次数，最后再遍历哈希表，看看哪个数只出现了一次。<br>时间复杂度为 O(n)，空间复杂度为 O(n)。</p>
+<p>异或的性质<br>性质 1：两个相同的数进行异或，运算结果为 0<br>性质 2：任何数和 0 进行异或，运算结果不变<br>性质 3：支持交换律和结合律</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -785,23 +789,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC155 最小栈</title>
-    <url>/posts/9f6a1ee8/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。</p>
-<p>push(x) —— 将元素 x 推入栈中。<br>pop() —— 删除栈顶的元素。<br>top() —— 获取栈顶元素。<br>getMin() —— 检索栈中的最小元素。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>用两个栈实现</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MinStack</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s1;<br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s2;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MinStack</span>() &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s1.<span class="hljs-built_in">empty</span>()) &#123;<br>            s1.<span class="hljs-built_in">push</span>(x); s2.<span class="hljs-built_in">push</span>(x);<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            s1.<span class="hljs-built_in">push</span>(x);<br>            x &lt; s2.<span class="hljs-built_in">top</span>() ? s2.<span class="hljs-built_in">push</span>(x) : s2.<span class="hljs-built_in">push</span>(s2.<span class="hljs-built_in">top</span>());<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        s1.<span class="hljs-built_in">pop</span>(); s2.<span class="hljs-built_in">pop</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">top</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s2.<span class="hljs-built_in">top</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC145 二叉树的后序遍历</title>
     <url>/posts/dac7f63c/</url>
     <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
@@ -826,6 +813,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>递归</tag>
         <tag>迭代</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC155 最小栈</title>
+    <url>/posts/9f6a1ee8/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。</p>
+<p>push(x) —— 将元素 x 推入栈中。<br>pop() —— 删除栈顶的元素。<br>top() —— 获取栈顶元素。<br>getMin() —— 检索栈中的最小元素。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>用两个栈实现</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MinStack</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s1;<br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s2;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MinStack</span>() &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s1.<span class="hljs-built_in">empty</span>()) &#123;<br>            s1.<span class="hljs-built_in">push</span>(x); s2.<span class="hljs-built_in">push</span>(x);<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            s1.<span class="hljs-built_in">push</span>(x);<br>            x &lt; s2.<span class="hljs-built_in">top</span>() ? s2.<span class="hljs-built_in">push</span>(x) : s2.<span class="hljs-built_in">push</span>(s2.<span class="hljs-built_in">top</span>());<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        s1.<span class="hljs-built_in">pop</span>(); s2.<span class="hljs-built_in">pop</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">top</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s2.<span class="hljs-built_in">top</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -915,15 +919,14 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC191 位1的个数</title>
-    <url>/posts/cb2ae56a/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
-<h2 id="解法-1：暴力法"><a href="#解法-1：暴力法" class="headerlink" title="解法 1：暴力法"></a>解法 1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>) count++;<br>            n &gt;&gt;= <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：消-1-技巧"><a href="#解法-2：消-1-技巧" class="headerlink" title="解法 2：消 1 技巧"></a>解法 2：消 1 技巧</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            n = n &amp; (n - <span class="hljs-number">1</span>);<br>            count++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+    <title>LC190 颠倒二进制位</title>
+    <url>/posts/493b201b/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>颠倒给定的 32 位无符号整数的二进制位。</p>
+<h2 id="解法：移位运算"><a href="#解法：移位运算" class="headerlink" title="解法：移位运算"></a>解法：移位运算</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">uint32_t</span> <span class="hljs-title">reverseBits</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">uint32_t</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++) &#123;<br>            res = res &lt;&lt; <span class="hljs-number">1</span>;<br>            res = n &amp; <span class="hljs-number">1</span> | res;<br>            n = n &gt;&gt; <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 <p><strong>注释</strong></p>
-<p>位操作的小技巧：n&amp;(n-1)可以将 n 的二进制表示中的最低位的 1 改为 0<br>重复上述操作，最终将使 n 消成 0</p>
+<p>n&amp;1 的作用：获取 n 的二进制最后一位<br>n&amp;1|res 的作用：将 n 的二进制的最后一位与 res 向或，因为 res 上一步左移了，末尾添个 0，任何数 x 与这个 0 相或还是自身。<br>例如：1|0=1，0|0=0。</p>
+<p>这样就巧妙地把 n 的最右的数字存到了 res 中并不断左推 res 使其缓缓移到最左，然后再右推 n 的二进制使其保存了的最右一位自然掉落。n 的新晋最右一位是原来的倒数第二位。</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -934,14 +937,15 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC190 颠倒二进制位</title>
-    <url>/posts/493b201b/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>颠倒给定的 32 位无符号整数的二进制位。</p>
-<h2 id="解法：移位运算"><a href="#解法：移位运算" class="headerlink" title="解法：移位运算"></a>解法：移位运算</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">uint32_t</span> <span class="hljs-title">reverseBits</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">uint32_t</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++) &#123;<br>            res = res &lt;&lt; <span class="hljs-number">1</span>;<br>            res = n &amp; <span class="hljs-number">1</span> | res;<br>            n = n &gt;&gt; <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+    <title>LC191 位1的个数</title>
+    <url>/posts/cb2ae56a/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
+<h2 id="解法-1：暴力法"><a href="#解法-1：暴力法" class="headerlink" title="解法 1：暴力法"></a>解法 1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>) count++;<br>            n &gt;&gt;= <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：消-1-技巧"><a href="#解法-2：消-1-技巧" class="headerlink" title="解法 2：消 1 技巧"></a>解法 2：消 1 技巧</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            n = n &amp; (n - <span class="hljs-number">1</span>);<br>            count++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 <p><strong>注释</strong></p>
-<p>n&amp;1 的作用：获取 n 的二进制最后一位<br>n&amp;1|res 的作用：将 n 的二进制的最后一位与 res 向或，因为 res 上一步左移了，末尾添个 0，任何数 x 与这个 0 相或还是自身。<br>例如：1|0=1，0|0=0。</p>
-<p>这样就巧妙地把 n 的最右的数字存到了 res 中并不断左推 res 使其缓缓移到最左，然后再右推 n 的二进制使其保存了的最右一位自然掉落。n 的新晋最右一位是原来的倒数第二位。</p>
+<p>位操作的小技巧：n&amp;(n-1)可以将 n 的二进制表示中的最低位的 1 改为 0<br>重复上述操作，最终将使 n 消成 0</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -1094,6 +1098,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC231 2的幂</title>
+    <url>/posts/8e812d9/</url>
+    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC232 用栈实现队列</title>
     <url>/posts/b43e0dd9/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用两个栈实现先入先出队列。<br>队列应当支持一般队列的支持的所有操作(push、pop、peek、empty)。</p>
@@ -1110,20 +1128,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>栈</tag>
         <tag>队列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC231 2的幂</title>
-    <url>/posts/8e812d9/</url>
-    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1190,6 +1194,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC258 各位相加</title>
+    <url>/posts/853fb8a2/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
+<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC263 丑数</title>
     <url>/posts/366238ee/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序判断给定的数是否为丑数。<br>丑数就是只包含质因数 2,3,5 的正整数。<br>说明：1 是丑数</p>
@@ -1203,21 +1222,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC258 各位相加</title>
-    <url>/posts/853fb8a2/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
-<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1239,6 +1243,22 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC292 Nim游戏</title>
+    <url>/posts/9c301557/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>你和你的朋友，两个人一起玩 Nim 游戏：桌子上有一堆石头，你们轮流进行自己的回合，你作为先手。每一回合，轮到的人拿掉 1-3 块石头。拿掉最后一块石头的人就是获胜者。假设你们每一步都是最优解。<br>请编写一个函数，来判断你是否可以在给定石头数量为 n 的情况下赢得游戏。如果可以赢，返回 true；否则，返回 false。</p>
+<p>输入：n=4<br>输出：false<br>解释：如果堆中有 4 块石头，那么你永远不会赢得比赛。因为无论你拿走 1 块、2 块还是 3 块石头，最后一块石头总是会被你的朋友拿走。</p>
+<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>石头总数等于 4 的倍数时先手必输。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">canWinNim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> n % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>找规律</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC338 比特位计数</title>
     <url>/posts/16c0d05b/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num。对于 0≤i≤num 范围中的每个数字 i，计算其二进制数中的 1 的数目并将它们作为数组返回。</p>
@@ -1256,22 +1276,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC292 Nim游戏</title>
-    <url>/posts/9c301557/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>你和你的朋友，两个人一起玩 Nim 游戏：桌子上有一堆石头，你们轮流进行自己的回合，你作为先手。每一回合，轮到的人拿掉 1-3 块石头。拿掉最后一块石头的人就是获胜者。假设你们每一步都是最优解。<br>请编写一个函数，来判断你是否可以在给定石头数量为 n 的情况下赢得游戏。如果可以赢，返回 true；否则，返回 false。</p>
-<p>输入：n=4<br>输出：false<br>解释：如果堆中有 4 块石头，那么你永远不会赢得比赛。因为无论你拿走 1 块、2 块还是 3 块石头，最后一块石头总是会被你的朋友拿走。</p>
-<h2 id="解法：找规律"><a href="#解法：找规律" class="headerlink" title="解法：找规律"></a>解法：找规律</h2><p>石头总数等于 4 的倍数时先手必输。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">canWinNim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> n % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
@@ -1328,23 +1332,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC461 汉明距离</title>
-    <url>/posts/d0244af1/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数 x 和 y，计算它们之间的汉明距离。</p>
-<h2 id="解法：异或、n-amp-n-1"><a href="#解法：异或、n-amp-n-1" class="headerlink" title="解法：异或、n&amp;(n-1)"></a>解法：异或、n&amp;(n-1)</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingDistance</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> res = x ^ y;<br>        <span class="hljs-keyword">while</span> (res) &#123;<br>            res = res &amp; (res - <span class="hljs-number">1</span>);<br>            cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>XOR 的功能：同 0 异 1<br>n&amp;(n-1)的功能：消去 n 的二进制里最右边的 1</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC415 字符串相加</title>
     <url>/posts/56c54e21/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数 num1 和 num2，计算它们的和。<br>你不能使用任何內建 BigInteger 库，也不能直接将输入的字符串转换为整数形式。</p>
@@ -1359,6 +1346,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC461 汉明距离</title>
+    <url>/posts/d0244af1/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数 x 和 y，计算它们之间的汉明距离。</p>
+<h2 id="解法：异或、n-amp-n-1"><a href="#解法：异或、n-amp-n-1" class="headerlink" title="解法：异或、n&amp;(n-1)"></a>解法：异或、n&amp;(n-1)</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingDistance</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> res = x ^ y;<br>        <span class="hljs-keyword">while</span> (res) &#123;<br>            res = res &amp; (res - <span class="hljs-number">1</span>);<br>            cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>XOR 的功能：同 0 异 1<br>n&amp;(n-1)的功能：消去 n 的二进制里最右边的 1</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1451,26 +1455,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC1281 整数的各位积和之差</title>
-    <url>/posts/4311ebc5/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数 n，请你帮忙计算并返回该整数各位数字之积与各位数字之和的差。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>用到的库函数：<br>to_string(): Convert numerical value to string</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subtractProductAndSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> mul = <span class="hljs-number">1</span>, sum = <span class="hljs-number">0</span>;<br>        string num = <span class="hljs-built_in">to_string</span>(n);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : num) &#123;<br>            sum += i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            mul *= i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> mul - sum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>把整数转换成字符串字面值，然后对于字符串，使用基于范围的 for 循环，进行计算。</p>
-<p><strong>附录</strong></p>
-<p><img src="http://www.asciitable.com/index/asciifull.gif" alt="Ascii Table"></p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC303 区域和检索 - 数组不可变</title>
     <url>/posts/727e02ee/</url>
     <content><![CDATA[<p>给定一个整数数组 nums，求出数组从索引 i 到 j(i≤j)范围内元素的总和，包含 i、j 两点。</p>
@@ -1506,6 +1490,26 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>二分法</tag>
         <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC1281 整数的各位积和之差</title>
+    <url>/posts/4311ebc5/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数 n，请你帮忙计算并返回该整数各位数字之积与各位数字之和的差。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>用到的库函数：<br>to_string(): Convert numerical value to string</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subtractProductAndSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> mul = <span class="hljs-number">1</span>, sum = <span class="hljs-number">0</span>;<br>        string num = <span class="hljs-built_in">to_string</span>(n);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : num) &#123;<br>            sum += i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            mul *= i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> mul - sum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>把整数转换成字符串字面值，然后对于字符串，使用基于范围的 for 循环，进行计算。</p>
+<p><strong>附录</strong></p>
+<p><img src="http://www.asciitable.com/index/asciifull.gif" alt="Ascii Table"></p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1626,6 +1630,22 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>HJ19 字符串排序</title>
+    <url>/posts/48639b35/</url>
+    <content><![CDATA[<p>给定 n 个字符串，请对 n 个字符串按照字典序排列。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    vector&lt;string&gt; v;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        string str;<br>        cin &gt;&gt; str;<br>        v.<span class="hljs-built_in">push_back</span>(str);<br>    &#125;<br>    <span class="hljs-built_in">sort</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), cmp);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> word : v)<br>        cout &lt;&lt; word &lt;&lt; endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>一个坑是 while (n—)里面的 cin &gt;&gt; str，我本来写的是 getline 结果发现总是输入输出有问题。我突然想起来以前的笔记，cin&gt;&gt;和 getline 混用时的大坑。但是这里比那个写的还要复杂一点，因为不是严格混用。最后我还是改成 cin&gt;&gt;str 了，有时间再慢慢研究 getline 到底怎么用</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HJ2 计算某字母出现次数</title>
     <url>/posts/c680c3f7/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>写出一个程序，接受一个由字母、数字和空格组成的字符串，和一个字母，然后输出输入字符串中该字母的出现次数。不区分大小写，字符串长度小于 500。</p>
@@ -1653,22 +1673,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HJ19 字符串排序</title>
-    <url>/posts/48639b35/</url>
-    <content><![CDATA[<p>给定 n 个字符串，请对 n 个字符串按照字典序排列。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    vector&lt;string&gt; v;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        string str;<br>        cin &gt;&gt; str;<br>        v.<span class="hljs-built_in">push_back</span>(str);<br>    &#125;<br>    <span class="hljs-built_in">sort</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), cmp);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> word : v)<br>        cout &lt;&lt; word &lt;&lt; endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>一个坑是 while (n—)里面的 cin &gt;&gt; str，我本来写的是 getline 结果发现总是输入输出有问题。我突然想起来以前的笔记，cin&gt;&gt;和 getline 混用时的大坑。但是这里比那个写的还要复杂一点，因为不是严格混用。最后我还是改成 cin&gt;&gt;str 了，有时间再慢慢研究 getline 到底怎么用</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -2034,11 +2038,11 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ80 整型数组合并</title>
-    <url>/posts/1190643a/</url>
-    <content><![CDATA[<p>题目：将两个整型数组按照升序合并，并且过滤掉重复数组元素。输出时相邻两数之间没有空格。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> N, M;<br><br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; N) &#123;<br>        set&lt;<span class="hljs-keyword">int</span>&gt; uset;<br>        <span class="hljs-keyword">while</span> (N--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        cin &gt;&gt; M;<br>        <span class="hljs-keyword">while</span> (M--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; num : uset) cout &lt;&lt; num;<br>        cout &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>一大组两小组数据的输入方法：对第一小组进行循环的判断，循环中单独输入第二小组。</p>
+    <title>HJ8 合并表记录</title>
+    <url>/posts/6ce2f9f1/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>数据表记录包含表索引和数值（int 范围的正整数），请对表索引相同的记录进行合并，即将相同索引的数值进行求和运算，输出按照 key 值升序进行输出。</p>
+<h2 id="解法：map"><a href="#解法：map" class="headerlink" title="解法：map"></a>解法：map</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; iimap;<br>    <span class="hljs-keyword">int</span> key, value;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        cin &gt;&gt; key &gt;&gt; value;<br>        iimap[key] += value;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = iimap.<span class="hljs-built_in">begin</span>(); it != iimap.<span class="hljs-built_in">end</span>(); ++it)<br>        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -2049,11 +2053,11 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ8 合并表记录</title>
-    <url>/posts/6ce2f9f1/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>数据表记录包含表索引和数值（int 范围的正整数），请对表索引相同的记录进行合并，即将相同索引的数值进行求和运算，输出按照 key 值升序进行输出。</p>
-<h2 id="解法：map"><a href="#解法：map" class="headerlink" title="解法：map"></a>解法：map</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; iimap;<br>    <span class="hljs-keyword">int</span> key, value;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        cin &gt;&gt; key &gt;&gt; value;<br>        iimap[key] += value;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = iimap.<span class="hljs-built_in">begin</span>(); it != iimap.<span class="hljs-built_in">end</span>(); ++it)<br>        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+    <title>HJ80 整型数组合并</title>
+    <url>/posts/1190643a/</url>
+    <content><![CDATA[<p>题目：将两个整型数组按照升序合并，并且过滤掉重复数组元素。输出时相邻两数之间没有空格。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> N, M;<br><br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; N) &#123;<br>        set&lt;<span class="hljs-keyword">int</span>&gt; uset;<br>        <span class="hljs-keyword">while</span> (N--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        cin &gt;&gt; M;<br>        <span class="hljs-keyword">while</span> (M--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; num : uset) cout &lt;&lt; num;<br>        cout &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>一大组两小组数据的输入方法：对第一小组进行循环的判断，循环中单独输入第二小组。</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -2096,6 +2100,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>HJ9 提取不重复的整数</title>
+    <url>/posts/2d4ad067/</url>
+    <content><![CDATA[<p>输入一个 int 型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。保证输入的整数最后一位不是 0。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    string s = <span class="hljs-built_in">to_string</span>(n);<br>    <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br><br>    string res;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s)<br>        <span class="hljs-keyword">if</span> (res.<span class="hljs-built_in">find</span>(c) == string::npos)<br>            res += c;<br><br>    cout &lt;&lt; <span class="hljs-built_in">stoi</span>(res);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HJ89 密码强度等级</title>
     <url>/posts/459768b1/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>密码按如下规则进行计分，并根据不同的得分为密码进行安全等级划分。</p>
@@ -2109,20 +2127,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p>对应输出为：<br>VERY_SECURE<br>SECURE,<br>VERY_STRONG,<br>STRONG,<br>AVERAGE,<br>WEAK,<br>VERY_WEAK,</p>
 <p>请根据输入的密码字符串，进行安全评定。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(cin, str)) &#123;<br>        <span class="hljs-keyword">int</span> score = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> len = str.<span class="hljs-built_in">length</span>();<br>        <span class="hljs-keyword">int</span> abc = <span class="hljs-number">0</span>, ABC = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> number = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> symbol = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : str) &#123;<br>            <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) abc++;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>) ABC++;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;9&#x27;</span>) number++;<br>            <span class="hljs-keyword">else</span> symbol++;<br>        &#125;<br><br>        <span class="hljs-comment">// rule 1</span><br>        <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">4</span>) score += <span class="hljs-number">5</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">7</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">25</span>;<br><br>        <span class="hljs-comment">// rule 2</span><br>        <span class="hljs-keyword">if</span> (abc + ABC == <span class="hljs-number">0</span>) score += <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (abc == <span class="hljs-number">0</span> || ABC == <span class="hljs-number">0</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">20</span>;<br><br>        <span class="hljs-comment">// rule 3</span><br>        <span class="hljs-keyword">if</span> (number == <span class="hljs-number">0</span>) score += <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (number == <span class="hljs-number">1</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">20</span>;<br><br>        <span class="hljs-comment">// rule 4</span><br>        <span class="hljs-keyword">if</span> (symbol == <span class="hljs-number">0</span>) score += <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (symbol == <span class="hljs-number">1</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">25</span>;<br><br>        <span class="hljs-comment">// rule 5</span><br>        <span class="hljs-keyword">if</span> (abc + ABC != <span class="hljs-number">0</span> &amp;&amp; number != <span class="hljs-number">0</span> &amp;&amp; symbol == <span class="hljs-number">0</span>) score += <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (abc != <span class="hljs-number">0</span> &amp;&amp; ABC != <span class="hljs-number">0</span> &amp;&amp; number != <span class="hljs-number">0</span> &amp;&amp; symbol != <span class="hljs-number">0</span>) score += <span class="hljs-number">5</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (abc + ABC != <span class="hljs-number">0</span> &amp;&amp; number != <span class="hljs-number">0</span> &amp;&amp; symbol != <span class="hljs-number">0</span>) score += <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">90</span>) cout &lt;&lt; <span class="hljs-string">&quot;VERY_SECURE&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">80</span>) cout &lt;&lt; <span class="hljs-string">&quot;SECURE&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">70</span>) cout &lt;&lt; <span class="hljs-string">&quot;VERY_STRONG&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">60</span>) cout &lt;&lt; <span class="hljs-string">&quot;STRONG&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">50</span>) cout &lt;&lt; <span class="hljs-string">&quot;AVERAGE&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">20</span>) cout &lt;&lt; <span class="hljs-string">&quot;WEAK&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;VERY_WEAK&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HJ9 提取不重复的整数</title>
-    <url>/posts/2d4ad067/</url>
-    <content><![CDATA[<p>输入一个 int 型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。保证输入的整数最后一位不是 0。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    string s = <span class="hljs-built_in">to_string</span>(n);<br>    <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br><br>    string res;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s)<br>        <span class="hljs-keyword">if</span> (res.<span class="hljs-built_in">find</span>(c) == string::npos)<br>            res += c;<br><br>    cout &lt;&lt; <span class="hljs-built_in">stoi</span>(res);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -2570,101 +2574,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>ACM模式下C++标准输入输出惯用法汇总</title>
-    <url>/posts/dc62c34d/</url>
-    <content><![CDATA[<h2 id="引言：从核心代码到-ACM"><a href="#引言：从核心代码到-ACM" class="headerlink" title="引言：从核心代码到 ACM"></a>引言：从核心代码到 ACM</h2><p>现在主流的在线编程环境分为两种：核心代码模式和 ACM 模式。</p>
-<p>核心代码模式顾名思义就是，测试用的数据已经放入容器里，你只负责写出核心逻辑，系统自动进行调用。LeetCode 就是用的这种。</p>
-<p>而在 ACM 程序设计竞赛中，一道题目的所有测试数据是放在一个文本文件中，选手将一道题目的程序提交给评判系统运行，程序从该文件中读取测试数据，再把运行结果输出到另一个文本文件中。系统把输出文件与标准答案比对，来评判程序编写得正确与否。ACM 现场赛采用的输入输出形式有三种：</p>
-<ol>
-<li>文件输入、标准输出；</li>
-<li>文件输入、文件输出；</li>
-<li>标准输入，标准输出。</li>
-</ol>
-<p>所谓 ACM 模式就是自己构造输入，自己把要需要处理的容器填充好，OJ 不会给你任何代码，包括 include 哪些文件都要自己写，最后再自己控制返回数据的格式。ACM 竞赛、POJ 和部分公司笔试采取这种模式。Web 形式的 ACM 程序设计在线评判系统一般采用标准输入和标准输出，</p>
-<p>从核心代码到 ACM 模式一般需要提前适应自己亲手处理输入输出的过程，但实际上 ACM 模式输入输出语句的模板化也比较严重，本文尝试对其惯用法进行汇总。</p>
-<h2 id="四种基本输入模式"><a href="#四种基本输入模式" class="headerlink" title="四种基本输入模式"></a>四种基本输入模式</h2><h3 id="一组输入数据"><a href="#一组输入数据" class="headerlink" title="一组输入数据"></a>一组输入数据</h3><p>示例：整数求和<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    cin &gt;&gt; a &gt;&gt; b;<br>    cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="多组输入数据：无限组，直到-EOF"><a href="#多组输入数据：无限组，直到-EOF" class="headerlink" title="多组输入数据：无限组，直到 EOF"></a>多组输入数据：无限组，直到 EOF</h3><p>有的题目不指定输入多少组，也没有给出结束的条件，要求处理所有数据，这时用文件尾的 EOF 标记。好像 EOF 等于-1 来着。</p>
-<p>示例：A + B Problem (1)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b)<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>注：cin 读入发生错误时返回 0，否则返回 cin 的地址。</p>
-<p>或者</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(_dates_) != EOF)&#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="多组输入数据：无限组，直到某种结束标志"><a href="#多组输入数据：无限组，直到某种结束标志" class="headerlink" title="多组输入数据：无限组，直到某种结束标志"></a>多组输入数据：无限组，直到某种结束标志</h3><p>不说明多少组，以某特殊输入为结束标志。</p>
-<p>示例：A + B Problem (2)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085</a></p>
-<p>这个题目是以<code>0 0</code>为标志代表输入结束。反过来想，只要 a 和 b 不同时为假，即至少有一个真，就维持输入状态。很容易写出循环条件为<code>while(cin&gt;&gt;a&gt;&gt;b&amp;&amp;(a||b))</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b &amp;&amp; (a || b)) &#123;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="多组输入数据：有限组，输入完就结束"><a href="#多组输入数据：有限组，输入完就结束" class="headerlink" title="多组输入数据：有限组，输入完就结束"></a>多组输入数据：有限组，输入完就结束</h3><p>开始输入一个 N，接下来是 N 组数据</p>
-<p>示例：A + B Problem (3)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b, n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        cin &gt;&gt; a &gt;&gt; b;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="三种字符串输入"><a href="#三种字符串输入" class="headerlink" title="三种字符串输入"></a>三种字符串输入</h2><h3 id="每个字符串中不含空格、制表符及回车"><a href="#每个字符串中不含空格、制表符及回车" class="headerlink" title="每个字符串中不含空格、制表符及回车"></a>每个字符串中不含空格、制表符及回车</h3><p>这种情况使用 scanf_s(“%s”, str, buffersize)是再好不过的了。比如，测试数据中只有两个字符串：abc def。要读入 abc 与 def，可以这样写：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br>    <span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, str, <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">unsigned</span>&gt;_countof(str));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>知识点：</p>
-<p>（1）scanf_s 用法：在用 VS2019 进行 C++编程时，输入函数要写成 scanf_s。传统的 scanf()在读取时不检查边界，所以可能会造成内存访问越界，比如分配了 5 字节的空间但是读入了 10 字节。多出来的部分会被写到别的空间上去。而在调用 scanf_s 时，必须提供一个数字以表明最多读取多少位字符。读取单个字符也需要限定长度，否则编译器会报错。</p>
-<p>使用示范：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> s[<span class="hljs-number">10</span>];<br><span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, s, (<span class="hljs-keyword">unsigned</span>)_countof(s));<br></code></pre></td></tr></table></figure>
-<p>（2）_countof，Windows 宏，用来计算一个静态分配的数组中的元素的个数用法为_countof(array)。另外，确保 array 是一个静态分配的数组，而不是一个指针。如果 array 是一个指针，在 C 语言中_countof 会产生错误的结果；在 C++中_countof 会产生编译错误。</p>
-<p>_countof 和 sizeof 的区别：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> arr[<span class="hljs-number">20</span>], * p;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sizeof(arr) = %d bytes\n&quot;</span>, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;_countof(arr) = %d elements\n&quot;</span>, _countof(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, _countof(p));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sizeof(arr) = 80 bytes<br>_countof(arr) = 20 elements<br>请按任意键继续. . .<br></code></pre></td></tr></table></figure>
-<p>（3）The size parameter is of type unsigned, not size_t. Use a static cast to convert a size_t value to unsigned for 64-bit build configurations.</p>
-<p>参考阅读：<br><a href="https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160">https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160</a></p>
-<h3 id="字符串中含有空格、制表符，但不含回车"><a href="#字符串中含有空格、制表符，但不含回车" class="headerlink" title="字符串中含有空格、制表符，但不含回车"></a>字符串中含有空格、制表符，但不含回车</h3><p>对于这种情况，scanf_s(“%s”, str)无能为力，因为 scanf_s 用空格、制表符及回车作为字符串的分界符。对于一个含有空格、制表符及回车的字符串，如果用 scanf_s(“%s”,str)来读，将读到若干个字符串，这个字符串被 scanf_s 分开了。可以用另外一个函数 gets_s，gets_s 函数用回车作为字符串的分界符。比如，有以下的一个字符串：”Hello world!”。要读入这个字符串，这样写：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br><span class="hljs-built_in">gets_s</span>(str);<br></code></pre></td></tr></table></figure>
-<p>gets_s 返回 NULL 时表示出错或抵达 end of file。</p>
-<h3 id="字符串中含有回车"><a href="#字符串中含有回车" class="headerlink" title="字符串中含有回车"></a>字符串中含有回车</h3><p>这种情况下如果没有题目的说明，程序无法知道哪里是字符串的分界。则用 scanf(“%c”,&amp;ch)来读，一边读，一边判断分界条件是否满足，如果满足，则把当前读到的东西存到一个字符串中。</p>
-<p>输入部分小结：</p>
-<ul>
-<li>如果用 string buf;来保存：getline(cin, buf);</li>
-<li>如果用 char buf[255];来保存：cin.getline(buf, 255);</li>
-<li>多个字符串之间用一个或多个空格分隔：scanf(“%s %s”, str1, str2);</li>
-<li>字符串之间用回车作分隔：gets(str1); gets(str2);</li>
-<li>通常情况下，接受短字符用 scanf，接受长字符用 gets。</li>
-<li>getchar 函数每次只接受一个字符，经常 c = getchar()这样来使用。</li>
-<li>getline 函数可以接受用户的输入的字符直到已达指定个数或者用户输入了特定的字符。</li>
-<li>C++的输入输出流用起来比较方便，但速度较 C 慢得多。在输入输出量巨大时，用 C++可能超时，应改为采用 C 的输入输出。</li>
-</ul>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>在初次接触 ACM 程序设计竞赛时，可能认为：样例中都是输入数据和输入数据在一起，输出结果和输出结果在一起，可能会开个数组，把每组的结果存起来，等输入完了再一起输出。当遇到不知有多少组测试数据的题，就难以处理了。其实在 ACM 程序设计竞赛中，输入数据和输出数据是分别在两个不同的文件中进行的，程序的输入和输出是相互独立的，所以读入一组数据就输出一组结果，跟先读入所有数据再输出所有的结果，效果是完全一样的。因此，每当处理完一组测试数据，就应当按题目要求进行相应的输出操作。而不必将所有结果储存起来一起输出。在处理输出时，一般要注意：每行输出均以回车符结束，包括最后一行。</p>
-<p>几乎所有题目都是换行输出，而有的题目还要求空（去声）行输出。</p>
-<h3 id="关于空（平声）行"><a href="#关于空（平声）行" class="headerlink" title="关于空（平声）行"></a>关于空（平声）行</h3><p>很多题目都要求在输出数据的恰当位置加空行。一个空行就是一个单独的”\n”。<br>这里，有的题目说：“After each test case, you should output one blank line”，而有的题目说：“Between each test case, you should ouput one blank line”。要注意 After 和 Between 的区别。<br>输出有不同的格式要求，如果多了或少了空行的话经常会出现 Presentation Error，而且 OJ 很多时候还判断不出来输出格式错误，就简单的判为 Wrong Answer，所以输出格式一定要注意。</p>
-<p>示例：A + B Problem (4)</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n, sum, a;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; n &amp;&amp; n != <span class="hljs-number">0</span>) &#123;<br>        sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n--) &#123;<br>            cin &gt;&gt; a;<br>            sum += a;<br>        &#125;<br>        cout &lt;&lt; sum &lt;&lt; endl;<br>        cout &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">3<br>1<br>2<br>3<br>6<br><br>3<br>1 2 3<br>6<br><br>3<br>1 2 3 4<br>6<br></code></pre></td></tr></table></figure>
-<h3 id="字符串输出后缀技巧"><a href="#字符串输出后缀技巧" class="headerlink" title="字符串输出后缀技巧"></a>字符串输出后缀技巧</h3><p>字符串要输出后面的一部分没必要重新搞一个，可以用以下方式：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">cout &lt;&lt; s + <span class="hljs-number">2</span> &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
-<p>这样就会从 s[2]开始输出。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>CPP</category>
-      </categories>
-      <tags>
-        <tag>STL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++中string::find的五种写法</title>
-    <url>/posts/8b37e32e/</url>
-    <content><![CDATA[<p><code>find()</code> 在一个字符串中查找一个指定的单个字符或字符数组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，就返回 string::npos。</p>
-<p><code>find_first_of()</code> 在一个目标串中进行查找，返回值是第一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
-<p><code>find_last_of()</code> 在一个目标串中进行查找，返回最后一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
-<p><code>find_first_not_of()</code> 在一个目标串中进行查找，返回第一个与指定字符组中任何字符都不匹配的元素位置。如果找不到那样的元素则返回 npos。</p>
-<p><code>find_last_not_of()</code> 在一个目标串中进行查找，返回下标值最大的与指定字符组中任何字符都不匹配的元素的位置。若找不到那样的元素则返回 npos。</p>
-<hr>
-<p><code>rfind()</code> 对一个串从尾至头查找一个指定的单个字符或字符组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，则返回 npos。</p>
-<p><code>find(string, int)</code> 第一个参数用来指示要查找的字符，第二个参数用来表示从字符串的何处开始查找子串（默认的查找位置是 0）。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>CPP</category>
-      </categories>
-      <tags>
-        <tag>STL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++中的NULL和nullptr</title>
     <url>/posts/45f33b90/</url>
     <content><![CDATA[<p>观察下面一段程序。</p>
@@ -2770,6 +2679,101 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++中string::find的五种写法</title>
+    <url>/posts/8b37e32e/</url>
+    <content><![CDATA[<p><code>find()</code> 在一个字符串中查找一个指定的单个字符或字符数组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，就返回 string::npos。</p>
+<p><code>find_first_of()</code> 在一个目标串中进行查找，返回值是第一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
+<p><code>find_last_of()</code> 在一个目标串中进行查找，返回最后一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
+<p><code>find_first_not_of()</code> 在一个目标串中进行查找，返回第一个与指定字符组中任何字符都不匹配的元素位置。如果找不到那样的元素则返回 npos。</p>
+<p><code>find_last_not_of()</code> 在一个目标串中进行查找，返回下标值最大的与指定字符组中任何字符都不匹配的元素的位置。若找不到那样的元素则返回 npos。</p>
+<hr>
+<p><code>rfind()</code> 对一个串从尾至头查找一个指定的单个字符或字符组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，则返回 npos。</p>
+<p><code>find(string, int)</code> 第一个参数用来指示要查找的字符，第二个参数用来表示从字符串的何处开始查找子串（默认的查找位置是 0）。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>CPP</category>
+      </categories>
+      <tags>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ACM模式下C++标准输入输出惯用法汇总</title>
+    <url>/posts/dc62c34d/</url>
+    <content><![CDATA[<h2 id="引言：从核心代码到-ACM"><a href="#引言：从核心代码到-ACM" class="headerlink" title="引言：从核心代码到 ACM"></a>引言：从核心代码到 ACM</h2><p>现在主流的在线编程环境分为两种：核心代码模式和 ACM 模式。</p>
+<p>核心代码模式顾名思义就是，测试用的数据已经放入容器里，你只负责写出核心逻辑，系统自动进行调用。LeetCode 就是用的这种。</p>
+<p>而在 ACM 程序设计竞赛中，一道题目的所有测试数据是放在一个文本文件中，选手将一道题目的程序提交给评判系统运行，程序从该文件中读取测试数据，再把运行结果输出到另一个文本文件中。系统把输出文件与标准答案比对，来评判程序编写得正确与否。ACM 现场赛采用的输入输出形式有三种：</p>
+<ol>
+<li>文件输入、标准输出；</li>
+<li>文件输入、文件输出；</li>
+<li>标准输入，标准输出。</li>
+</ol>
+<p>所谓 ACM 模式就是自己构造输入，自己把要需要处理的容器填充好，OJ 不会给你任何代码，包括 include 哪些文件都要自己写，最后再自己控制返回数据的格式。ACM 竞赛、POJ 和部分公司笔试采取这种模式。Web 形式的 ACM 程序设计在线评判系统一般采用标准输入和标准输出，</p>
+<p>从核心代码到 ACM 模式一般需要提前适应自己亲手处理输入输出的过程，但实际上 ACM 模式输入输出语句的模板化也比较严重，本文尝试对其惯用法进行汇总。</p>
+<h2 id="四种基本输入模式"><a href="#四种基本输入模式" class="headerlink" title="四种基本输入模式"></a>四种基本输入模式</h2><h3 id="一组输入数据"><a href="#一组输入数据" class="headerlink" title="一组输入数据"></a>一组输入数据</h3><p>示例：整数求和<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    cin &gt;&gt; a &gt;&gt; b;<br>    cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="多组输入数据：无限组，直到-EOF"><a href="#多组输入数据：无限组，直到-EOF" class="headerlink" title="多组输入数据：无限组，直到 EOF"></a>多组输入数据：无限组，直到 EOF</h3><p>有的题目不指定输入多少组，也没有给出结束的条件，要求处理所有数据，这时用文件尾的 EOF 标记。好像 EOF 等于-1 来着。</p>
+<p>示例：A + B Problem (1)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b)<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注：cin 读入发生错误时返回 0，否则返回 cin 的地址。</p>
+<p>或者</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(_dates_) != EOF)&#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="多组输入数据：无限组，直到某种结束标志"><a href="#多组输入数据：无限组，直到某种结束标志" class="headerlink" title="多组输入数据：无限组，直到某种结束标志"></a>多组输入数据：无限组，直到某种结束标志</h3><p>不说明多少组，以某特殊输入为结束标志。</p>
+<p>示例：A + B Problem (2)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085</a></p>
+<p>这个题目是以<code>0 0</code>为标志代表输入结束。反过来想，只要 a 和 b 不同时为假，即至少有一个真，就维持输入状态。很容易写出循环条件为<code>while(cin&gt;&gt;a&gt;&gt;b&amp;&amp;(a||b))</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b &amp;&amp; (a || b)) &#123;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="多组输入数据：有限组，输入完就结束"><a href="#多组输入数据：有限组，输入完就结束" class="headerlink" title="多组输入数据：有限组，输入完就结束"></a>多组输入数据：有限组，输入完就结束</h3><p>开始输入一个 N，接下来是 N 组数据</p>
+<p>示例：A + B Problem (3)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b, n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        cin &gt;&gt; a &gt;&gt; b;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="三种字符串输入"><a href="#三种字符串输入" class="headerlink" title="三种字符串输入"></a>三种字符串输入</h2><h3 id="每个字符串中不含空格、制表符及回车"><a href="#每个字符串中不含空格、制表符及回车" class="headerlink" title="每个字符串中不含空格、制表符及回车"></a>每个字符串中不含空格、制表符及回车</h3><p>这种情况使用 scanf_s(“%s”, str, buffersize)是再好不过的了。比如，测试数据中只有两个字符串：abc def。要读入 abc 与 def，可以这样写：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br>    <span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, str, <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">unsigned</span>&gt;_countof(str));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>知识点：</p>
+<p>（1）scanf_s 用法：在用 VS2019 进行 C++编程时，输入函数要写成 scanf_s。传统的 scanf()在读取时不检查边界，所以可能会造成内存访问越界，比如分配了 5 字节的空间但是读入了 10 字节。多出来的部分会被写到别的空间上去。而在调用 scanf_s 时，必须提供一个数字以表明最多读取多少位字符。读取单个字符也需要限定长度，否则编译器会报错。</p>
+<p>使用示范：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> s[<span class="hljs-number">10</span>];<br><span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, s, (<span class="hljs-keyword">unsigned</span>)_countof(s));<br></code></pre></td></tr></table></figure>
+<p>（2）_countof，Windows 宏，用来计算一个静态分配的数组中的元素的个数用法为_countof(array)。另外，确保 array 是一个静态分配的数组，而不是一个指针。如果 array 是一个指针，在 C 语言中_countof 会产生错误的结果；在 C++中_countof 会产生编译错误。</p>
+<p>_countof 和 sizeof 的区别：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> arr[<span class="hljs-number">20</span>], * p;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sizeof(arr) = %d bytes\n&quot;</span>, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;_countof(arr) = %d elements\n&quot;</span>, _countof(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, _countof(p));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sizeof(arr) = 80 bytes<br>_countof(arr) = 20 elements<br>请按任意键继续. . .<br></code></pre></td></tr></table></figure>
+<p>（3）The size parameter is of type unsigned, not size_t. Use a static cast to convert a size_t value to unsigned for 64-bit build configurations.</p>
+<p>参考阅读：<br><a href="https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160">https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160</a></p>
+<h3 id="字符串中含有空格、制表符，但不含回车"><a href="#字符串中含有空格、制表符，但不含回车" class="headerlink" title="字符串中含有空格、制表符，但不含回车"></a>字符串中含有空格、制表符，但不含回车</h3><p>对于这种情况，scanf_s(“%s”, str)无能为力，因为 scanf_s 用空格、制表符及回车作为字符串的分界符。对于一个含有空格、制表符及回车的字符串，如果用 scanf_s(“%s”,str)来读，将读到若干个字符串，这个字符串被 scanf_s 分开了。可以用另外一个函数 gets_s，gets_s 函数用回车作为字符串的分界符。比如，有以下的一个字符串：”Hello world!”。要读入这个字符串，这样写：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br><span class="hljs-built_in">gets_s</span>(str);<br></code></pre></td></tr></table></figure>
+<p>gets_s 返回 NULL 时表示出错或抵达 end of file。</p>
+<h3 id="字符串中含有回车"><a href="#字符串中含有回车" class="headerlink" title="字符串中含有回车"></a>字符串中含有回车</h3><p>这种情况下如果没有题目的说明，程序无法知道哪里是字符串的分界。则用 scanf(“%c”,&amp;ch)来读，一边读，一边判断分界条件是否满足，如果满足，则把当前读到的东西存到一个字符串中。</p>
+<p>输入部分小结：</p>
+<ul>
+<li>如果用 string buf;来保存：getline(cin, buf);</li>
+<li>如果用 char buf[255];来保存：cin.getline(buf, 255);</li>
+<li>多个字符串之间用一个或多个空格分隔：scanf(“%s %s”, str1, str2);</li>
+<li>字符串之间用回车作分隔：gets(str1); gets(str2);</li>
+<li>通常情况下，接受短字符用 scanf，接受长字符用 gets。</li>
+<li>getchar 函数每次只接受一个字符，经常 c = getchar()这样来使用。</li>
+<li>getline 函数可以接受用户的输入的字符直到已达指定个数或者用户输入了特定的字符。</li>
+<li>C++的输入输出流用起来比较方便，但速度较 C 慢得多。在输入输出量巨大时，用 C++可能超时，应改为采用 C 的输入输出。</li>
+</ul>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>在初次接触 ACM 程序设计竞赛时，可能认为：样例中都是输入数据和输入数据在一起，输出结果和输出结果在一起，可能会开个数组，把每组的结果存起来，等输入完了再一起输出。当遇到不知有多少组测试数据的题，就难以处理了。其实在 ACM 程序设计竞赛中，输入数据和输出数据是分别在两个不同的文件中进行的，程序的输入和输出是相互独立的，所以读入一组数据就输出一组结果，跟先读入所有数据再输出所有的结果，效果是完全一样的。因此，每当处理完一组测试数据，就应当按题目要求进行相应的输出操作。而不必将所有结果储存起来一起输出。在处理输出时，一般要注意：每行输出均以回车符结束，包括最后一行。</p>
+<p>几乎所有题目都是换行输出，而有的题目还要求空（去声）行输出。</p>
+<h3 id="关于空（平声）行"><a href="#关于空（平声）行" class="headerlink" title="关于空（平声）行"></a>关于空（平声）行</h3><p>很多题目都要求在输出数据的恰当位置加空行。一个空行就是一个单独的”\n”。<br>这里，有的题目说：“After each test case, you should output one blank line”，而有的题目说：“Between each test case, you should ouput one blank line”。要注意 After 和 Between 的区别。<br>输出有不同的格式要求，如果多了或少了空行的话经常会出现 Presentation Error，而且 OJ 很多时候还判断不出来输出格式错误，就简单的判为 Wrong Answer，所以输出格式一定要注意。</p>
+<p>示例：A + B Problem (4)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n, sum, a;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; n &amp;&amp; n != <span class="hljs-number">0</span>) &#123;<br>        sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n--) &#123;<br>            cin &gt;&gt; a;<br>            sum += a;<br>        &#125;<br>        cout &lt;&lt; sum &lt;&lt; endl;<br>        cout &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">3<br>1<br>2<br>3<br>6<br><br>3<br>1 2 3<br>6<br><br>3<br>1 2 3 4<br>6<br></code></pre></td></tr></table></figure>
+<h3 id="字符串输出后缀技巧"><a href="#字符串输出后缀技巧" class="headerlink" title="字符串输出后缀技巧"></a>字符串输出后缀技巧</h3><p>字符串要输出后面的一部分没必要重新搞一个，可以用以下方式：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">cout &lt;&lt; s + <span class="hljs-number">2</span> &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+<p>这样就会从 s[2]开始输出。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>CPP</category>
+      </categories>
+      <tags>
+        <tag>STL</tag>
       </tags>
   </entry>
   <entry>
@@ -3699,6 +3703,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>OOP</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Git多平台换行符问题</title>
+    <url>/posts/acc4d763/</url>
+    <content><![CDATA[<p>参考资料</p>
+<p><a href="https://blog.csdn.net/ljheee/article/details/82946368">https://blog.csdn.net/ljheee/article/details/82946368</a></p>
+<p><a href="https://blog.csdn.net/qq_39994406/article/details/105723178?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/qq_39994406/article/details/105723178?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242</a></p>
+<p><a href="https://www.zhihu.com/question/50862500">https://www.zhihu.com/question/50862500</a></p>
+<p>具体问题</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">12776</span>@DESKTOP<span class="hljs-literal">-81NVB8G</span> MINGW64 ~/Documents/GITpractice/awesome_project (master)<br><span class="hljs-variable">$</span> git add README<br>warning: LF will be replaced by CRLF <span class="hljs-keyword">in</span> README.<br>The file will have its original line endings <span class="hljs-keyword">in</span> your working directory<br></code></pre></td></tr></table></figure>
+<p>解决方案</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> git config -<span class="hljs-literal">-global</span> core.autocrlf true<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>Linux</category>
+      </categories>
   </entry>
   <entry>
     <title>RE使用札记</title>
@@ -5479,28 +5500,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>单链表的长度</title>
-    <url>/posts/a7cf4814/</url>
-    <content><![CDATA[<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>思路</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1) Initialize count as 0<br>2) Initialize a node pointer, current = head.<br>3) Do following while current is not NULL<br>     a) count++;<br>     b) current = current -&gt; next<br>4) Return count<br></code></pre></td></tr></table></figure>
-<p>具体实现</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>    Node* current = head;<br>    <span class="hljs-keyword">while</span> (current != <span class="hljs-literal">NULL</span>) &#123;<br>        count++;<br>        current = current-&gt;next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h2><p>思路</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int getCount(head)<br>1) If head is NULL, return 0.<br>2) Else return 1 + getCount(head-&gt;next)<br></code></pre></td></tr></table></figure>
-<p>具体实现</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + <span class="hljs-built_in">getCount</span>(head-&gt;next);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/">https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/</a></p>
-<p>2021 年 2 月 8 日</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>双端队列的双链表实现</title>
     <url>/posts/42cde6b5/</url>
     <content><![CDATA[<p>头————尾（allows insert and delete at both ends）</p>
@@ -5543,6 +5542,28 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p><img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/03/DLL1.png" alt="dll"></p>
 <p>为什么传入尾结点与其他两者不太一样？观察上图容易发现，头结点和中间结点均有 4 条相关指针，而尾结点只有 3 条相关指针。当结点 D 准备被删除时，存放在类 D 中的 D-&gt;prev 和 D-&gt;next 都会自由，紧接着 C 成为事实上的新任尾结点，C-&gt;next=D-&gt;next=NULL，（因此时 D-&gt;prev 和 D-&gt;next 只是断开，还没有物理上清空，因此 D-&gt;next 的内容仍然是 NULL），直到 free(D)，至此，与 D 相关的一切（data、prev、next）才都被抹去。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/">https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单链表的长度</title>
+    <url>/posts/a7cf4814/</url>
+    <content><![CDATA[<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>思路</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1) Initialize count as 0<br>2) Initialize a node pointer, current = head.<br>3) Do following while current is not NULL<br>     a) count++;<br>     b) current = current -&gt; next<br>4) Return count<br></code></pre></td></tr></table></figure>
+<p>具体实现</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>    Node* current = head;<br>    <span class="hljs-keyword">while</span> (current != <span class="hljs-literal">NULL</span>) &#123;<br>        count++;<br>        current = current-&gt;next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h2><p>思路</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int getCount(head)<br>1) If head is NULL, return 0.<br>2) Else return 1 + getCount(head-&gt;next)<br></code></pre></td></tr></table></figure>
+<p>具体实现</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + <span class="hljs-built_in">getCount</span>(head-&gt;next);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/">https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/</a></p>
+<p>2021 年 2 月 8 日</p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -5959,6 +5980,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>gfg-选择排序</title>
+    <url>/posts/6d806d22/</url>
+    <content><![CDATA[<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif" alt=""></p>
+<p>性质<br>平均时间复杂度 О(n²)<br>最坏时间复杂度 О(n²)<br>最优时间复杂度 О(n²)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertionSort</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; arr)</span> </span>&#123;<br>    <span class="hljs-keyword">size_t</span> N = arr.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">size_t</span> i, j;<br>    <span class="hljs-keyword">int</span> key;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i != N; i++) &#123;<br>        key = arr[i];<br>        j = i - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; key) &#123;<br>            arr[j + <span class="hljs-number">1</span>] = arr[j];<br>            j--;<br>        &#125;<br>        arr[j + <span class="hljs-number">1</span>] = key;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>min 表示最小值的下标</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" alt=""><br>红色表示当前最小值，<br>黄色表示已排序序列，<br>蓝色表示当前位置。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>算法分析</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gfg-面试最常问的20个DP问题</title>
     <url>/posts/3d1859dd/</url>
     <content><![CDATA[<ol>
@@ -5990,23 +6028,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>gfg-选择排序</title>
-    <url>/posts/6d806d22/</url>
-    <content><![CDATA[<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif" alt=""></p>
-<p>性质<br>平均时间复杂度 О(n²)<br>最坏时间复杂度 О(n²)<br>最优时间复杂度 О(n²)</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertionSort</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; arr)</span> </span>&#123;<br>    <span class="hljs-keyword">size_t</span> N = arr.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">size_t</span> i, j;<br>    <span class="hljs-keyword">int</span> key;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i != N; i++) &#123;<br>        key = arr[i];<br>        j = i - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; key) &#123;<br>            arr[j + <span class="hljs-number">1</span>] = arr[j];<br>            j--;<br>        &#125;<br>        arr[j + <span class="hljs-number">1</span>] = key;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>min 表示最小值的下标</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" alt=""><br>红色表示当前最小值，<br>黄色表示已排序序列，<br>蓝色表示当前位置。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>算法分析</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -6048,88 +6069,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单例模式</title>
-    <url>/posts/f1601c3e/</url>
-    <content><![CDATA[<h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p>单例模式是一种创建型设计模式，让你能够保证一个类只有一个实例，并提供一个访问该实例的全局节点。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>单例模式同时解决了两个问题，所以违反了<strong>单一职责原则</strong>：</p>
-<ol>
-<li><p>保证一个类只有一个实例。为什么会有人想要控制一个类所拥有的实例数量？最常见的原因是控制某些共享资源（例如数据库或文件）的访问权限。它的运作方式是这样的：如果你创建了一个对象，同时过一会儿后你决定再创建一个新对象，此时你会获得之前已创建的对象，而不是一个新对象。注意，普通构造函数无法实现上述行为，因为构造函数的设计决定了它必须总是返回一个新对象。</p>
-<p><img src="https://refactoringguru.cn/images/patterns/content/singleton/singleton-comic-1-zh.png?id=70da542e5e19f0df3dfc" alt=""></p>
-<p>客户端甚至可能没有意识到它们一直都在使用同一个对象。</p>
-</li>
-<li><p>为该实例提供一个全局访问节点。还记得你（好吧，其实是我自己）用过的那些存储重要对象的全局变量吗？它们在使用上十分方便，但同时也非常不安全，因为任何代码都有可能覆盖掉那些变量的内容，从而引发程序崩溃。和全局变量一样，单例模式也允许在程序的任何地方访问特定对象。但是它可以保护该实例不被其他代码覆盖。还有一点：你不会希望解决同一个问题的代码分散在程序各处的。因此更好的方式是将其放在同一个类中，特别是当其他代码已经依赖这个类时更应该如此。</p>
-</li>
-</ol>
-<p>如今，单例模式已经变得非常流行，以至于人们会将只解决上文描述中任意一个问题的东西称为单例。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>所有单例的实现都包含以下两个相同的步骤：</p>
-<ul>
-<li>将默认构造函数设为私有，防止其他对象使用单例类的 new 运算符。</li>
-<li>新建一个静态构建方法作为构造函数。该函数会 “偷偷” 调用私有构造函数来创建对象，并将其保存在一个静态成员变量中。此后所有对于该函数的调用都将返回这一缓存对象。</li>
-</ul>
-<p>如果你的代码能够访问单例类，那它就能调用单例类的静态方法。无论何时调用该方法，它总是会返回相同的对象。</p>
-<h2 id="适合应用场景"><a href="#适合应用场景" class="headerlink" title="适合应用场景"></a>适合应用场景</h2><p><strong>如果程序中的某个类对于所有客户端只有一个可用的实例，可以使用单例模式。</strong></p>
-<p>单例模式禁止通过除特殊构建方法以外的任何方式来创建自身类的对象。该方法可以创建一个新对象，但如果该对象已经被创建，则返回已有的对象。</p>
-<p><strong>如果你需要更加严格地控制全局变量，可以使用单例模式。</strong></p>
-<p>单例模式与全局变量不同，它保证类只存在一个实例。除了单例类自己以外，无法通过任何方式替换缓存的实例。</p>
-<p>请注意，你可以随时调整限制并设定生成单例实例的数量，只需修改获取实例方法，即 getInstance 中的代码即可实现。</p>
-<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
-<li>在类中添加一个私有静态成员变量用于保存单例实例。</li>
-<li>声明一个公有静态构建方法用于获取单例实例。</li>
-<li>在静态方法中实现 “延迟初始化”。该方法会在首次被调用时创建一个新对象，并将其存储在静态成员变量中。此后该方法每次被调用时都返回该实例。</li>
-<li>将类的构造函数设为私有。类的静态方法仍能调用构造函数，但是其他对象不能调用。</li>
-<li>检查客户端代码，将对单例的构造函数的调用替换为对其静态构建方法的调用。</li>
-</ol>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p><strong>优点</strong></p>
-<ul>
-<li>你可以保证一个类只有一个实例。</li>
-<li>你获得了一个指向该实例的全局访问节点。</li>
-<li>仅在首次请求单例对象时对其进行初始化。</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>违反了单一职责原则。该模式同时解决了两个问题。</li>
-<li>单例模式可能掩盖不良设计，比如程序各组件之间相互了解过多等。</li>
-<li>该模式在多线程环境下需要进行特殊处理，避免多个线程多次创建单例对象。</li>
-<li>单例的客户端代码单元测试可能会比较困难，因为许多测试框架以基于继承的方式创建模拟对象。由于单例类的构造函数是私有的，而且绝大部分语言无法重写静态方法，所以你需要想出仔细考虑模拟单例的方法。要么干脆不编写测试代码，或者不使用单例模式。</li>
-</ul>
-<h2 id="与其他模式的关系"><a href="#与其他模式的关系" class="headerlink" title="与其他模式的关系"></a>与其他模式的关系</h2><ul>
-<li><p>外观模式类通常可以转换为单例模式类，因为在大部分情况下一个外观对象就足够了。</p>
-</li>
-<li><p>如果你能将对象的所有共享状态简化为一个享元对象，那么享元模式就和单例类似了。但这两个模式有两个根本性的不同。</p>
-<ol>
-<li>只会有一个单例实体，但是享元类可以有多个实体，各实体的内在状态也可以不同。</li>
-<li>单例对象可以是可变的。享元对象是不可变的。</li>
-</ol>
-</li>
-<li><p>抽象工厂模式、生成器模式和原型模式都可以用单例来实现。</p>
-</li>
-</ul>
-<h2 id="一个-C-实现"><a href="#一个-C-实现" class="headerlink" title="一个 C++实现"></a>一个 C++实现</h2><p>许多开发者将单例模式视为一种反模式。因此它在 C++ 代码中的使用频率正在逐步减少。</p>
-<ol>
-<li>Define a private static attribute in the “single instance” class</li>
-<li>Define a public static accessor function in the class</li>
-<li>Do “lazy initialization” (即按需创建) in the accessor function</li>
-<li>Define all constructors to be protected or private</li>
-<li>Clients may only use the accessor function to manipulate the Singleton</li>
-<li>Inheritance can be supported, but static functions may not be overridden. The base class must be declared a friend of the derived class (in order to access the protected constructor).</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Number</span> &#123;</span><br>    <span class="hljs-comment">// 1. Define a private static attribute</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">static</span> string type;<br>    <span class="hljs-keyword">static</span> Number* inst;<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-keyword">int</span> value = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 4. Define all ctors to be protected</span><br>    <span class="hljs-built_in">Number</span>() &#123; cout &lt;&lt; <span class="hljs-string">&quot;:ctor: &quot;</span>; &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 2. Define a public static accessor func</span><br>    <span class="hljs-function"><span class="hljs-keyword">static</span> Number* <span class="hljs-title">instance</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setType</span><span class="hljs-params">(string t)</span> </span>&#123;<br>        type = t;<br>        <span class="hljs-keyword">delete</span> inst;<br>        inst = <span class="hljs-literal">nullptr</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> in)</span> </span>&#123; value = in; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getValue</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> value; &#125;<br>&#125;;<br><br>string Number::type = <span class="hljs-string">&quot;decimal&quot;</span>;<br>Number* Number::inst = <span class="hljs-literal">nullptr</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Octal</span> :</span> <span class="hljs-keyword">public</span> Number &#123;<br>    <span class="hljs-comment">// 6. Inheritance can be supported</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Number</span>;</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> in)</span> </span>&#123;<br>        <span class="hljs-keyword">char</span> buf[<span class="hljs-number">10</span>];<br>        <span class="hljs-built_in">sprintf_s</span>(buf, <span class="hljs-string">&quot;%o&quot;</span>, in);<br>        <span class="hljs-built_in">sscanf_s</span>(buf, <span class="hljs-string">&quot;%d&quot;</span>, &amp;value);<br>    &#125;<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-built_in">Octal</span>() &#123;&#125;<br>&#125;;<br><br><span class="hljs-function">Number* <span class="hljs-title">Number::instance</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!inst)<br>        <span class="hljs-comment">// 3. Do &quot;lazy initialization&quot; in the accessor function</span><br>        <span class="hljs-keyword">if</span> (type == <span class="hljs-string">&quot;octal&quot;</span>) inst = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Octal</span>();<br>        <span class="hljs-keyword">else</span> inst = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Number</span>();<br>    <span class="hljs-keyword">return</span> inst;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">//Number myInstance; // -error: cannot access protected constructor</span><br>    <span class="hljs-comment">// 5. Clients may only use the accessor function to manipulate the Singleton</span><br>    Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">setValue</span>(<span class="hljs-number">42</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;value is &quot;</span> &lt;&lt; Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">getValue</span>() &lt;&lt; endl; <span class="hljs-comment">// 42</span><br>    Number::<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;octal&quot;</span>);<br>    Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">setValue</span>(<span class="hljs-number">64</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;value is &quot;</span> &lt;&lt; Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">getValue</span>() &lt;&lt; endl; <span class="hljs-comment">// 100</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="Singleton-in-C-Before-and-after"><a href="#Singleton-in-C-Before-and-after" class="headerlink" title="Singleton in C++: Before and after"></a>Singleton in C++: Before and after</h2><p><strong>Before</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalClass</span> &#123;</span><br>    <span class="hljs-keyword">int</span> m_value;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">GlobalClass</span>(<span class="hljs-keyword">int</span> v = <span class="hljs-number">0</span>) &#123; m_value = v; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_value</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> m_value; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_value</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v)</span> </span>&#123; m_value = v; &#125;<br>&#125;;<br><br><span class="hljs-comment">// Default initialization</span><br>GlobalClass* global_ptr = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    <span class="hljs-comment">// Initialization on first use</span><br>    <span class="hljs-keyword">if</span> (!global_ptr) global_ptr = <span class="hljs-keyword">new</span> GlobalClass;<br>    global_ptr-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">1</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;foo: global_ptr is &quot;</span> &lt;&lt; global_ptr-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!global_ptr) global_ptr = <span class="hljs-keyword">new</span> GlobalClass;<br>    global_ptr-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">2</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;bar: global_ptr is &quot;</span> &lt;&lt; global_ptr-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!global_ptr) global_ptr = <span class="hljs-keyword">new</span> GlobalClass;<br>    cout &lt;&lt; <span class="hljs-string">&quot;main: global_ptr is &quot;</span> &lt;&lt; global_ptr-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>; <span class="hljs-comment">// 0</span><br>    <span class="hljs-built_in">foo</span>(); <span class="hljs-comment">// 1</span><br>    <span class="hljs-built_in">bar</span>(); <span class="hljs-comment">// 2</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<p>注：foo 和 bar 没什么实际意义，只是张三李四而已。<br><a href="https://en.wikipedia.org/wiki/Foobar">https://en.wikipedia.org/wiki/Foobar</a></p>
-<p><strong>after</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalClass</span> &#123;</span><br>    <span class="hljs-keyword">int</span> m_value;<br>    <span class="hljs-keyword">static</span> GlobalClass* s_instance;<br>    <span class="hljs-built_in">GlobalClass</span>(<span class="hljs-keyword">int</span> v = <span class="hljs-number">0</span>) &#123; m_value = v; &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_value</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> m_value; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_value</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v)</span> </span>&#123; m_value = v; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> GlobalClass* <span class="hljs-title">instance</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!s_instance) s_instance = <span class="hljs-keyword">new</span> GlobalClass;<br>        <span class="hljs-keyword">return</span> s_instance;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// Stroustrup&#x27;s FAQ: Should I use NULL or 0?</span><br><span class="hljs-comment">// https://www.stroustrup.com/bs_faq2.html#null</span><br><span class="hljs-comment">// In C++, the definition of NULL is 0, so there is only an aesthetic difference.</span><br><span class="hljs-comment">// 现在建议用nullptr</span><br>GlobalClass* GlobalClass::s_instance = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">1</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;foo: global_ptr is &quot;</span> &lt;&lt; GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">2</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;bar: global_ptr is &quot;</span> &lt;&lt; GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;main: global_ptr is &quot;</span> &lt;&lt; GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>; <span class="hljs-comment">// 0</span><br>    <span class="hljs-built_in">foo</span>(); <span class="hljs-comment">// 1</span><br>    <span class="hljs-built_in">bar</span>(); <span class="hljs-comment">// 2</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://refactoringguru.cn/design-patterns/singleton">https://refactoringguru.cn/design-patterns/singleton</a><br><a href="https://sourcemaking.com/design_patterns/singleton">https://sourcemaking.com/design_patterns/singleton</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>软件工程</tag>
       </tags>
   </entry>
   <entry>
@@ -6295,17 +6234,98 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/posts/f1601c3e/</url>
+    <content><![CDATA[<h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p>单例模式是一种创建型设计模式，让你能够保证一个类只有一个实例，并提供一个访问该实例的全局节点。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>单例模式同时解决了两个问题，所以违反了<strong>单一职责原则</strong>：</p>
+<ol>
+<li><p>保证一个类只有一个实例。为什么会有人想要控制一个类所拥有的实例数量？最常见的原因是控制某些共享资源（例如数据库或文件）的访问权限。它的运作方式是这样的：如果你创建了一个对象，同时过一会儿后你决定再创建一个新对象，此时你会获得之前已创建的对象，而不是一个新对象。注意，普通构造函数无法实现上述行为，因为构造函数的设计决定了它必须总是返回一个新对象。</p>
+<p><img src="https://refactoringguru.cn/images/patterns/content/singleton/singleton-comic-1-zh.png?id=70da542e5e19f0df3dfc" alt=""></p>
+<p>客户端甚至可能没有意识到它们一直都在使用同一个对象。</p>
+</li>
+<li><p>为该实例提供一个全局访问节点。还记得你（好吧，其实是我自己）用过的那些存储重要对象的全局变量吗？它们在使用上十分方便，但同时也非常不安全，因为任何代码都有可能覆盖掉那些变量的内容，从而引发程序崩溃。和全局变量一样，单例模式也允许在程序的任何地方访问特定对象。但是它可以保护该实例不被其他代码覆盖。还有一点：你不会希望解决同一个问题的代码分散在程序各处的。因此更好的方式是将其放在同一个类中，特别是当其他代码已经依赖这个类时更应该如此。</p>
+</li>
+</ol>
+<p>如今，单例模式已经变得非常流行，以至于人们会将只解决上文描述中任意一个问题的东西称为单例。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>所有单例的实现都包含以下两个相同的步骤：</p>
+<ul>
+<li>将默认构造函数设为私有，防止其他对象使用单例类的 new 运算符。</li>
+<li>新建一个静态构建方法作为构造函数。该函数会 “偷偷” 调用私有构造函数来创建对象，并将其保存在一个静态成员变量中。此后所有对于该函数的调用都将返回这一缓存对象。</li>
+</ul>
+<p>如果你的代码能够访问单例类，那它就能调用单例类的静态方法。无论何时调用该方法，它总是会返回相同的对象。</p>
+<h2 id="适合应用场景"><a href="#适合应用场景" class="headerlink" title="适合应用场景"></a>适合应用场景</h2><p><strong>如果程序中的某个类对于所有客户端只有一个可用的实例，可以使用单例模式。</strong></p>
+<p>单例模式禁止通过除特殊构建方法以外的任何方式来创建自身类的对象。该方法可以创建一个新对象，但如果该对象已经被创建，则返回已有的对象。</p>
+<p><strong>如果你需要更加严格地控制全局变量，可以使用单例模式。</strong></p>
+<p>单例模式与全局变量不同，它保证类只存在一个实例。除了单例类自己以外，无法通过任何方式替换缓存的实例。</p>
+<p>请注意，你可以随时调整限制并设定生成单例实例的数量，只需修改获取实例方法，即 getInstance 中的代码即可实现。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
+<li>在类中添加一个私有静态成员变量用于保存单例实例。</li>
+<li>声明一个公有静态构建方法用于获取单例实例。</li>
+<li>在静态方法中实现 “延迟初始化”。该方法会在首次被调用时创建一个新对象，并将其存储在静态成员变量中。此后该方法每次被调用时都返回该实例。</li>
+<li>将类的构造函数设为私有。类的静态方法仍能调用构造函数，但是其他对象不能调用。</li>
+<li>检查客户端代码，将对单例的构造函数的调用替换为对其静态构建方法的调用。</li>
+</ol>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p><strong>优点</strong></p>
+<ul>
+<li>你可以保证一个类只有一个实例。</li>
+<li>你获得了一个指向该实例的全局访问节点。</li>
+<li>仅在首次请求单例对象时对其进行初始化。</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>违反了单一职责原则。该模式同时解决了两个问题。</li>
+<li>单例模式可能掩盖不良设计，比如程序各组件之间相互了解过多等。</li>
+<li>该模式在多线程环境下需要进行特殊处理，避免多个线程多次创建单例对象。</li>
+<li>单例的客户端代码单元测试可能会比较困难，因为许多测试框架以基于继承的方式创建模拟对象。由于单例类的构造函数是私有的，而且绝大部分语言无法重写静态方法，所以你需要想出仔细考虑模拟单例的方法。要么干脆不编写测试代码，或者不使用单例模式。</li>
+</ul>
+<h2 id="与其他模式的关系"><a href="#与其他模式的关系" class="headerlink" title="与其他模式的关系"></a>与其他模式的关系</h2><ul>
+<li><p>外观模式类通常可以转换为单例模式类，因为在大部分情况下一个外观对象就足够了。</p>
+</li>
+<li><p>如果你能将对象的所有共享状态简化为一个享元对象，那么享元模式就和单例类似了。但这两个模式有两个根本性的不同。</p>
+<ol>
+<li>只会有一个单例实体，但是享元类可以有多个实体，各实体的内在状态也可以不同。</li>
+<li>单例对象可以是可变的。享元对象是不可变的。</li>
+</ol>
+</li>
+<li><p>抽象工厂模式、生成器模式和原型模式都可以用单例来实现。</p>
+</li>
+</ul>
+<h2 id="一个-C-实现"><a href="#一个-C-实现" class="headerlink" title="一个 C++实现"></a>一个 C++实现</h2><p>许多开发者将单例模式视为一种反模式。因此它在 C++ 代码中的使用频率正在逐步减少。</p>
+<ol>
+<li>Define a private static attribute in the “single instance” class</li>
+<li>Define a public static accessor function in the class</li>
+<li>Do “lazy initialization” (即按需创建) in the accessor function</li>
+<li>Define all constructors to be protected or private</li>
+<li>Clients may only use the accessor function to manipulate the Singleton</li>
+<li>Inheritance can be supported, but static functions may not be overridden. The base class must be declared a friend of the derived class (in order to access the protected constructor).</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Number</span> &#123;</span><br>    <span class="hljs-comment">// 1. Define a private static attribute</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">static</span> string type;<br>    <span class="hljs-keyword">static</span> Number* inst;<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-keyword">int</span> value = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 4. Define all ctors to be protected</span><br>    <span class="hljs-built_in">Number</span>() &#123; cout &lt;&lt; <span class="hljs-string">&quot;:ctor: &quot;</span>; &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 2. Define a public static accessor func</span><br>    <span class="hljs-function"><span class="hljs-keyword">static</span> Number* <span class="hljs-title">instance</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setType</span><span class="hljs-params">(string t)</span> </span>&#123;<br>        type = t;<br>        <span class="hljs-keyword">delete</span> inst;<br>        inst = <span class="hljs-literal">nullptr</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> in)</span> </span>&#123; value = in; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getValue</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> value; &#125;<br>&#125;;<br><br>string Number::type = <span class="hljs-string">&quot;decimal&quot;</span>;<br>Number* Number::inst = <span class="hljs-literal">nullptr</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Octal</span> :</span> <span class="hljs-keyword">public</span> Number &#123;<br>    <span class="hljs-comment">// 6. Inheritance can be supported</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Number</span>;</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> in)</span> </span>&#123;<br>        <span class="hljs-keyword">char</span> buf[<span class="hljs-number">10</span>];<br>        <span class="hljs-built_in">sprintf_s</span>(buf, <span class="hljs-string">&quot;%o&quot;</span>, in);<br>        <span class="hljs-built_in">sscanf_s</span>(buf, <span class="hljs-string">&quot;%d&quot;</span>, &amp;value);<br>    &#125;<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-built_in">Octal</span>() &#123;&#125;<br>&#125;;<br><br><span class="hljs-function">Number* <span class="hljs-title">Number::instance</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!inst)<br>        <span class="hljs-comment">// 3. Do &quot;lazy initialization&quot; in the accessor function</span><br>        <span class="hljs-keyword">if</span> (type == <span class="hljs-string">&quot;octal&quot;</span>) inst = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Octal</span>();<br>        <span class="hljs-keyword">else</span> inst = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Number</span>();<br>    <span class="hljs-keyword">return</span> inst;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">//Number myInstance; // -error: cannot access protected constructor</span><br>    <span class="hljs-comment">// 5. Clients may only use the accessor function to manipulate the Singleton</span><br>    Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">setValue</span>(<span class="hljs-number">42</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;value is &quot;</span> &lt;&lt; Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">getValue</span>() &lt;&lt; endl; <span class="hljs-comment">// 42</span><br>    Number::<span class="hljs-built_in">setType</span>(<span class="hljs-string">&quot;octal&quot;</span>);<br>    Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">setValue</span>(<span class="hljs-number">64</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;value is &quot;</span> &lt;&lt; Number::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">getValue</span>() &lt;&lt; endl; <span class="hljs-comment">// 100</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Singleton-in-C-Before-and-after"><a href="#Singleton-in-C-Before-and-after" class="headerlink" title="Singleton in C++: Before and after"></a>Singleton in C++: Before and after</h2><p><strong>Before</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalClass</span> &#123;</span><br>    <span class="hljs-keyword">int</span> m_value;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">GlobalClass</span>(<span class="hljs-keyword">int</span> v = <span class="hljs-number">0</span>) &#123; m_value = v; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_value</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> m_value; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_value</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v)</span> </span>&#123; m_value = v; &#125;<br>&#125;;<br><br><span class="hljs-comment">// Default initialization</span><br>GlobalClass* global_ptr = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    <span class="hljs-comment">// Initialization on first use</span><br>    <span class="hljs-keyword">if</span> (!global_ptr) global_ptr = <span class="hljs-keyword">new</span> GlobalClass;<br>    global_ptr-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">1</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;foo: global_ptr is &quot;</span> &lt;&lt; global_ptr-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!global_ptr) global_ptr = <span class="hljs-keyword">new</span> GlobalClass;<br>    global_ptr-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">2</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;bar: global_ptr is &quot;</span> &lt;&lt; global_ptr-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!global_ptr) global_ptr = <span class="hljs-keyword">new</span> GlobalClass;<br>    cout &lt;&lt; <span class="hljs-string">&quot;main: global_ptr is &quot;</span> &lt;&lt; global_ptr-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>; <span class="hljs-comment">// 0</span><br>    <span class="hljs-built_in">foo</span>(); <span class="hljs-comment">// 1</span><br>    <span class="hljs-built_in">bar</span>(); <span class="hljs-comment">// 2</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注：foo 和 bar 没什么实际意义，只是张三李四而已。<br><a href="https://en.wikipedia.org/wiki/Foobar">https://en.wikipedia.org/wiki/Foobar</a></p>
+<p><strong>after</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalClass</span> &#123;</span><br>    <span class="hljs-keyword">int</span> m_value;<br>    <span class="hljs-keyword">static</span> GlobalClass* s_instance;<br>    <span class="hljs-built_in">GlobalClass</span>(<span class="hljs-keyword">int</span> v = <span class="hljs-number">0</span>) &#123; m_value = v; &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_value</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> m_value; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_value</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v)</span> </span>&#123; m_value = v; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> GlobalClass* <span class="hljs-title">instance</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!s_instance) s_instance = <span class="hljs-keyword">new</span> GlobalClass;<br>        <span class="hljs-keyword">return</span> s_instance;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// Stroustrup&#x27;s FAQ: Should I use NULL or 0?</span><br><span class="hljs-comment">// https://www.stroustrup.com/bs_faq2.html#null</span><br><span class="hljs-comment">// In C++, the definition of NULL is 0, so there is only an aesthetic difference.</span><br><span class="hljs-comment">// 现在建议用nullptr</span><br>GlobalClass* GlobalClass::s_instance = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">1</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;foo: global_ptr is &quot;</span> &lt;&lt; GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;<br>    GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">set_value</span>(<span class="hljs-number">2</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;bar: global_ptr is &quot;</span> &lt;&lt; GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;main: global_ptr is &quot;</span> &lt;&lt; GlobalClass::<span class="hljs-built_in">instance</span>()-&gt;<span class="hljs-built_in">get_value</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>; <span class="hljs-comment">// 0</span><br>    <span class="hljs-built_in">foo</span>(); <span class="hljs-comment">// 1</span><br>    <span class="hljs-built_in">bar</span>(); <span class="hljs-comment">// 2</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://refactoringguru.cn/design-patterns/singleton">https://refactoringguru.cn/design-patterns/singleton</a><br><a href="https://sourcemaking.com/design_patterns/singleton">https://sourcemaking.com/design_patterns/singleton</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>软件工程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2021年度计划</title>
     <url>/posts/2457fd8d/</url>
     <content><![CDATA[<blockquote>
 <p>伊曼努爾・康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
 </blockquote>
-<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">leetcode.com 刷到 200 题<br>C++ Primer 翻烂<br></code></pre></td></tr></table></figure>
-<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">书包 - 国家地理<br>眼镜<br>跑鞋<br>手机 - S21u<br>整机 - 老电脑拿来玩 Linux<br></code></pre></td></tr></table></figure>
+<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">leetcode 刷到 200 题<br>C++ Primer 翻烂<br></code></pre></td></tr></table></figure>
+<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">书包 - 国家地理<br>眼镜<br>跑鞋<br>手机 - S21U<br>电脑 - R9000P_3070<br></code></pre></td></tr></table></figure>
 <h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">成都大熊貓繁育研究基地<br></code></pre></td></tr></table></figure>
-<h2 id="每日作息"><a href="#每日作息" class="headerlink" title="每日作息"></a>每日作息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">5:45-6:00  起床，解手，温水蜂蜜，运动衣裤<br>6:00-6:30  jog(5KM)<br>6:30-7:00  早饭，洗澡，洗衣，刷牙<br>7:00-8:00  开机，刷每日一题<br>8:00  通勤，看一篇日志<br><br>平日  看书，博客，刷题<br>假日  看书，实验，比赛，社交，下厨<br><br>23:00-00:00  读书，泡脚，睡觉<br></code></pre></td></tr></table></figure>
-<h2 id="每月主线"><a href="#每月主线" class="headerlink" title="每月主线"></a>每月主线</h2><p>每月一本书 雷打不动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">01 月：读 C++ PrimerⅠ；去成都玩<br>02 月：读谢希仁计算机网络<br>03 月：读邹恒明操作系统；考研调剂<br>04 月：读 C++ PrimerⅡ；面试大厂<br>05 月：刷华为机试；面试德科；简单复习Linux+C+设计模式；等Offer<br>06 月：<br>07 月：<br>08 月：<br>09 月：<br>10 月：<br>11 月：<br>12 月：<br></code></pre></td></tr></table></figure>
+<h2 id="每日作息"><a href="#每日作息" class="headerlink" title="每日作息"></a>每日作息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">5:45-6:00  起床，解手，温水蜂蜜，运动衣裤<br>6:00-6:30  跑步(5KM)<br>6:30-7:00  早饭，洗澡，洗衣，刷牙<br>7:00-8:00  开机，刷每日一题<br>8:00  通勤<br><br>平日  看书，刷题<br>假日  看书，实验，比赛，社交，下厨<br><br>23:00-00:00  看书，泡脚，睡觉<br></code></pre></td></tr></table></figure>
+<h2 id="每月主线"><a href="#每月主线" class="headerlink" title="每月主线"></a>每月主线</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">01 月：读 C++ PrimerⅠ；去成都<br>02 月：读谢希仁计算机网络<br>03 月：读邹恒明操作系统；考研调剂<br>04 月：读 C++ PrimerⅡ；面试大厂<br>05 月：刷华为机试；面试德科；简单复习Linux+Git+C；等Offer；体检<br>06 月：租房；熟悉工作<br>07 月：<br>08 月：<br>09 月：<br>10 月：<br>11 月：<br>12 月：转正<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>斯波：人们高估了一天的改变，也低估了一年的改变。</p>
 </blockquote>
@@ -6731,20 +6751,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <li>不抽烟，不纹身。</li>
 </ol>
 <h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><ol>
+<li>笑容好看</li>
 <li>意志坚定</li>
 <li>乐观向上</li>
-<li>笑容好看</li>
 <li>二次元</li>
+<li>有自己的爱好或特长</li>
 </ol>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ol>
+<h2 id="较高层次"><a href="#较高层次" class="headerlink" title="较高层次"></a>较高层次</h2><ol>
 <li>我们的亲密关系要超过两个人其他一切关系。</li>
 <li>生活一切事务中所有同时关系到两个人的，优先级最高。</li>
-<li>我们基本不会发生自然意义上的同生共死，但死后墓碑要在一起。</li>
-<li>不接受出轨和心理出轨，不接受拥有蓝颜、红颜等含糊不清的关系，特指男闺蜜和女闺蜜。</li>
-<li>不接受针对我的恶意揣测和计算，口是心非，严重隐瞒，人格打击，心理施压，冷眼旁观等行为。</li>
+<li>死后墓碑会在一起。</li>
+<li>不接受出轨，不接受有含糊不清的关系，特指男闺蜜和女闺蜜。</li>
+<li>不接受两人关系中的恶意揣测、口是心非，严重隐瞒，人格打击，冷眼旁观等行为。</li>
 </ol>
 <p>女方也应该对我有以上相同要求。</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这篇东西起初于去年疫情隔离期间出于无聊写成，无聊的事情总是遗忘得很快，没想到却保存了一年。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这篇东西起初于去年疫情隔离期间出于无聊写成，无聊的事情总是遗忘得很快，没想到竟然保存了一年。</p>
 <p>在我大学的冬天，我常常呆在暖气房里幻想以后会去哪里，与什么样的人结合，我的思绪奔腾着，内心中朦胧的幻象也随之越来越变得清晰，我傲慢地以为自己能够把乍现的灵光用文字禁锢在白纸上，它的脉动便倏地陷入沉寂……这是怎样一件矛盾的事？</p>
 ]]></content>
       <categories>
