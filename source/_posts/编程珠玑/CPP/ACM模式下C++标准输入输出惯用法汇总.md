@@ -140,9 +140,9 @@ char s[10];
 scanf_s("%s", s, (unsigned)_countof(s));
 ```
 
-（2）\_countof，Windows 宏，用来计算一个静态分配的数组中的元素的个数用法为\_countof(array)。另外，确保 array 是一个静态分配的数组，而不是一个指针。如果 array 是一个指针，在 C 语言中\_countof 会产生错误的结果；在 C++中\_countof 会产生编译错误。
+（2）`_countof`，Windows 宏，用来计算一个静态分配的数组中的元素的个数用法为`_countof(array)`。另外，确保 array 是一个静态分配的数组，而不是一个指针。如果 array 是一个指针，在 C 语言中`_countof` 会产生错误的结果；在 C++中`_countof` 会产生编译错误。
 
-\_countof 和 sizeof 的区别：
+`_countof` 和 sizeof 的区别：
 
 ```c++
 #include<iostream>
