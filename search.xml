@@ -523,23 +523,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC94 二叉树的中序遍历</title>
-    <url>/posts/362ff0e5/</url>
-    <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-built_in">fun</span>(root-&gt;left, a);<br>        a.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">fun</span>(root-&gt;right, a);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：迭代"><a href="#解法-2：迭代" class="headerlink" title="解法 2：迭代"></a>解法 2：迭代</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        stack&lt;TreeNode*&gt; s;<br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span> || curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>                s.<span class="hljs-built_in">push</span>(curr);<br>                curr = curr-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>                curr = s.<span class="hljs-built_in">top</span>(); s.<span class="hljs-built_in">pop</span>();<br>                a.<span class="hljs-built_in">push_back</span>(curr-&gt;val);<br>                curr = curr-&gt;right;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-        <tag>迭代</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC88 合并两个有序数组</title>
     <url>/posts/a32f263e/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。初始化 nums1 和 nums2 的元素数量分别为 m 和 n。你可以假设 nums1 的空间大小等于 m+n，这样它就有足够的空间保存来自 nums2 的元素。</p>
@@ -555,6 +538,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC94 二叉树的中序遍历</title>
+    <url>/posts/362ff0e5/</url>
+    <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-built_in">fun</span>(root-&gt;left, a);<br>        a.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">fun</span>(root-&gt;right, a);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：迭代"><a href="#解法-2：迭代" class="headerlink" title="解法 2：迭代"></a>解法 2：迭代</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>        <span class="hljs-built_in">fun</span>(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(TreeNode* root, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span> </span>&#123;<br>        stack&lt;TreeNode*&gt; s;<br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span> || curr != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123;<br>                s.<span class="hljs-built_in">push</span>(curr);<br>                curr = curr-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>                curr = s.<span class="hljs-built_in">top</span>(); s.<span class="hljs-built_in">pop</span>();<br>                a.<span class="hljs-built_in">push_back</span>(curr-&gt;val);<br>                curr = curr-&gt;right;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>迭代</tag>
       </tags>
   </entry>
   <entry>
@@ -715,24 +715,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC136 只出现一次的数字</title>
-    <url>/posts/5ae0bf6f/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
-<h2 id="解法：位运算"><a href="#解法：位运算" class="headerlink" title="解法：位运算"></a>解法：位运算</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> res = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            res = res ^ nums[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>常规操作是一边遍历数组一边用哈希表统计元素出现的次数，最后再遍历哈希表，看看哪个数只出现了一次。<br>时间复杂度为 O(n)，空间复杂度为 O(n)。</p>
-<p>异或的性质<br>性质 1：两个相同的数进行异或，运算结果为 0<br>性质 2：任何数和 0 进行异或，运算结果不变<br>性质 3：支持交换律和结合律</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC141 环形链表</title>
     <url>/posts/6db06fde/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个链表，判断链表中是否有环。<br>如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 pos 是-1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。<br>如果链表中存在环，则返回 true。否则，返回 false。<br>注：这道题描述的很复杂，其实没必要，pos 跟你没关系，是服务器构造环形链表用的，写题不用管。</p>
@@ -763,6 +745,24 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>哈希</tag>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC136 只出现一次的数字</title>
+    <url>/posts/5ae0bf6f/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
+<h2 id="解法：位运算"><a href="#解法：位运算" class="headerlink" title="解法：位运算"></a>解法：位运算</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> res = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            res = res ^ nums[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>常规操作是一边遍历数组一边用哈希表统计元素出现的次数，最后再遍历哈希表，看看哪个数只出现了一次。<br>时间复杂度为 O(n)，空间复杂度为 O(n)。</p>
+<p>异或的性质<br>性质 1：两个相同的数进行异或，运算结果为 0<br>性质 2：任何数和 0 进行异或，运算结果不变<br>性质 3：支持交换律和结合律</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -995,33 +995,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC204 计数质数</title>
-    <url>/posts/2c2e56af/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>统计所有小于非负整数 n 的质数的数量。</p>
-<h2 id="解法-1：暴力法"><a href="#解法-1：暴力法" class="headerlink" title="解法 1：暴力法"></a>解法 1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; x; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (x % i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：埃拉托斯特尼筛法"><a href="#解法-2：埃拉托斯特尼筛法" class="headerlink" title="解法 2：埃拉托斯特尼筛法"></a>解法 2：埃拉托斯特尼筛法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= <span class="hljs-built_in">sqrt</span>(x); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (x % i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-3：六倍法"><a href="#解法-3：六倍法" class="headerlink" title="解法 3：六倍法"></a>解法 3：六倍法</h2><p>六倍法的原理非常简单：除了 2 和 3 以外，对于任意的 n，只有 6n-1 和 6n+1 有可能是素数。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">2</span> || x == <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (x % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; x % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">6</span>; i &lt;= <span class="hljs-built_in">sqrt</span>(x); i += <span class="hljs-number">6</span>) &#123;<br>            <span class="hljs-keyword">if</span> (x % (i - <span class="hljs-number">1</span>) == <span class="hljs-number">0</span> || x % (i + <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-4：Miller-Rabin-素数判定"><a href="#解法-4：Miller-Rabin-素数判定" class="headerlink" title="解法 4：Miller-Rabin 素数判定"></a>解法 4：Miller-Rabin 素数判定</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-comment">// rand 2 - e</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">rand_Number</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">rand</span>() % e + <span class="hljs-number">1</span>;;<br>    &#125;<br><br>    <span class="hljs-comment">// a * b % c</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mult_mod</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span> </span>&#123;<br>        a %= c;<br>        b %= c;<br>        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (b) &#123;<br>            <span class="hljs-keyword">if</span> (b &amp; <span class="hljs-number">1</span>) &#123;<br>                res += a;<br>                res %= c;<br>            &#125;<br>            a &lt;&lt;= <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (a &gt;= c) a %= c;<br>            b &gt;&gt;= <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-comment">// a ^ u % num</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getRemainder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cur = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> nxt = a;<br>        <span class="hljs-keyword">while</span> (u) &#123;<br>            <span class="hljs-keyword">if</span> ((u &amp; <span class="hljs-number">1</span>) &gt; <span class="hljs-number">0</span>) cur = <span class="hljs-built_in">mult_mod</span>(cur, nxt, num);<br>            nxt = <span class="hljs-built_in">mult_mod</span>(nxt, nxt, num);<br>            u = u &gt;&gt; <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cur % num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (num == <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (num &lt; <span class="hljs-number">2</span> || num % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">int</span> u = num - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> S = <span class="hljs-number">20</span>;<br>        <span class="hljs-keyword">while</span> (u % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>            u /= <span class="hljs-number">2</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; S; i++) &#123;<br>            <span class="hljs-keyword">int</span> a = <span class="hljs-built_in">rand_Number</span>(num - <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">int</span> x = <span class="hljs-built_in">getRemainder</span>(a, u, num);<br>            <span class="hljs-keyword">int</span> y = x;<br>            <span class="hljs-keyword">int</span> tu = u;<br>            <span class="hljs-keyword">while</span> (tu &lt; num) &#123;<br>                y = <span class="hljs-built_in">mult_mod</span>(x, x, num);;<br>                <span class="hljs-keyword">if</span> (y == <span class="hljs-number">1</span> &amp;&amp; x != <span class="hljs-number">1</span> &amp;&amp; x != num - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                x = y;<br>                tu *= <span class="hljs-number">2</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (x != <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> test_num = <span class="hljs-number">400000</span>;<br>    <span class="hljs-keyword">int</span> tstart, tstop;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime1</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(1)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime2</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(2)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime3</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(3)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime4</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(4)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>前三个程序是符合预期的，最后一个方法暂时还不完善，按道理解法 4 的平均时间复杂度应该是 O(LogN)，在上述算法中最快。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>怎样优雅地判断一个数是不是质数？<br><a href="https://zhuanlan.zhihu.com/p/113815619">https://zhuanlan.zhihu.com/p/113815619</a></p>
-<p>HDU-2138 六倍法判断素数<br><a href="https://blog.csdn.net/qq_36523667/article/details/78545682">https://blog.csdn.net/qq_36523667/article/details/78545682</a></p>
-<p>算法基础 - 素数判定 (Miller-Rabin 算法)<br><a href="https://blog.csdn.net/alps1992/article/details/51588971">https://blog.csdn.net/alps1992/article/details/51588971</a></p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC206 反转链表</title>
     <url>/posts/6ca41a37/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>反转一个单链表。</p>
@@ -1064,6 +1037,47 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC231 2的幂</title>
+    <url>/posts/8e812d9/</url>
+    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC204 计数质数</title>
+    <url>/posts/2c2e56af/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>统计所有小于非负整数 n 的质数的数量。</p>
+<h2 id="解法-1：暴力法"><a href="#解法-1：暴力法" class="headerlink" title="解法 1：暴力法"></a>解法 1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; x; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (x % i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：埃拉托斯特尼筛法"><a href="#解法-2：埃拉托斯特尼筛法" class="headerlink" title="解法 2：埃拉托斯特尼筛法"></a>解法 2：埃拉托斯特尼筛法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= <span class="hljs-built_in">sqrt</span>(x); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (x % i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-3：六倍法"><a href="#解法-3：六倍法" class="headerlink" title="解法 3：六倍法"></a>解法 3：六倍法</h2><p>六倍法的原理非常简单：除了 2 和 3 以外，对于任意的 n，只有 6n-1 和 6n+1 有可能是素数。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">2</span> || x == <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (x % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; x % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">6</span>; i &lt;= <span class="hljs-built_in">sqrt</span>(x); i += <span class="hljs-number">6</span>) &#123;<br>            <span class="hljs-keyword">if</span> (x % (i - <span class="hljs-number">1</span>) == <span class="hljs-number">0</span> || x % (i + <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-4：Miller-Rabin-素数判定"><a href="#解法-4：Miller-Rabin-素数判定" class="headerlink" title="解法 4：Miller-Rabin 素数判定"></a>解法 4：Miller-Rabin 素数判定</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPrime</span>(i)) cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br><br>    <span class="hljs-comment">// rand 2 - e</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">rand_Number</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">rand</span>() % e + <span class="hljs-number">1</span>;;<br>    &#125;<br><br>    <span class="hljs-comment">// a * b % c</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mult_mod</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span> </span>&#123;<br>        a %= c;<br>        b %= c;<br>        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (b) &#123;<br>            <span class="hljs-keyword">if</span> (b &amp; <span class="hljs-number">1</span>) &#123;<br>                res += a;<br>                res %= c;<br>            &#125;<br>            a &lt;&lt;= <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (a &gt;= c) a %= c;<br>            b &gt;&gt;= <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-comment">// a ^ u % num</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getRemainder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cur = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> nxt = a;<br>        <span class="hljs-keyword">while</span> (u) &#123;<br>            <span class="hljs-keyword">if</span> ((u &amp; <span class="hljs-number">1</span>) &gt; <span class="hljs-number">0</span>) cur = <span class="hljs-built_in">mult_mod</span>(cur, nxt, num);<br>            nxt = <span class="hljs-built_in">mult_mod</span>(nxt, nxt, num);<br>            u = u &gt;&gt; <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cur % num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (num == <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (num &lt; <span class="hljs-number">2</span> || num % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">int</span> u = num - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> S = <span class="hljs-number">20</span>;<br>        <span class="hljs-keyword">while</span> (u % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>            u /= <span class="hljs-number">2</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; S; i++) &#123;<br>            <span class="hljs-keyword">int</span> a = <span class="hljs-built_in">rand_Number</span>(num - <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">int</span> x = <span class="hljs-built_in">getRemainder</span>(a, u, num);<br>            <span class="hljs-keyword">int</span> y = x;<br>            <span class="hljs-keyword">int</span> tu = u;<br>            <span class="hljs-keyword">while</span> (tu &lt; num) &#123;<br>                y = <span class="hljs-built_in">mult_mod</span>(x, x, num);;<br>                <span class="hljs-keyword">if</span> (y == <span class="hljs-number">1</span> &amp;&amp; x != <span class="hljs-number">1</span> &amp;&amp; x != num - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                x = y;<br>                tu *= <span class="hljs-number">2</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (x != <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> test_num = <span class="hljs-number">400000</span>;<br>    <span class="hljs-keyword">int</span> tstart, tstop;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime1</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(1)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime2</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(2)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime3</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(3)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    tstart = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= test_num; i++)<br>        <span class="hljs-built_in">isPrime4</span>(i);<br>    tstop = <span class="hljs-built_in">clock</span>();<br>    cout &lt;&lt; <span class="hljs-string">&quot;方法(4)时间(ms):&quot;</span> &lt;&lt; tstop - tstart &lt;&lt; endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>前三个程序是符合预期的，最后一个方法暂时还不完善，按道理解法 4 的平均时间复杂度应该是 O(LogN)，在上述算法中最快。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>怎样优雅地判断一个数是不是质数？<br><a href="https://zhuanlan.zhihu.com/p/113815619">https://zhuanlan.zhihu.com/p/113815619</a></p>
+<p>HDU-2138 六倍法判断素数<br><a href="https://blog.csdn.net/qq_36523667/article/details/78545682">https://blog.csdn.net/qq_36523667/article/details/78545682</a></p>
+<p>算法基础 - 素数判定 (Miller-Rabin 算法)<br><a href="https://blog.csdn.net/alps1992/article/details/51588971">https://blog.csdn.net/alps1992/article/details/51588971</a></p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC225 用队列实现栈</title>
     <url>/posts/ea05d63a/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你仅使用队列实现一个后入先出(LIFO)的栈，并支持普通队列的全部四种操作(push、top、pop 和 empty)。</p>
@@ -1095,20 +1109,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC231 2的幂</title>
-    <url>/posts/8e812d9/</url>
-    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1315,23 +1315,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC387 字符串中的第一个唯一字符</title>
-    <url>/posts/c21ce8f1/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
-<p>输入 s = “leetcode”<br>输出 0</p>
-<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有 26 个字母的标记数组</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> flag[<span class="hljs-number">26</span>] = &#123; <span class="hljs-number">0</span> &#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : s) &#123;<br>            ++flag[c - <span class="hljs-string">&#x27;a&#x27;</span>];<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (flag[(s[i] - <span class="hljs-string">&#x27;a&#x27;</span>)] == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC415 字符串相加</title>
     <url>/posts/56c54e21/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数 num1 和 num2，计算它们的和。<br>你不能使用任何內建 BigInteger 库，也不能直接将输入的字符串转换为整数形式。</p>
@@ -1346,6 +1329,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC387 字符串中的第一个唯一字符</title>
+    <url>/posts/c21ce8f1/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
+<p>输入 s = “leetcode”<br>输出 0</p>
+<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有 26 个字母的标记数组</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> flag[<span class="hljs-number">26</span>] = &#123; <span class="hljs-number">0</span> &#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : s) &#123;<br>            ++flag[c - <span class="hljs-string">&#x27;a&#x27;</span>];<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (flag[(s[i] - <span class="hljs-string">&#x27;a&#x27;</span>)] == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1455,6 +1455,26 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC1281 整数的各位积和之差</title>
+    <url>/posts/4311ebc5/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数 n，请你帮忙计算并返回该整数各位数字之积与各位数字之和的差。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>用到的库函数：<br>to_string(): Convert numerical value to string</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subtractProductAndSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> mul = <span class="hljs-number">1</span>, sum = <span class="hljs-number">0</span>;<br>        string num = <span class="hljs-built_in">to_string</span>(n);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : num) &#123;<br>            sum += i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            mul *= i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> mul - sum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>把整数转换成字符串字面值，然后对于字符串，使用基于范围的 for 循环，进行计算。</p>
+<p><strong>附录</strong></p>
+<p><img src="http://www.asciitable.com/index/asciifull.gif" alt="Ascii Table"></p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC303 区域和检索 - 数组不可变</title>
     <url>/posts/727e02ee/</url>
     <content><![CDATA[<p>给定一个整数数组 nums，求出数组从索引 i 到 j(i≤j)范围内元素的总和，包含 i、j 两点。</p>
@@ -1490,26 +1510,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>二分法</tag>
         <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC1281 整数的各位积和之差</title>
-    <url>/posts/4311ebc5/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数 n，请你帮忙计算并返回该整数各位数字之积与各位数字之和的差。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>用到的库函数：<br>to_string(): Convert numerical value to string</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subtractProductAndSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> mul = <span class="hljs-number">1</span>, sum = <span class="hljs-number">0</span>;<br>        string num = <span class="hljs-built_in">to_string</span>(n);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : num) &#123;<br>            sum += i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            mul *= i - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> mul - sum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>把整数转换成字符串字面值，然后对于字符串，使用基于范围的 for 循环，进行计算。</p>
-<p><strong>附录</strong></p>
-<p><img src="http://www.asciitable.com/index/asciifull.gif" alt="Ascii Table"></p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1848,21 +1848,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ61 放苹果</title>
-    <url>/posts/cc7d867/</url>
-    <content><![CDATA[<p>把 m 个同样的苹果放在 n 个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？（用 K 表示）5，1，1 和 1，5，1 是同一种分法。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (m == <span class="hljs-number">0</span> || m == <span class="hljs-number">1</span> || n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (m &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fun</span>(m, n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">fun</span>(m - n, n);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> m, n;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; m &gt;&gt; n) &#123;<br>        cout &lt;&lt; <span class="hljs-built_in">fun</span>(m, n) &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>分析<br>写状态转移方程：有盘子（至少一个）为空 和 无盘子为空<br>找递归边界</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HJ64 MP3光标位置</title>
     <url>/posts/c8a39177/</url>
     <content><![CDATA[<p>MP3 Player 因为屏幕较小，显示歌曲列表的时候每屏只能显示几首歌曲，用户要通过上下键才能浏览所有的歌曲。为了简化处理，假设每屏只能显示 4 首歌曲，光标初始的位置为第 1 首歌。</p>
@@ -1952,6 +1937,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HJ61 放苹果</title>
+    <url>/posts/cc7d867/</url>
+    <content><![CDATA[<p>把 m 个同样的苹果放在 n 个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？（用 K 表示）5，1，1 和 1，5，1 是同一种分法。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (m == <span class="hljs-number">0</span> || m == <span class="hljs-number">1</span> || n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (m &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fun</span>(m, n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">fun</span>(m - n, n);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> m, n;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; m &gt;&gt; n) &#123;<br>        cout &lt;&lt; <span class="hljs-built_in">fun</span>(m, n) &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>分析<br>写状态转移方程：有盘子（至少一个）为空 和 无盘子为空<br>找递归边界</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -2053,21 +2053,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ80 整型数组合并</title>
-    <url>/posts/1190643a/</url>
-    <content><![CDATA[<p>题目：将两个整型数组按照升序合并，并且过滤掉重复数组元素。输出时相邻两数之间没有空格。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> N, M;<br><br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; N) &#123;<br>        set&lt;<span class="hljs-keyword">int</span>&gt; uset;<br>        <span class="hljs-keyword">while</span> (N--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        cin &gt;&gt; M;<br>        <span class="hljs-keyword">while</span> (M--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; num : uset) cout &lt;&lt; num;<br>        cout &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>一大组两小组数据的输入方法：对第一小组进行循环的判断，循环中单独输入第二小组。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>集合</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HJ85 字符串运用-密码截取（最长回文子串）</title>
     <url>/posts/f211e460/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个仅包含小写字母的字符串，求它的最长回文子串的长度。所谓回文串，指左右对称的字符串。所谓子串，指一个字符串删掉其部分前缀和后缀（也可以不删）的字符串（注意：记得加上 while 处理多个测试用例）</p>
@@ -2081,6 +2066,21 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>字符串</tag>
         <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HJ80 整型数组合并</title>
+    <url>/posts/1190643a/</url>
+    <content><![CDATA[<p>题目：将两个整型数组按照升序合并，并且过滤掉重复数组元素。输出时相邻两数之间没有空格。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> N, M;<br><br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; N) &#123;<br>        set&lt;<span class="hljs-keyword">int</span>&gt; uset;<br>        <span class="hljs-keyword">while</span> (N--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        cin &gt;&gt; M;<br>        <span class="hljs-keyword">while</span> (M--) &#123;<br>            <span class="hljs-keyword">int</span> tmp; cin &gt;&gt; tmp;<br>            uset.<span class="hljs-built_in">insert</span>(tmp);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; num : uset) cout &lt;&lt; num;<br>        cout &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>一大组两小组数据的输入方法：对第一小组进行循环的判断，循环中单独输入第二小组。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>集合</tag>
       </tags>
   </entry>
   <entry>
@@ -2100,20 +2100,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ9 提取不重复的整数</title>
-    <url>/posts/2d4ad067/</url>
-    <content><![CDATA[<p>输入一个 int 型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。保证输入的整数最后一位不是 0。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    string s = <span class="hljs-built_in">to_string</span>(n);<br>    <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br><br>    string res;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s)<br>        <span class="hljs-keyword">if</span> (res.<span class="hljs-built_in">find</span>(c) == string::npos)<br>            res += c;<br><br>    cout &lt;&lt; <span class="hljs-built_in">stoi</span>(res);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HJ89 密码强度等级</title>
     <url>/posts/459768b1/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>密码按如下规则进行计分，并根据不同的得分为密码进行安全等级划分。</p>
@@ -2127,6 +2113,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p>对应输出为：<br>VERY_SECURE<br>SECURE,<br>VERY_STRONG,<br>STRONG,<br>AVERAGE,<br>WEAK,<br>VERY_WEAK,</p>
 <p>请根据输入的密码字符串，进行安全评定。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(cin, str)) &#123;<br>        <span class="hljs-keyword">int</span> score = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> len = str.<span class="hljs-built_in">length</span>();<br>        <span class="hljs-keyword">int</span> abc = <span class="hljs-number">0</span>, ABC = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> number = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> symbol = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : str) &#123;<br>            <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) abc++;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>) ABC++;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;9&#x27;</span>) number++;<br>            <span class="hljs-keyword">else</span> symbol++;<br>        &#125;<br><br>        <span class="hljs-comment">// rule 1</span><br>        <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">4</span>) score += <span class="hljs-number">5</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">7</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">25</span>;<br><br>        <span class="hljs-comment">// rule 2</span><br>        <span class="hljs-keyword">if</span> (abc + ABC == <span class="hljs-number">0</span>) score += <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (abc == <span class="hljs-number">0</span> || ABC == <span class="hljs-number">0</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">20</span>;<br><br>        <span class="hljs-comment">// rule 3</span><br>        <span class="hljs-keyword">if</span> (number == <span class="hljs-number">0</span>) score += <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (number == <span class="hljs-number">1</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">20</span>;<br><br>        <span class="hljs-comment">// rule 4</span><br>        <span class="hljs-keyword">if</span> (symbol == <span class="hljs-number">0</span>) score += <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (symbol == <span class="hljs-number">1</span>) score += <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">25</span>;<br><br>        <span class="hljs-comment">// rule 5</span><br>        <span class="hljs-keyword">if</span> (abc + ABC != <span class="hljs-number">0</span> &amp;&amp; number != <span class="hljs-number">0</span> &amp;&amp; symbol == <span class="hljs-number">0</span>) score += <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (abc != <span class="hljs-number">0</span> &amp;&amp; ABC != <span class="hljs-number">0</span> &amp;&amp; number != <span class="hljs-number">0</span> &amp;&amp; symbol != <span class="hljs-number">0</span>) score += <span class="hljs-number">5</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (abc + ABC != <span class="hljs-number">0</span> &amp;&amp; number != <span class="hljs-number">0</span> &amp;&amp; symbol != <span class="hljs-number">0</span>) score += <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">else</span> score += <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">90</span>) cout &lt;&lt; <span class="hljs-string">&quot;VERY_SECURE&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">80</span>) cout &lt;&lt; <span class="hljs-string">&quot;SECURE&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">70</span>) cout &lt;&lt; <span class="hljs-string">&quot;VERY_STRONG&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">60</span>) cout &lt;&lt; <span class="hljs-string">&quot;STRONG&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">50</span>) cout &lt;&lt; <span class="hljs-string">&quot;AVERAGE&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">20</span>) cout &lt;&lt; <span class="hljs-string">&quot;WEAK&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;VERY_WEAK&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HJ9 提取不重复的整数</title>
+    <url>/posts/2d4ad067/</url>
+    <content><![CDATA[<p>输入一个 int 型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。保证输入的整数最后一位不是 0。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    string s = <span class="hljs-built_in">to_string</span>(n);<br>    <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br><br>    string res;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s)<br>        <span class="hljs-keyword">if</span> (res.<span class="hljs-built_in">find</span>(c) == string::npos)<br>            res += c;<br><br>    cout &lt;&lt; <span class="hljs-built_in">stoi</span>(res);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -2483,7 +2483,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p>通过这种方法，可以把空间复杂度降低到 O(1)，而时间复杂度不变。例如：</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> tmp = arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>        tmp = tmp ^ arr[i];<br>    &#125;<br>    <span class="hljs-keyword">return</span> tmp;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="十进制转-2-16-进制"><a href="#十进制转-2-16-进制" class="headerlink" title="十进制转 2/16 进制"></a>十进制转 2/16 进制</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; n) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;decimal: &quot;</span> &lt;&lt; n &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;binary: &quot;</span>; <span class="hljs-comment">// 转2进制</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">int</span> bit = ((n &gt;&gt; i) &amp; <span class="hljs-number">1</span>);<br>            cout &lt;&lt; bit;<br>        &#125;<br>        cout &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;hex: &quot;</span>; <span class="hljs-comment">// 转16进制</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123; <span class="hljs-comment">// sizeof(int)=4</span><br>            cout &lt;&lt; <span class="hljs-string">&quot;0123456789ABCDEF&quot;</span>[((n &gt;&gt; i * <span class="hljs-number">4</span>) &amp; <span class="hljs-number">0xF</span>)]; <span class="hljs-comment">// 0xF=(int)15=00001111, &amp;0xF:取后四位</span><br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这个 16 进制的转换方法非常巧妙和简洁，可以经常翻看学习。</p>
+<p>这个 16 进制的转换方法非常巧妙，可以经常翻看学习。</p>
 <p>运行结果</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1<br>decimal: 1<br>binary: 00000001<br>hex: 00000001<br>8<br>decimal: 8<br>binary: 00001000<br>hex: 00000008<br>16<br>decimal: 16<br>binary: 00010000<br>hex: 00000010<br>999<br>decimal: 999<br>binary: 11100111<br>hex: 000003E7<br></code></pre></td></tr></table></figure>
 ]]></content>
@@ -2571,6 +2571,101 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ACM模式下C++标准输入输出惯用法汇总</title>
+    <url>/posts/dc62c34d/</url>
+    <content><![CDATA[<h2 id="引言：从核心代码到-ACM"><a href="#引言：从核心代码到-ACM" class="headerlink" title="引言：从核心代码到 ACM"></a>引言：从核心代码到 ACM</h2><p>现在主流的在线编程环境分为两种：核心代码模式和 ACM 模式。</p>
+<p>核心代码模式顾名思义就是，测试用的数据已经放入容器里，你只负责写出核心逻辑，系统自动进行调用。LeetCode 就是用的这种。</p>
+<p>而在 ACM 程序设计竞赛中，一道题目的所有测试数据是放在一个文本文件中，选手将一道题目的程序提交给评判系统运行，程序从该文件中读取测试数据，再把运行结果输出到另一个文本文件中。系统把输出文件与标准答案比对，来评判程序编写得正确与否。ACM 现场赛采用的输入输出形式有三种：</p>
+<ol>
+<li>文件输入、标准输出；</li>
+<li>文件输入、文件输出；</li>
+<li>标准输入，标准输出。</li>
+</ol>
+<p>所谓 ACM 模式就是自己构造输入，自己把要需要处理的容器填充好，OJ 不会给你任何代码，包括 include 哪些文件都要自己写，最后再自己控制返回数据的格式。ACM 竞赛、POJ 和部分公司笔试采取这种模式。Web 形式的 ACM 程序设计在线评判系统一般采用标准输入和标准输出，</p>
+<p>从核心代码到 ACM 模式一般需要提前适应自己亲手处理输入输出的过程，但实际上 ACM 模式输入输出语句的模板化也比较严重，本文尝试对其惯用法进行汇总。</p>
+<h2 id="四种基本输入模式"><a href="#四种基本输入模式" class="headerlink" title="四种基本输入模式"></a>四种基本输入模式</h2><h3 id="一组输入数据"><a href="#一组输入数据" class="headerlink" title="一组输入数据"></a>一组输入数据</h3><p>示例：整数求和<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    cin &gt;&gt; a &gt;&gt; b;<br>    cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="多组输入数据：无限组，直到-EOF"><a href="#多组输入数据：无限组，直到-EOF" class="headerlink" title="多组输入数据：无限组，直到 EOF"></a>多组输入数据：无限组，直到 EOF</h3><p>有的题目不指定输入多少组，也没有给出结束的条件，要求处理所有数据，这时用文件尾的 EOF 标记。好像 EOF 等于-1 来着。</p>
+<p>示例：A + B Problem (1)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b)<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注：cin 读入发生错误时返回 0，否则返回 cin 的地址。</p>
+<p>或者</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(_dates_) != EOF)&#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="多组输入数据：无限组，直到某种结束标志"><a href="#多组输入数据：无限组，直到某种结束标志" class="headerlink" title="多组输入数据：无限组，直到某种结束标志"></a>多组输入数据：无限组，直到某种结束标志</h3><p>不说明多少组，以某特殊输入为结束标志。</p>
+<p>示例：A + B Problem (2)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085</a></p>
+<p>这个题目是以<code>0 0</code>为标志代表输入结束。反过来想，只要 a 和 b 不同时为假，即至少有一个真，就维持输入状态。很容易写出循环条件为<code>while(cin&gt;&gt;a&gt;&gt;b&amp;&amp;(a||b))</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b &amp;&amp; (a || b)) &#123;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="多组输入数据：有限组，输入完就结束"><a href="#多组输入数据：有限组，输入完就结束" class="headerlink" title="多组输入数据：有限组，输入完就结束"></a>多组输入数据：有限组，输入完就结束</h3><p>开始输入一个 N，接下来是 N 组数据</p>
+<p>示例：A + B Problem (3)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b, n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        cin &gt;&gt; a &gt;&gt; b;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="三种字符串输入"><a href="#三种字符串输入" class="headerlink" title="三种字符串输入"></a>三种字符串输入</h2><h3 id="每个字符串中不含空格、制表符及回车"><a href="#每个字符串中不含空格、制表符及回车" class="headerlink" title="每个字符串中不含空格、制表符及回车"></a>每个字符串中不含空格、制表符及回车</h3><p>这种情况使用 scanf_s(“%s”, str, buffersize)是再好不过的了。比如，测试数据中只有两个字符串：abc def。要读入 abc 与 def，可以这样写：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br>    <span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, str, <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">unsigned</span>&gt;_countof(str));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>知识点：</p>
+<p>（1）scanf_s 用法：在用 VS2019 进行 C++编程时，输入函数要写成 scanf_s。传统的 scanf()在读取时不检查边界，所以可能会造成内存访问越界，比如分配了 5 字节的空间但是读入了 10 字节。多出来的部分会被写到别的空间上去。而在调用 scanf_s 时，必须提供一个数字以表明最多读取多少位字符。读取单个字符也需要限定长度，否则编译器会报错。</p>
+<p>使用示范：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> s[<span class="hljs-number">10</span>];<br><span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, s, (<span class="hljs-keyword">unsigned</span>)_countof(s));<br></code></pre></td></tr></table></figure>
+<p>（2）<code>_countof</code>，Windows 宏，用来计算一个静态分配的数组中的元素的个数用法为<code>_countof(array)</code>。另外，确保 array 是一个静态分配的数组，而不是一个指针。如果 array 是一个指针，在 C 语言中<code>_countof</code> 会产生错误的结果；在 C++中<code>_countof</code> 会产生编译错误。</p>
+<p><code>_countof</code> 和 sizeof 的区别：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> arr[<span class="hljs-number">20</span>], * p;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sizeof(arr) = %d bytes\n&quot;</span>, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;_countof(arr) = %d elements\n&quot;</span>, _countof(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, _countof(p));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sizeof(arr) = 80 bytes<br>_countof(arr) = 20 elements<br>请按任意键继续. . .<br></code></pre></td></tr></table></figure>
+<p>（3）The size parameter is of type unsigned, not size_t. Use a static cast to convert a size_t value to unsigned for 64-bit build configurations.</p>
+<p>参考阅读：<br><a href="https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160">https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160</a></p>
+<h3 id="字符串中含有空格、制表符，但不含回车"><a href="#字符串中含有空格、制表符，但不含回车" class="headerlink" title="字符串中含有空格、制表符，但不含回车"></a>字符串中含有空格、制表符，但不含回车</h3><p>对于这种情况，scanf_s(“%s”, str)无能为力，因为 scanf_s 用空格、制表符及回车作为字符串的分界符。对于一个含有空格、制表符及回车的字符串，如果用 scanf_s(“%s”,str)来读，将读到若干个字符串，这个字符串被 scanf_s 分开了。可以用另外一个函数 gets_s，gets_s 函数用回车作为字符串的分界符。比如，有以下的一个字符串：”Hello world!”。要读入这个字符串，这样写：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br><span class="hljs-built_in">gets_s</span>(str);<br></code></pre></td></tr></table></figure>
+<p>gets_s 返回 NULL 时表示出错或抵达 end of file。</p>
+<h3 id="字符串中含有回车"><a href="#字符串中含有回车" class="headerlink" title="字符串中含有回车"></a>字符串中含有回车</h3><p>这种情况下如果没有题目的说明，程序无法知道哪里是字符串的分界。则用 scanf(“%c”,&amp;ch)来读，一边读，一边判断分界条件是否满足，如果满足，则把当前读到的东西存到一个字符串中。</p>
+<p>输入部分小结：</p>
+<ul>
+<li>如果用 string buf;来保存：getline(cin, buf);</li>
+<li>如果用 char buf[255];来保存：cin.getline(buf, 255);</li>
+<li>多个字符串之间用一个或多个空格分隔：scanf(“%s %s”, str1, str2);</li>
+<li>字符串之间用回车作分隔：gets(str1); gets(str2);</li>
+<li>通常情况下，接受短字符用 scanf，接受长字符用 gets。</li>
+<li>getchar 函数每次只接受一个字符，经常 c = getchar()这样来使用。</li>
+<li>getline 函数可以接受用户的输入的字符直到已达指定个数或者用户输入了特定的字符。</li>
+<li>C++的输入输出流用起来比较方便，但速度较 C 慢得多。在输入输出量巨大时，用 C++可能超时，应改为采用 C 的输入输出。</li>
+</ul>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>在初次接触 ACM 程序设计竞赛时，可能认为：样例中都是输入数据和输入数据在一起，输出结果和输出结果在一起，可能会开个数组，把每组的结果存起来，等输入完了再一起输出。当遇到不知有多少组测试数据的题，就难以处理了。其实在 ACM 程序设计竞赛中，输入数据和输出数据是分别在两个不同的文件中进行的，程序的输入和输出是相互独立的，所以读入一组数据就输出一组结果，跟先读入所有数据再输出所有的结果，效果是完全一样的。因此，每当处理完一组测试数据，就应当按题目要求进行相应的输出操作。而不必将所有结果储存起来一起输出。在处理输出时，一般要注意：每行输出均以回车符结束，包括最后一行。</p>
+<p>几乎所有题目都是换行输出，而有的题目还要求空（去声）行输出。</p>
+<h3 id="关于空（平声）行"><a href="#关于空（平声）行" class="headerlink" title="关于空（平声）行"></a>关于空（平声）行</h3><p>很多题目都要求在输出数据的恰当位置加空行。一个空行就是一个单独的”\n”。<br>这里，有的题目说：“After each test case, you should output one blank line”，而有的题目说：“Between each test case, you should ouput one blank line”。要注意 After 和 Between 的区别。<br>输出有不同的格式要求，如果多了或少了空行的话经常会出现 Presentation Error，而且 OJ 很多时候还判断不出来输出格式错误，就简单的判为 Wrong Answer，所以输出格式一定要注意。</p>
+<p>示例：A + B Problem (4)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n, sum, a;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; n &amp;&amp; n != <span class="hljs-number">0</span>) &#123;<br>        sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n--) &#123;<br>            cin &gt;&gt; a;<br>            sum += a;<br>        &#125;<br>        cout &lt;&lt; sum &lt;&lt; endl;<br>        cout &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">3<br>1<br>2<br>3<br>6<br><br>3<br>1 2 3<br>6<br><br>3<br>1 2 3 4<br>6<br></code></pre></td></tr></table></figure>
+<h3 id="字符串输出后缀技巧"><a href="#字符串输出后缀技巧" class="headerlink" title="字符串输出后缀技巧"></a>字符串输出后缀技巧</h3><p>字符串要输出后面的一部分没必要重新搞一个，可以用以下方式：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">cout &lt;&lt; s + <span class="hljs-number">2</span> &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+<p>这样就会从 s[2]开始输出。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>CPP</category>
+      </categories>
+      <tags>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++中string::find的五种写法</title>
+    <url>/posts/8b37e32e/</url>
+    <content><![CDATA[<p><code>find()</code> 在一个字符串中查找一个指定的单个字符或字符数组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，就返回 string::npos。</p>
+<p><code>find_first_of()</code> 在一个目标串中进行查找，返回值是第一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
+<p><code>find_last_of()</code> 在一个目标串中进行查找，返回最后一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
+<p><code>find_first_not_of()</code> 在一个目标串中进行查找，返回第一个与指定字符组中任何字符都不匹配的元素位置。如果找不到那样的元素则返回 npos。</p>
+<p><code>find_last_not_of()</code> 在一个目标串中进行查找，返回下标值最大的与指定字符组中任何字符都不匹配的元素的位置。若找不到那样的元素则返回 npos。</p>
+<hr>
+<p><code>rfind()</code> 对一个串从尾至头查找一个指定的单个字符或字符组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，则返回 npos。</p>
+<p><code>find(string, int)</code> 第一个参数用来指示要查找的字符，第二个参数用来表示从字符串的何处开始查找子串（默认的查找位置是 0）。</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>CPP</category>
+      </categories>
+      <tags>
+        <tag>STL</tag>
       </tags>
   </entry>
   <entry>
@@ -2682,101 +2777,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>C++中string::find的五种写法</title>
-    <url>/posts/8b37e32e/</url>
-    <content><![CDATA[<p><code>find()</code> 在一个字符串中查找一个指定的单个字符或字符数组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，就返回 string::npos。</p>
-<p><code>find_first_of()</code> 在一个目标串中进行查找，返回值是第一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
-<p><code>find_last_of()</code> 在一个目标串中进行查找，返回最后一个与指定字符组中任何字符匹配的字符位置。如果没有查找到匹配的内容，则返回 npos。</p>
-<p><code>find_first_not_of()</code> 在一个目标串中进行查找，返回第一个与指定字符组中任何字符都不匹配的元素位置。如果找不到那样的元素则返回 npos。</p>
-<p><code>find_last_not_of()</code> 在一个目标串中进行查找，返回下标值最大的与指定字符组中任何字符都不匹配的元素的位置。若找不到那样的元素则返回 npos。</p>
-<hr>
-<p><code>rfind()</code> 对一个串从尾至头查找一个指定的单个字符或字符组。如果找到，就返回首次匹配的开始位置；如果没有查找到匹配的内容，则返回 npos。</p>
-<p><code>find(string, int)</code> 第一个参数用来指示要查找的字符，第二个参数用来表示从字符串的何处开始查找子串（默认的查找位置是 0）。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>CPP</category>
-      </categories>
-      <tags>
-        <tag>STL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ACM模式下C++标准输入输出惯用法汇总</title>
-    <url>/posts/dc62c34d/</url>
-    <content><![CDATA[<h2 id="引言：从核心代码到-ACM"><a href="#引言：从核心代码到-ACM" class="headerlink" title="引言：从核心代码到 ACM"></a>引言：从核心代码到 ACM</h2><p>现在主流的在线编程环境分为两种：核心代码模式和 ACM 模式。</p>
-<p>核心代码模式顾名思义就是，测试用的数据已经放入容器里，你只负责写出核心逻辑，系统自动进行调用。LeetCode 就是用的这种。</p>
-<p>而在 ACM 程序设计竞赛中，一道题目的所有测试数据是放在一个文本文件中，选手将一道题目的程序提交给评判系统运行，程序从该文件中读取测试数据，再把运行结果输出到另一个文本文件中。系统把输出文件与标准答案比对，来评判程序编写得正确与否。ACM 现场赛采用的输入输出形式有三种：</p>
-<ol>
-<li>文件输入、标准输出；</li>
-<li>文件输入、文件输出；</li>
-<li>标准输入，标准输出。</li>
-</ol>
-<p>所谓 ACM 模式就是自己构造输入，自己把要需要处理的容器填充好，OJ 不会给你任何代码，包括 include 哪些文件都要自己写，最后再自己控制返回数据的格式。ACM 竞赛、POJ 和部分公司笔试采取这种模式。Web 形式的 ACM 程序设计在线评判系统一般采用标准输入和标准输出，</p>
-<p>从核心代码到 ACM 模式一般需要提前适应自己亲手处理输入输出的过程，但实际上 ACM 模式输入输出语句的模板化也比较严重，本文尝试对其惯用法进行汇总。</p>
-<h2 id="四种基本输入模式"><a href="#四种基本输入模式" class="headerlink" title="四种基本输入模式"></a>四种基本输入模式</h2><h3 id="一组输入数据"><a href="#一组输入数据" class="headerlink" title="一组输入数据"></a>一组输入数据</h3><p>示例：整数求和<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1001</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    cin &gt;&gt; a &gt;&gt; b;<br>    cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="多组输入数据：无限组，直到-EOF"><a href="#多组输入数据：无限组，直到-EOF" class="headerlink" title="多组输入数据：无限组，直到 EOF"></a>多组输入数据：无限组，直到 EOF</h3><p>有的题目不指定输入多少组，也没有给出结束的条件，要求处理所有数据，这时用文件尾的 EOF 标记。好像 EOF 等于-1 来着。</p>
-<p>示例：A + B Problem (1)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1084</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b)<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>注：cin 读入发生错误时返回 0，否则返回 cin 的地址。</p>
-<p>或者</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(_dates_) != EOF)&#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="多组输入数据：无限组，直到某种结束标志"><a href="#多组输入数据：无限组，直到某种结束标志" class="headerlink" title="多组输入数据：无限组，直到某种结束标志"></a>多组输入数据：无限组，直到某种结束标志</h3><p>不说明多少组，以某特殊输入为结束标志。</p>
-<p>示例：A + B Problem (2)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1085</a></p>
-<p>这个题目是以<code>0 0</code>为标志代表输入结束。反过来想，只要 a 和 b 不同时为假，即至少有一个真，就维持输入状态。很容易写出循环条件为<code>while(cin&gt;&gt;a&gt;&gt;b&amp;&amp;(a||b))</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b &amp;&amp; (a || b)) &#123;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="多组输入数据：有限组，输入完就结束"><a href="#多组输入数据：有限组，输入完就结束" class="headerlink" title="多组输入数据：有限组，输入完就结束"></a>多组输入数据：有限组，输入完就结束</h3><p>开始输入一个 N，接下来是 N 组数据</p>
-<p>示例：A + B Problem (3)<br><a href="http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086">http://acm.njupt.edu.cn/acmhome/problemdetail.do?&amp;method=showdetail&amp;id=1086</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b, n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">while</span> (n--) &#123;<br>        cin &gt;&gt; a &gt;&gt; b;<br>        cout &lt;&lt; a + b &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="三种字符串输入"><a href="#三种字符串输入" class="headerlink" title="三种字符串输入"></a>三种字符串输入</h2><h3 id="每个字符串中不含空格、制表符及回车"><a href="#每个字符串中不含空格、制表符及回车" class="headerlink" title="每个字符串中不含空格、制表符及回车"></a>每个字符串中不含空格、制表符及回车</h3><p>这种情况使用 scanf_s(“%s”, str, buffersize)是再好不过的了。比如，测试数据中只有两个字符串：abc def。要读入 abc 与 def，可以这样写：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br>    <span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, str, <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">unsigned</span>&gt;_countof(str));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>知识点：</p>
-<p>（1）scanf_s 用法：在用 VS2019 进行 C++编程时，输入函数要写成 scanf_s。传统的 scanf()在读取时不检查边界，所以可能会造成内存访问越界，比如分配了 5 字节的空间但是读入了 10 字节。多出来的部分会被写到别的空间上去。而在调用 scanf_s 时，必须提供一个数字以表明最多读取多少位字符。读取单个字符也需要限定长度，否则编译器会报错。</p>
-<p>使用示范：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> s[<span class="hljs-number">10</span>];<br><span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%s&quot;</span>, s, (<span class="hljs-keyword">unsigned</span>)_countof(s));<br></code></pre></td></tr></table></figure>
-<p>（2）_countof，Windows 宏，用来计算一个静态分配的数组中的元素的个数用法为_countof(array)。另外，确保 array 是一个静态分配的数组，而不是一个指针。如果 array 是一个指针，在 C 语言中_countof 会产生错误的结果；在 C++中_countof 会产生编译错误。</p>
-<p>_countof 和 sizeof 的区别：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> arr[<span class="hljs-number">20</span>], * p;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sizeof(arr) = %d bytes\n&quot;</span>, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;_countof(arr) = %d elements\n&quot;</span>, _countof(arr));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, _countof(p));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sizeof(arr) = 80 bytes<br>_countof(arr) = 20 elements<br>请按任意键继续. . .<br></code></pre></td></tr></table></figure>
-<p>（3）The size parameter is of type unsigned, not size_t. Use a static cast to convert a size_t value to unsigned for 64-bit build configurations.</p>
-<p>参考阅读：<br><a href="https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160">https://docs.microsoft.com/zh-tw/cpp/c-runtime-library/reference/scanf-s-scanf-s-l-wscanf-s-wscanf-s-l?view=msvc-160</a></p>
-<h3 id="字符串中含有空格、制表符，但不含回车"><a href="#字符串中含有空格、制表符，但不含回车" class="headerlink" title="字符串中含有空格、制表符，但不含回车"></a>字符串中含有空格、制表符，但不含回车</h3><p>对于这种情况，scanf_s(“%s”, str)无能为力，因为 scanf_s 用空格、制表符及回车作为字符串的分界符。对于一个含有空格、制表符及回车的字符串，如果用 scanf_s(“%s”,str)来读，将读到若干个字符串，这个字符串被 scanf_s 分开了。可以用另外一个函数 gets_s，gets_s 函数用回车作为字符串的分界符。比如，有以下的一个字符串：”Hello world!”。要读入这个字符串，这样写：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> str[<span class="hljs-number">1000</span>];<br><span class="hljs-built_in">gets_s</span>(str);<br></code></pre></td></tr></table></figure>
-<p>gets_s 返回 NULL 时表示出错或抵达 end of file。</p>
-<h3 id="字符串中含有回车"><a href="#字符串中含有回车" class="headerlink" title="字符串中含有回车"></a>字符串中含有回车</h3><p>这种情况下如果没有题目的说明，程序无法知道哪里是字符串的分界。则用 scanf(“%c”,&amp;ch)来读，一边读，一边判断分界条件是否满足，如果满足，则把当前读到的东西存到一个字符串中。</p>
-<p>输入部分小结：</p>
-<ul>
-<li>如果用 string buf;来保存：getline(cin, buf);</li>
-<li>如果用 char buf[255];来保存：cin.getline(buf, 255);</li>
-<li>多个字符串之间用一个或多个空格分隔：scanf(“%s %s”, str1, str2);</li>
-<li>字符串之间用回车作分隔：gets(str1); gets(str2);</li>
-<li>通常情况下，接受短字符用 scanf，接受长字符用 gets。</li>
-<li>getchar 函数每次只接受一个字符，经常 c = getchar()这样来使用。</li>
-<li>getline 函数可以接受用户的输入的字符直到已达指定个数或者用户输入了特定的字符。</li>
-<li>C++的输入输出流用起来比较方便，但速度较 C 慢得多。在输入输出量巨大时，用 C++可能超时，应改为采用 C 的输入输出。</li>
-</ul>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>在初次接触 ACM 程序设计竞赛时，可能认为：样例中都是输入数据和输入数据在一起，输出结果和输出结果在一起，可能会开个数组，把每组的结果存起来，等输入完了再一起输出。当遇到不知有多少组测试数据的题，就难以处理了。其实在 ACM 程序设计竞赛中，输入数据和输出数据是分别在两个不同的文件中进行的，程序的输入和输出是相互独立的，所以读入一组数据就输出一组结果，跟先读入所有数据再输出所有的结果，效果是完全一样的。因此，每当处理完一组测试数据，就应当按题目要求进行相应的输出操作。而不必将所有结果储存起来一起输出。在处理输出时，一般要注意：每行输出均以回车符结束，包括最后一行。</p>
-<p>几乎所有题目都是换行输出，而有的题目还要求空（去声）行输出。</p>
-<h3 id="关于空（平声）行"><a href="#关于空（平声）行" class="headerlink" title="关于空（平声）行"></a>关于空（平声）行</h3><p>很多题目都要求在输出数据的恰当位置加空行。一个空行就是一个单独的”\n”。<br>这里，有的题目说：“After each test case, you should output one blank line”，而有的题目说：“Between each test case, you should ouput one blank line”。要注意 After 和 Between 的区别。<br>输出有不同的格式要求，如果多了或少了空行的话经常会出现 Presentation Error，而且 OJ 很多时候还判断不出来输出格式错误，就简单的判为 Wrong Answer，所以输出格式一定要注意。</p>
-<p>示例：A + B Problem (4)</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n, sum, a;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; n &amp;&amp; n != <span class="hljs-number">0</span>) &#123;<br>        sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n--) &#123;<br>            cin &gt;&gt; a;<br>            sum += a;<br>        &#125;<br>        cout &lt;&lt; sum &lt;&lt; endl;<br>        cout &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">3<br>1<br>2<br>3<br>6<br><br>3<br>1 2 3<br>6<br><br>3<br>1 2 3 4<br>6<br></code></pre></td></tr></table></figure>
-<h3 id="字符串输出后缀技巧"><a href="#字符串输出后缀技巧" class="headerlink" title="字符串输出后缀技巧"></a>字符串输出后缀技巧</h3><p>字符串要输出后面的一部分没必要重新搞一个，可以用以下方式：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">cout &lt;&lt; s + <span class="hljs-number">2</span> &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
-<p>这样就会从 s[2]开始输出。</p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>CPP</category>
-      </categories>
-      <tags>
-        <tag>STL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++中的std::find_first_of</title>
     <url>/posts/cec9b026/</url>
     <content><![CDATA[<p><code>std::find_first_of</code>用于比较两个容器之间的元素。它将[first1，last1)范围内的所有元素与[first2，last2)范围内的所有元素进行比较：</p>
@@ -2869,7 +2869,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
   <entry>
     <title>C++中的static关键字</title>
     <url>/posts/c39717db/</url>
-    <content><![CDATA[<p>静态是 C++ 中的关键字，用于为元素赋予特殊的特性。静态元素在程序生存期内仅在静态存储区域中分配一次存储。而且它们的作用范围一直到程序生存期。静态关键字可以用于以下情况：</p>
+    <content><![CDATA[<p>static 是 C++ 中的关键字，用以赋予元素特殊的性质。静态元素在程序生存期内仅在静态存储区域中分配一次存储。而且它们的作用范围一直到程序生存期。static 关键字可以用于以下情况：</p>
 <ol>
 <li>Static variable in functions</li>
 <li>Static Class Objects</li>
@@ -3065,7 +3065,8 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
   <entry>
     <title>C++基本数据类型长度</title>
     <url>/posts/66e8554d/</url>
-    <content><![CDATA[<h2 id="某数据类型在某平台下占用字节的问题"><a href="#某数据类型在某平台下占用字节的问题" class="headerlink" title="某数据类型在某平台下占用字节的问题"></a>某数据类型在某平台下占用字节的问题</h2><p>不同的平台上对不同数据类型分配的字节数是不同的。<br>个人对平台的理解是 CPU+OS+Compiler，是因为：</p>
+    <content><![CDATA[<p><strong>某数据类型在某平台下占用字节的问题</strong></p>
+<p>不同的平台上对不同数据类型分配的字节数是不同的。<br>个人对平台的理解是 CPU+OS+Compiler，是因为：</p>
 <ol>
 <li>64 位机器也可以装 32 位系统（x64 装 XP）；</li>
 <li>32 位机器上可以有 16/32 位的编译器（XP 上有 tc 是 16 位的，其他常见的是 32 位的）；</li>
@@ -3143,7 +3144,8 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <li>long 至少应为 32 位（4 字节）。</li>
 </ol>
 <p>说明的说明：<br>short 就是 short int，long 就是 long int<br>整值提升的相关知识，去看 CPMA 第 101 页，书上讲的已经很完美了。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.cnblogs.com/vanishfan/p/3334369.html">https://www.cnblogs.com/vanishfan/p/3334369.html</a></p>
+<p><strong>参考资料</strong></p>
+<p><a href="https://www.cnblogs.com/vanishfan/p/3334369.html">https://www.cnblogs.com/vanishfan/p/3334369.html</a></p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -3705,23 +3707,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>Git多平台换行符问题</title>
-    <url>/posts/acc4d763/</url>
-    <content><![CDATA[<p>参考资料</p>
-<p><a href="https://blog.csdn.net/ljheee/article/details/82946368">https://blog.csdn.net/ljheee/article/details/82946368</a></p>
-<p><a href="https://blog.csdn.net/qq_39994406/article/details/105723178?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/qq_39994406/article/details/105723178?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242</a></p>
-<p><a href="https://www.zhihu.com/question/50862500">https://www.zhihu.com/question/50862500</a></p>
-<p>具体问题</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">12776</span>@DESKTOP<span class="hljs-literal">-81NVB8G</span> MINGW64 ~/Documents/GITpractice/awesome_project (master)<br><span class="hljs-variable">$</span> git add README<br>warning: LF will be replaced by CRLF <span class="hljs-keyword">in</span> README.<br>The file will have its original line endings <span class="hljs-keyword">in</span> your working directory<br></code></pre></td></tr></table></figure>
-<p>解决方案</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> git config -<span class="hljs-literal">-global</span> core.autocrlf true<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>RE使用札记</title>
     <url>/posts/bcc7a2a3/</url>
     <content><![CDATA[<h4 id="批量删除注释"><a href="#批量删除注释" class="headerlink" title="批量删除注释"></a>批量删除注释</h4><figure class="highlight re"><table><tr><td class="code"><pre><code class="hljs re">行注释<br><span class="hljs-comment">//[\s\S]*?\n</span><br><br>块注释<br>/\*(.<span class="hljs-pattern-match">|\r\n|\n)<span class="hljs-operator">*</span>?\<span class="hljs-operator">*</span><span class="hljs-operator">/</span></span><br><span class="hljs-pattern-match"></span><br><span class="hljs-pattern-match">所有注释</span><br><span class="hljs-pattern-match">\<span class="hljs-operator">/</span>\<span class="hljs-operator">*</span>[\s\<span class="hljs-constructor">S</span>]<span class="hljs-operator">*</span>\<span class="hljs-operator">*</span>\<span class="hljs-operator">/</span>|\<span class="hljs-operator">/</span>\<span class="hljs-operator">/</span>.<span class="hljs-operator">*</span></span><br><span class="hljs-pattern-match"></span><br><span class="hljs-pattern-match">html注释</span><br><span class="hljs-pattern-match">&lt;!--([\s\<span class="hljs-constructor">S</span>|\r]<span class="hljs-operator">*</span>?)--&gt;</span><br></code></pre></td></tr></table></figure>
@@ -3844,6 +3829,24 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p>假设存在一个目录 dir1，如果它的权限表示为<code>drw-rw-rw-</code>，此时执行<code>mkdir dir1/sample</code>，出现错误：mkdir: cannot create directory ‘dir1/sample/’: Permission denied. 这是因为这个目录不具有执行权限，不能 cd 进去创建子目录。这点一开始我还挺疑惑的，归根结底是没有理解<code>-x</code>的真正含义，以为 cd 的权利的理所应当就有的，实际上 cd 的权利是执行权利的体现。</p>
 <p><strong>参考资料</strong></p>
 <p><a href="https://arkingc.github.io/2017/11/30/2017-11-30-linux-du/">https://arkingc.github.io/2017/11/30/2017-11-30-linux-du/</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Git多平台换行符问题</title>
+    <url>/posts/acc4d763/</url>
+    <content><![CDATA[<p><strong>参考资料</strong></p>
+<p><a href="https://blog.csdn.net/ljheee/article/details/82946368">https://blog.csdn.net/ljheee/article/details/82946368</a></p>
+<p><a href="https://blog.csdn.net/qq_39994406/article/details/105723178?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/qq_39994406/article/details/105723178?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242</a></p>
+<p><a href="https://www.zhihu.com/question/50862500">https://www.zhihu.com/question/50862500</a></p>
+<p><strong>具体问题</strong></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">12776</span>@DESKTOP<span class="hljs-literal">-81NVB8G</span> MINGW64 ~/Documents/GITpractice/awesome_project (master)<br><span class="hljs-variable">$</span> git add README<br>warning: LF will be replaced by CRLF <span class="hljs-keyword">in</span> README.<br>The file will have its original line endings <span class="hljs-keyword">in</span> your working directory<br></code></pre></td></tr></table></figure>
+<p><strong>解决方案</strong></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> git config -<span class="hljs-literal">-global</span> core.autocrlf true<br></code></pre></td></tr></table></figure>
+<p>我稍微研究了一下，git config 文件貌似放在系统盘的 User 目录下面，也可以直接拿文本编辑器修改。</p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -5500,6 +5503,28 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>单链表的长度</title>
+    <url>/posts/a7cf4814/</url>
+    <content><![CDATA[<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>思路</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1) Initialize count as 0<br>2) Initialize a node pointer, current = head.<br>3) Do following while current is not NULL<br>     a) count++;<br>     b) current = current -&gt; next<br>4) Return count<br></code></pre></td></tr></table></figure>
+<p>具体实现</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>    Node* current = head;<br>    <span class="hljs-keyword">while</span> (current != <span class="hljs-literal">NULL</span>) &#123;<br>        count++;<br>        current = current-&gt;next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h2><p>思路</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int getCount(head)<br>1) If head is NULL, return 0.<br>2) Else return 1 + getCount(head-&gt;next)<br></code></pre></td></tr></table></figure>
+<p>具体实现</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + <span class="hljs-built_in">getCount</span>(head-&gt;next);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/">https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/</a></p>
+<p>2021 年 2 月 8 日</p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>双端队列的双链表实现</title>
     <url>/posts/42cde6b5/</url>
     <content><![CDATA[<p>头————尾（allows insert and delete at both ends）</p>
@@ -5542,28 +5567,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p><img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/03/DLL1.png" alt="dll"></p>
 <p>为什么传入尾结点与其他两者不太一样？观察上图容易发现，头结点和中间结点均有 4 条相关指针，而尾结点只有 3 条相关指针。当结点 D 准备被删除时，存放在类 D 中的 D-&gt;prev 和 D-&gt;next 都会自由，紧接着 C 成为事实上的新任尾结点，C-&gt;next=D-&gt;next=NULL，（因此时 D-&gt;prev 和 D-&gt;next 只是断开，还没有物理上清空，因此 D-&gt;next 的内容仍然是 NULL），直到 free(D)，至此，与 D 相关的一切（data、prev、next）才都被抹去。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/">https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单链表的长度</title>
-    <url>/posts/a7cf4814/</url>
-    <content><![CDATA[<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>思路</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1) Initialize count as 0<br>2) Initialize a node pointer, current = head.<br>3) Do following while current is not NULL<br>     a) count++;<br>     b) current = current -&gt; next<br>4) Return count<br></code></pre></td></tr></table></figure>
-<p>具体实现</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>    Node* current = head;<br>    <span class="hljs-keyword">while</span> (current != <span class="hljs-literal">NULL</span>) &#123;<br>        count++;<br>        current = current-&gt;next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h2><p>思路</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int getCount(head)<br>1) If head is NULL, return 0.<br>2) Else return 1 + getCount(head-&gt;next)<br></code></pre></td></tr></table></figure>
-<p>具体实现</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + <span class="hljs-built_in">getCount</span>(head-&gt;next);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/">https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive/</a></p>
-<p>2021 年 2 月 8 日</p>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -5789,29 +5792,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>队列的栈实现</title>
-    <url>/posts/e9418331/</url>
-    <content><![CDATA[<h4 id="Method-1-By-making-enQueue-operation-costly"><a href="#Method-1-By-making-enQueue-operation-costly" class="headerlink" title="Method 1 (By making enQueue operation costly)"></a>Method 1 (By making enQueue operation costly)</h4><p>这个方法理解有点别扭，直接看第二个。</p>
-<h4 id="Method-2-By-making-deQueue-operation-costly"><a href="#Method-2-By-making-deQueue-operation-costly" class="headerlink" title="Method 2 (By making deQueue operation costly)"></a>Method 2 (By making deQueue operation costly)</h4><p><img src="https://i.stack.imgur.com/xyWPR.png" alt="enter image description here"></p>
-<p><img src="https://i.stack.imgur.com/lX1EP.png" alt="enter image description here"></p>
-<p><img src="https://i.stack.imgur.com/9f03R.png" alt="enter image description here"></p>
-<p>注意一点，S2 不为空时，就不能继续让 S1 向 S2 转移，必须把 S2 中的元素 De 完再继续 S1 向 S2 转移。比如 input1 2 3，如果 S2 中 1 2 出列，3 还留在里面，此时 input4 5，整体来看一共 input 了 1 2 3 4 5，应该 output1 2 3 4 5，所以 4 5 不能压在 S2 中仅存的 3 的上面，一定要把 S2 容器 De 空，然后再继续转移。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Queue</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s1, s2;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">enQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        s1.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">deQueue</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s1.<span class="hljs-built_in">empty</span>() &amp;&amp; s2.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;Q is empty&quot;</span>;<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (s2.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-keyword">while</span> (!s1.<span class="hljs-built_in">empty</span>()) &#123;<br>                s2.<span class="hljs-built_in">push</span>(s1.<span class="hljs-built_in">top</span>());<br>                s1.<span class="hljs-built_in">pop</span>();<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> x = s2.<span class="hljs-built_in">top</span>();<br>        s2.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">return</span> x;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h4 id="Implementation-of-method-2-using-Function-Call-Stack"><a href="#Implementation-of-method-2-using-Function-Call-Stack" class="headerlink" title="Implementation of method 2 using Function Call Stack"></a>Implementation of method 2 using Function Call Stack</h4><p>法二的另一种实现方式，使用了递归思路，也不容易理清，还是推荐第二种办法。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Queue</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">enQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        s.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">deQueue</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;Q is empty&quot;</span>;<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> x = s.<span class="hljs-built_in">top</span>();<br>        s.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span> x;<br>        <span class="hljs-keyword">int</span> item = <span class="hljs-built_in">deQueue</span>();<br>        s.<span class="hljs-built_in">push</span>(x);<br>        <span class="hljs-keyword">return</span> item;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.thinbug.com/q/69192">https://www.thinbug.com/q/69192</a></p>
-<p><a href="https://www.geeksforgeeks.org/queue-using-stacks/">https://www.geeksforgeeks.org/queue-using-stacks/</a></p>
-]]></content>
-      <categories>
-        <category>编程珠玑</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>栈</tag>
-        <tag>队列</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>gfg-冒泡排序</title>
     <url>/posts/3ab69650/</url>
     <content><![CDATA[<p><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif" alt=""></p>
@@ -5838,6 +5818,29 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>队列的栈实现</title>
+    <url>/posts/e9418331/</url>
+    <content><![CDATA[<h4 id="Method-1-By-making-enQueue-operation-costly"><a href="#Method-1-By-making-enQueue-operation-costly" class="headerlink" title="Method 1 (By making enQueue operation costly)"></a>Method 1 (By making enQueue operation costly)</h4><p>这个方法理解有点别扭，直接看第二个。</p>
+<h4 id="Method-2-By-making-deQueue-operation-costly"><a href="#Method-2-By-making-deQueue-operation-costly" class="headerlink" title="Method 2 (By making deQueue operation costly)"></a>Method 2 (By making deQueue operation costly)</h4><p><img src="https://i.stack.imgur.com/xyWPR.png" alt="enter image description here"></p>
+<p><img src="https://i.stack.imgur.com/lX1EP.png" alt="enter image description here"></p>
+<p><img src="https://i.stack.imgur.com/9f03R.png" alt="enter image description here"></p>
+<p>注意一点，S2 不为空时，就不能继续让 S1 向 S2 转移，必须把 S2 中的元素 De 完再继续 S1 向 S2 转移。比如 input1 2 3，如果 S2 中 1 2 出列，3 还留在里面，此时 input4 5，整体来看一共 input 了 1 2 3 4 5，应该 output1 2 3 4 5，所以 4 5 不能压在 S2 中仅存的 3 的上面，一定要把 S2 容器 De 空，然后再继续转移。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Queue</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s1, s2;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">enQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        s1.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">deQueue</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s1.<span class="hljs-built_in">empty</span>() &amp;&amp; s2.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;Q is empty&quot;</span>;<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (s2.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-keyword">while</span> (!s1.<span class="hljs-built_in">empty</span>()) &#123;<br>                s2.<span class="hljs-built_in">push</span>(s1.<span class="hljs-built_in">top</span>());<br>                s1.<span class="hljs-built_in">pop</span>();<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> x = s2.<span class="hljs-built_in">top</span>();<br>        s2.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">return</span> x;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h4 id="Implementation-of-method-2-using-Function-Call-Stack"><a href="#Implementation-of-method-2-using-Function-Call-Stack" class="headerlink" title="Implementation of method 2 using Function Call Stack"></a>Implementation of method 2 using Function Call Stack</h4><p>法二的另一种实现方式，使用了递归思路，也不容易理清，还是推荐第二种办法。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Queue</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">enQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        s.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">deQueue</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;Q is empty&quot;</span>;<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> x = s.<span class="hljs-built_in">top</span>();<br>        s.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span> x;<br>        <span class="hljs-keyword">int</span> item = <span class="hljs-built_in">deQueue</span>();<br>        s.<span class="hljs-built_in">push</span>(x);<br>        <span class="hljs-keyword">return</span> item;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.thinbug.com/q/69192">https://www.thinbug.com/q/69192</a></p>
+<p><a href="https://www.geeksforgeeks.org/queue-using-stacks/">https://www.geeksforgeeks.org/queue-using-stacks/</a></p>
+]]></content>
+      <categories>
+        <category>编程珠玑</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
+        <tag>队列</tag>
       </tags>
   </entry>
   <entry>
@@ -6322,7 +6325,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p>伊曼努爾・康德：只有當我們遵守自己制定的準則時，我們才是自由的，否则只是各種事物的奴隸。</p>
 </blockquote>
 <h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">leetcode 刷到 200 题<br>C++ Primer 翻烂<br></code></pre></td></tr></table></figure>
-<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">书包 - 国家地理<br>眼镜<br>跑鞋<br>手机 - S21U<br>电脑 - R9000P_3070<br></code></pre></td></tr></table></figure>
+<h2 id="消费计划"><a href="#消费计划" class="headerlink" title="消费计划"></a>消费计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">眼镜<br>手机 - Note20Ultra<br>电脑 - R9000P_3070<br></code></pre></td></tr></table></figure>
 <h2 id="娱乐计划"><a href="#娱乐计划" class="headerlink" title="娱乐计划"></a>娱乐计划</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">成都大熊貓繁育研究基地<br></code></pre></td></tr></table></figure>
 <h2 id="每日作息"><a href="#每日作息" class="headerlink" title="每日作息"></a>每日作息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">5:45-6:00  起床，解手，温水蜂蜜，运动衣裤<br>6:00-6:30  跑步(5KM)<br>6:30-7:00  早饭，洗澡，洗衣，刷牙<br>7:00-8:00  开机，刷每日一题<br>8:00  通勤<br><br>平日  看书，刷题<br>假日  看书，实验，比赛，社交，下厨<br><br>23:00-00:00  看书，泡脚，睡觉<br></code></pre></td></tr></table></figure>
 <h2 id="每月主线"><a href="#每月主线" class="headerlink" title="每月主线"></a>每月主线</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">01 月：读 C++ PrimerⅠ；去成都<br>02 月：读谢希仁计算机网络<br>03 月：读邹恒明操作系统；考研调剂<br>04 月：读 C++ PrimerⅡ；面试大厂<br>05 月：刷华为机试；面试德科；简单复习Linux+Git+C；等Offer；体检<br>06 月：租房；熟悉工作<br>07 月：<br>08 月：<br>09 月：<br>10 月：<br>11 月：<br>12 月：转正<br></code></pre></td></tr></table></figure>
@@ -6344,19 +6347,19 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
     <content><![CDATA[<blockquote>
 <p>根深叶茂，本固枝荣。</p>
 </blockquote>
-<h3 id="计算机科学-CS-37本"><a href="#计算机科学-CS-37本" class="headerlink" title="计算机科学 CS 37本"></a>计算机科学 CS 37本</h3><h4 id="语言-C-C-Python-6本"><a href="#语言-C-C-Python-6本" class="headerlink" title="语言 C/C++/Python 6本"></a>语言 C/C++/Python 6本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- C语言程序设计：现代方法 -- K. N. King -- 2020.11<br>- C和指针<br>- C++ Primer -- Stanley B. Lippman<br>- Effective C++：改善程序与设计的55个具体做法 -- Scott Meyers<br>- STL源码剖析 -- 侯捷<br>- Inside the C++ Object Model -- Stanley B. Lippman<br></code></pre></td></tr></table></figure>
-<h4 id="算法-algorithm-5本"><a href="#算法-algorithm-5本" class="headerlink" title="算法 algorithm 5本"></a>算法 algorithm 5本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 算法导论（CLRS）<br>- 计算机程序设计艺术（TAOCP）<br>- 算法 -- Robert Sedgewick<br>- 算法竞赛入门经典 -- 刘汝佳<br>- 算法竞赛入门经典：训练指南 -- 刘汝佳<br></code></pre></td></tr></table></figure>
-<h4 id="计算机系统应用-csa-8本"><a href="#计算机系统应用-csa-8本" class="headerlink" title="计算机系统应用 csa 8本"></a>计算机系统应用 csa 8本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 深入理解计算机系统（CSAPP）<br>- 操作系统之哲学原理 -- 邹恒明 -- 2021.3<br>- 鳥哥的 Linux 私房菜<br>- UNIX环境高级编程（APUE）<br>- UNIX网络编程（UNP）<br>- 计算机网络 -- 谢希仁 -- 2021.2<br>- 5G NR标准：下一代无线通信技术<br>- 数据库系统概念<br></code></pre></td></tr></table></figure>
-<h4 id="理论计算机科学-tcs-2本"><a href="#理论计算机科学-tcs-2本" class="headerlink" title="理论计算机科学 tcs 2本"></a>理论计算机科学 tcs 2本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 计算机程序的构造和解释（SICP，魔法书）<br>- 编译原理（龙书）<br></code></pre></td></tr></table></figure>
-<h4 id="数学-math-7本"><a href="#数学-math-7本" class="headerlink" title="数学 math 7本"></a>数学 math 7本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 数学之美<br>- 线性代数及其应用 -- David C. Lay<br>- 概率论与数理统计教程 -- 茆诗松<br>- 概率论与数理统计 -- 陈希孺<br>- 随机过程 -- Ross<br>- 离散数学及其应用<br>- 具体数学：计算机科学基础<br></code></pre></td></tr></table></figure>
-<h4 id="软件工程-se-7本"><a href="#软件工程-se-7本" class="headerlink" title="软件工程 se 7本"></a>软件工程 se 7本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 设计模式<br>- 代码大全<br>- 程序员修炼之道<br>- 人月神话 -- 弗雷德里克·布鲁克斯<br>- 自由王国<br>- 编程之美<br>- 人件<br></code></pre></td></tr></table></figure>
-<h4 id="人工智能-ai-2本"><a href="#人工智能-ai-2本" class="headerlink" title="人工智能 ai 2本"></a>人工智能 ai 2本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 人工智能：一种现代方法（AIMA） -- Stuart J. Russell<br>- 机器学习（西瓜书） -- 周志华<br></code></pre></td></tr></table></figure>
-<h3 id="人文社科-48本"><a href="#人文社科-48本" class="headerlink" title="人文社科 48本"></a>人文社科 48本</h3><h4 id="哲学-4本"><a href="#哲学-4本" class="headerlink" title="哲学 4本"></a>哲学 4本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 西方哲学史 -- 罗素<br>- 中国哲学简史 -- 冯友兰<br>- 物种起源 -- 达尔文<br>- 自然哲学的数学原理 -- 牛顿<br></code></pre></td></tr></table></figure>
-<h4 id="心理-4本"><a href="#心理-4本" class="headerlink" title="心理 4本"></a>心理 4本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 自私的基因<br>- 乌合之众：大众心理研究<br>- 人性的弱点<br>- 梦的解析 -- 弗洛伊德<br></code></pre></td></tr></table></figure>
-<h4 id="小说-17本"><a href="#小说-17本" class="headerlink" title="小说 17本"></a>小说 17本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 安娜·卡列尼娜 -- 托尔斯泰<br>- 百年孤独 -- 马尔克斯<br>- 不能承受的生命之轻（许均 译） -- 米兰·昆德拉<br>- 人间失格 -- 太宰治<br>- 三体 -- 刘慈欣<br>- 越女剑 -- 金庸<br>- 天龙八部 -- 金庸<br>- 射雕英雄传 -- 金庸<br>- 神雕侠侣 -- 金庸<br>- 倚天屠龙记 -- 金庸<br>- 鹿鼎记 -- 金庸<br>- 化物语 -- 西尾维新<br>- The Lord of the Rings: The Fellowship of the Ring -- 托尔金<br>- The Lord of the Rings: The Two Towers -- 托尔金<br>- The Lord of the Rings: The Return of the King -- 托尔金<br>- The Hobbit（霍比特人） -- 托尔金<br>- 精灵宝钻 -- 托尔金<br>- 中洲历史 -- 托尔金<br></code></pre></td></tr></table></figure>
-<h4 id="古典-12本"><a href="#古典-12本" class="headerlink" title="古典 12本"></a>古典 12本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 论语<br>- 孟子<br>- 道德经<br>- 庄子<br>- 诗经<br>- 周易<br>- 花间集<br>- 人间词话<br>- 西厢记<br>- 水浒传<br>- 红楼梦<br>- 圣经（旧约的创世纪、出埃及记、约伯传、颂诗）<br></code></pre></td></tr></table></figure>
-<h4 id="经济-5本"><a href="#经济-5本" class="headerlink" title="经济 5本"></a>经济 5本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 国富论 -- 亚当·斯密<br>- 1844年经济学哲学手稿 -- 马克思<br>- 资本论 -- 马克思<br>- 经济学原理 -- 曼昆<br>- 就业、利息和货币通论 -- 凯恩斯<br></code></pre></td></tr></table></figure>
-<h4 id="政治-6本"><a href="#政治-6本" class="headerlink" title="政治 6本"></a>政治 6本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 文明的冲突与世界秩序的重建 -- 塞缪尔·亨廷顿<br>- 美国反对美国 -- 王沪宁<br>- 理想国 -- 柏拉图<br>- 君主论 -- 马基雅维利<br>- 共产党宣言 -- 马克思，恩格斯<br>- 国际政治理论 -- 华尔兹<br></code></pre></td></tr></table></figure>
+<h3 id="计算机科学-CS-37-本"><a href="#计算机科学-CS-37-本" class="headerlink" title="计算机科学 CS 37 本"></a>计算机科学 CS 37 本</h3><h4 id="语言-C-C-Python-6-本"><a href="#语言-C-C-Python-6-本" class="headerlink" title="语言 C/C++/Python 6 本"></a>语言 C/C++/Python 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- C语言程序设计：现代方法 -- K. N. King -- 2020.11<br>- C和指针<br>- C++ Primer -- Stanley B. Lippman<br>- Effective C++：改善程序与设计的55个具体做法 -- Scott Meyers<br>- STL源码剖析 -- 侯捷<br>- Inside the C++ Object Model -- Stanley B. Lippman<br></code></pre></td></tr></table></figure>
+<h4 id="算法-algorithm-5-本"><a href="#算法-algorithm-5-本" class="headerlink" title="算法 algorithm 5 本"></a>算法 algorithm 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 算法导论（CLRS）<br>- 计算机程序设计艺术（TAOCP）<br>- 算法 -- Robert Sedgewick<br>- 算法竞赛入门经典 -- 刘汝佳<br>- 算法竞赛入门经典：训练指南 -- 刘汝佳<br></code></pre></td></tr></table></figure>
+<h4 id="计算机系统应用-csa-8-本"><a href="#计算机系统应用-csa-8-本" class="headerlink" title="计算机系统应用 csa 8 本"></a>计算机系统应用 csa 8 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 深入理解计算机系统（CSAPP）<br>- 操作系统之哲学原理 -- 邹恒明 -- 2021.3<br>- 鳥哥的 Linux 私房菜<br>- UNIX环境高级编程（APUE）<br>- UNIX网络编程（UNP）<br>- 计算机网络 -- 谢希仁 -- 2021.2<br>- 5G NR标准：下一代无线通信技术<br>- 数据库系统概念<br></code></pre></td></tr></table></figure>
+<h4 id="理论计算机科学-tcs-2-本"><a href="#理论计算机科学-tcs-2-本" class="headerlink" title="理论计算机科学 tcs 2 本"></a>理论计算机科学 tcs 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 计算机程序的构造和解释（SICP，魔法书）<br>- 编译原理（龙书）<br></code></pre></td></tr></table></figure>
+<h4 id="数学-math-7-本"><a href="#数学-math-7-本" class="headerlink" title="数学 math 7 本"></a>数学 math 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 数学之美<br>- 线性代数及其应用 -- David C. Lay<br>- 概率论与数理统计教程 -- 茆诗松<br>- 概率论与数理统计 -- 陈希孺<br>- 随机过程 -- Ross<br>- 离散数学及其应用<br>- 具体数学：计算机科学基础<br></code></pre></td></tr></table></figure>
+<h4 id="软件工程-se-7-本"><a href="#软件工程-se-7-本" class="headerlink" title="软件工程 se 7 本"></a>软件工程 se 7 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 设计模式<br>- 代码大全<br>- 程序员修炼之道<br>- 人月神话 -- 弗雷德里克·布鲁克斯<br>- 自由王国<br>- 编程之美<br>- 人件<br></code></pre></td></tr></table></figure>
+<h4 id="人工智能-ai-2-本"><a href="#人工智能-ai-2-本" class="headerlink" title="人工智能 ai 2 本"></a>人工智能 ai 2 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 人工智能：一种现代方法（AIMA） -- Stuart J. Russell<br>- 机器学习（西瓜书） -- 周志华<br></code></pre></td></tr></table></figure>
+<h3 id="人文社科-48-本"><a href="#人文社科-48-本" class="headerlink" title="人文社科 48 本"></a>人文社科 48 本</h3><h4 id="哲学-4-本"><a href="#哲学-4-本" class="headerlink" title="哲学 4 本"></a>哲学 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 西方哲学史 -- 罗素<br>- 中国哲学简史 -- 冯友兰<br>- 物种起源 -- 达尔文<br>- 自然哲学的数学原理 -- 牛顿<br></code></pre></td></tr></table></figure>
+<h4 id="心理-4-本"><a href="#心理-4-本" class="headerlink" title="心理 4 本"></a>心理 4 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 自私的基因<br>- 乌合之众：大众心理研究<br>- 人性的弱点<br>- 梦的解析 -- 弗洛伊德<br></code></pre></td></tr></table></figure>
+<h4 id="小说-17-本"><a href="#小说-17-本" class="headerlink" title="小说 17 本"></a>小说 17 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 安娜·卡列尼娜 -- 托尔斯泰<br>- 百年孤独 -- 马尔克斯<br>- 不能承受的生命之轻（许均 译） -- 米兰·昆德拉<br>- 人间失格 -- 太宰治<br>- 三体 -- 刘慈欣<br>- 越女剑 -- 金庸<br>- 天龙八部 -- 金庸<br>- 射雕英雄传 -- 金庸<br>- 神雕侠侣 -- 金庸<br>- 倚天屠龙记 -- 金庸<br>- 鹿鼎记 -- 金庸<br>- 化物语 -- 西尾维新<br>- The Lord of the Rings: The Fellowship of the Ring -- 托尔金<br>- The Lord of the Rings: The Two Towers -- 托尔金<br>- The Lord of the Rings: The Return of the King -- 托尔金<br>- The Hobbit（霍比特人） -- 托尔金<br>- 精灵宝钻 -- 托尔金<br>- 中洲历史 -- 托尔金<br></code></pre></td></tr></table></figure>
+<h4 id="古典-12-本"><a href="#古典-12-本" class="headerlink" title="古典 12 本"></a>古典 12 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 论语<br>- 孟子<br>- 道德经<br>- 庄子<br>- 诗经<br>- 周易<br>- 花间集<br>- 人间词话<br>- 西厢记<br>- 水浒传<br>- 红楼梦<br>- 圣经（旧约的创世纪、出埃及记、约伯传、颂诗）<br></code></pre></td></tr></table></figure>
+<h4 id="经济-5-本"><a href="#经济-5-本" class="headerlink" title="经济 5 本"></a>经济 5 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 国富论 -- 亚当·斯密<br>- 1844年经济学哲学手稿 -- 马克思<br>- 资本论 -- 马克思<br>- 经济学原理 -- 曼昆<br>- 就业、利息和货币通论 -- 凯恩斯<br></code></pre></td></tr></table></figure>
+<h4 id="政治-6-本"><a href="#政治-6-本" class="headerlink" title="政治 6 本"></a>政治 6 本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">- 文明的冲突与世界秩序的重建 -- 塞缪尔·亨廷顿<br>- 美国反对美国 -- 王沪宁<br>- 理想国 -- 柏拉图<br>- 君主论 -- 马基雅维利<br>- 共产党宣言 -- 马克思，恩格斯<br>- 国际政治理论 -- 华尔兹<br></code></pre></td></tr></table></figure>
 <h3 id="准则-3-条"><a href="#准则-3-条" class="headerlink" title="准则 3 条"></a>准则 3 条</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">1. 若无必要，勿增实体。<br>2. Einmal ist keinmal.<br>3. 从感性到理性，从理性到实践。两次飞跃，无限反复，不断发展。<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -6683,6 +6686,7 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 </li>
 <li><p>C++</p>
 <ul>
+<li>语法</li>
 <li>库<ul>
 <li>STL</li>
 <li>Boost</li>
@@ -6690,11 +6694,11 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 </li>
 <li>思想<ul>
 <li>OOP</li>
-<li>泛型编程</li>
+<li>泛型</li>
 <li>函数式编程</li>
 </ul>
 </li>
-<li>能力<ul>
+<li>技巧<ul>
 <li>代码风格</li>
 <li>性能分析</li>
 <li>多线程</li>
@@ -6745,28 +6749,26 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><ol>
 <li>热爱祖国，热爱科学。</li>
 <li>性别女，1994 到 2000 年出生，城镇户口。</li>
-<li>外貌 6 分及以上，身高 165-170cm，不胖。</li>
-<li>统招全日制一本以上。</li>
+<li>外貌 6 分以上，身高 165-170cm，不胖。</li>
+<li>统招全日制 211 以上。</li>
 <li>无重大伤病，无复杂性史。</li>
 <li>不抽烟，不纹身。</li>
 </ol>
 <h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><ol>
 <li>笑容好看</li>
-<li>意志坚定</li>
+<li>聪明</li>
 <li>乐观向上</li>
 <li>二次元</li>
 <li>有自己的爱好或特长</li>
 </ol>
 <h2 id="较高层次"><a href="#较高层次" class="headerlink" title="较高层次"></a>较高层次</h2><ol>
-<li>我们的亲密关系要超过两个人其他一切关系。</li>
-<li>生活一切事务中所有同时关系到两个人的，优先级最高。</li>
-<li>死后墓碑会在一起。</li>
-<li>不接受出轨，不接受有含糊不清的关系，特指男闺蜜和女闺蜜。</li>
-<li>不接受两人关系中的恶意揣测、口是心非，严重隐瞒，人格打击，冷眼旁观等行为。</li>
+<li>我们的亲密关系超过其他一切关系。</li>
+<li>一切事务中同时涉及两个人的，优先级最高。</li>
+<li>不接受出轨，也不接受有含糊不清的关系，特指男闺蜜和女闺蜜。</li>
+<li>不接受两人相处中的恶意揣测、口是心非，严重隐瞒，人格打击，冷眼旁观等行为。</li>
 </ol>
-<p>女方也应该对我有以上相同要求。</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这篇东西起初于去年疫情隔离期间出于无聊写成，无聊的事情总是遗忘得很快，没想到竟然保存了一年。</p>
-<p>在我大学的冬天，我常常呆在暖气房里幻想以后会去哪里，与什么样的人结合，我的思绪奔腾着，内心中朦胧的幻象也随之越来越变得清晰，我傲慢地以为自己能够把乍现的灵光用文字禁锢在白纸上，它的脉动便倏地陷入沉寂……这是怎样一件矛盾的事？</p>
+<p>女方也应该同样对我持以上所有要求。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这篇东西起初于去年疫情隔离期间出于无聊写成，无聊的事情总是遗忘得很快，没想到竟然保存了一年。在学校的冬天，我常常呆在暖气房里幻想以后会去哪里，与什么样的人结合，我的思绪奔腾着，内心中朦胧的幻象也随之越来越变得清晰……</p>
 ]]></content>
       <categories>
         <category>自由王国</category>
