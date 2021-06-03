@@ -118,6 +118,22 @@
       </tags>
   </entry>
   <entry>
+    <title>LC5 最长回文子串</title>
+    <url>/posts/8b9667aa/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
+<h2 id="解法-1：暴力（超时）"><a href="#解法-1：暴力（超时）" class="headerlink" title="解法 1：暴力（超时）"></a>解法 1：暴力（超时）</h2><p>暴力不行，虽然在 NC 可以通过，但是 NC 的用例简单，而且时间没啥限制（1000ms），而 LC 就比较严格，在 LC 做题不要想着用暴力。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>; i++)<br>            <span class="hljs-keyword">if</span> (s[i] != s[s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span> - i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        ios_base::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>        cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br><br>        string tmp;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> len = s.<span class="hljs-built_in">length</span>(); len &gt; <span class="hljs-number">0</span>; len--) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> it = <span class="hljs-number">0</span>; it &lt;= s.<span class="hljs-built_in">length</span>() - len; it++) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPalindrome</span>(s.<span class="hljs-built_in">substr</span>(it, len))) &#123;<br>                    tmp = s.<span class="hljs-built_in">substr</span>(it, len);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (!tmp.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> tmp;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC3 无重复字符的最长子串</title>
     <url>/posts/95bffdcb/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。</p>
@@ -141,22 +157,6 @@
       <tags>
         <tag>字符串</tag>
         <tag>滑动窗口</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC5 最长回文子串</title>
-    <url>/posts/8b9667aa/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
-<h2 id="解法-1：暴力（超时）"><a href="#解法-1：暴力（超时）" class="headerlink" title="解法 1：暴力（超时）"></a>解法 1：暴力（超时）</h2><p>暴力不行，虽然在 NC 可以通过，但是 NC 的用例简单，而且时间没啥限制（1000ms），而 LC 就比较严格，在 LC 做题不要想着用暴力。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>; i++)<br>            <span class="hljs-keyword">if</span> (s[i] != s[s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span> - i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        ios_base::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>        cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br><br>        string tmp;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> len = s.<span class="hljs-built_in">length</span>(); len &gt; <span class="hljs-number">0</span>; len--) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> it = <span class="hljs-number">0</span>; it &lt;= s.<span class="hljs-built_in">length</span>() - len; it++) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isPalindrome</span>(s.<span class="hljs-built_in">substr</span>(it, len))) &#123;<br>                    tmp = s.<span class="hljs-built_in">substr</span>(it, len);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (!tmp.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> tmp;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -215,25 +215,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC13 罗马数字转整数</title>
-    <url>/posts/5f319777/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>罗马数字包含以下七种字符: I，V，X，L，C，D，M。</p>
-<p>字符 数值<br>I 1<br>V 5<br>X 10<br>L 50<br>C 100<br>D 500<br>M 1000</p>
-<p>例如，罗马数字 2 写做 II，即为两个并列的 I。12 写做 XII，即为 X+II。27 写做 XXVII, 即为 XX+V+II。通常情况下，罗马数字中小的数字在大的数字的右边。给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</p>
-<h2 id="解法：哈希"><a href="#解法：哈希" class="headerlink" title="解法：哈希"></a>解法：哈希</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">romanToInt</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        map&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; m = &#123;<br>            &#123;<span class="hljs-string">&#x27;I&#x27;</span>,<span class="hljs-number">1</span>&#125; ,<br>            &#123;<span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-number">5</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-number">10</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-number">50</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-number">100</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-number">500</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">1000</span>&#125; &#125;;<br><br>        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">length</span>(); ++i) &#123;<br>            m[s[i]] &lt; m[s[i + <span class="hljs-number">1</span>]] ? res -= m[s[i]] : res += m[s[i]];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>注意理解规则：<br>处理某一位上的数字的时候，如果它小于右手边的数字，对它就使用减法；<br>处理某一位上的数字的时候，如果它大于右手边的数字，对它就使用加法。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>哈希</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC11 盛最多水的容器</title>
     <url>/posts/90544af4/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你 n 个非负整数 a1,a2,…，an，每个数代表坐标中的一个点(i,ai)。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为(i,ai)和(i,0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
@@ -260,6 +241,25 @@
       </categories>
       <tags>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC13 罗马数字转整数</title>
+    <url>/posts/5f319777/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>罗马数字包含以下七种字符: I，V，X，L，C，D，M。</p>
+<p>字符 数值<br>I 1<br>V 5<br>X 10<br>L 50<br>C 100<br>D 500<br>M 1000</p>
+<p>例如，罗马数字 2 写做 II，即为两个并列的 I。12 写做 XII，即为 X+II。27 写做 XXVII, 即为 XX+V+II。通常情况下，罗马数字中小的数字在大的数字的右边。给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</p>
+<h2 id="解法：哈希"><a href="#解法：哈希" class="headerlink" title="解法：哈希"></a>解法：哈希</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">romanToInt</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        map&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; m = &#123;<br>            &#123;<span class="hljs-string">&#x27;I&#x27;</span>,<span class="hljs-number">1</span>&#125; ,<br>            &#123;<span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-number">5</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-number">10</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-number">50</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-number">100</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-number">500</span>&#125;,<br>            &#123;<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">1000</span>&#125; &#125;;<br><br>        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">length</span>(); ++i) &#123;<br>            m[s[i]] &lt; m[s[i + <span class="hljs-number">1</span>]] ? res -= m[s[i]] : res += m[s[i]];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>注意理解规则：<br>处理某一位上的数字的时候，如果它小于右手边的数字，对它就使用减法；<br>处理某一位上的数字的时候，如果它大于右手边的数字，对它就使用加法。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>哈希</tag>
       </tags>
   </entry>
   <entry>
@@ -365,23 +365,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LC28 实现strStr()</title>
-    <url>/posts/3613f304/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置(从 0 开始)。如果不存在，则返回-1。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strStr</span><span class="hljs-params">(string haystack, string needle)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (needle.<span class="hljs-built_in">size</span>() &gt; haystack.<span class="hljs-built_in">size</span>()) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">if</span> (needle.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; haystack.<span class="hljs-built_in">size</span>() - needle.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>; i++) &#123;<br>            <span class="hljs-keyword">int</span> j = i;<br>            <span class="hljs-keyword">bool</span> flag = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : needle) &#123;<br>                <span class="hljs-keyword">if</span> (c == haystack[j]) j++;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    flag = <span class="hljs-literal">false</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>第一层 for 循环写的很好，如此设置可以直接确保 needle 的尾巴不会超过 haystack 的末尾而发生上溢。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC53 最大子序和</title>
     <url>/posts/79b38130/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
@@ -404,6 +387,23 @@
       <tags>
         <tag>动态规划</tag>
         <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC28 实现strStr()</title>
+    <url>/posts/3613f304/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置(从 0 开始)。如果不存在，则返回-1。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strStr</span><span class="hljs-params">(string haystack, string needle)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (needle.<span class="hljs-built_in">size</span>() &gt; haystack.<span class="hljs-built_in">size</span>()) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">if</span> (needle.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; haystack.<span class="hljs-built_in">size</span>() - needle.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>; i++) &#123;<br>            <span class="hljs-keyword">int</span> j = i;<br>            <span class="hljs-keyword">bool</span> flag = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : needle) &#123;<br>                <span class="hljs-keyword">if</span> (c == haystack[j]) j++;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    flag = <span class="hljs-literal">false</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>第一层 for 循环写的很好，如此设置可以直接确保 needle 的尾巴不会超过 haystack 的末尾而发生上溢。</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -457,6 +457,30 @@
       </tags>
   </entry>
   <entry>
+    <title>LC70 爬楼梯</title>
+    <url>/posts/bbfd6b35/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。<br>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">climbStairs</span>(n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">climbStairs</span>(n - <span class="hljs-number">2</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<p>经典方法是一种不进入问题而解决问题的思想，有极多重复计算，因此容易超时。<br>这个方法虽然被舍弃了，但是它揭示了一个规律，即 climbStairs(n)=climbStairs(n-2)+climbStairs(n-1)。无需我们算出来每一层的走法再寻找规律，这是用正推的思想启发倒推的思想。<br>由此可见，笨方法虽然在写出来之前就已经被抛弃了，但还是有必要经过这一步无用功，因为它往往是聪明方法的垫脚石。</p>
+<h2 id="解法-2：DP"><a href="#解法-2：DP" class="headerlink" title="解法 2：DP"></a>解法 2：DP</h2><p>台阶 1 2 3 4<br>方法 1 2 3 5</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        dp[<span class="hljs-number">2</span>] = <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>            dp[i] = dp[i - <span class="hljs-number">1</span>] + dp[i - <span class="hljs-number">2</span>];<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>时间复杂度 O(N)<br>空间复杂度 O(N)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">3</span>];<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        dp[<span class="hljs-number">2</span>] = <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">int</span> tmp = dp[<span class="hljs-number">1</span>] + dp[<span class="hljs-number">2</span>];<br>            dp[<span class="hljs-number">1</span>] = dp[<span class="hljs-number">2</span>];<br>            dp[<span class="hljs-number">2</span>] = tmp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">2</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>时间复杂度 O(N)<br>空间复杂度 O(1)</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC69 x的平方根</title>
     <url>/posts/f55633ea/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>实现<code>int sqrt(int x)</code>函数。<br>计算并返回 x 的平方根，其中 x 是非负整数。<br>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p>
@@ -500,30 +524,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC70 爬楼梯</title>
-    <url>/posts/bbfd6b35/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。<br>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
-<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">climbStairs</span>(n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">climbStairs</span>(n - <span class="hljs-number">2</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>分析</strong></p>
-<p>经典方法是一种不进入问题而解决问题的思想，有极多重复计算，因此容易超时。<br>这个方法虽然被舍弃了，但是它揭示了一个规律，即 climbStairs(n)=climbStairs(n-2)+climbStairs(n-1)。无需我们算出来每一层的走法再寻找规律，这是用正推的思想启发倒推的思想。<br>由此可见，笨方法虽然在写出来之前就已经被抛弃了，但还是有必要经过这一步无用功，因为它往往是聪明方法的垫脚石。</p>
-<h2 id="解法-2：DP"><a href="#解法-2：DP" class="headerlink" title="解法 2：DP"></a>解法 2：DP</h2><p>台阶 1 2 3 4<br>方法 1 2 3 5</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        dp[<span class="hljs-number">2</span>] = <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>            dp[i] = dp[i - <span class="hljs-number">1</span>] + dp[i - <span class="hljs-number">2</span>];<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>时间复杂度 O(N)<br>空间复杂度 O(N)</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">3</span>];<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        dp[<span class="hljs-number">2</span>] = <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">int</span> tmp = dp[<span class="hljs-number">1</span>] + dp[<span class="hljs-number">2</span>];<br>            dp[<span class="hljs-number">1</span>] = dp[<span class="hljs-number">2</span>];<br>            dp[<span class="hljs-number">2</span>] = tmp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">2</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>时间复杂度 O(N)<br>空间复杂度 O(1)</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -597,22 +597,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC102 二叉树的层序遍历</title>
-    <url>/posts/3e6b56c6/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉树，请你返回其按层序遍历得到的节点值。<br>即逐层地从左到右访问所有节点。</p>
-<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">输入：<br>    3<br>   / <span class="hljs-keyword">\</span><br><span class="hljs-keyword"></span>  9  20<br>    /  <span class="hljs-keyword">\</span><br><span class="hljs-keyword"></span>   15   7<br><br>输出：<br>&#123;<br>  [3],<br>  [9,20],<br>  [15,7]<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="解法：队列"><a href="#解法：队列" class="headerlink" title="解法：队列"></a>解法：队列</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) &#123;<br>        vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; res;<br>        <span class="hljs-keyword">if</span> (!root) <span class="hljs-keyword">return</span> res;<br>        queue&lt;TreeNode*&gt; q;<br>        q.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>()) &#123;<br>            vector&lt;<span class="hljs-keyword">int</span>&gt; tmp;<br>            <span class="hljs-keyword">int</span> len = q.<span class="hljs-built_in">size</span>();<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>                TreeNode* node = q.<span class="hljs-built_in">front</span>();<br>                q.<span class="hljs-built_in">pop</span>();<br>                tmp.<span class="hljs-built_in">push_back</span>(node-&gt;val);<br>                <span class="hljs-keyword">if</span> (node-&gt;left) q.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                <span class="hljs-keyword">if</span> (node-&gt;right) q.<span class="hljs-built_in">push</span>(node-&gt;right);<br>            &#125;<br>            res.<span class="hljs-built_in">push_back</span>(tmp);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>树</tag>
-        <tag>队列</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC101 对称二叉树</title>
     <url>/posts/43c70302/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个二叉树，检查它是否是镜像对称的。</p>
@@ -630,6 +614,22 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>BFS</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC102 二叉树的层序遍历</title>
+    <url>/posts/3e6b56c6/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉树，请你返回其按层序遍历得到的节点值。<br>即逐层地从左到右访问所有节点。</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">输入：<br>    3<br>   / <span class="hljs-keyword">\</span><br><span class="hljs-keyword"></span>  9  20<br>    /  <span class="hljs-keyword">\</span><br><span class="hljs-keyword"></span>   15   7<br><br>输出：<br>&#123;<br>  [3],<br>  [9,20],<br>  [15,7]<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解法：队列"><a href="#解法：队列" class="headerlink" title="解法：队列"></a>解法：队列</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) &#123;<br>        vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; res;<br>        <span class="hljs-keyword">if</span> (!root) <span class="hljs-keyword">return</span> res;<br>        queue&lt;TreeNode*&gt; q;<br>        q.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>()) &#123;<br>            vector&lt;<span class="hljs-keyword">int</span>&gt; tmp;<br>            <span class="hljs-keyword">int</span> len = q.<span class="hljs-built_in">size</span>();<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>                TreeNode* node = q.<span class="hljs-built_in">front</span>();<br>                q.<span class="hljs-built_in">pop</span>();<br>                tmp.<span class="hljs-built_in">push_back</span>(node-&gt;val);<br>                <span class="hljs-keyword">if</span> (node-&gt;left) q.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                <span class="hljs-keyword">if</span> (node-&gt;right) q.<span class="hljs-built_in">push</span>(node-&gt;right);<br>            &#125;<br>            res.<span class="hljs-built_in">push_back</span>(tmp);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>队列</tag>
       </tags>
   </entry>
   <entry>
@@ -793,6 +793,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC155 最小栈</title>
+    <url>/posts/9f6a1ee8/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。</p>
+<p>push(x) —— 将元素 x 推入栈中。<br>pop() —— 删除栈顶的元素。<br>top() —— 获取栈顶元素。<br>getMin() —— 检索栈中的最小元素。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>用两个栈实现</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MinStack</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s1;<br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s2;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MinStack</span>() &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s1.<span class="hljs-built_in">empty</span>()) &#123;<br>            s1.<span class="hljs-built_in">push</span>(x); s2.<span class="hljs-built_in">push</span>(x);<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            s1.<span class="hljs-built_in">push</span>(x);<br>            x &lt; s2.<span class="hljs-built_in">top</span>() ? s2.<span class="hljs-built_in">push</span>(x) : s2.<span class="hljs-built_in">push</span>(s2.<span class="hljs-built_in">top</span>());<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        s1.<span class="hljs-built_in">pop</span>(); s2.<span class="hljs-built_in">pop</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">top</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s2.<span class="hljs-built_in">top</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC145 二叉树的后序遍历</title>
     <url>/posts/dac7f63c/</url>
     <content><![CDATA[<h2 id="解法-1：递归"><a href="#解法-1：递归" class="headerlink" title="解法 1：递归"></a>解法 1：递归</h2><p><strong>代码</strong></p>
@@ -817,23 +834,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>递归</tag>
         <tag>迭代</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC155 最小栈</title>
-    <url>/posts/9f6a1ee8/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。</p>
-<p>push(x) —— 将元素 x 推入栈中。<br>pop() —— 删除栈顶的元素。<br>top() —— 获取栈顶元素。<br>getMin() —— 检索栈中的最小元素。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>用两个栈实现</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MinStack</span> &#123;</span><br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s1;<br>    stack&lt;<span class="hljs-keyword">int</span>&gt; s2;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MinStack</span>() &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (s1.<span class="hljs-built_in">empty</span>()) &#123;<br>            s1.<span class="hljs-built_in">push</span>(x); s2.<span class="hljs-built_in">push</span>(x);<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            s1.<span class="hljs-built_in">push</span>(x);<br>            x &lt; s2.<span class="hljs-built_in">top</span>() ? s2.<span class="hljs-built_in">push</span>(x) : s2.<span class="hljs-built_in">push</span>(s2.<span class="hljs-built_in">top</span>());<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        s1.<span class="hljs-built_in">pop</span>(); s2.<span class="hljs-built_in">pop</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">top</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s2.<span class="hljs-built_in">top</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -899,6 +899,25 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC191 位1的个数</title>
+    <url>/posts/cb2ae56a/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
+<h2 id="解法-1：暴力法"><a href="#解法-1：暴力法" class="headerlink" title="解法 1：暴力法"></a>解法 1：暴力法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>) count++;<br>            n &gt;&gt;= <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：消-1-技巧"><a href="#解法-2：消-1-技巧" class="headerlink" title="解法 2：消 1 技巧"></a>解法 2：消 1 技巧</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            n = n &amp; (n - <span class="hljs-number">1</span>);<br>            count++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>位操作的小技巧：n&amp;(n-1)可以将 n 的二进制表示中的最低位的 1 改为 0<br>重复上述操作，最终将使 n 消成 0</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC171 Excel表列序号</title>
     <url>/posts/58bc01b9/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个 Excel 表格中的列名称，返回其相应的列序号。</p>
@@ -931,25 +950,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <p><strong>注释</strong></p>
 <p>n&amp;1 的作用：获取 n 的二进制最后一位<br>n&amp;1|res 的作用：将 n 的二进制的最后一位与 res 向或，因为 res 上一步左移了，末尾添个 0，任何数 x 与这个 0 相或还是自身。<br>例如：1|0=1，0|0=0。</p>
 <p>这样就巧妙地把 n 的最右的数字存到了 res 中并不断左推 res 使其缓缓移到最左，然后再右推 n 的二进制使其保存了的最右一位自然掉落。n 的新晋最右一位是原来的倒数第二位。</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC191 位1的个数</title>
-    <url>/posts/cb2ae56a/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为’1’的个数（也被称为汉明重量）。</p>
-<h2 id="解法-1：暴力法"><a href="#解法-1：暴力法" class="headerlink" title="解法 1：暴力法"></a>解法 1：暴力法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>) count++;<br>            n &gt;&gt;= <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：消-1-技巧"><a href="#解法-2：消-1-技巧" class="headerlink" title="解法 2：消 1 技巧"></a>解法 2：消 1 技巧</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;<br>            n = n &amp; (n - <span class="hljs-number">1</span>);<br>            count++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>位操作的小技巧：n&amp;(n-1)可以将 n 的二进制表示中的最低位的 1 改为 0<br>重复上述操作，最终将使 n 消成 0</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -1087,6 +1087,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC231 2的幂</title>
+    <url>/posts/8e812d9/</url>
+    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC226 翻转二叉树</title>
     <url>/posts/68e0c88d/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>镜像翻转一棵二叉树。</p>
@@ -1099,20 +1113,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC231 2的幂</title>
-    <url>/posts/8e812d9/</url>
-    <content><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPowerOfTwo</span><span class="hljs-params">(<span class="hljs-keyword">long</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> ((n &amp; (n - <span class="hljs-number">1</span>)) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1153,22 +1153,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC237 删除链表中的节点</title>
-    <url>/posts/e851fc62/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供 head。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode* node)</span> </span>&#123;<br>        node-&gt;val = node-&gt;next-&gt;val;<br>        node-&gt;next = node-&gt;next-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC242 有效的字母异位词</title>
     <url>/posts/3a93d5f9/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串 s 和 t，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
@@ -1198,6 +1182,37 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>LC258 各位相加</title>
+    <url>/posts/853fb8a2/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
+<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC237 删除链表中的节点</title>
+    <url>/posts/e851fc62/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请编写一个函数，使其可以删除某个链表中给定的非末尾结点。传入函数的唯一参数为要被删除的结点 。<br>注意：没有提供 head。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>摘选自评论区：<br>SorXD 2020-04-29<br>这道题细思极恐：如何让自己在世界上消失，但又不死？——将自己完全变成另一个人，再杀了那个人就行了。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode* node)</span> </span>&#123;<br>        node-&gt;val = node-&gt;next-&gt;val;<br>        node-&gt;next = node-&gt;next-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LC263 丑数</title>
     <url>/posts/366238ee/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个程序判断给定的数是否为丑数。<br>丑数就是只包含质因数 2,3,5 的正整数。<br>说明：1 是丑数</p>
@@ -1211,21 +1226,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LC258 各位相加</title>
-    <url>/posts/853fb8a2/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
-<h2 id="解法：转成字符串"><a href="#解法：转成字符串" class="headerlink" title="解法：转成字符串"></a>解法：转成字符串</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">9</span>) &#123;<br>            num = <span class="hljs-built_in">sumDigits</span>(num);<br>        &#125;<br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> sum0 = <span class="hljs-number">0</span>;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : str) &#123;<br>            sum0 += it - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum0;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1319,23 +1319,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC387 字符串中的第一个唯一字符</title>
-    <url>/posts/c21ce8f1/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
-<p>输入 s = “leetcode”<br>输出 0</p>
-<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有 26 个字母的标记数组</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> flag[<span class="hljs-number">26</span>] = &#123; <span class="hljs-number">0</span> &#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : s) &#123;<br>            ++flag[c - <span class="hljs-string">&#x27;a&#x27;</span>];<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (flag[(s[i] - <span class="hljs-string">&#x27;a&#x27;</span>)] == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LC415 字符串相加</title>
     <url>/posts/56c54e21/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个字符串形式的非负整数 num1 和 num2，计算它们的和。<br>你不能使用任何內建 BigInteger 库，也不能直接将输入的字符串转换为整数形式。</p>
@@ -1353,20 +1336,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LC461 汉明距离</title>
-    <url>/posts/d0244af1/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数 x 和 y，计算它们之间的汉明距离。</p>
-<h2 id="解法：异或、n-amp-n-1"><a href="#解法：异或、n-amp-n-1" class="headerlink" title="解法：异或、n&amp;(n-1)"></a>解法：异或、n&amp;(n-1)</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingDistance</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> res = x ^ y;<br>        <span class="hljs-keyword">while</span> (res) &#123;<br>            res = res &amp; (res - <span class="hljs-number">1</span>);<br>            cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<p>XOR 的功能：同 0 异 1<br>n&amp;(n-1)的功能：消去 n 的二进制里最右边的 1</p>
+    <title>LC387 字符串中的第一个唯一字符</title>
+    <url>/posts/c21ce8f1/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回-1。</p>
+<p>输入 s = “leetcode”<br>输出 0</p>
+<h2 id="解法：标记数组"><a href="#解法：标记数组" class="headerlink" title="解法：标记数组"></a>解法：标记数组</h2><p>维护一个含有 26 个字母的标记数组</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> flag[<span class="hljs-number">26</span>] = &#123; <span class="hljs-number">0</span> &#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : s) &#123;<br>            ++flag[c - <span class="hljs-string">&#x27;a&#x27;</span>];<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>            <span class="hljs-keyword">if</span> (flag[(s[i] - <span class="hljs-string">&#x27;a&#x27;</span>)] == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>位运算</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1386,6 +1369,23 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>树</tag>
         <tag>分治法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LC461 汉明距离</title>
+    <url>/posts/d0244af1/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。<br>给出两个整数 x 和 y，计算它们之间的汉明距离。</p>
+<h2 id="解法：异或、n-amp-n-1"><a href="#解法：异或、n-amp-n-1" class="headerlink" title="解法：异或、n&amp;(n-1)"></a>解法：异或、n&amp;(n-1)</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hammingDistance</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> res = x ^ y;<br>        <span class="hljs-keyword">while</span> (res) &#123;<br>            res = res &amp; (res - <span class="hljs-number">1</span>);<br>            cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<p>XOR 的功能：同 0 异 1<br>n&amp;(n-1)的功能：消去 n 的二进制里最右边的 1</p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -1570,25 +1570,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>PE1 Multiples of 3 and 5</title>
-    <url>/posts/f5248637/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>如果我们列出所有低于 10 的自然数，它们是 3 或 5 的倍数，则得到 3、5、6 和 9。这些倍数的总和为 23。求 1000 以下所有 3 或 5 的倍数之和。</p>
-<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i)<br>        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> || i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>)<br>            sum += i;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：容斥原理"><a href="#解法-2：容斥原理" class="headerlink" title="解法 2：容斥原理"></a>解法 2：容斥原理</h2><p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 求N以内所有n的倍数之和</span><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">sumu</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>    <span class="hljs-comment">// (首项n+末项)*项数/2</span><br>    <span class="hljs-keyword">return</span> (n + (N - <span class="hljs-number">1</span>) / n * n) * ((N - <span class="hljs-number">1</span>) / n) / <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">unsigned</span> sum_3 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">3</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_5 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">5</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_15 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">15</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum = sum_3 + sum_5 - sum_15;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.xarg.org/puzzle/project-euler/problem-1/">https://www.xarg.org/puzzle/project-euler/problem-1/</a></p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>欧拉计划</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HJ1 字符串最后一个单词的长度</title>
     <url>/posts/3494f0ab/</url>
     <content><![CDATA[<p>计算字符串最后一个单词的长度，单词以空格隔开，字符串长度小于 5000。</p>
@@ -1619,6 +1600,20 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>HJ17 坐标移动</title>
+    <url>/posts/b8fe2b1d/</url>
+    <content><![CDATA[<p>开发一个坐标计算工具， A 表示向左移动，D 表示向右移动，W 表示向上移动，S 表示向下移动。从（0,0）点开始移动，从输入字符串里面读取一些坐标，并将最终输入结果输出到输出文件里面。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;unordered_map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isvalid</span><span class="hljs-params">(string s)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> (s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;W&#x27;</span> || s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;A&#x27;</span> || s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;S&#x27;</span> || s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;D&#x27;</span>)<br>        &amp;&amp; s.<span class="hljs-built_in">length</span>() &gt;= <span class="hljs-number">2</span> &amp;&amp; s.<span class="hljs-built_in">length</span>() &lt;= <span class="hljs-number">3</span><br>        &amp;&amp; s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>).<span class="hljs-built_in">find_first_not_of</span>(<span class="hljs-string">&quot;0123456789&quot;</span>) == string::npos;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(cin, s)) &#123;<br>        vector&lt;string&gt; v;<br>        <span class="hljs-function">stringstream <span class="hljs-title">ss</span><span class="hljs-params">(s)</span></span>;<br>        string tmps;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(ss, tmps, <span class="hljs-string">&#x27;;&#x27;</span>))<br>            v.<span class="hljs-built_in">push_back</span>(tmps);<br><br>        unordered_map&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; m;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; v.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isvalid</span>(v[i])) &#123;<br>                <span class="hljs-keyword">char</span> a = v[i][<span class="hljs-number">0</span>];<br>                <span class="hljs-keyword">int</span> b = <span class="hljs-built_in">stoi</span>(v[i].<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>));<br>                m[a] += b;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span> + m[<span class="hljs-string">&#x27;D&#x27;</span>] - m[<span class="hljs-string">&#x27;A&#x27;</span>];<br>        <span class="hljs-keyword">int</span> y = <span class="hljs-number">0</span> + m[<span class="hljs-string">&#x27;W&#x27;</span>] - m[<span class="hljs-string">&#x27;S&#x27;</span>];<br>        cout &lt;&lt; x &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; y &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HJ102 字符统计</title>
     <url>/posts/3e0b9d9d/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>输入一个只包含小写英文字母和数字的字符串，按照不同字符统计个数由多到少输出统计结果，如果统计的个数相同，则按照 ASCII 码由小到大排序输出。本题含有多组样例输入</p>
@@ -1639,10 +1634,11 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ17 坐标移动</title>
-    <url>/posts/b8fe2b1d/</url>
-    <content><![CDATA[<p>开发一个坐标计算工具， A 表示向左移动，D 表示向右移动，W 表示向上移动，S 表示向下移动。从（0,0）点开始移动，从输入字符串里面读取一些坐标，并将最终输入结果输出到输出文件里面。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;unordered_map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isvalid</span><span class="hljs-params">(string s)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> (s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;W&#x27;</span> || s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;A&#x27;</span> || s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;S&#x27;</span> || s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;D&#x27;</span>)<br>        &amp;&amp; s.<span class="hljs-built_in">length</span>() &gt;= <span class="hljs-number">2</span> &amp;&amp; s.<span class="hljs-built_in">length</span>() &lt;= <span class="hljs-number">3</span><br>        &amp;&amp; s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>).<span class="hljs-built_in">find_first_not_of</span>(<span class="hljs-string">&quot;0123456789&quot;</span>) == string::npos;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(cin, s)) &#123;<br>        vector&lt;string&gt; v;<br>        <span class="hljs-function">stringstream <span class="hljs-title">ss</span><span class="hljs-params">(s)</span></span>;<br>        string tmps;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(ss, tmps, <span class="hljs-string">&#x27;;&#x27;</span>))<br>            v.<span class="hljs-built_in">push_back</span>(tmps);<br><br>        unordered_map&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; m;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; v.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isvalid</span>(v[i])) &#123;<br>                <span class="hljs-keyword">char</span> a = v[i][<span class="hljs-number">0</span>];<br>                <span class="hljs-keyword">int</span> b = <span class="hljs-built_in">stoi</span>(v[i].<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>));<br>                m[a] += b;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span> + m[<span class="hljs-string">&#x27;D&#x27;</span>] - m[<span class="hljs-string">&#x27;A&#x27;</span>];<br>        <span class="hljs-keyword">int</span> y = <span class="hljs-number">0</span> + m[<span class="hljs-string">&#x27;W&#x27;</span>] - m[<span class="hljs-string">&#x27;S&#x27;</span>];<br>        cout &lt;&lt; x &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; y &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+    <title>HJ2 计算某字母出现次数</title>
+    <url>/posts/c680c3f7/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>写出一个程序，接受一个由字母、数字和空格组成的字符串，和一个字母，然后输出输入字符串中该字母的出现次数。不区分大小写，字符串长度小于 500。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cctype&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-built_in">getline</span>(cin, str);<br>    <span class="hljs-keyword">char</span> target;<br>    cin &gt;&gt; target;<br>    target = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">char</span>&gt;(<span class="hljs-built_in">tolower</span>(target));<br>    <span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : str) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">tolower</span>(c) == target) num++;<br>    &#125;<br>    cout &lt;&lt; num;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注意点<br>1.tolower 记得转成 char<br>2.tolower 在 cctype 里</p>
 ]]></content>
       <categories>
         <category>小镇做题家</category>
@@ -1666,21 +1662,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       <tags>
         <tag>字符串</tag>
         <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HJ2 计算某字母出现次数</title>
-    <url>/posts/c680c3f7/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>写出一个程序，接受一个由字母、数字和空格组成的字符串，和一个字母，然后输出输入字符串中该字母的出现次数。不区分大小写，字符串长度小于 500。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cctype&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-built_in">getline</span>(cin, str);<br>    <span class="hljs-keyword">char</span> target;<br>    cin &gt;&gt; target;<br>    target = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">char</span>&gt;(<span class="hljs-built_in">tolower</span>(target));<br>    <span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : str) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">tolower</span>(c) == target) num++;<br>    &#125;<br>    cout &lt;&lt; num;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>注意点<br>1.tolower 记得转成 char<br>2.tolower 在 cctype 里</p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -2022,22 +2003,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>HJ75 公共串计算</title>
-    <url>/posts/3e014c89/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个只包含小写字母的字符串，计算两个字符串的最大公共子串的长度。<br>注：子串的定义指一个字符串删掉其部分前缀和后缀（也可以不删）后形成的字符串。</p>
-<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>暴力法</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">issub</span><span class="hljs-params">(string str1, string str2)</span> </span>&#123; <span class="hljs-comment">// 判断str1整体是否为str2的子串</span><br>    <span class="hljs-keyword">int</span> len1 = str1.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">int</span> len2 = str2.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= (len2 - len1); i++) &#123;<br>        <span class="hljs-keyword">if</span> (str1 == str2.<span class="hljs-built_in">substr</span>(i, len1)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxcommonsubstr</span><span class="hljs-params">(string s1, string s2)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> len0 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> len1 = s1.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">int</span> len2 = s2.<span class="hljs-built_in">length</span>();<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = len1; i &gt; <span class="hljs-number">0</span>; i--) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= len1 - i; j++) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">issub</span>(s1.<span class="hljs-built_in">substr</span>(j, i), s2)) &#123;<br>                len0 = i;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (len0) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> len0;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s1, s2;<br>    cin &gt;&gt; s1 &gt;&gt; s2;<br>    <span class="hljs-keyword">int</span> len1 = s1.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">int</span> len2 = s2.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">if</span> (len1 &gt;= len2) <span class="hljs-built_in">swap</span>(s1, s2); <span class="hljs-comment">// 之后按s1短s2长进行调用</span><br>    cout &lt;&lt; <span class="hljs-built_in">maxcommonsubstr</span>(s1, s2) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HJ74 参数解析</title>
     <url>/posts/f35c2c19/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在命令行输入如下命令：<br><code>xcopy /s c:\ d:\</code></p>
@@ -2058,6 +2023,22 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HJ75 公共串计算</title>
+    <url>/posts/3e014c89/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定两个只包含小写字母的字符串，计算两个字符串的最大公共子串的长度。<br>注：子串的定义指一个字符串删掉其部分前缀和后缀（也可以不删）后形成的字符串。</p>
+<h2 id="解法：字符串"><a href="#解法：字符串" class="headerlink" title="解法：字符串"></a>解法：字符串</h2><p>暴力法</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">issub</span><span class="hljs-params">(string str1, string str2)</span> </span>&#123; <span class="hljs-comment">// 判断str1整体是否为str2的子串</span><br>    <span class="hljs-keyword">int</span> len1 = str1.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">int</span> len2 = str2.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= (len2 - len1); i++) &#123;<br>        <span class="hljs-keyword">if</span> (str1 == str2.<span class="hljs-built_in">substr</span>(i, len1)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxcommonsubstr</span><span class="hljs-params">(string s1, string s2)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> len0 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> len1 = s1.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">int</span> len2 = s2.<span class="hljs-built_in">length</span>();<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = len1; i &gt; <span class="hljs-number">0</span>; i--) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= len1 - i; j++) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">issub</span>(s1.<span class="hljs-built_in">substr</span>(j, i), s2)) &#123;<br>                len0 = i;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (len0) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> len0;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string s1, s2;<br>    cin &gt;&gt; s1 &gt;&gt; s2;<br>    <span class="hljs-keyword">int</span> len1 = s1.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">int</span> len2 = s2.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">if</span> (len1 &gt;= len2) <span class="hljs-built_in">swap</span>(s1, s2); <span class="hljs-comment">// 之后按s1短s2长进行调用</span><br>    cout &lt;&lt; <span class="hljs-built_in">maxcommonsubstr</span>(s1, s2) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -2107,6 +2088,36 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>HJ89 二维数组操作</title>
+    <url>/posts/f653859/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有一个大小的数据表，你会依次进行以下 5 种操作： 1.输入 m 和 n，初始化 m*n 大小的表格。 2.输入 x1、y1、x2、y2，交换坐标在(x1,y1)和(x2,y2)的两个数。 3.输入 x，在第 x 行上方添加一行。 4.输入 y，在第 y 列左边添加一列。 5.输入 x、y，查找坐标为(x,y)的单元格的值。<br>请编写程序，判断对表格的各种操作是否合法。</p>
+<p>详细要求:</p>
+<p>1.数据表的最大规格为 9 行*9 列，对表格进行操作时遇到超出规格应该返回错误。 2.对于插入操作，如果插入后行数或列数超过 9 了则应返回错误。如果插入成功了则将数据表恢复至初始化的大小，多出的数据则应舍弃。 3.所有输入坐标操作，对大小的表格，行号坐标只允许 0~m-1，列号坐标只允许 0~n-1。超出范围应该返回错误。</p>
+<h2 id="解法：阅读理解"><a href="#解法：阅读理解" class="headerlink" title="解法：阅读理解"></a>解法：阅读理解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> m, n, x1, y1, x2, y2, x, y, qx, qy;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; m &gt;&gt; n &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2 &gt;&gt; x &gt;&gt; y &gt;&gt; qx &gt;&gt; qy) &#123;<br>        cout &lt;&lt; ((m &gt;= <span class="hljs-number">0</span> &amp;&amp; m &lt;= <span class="hljs-number">9</span> &amp;&amp; n &gt;= <span class="hljs-number">0</span> &amp;&amp; n &lt;= <span class="hljs-number">9</span>) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((x1 &gt;= <span class="hljs-number">0</span> &amp;&amp; x1 &lt; m&amp;&amp; y1 &gt;= <span class="hljs-number">0</span> &amp;&amp; y1 &lt; n&amp;&amp; x2 &gt;= <span class="hljs-number">0</span> &amp;&amp; x2 &lt; m&amp;&amp; y2 &gt;= <span class="hljs-number">0</span> &amp;&amp; y2 &lt; n) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((x &gt;= <span class="hljs-number">0</span> &amp;&amp; x &lt; m&amp;&amp; m &lt; <span class="hljs-number">9</span>) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((y &gt;= <span class="hljs-number">0</span> &amp;&amp; y &lt; n&amp;&amp; n &lt; <span class="hljs-number">9</span>) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((qx &gt;= <span class="hljs-number">0</span> &amp;&amp; qx &lt; m&amp;&amp; qy &gt;= <span class="hljs-number">0</span> &amp;&amp; qy &lt; n) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HJ9 提取不重复的整数</title>
+    <url>/posts/2d4ad067/</url>
+    <content><![CDATA[<p>输入一个 int 型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。保证输入的整数最后一位不是 0。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    string s = <span class="hljs-built_in">to_string</span>(n);<br>    <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br><br>    string res;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s)<br>        <span class="hljs-keyword">if</span> (res.<span class="hljs-built_in">find</span>(c) == string::npos)<br>            res += c;<br><br>    cout &lt;&lt; <span class="hljs-built_in">stoi</span>(res);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>华为机试</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HJ89 密码强度等级</title>
     <url>/posts/459768b1/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>密码按如下规则进行计分，并根据不同的得分为密码进行安全等级划分。</p>
@@ -2127,36 +2138,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HJ9 提取不重复的整数</title>
-    <url>/posts/2d4ad067/</url>
-    <content><![CDATA[<p>输入一个 int 型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。保证输入的整数最后一位不是 0。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n;<br>    cin &gt;&gt; n;<br>    string s = <span class="hljs-built_in">to_string</span>(n);<br>    <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br><br>    string res;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c : s)<br>        <span class="hljs-keyword">if</span> (res.<span class="hljs-built_in">find</span>(c) == string::npos)<br>            res += c;<br><br>    cout &lt;&lt; <span class="hljs-built_in">stoi</span>(res);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HJ89 二维数组操作</title>
-    <url>/posts/f653859/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有一个大小的数据表，你会依次进行以下 5 种操作： 1.输入 m 和 n，初始化 m*n 大小的表格。 2.输入 x1、y1、x2、y2，交换坐标在(x1,y1)和(x2,y2)的两个数。 3.输入 x，在第 x 行上方添加一行。 4.输入 y，在第 y 列左边添加一列。 5.输入 x、y，查找坐标为(x,y)的单元格的值。<br>请编写程序，判断对表格的各种操作是否合法。</p>
-<p>详细要求:</p>
-<p>1.数据表的最大规格为 9 行*9 列，对表格进行操作时遇到超出规格应该返回错误。 2.对于插入操作，如果插入后行数或列数超过 9 了则应返回错误。如果插入成功了则将数据表恢复至初始化的大小，多出的数据则应舍弃。 3.所有输入坐标操作，对大小的表格，行号坐标只允许 0~m-1，列号坐标只允许 0~n-1。超出范围应该返回错误。</p>
-<h2 id="解法：阅读理解"><a href="#解法：阅读理解" class="headerlink" title="解法：阅读理解"></a>解法：阅读理解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> m, n, x1, y1, x2, y2, x, y, qx, qy;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; m &gt;&gt; n &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2 &gt;&gt; x &gt;&gt; y &gt;&gt; qx &gt;&gt; qy) &#123;<br>        cout &lt;&lt; ((m &gt;= <span class="hljs-number">0</span> &amp;&amp; m &lt;= <span class="hljs-number">9</span> &amp;&amp; n &gt;= <span class="hljs-number">0</span> &amp;&amp; n &lt;= <span class="hljs-number">9</span>) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((x1 &gt;= <span class="hljs-number">0</span> &amp;&amp; x1 &lt; m&amp;&amp; y1 &gt;= <span class="hljs-number">0</span> &amp;&amp; y1 &lt; n&amp;&amp; x2 &gt;= <span class="hljs-number">0</span> &amp;&amp; x2 &lt; m&amp;&amp; y2 &gt;= <span class="hljs-number">0</span> &amp;&amp; y2 &lt; n) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((x &gt;= <span class="hljs-number">0</span> &amp;&amp; x &lt; m&amp;&amp; m &lt; <span class="hljs-number">9</span>) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((y &gt;= <span class="hljs-number">0</span> &amp;&amp; y &lt; n&amp;&amp; n &lt; <span class="hljs-number">9</span>) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>        cout &lt;&lt; ((qx &gt;= <span class="hljs-number">0</span> &amp;&amp; qx &lt; m&amp;&amp; qy &gt;= <span class="hljs-number">0</span> &amp;&amp; qy &lt; n) ? <span class="hljs-number">0</span> : <span class="hljs-number">-1</span>) &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>华为机试</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -2222,54 +2203,6 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>JZ49 丑数</title>
-    <url>/posts/1512fb53/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子 2,3 和 5 的数称作丑数。求按从小到大的顺序的第 n 个丑数。第 150 个丑数为 5832。</p>
-<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p>维护一个计数器 cnt，同时对途经的所有数字都判断其是否为丑数。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isUgly</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">while</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) n /= <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">while</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) n /= <span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">while</span> (n % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>) n /= <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">return</span> n == <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getNthUglyNo</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (cnt &lt; n) &#123;<br>        i++;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isUgly</span>(i)) cnt++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> i;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> no = <span class="hljs-built_in">getNthUglyNo</span>(<span class="hljs-number">150</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;150th ugly num is %d\n&quot;</span>, no);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="解法-2：动态规划"><a href="#解法-2：动态规划" class="headerlink" title="解法 2：动态规划"></a>解法 2：动态规划</h2><p><strong>思路</strong></p>
-<p>暴力法的思想是：数域上原本就存在无穷多个丑数，我们只需要找出这些丑数，具体做法是一个个判断。</p>
-<p>DP 的思想是：世界上只存在第一个丑数 1 和产生丑数的做法，即乘 2 乘 3 乘 5，每一个丑数的来源分为这三种，且可以混合这些操作，但终究还是分三种。你需要利用规律来生产符合要求的丑数。</p>
-<p>这是一种空间复杂度为 O(n)的省时解决方案。丑数序列是：1,2,3,4,5,6,8,9,10,12,15,…因为每个数字只能被 2,3,5 整除，于是一种查看丑数序列的方法就是将序列分成三组，如下所示：<br>(1) 1×2, 2×2, 3×2, 4×2, 5×2, …<br>(2) 1×3, 2×3, 3×3, 4×3, 5×3, …<br>(3) 1×5, 2×5, 3×5, 4×5, 5×5, …<br>可以发现每个子序列都是丑序列本身（1,2,3,4,5,…）乘以 2,3,5。然后我们使用和归并排序类似的归并方法来从三个子序列中获得每一个丑数。每一步我们都选择最小的那个，然后再向前迈进一步。</p>
-<p><strong>算法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1 Declare an array for ugly numbers:<br>    ugly[n];<br>2 Initialize first ugly no:<br>    ugly[0] = 1;<br>3 Initialize three array index variables i2, i3, i5 to point to 1st element of the ugly array:<br>    i2 = i3 = i5 = 0;<br>4 Initialize 3 choices for the next ugly no:<br>    next_mulitple_of_2 = ugly[i2]*2;<br>    next_mulitple_of_3 = ugly[i3]*3;<br>    next_mulitple_of_5 = ugly[i5]*5;<br>5 Now go in a loop to fill all ugly numbers till 150:<br>    For (i = 1; i &lt; 150; i++) &#123;<br>        next_ugly_no = Min(next_mulitple_of_2, next_mulitple_of_3, next_mulitple_of_5);<br>        ugly[i] = next_ugly_no;<br><br>        if (next_ugly_no == next_mulitple_of_2) &#123;<br>            i2 = i2 + 1;<br>            next_mulitple_of_2 = ugly[i2]*2;<br>        &#125;<br><br>        if (next_ugly_no == next_mulitple_of_3) &#123;<br>            i3 = i3 + 1;<br>            next_mulitple_of_3 = ugly[i3]*3;<br>        &#125;<br><br>        if (next_ugly_no == next_mulitple_of_5) &#123;<br>            i5 = i5 + 1;<br>            next_mulitple_of_5 = ugly[i5]*5;<br>        &#125;<br>    &#125; /* end of for loop */<br>6 return next_ugly_no<br></code></pre></td></tr></table></figure>
-<p><strong>流程</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">initialize<br>    ugly[] = 1<br>    i2 = i3 = i5 = 0;<br><br>First iteration<br>    ugly[1] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(2, 3, 5)<br>            = 2<br>    ugly[] = 1 2<br>    i2 = 1, i3 = i5 = 0 (i2 got incremented)<br><br>Second iteration<br>    ugly[2] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(4, 3, 5)<br>            = 3<br>    ugly[] = 1 2 3<br>    i2 = 1, i3 = 1, i5 = 0 (i3 got incremented)<br><br>Third iteration<br>    ugly[3] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(4, 6, 5)<br>            = 4<br>    ugly[] = 1 2 3 4<br>    i2 = 2, i3 = 1, i5 = 0 (i2 got incremented)<br><br>Fourth iteration<br>    ugly[4] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(6, 6, 5)<br>            = 5<br>    ugly[] = 1 2 3 4 5<br>    i2 = 2, i3 = 1, i5 = 1 (i5 got incremented)<br><br>Fifth iteration<br>    ugly[4] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(6, 6, 10)<br>            = 6<br>    ugly[] = 1 2 3 4 5 6<br>    i2 = 3, i3 = 2, i5 = 1 (i2 and i3 got incremented)<br><br>Will continue same way till I &lt; 150<br></code></pre></td></tr></table></figure>
-<p>对 i2,i3,i5 进行迭代的依据和原则是：确保既不跳过任何一个丑数，也不产生哪怕一次重复。</p>
-<p><strong>gfg 代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">getNthUglyNum</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> ugly[<span class="hljs-number">1000</span>] = &#123;&#125;;<br>    <span class="hljs-keyword">unsigned</span> i2 = <span class="hljs-number">0</span>, i3 = <span class="hljs-number">0</span>, i5 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">unsigned</span> next_multiple_of_2 = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">unsigned</span> next_multiple_of_3 = <span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">unsigned</span> next_multiple_of_5 = <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">unsigned</span> next_ugly_num = <span class="hljs-number">1</span>;<br><br>    ugly[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;<br>        next_ugly_num = <span class="hljs-built_in">min</span>(next_multiple_of_2, <span class="hljs-built_in">min</span>(next_multiple_of_3, next_multiple_of_5));<br>        ugly[i] = next_ugly_num;<br>        <span class="hljs-keyword">if</span> (next_ugly_num == next_multiple_of_2) &#123;<br>            i2 = i2 + <span class="hljs-number">1</span>;<br>            next_multiple_of_2 = ugly[i2] * <span class="hljs-number">2</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (next_ugly_num == next_multiple_of_3) &#123;<br>            i3 = i3 + <span class="hljs-number">1</span>;<br>            next_multiple_of_3 = ugly[i3] * <span class="hljs-number">3</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (next_ugly_num == next_multiple_of_5) &#123;<br>            i5 = i5 + <span class="hljs-number">1</span>;<br>            next_multiple_of_5 = ugly[i5] * <span class="hljs-number">5</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> next_ugly_num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">150</span>;<br>    cout &lt;&lt; <span class="hljs-built_in">getNthUglyNum</span>(n) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>lc 代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> p2 = <span class="hljs-number">1</span>, p3 = <span class="hljs-number">1</span>, p5 = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">int</span> num2 = dp[p2] * <span class="hljs-number">2</span>, num3 = dp[p3] * <span class="hljs-number">3</span>, num5 = dp[p5] * <span class="hljs-number">5</span>;<br>            dp[i] = <span class="hljs-built_in">min</span>(<span class="hljs-built_in">min</span>(num2, num3), num5);<br>            <span class="hljs-keyword">if</span> (dp[i] == num2) p2++;<br>            <span class="hljs-keyword">if</span> (dp[i] == num3) p3++;<br>            <span class="hljs-keyword">if</span> (dp[i] == num5) p5++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><strong>分析</strong></p>
-<p>Time Complexity: O(n)<br>Auxiliary Space: O(n)</p>
-<h2 id="解法-3：集合"><a href="#解法-3：集合" class="headerlink" title="解法 3：集合"></a>解法 3：集合</h2><p>使用动态规划对 i2,i3,i5 进行迭代的依据和原则是：不跳过也不重复。由不重复自然可以想到一种数据结构：集合。用 set 来保存生成的三个丑数中的最小值。set 作为一个集合将按升序存储所有元素。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span> || n == <span class="hljs-number">2</span> || n == <span class="hljs-number">3</span> || n == <span class="hljs-number">4</span> || n == <span class="hljs-number">5</span>) <span class="hljs-keyword">return</span> n;<br>    set&lt;<span class="hljs-keyword">unsigned</span>&gt; s;<br>    s.<span class="hljs-built_in">insert</span>(<span class="hljs-number">1</span>);<br>    n--;<br><br>    <span class="hljs-keyword">while</span> (n) &#123;<br>        <span class="hljs-keyword">auto</span> it = s.<span class="hljs-built_in">begin</span>();<br>        <span class="hljs-keyword">unsigned</span> x = *it;<br>        s.<span class="hljs-built_in">erase</span>(it);<br>        s.<span class="hljs-built_in">insert</span>(x * <span class="hljs-number">2</span>);<br>        s.<span class="hljs-built_in">insert</span>(x * <span class="hljs-number">3</span>);<br>        s.<span class="hljs-built_in">insert</span>(x * <span class="hljs-number">5</span>);<br>        n--;<br>    &#125;<br>    <span class="hljs-keyword">return</span> *s.<span class="hljs-built_in">begin</span>();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">150</span>;<br>    cout &lt;&lt; <span class="hljs-built_in">nthUglyNumber</span>(n) &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>分析</strong></p>
-<p>Time Complexity: O(NlogN)<br>Auxiliary Space: O(N)</p>
-<h2 id="解法-4：二分法"><a href="#解法-4：二分法" class="headerlink" title="解法 4：二分法"></a>解法 4：二分法</h2><p>1 如果 n 的最大值已经知道了，就可以考虑二分法。丑数的一般表达式为：<code>x=pow(2,p)*pow(3,q)*pow(5,r)</code>。<br>2 然后在 1~INT_MAX 区间上进行二分法，因为我们预料第 n 个丑数将投射在这范围中。<br>3 现在我们站在 mid 处，我们要找到中位数左边整个区域上（即小于 mid）的丑数的总数。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> pow[<span class="hljs-number">40</span>] = &#123; <span class="hljs-number">1</span> &#125;;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">30</span>; ++i)<br>        pow[i] = pow[i - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = INT_MAX;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt;= r) &#123;<br>        <span class="hljs-keyword">int</span> mid = l + ((r - l) / <span class="hljs-number">2</span>);<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">1</span>; i &lt;= mid; i *= <span class="hljs-number">5</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> j = <span class="hljs-number">1</span>; j * i &lt;= mid; j *= <span class="hljs-number">3</span>) &#123;<br>                cnt += <span class="hljs-built_in">upper_bound</span>(pow, pow + <span class="hljs-number">31</span>, mid / (i * j)) - pow;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (cnt &lt; n) l = mid + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>, ans = mid;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">150</span>;<br>    cout &lt;&lt; <span class="hljs-built_in">nthUglyNumber</span>(n) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>分析</strong></p>
-<p>Time Complexity: O(logN)<br>Auxiliary Space: O(1)</p>
-<h2 id="解法-5：小顶堆"><a href="#解法-5：小顶堆" class="headerlink" title="解法 5：小顶堆"></a>解法 5：小顶堆</h2><p>优先级队列。</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; factors = &#123; <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span> &#125;;<br>        unordered_set&lt;<span class="hljs-keyword">long</span>&gt; seen;<br>        priority_queue&lt;<span class="hljs-keyword">long</span>, vector&lt;<span class="hljs-keyword">long</span>&gt;, greater&lt;<span class="hljs-keyword">long</span>&gt;&gt; heap;<br>        seen.<span class="hljs-built_in">insert</span>(<span class="hljs-number">1L</span>);<br>        heap.<span class="hljs-built_in">push</span>(<span class="hljs-number">1L</span>);<br>        <span class="hljs-keyword">int</span> ugly = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">long</span> curr = heap.<span class="hljs-built_in">top</span>();<br>            heap.<span class="hljs-built_in">pop</span>();<br>            ugly = (<span class="hljs-keyword">int</span>)curr;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> factor : factors) &#123;<br>                <span class="hljs-keyword">long</span> next = curr * factor;<br>                <span class="hljs-keyword">if</span> (!seen.<span class="hljs-built_in">count</span>(next)) &#123;<br>                    seen.<span class="hljs-built_in">insert</span>(next);<br>                    heap.<span class="hljs-built_in">push</span>(next);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ugly;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/ugly-numbers/">https://www.geeksforgeeks.org/ugly-numbers/</a></p>
-]]></content>
-      <categories>
-        <category>小镇做题家</category>
-        <category>牛客网</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-        <tag>二分法</tag>
-        <tag>集合</tag>
-        <tag>堆</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NC106 三个数的最大乘积</title>
     <url>/posts/5b24a17a/</url>
     <content><![CDATA[<p>给定一个无序数组，包含正数、负数和 0，要求从中找出 3 个数的乘积，使得乘积最大，要求时间复杂度：O(n)，空间复杂度：O(1)。</p>
@@ -2299,6 +2232,25 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE1 Multiples of 3 and 5</title>
+    <url>/posts/f5248637/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</p>
+<p>如果我们列出所有低于 10 的自然数，它们是 3 或 5 的倍数，则得到 3、5、6 和 9。这些倍数的总和为 23。求 1000 以下所有 3 或 5 的倍数之和。</p>
+<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i)<br>        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> || i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>)<br>            sum += i;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：容斥原理"><a href="#解法-2：容斥原理" class="headerlink" title="解法 2：容斥原理"></a>解法 2：容斥原理</h2><p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 求N以内所有n的倍数之和</span><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">sumu</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>    <span class="hljs-comment">// (首项n+末项)*项数/2</span><br>    <span class="hljs-keyword">return</span> (n + (N - <span class="hljs-number">1</span>) / n * n) * ((N - <span class="hljs-number">1</span>) / n) / <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">unsigned</span> sum_3 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">3</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_5 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">5</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum_15 = <span class="hljs-built_in">sumu</span>(<span class="hljs-number">15</span>, N);<br>    <span class="hljs-keyword">unsigned</span> sum = sum_3 + sum_5 - sum_15;<br>    cout &lt;&lt; sum &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.xarg.org/puzzle/project-euler/problem-1/">https://www.xarg.org/puzzle/project-euler/problem-1/</a></p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>欧拉计划</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -2378,6 +2330,54 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
       <tags>
         <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JZ49 丑数</title>
+    <url>/posts/1512fb53/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们把只包含质因子 2,3 和 5 的数称作丑数。求按从小到大的顺序的第 n 个丑数。第 150 个丑数为 5832。</p>
+<h2 id="解法-1：暴力"><a href="#解法-1：暴力" class="headerlink" title="解法 1：暴力"></a>解法 1：暴力</h2><p>维护一个计数器 cnt，同时对途经的所有数字都判断其是否为丑数。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isUgly</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">while</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) n /= <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">while</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) n /= <span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">while</span> (n % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>) n /= <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">return</span> n == <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getNthUglyNo</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (cnt &lt; n) &#123;<br>        i++;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isUgly</span>(i)) cnt++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> i;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> no = <span class="hljs-built_in">getNthUglyNo</span>(<span class="hljs-number">150</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;150th ugly num is %d\n&quot;</span>, no);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解法-2：动态规划"><a href="#解法-2：动态规划" class="headerlink" title="解法 2：动态规划"></a>解法 2：动态规划</h2><p><strong>思路</strong></p>
+<p>暴力法的思想是：数域上原本就存在无穷多个丑数，我们只需要找出这些丑数，具体做法是一个个判断。</p>
+<p>DP 的思想是：世界上只存在第一个丑数 1 和产生丑数的做法，即乘 2 乘 3 乘 5，每一个丑数的来源分为这三种，且可以混合这些操作，但终究还是分三种。你需要利用规律来生产符合要求的丑数。</p>
+<p>这是一种空间复杂度为 O(n)的省时解决方案。丑数序列是：1,2,3,4,5,6,8,9,10,12,15,…因为每个数字只能被 2,3,5 整除，于是一种查看丑数序列的方法就是将序列分成三组，如下所示：<br>(1) 1×2, 2×2, 3×2, 4×2, 5×2, …<br>(2) 1×3, 2×3, 3×3, 4×3, 5×3, …<br>(3) 1×5, 2×5, 3×5, 4×5, 5×5, …<br>可以发现每个子序列都是丑序列本身（1,2,3,4,5,…）乘以 2,3,5。然后我们使用和归并排序类似的归并方法来从三个子序列中获得每一个丑数。每一步我们都选择最小的那个，然后再向前迈进一步。</p>
+<p><strong>算法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1 Declare an array for ugly numbers:<br>    ugly[n];<br>2 Initialize first ugly no:<br>    ugly[0] = 1;<br>3 Initialize three array index variables i2, i3, i5 to point to 1st element of the ugly array:<br>    i2 = i3 = i5 = 0;<br>4 Initialize 3 choices for the next ugly no:<br>    next_mulitple_of_2 = ugly[i2]*2;<br>    next_mulitple_of_3 = ugly[i3]*3;<br>    next_mulitple_of_5 = ugly[i5]*5;<br>5 Now go in a loop to fill all ugly numbers till 150:<br>    For (i = 1; i &lt; 150; i++) &#123;<br>        next_ugly_no = Min(next_mulitple_of_2, next_mulitple_of_3, next_mulitple_of_5);<br>        ugly[i] = next_ugly_no;<br><br>        if (next_ugly_no == next_mulitple_of_2) &#123;<br>            i2 = i2 + 1;<br>            next_mulitple_of_2 = ugly[i2]*2;<br>        &#125;<br><br>        if (next_ugly_no == next_mulitple_of_3) &#123;<br>            i3 = i3 + 1;<br>            next_mulitple_of_3 = ugly[i3]*3;<br>        &#125;<br><br>        if (next_ugly_no == next_mulitple_of_5) &#123;<br>            i5 = i5 + 1;<br>            next_mulitple_of_5 = ugly[i5]*5;<br>        &#125;<br>    &#125; /* end of for loop */<br>6 return next_ugly_no<br></code></pre></td></tr></table></figure>
+<p><strong>流程</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">initialize<br>    ugly[] = 1<br>    i2 = i3 = i5 = 0;<br><br>First iteration<br>    ugly[1] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(2, 3, 5)<br>            = 2<br>    ugly[] = 1 2<br>    i2 = 1, i3 = i5 = 0 (i2 got incremented)<br><br>Second iteration<br>    ugly[2] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(4, 3, 5)<br>            = 3<br>    ugly[] = 1 2 3<br>    i2 = 1, i3 = 1, i5 = 0 (i3 got incremented)<br><br>Third iteration<br>    ugly[3] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(4, 6, 5)<br>            = 4<br>    ugly[] = 1 2 3 4<br>    i2 = 2, i3 = 1, i5 = 0 (i2 got incremented)<br><br>Fourth iteration<br>    ugly[4] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(6, 6, 5)<br>            = 5<br>    ugly[] = 1 2 3 4 5<br>    i2 = 2, i3 = 1, i5 = 1 (i5 got incremented)<br><br>Fifth iteration<br>    ugly[4] = Min(ugly[i2]*2, ugly[i3]*3, ugly[i5]*5)<br>            = Min(6, 6, 10)<br>            = 6<br>    ugly[] = 1 2 3 4 5 6<br>    i2 = 3, i3 = 2, i5 = 1 (i2 and i3 got incremented)<br><br>Will continue same way till I &lt; 150<br></code></pre></td></tr></table></figure>
+<p>对 i2,i3,i5 进行迭代的依据和原则是：确保既不跳过任何一个丑数，也不产生哪怕一次重复。</p>
+<p><strong>gfg 代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">getNthUglyNum</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">unsigned</span> ugly[<span class="hljs-number">1000</span>] = &#123;&#125;;<br>    <span class="hljs-keyword">unsigned</span> i2 = <span class="hljs-number">0</span>, i3 = <span class="hljs-number">0</span>, i5 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">unsigned</span> next_multiple_of_2 = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">unsigned</span> next_multiple_of_3 = <span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">unsigned</span> next_multiple_of_5 = <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">unsigned</span> next_ugly_num = <span class="hljs-number">1</span>;<br><br>    ugly[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;<br>        next_ugly_num = <span class="hljs-built_in">min</span>(next_multiple_of_2, <span class="hljs-built_in">min</span>(next_multiple_of_3, next_multiple_of_5));<br>        ugly[i] = next_ugly_num;<br>        <span class="hljs-keyword">if</span> (next_ugly_num == next_multiple_of_2) &#123;<br>            i2 = i2 + <span class="hljs-number">1</span>;<br>            next_multiple_of_2 = ugly[i2] * <span class="hljs-number">2</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (next_ugly_num == next_multiple_of_3) &#123;<br>            i3 = i3 + <span class="hljs-number">1</span>;<br>            next_multiple_of_3 = ugly[i3] * <span class="hljs-number">3</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (next_ugly_num == next_multiple_of_5) &#123;<br>            i5 = i5 + <span class="hljs-number">1</span>;<br>            next_multiple_of_5 = ugly[i5] * <span class="hljs-number">5</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> next_ugly_num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">150</span>;<br>    cout &lt;&lt; <span class="hljs-built_in">getNthUglyNum</span>(n) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>lc 代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> p2 = <span class="hljs-number">1</span>, p3 = <span class="hljs-number">1</span>, p5 = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">int</span> num2 = dp[p2] * <span class="hljs-number">2</span>, num3 = dp[p3] * <span class="hljs-number">3</span>, num5 = dp[p5] * <span class="hljs-number">5</span>;<br>            dp[i] = <span class="hljs-built_in">min</span>(<span class="hljs-built_in">min</span>(num2, num3), num5);<br>            <span class="hljs-keyword">if</span> (dp[i] == num2) p2++;<br>            <span class="hljs-keyword">if</span> (dp[i] == num3) p3++;<br>            <span class="hljs-keyword">if</span> (dp[i] == num5) p5++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<p>Time Complexity: O(n)<br>Auxiliary Space: O(n)</p>
+<h2 id="解法-3：集合"><a href="#解法-3：集合" class="headerlink" title="解法 3：集合"></a>解法 3：集合</h2><p>使用动态规划对 i2,i3,i5 进行迭代的依据和原则是：不跳过也不重复。由不重复自然可以想到一种数据结构：集合。用 set 来保存生成的三个丑数中的最小值。set 作为一个集合将按升序存储所有元素。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span> || n == <span class="hljs-number">2</span> || n == <span class="hljs-number">3</span> || n == <span class="hljs-number">4</span> || n == <span class="hljs-number">5</span>) <span class="hljs-keyword">return</span> n;<br>    set&lt;<span class="hljs-keyword">unsigned</span>&gt; s;<br>    s.<span class="hljs-built_in">insert</span>(<span class="hljs-number">1</span>);<br>    n--;<br><br>    <span class="hljs-keyword">while</span> (n) &#123;<br>        <span class="hljs-keyword">auto</span> it = s.<span class="hljs-built_in">begin</span>();<br>        <span class="hljs-keyword">unsigned</span> x = *it;<br>        s.<span class="hljs-built_in">erase</span>(it);<br>        s.<span class="hljs-built_in">insert</span>(x * <span class="hljs-number">2</span>);<br>        s.<span class="hljs-built_in">insert</span>(x * <span class="hljs-number">3</span>);<br>        s.<span class="hljs-built_in">insert</span>(x * <span class="hljs-number">5</span>);<br>        n--;<br>    &#125;<br>    <span class="hljs-keyword">return</span> *s.<span class="hljs-built_in">begin</span>();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">150</span>;<br>    cout &lt;&lt; <span class="hljs-built_in">nthUglyNumber</span>(n) &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<p>Time Complexity: O(NlogN)<br>Auxiliary Space: O(N)</p>
+<h2 id="解法-4：二分法"><a href="#解法-4：二分法" class="headerlink" title="解法 4：二分法"></a>解法 4：二分法</h2><p>1 如果 n 的最大值已经知道了，就可以考虑二分法。丑数的一般表达式为：<code>x=pow(2,p)*pow(3,q)*pow(5,r)</code>。<br>2 然后在 1~INT_MAX 区间上进行二分法，因为我们预料第 n 个丑数将投射在这范围中。<br>3 现在我们站在 mid 处，我们要找到中位数左边整个区域上（即小于 mid）的丑数的总数。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> pow[<span class="hljs-number">40</span>] = &#123; <span class="hljs-number">1</span> &#125;;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">30</span>; ++i)<br>        pow[i] = pow[i - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = INT_MAX;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt;= r) &#123;<br>        <span class="hljs-keyword">int</span> mid = l + ((r - l) / <span class="hljs-number">2</span>);<br>        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">1</span>; i &lt;= mid; i *= <span class="hljs-number">5</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> j = <span class="hljs-number">1</span>; j * i &lt;= mid; j *= <span class="hljs-number">3</span>) &#123;<br>                cnt += <span class="hljs-built_in">upper_bound</span>(pow, pow + <span class="hljs-number">31</span>, mid / (i * j)) - pow;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (cnt &lt; n) l = mid + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>, ans = mid;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">150</span>;<br>    cout &lt;&lt; <span class="hljs-built_in">nthUglyNumber</span>(n) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<p>Time Complexity: O(logN)<br>Auxiliary Space: O(1)</p>
+<h2 id="解法-5：小顶堆"><a href="#解法-5：小顶堆" class="headerlink" title="解法 5：小顶堆"></a>解法 5：小顶堆</h2><p>优先级队列。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; factors = &#123; <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span> &#125;;<br>        unordered_set&lt;<span class="hljs-keyword">long</span>&gt; seen;<br>        priority_queue&lt;<span class="hljs-keyword">long</span>, vector&lt;<span class="hljs-keyword">long</span>&gt;, greater&lt;<span class="hljs-keyword">long</span>&gt;&gt; heap;<br>        seen.<span class="hljs-built_in">insert</span>(<span class="hljs-number">1L</span>);<br>        heap.<span class="hljs-built_in">push</span>(<span class="hljs-number">1L</span>);<br>        <span class="hljs-keyword">int</span> ugly = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">long</span> curr = heap.<span class="hljs-built_in">top</span>();<br>            heap.<span class="hljs-built_in">pop</span>();<br>            ugly = (<span class="hljs-keyword">int</span>)curr;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> factor : factors) &#123;<br>                <span class="hljs-keyword">long</span> next = curr * factor;<br>                <span class="hljs-keyword">if</span> (!seen.<span class="hljs-built_in">count</span>(next)) &#123;<br>                    seen.<span class="hljs-built_in">insert</span>(next);<br>                    heap.<span class="hljs-built_in">push</span>(next);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ugly;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.geeksforgeeks.org/ugly-numbers/">https://www.geeksforgeeks.org/ugly-numbers/</a></p>
+]]></content>
+      <categories>
+        <category>小镇做题家</category>
+        <category>牛客网</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>二分法</tag>
+        <tag>集合</tag>
+        <tag>堆</tag>
       </tags>
   </entry>
   <entry>
@@ -2770,7 +2770,11 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
 <h4 id="类中的-const"><a href="#类中的-const" class="headerlink" title="类中的 const"></a>类中的 const</h4><p>在一个类中，任何不会修改数据成员的函数都应该声明为 const 类型。如果在编写常成员函数的函数体时，不慎修改数据成员，或者调用了其它非常成员函数，编译器将指出错误，这无疑会提高程序的健壮性。使用 const 关键字进行说明的成员函数，称为常成员函数。只有常成员函数才有资格操作常量或常对象，非常成员函数不能用来操作常对象。</p>
 <p>对于类中的常成员变量必须通过初始化列表进行初始化，如下所示：</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> a;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Test</span>() :<span class="hljs-built_in">a</span>(<span class="hljs-number">10</span>) &#123;&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>常对象只能调用常成员函数，不能调用非常成员函数。<br>非常对象既可以调用常成员函数，也可以调用非常成员函数。<br>非常成员函数不能操作常对象。</p>
+<ol>
+<li>常对象只能调用常成员函数，不能调用非常成员函数。</li>
+<li>非常对象既可以调用常成员函数，也可以调用非常成员函数。</li>
+<li>非常成员函数不能操作常对象。</li>
+</ol>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -5057,10 +5061,10 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </categories>
   </entry>
   <entry>
-    <title>gfg-算法竞赛中无向无权图的STL实现</title>
-    <url>/posts/9c1f087d/</url>
-    <content><![CDATA[<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; adj[], <span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span> </span>&#123;<br>    adj[u].<span class="hljs-built_in">push_back</span>(v);<br>    adj[v].<span class="hljs-built_in">push_back</span>(u);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFSUtil</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; adj[], <span class="hljs-keyword">int</span> u, vector&lt;<span class="hljs-keyword">bool</span>&gt;&amp; visited)</span> </span>&#123;<br>    cout &lt;&lt; u &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    visited[u] = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; adj[u].<span class="hljs-built_in">size</span>(); i++)<br>        <span class="hljs-keyword">if</span> (visited[adj[u][i]] == <span class="hljs-literal">false</span>)<br>            <span class="hljs-built_in">DFSUtil</span>(adj, adj[u][i], visited);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; adj[], <span class="hljs-keyword">int</span> V)</span> </span>&#123;<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">bool</span>&gt; <span class="hljs-title">visited</span><span class="hljs-params">(V, <span class="hljs-literal">false</span>)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>; u &lt; V; u++)<br>        <span class="hljs-keyword">if</span> (visited[u] == <span class="hljs-literal">false</span>)<br>            <span class="hljs-built_in">DFSUtil</span>(adj, u, visited);<br>    cout &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> V = <span class="hljs-number">5</span>;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt;* adj = <span class="hljs-keyword">new</span> vector&lt;<span class="hljs-keyword">int</span>&gt;[V];<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);<br>    <span class="hljs-built_in">DFS</span>(adj, V);<br>    <span class="hljs-keyword">delete</span>[]adj;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">vector&lt;int&gt; adj[] is an array of vectors.<br>vector&lt;vector&lt;int&gt;&gt; adj is a vector of vectors.<br><br>When you want to work with a fixed number of vector elements,<br>you can use vector&lt;int&gt; adj[].<br><br>When you want to work with a dynamic array of vector,<br>you can use vector&lt;vector&lt;int&gt;&gt; adj.<br></code></pre></td></tr></table></figure>
+    <title>gfg-图的广度优先遍历</title>
+    <url>/posts/b57fc3a4/</url>
+    <content><![CDATA[<p>图的 BFS 和树的层序遍历差不多，但是要加个访问标记位，因为图可能有环，而树一定没有环，标记位可以避免再次访问已经访问过的顶点。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Graph</span> &#123;</span><br>    <span class="hljs-keyword">int</span> V;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt;* adj;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Graph</span>(<span class="hljs-keyword">int</span> V);<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BFS</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s)</span></span>;<br>&#125;;<br><br>Graph::<span class="hljs-built_in">Graph</span>(<span class="hljs-keyword">int</span> V) &#123;<br>    <span class="hljs-keyword">this</span>-&gt;V = V;<br>    adj = <span class="hljs-keyword">new</span> vector&lt;<span class="hljs-keyword">int</span>&gt;[V];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Graph::addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w)</span> </span>&#123;<br>    adj[v].<span class="hljs-built_in">push_back</span>(w);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Graph::BFS</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s)</span> </span>&#123;<br>    <span class="hljs-keyword">bool</span>* visited = <span class="hljs-keyword">new</span> <span class="hljs-keyword">bool</span>[V];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; V; i++)<br>        visited[i] = <span class="hljs-literal">false</span>;<br><br>    queue&lt;<span class="hljs-keyword">int</span>&gt; queue;<br>    visited[s] = <span class="hljs-literal">true</span>;<br>    queue.<span class="hljs-built_in">push</span>(s);<br><br>    <span class="hljs-keyword">while</span> (!queue.<span class="hljs-built_in">empty</span>()) &#123;<br>        s = queue.<span class="hljs-built_in">front</span>();<br>        cout &lt;&lt; s &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        queue.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = adj[s].<span class="hljs-built_in">begin</span>(); it != adj[s].<span class="hljs-built_in">end</span>(); ++it) &#123;<br>            <span class="hljs-keyword">if</span> (!visited[*it]) &#123;<br>                visited[*it] = <span class="hljs-literal">true</span>;<br>                queue.<span class="hljs-built_in">push</span>(*it);<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">Graph <span class="hljs-title">graph</span><span class="hljs-params">(<span class="hljs-number">4</span>)</span></span>;<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>);<br><br>    cout &lt;&lt; <span class="hljs-string">&quot;从顶点2开始的深度优先遍历如下：\n&quot;</span>;<br>    graph.<span class="hljs-built_in">BFS</span>(<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
@@ -5071,10 +5075,10 @@ x_(i+1)=x_i-\frac{f(x_i)}{f'(x_i)}</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>gfg-图的广度优先遍历</title>
-    <url>/posts/b57fc3a4/</url>
-    <content><![CDATA[<p>图的 BFS 和树的层序遍历差不多，但是要加个访问标记位，因为图可能有环，而树一定没有环，标记位可以避免再次访问已经访问过的顶点。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Graph</span> &#123;</span><br>    <span class="hljs-keyword">int</span> V;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt;* adj;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Graph</span>(<span class="hljs-keyword">int</span> V);<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BFS</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s)</span></span>;<br>&#125;;<br><br>Graph::<span class="hljs-built_in">Graph</span>(<span class="hljs-keyword">int</span> V) &#123;<br>    <span class="hljs-keyword">this</span>-&gt;V = V;<br>    adj = <span class="hljs-keyword">new</span> vector&lt;<span class="hljs-keyword">int</span>&gt;[V];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Graph::addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w)</span> </span>&#123;<br>    adj[v].<span class="hljs-built_in">push_back</span>(w);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Graph::BFS</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s)</span> </span>&#123;<br>    <span class="hljs-keyword">bool</span>* visited = <span class="hljs-keyword">new</span> <span class="hljs-keyword">bool</span>[V];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; V; i++)<br>        visited[i] = <span class="hljs-literal">false</span>;<br><br>    queue&lt;<span class="hljs-keyword">int</span>&gt; queue;<br>    visited[s] = <span class="hljs-literal">true</span>;<br>    queue.<span class="hljs-built_in">push</span>(s);<br><br>    <span class="hljs-keyword">while</span> (!queue.<span class="hljs-built_in">empty</span>()) &#123;<br>        s = queue.<span class="hljs-built_in">front</span>();<br>        cout &lt;&lt; s &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        queue.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = adj[s].<span class="hljs-built_in">begin</span>(); it != adj[s].<span class="hljs-built_in">end</span>(); ++it) &#123;<br>            <span class="hljs-keyword">if</span> (!visited[*it]) &#123;<br>                visited[*it] = <span class="hljs-literal">true</span>;<br>                queue.<span class="hljs-built_in">push</span>(*it);<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">Graph <span class="hljs-title">graph</span><span class="hljs-params">(<span class="hljs-number">4</span>)</span></span>;<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>);<br>    graph.<span class="hljs-built_in">addEdge</span>(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>);<br><br>    cout &lt;&lt; <span class="hljs-string">&quot;从顶点2开始的深度优先遍历如下：\n&quot;</span>;<br>    graph.<span class="hljs-built_in">BFS</span>(<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+    <title>gfg-算法竞赛中无向无权图的STL实现</title>
+    <url>/posts/9c1f087d/</url>
+    <content><![CDATA[<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; adj[], <span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span> </span>&#123;<br>    adj[u].<span class="hljs-built_in">push_back</span>(v);<br>    adj[v].<span class="hljs-built_in">push_back</span>(u);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFSUtil</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; adj[], <span class="hljs-keyword">int</span> u, vector&lt;<span class="hljs-keyword">bool</span>&gt;&amp; visited)</span> </span>&#123;<br>    cout &lt;&lt; u &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    visited[u] = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; adj[u].<span class="hljs-built_in">size</span>(); i++)<br>        <span class="hljs-keyword">if</span> (visited[adj[u][i]] == <span class="hljs-literal">false</span>)<br>            <span class="hljs-built_in">DFSUtil</span>(adj, adj[u][i], visited);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; adj[], <span class="hljs-keyword">int</span> V)</span> </span>&#123;<br>    <span class="hljs-function">vector&lt;<span class="hljs-keyword">bool</span>&gt; <span class="hljs-title">visited</span><span class="hljs-params">(V, <span class="hljs-literal">false</span>)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>; u &lt; V; u++)<br>        <span class="hljs-keyword">if</span> (visited[u] == <span class="hljs-literal">false</span>)<br>            <span class="hljs-built_in">DFSUtil</span>(adj, u, visited);<br>    cout &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> V = <span class="hljs-number">5</span>;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt;* adj = <span class="hljs-keyword">new</span> vector&lt;<span class="hljs-keyword">int</span>&gt;[V];<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);<br>    <span class="hljs-built_in">addEdge</span>(adj, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);<br>    <span class="hljs-built_in">DFS</span>(adj, V);<br>    <span class="hljs-keyword">delete</span>[]adj;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">vector&lt;int&gt; adj[] is an array of vectors.<br>vector&lt;vector&lt;int&gt;&gt; adj is a vector of vectors.<br><br>When you want to work with a fixed number of vector elements,<br>you can use vector&lt;int&gt; adj[].<br><br>When you want to work with a dynamic array of vector,<br>you can use vector&lt;vector&lt;int&gt;&gt; adj.<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>编程珠玑</category>
