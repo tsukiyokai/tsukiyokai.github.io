@@ -38,15 +38,13 @@ gtag('config', 'xx-xxxxxxx-xx');</script><link rel="stylesheet" href="/css/tocbo
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">getnth(node,n)<br>1. Initialize count = 1<br>2. if count==n<br>     return node-&gt;data<br>3. else<br>    return getnth(node-&gt;next,n-1)<br></code></pre></td></tr></table></figure>
 <p>具体实现</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">GetNth</span><span class="hljs-params">(Node* head, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">int</span> count = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (count == n) <span class="hljs-keyword">return</span> head-&gt;data;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">GetNth</span>(head-&gt;next, n - <span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这种方法并没有什么优势，逻辑也不是很直观，浅尝辄止了解即可。</p>
+<p>这种方法并没有什么优势，逻辑也不是很直观，感受下思想即可。</p>
 <h2 id="获取链表中倒数第-N-个结点"><a href="#获取链表中倒数第-N-个结点" class="headerlink" title="获取链表中倒数第 N 个结点"></a>获取链表中倒数第 N 个结点</h2><p>例如倒数第三个结点是 B。</p>
 <p><img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist.png" alt="linkedlist"></p>
 <h3 id="方法-1-利用链表长度"><a href="#方法-1-利用链表长度" class="headerlink" title="方法 1 利用链表长度"></a>方法 1 利用链表长度</h3><p>主要思路</p>
 <ol>
-<li><p>计算链表的长度。让长度为 len。</p>
-</li>
-<li><p>从链表的开头出发，打印第<code>len – n + 1</code>个结点。</p>
-</li>
+<li>计算链表的长度。让长度为 len。</li>
+<li>从链表的开头出发，打印第<code>len – n + 1</code>个结点。</li>
 </ol>
 <p>具体实现</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getNthR</span><span class="hljs-params">(Node* head, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>    Node* temp = head;<br>    <span class="hljs-keyword">int</span> len = <span class="hljs-built_in">getCount</span>(head);<br>    <span class="hljs-keyword">if</span> (len &lt; n) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    temp = head;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; len - n + <span class="hljs-number">1</span>; i++)<br>        temp = temp-&gt;next;<br>    <span class="hljs-keyword">return</span> temp-&gt;data;<br>&#125;<br></code></pre></td></tr></table></figure>

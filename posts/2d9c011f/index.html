@@ -59,7 +59,7 @@ gtag('config', 'xx-xxxxxxx-xx');</script><link rel="stylesheet" href="/css/tocbo
 <tr>
 <td>build</td>
 <td>创建一个空堆</td>
-<td>O(n)*</td>
+<td>O(n)<code>*</code></td>
 </tr>
 <tr>
 <td>insert</td>
@@ -89,12 +89,12 @@ gtag('config', 'xx-xxxxxxx-xx');</script><link rel="stylesheet" href="/css/tocbo
 <tr>
 <td>union</td>
 <td>将两个堆合并成一个有效堆</td>
-<td>O(n), O(klogn)**</td>
+<td>O(n), O(klogn)<code>**</code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>注：<br>构造堆的时间复杂度为 O(n)的相关证明参见：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity">How can building a heap be O(n) time complexity?</a><br>**k 是两个堆之间较小那个堆的长度</p>
+<p>注：<br><code>*</code>构造堆的时间复杂度为 O(n)的相关证明参见：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity">How can building a heap be O(n) time complexity?</a><br><code>**</code>k 是两个堆之间较小那个堆的长度</p>
 <p>某些堆实现还支持其他的一些操作，如斐波那契堆支持检查一个堆中是否存在某个元素。</p>
 <p>为了简洁起见，下面以最小堆的相关操作为例进行说明：</p>
 <ol>
