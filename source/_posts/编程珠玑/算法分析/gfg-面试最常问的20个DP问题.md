@@ -9,7 +9,7 @@ tags:
 date: 2021-05-05 14:38:28
 ---
 
-1. Longest Common Subsequence 最长公共子序列 LCS
+1. Longest Common Subsequence 最长公共子序列 lcs
 2. Longest Increasing Subsequence 最长上升子序列 LIS
 3. Edit Distance 编辑距离
 4. Minimum Partition

@@ -2,8 +2,8 @@
 title: LC8 字符串转换整数(atoi)
 abbrlink: 11334fc8
 categories:
-    - 小镇做题家
-    - LeetCode
+  - 小镇做题家
+  - LeetCode
 tag: 字符串
 date: 2021-04-30 17:42:03
 ---

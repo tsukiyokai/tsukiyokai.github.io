@@ -1,6 +1,6 @@
 ---
 title: C++中的const关键字
-abbrlink: "25399e28"
+abbrlink: 97c58f51
 categories:
   - 编程珠玑
   - CPP

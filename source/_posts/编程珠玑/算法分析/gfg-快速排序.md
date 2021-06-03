@@ -9,14 +9,16 @@ tags:
 date: 2021-05-02 01:15:30
 ---
 
-快排是典型的分治算法，其中 partition 是关键
-分区的目标是，经过一趟排序后使基准元素落在最终位置，同时，满足 p 左边都小于 p 和 p 右边都大于 p 两个要求。
+快排是典型的分治算法，其中 partition 是关键。分区的目标是：经过一趟排序后使基准元素落在最终位置，同时，满足 p 左边都小于 p 和 p 右边都大于 p 两个要求。
 
+```
+性能分析
 平均时间复杂度 Θ(nlogn)
 最坏时间复杂度 Θ(n^2)
 最优时间复杂度 Θ(nlogn)
+```
 
-下面的快排算法是我长期总结下来的最适合记忆的，要熟悉到信手拈来。
+下面的快排要熟悉到信手拈来。
 
 ```c++
 int partition(vector<int>& arr, int left, int right) {
@@ -34,6 +36,7 @@ int partition(vector<int>& arr, int left, int right) {
 void quickSortu(vector<int>& arr, int low, int high) {
     if (low < high) {
         // p is partitioning index, arr[p] is now at right place
+        // 最强之人已在阵中
         int p = partition(arr, low, high);
         quickSortu(arr, low, p - 1);
         quickSortu(arr, p + 1, high);

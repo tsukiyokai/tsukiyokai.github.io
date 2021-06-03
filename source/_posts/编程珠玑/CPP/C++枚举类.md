@@ -2,10 +2,10 @@
 title: C++枚举类
 abbrlink: ba489a63
 categories:
-    - 编程珠玑
-    - CPP
+  - 编程珠玑
+  - CPP
 tags:
-    - 语法
+  - 语法
 date: 2021-05-21 22:52:53
 ---
 
