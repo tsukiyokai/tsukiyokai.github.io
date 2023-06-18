@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>design pattern on 月夜海</title>
+    <link>https://tsukiyokai.github.io/categories/design-pattern/</link>
+    <description>Recent content in design pattern on 月夜海</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 05 Feb 2023 04:01:41 +0800</lastBuildDate><atom:link href="https://tsukiyokai.github.io/categories/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gofdp：单例模式</title>
+      <link>https://tsukiyokai.github.io/post/dp/gofdpsingleton/</link>
+      <pubDate>Sun, 05 Feb 2023 04:01:41 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/post/dp/gofdpsingleton/</guid>
+      <description>理解 Ensure that only one instance of a class is created and provide a global access point to the object. &amp;ndash; gof
+在软件系统中，经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但常规的构造函数在程序运行中允许被多次调用以生成多个实例，在此场景下，为避免客户端直接使用常规的构造函数，如何提供一种机制来保证一个类只有一个实例，成了我们不得不思考的问题。一个设计好的类应该 Easy To Use And Hard To Misuse，因此，思考上述问题应该是类设计者的责任，而不是使用者的责任。
+单例模式有两个绕不开的问题：(1)线程安全问题和(2)顺序安全问题。
+线程安全问题 对于前一个问题，加锁或使用同步原语基本可以解决，但是带来的是几乎所有场景下都会面临性能变差的权衡，以及 data condition 风险。由于 C++11 以后 static 的 data racing 问题已得到妥善解决（多个线程试图同时初始化同一静态局部变量时初始化严格发生一次。体现在 cppreference - Static local variables），故目前主流的单例写法是基于 Meyer’s Singleton，例如 AOSP 的 libutils 模块从 2017 年始禁止用单锁方式实现单例，改为使用局部静态变量。
+// DO NOT USE: Please use scoped static initialization. // For instance: // MyClass&amp;amp; getInstance() { // static MyClass gInstance(.</description>
+    </item>
+    
+  </channel>
+</rss>

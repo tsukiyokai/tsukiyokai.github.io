@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>5G前传演进：从RRU到AAU - 月夜海</title>
+    <meta property="og:title" content="5G前传演进：从RRU到AAU - 月夜海">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="介绍前传之前，首先引入回传的概念。
+EPC &amp;ndash; Backhaul &amp;ndash; BBU
+回传是一个最初由货运行业创造的术语，指的是一辆卡车从远程位置运送货物返回中央配送中心的过程。之后这个术语逐渐泛化，适用于各类语境，指代将远程站点连接到中心站点的链接。在移动电信中，它被应用于从无线电基站到核心网络的链路，将数据从基站拉回到核心。当然，这些链路都是双向的，所以它也将数据从核心传送回基 &amp;hellip;">
+      <meta property="og:description" content="介绍前传之前，首先引入回传的概念。
+EPC &amp;ndash; Backhaul &amp;ndash; BBU
+回传是一个最初由货运行业创造的术语，指的是一辆卡车从远程位置运送货物返回中央配送中心的过程。之后这个术语逐渐泛化，适用于各类语境，指代将远程站点连接到中心站点的链接。在移动电信中，它被应用于从无线电基站到核心网络的链路，将数据从基站拉回到核心。当然，这些链路都是双向的，所以它也将数据从核心传送回基 &amp;hellip;">
+      
+    
+
+    
+    
+    <meta name="twitter:image" content="https://forum.huawei.com/enterprise/en/data/attachment/forum/202206/08/103507yr18hs00w00ywr81.png">
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      <h1><a href="/">月夜海</h1>
+
+
+<h6 class="tagline">如果努力的尽头就是奇迹</h6>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden />
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+    
+    
+    <ul><a href="/">归档</a>
+  </ul>
+  
+    <ul><a href="/categories/">分类</a>
+  </ul>
+  
+    <ul><a href="/about/">关于</a>
+  </ul>
+  
+    <ul><a href="/index.xml">订阅</a>
+  </ul>
+  
+  
+  </ul>
+</nav>
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>5G前传演进：从RRU到AAU</h1>
+
+<h6>
+  范杉杉   /  2023-04-14
+</h6>
+<hr />
+
+      </header>
+
+
+ <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#rru">RRU</a></li>
+    <li><a href="#aau">AAU</a></li>
+    <li><a href="#演变之路">演变之路</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ol>
+</nav> 
+
+
+<h2 id="前言">前言</h2>
+<p>介绍前传之前，首先引入回传的概念。</p>
+<p><strong>EPC</strong> &ndash; Backhaul &ndash; <strong>BBU</strong></p>
+<p>回传是一个最初由货运行业创造的术语，指的是一辆卡车从远程位置运送货物返回中央配送中心的过程。之后这个术语逐渐泛化，适用于各类语境，指代将远程站点连接到中心站点的链接。在移动电信中，它被应用于从无线电基站到核心网络的链路，将数据从基站拉回到核心。当然，这些链路都是双向的，所以它也将数据从核心传送回基站。</p>
+<h2 id="rru">RRU</h2>
+<p><strong>BBU</strong> &ndash; Fronthaul(Optical fiber) &ndash; <strong>RRU</strong> &ndash; feeder(cable) &ndash; <strong>Antenna</strong></p>
+<p><img src="https://forum.huawei.com/enterprise/en/data/attachment/forum/202206/08/103507yr18hs00w00ywr81.png" alt="rru"></p>
+<ul>
+<li>天馈系统：负责信号的发送和接收，包含天线和馈线。</li>
+<li>射频单元 RU：负责信号的生成和提取，我最重要的部分。</li>
+<li>基带单元 BBU：负责信息的加工和处理，核心中的核心。</li>
+</ul>
+<p>夕阳下的 RRU：</p>
+<p><img src="https://private-user-images.githubusercontent.com/51367995/246628872-b3e9d17b-399a-41e3-baf0-92565bf4c192.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg3MDMxNjk1LCJuYmYiOjE2ODcwMzEzOTUsInBhdGgiOiIvNTEzNjc5OTUvMjQ2NjI4ODcyLWIzZTlkMTdiLTM5OWEtNDFlMy1iYWYwLTkyNTY1YmY0YzE5Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYxN1QxOTQ5NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMzlmMDQxNGUyZTM0NDEwMGFjMDFhMjBiMjMzM2YxZGFhNGRhOGQwMDY0NzdmMzE2OTNiODk1YTI1ZGU5NjI4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.xcgFOp8en_qNx2dxxOUCyWEYwNuwWrpoCM1CQGOGn5U" alt=""></p>
+<blockquote>
+<p>理论分析表明，同轴电缆的衰减主要由内导体趋肤效应产生的损耗引起，频率越高趋肤效应越强，因为串联电感的感抗增加，同时并联电容的容抗减小，内导体中信号对外导体旁路泄漏，所以频率越高，电缆传输距离越长，其衰减越大。——《同轴电缆的特性与故障检测》</p>
+</blockquote>
+<p>通常情况下，基站坐落在一个机柜中，通过馈线连接到天线，馈线也叫射频同轴电缆。同轴电缆存在衰减，因此，一个很明显的演进方向就是让减少馈线的长度，所以基带单元继续呆在机房里，天线继续呆在塔上，最终结果就是射频单元离开机房，开始上塔。上塔后的射频单元因为可以和 BBU 拉得很远，所以称为拉远射频单元 RRU Remote Radio Unit，也叫 RRH 等。</p>
+<p>RU 上塔在通信发展中具有很重要意义，前传的概念也从此变得清晰起来，就是指通过光纤将基带单元 BBU 与远程无线电头 RRH 连接起来的网络部分。</p>
+<h2 id="aau">AAU</h2>
+<p><strong>CU</strong> &ndash; Midhaul &ndash; <strong>DU</strong> &ndash; Fronthaul &ndash; <strong>AAU</strong></p>
+<p>5G 时代，因为 massive-MIMO 的引入，开始使用 AAU。MIMO 的收发端分别用多根天线，多根天线提高通信质量，充分利用空间资源，通过多路天线进行多路收发，在不增加频谱资源和天线发射功率的前提下成倍扩容系统信道容量。mimo 所用的天线内置了独立的收发单元，最多 64 个。但是对于 RRU，没有办法在天线下面插入 64 个馈电单元并挂在杆子上，RRU 上需要更多馈线端口，技术上难以实现。因此，5G 中，RRU 和无源天线集成在一起称为 AAU。因为 AAU 集成众多天线，因此 AAU 比 RRU 更大，更贵，更耗电。</p>
+<p>AAU 的第一个 A 是 Active 指 RRU，第二个 A 指天线 Antenna。因为 RRU 是有源的，必须供电才能工作。但天线是无源的，无需供电就可使用。</p>
+<p><img src="https://www.morelinktec.com/uploads/141.jpg" alt="aau"></p>
+<p>过年期间在我老家门口拍的 AAU，其实在郫县感觉更加常见一些：</p>
+<p><img src="https://user-images.githubusercontent.com/51367995/218543117-66b52a47-f86d-4b77-828e-6b67c6b0d074.png" alt="image"></p>
+<p>全国各地这些铁盒子里运行着的代码，也许就有我的一份功劳，当然，可能也会有我写的 Bug。</p>
+<h2 id="演变之路">演变之路</h2>
+<p>移动网络中前传的演变反映了网络对光纤的依赖程度越来越高，这也暗合光进铜退的大趋势。</p>
+<p>光进铜退的概念是由北京市电信规划设计院首先提出，后来被写入中国网通集团本地网建设指导意见中，但一直没有定义，直到 2008 年该院编制中国网通集团光进铜退指导意见时才被定义为：</p>
+<blockquote>
+<p>光纤逐步向用户端延伸，最终实现光纤到户或光纤到桌面；铜缆逐步向用户端退缩，并最终退网。</p>
+</blockquote>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li><a href="http://cpri.info/">(e)CPRI 主页</a></li>
+<li><a href="http://cpri.info/downloads/eCPRI_v_2.0_2019_05_10c.pdf">Interface Specification</a></li>
+<li><a href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bfe8e3e5-16de-4664-8210-ce56e39d17cd/VIAVI_5G_%E5%89%8D%E4%BC%A0%E6%89%8B%E5%86%8C.pdf">VIAVI 5G 前传手册.pdf</a></li>
+<li><a href="https://blog.viavisolutions.com/2017/10/02/the-evolution-of-fronthaul-networks/">前传网络演进简介</a></li>
+<li><a href="https://blog.viavisolutions.com/2017/10/20/fiber-wavelength-division-multiplexing-best-practices/">无线部署中的光纤</a></li>
+<li><a href="https://blog.viavisolutions.com/2017/11/28/best-practices-cpri-transport-layer-deployment-part-3/">CPRI – 传输层部署</a></li>
+</ol>
+
+
+
+<footer>
+  
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://tsukiyokai.github.io/about">Shanshan</a> 2019-2023 | <a href="mailto:tsukiyokai@hotmail.com">Email</a></div>
+  
+</footer>
+</article>
+
+</body>
+
+</html>

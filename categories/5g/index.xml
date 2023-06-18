@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>5g on 月夜海</title>
+    <link>https://tsukiyokai.github.io/categories/5g/</link>
+    <description>Recent content in 5g on 月夜海</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 14 Apr 2023 00:46:16 +0800</lastBuildDate><atom:link href="https://tsukiyokai.github.io/categories/5g/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5G前传演进：从RRU到AAU</title>
+      <link>https://tsukiyokai.github.io/post/5g/5gfronthaulrru2aau/</link>
+      <pubDate>Fri, 14 Apr 2023 00:46:16 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/post/5g/5gfronthaulrru2aau/</guid>
+      <description>前言 介绍前传之前，首先引入回传的概念。
+EPC &amp;ndash; Backhaul &amp;ndash; BBU
+回传是一个最初由货运行业创造的术语，指的是一辆卡车从远程位置运送货物返回中央配送中心的过程。之后这个术语逐渐泛化，适用于各类语境，指代将远程站点连接到中心站点的链接。在移动电信中，它被应用于从无线电基站到核心网络的链路，将数据从基站拉回到核心。当然，这些链路都是双向的，所以它也将数据从核心传送回基站。
+RRU BBU &amp;ndash; Fronthaul(Optical fiber) &amp;ndash; RRU &amp;ndash; feeder(cable) &amp;ndash; Antenna
+天馈系统：负责信号的发送和接收，包含天线和馈线。 射频单元 RU：负责信号的生成和提取，我最重要的部分。 基带单元 BBU：负责信息的加工和处理，核心中的核心。 夕阳下的 RRU：
+理论分析表明，同轴电缆的衰减主要由内导体趋肤效应产生的损耗引起，频率越高趋肤效应越强，因为串联电感的感抗增加，同时并联电容的容抗减小，内导体中信号对外导体旁路泄漏，所以频率越高，电缆传输距离越长，其衰减越大。——《同轴电缆的特性与故障检测》
+通常情况下，基站坐落在一个机柜中，通过馈线连接到天线，馈线也叫射频同轴电缆。同轴电缆存在衰减，因此，一个很明显的演进方向就是让减少馈线的长度，所以基带单元继续呆在机房里，天线继续呆在塔上，最终结果就是射频单元离开机房，开始上塔。上塔后的射频单元因为可以和 BBU 拉得很远，所以称为拉远射频单元 RRU Remote Radio Unit，也叫 RRH 等。
+RU 上塔在通信发展中具有很重要意义，前传的概念也从此变得清晰起来，就是指通过光纤将基带单元 BBU 与远程无线电头 RRH 连接起来的网络部分。
+AAU CU &amp;ndash; Midhaul &amp;ndash; DU &amp;ndash; Fronthaul &amp;ndash; AAU
+5G 时代，因为 massive-MIMO 的引入，开始使用 AAU。MIMO 的收发端分别用多根天线，多根天线提高通信质量，充分利用空间资源，通过多路天线进行多路收发，在不增加频谱资源和天线发射功率的前提下成倍扩容系统信道容量。mimo 所用的天线内置了独立的收发单元，最多 64 个。但是对于 RRU，没有办法在天线下面插入 64 个馈电单元并挂在杆子上，RRU 上需要更多馈线端口，技术上难以实现。因此，5G 中，RRU 和无源天线集成在一起称为 AAU。因为 AAU 集成众多天线，因此 AAU 比 RRU 更大，更贵，更耗电。</description>
+    </item>
+    
+  </channel>
+</rss>

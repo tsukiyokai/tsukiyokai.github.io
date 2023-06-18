@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 月夜海</title>
+    <link>https://tsukiyokai.github.io/post/</link>
+    <description>Recent content in Posts on 月夜海</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 14 Apr 2023 00:46:16 +0800</lastBuildDate><atom:link href="https://tsukiyokai.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5G前传演进：从RRU到AAU</title>
+      <link>https://tsukiyokai.github.io/post/5g/5gfronthaulrru2aau/</link>
+      <pubDate>Fri, 14 Apr 2023 00:46:16 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/post/5g/5gfronthaulrru2aau/</guid>
+      <description>前言 介绍前传之前，首先引入回传的概念。
+EPC &amp;ndash; Backhaul &amp;ndash; BBU
+回传是一个最初由货运行业创造的术语，指的是一辆卡车从远程位置运送货物返回中央配送中心的过程。之后这个术语逐渐泛化，适用于各类语境，指代将远程站点连接到中心站点的链接。在移动电信中，它被应用于从无线电基站到核心网络的链路，将数据从基站拉回到核心。当然，这些链路都是双向的，所以它也将数据从核心传送回基站。
+RRU BBU &amp;ndash; Fronthaul(Optical fiber) &amp;ndash; RRU &amp;ndash; feeder(cable) &amp;ndash; Antenna
+天馈系统：负责信号的发送和接收，包含天线和馈线。 射频单元 RU：负责信号的生成和提取，我最重要的部分。 基带单元 BBU：负责信息的加工和处理，核心中的核心。 夕阳下的 RRU：
+理论分析表明，同轴电缆的衰减主要由内导体趋肤效应产生的损耗引起，频率越高趋肤效应越强，因为串联电感的感抗增加，同时并联电容的容抗减小，内导体中信号对外导体旁路泄漏，所以频率越高，电缆传输距离越长，其衰减越大。——《同轴电缆的特性与故障检测》
+通常情况下，基站坐落在一个机柜中，通过馈线连接到天线，馈线也叫射频同轴电缆。同轴电缆存在衰减，因此，一个很明显的演进方向就是让减少馈线的长度，所以基带单元继续呆在机房里，天线继续呆在塔上，最终结果就是射频单元离开机房，开始上塔。上塔后的射频单元因为可以和 BBU 拉得很远，所以称为拉远射频单元 RRU Remote Radio Unit，也叫 RRH 等。
+RU 上塔在通信发展中具有很重要意义，前传的概念也从此变得清晰起来，就是指通过光纤将基带单元 BBU 与远程无线电头 RRH 连接起来的网络部分。
+AAU CU &amp;ndash; Midhaul &amp;ndash; DU &amp;ndash; Fronthaul &amp;ndash; AAU
+5G 时代，因为 massive-MIMO 的引入，开始使用 AAU。MIMO 的收发端分别用多根天线，多根天线提高通信质量，充分利用空间资源，通过多路天线进行多路收发，在不增加频谱资源和天线发射功率的前提下成倍扩容系统信道容量。mimo 所用的天线内置了独立的收发单元，最多 64 个。但是对于 RRU，没有办法在天线下面插入 64 个馈电单元并挂在杆子上，RRU 上需要更多馈线端口，技术上难以实现。因此，5G 中，RRU 和无源天线集成在一起称为 AAU。因为 AAU 集成众多天线，因此 AAU 比 RRU 更大，更贵，更耗电。</description>
+    </item>
+    
+    <item>
+      <title>gofdp：单例模式</title>
+      <link>https://tsukiyokai.github.io/post/dp/gofdpsingleton/</link>
+      <pubDate>Sun, 05 Feb 2023 04:01:41 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/post/dp/gofdpsingleton/</guid>
+      <description>理解 Ensure that only one instance of a class is created and provide a global access point to the object. &amp;ndash; gof
+在软件系统中，经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但常规的构造函数在程序运行中允许被多次调用以生成多个实例，在此场景下，为避免客户端直接使用常规的构造函数，如何提供一种机制来保证一个类只有一个实例，成了我们不得不思考的问题。一个设计好的类应该 Easy To Use And Hard To Misuse，因此，思考上述问题应该是类设计者的责任，而不是使用者的责任。
+单例模式有两个绕不开的问题：(1)线程安全问题和(2)顺序安全问题。
+线程安全问题 对于前一个问题，加锁或使用同步原语基本可以解决，但是带来的是几乎所有场景下都会面临性能变差的权衡，以及 data condition 风险。由于 C++11 以后 static 的 data racing 问题已得到妥善解决（多个线程试图同时初始化同一静态局部变量时初始化严格发生一次。体现在 cppreference - Static local variables），故目前主流的单例写法是基于 Meyer’s Singleton，例如 AOSP 的 libutils 模块从 2017 年始禁止用单锁方式实现单例，改为使用局部静态变量。
+// DO NOT USE: Please use scoped static initialization. // For instance: // MyClass&amp;amp; getInstance() { // static MyClass gInstance(.</description>
+    </item>
+    
+    <item>
+      <title>谷歌可编程搜索引擎的一种代替方案</title>
+      <link>https://tsukiyokai.github.io/post/tool/searchinsteadgpse/</link>
+      <pubDate>Wed, 13 Jul 2022 23:58:03 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/post/tool/searchinsteadgpse/</guid>
+      <description> 我们若能更妥善地搜寻资料，实在已经改变世界。
+pl knowledge reflection site:artima.com/articles OR site:cppreference.com OR site:zhihu.com OR site:github.io domain knowledge ecpri site:pdf.dfcfw.com </description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;支持类型内省的方式：rtti</title>
+      <link>https://tsukiyokai.github.io/post/cpp/rttiincpp/</link>
+      <pubDate>Thu, 09 Dec 2021 22:54:16 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/post/cpp/rttiincpp/</guid>
+      <description>RTTI 简介 现代 C++ 对象在运行时一般都知道自己的类型，利用这一点可以进行一点内省和检查安全的转换。Run-time type information(RTTI) 是一种允许在程序执行期间确定对象类型的机制，它是类型内省的特化。
+In computing, type introspection is the ability of a program to examine the type or properties of an object at runtime.
+Introspection should not be confused with reflection, which goes a step further and is the ability for a program to manipulate the values, metadata, properties, and functions of an object at runtime.
+在 C++ 最初的设计中，Bjarne Stroustrup 并没有囊括 RTTI，因为他觉得这种机制会被滥用。RTTI 被添加到语言中是因为当时许多类库作者都自己实现了此功能，导致库之间不兼容。因此就需要在语言级别支持运行时类型信息。
+在 C++ 里，RTTI 可用于：</description>
+    </item>
+    
+  </channel>
+</rss>

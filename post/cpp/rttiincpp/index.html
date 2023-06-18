@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>C&#43;&#43;支持类型内省的方式：rtti - 月夜海</title>
+    <meta property="og:title" content="C&#43;&#43;支持类型内省的方式：rtti - 月夜海">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="现代 C&#43;&#43; 对象在运行时一般都知道自己的类型，利用这一点可以进行一点内省和检查安全的转换。Run-time type information(RTTI) 是一种允许在程序执行期间确定对象类型的机制，它是类型内省的特化。
+[&amp;hellip;] In computing, type introspection is the ability of a program to examine the &amp;hellip;">
+      <meta property="og:description" content="现代 C&#43;&#43; 对象在运行时一般都知道自己的类型，利用这一点可以进行一点内省和检查安全的转换。Run-time type information(RTTI) 是一种允许在程序执行期间确定对象类型的机制，它是类型内省的特化。
+[&amp;hellip;] In computing, type introspection is the ability of a program to examine the &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/vs.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      <h1><a href="/">月夜海</h1>
+
+
+<h6 class="tagline">如果努力的尽头就是奇迹</h6>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden />
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+    
+    
+    <ul><a href="/">归档</a>
+  </ul>
+  
+    <ul><a href="/categories/">分类</a>
+  </ul>
+  
+    <ul><a href="/about/">关于</a>
+  </ul>
+  
+    <ul><a href="/index.xml">订阅</a>
+  </ul>
+  
+  
+  </ul>
+</nav>
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>C&#43;&#43;支持类型内省的方式：rtti</h1>
+
+<h6>
+  范杉杉   /  2021-12-09
+</h6>
+<hr />
+
+      </header>
+
+
+ <nav id="TableOfContents">
+  <ol>
+    <li><a href="#rtti-简介">RTTI 简介</a></li>
+    <li><a href="#执行安全的类型转换">执行安全的类型转换</a></li>
+    <li><a href="#运行时操作类型信息">运行时操作类型信息</a>
+      <ol>
+        <li><a href="#typeid运算符"><code>typeid</code>运算符</a></li>
+        <li><a href="#type_info类"><code>type_info</code>类</a></li>
+        <li><a href="#type_index类"><code>type_index</code>类</a></li>
+      </ol>
+    </li>
+    <li><a href="#何时使用">何时使用</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ol>
+</nav> 
+
+
+<h2 id="rtti-简介">RTTI 简介</h2>
+<p>现代 C++ 对象在运行时一般都知道自己的类型，利用这一点可以进行一点内省和检查安全的转换。Run-time type information(RTTI) 是一种允许在程序执行期间确定对象类型的机制，它是类型内省的特化。</p>
+<blockquote>
+<p>In computing, type introspection is the ability of a program to examine the type or properties of an object at runtime.</p>
+<p>Introspection should not be confused with reflection, which goes a step further and is the ability for a program to manipulate the values, metadata, properties, and functions of an object at runtime.</p>
+</blockquote>
+<p>在 C++ 最初的设计中，Bjarne Stroustrup 并没有囊括 RTTI，因为他觉得这种机制会被滥用。RTTI 被添加到语言中是因为当时许多类库作者都自己实现了此功能，导致库之间不兼容。因此就需要在语言级别支持运行时类型信息。</p>
+<p>在 C++ 里，RTTI 可用于：</p>
+<ol>
+<li>借助动态铸型操作符<code>dynamic_cast&lt;&gt;</code>做安全的类型转换</li>
+<li>使用<code>typeid</code>操作符和<code>std::type_info</code>以在运行时操作类型信息</li>
+</ol>
+<p>本文就是按照上面 2 种应用场景的思路来行文的。</p>
+<p>RTTI 只适用于至少有一个虚函数的多态类。但是在实践中，这点也算不上是个限制，因为大部分情况下基类总是必须有一个虚拟的析构函数才能使派生类对象在用基类指针中删除时能够进行适当的清理。</p>
+<p>有的编译器还提供了开启/禁用 RTTI 的标志。关闭 RTTI 一般能有助于减少应用程序的总大小，如果你的运行环境是内存受限系统时这点蚊子腿就很有用了。</p>
+<h2 id="执行安全的类型转换">执行安全的类型转换</h2>
+<p><code>dynamic_cast</code>操作符用于将一个引用或指针下移到类层次结构中的一个更具体的类型。与<code>static_cast</code>不同，被<code>dynamic_cast</code>的目标必须是一个指向类的指针或引用，且类型安全检查是在运行时而非编译时进行的。如果类型不兼容，处理引用时将抛出一个异常，处理指针时将返回一个空指针。</p>
+<p>假设某个函数将 A 类型的对象作为入参，并且希望在传入的对象是 A 的子类 B 的实例时执行一些额外的操作，这可以使用<code>dynamic_cast</code>来完成，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;array&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;memory&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>A() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">MethodSpecificToA</span>() {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Method specific for A was invoked&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> A {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> MethodSpecificToB() {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Method specific for B was invoked&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">MyFunction</span>(A<span style="color:#f92672">*</span> mya) {
+</span></span><span style="display:flex;"><span>    B<span style="color:#f92672">*</span> myb <span style="color:#f92672">=</span> <span style="color:#66d9ef">dynamic_cast</span><span style="color:#f92672">&lt;</span>B<span style="color:#f92672">*&gt;</span>(mya);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (myb <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+</span></span><span style="display:flex;"><span>        myb<span style="color:#f92672">-&gt;</span>MethodSpecificToB();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Object is not B type&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// this case
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">MyFunction</span>(A<span style="color:#f92672">&amp;</span> mya) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;curr param type: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(mya).name() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Cast will be successful only for B type objects.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        B<span style="color:#f92672">&amp;</span> myb <span style="color:#f92672">=</span> <span style="color:#66d9ef">dynamic_cast</span><span style="color:#f92672">&lt;</span>B<span style="color:#f92672">&amp;&gt;</span>(mya);
+</span></span><span style="display:flex;"><span>        myb.MethodSpecificToB();
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> bad_cast<span style="color:#f92672">&amp;</span> e) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Exception &#34;</span> <span style="color:#f92672">&lt;&lt;</span> e.what() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; thrown.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Object is not of type B&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// another implementation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">MyFunction</span>(A<span style="color:#f92672">&amp;</span> mya) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeid</span>(mya).hash_code() <span style="color:#f92672">==</span> <span style="color:#66d9ef">typeid</span>(B).hash_code()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// B&amp; myb = static_cast&lt;B&amp;&gt;(mya);  // also safe
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        B<span style="color:#f92672">&amp;</span> myb <span style="color:#f92672">=</span> <span style="color:#66d9ef">dynamic_cast</span><span style="color:#f92672">&lt;</span>B<span style="color:#f92672">&amp;&gt;</span>(mya);
+</span></span><span style="display:flex;"><span>        myb.MethodSpecificToB();
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;now object is not of type B&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    array<span style="color:#f92672">&lt;</span>unique_ptr<span style="color:#f92672">&lt;</span>A<span style="color:#f92672">&gt;</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">&gt;</span> array_of_a;
+</span></span><span style="display:flex;"><span>    array_of_a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> make_unique<span style="color:#f92672">&lt;</span>B<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    array_of_a[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> make_unique<span style="color:#f92672">&lt;</span>B<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    array_of_a[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> make_unique<span style="color:#f92672">&lt;</span>A<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>        MyFunction(<span style="color:#f92672">*</span>array_of_a[i]);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre><code>Method specific for B was invoked
+Method specific for B was invoked
+now object is not of type B
+</code></pre>
+<h2 id="运行时操作类型信息">运行时操作类型信息</h2>
+<h3 id="typeid运算符"><code>typeid</code>运算符</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">typeid</span>(type)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typeid</span>(expression)
+</span></span></code></pre></div><p><code>typeid</code>操作符用来在运行时确定一个对象的类型。结果是<code>const type_info&amp;</code>，为左值表达式，它指代一个具有静态存储期的多态类型<code>std::type_info</code>或它的某个派生类型的<code>const</code>限定的对象。</p>
+<p>如果表达式是标识了某个多态类型对象的表达式，此时对象的真实类型不能由其提供的静态信息决定，<code>typeid</code>对该表达式求值得到指代该表达式动态类型的<code>std::type_info</code>对象。这种情况下<code>typeid</code>的求值可能涉及运行时开销，主要指虚表查找，除此之外其他情况下都能在编译期间解决。因此，在非多态的情况下，如果只需要类信息，使用<code>typeid</code>通常比动态铸型更受欢迎，因为<code>typeid</code>总是一个常数时间的过程。</p>
+<p>另外，必须对指针解引用才能获取其动态类型，否则结果将是该指针的<code>type_info</code>而非指针指向的对象的。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>Person() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Person {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    Person person;
+</span></span><span style="display:flex;"><span>    Employee employee;
+</span></span><span style="display:flex;"><span>    Person<span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>employee;
+</span></span><span style="display:flex;"><span>    Person<span style="color:#f92672">&amp;</span> ref <span style="color:#f92672">=</span> employee;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(person).name() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(employee).name() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(ptr).name() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(<span style="color:#f92672">*</span>ptr).name() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(ref).name() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre><code>6Person
+8Employee
+P6Person
+8Employee
+8Employee
+</code></pre>
+<p>就着这个例子多说一句，类型开头的这些数字意思是类型名里有几个字母，如果是指针还会有个字母<code>P</code>，如果在 namespace 里还会有个字母<code>N</code>。但是注意<code>name()</code>的行为不是 C++ 标准规定的，而是交给编译器厂商实现的，所以不要把这个规律往所有编译器上去套，比如 msvc 就不是这个规律。</p>
+<p>如果表达式是通过对一个指针应用一元<code>*</code>运算符所得，且该指针是空指针值，则抛出<code>bad_typeid</code>类型的异常。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>A();
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    A<span style="color:#f92672">*</span> a <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(<span style="color:#f92672">*</span>a).name() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (bad_typeid) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Object is NULL&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre><code>Object is NULL
+</code></pre>
+<p>如果表达式不是指针，也不是对对象基类的引用，则结果是代表表达式静态类型的<code>type_info</code>引用。表达式的静态类型是指在编译时已知的表达式的类型。</p>
+<p>此外，在确定表达式的静态类型时，尽可能地忽略引用；如果类型和表达式的类型具有 cv 限定，则<code>typeid</code>的结果指代对应的无 cv 限定类型，即<code>typeid(T) == typeid(const T)</code>。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>boolalpha <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#66d9ef">typeid</span>(<span style="color:#66d9ef">int</span>) <span style="color:#f92672">==</span> <span style="color:#66d9ef">typeid</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre><code>true
+</code></pre>
+<p><code>typeid</code>常用于确定模板参数的类型。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>T max_t(T arg1, T arg2) {
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(T).name() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; is compared.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (arg1 <span style="color:#f92672">&gt;</span> arg2 <span style="color:#f92672">?</span> arg1 : arg2);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> max_t(<span style="color:#e6db74">&#34;li&#34;</span>, <span style="color:#e6db74">&#34;xing&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> max_t(<span style="color:#e6db74">&#34;li&#34;</span>s, <span style="color:#e6db74">&#34;xing&#34;</span>s) <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> max_t(<span style="color:#ae81ff">3.14</span>, <span style="color:#ae81ff">10.0</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre><code>PKc is compared.
+xing
+NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE is compared.
+xing
+d is compared.
+10
+</code></pre>
+<p>iso 标准不保证同一类型上的<code>typeid</code>表达式的所有求值都指代同一个<code>std::type_info</code>实例，但是保证这些<code>type_info</code>对象的<code>std::type_info::hash_code</code>和<code>std::type_index</code>都相同。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;assert.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeindex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    A<span style="color:#f92672">*</span> a1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A;
+</span></span><span style="display:flex;"><span>    A<span style="color:#f92672">*</span> a2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>type_info<span style="color:#f92672">&amp;</span> ti1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeid</span>(<span style="color:#f92672">*</span>a1);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>type_info<span style="color:#f92672">&amp;</span> ti2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeid</span>(<span style="color:#f92672">*</span>a2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    assert(a1 <span style="color:#f92672">!=</span> a2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    assert(ti1 <span style="color:#f92672">==</span> ti2);  <span style="color:#75715e">// may not!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    assert(ti1.hash_code() <span style="color:#f92672">==</span> ti2.hash_code());
+</span></span><span style="display:flex;"><span>    assert(std<span style="color:#f92672">::</span>type_index(ti1) <span style="color:#f92672">==</span> std<span style="color:#f92672">::</span>type_index(ti2));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span> a1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span> a2;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>出于这个原因，本文前面动态铸型那个例子中不能直接用 typeid 的结果来判断是否与某个类型是同一个。</p>
+<h3 id="type_info类"><code>type_info</code>类</h3>
+<p><code>type_info</code>类描述了由编译器在程序中生成的类型信息。这个类的对象有效地存储了一个指向类型名称的指针。<code>type_info</code>类还存储了一个可以用于比较或排序的哈希。类型的编码规则和排序顺序是没有规定的，在不同的程序中可能有所不同。</p>
+<p><code>type_info</code>类的接口信息如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_LIBCPP_EXCEPTION_ABI</span> type_info
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  type_info<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> type_info<span style="color:#f92672">&amp;</span>);
+</span></span><span style="display:flex;"><span>  type_info(<span style="color:#66d9ef">const</span> type_info<span style="color:#f92672">&amp;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">typedef</span> __type_info_implementations<span style="color:#f92672">::</span>__impl __impl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    __impl<span style="color:#f92672">::</span>__type_name_t __type_name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">explicit</span> <span style="color:#a6e22e">type_info</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> __n)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">:</span> __type_name(__impl<span style="color:#f92672">::</span>__string_to_type_name(__n)) {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_AVAILABILITY_TYPEINFO_VTABLE
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>type_info();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">name</span>() <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> __impl<span style="color:#f92672">::</span>__type_name_to_string(__type_name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">before</span>(<span style="color:#66d9ef">const</span> type_info<span style="color:#f92672">&amp;</span> __arg) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> __impl<span style="color:#f92672">::</span>__lt(__type_name, __arg.__type_name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    size_t <span style="color:#a6e22e">hash_code</span>() <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> __impl<span style="color:#f92672">::</span>__hash(__type_name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">==</span>(<span style="color:#66d9ef">const</span> type_info<span style="color:#f92672">&amp;</span> __arg) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> __impl<span style="color:#f92672">::</span>__eq(__type_name, __arg.__type_name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">!=</span>(<span style="color:#66d9ef">const</span> type_info<span style="color:#f92672">&amp;</span> __arg) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>    { <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">==</span>(__arg); }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>注：clang 实现，非 iso c++标准，有略微差异。</p>
+<p>你不能直接实例化<code>type_info</code>类的对象，因为该类只有一个私有的复制构造函数。构造一个<code>type_info</code>对象的唯一方法是使用<code>typeid</code>操作符。由于赋值运算符也是私有的，所以你也不能复制或赋值<code>type_info</code>类的对象。</p>
+<p>msvc 下的<code>type_info::name</code>成员函数返回一个<code>const char*</code>，代表该类型的人类可读名称。msvc 还实现了一个<code>type_info::raw_name</code>成员函数，代表该类型的混淆名称。该名称实际上是以混淆的形式存储的以节省空间。因此，这个函数比<code>type_info::name</code>要快，因为它不需要对 name 解除混淆。<code>type_info::raw_name</code>函数返回的字符串在比较操作中可以直接拿来使用，但不是可读的。如果你需要一个人类可读的字符串，请使用<code>type_info::name</code>函数代替。而对于 gnu gcc 或 clang，name 函数返回的字符串本身就是人类不可读的，因此可以直接用于比较，这点从上面贴出的代码中就可以看出，因为<code>__type_name_to_string</code>在 name 函数和 eq 函数中都在用。</p>
+<p>这里提到了混淆的 name 和人类可读的 name，顺便再拓展几句。gcc 没有实现 msvc 中的返回可读名称的接口，但是有几种方式仍然可以在 gcc 里获取解除混淆后的 name，这个过程叫 Demangling。可以用 gnu utils 提供的应用程序 c++filt，或者内置的 abi 接口<code>__cxa_demangle</code>。导出的 abi 函数原型如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 3.4 Demangler API
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">__cxa_demangle</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>mangled_name,
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>output_buffer,
+</span></span><span style="display:flex;"><span>                            size_t <span style="color:#f92672">*</span>length, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>status);
+</span></span></code></pre></div><p>用户文档见：<a href="https://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-html-USERS-4.3/a01696.html">abi Namespace Reference</a></p>
+<p>举个栗子 🌰：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cxxabi.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;exception&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">empty</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">int</span> N<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">bar</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> status;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>realname;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  bar<span style="color:#f92672">&lt;</span>empty, <span style="color:#ae81ff">17</span><span style="color:#f92672">&gt;</span> u;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>type_info <span style="color:#f92672">&amp;</span>ti <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeid</span>(u);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  realname <span style="color:#f92672">=</span> abi<span style="color:#f92672">::</span>__cxa_demangle(ti.name(), <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&amp;</span>status);
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> ti.name() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">=&gt; &#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;&lt;</span> realname <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">: &#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;&lt;</span> status <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>  free(realname);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre><code>3barI5emptyLi17EE       =&gt; bar&lt;empty, 17&gt;       : 0
+</code></pre>
+<p>栗子来自 <a href="https://gcc.gnu.org/onlinedocs/libstdc++/manual/ext_demangling.html">gnu gcc libstdc++ manual - Chapter 28. Demangling</a></p>
+<h3 id="type_index类"><code>type_index</code>类</h3>
+<blockquote>
+<p>The class <code>type_index</code> provides a simple wrapper for <code>type_info</code> which can be used as an index type in associative containers (22.4) and in unordered associative containers (22.5). &ndash; N4901</p>
+</blockquote>
+<p><code>type_info</code>本身不能作为关联型容器的索引，所以有了<code>type_index</code>类，本质上是把前者简单包装了一下。它和 type_info 对象的关系是通过一个<code>const type_info*</code>指针来维持的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_LIBCPP_TEMPLATE_VIS</span> type_index
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> type_info<span style="color:#f92672">*</span> __t_;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    type_index(<span style="color:#66d9ef">const</span> type_info<span style="color:#f92672">&amp;</span> __y) _NOEXCEPT : __t_(<span style="color:#f92672">&amp;</span>__y) {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">==</span>(<span style="color:#66d9ef">const</span> type_index<span style="color:#f92672">&amp;</span> __y) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>        {<span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span>__t_ <span style="color:#f92672">==</span> <span style="color:#f92672">*</span>__y.__t_;}
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">!=</span>(<span style="color:#66d9ef">const</span> type_index<span style="color:#f92672">&amp;</span> __y) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>        {<span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span>__t_ <span style="color:#f92672">!=</span> <span style="color:#f92672">*</span>__y.__t_;}
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span> (<span style="color:#66d9ef">const</span> type_index<span style="color:#f92672">&amp;</span> __y) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>        {<span style="color:#66d9ef">return</span>  __t_<span style="color:#f92672">-&gt;</span>before(<span style="color:#f92672">*</span>__y.__t_);}
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;=</span>(<span style="color:#66d9ef">const</span> type_index<span style="color:#f92672">&amp;</span> __y) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>        {<span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span>__y.__t_<span style="color:#f92672">-&gt;</span>before(<span style="color:#f92672">*</span>__t_);}
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;</span> (<span style="color:#66d9ef">const</span> type_index<span style="color:#f92672">&amp;</span> __y) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>        {<span style="color:#66d9ef">return</span>  __y.__t_<span style="color:#f92672">-&gt;</span>before(<span style="color:#f92672">*</span>__t_);}
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;=</span>(<span style="color:#66d9ef">const</span> type_index<span style="color:#f92672">&amp;</span> __y) <span style="color:#66d9ef">const</span> _NOEXCEPT
+</span></span><span style="display:flex;"><span>        {<span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span>__t_<span style="color:#f92672">-&gt;</span>before(<span style="color:#f92672">*</span>__y.__t_);}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    size_t <span style="color:#a6e22e">hash_code</span>() <span style="color:#66d9ef">const</span> _NOEXCEPT {<span style="color:#66d9ef">return</span> __t_<span style="color:#f92672">-&gt;</span>hash_code();}
+</span></span><span style="display:flex;"><span>    _LIBCPP_INLINE_VISIBILITY
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">name</span>() <span style="color:#66d9ef">const</span> _NOEXCEPT {<span style="color:#66d9ef">return</span> __t_<span style="color:#f92672">-&gt;</span>name();}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>与 type_info 的另一个显著差别就是 type_index 是 CopyConstructible 和 CopyAssignable 的。</p>
+<p>由于 type_index 上面两个重要特征，它可以用于把类型的 raw_name 和其它某些信息关联起来。因为 C++ 本身不支持反射，所以社区中很多开源反射库广泛借用了这两种特征。</p>
+<p>举个例子，比如可以把某种类型的 typeinfo 对象的 raw name 和 human readable name 进行关联：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;memory&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeindex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_map&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>A() {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">B</span> <span style="color:#f92672">:</span> A {};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> A {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    unordered_map<span style="color:#f92672">&lt;</span>type_index, string<span style="color:#f92672">&gt;</span> timap;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    timap[type_index(<span style="color:#66d9ef">typeid</span>(<span style="color:#66d9ef">int</span>))] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;int&#34;</span>;
+</span></span><span style="display:flex;"><span>    timap[type_index(<span style="color:#66d9ef">typeid</span>(<span style="color:#66d9ef">double</span>))] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;double&#34;</span>;
+</span></span><span style="display:flex;"><span>    timap[type_index(<span style="color:#66d9ef">typeid</span>(A))] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span>;
+</span></span><span style="display:flex;"><span>    timap[type_index(<span style="color:#66d9ef">typeid</span>(B))] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;B&#34;</span>;
+</span></span><span style="display:flex;"><span>    timap[type_index(<span style="color:#66d9ef">typeid</span>(C))] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;C&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> d;
+</span></span><span style="display:flex;"><span>    A a;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// note that we&#39;re storing pointer to type A
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    unique_ptr<span style="color:#f92672">&lt;</span>A<span style="color:#f92672">&gt;</span> b(<span style="color:#66d9ef">new</span> B);
+</span></span><span style="display:flex;"><span>    unique_ptr<span style="color:#f92672">&lt;</span>A<span style="color:#f92672">&gt;</span> c(<span style="color:#66d9ef">new</span> C);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;i is &#34;</span> <span style="color:#f92672">&lt;&lt;</span> timap[type_index(<span style="color:#66d9ef">typeid</span>(i))] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;d is &#34;</span> <span style="color:#f92672">&lt;&lt;</span> timap[type_index(<span style="color:#66d9ef">typeid</span>(d))] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a is &#34;</span> <span style="color:#f92672">&lt;&lt;</span> timap[type_index(<span style="color:#66d9ef">typeid</span>(a))] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;*b is &#34;</span> <span style="color:#f92672">&lt;&lt;</span> timap[type_index(<span style="color:#66d9ef">typeid</span>(<span style="color:#f92672">*</span>b))] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;*c is &#34;</span> <span style="color:#f92672">&lt;&lt;</span> timap[type_index(<span style="color:#66d9ef">typeid</span>(<span style="color:#f92672">*</span>c))] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre><code>i is int
+d is double
+a is A
+*b is B
+*c is C
+</code></pre>
+<h2 id="何时使用">何时使用</h2>
+<blockquote>
+<p>Only use RTTI if you have a very good reason to do so and only use it if you know what you are doing.</p>
+</blockquote>
+<p>应该谨慎使用 RTTI。诸如多态和模板等语言机制几乎在所有场景下总是优于 RTTI。虽然凡事都有例外，但 RTTI 现在的立场跟 goto 差不多尴尬，rtti 并非通向正确且健壮的设计的捷径。相比于反射库这种基础库，业务代码更不太可能用 rtti，以至于可以把业务逻辑中出现的 rtti 统统视为坏味道，实际上如果出现 rtti 也确实意味着 liskov 替换原则大概率没有被很好地遵守。</p>
+<blockquote>
+<p><a href="https://news.ycombinator.com/item?id=12139473">Maybe my experience is atypical but RTTI and exceptions are features of C++ that I never see used in real-world C++ almost regardless of the application. When I have seen them used, it is by people new to C++ that haven&rsquo;t fully figured out the common development idioms of the language yet.</a></p>
+</blockquote>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/cpp/cpp/run-time-type-information">rtti - msdoc</a></li>
+<li><a href="https://stackoverflow.com/questions/4465872/why-does-typeid-name-return-weird-characters-using-gcc-and-how-to-make-it-prin#">Why does <code>typeid.name()</code> return weird characters?</a></li>
+<li><a href="https://stackoverflow.com/questions/281818/unmangling-the-result-of-stdtype-infoname">Unmangling the result of <code>std::type_info::name</code></a></li>
+<li><a href="https://blog.oakbits.com/how-to-mangle-and-demangle-a-c-method-name.html">How To Mangle And Demangle A C++ Method Name</a></li>
+</ol>
+
+
+
+<footer>
+  
+  
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js,gh/highlightjs/cdn-release@11.7.0/build/languages/latex.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://tsukiyokai.github.io/about">Shanshan</a> 2019-2023 | <a href="mailto:tsukiyokai@hotmail.com">Email</a></div>
+  
+</footer>
+</article>
+
+</body>
+
+</html>

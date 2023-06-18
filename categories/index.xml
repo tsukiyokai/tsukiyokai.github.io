@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 月夜海</title>
+    <link>https://tsukiyokai.github.io/categories/</link>
+    <description>Recent content in Categories on 月夜海</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 14 Apr 2023 00:46:16 +0800</lastBuildDate><atom:link href="https://tsukiyokai.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5g</title>
+      <link>https://tsukiyokai.github.io/categories/5g/</link>
+      <pubDate>Fri, 14 Apr 2023 00:46:16 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/categories/5g/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>design pattern</title>
+      <link>https://tsukiyokai.github.io/categories/design-pattern/</link>
+      <pubDate>Sun, 05 Feb 2023 04:01:41 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/categories/design-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tool</title>
+      <link>https://tsukiyokai.github.io/categories/tool/</link>
+      <pubDate>Wed, 13 Jul 2022 23:58:03 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/categories/tool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cpp</title>
+      <link>https://tsukiyokai.github.io/categories/cpp/</link>
+      <pubDate>Thu, 09 Dec 2021 22:54:16 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/categories/cpp/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
