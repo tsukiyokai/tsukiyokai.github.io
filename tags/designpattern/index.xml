@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DesignPattern on tmyy</title>
+    <link>https://tsukiyokai.github.io/tags/designpattern/</link>
+    <description>Recent content in DesignPattern on tmyy</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://tsukiyokai.github.io/tags/designpattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>单例设计模式</title>
+      <link>https://tsukiyokai.github.io/posts/singleton_pattern/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://tsukiyokai.github.io/posts/singleton_pattern/</guid>
+      <description>一个实例和两个问题 经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但是一般的constructor在运行期间允许多次调用以生成多个实例，在此场景下，为了避免客户端直接使用构造函数，需要提供一种机制来保证一个类只有一个实例。一个设计好的类应该“Easy To Use And Hard To Misuse”，因此思考上述问题应该是类设计者的责任，而不是使用者的责任。&#xA;正确实现单例模式须考虑两个基本问题：线程安全和顺序安全。线程安全问题通过加锁或使用同步原语基本可以得到解决，但也会面临性能变差的权衡。由于C++11以后static的data racing问题已得到妥善解决（参考静态局部变量），故目前主流的单例模式都是基于这种写法，如AOSP的libutils模块从2017年起就禁止用单锁方式实现单例：&#xA;// DO NOT USE: Please use scoped static initialization. // For instance: // MyClass&amp;amp; getInstance() { // static MyClass gInstance(...); // return gInstance; // } template &amp;lt;typename TYPE&amp;gt; class ANDROID_API Singleton { public: static TYPE&amp;amp; getInstance() { Mutex::Autolock _l(sLock); TYPE* instance = sInstance; if (instance == nullptr) { instance = new TYPE(); sInstance = instance; } return *instance; } static bool hasInstance() { Mutex::Autolock _l(sLock); return sInstance !</description>
+    </item>
+  </channel>
+</rss>

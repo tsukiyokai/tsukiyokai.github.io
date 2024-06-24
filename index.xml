@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on tmyy</title>
+    <link>https://tsukiyokai.github.io/</link>
+    <description>Recent content in Home on tmyy</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Jun 2024 13:14:20 +0800</lastBuildDate>
+    <atom:link href="https://tsukiyokai.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>随机数生成器</title>
+      <link>https://tsukiyokai.github.io/posts/random_number/</link>
+      <pubDate>Sun, 23 Jun 2024 13:14:20 +0800</pubDate>
+      <guid>https://tsukiyokai.github.io/posts/random_number/</guid>
+      <description>在密码学范畴下的定义 许多密码学依赖于密码安全随机数生成器来生成密钥和密码随机数，因此如果可以使随机数生成器可预测，则攻击者可以将其用作后门来破解加密。为了能够生成安全的、不被轻易破解的加密密钥，需要一个随机数源。熵越大，数字随机性越强，越能够得到更佳的密钥。&#xA;一个数字，例如8，不能称之为是随机数，随机数是指具有确定分布和概率的、位于一定阈值内的一组数字。除了传统的均匀分布随机数之外，还有非均匀分布随机数，例如二项分布、Poisson分布和指数分布等。&#xA;TRNG与PRNG 随机数生成器(random number generator)即RNG。根据生成结果能否被预见，随机数生成器可以分为以物理随机量作为发生源的真随机数生成器TRNG(true random number generators)和使用数学算法的伪随机数生成器PRNG(pseudorandom number generators)。区别如下：&#xA;伪随机数生成器生成的数字只是看起来随机，但实际上是预先确定的——只需了解PRNG的状态即可重现这些生成结果。 真随机数生成器可以是硬件随机数生成器(HRNG)，其每次生成都是物理环境属性的当前值，该属性以实际上不可能建模的方式不断变化。 虽然伪随机数生成方法达不到真正随机的目标，因此一般的伪随机数生成器无法用于密码学。但是它们仍可以在某些程度上满足一些随机性统计测试，其中加密安全伪随机数生成器(CSPRNGS)具有专门设计用于加密的特殊功能。&#xA;生成随机数的两种方法：&#xA;测量物理现象。大自然提供了大量的现象，可以产生低水平、统计随机的“噪声”信号，包括热噪声和散粒噪声、电子电路的抖动和亚稳态、布朗运动、大气噪声。研究人员还使用了光电效应，涉及分束器、其他量子现象，甚至核衰变（出于实际考虑，后者以及大气噪声是不可行的）。虽然“经典”（非量子）现象并不是真正随机的，但不可预测的物理系统通常可以作为随机性的来源，因此限定词“真实”和“物理”可以互换使用。从自然资源获得熵的速度取决于所测量的潜在物理现象。因此，自然发生的“真实”熵的来源被认为是阻塞的——它们的速率受到限制，直到收获足够的熵来满足需求。在大多数Linux发行版上，伪设备文件/dev/random就是阻塞式的，例如用随机位填充硬盘驱动器，在使用此类熵源的系统上通常会很慢。 使用计算算法。大多数计算机生成的随机数都使用PRNG，这些算法可以自动创建具有良好随机属性的长期数字，但最终序列会重复（或者内存使用量无限制地增长）。这些随机数在许多情况下都很好，但不如用作熵源的电磁大气噪声生成的数字那么随机。这种算法可以产生看似随机的一些列值，但是这些结果实际上完全由较短的初始值（称为种子值或密钥）决定。因此，如果种子值已知，则可以再现整个看似随机的序列。这种类型的随机数生成器通常称为伪随机数生成器。这种类型的发生器通常不依赖于自然发生的熵源，尽管它可以定期由自然源播种。这种生成器类型是非阻塞的，因此它们不受外部事件的速率限制，从而使大批量读取成为可能。 一些系统采用混合方法，使用TRNG来播种加密安全的伪随机数生成器。这种方法提供从可用的自然资源中获取的随机性，并定期回退到重新播种的基于软件的加密安全伪随机数生成器(CSPRNG)。当所需的随机性读取速率超过自然收获方法满足需求的能力时，就会发生回退。这种方法避免了基于较慢且纯环境方法的随机数生成器的速率限制阻塞行为。虽然仅基于确定性逻辑的伪随机数生成器永远不能被视为最纯粹意义上的“真正的”随机数源，但实际上，即使对于要求严格的安全关键型应用，它们通常也足够了。精心设计和实现的伪随机数生成器可以被认证用于安全关键的加密目的。&#xA;硬件随机数生成器的主要用途是在数据加密领域，例如创建加密和签名数据所需的随机加密密钥和随机数。HRNG预计会输出近乎完美的随机数（“全熵”），经典世界的物理过程则通常不具有此属性。实际的TRNG通常包括几个部分：&#xA;实现产生熵的物理过程的噪声源。通常这个过程是模拟的，因此数字转换器用于将模拟源的输出转换为二进制表示形式； 提高随机位质量的调节器（随机性提取器）； 健康测试。TRNG主要用于密码算法，如果随机数的熵较低，这些算法就会被完全破解，因此通常包含测试功能。 The Intel Random Number Generator by Intel https://www.rambus.com/intel-random-number-generator&#xA;关于用于生成随机比特的熵源的建议 by NIST https://doi.org/10.6028/NIST.SP.800-90B&#xA;密码学和安全应用程序广泛使用随机数和随机位。然而，随机位的生成在密码学的许多实际应用中是有问题的。NIST特别出版物(SP)800-90系列建议以确定性随机位生成器(DRBG)（也称为伪随机数生成器）或非确定性随机位生成器(RBG)的形式提供有关构建和验证随机位生成器(RBG)的指导可用于加密应用程序的随机位生成器(NRBG)。本建议书规定了如何设计和测试这些RBG可以使用的熵源。SP 800-90A解决了经批准的DRBG机制的构建，而SP 800-90C解决了根据SP 800-90A中的机制和SP 800-90B中的熵源构建RBG。这些建议为NIST的加密算法验证计划(CAVP)和加密模块验证计划的验证提供了基础。&#xA;RBG可以使用符合本建议书的熵源来产生随机比特序列。熵源的输出应包含足够的随机性以提供安全性。本建议书描述了熵源必须具备的属性，以使其适合密码随机​​位生成器的使用，以及用于验证熵源质量的测试。&#xA;开发构建不可预测输出的熵源很困难，为其设计和验证测试提供指导更是如此。本建议书中定义的测试方法假设开发人员了解熵源内随机性源的行为，并真诚地努力生成适合密码应用的熵源（例如，生成可以以满足（或超过）指定值的速率提供熵的位串）。&#xA;熵源模型 noise_source --digitization--&amp;gt; raw_data raw_data --(opt)conditioning--&amp;gt; output raw_data --healthtests--&amp;gt; err_msg 噪声源是熵源和整个RBG安全的根源。这是包含非确定性熵提供过程的组件，该过程最终负责与熵源输出的位串相关的不确定性。 可选的调节组件是一个确定性函数，负责减少偏差和/或增加结果输出位的熵率（如果需要获得目标值）。有多种方法可以实现此目的。开发人员应考虑如何使用调节组件以及噪声源行为的变化如何影响输出的熵率。在选择实现方法时，开发人员可以选择实现第3.1.5.1.1节中列出的加密算法，或者使用替代算法作为调节组件。本建议书允许使用这两种方法中的任何一种。 健康测试是熵源设计的一个组成部分，旨在确保噪声源和整个熵源继续按预期运行。测试熵源时，最终目标是确保快速且高概率地捕获熵源的故障。健康测试策略的另一个方面是确定熵源，特别是噪声源的可能故障模式。健康测试预计包括可以检测这些故障情况的测试。健康测试可分为三类：启动测试、连续测试（主要针对噪声源）和按需测试。 健康测试 健康测试概述 Hardware random number generators should be constantly monitored for proper operation to protect against the entropy source degradation due to natural causes and deliberate attacks.</description>
+    </item>
+    <item>
+      <title>回调地狱</title>
+      <link>https://tsukiyokai.github.io/posts/callback_hell/</link>
+      <pubDate>Sat, 22 Jun 2024 07:43:31 +0800</pubDate>
+      <guid>https://tsukiyokai.github.io/posts/callback_hell/</guid>
+      <description>在 promises 正式成为 JavaScript 标准的一部分之前，回调被大量用在异步编程中。&#xA;类似以上深度嵌套的回调通常被称为「回调黑洞」，因为它让代码可读性变差且不易维护。</description>
+    </item>
+    <item>
+      <title>插件式设计</title>
+      <link>https://tsukiyokai.github.io/posts/plugin_pattern/</link>
+      <pubDate>Fri, 21 Jun 2024 06:57:22 +0800</pubDate>
+      <guid>https://tsukiyokai.github.io/posts/plugin_pattern/</guid>
+      <description>C++ dlopen mini HOWTO: How to dynamically load C++ functions and classes using the dlopen API.&#xA;写插件或模块的时候可能需要在运行时加载库并使用其函数。c语言加载一个库很简单，调dlopen、dlsym和dlclose就行了，但c++有Name Mangling，且c++标准没有定义mangling的标准所以不同编译器都用了自己的算法，所以需要通过extern &amp;quot;C&amp;quot;来声明被加载的函数，然后像c语言一样通过dlsym。&#xA;例子：&#xA;main.cpp&#xA;#include &amp;lt;dlfcn.h&amp;gt; #include &amp;lt;iostream&amp;gt; int main() { using std::cerr; using std::cout; cout &amp;lt;&amp;lt; &amp;#34;C++ dlopen demo\n\n&amp;#34;; // open the library cout &amp;lt;&amp;lt; &amp;#34;Opening hello.so...\n&amp;#34;; void *handle = dlopen(&amp;#34;./hello.so&amp;#34;, RTLD_LAZY); if (!handle) { cerr &amp;lt;&amp;lt; &amp;#34;Cannot open library: &amp;#34; &amp;lt;&amp;lt; dlerror() &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; return 1; } // load the symbol cout &amp;lt;&amp;lt; &amp;#34;Loading symbol hello.</description>
+    </item>
+    <item>
+      <title>单例设计模式</title>
+      <link>https://tsukiyokai.github.io/posts/singleton_pattern/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://tsukiyokai.github.io/posts/singleton_pattern/</guid>
+      <description>一个实例和两个问题 经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但是一般的constructor在运行期间允许多次调用以生成多个实例，在此场景下，为了避免客户端直接使用构造函数，需要提供一种机制来保证一个类只有一个实例。一个设计好的类应该“Easy To Use And Hard To Misuse”，因此思考上述问题应该是类设计者的责任，而不是使用者的责任。&#xA;正确实现单例模式须考虑两个基本问题：线程安全和顺序安全。线程安全问题通过加锁或使用同步原语基本可以得到解决，但也会面临性能变差的权衡。由于C++11以后static的data racing问题已得到妥善解决（参考静态局部变量），故目前主流的单例模式都是基于这种写法，如AOSP的libutils模块从2017年起就禁止用单锁方式实现单例：&#xA;// DO NOT USE: Please use scoped static initialization. // For instance: // MyClass&amp;amp; getInstance() { // static MyClass gInstance(...); // return gInstance; // } template &amp;lt;typename TYPE&amp;gt; class ANDROID_API Singleton { public: static TYPE&amp;amp; getInstance() { Mutex::Autolock _l(sLock); TYPE* instance = sInstance; if (instance == nullptr) { instance = new TYPE(); sInstance = instance; } return *instance; } static bool hasInstance() { Mutex::Autolock _l(sLock); return sInstance !</description>
+    </item>
+    <item>
+      <title>我曾七次鄙视自己的灵魂（纪伯伦）</title>
+      <link>https://tsukiyokai.github.io/posts/seven_time/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>https://tsukiyokai.github.io/posts/seven_time/</guid>
+      <description>第一次，当它本可进取时，却故作谦卑；&#xA;第二次，当它在空虚时，用爱欲来填充；&#xA;第三次，在困难和容易之间，它选择了容易；&#xA;第四次，它犯了错，却借由别人也会犯错来安慰自己；&#xA;第五次，它自由软弱，却把它认为是生命的坚韧；&#xA;第六次，当它鄙视一张丑恶的嘴脸时，却不知那正是自己面具中的一副；&#xA;第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏尾。</description>
+    </item>
+    <item>
+      <title>about</title>
+      <link>https://tsukiyokai.github.io/about/</link>
+      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
+      <guid>https://tsukiyokai.github.io/about/</guid>
+      <description>生日97年三月三，家乡平原省。09级太行五联中，12级市一中，15级东北人民大学swe，19级nhk，21级德子，22级华子。mbti=infp，全马破4，二次元，cf红名。我太喜欢计算机了！日拱一卒：白天赚钱；晚上研究pl、llm、alg、crypto和compiler；周末健身、做菜、做数学、玩游戏。努力脱单中，请满足“96以后，身高165，本科211；身体健康，情绪稳定”的未婚单身美少女主动联系我，我的微信是bW10YWk4MDUxCg==。</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://tsukiyokai.github.io/motto/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tsukiyokai.github.io/motto/</guid>
+      <description> 喜欢就去争取 Keep Knowledge in Plain Text 普遍联系 永恒发展 认识必然 争取自由 公司天才太多，普通人反而稀缺，更高级管理者需要的素质都是普通人所不齿的，大多数人都过不了自己内心这一关，你想升到20+，就瞄准最让你难受的主管学习。 </description>
+    </item>
+  </channel>
+</rss>

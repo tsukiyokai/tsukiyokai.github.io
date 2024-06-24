@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width"><meta name="description" content="" />
+
+<title>
+    
+    随机数生成器 | tmyy
+    
+</title>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.d46c3a1b4e41580c1f903c7eb183d159719c797b8308fad241c67704cb08c7bc.css" media="all">
+
+
+
+
+  
+
+
+
+  </head>
+
+  
+
+  
+  
+  
+
+  <body class="light">
+
+    <div class="content">
+      <header>
+        
+
+<div class="header">
+    <h1 class="header-title">tmyy</h1>
+
+    <div class="flex">
+        
+
+        
+        
+        <p class="small ">
+            <a href="/">
+                /home
+            </a>
+        </p>
+        
+        <p class="small ">
+            <a href="/posts">
+                /posts
+            </a>
+        </p>
+        
+        <p class="small ">
+            <a href="/motto">
+                /motto
+            </a>
+        </p>
+        
+        <p class="small ">
+            <a href="/about">
+                /about
+            </a>
+        </p>
+        
+        
+    </div>
+
+</div>
+      </header>
+
+      <main class="main">
+        
+
+
+
+
+
+<div  class="autonumber" >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">随机数生成器</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2024-06-23T13:14:20&#43;08:00">June 23, 2024</time>
+      
+
+      
+      &nbsp; · &nbsp;
+      1 min read
+      
+    </p>
+
+  </div>
+
+  
+
+  
+  
+
+  <div class="single-tags">
+    
+    <span>
+      <a href="https://tsukiyokai.github.io/tags/crypto/">#Crypto</a>
+    </span>
+    
+    
+  </div>
+
+  
+  
+
+  
+
+  
+  <aside class="toc">
+    <p><strong>Table of contents</strong></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#在密码学范畴下的定义">在密码学范畴下的定义</a></li>
+    <li><a href="#trng与prng">TRNG与PRNG</a></li>
+    <li><a href="#the-intel-random-number-generator-by-intel">The Intel Random Number Generator by Intel</a></li>
+    <li><a href="#关于用于生成随机比特的熵源的建议-by-nist">关于用于生成随机比特的熵源的建议 by NIST</a>
+      <ul>
+        <li><a href="#熵源模型">熵源模型</a></li>
+        <li><a href="#健康测试">健康测试</a>
+          <ul>
+            <li><a href="#健康测试概述">健康测试概述</a></li>
+            <li><a href="#健康测试类型">健康测试类型</a></li>
+            <li><a href="#健康测试要求">健康测试要求</a></li>
+            <li><a href="#批准的连续性健康测试">批准的连续性健康测试</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </aside>
+  
+
+  
+
+  <div class="single-content">
+    <h2 id="在密码学范畴下的定义">在密码学范畴下的定义</h2>
+<p>许多密码学依赖于密码安全随机数生成器来生成密钥和密码随机数，因此如果可以使随机数生成器可预测，则攻击者可以将其用作后门来破解加密。为了能够生成安全的、不被轻易破解的加密密钥，需要一个随机数源。熵越大，数字随机性越强，越能够得到更佳的密钥。</p>
+<p>一个数字，例如8，不能称之为是随机数，随机数是指具有确定分布和概率的、位于一定阈值内的一组数字。除了传统的均匀分布随机数之外，还有非均匀分布随机数，例如二项分布、Poisson分布和指数分布等。</p>
+<h2 id="trng与prng">TRNG与PRNG</h2>
+<p>随机数生成器(random number generator)即RNG。根据生成结果能否被预见，随机数生成器可以分为以物理随机量作为发生源的真随机数生成器TRNG(true random number generators)和使用数学算法的伪随机数生成器PRNG(pseudorandom number generators)。区别如下：</p>
+<ul>
+<li>伪随机数生成器生成的数字只是看起来随机，但实际上是预先确定的——只需了解PRNG的状态即可重现这些生成结果。</li>
+<li>真随机数生成器可以是硬件随机数生成器(HRNG)，其每次生成都是物理环境属性的当前值，该属性以实际上不可能建模的方式不断变化。</li>
+</ul>
+<p>虽然伪随机数生成方法达不到真正随机的目标，因此一般的伪随机数生成器无法用于密码学。但是它们仍可以在某些程度上满足一些随机性统计测试，其中加密安全伪随机数生成器(CSPRNGS)具有专门设计用于加密的特殊功能。</p>
+<p>生成随机数的两种方法：</p>
+<ol>
+<li>测量物理现象。大自然提供了大量的现象，可以产生低水平、统计随机的“噪声”信号，包括热噪声和散粒噪声、电子电路的抖动和亚稳态、布朗运动、大气噪声。研究人员还使用了光电效应，涉及分束器、其他量子现象，甚至核衰变（出于实际考虑，后者以及大气噪声是不可行的）。虽然“经典”（非量子）现象并不是真正随机的，但不可预测的物理系统通常可以作为随机性的来源，因此限定词“真实”和“物理”可以互换使用。从自然资源获得熵的速度取决于所测量的潜在物理现象。因此，自然发生的“真实”熵的来源被认为是阻塞的——它们的速率受到限制，直到收获足够的熵来满足需求。在大多数Linux发行版上，伪设备文件<code>/dev/random</code>就是阻塞式的，例如用随机位填充硬盘驱动器，在使用此类熵源的系统上通常会很慢。</li>
+<li>使用计算算法。大多数计算机生成的随机数都使用PRNG，这些算法可以自动创建具有良好随机属性的长期数字，但最终序列会重复（或者内存使用量无限制地增长）。这些随机数在许多情况下都很好，但不如用作熵源的电磁大气噪声生成的数字那么随机。这种算法可以产生看似随机的一些列值，但是这些结果实际上完全由较短的初始值（称为种子值或密钥）决定。因此，如果种子值已知，则可以再现整个看似随机的序列。这种类型的随机数生成器通常称为伪随机数生成器。这种类型的发生器通常不依赖于自然发生的熵源，尽管它可以定期由自然源播种。这种生成器类型是非阻塞的，因此它们不受外部事件的速率限制，从而使大批量读取成为可能。</li>
+</ol>
+<p>一些系统采用混合方法，使用TRNG来播种加密安全的伪随机数生成器。这种方法提供从可用的自然资源中获取的随机性，并定期回退到重新播种的基于软件的加密安全伪随机数生成器(CSPRNG)。当所需的随机性读取速率超过自然收获方法满足需求的能力时，就会发生回退。这种方法避免了基于较慢且纯环境方法的随机数生成器的速率限制阻塞行为。虽然仅基于确定性逻辑的伪随机数生成器永远不能被视为最纯粹意义上的“真正的”随机数源，但实际上，即使对于要求严格的安全关键型应用，它们通常也足够了。精心设计和实现的伪随机数生成器可以被认证用于安全关键的加密目的。</p>
+<p>硬件随机数生成器的主要用途是在数据加密领域，例如创建加密和签名数据所需的随机加密密钥和随机数。HRNG预计会输出近乎完美的随机数（“全熵”），经典世界的物理过程则通常不具有此属性。实际的TRNG通常包括几个部分：</p>
+<ol>
+<li>实现产生熵的物理过程的噪声源。通常这个过程是模拟的，因此数字转换器用于将模拟源的输出转换为二进制表示形式；</li>
+<li>提高随机位质量的调节器（随机性提取器）；</li>
+<li>健康测试。TRNG主要用于密码算法，如果随机数的熵较低，这些算法就会被完全破解，因此通常包含测试功能。</li>
+</ol>
+<h2 id="the-intel-random-number-generator-by-intel">The Intel Random Number Generator by Intel</h2>
+<p><a href="https://www.rambus.com/intel-random-number-generator">https://www.rambus.com/intel-random-number-generator</a></p>
+<h2 id="关于用于生成随机比特的熵源的建议-by-nist">关于用于生成随机比特的熵源的建议 by NIST</h2>
+<p><a href="https://doi.org/10.6028/NIST.SP.800-90B">https://doi.org/10.6028/NIST.SP.800-90B</a></p>
+<p>密码学和安全应用程序广泛使用随机数和随机位。然而，随机位的生成在密码学的许多实际应用中是有问题的。NIST特别出版物(SP)800-90系列建议以确定性随机位生成器(DRBG)（也称为伪随机数生成器）或非确定性随机位生成器(RBG)的形式提供有关构建和验证随机位生成器(RBG)的指导可用于加密应用程序的随机位生成器(NRBG)。本建议书规定了如何设计和测试这些RBG可以使用的熵源。SP 800-90A解决了经批准的DRBG机制的构建，而SP 800-90C解决了根据SP 800-90A中的机制和SP 800-90B中的熵源构建RBG。这些建议为NIST的加密算法验证计划(CAVP)和加密模块验证计划的验证提供了基础。</p>
+<p>RBG可以使用符合本建议书的熵源来产生随机比特序列。熵源的输出应包含足够的随机性以提供安全性。本建议书描述了熵源必须具备的属性，以使其适合密码随机​​位生成器的使用，以及用于验证熵源质量的测试。</p>
+<p>开发构建不可预测输出的熵源很困难，为其设计和验证测试提供指导更是如此。本建议书中定义的测试方法假设开发人员了解熵源内随机性源的行为，并真诚地努力生成适合密码应用的熵源（例如，生成可以以满足（或超过）指定值的速率提供熵的位串）。</p>
+<h3 id="熵源模型">熵源模型</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>noise_source --digitization--&gt; raw_data
+</span></span><span style="display:flex;"><span>raw_data --(opt)conditioning--&gt; output
+</span></span><span style="display:flex;"><span>raw_data --healthtests--&gt; err_msg
+</span></span></code></pre></div><ol>
+<li>噪声源是熵源和整个RBG安全的根源。这是包含非确定性熵提供过程的组件，该过程最终负责与熵源输出的位串相关的不确定性。</li>
+<li>可选的调节组件是一个确定性函数，负责减少偏差和/或增加结果输出位的熵率（如果需要获得目标值）。有多种方法可以实现此目的。开发人员应考虑如何使用调节组件以及噪声源行为的变化如何影响输出的熵率。在选择实现方法时，开发人员可以选择实现第3.1.5.1.1节中列出的加密算法，或者使用替代算法作为调节组件。本建议书允许使用这两种方法中的任何一种。</li>
+<li>健康测试是熵源设计的一个组成部分，旨在确保噪声源和整个熵源继续按预期运行。测试熵源时，最终目标是确保快速且高概率地捕获熵源的故障。健康测试策略的另一个方面是确定熵源，特别是噪声源的可能故障模式。健康测试预计包括可以检测这些故障情况的测试。健康测试可分为三类：启动测试、连续测试（主要针对噪声源）和按需测试。</li>
+</ol>
+<h3 id="健康测试">健康测试</h3>
+<h4 id="健康测试概述">健康测试概述</h4>
+<blockquote>
+<p>Hardware random number generators should be constantly monitored for proper operation to protect against the entropy source degradation due to natural causes and deliberate attacks.</p>
+</blockquote>
+<p>健康测试是熵源的重要组成部分，因为它们的目的是尽快且高概率地检测噪声源与预期行为的偏差。噪声源可能很脆弱，因此可能会受到设备运行条件（例如温度、湿度或电场）变化的影响，这可能会导致意外行为。健康测试将熵评估作为输入，并根据该值来表征噪声源的预期行为。</p>
+<p>噪声源的健康测试可能是非常特定于技术的。由于在大多数情况下，噪声源不会产生无偏、独立的二进制数据，因此测试无偏、独立位假设的传统统计程序（例如NIST_SP_800-22中描述的随机性测试）几乎总是会失败，并且因此对于监测噪声源没有用处。一般来说，需要仔细定制噪声源测试，同时考虑到正确运行噪声源的预期统计行为。</p>
+<p>噪声源的健康测试通常被设计为基于故障期间的预期输出来检测噪声源的故障，或者检测噪声源正确操作期间与预期输出的偏差。健康测试预计会在三种情况下发出警报：</p>
+<ol>
+<li>当输出的熵显着减少时</li>
+<li>当噪声源发生故障时</li>
+<li>当硬件出现故障并且实现无法正常工作时</li>
+</ol>
+<h4 id="健康测试类型">健康测试类型</h4>
+<p>在进行任何调节之前，将对噪声源的输出进行健康测试：</p>
+<ol>
+<li>启动运行状况测试设计为在加电或重新启动后以及首次使用熵源之前执行。它们提供了一定的保证，确保熵源组件在正常操作条件下使用之前按预期工作，并且自上次运行启动测试以来没有出现任何故障。在运行期间从噪声源抽取的样本在测试完成之前，启动测试不得用于正常操作；这些样品可以随时丢弃，或者在测试完成后如果没有错误可以使用。</li>
+<li>当噪声源运行时，对噪声源的输出无限期地运行连续健康测试。连续测试重点关注噪声源行为，旨在检测噪声源产生输出时的故障。连续测试的目的是让熵源能够检测到其底层噪声源中的多种故障。这些测试在从噪声源获得的所有数字化样本上连续运行，因此测试在噪声源正常运行期间发出误报的可能性必须非常低。在许多系统中，合理的误报概率将使正常运行的设备极不可能指示故障，即使在很长的使用寿命内也是如此。连续测试受到资源限制，这限制了它们检测噪声源故障的能力，因此它们通常被设计为仅可能检测到严重故障。请注意，连续运行状况测试对一系列值进行操作。这些样本值可以在它们由调节组件生成和（可选地）处理时从熵源输出；运行测试时无需抑制噪声源或熵源的输出。重要的是要理解，这可能会导致熵源输出暂时较差，因为只有在积累了重要证据后才会发出错误信号，并且这些值可能已经由熵源输出。因此，将误报概率设置为可接受的水平非常重要。在下面的讨论中，所有计算均假设噪声源生成的2^20个样本中大约有1个错误的误报概率是可以接受的；然而，给出的公式可以适应提交者选择的不同误报概率。</li>
+<li>可以随时调用按需健康测试。本建议书不要求在运行期间进行测试。然而，它确实要求熵源能够对噪声源输出执行按需健康测试。请注意，如果过程导致立即执行启动测试，则重置、重新启动或加电是启动按需测试的可接受方法。在按需健康测试期间从噪声源采集的样本在测试完成之前不得使用，但是这些样本可以随时丢弃，或者可以在测试完成后使用，前提是没有错误。</li>
+</ol>
+<h4 id="健康测试要求">健康测试要求</h4>
+<p>对噪声源的健康测试是熵源的必需组成部分。健康测试应包括连续测试和启动测试：</p>
+<ol>
+<li>连续测试应包括：
+<ol>
+<li>标准的连续健康测试。</li>
+<li>一些开发人员定义的测试满足替代这些批准测试的要求，如第4.5节所述。如果使用开发人员定义的健康测试代替任何批准的健康测试，测试人员应验证实施的测试是否检测到批准的连续健康测试检测到的故障条件，如第4.4节所述。</li>
+<li>连续测试可能包括开发人员定义的附加测试。</li>
+</ol>
+</li>
+<li>当健康测试失败时，熵源应将错误情况通知消费应用程序（例如，RBG）。开发人员可能已经定义了不同类型的故障（例如，间歇性和持续性），并且允许应用程序对不同类型的故障做出不同的反应（例如，通过短时间禁止输出）。开发人员可以定义不同的截止值来检测间歇性和持续性故障。如果是这样，这些值（以及相应的误报概率）应在提交文件中指定。如果熵源检测到间歇性故障并允许噪声源恢复正常功能，设计者应提供证据证明：
+<ol>
+<li>以这种方式处理的间歇性故障确实极有可能是间歇性故障；</li>
+<li>当发生永久性故障时，测试将检测到永久性故障，并最终向消费应用程序发出错误情况信号并停止操作。在检测到持续故障的情况下，熵源不应产生任何输出。该模块可以支持由消费应用程序或系统重置或返回操作。（这种情况有意义的一个例子是远程系统，其加密模块无法快速更换，但必须继续运行。）</li>
+</ol>
+</li>
+<li>误报率的最佳值可能取决于熵源产生其输出的速率。对于批准的连续健康测试，建议误报概率在2^-20和2^−40之间。较低的概率值是可以接受的。提交者应指定并记录适合其应用的误报概率。</li>
+<li>熵源的启动测试应在至少1024个连续样本上运行连续健康测试。启动测试可能包括开发人员定义的其他测试。经过启动测试的样品可以在启动测试通过后放行使用，也可以随时丢弃。</li>
+<li>熵源应支持按需测试。按需测试应至少包括与启动测试相同的测试。熵源可以通过重新启动熵源并重新运行启动测试，或者通过重新运行启动测试而不重新启动熵源来支持按需测试。文档应指定用于按需测试的方法。除了启动测试中完成的测试之外，按需测试还可能包括开发人员定义的其他测试。</li>
+<li>在进行任何调节之前，应对噪声源样本进行健康测试。可以对调节功能的输出执行额外的健康测试。</li>
+<li>提交者应提供详细说明所有熵源健康测试及其基本原理的文件。文档应包括健康测试的描述、源代码、每次健康测试的执行率和条件。</li>
+<li>提交者应提供任何已知或可疑的噪声源故障模式的文档（例如，噪声源开始产生像<code>101…01</code>这样的周期性输出），并应包括开发人员定义的连续测试来检测这些故障。这些应包括可能由设备攻击引起的潜在故障模式。</li>
+<li>针对噪声源量身定制的适当健康测试应特别强调检测标称操作环境和异常条件之间边界附近的不当行为。这需要彻底了解噪声源的运行情况。</li>
+</ol>
+<h4 id="批准的连续性健康测试">批准的连续性健康测试</h4>
+<p>此建议提供了两种经批准的健康测试：重复计数测试和自适应比例测试。如果这两个健康测试包含在熵源的持续健康测试中，则不需要其他测试。但是，建议开发人员包括针对噪声源量身定制的额外连续健康测试。这两种测试都被设计为需要最少的资源，并且在生成噪声源样本、可能经过调节并由熵源输出的同时进行动态计算。两种测试都不需要延迟噪声源样本的可用性。</p>
+<p>与所有统计测试一样，这两种测试都有误报概率，即功能正常的噪声源无法通过给定输出的测试的概率。在许多应用中，I类错误概率的合理选择是α=2^−20；该值将用于本节其余部分的所有计算。熵源的开发者应根据熵源及其消费应用的详细信息确定I类错误的合理概率（以及相应的截止值）。</p>
+<p>「重复计数测试」</p>
+<p>重复计数测试的目标是快速检测导致噪声源长时间“卡在”单个输出值的灾难性故障。它可以被视为“卡住测试”的更新，之前FIPS批准的加密模块中的随机数生成器所需的测试。请注意，此测试旨在检测噪声源的完全故障。</p>
+<p>给定噪声源的评估最小熵H，该源连续生成n个相同样本的概率最多为2^−H(n-1)。如果样本重复C次或更多次，则测试将声明错误。截止值C由可接受的假阳性概率α和熵估计H使用公式确定（公式略）。</p>
+<p>假定<code>next()</code>从噪声源生成下一个样本。给定连续的噪声源样本序列和截止值C，重复计数测试执行如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>1. A=next()
+</span></span><span style="display:flex;"><span>2. B=1
+</span></span><span style="display:flex;"><span>3. X=next()
+</span></span><span style="display:flex;"><span>4. if (X==A)
+</span></span><span style="display:flex;"><span>        B+=1
+</span></span><span style="display:flex;"><span>        if (B&gt;=C) then signal a failure
+</span></span><span style="display:flex;"><span>    else
+</span></span><span style="display:flex;"><span>        A=X
+</span></span><span style="display:flex;"><span>        B=1
+</span></span><span style="display:flex;"><span>5. repeat Step 3
+</span></span></code></pre></div><p>该检验的截止值可应用于任何熵估计H，包括非常小和非常大的估计。然而，值得注意的是，该测试并不是非常强大——它只能检测噪声源的灾难性故障。例如，以每个样本8位最小熵评估的噪声源具有六次重复的截止值，以确保每生成10^12个样本大约一次的误报率。如果该噪声源不知何故未能达到每个样本与前一个样本相同的概率为1/16的程度，因此它只为每个样本提供四位最小熵，则仍预计需要大约重复计数测试之前一百万个样本就会注意到这个问题。</p>
+<p>「自适应比例测试」</p>
+<p>自适应比例测试旨在检测由于影响噪声源的某些物理故障或环境变化而可能发生的大量熵损失。该测试连续测量噪声源样本序列中样本值出现的局部频率，以确定该样本是否出现过于频繁。因此，在给定每个样本的源评估熵的情况下，测试能够检测到某个值何时开始比预期更频繁地出现。请注意，此测试旨在检测噪声源的更细微故障，而不是重复计数测试检测到的总体故障类型。</p>
+<p>该测试从噪声源中获取样本，然后计算相同值在接下来的W-1个样本中出现的次数。如果该计数达到截止值C，则测试将声明错误。窗口大小W是根据字母表大小来选择的，如果噪声源是二进制的（即，噪声源仅产生两个不同的值），则应分配为1024，如果噪声源不是二进制的（即，噪声源不只产生两个不同的值），则应分配为512。</p>
+<p>假定<code>next()</code>从噪声源生成下一个样本。给定连续的噪声样本序列、截止值C和窗口大小W，自适应比例测试执行如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>1. A=next()
+</span></span><span style="display:flex;"><span>2. B=1
+</span></span><span style="display:flex;"><span>3. for i=1 to W-1
+</span></span><span style="display:flex;"><span>        if (A==next()) then B++
+</span></span><span style="display:flex;"><span>        if (B&gt;=C) then signal a failure
+</span></span><span style="display:flex;"><span>4. goto Step 1
+</span></span></code></pre></div><p>选择截止值C，使得在W的窗口大小中观察到C个或更多相同样本的概率至多为α。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li><a href="https://www.sca.gov.cn/sca/zxfw/2017-04/25/content_1011723.shtml">量子真随机数 - 国家密码管理局</a></li>
+<li><a href="https://optee.readthedocs.io">OP-TEE Documentation</a> This is the official location for OP-TEE documentation.</li>
+<li><a href="https://csrc.nist.gov/topics">nist计算机安全资源中心</a> CSRC Projects, Publications, News, Events and Presentations</li>
+</ol>
+
+    
+  </div>
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      return top
+    </a>
+  </div>
+  
+
+</div>
+
+
+      </main>
+    </div>
+
+    <footer>
+      <p>Keep Knowledge in Plain Text</p>
+
+
+    </footer>
+
+  </body>
+
+  <script>
+
+  function isAuto() {
+    return document.body.classList.contains("auto");
+  }
+
+  function setTheme() {
+    if (!isAuto()) {
+      return
+    }
+
+    document.body.classList.remove("auto");
+    let cls = "light";
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      cls = "dark";
+    }
+
+    document.body.classList.add(cls);
+  }
+
+  function invertBody() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+  }
+
+  if (isAuto()) {
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(invertBody);
+  }
+
+  setTheme();
+
+</script>
+
+</html>
