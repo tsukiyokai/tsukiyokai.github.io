@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Producer–consumer problem https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem
+Thread Pool C&#43;&#43;没有原生的线程池。一般而言，当你的函数需要在多线程中运行，但是你又不能每来一个函数就开启一个线程，此时你就需要根据资源情况固定几个线程来执行，但会出现有的线程还没有执行完，有的又在空闲，如何分配任务呢？这时你就需要封装一个线程池来完成这些操作，有了线程池这层封装，你只需要告诉它开启几个线程，然后直接往里塞任务，并通过一定的机制获取执行结果。
+线程池是一种池化资源技术，负责管理和调度线程执行任务；主要的特点是：可以在整个生命周期内，不断重用现有线程来处理用户提交的任务，避免线程频繁创建和销毁带来的开销，提高响应速度，同时增加线程的可管理性。
+有哪些开销？
+线程池的组件：
+任务 - 表示我们线程池可以执行的任务。 任务队列：一个保存要执行的任务的队列。 线程池 - 一个包含任务队列及其逻辑的结构。 高级解释：
+需要有一个可以接受任意参数类型的任意函数。 线程池需要一个适当的队列来保存任务及其参数，因此队列应该是线程安全的。 线程池的执行只有在队列中的所有任务都执行完毕时才会停止。 线程安全队列要求：
+这个队列有多少个生产者？有多少个线程将“推送到它”？ 队列中会有很多线程“弹出”吗？ 我们是否总是需要“pop”操作返回某些内容？它能阻塞线程吗？ 队列是否需要是原子的-不允许使用互斥锁？ ThreadPool - A simple C&#43;&#43;11 Thread Pool implementation
+ThreadPool.h示例：
+#ifndef THREAD_POOL_H #define THREAD_POOL_H #include &lt;condition_variable&gt; #include &lt;functional&gt; #include &lt;future&gt; #include &lt;memory&gt; #include &lt;mutex&gt; #include &lt;queue&gt; #include &lt;stdexcept&gt; #include &lt;thread&gt; #include &lt;vector&gt; class ThreadPool { public: ThreadPool(size_t); template &lt;class F, class... Args&gt; auto enqueue(F&amp;&amp; f, Args&amp;&amp;... args) -&gt; std::future&lt;typename std::result_of&lt;F(Args.">  
+
+  <title>
+    
+      线程池
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.62132135a1fc9c8ff245faa5f56060322b1108c30683afc4117372bea713d35ce1f574a2401746e129d1dae1512c56d22bec435540317f78318cc7480dbc8fd0.css" integrity="sha512-YhMhNaH8nI/yRfql9WBgMisRCMMGg6/EEXNyvqcT01zh9XSiQBdG4SnR2uFRLFbSK&#43;xDVUAxf3gxjMdIDbyP0A==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <h1>线程池</h1>
+
+    
+        <aside  class="toc" >
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#producerconsumer-problem">Producer–consumer problem</a></li>
+    <li><a href="#thread-pool">Thread Pool</a></li>
+  </ul>
+</nav>
+        </aside>
+    
+
+    <h2 id="producerconsumer-problem">Producer–consumer problem</h2>
+<p><a href="https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem">https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem</a></p>
+<h2 id="thread-pool">Thread Pool</h2>
+<p>C++没有原生的线程池。一般而言，当你的函数需要在多线程中运行，但是你又不能每来一个函数就开启一个线程，此时你就需要根据资源情况固定几个线程来执行，但会出现有的线程还没有执行完，有的又在空闲，如何分配任务呢？这时你就需要封装一个线程池来完成这些操作，有了线程池这层封装，你只需要告诉它开启几个线程，然后直接往里塞任务，并通过一定的机制获取执行结果。</p>
+<p>线程池是一种池化资源技术，负责管理和调度线程执行任务；主要的特点是：可以在整个生命周期内，不断重用现有线程来处理用户提交的任务，避免线程频繁创建和销毁带来的开销，提高响应速度，同时增加线程的可管理性。</p>
+<blockquote>
+<p>有哪些开销？</p>
+</blockquote>
+<p>线程池的组件：</p>
+<ol>
+<li>任务 - 表示我们线程池可以执行的任务。</li>
+<li>任务队列：一个保存要执行的任务的队列。</li>
+<li>线程池 - 一个包含任务队列及其逻辑的结构。</li>
+</ol>
+<p>高级解释：</p>
+<ol>
+<li>需要有一个可以接受任意参数类型的任意函数。</li>
+<li>线程池需要一个适当的队列来保存任务及其参数，因此队列应该是线程安全的。</li>
+<li>线程池的执行只有在队列中的所有任务都执行完毕时才会停止。</li>
+</ol>
+<p>线程安全队列要求：</p>
+<ol>
+<li>这个队列有多少个生产者？有多少个线程将“推送到它”？</li>
+<li>队列中会有很多线程“弹出”吗？</li>
+<li>我们是否总是需要“pop”操作返回某些内容？它能阻塞线程吗？</li>
+<li>队列是否需要是原子的-不允许使用互斥锁？</li>
+</ol>
+<p><a href="https://github.com/progschj/ThreadPool">ThreadPool</a> - A simple C++11 Thread Pool implementation</p>
+<p><code>ThreadPool.h</code>示例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#ifndef THREAD_POOL_H
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#define THREAD_POOL_H
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;condition_variable&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;functional&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;future&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;memory&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;mutex&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;queue&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;stdexcept&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;thread&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;vector&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">ThreadPool</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">ThreadPool</span>(<span style="color:#000">size_t</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">template</span> <span style="color:#000">&lt;</span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">F</span>, <span style="color:#a90d91">class</span><span style="color:#000">... </span><span style="color:#3f6e75">Args</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">auto</span> <span style="color:#000">enqueue</span>(<span style="color:#000">F</span><span style="color:#000">&amp;&amp;</span> <span style="color:#000">f</span>, <span style="color:#000">Args</span><span style="color:#000">&amp;&amp;</span>... <span style="color:#000">args</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#000">-&gt;</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">future</span><span style="color:#000">&lt;</span><span style="color:#a90d91">typename</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">result_of</span><span style="color:#000">&lt;</span><span style="color:#000">F</span>(<span style="color:#000">Args</span>...)<span style="color:#000">&gt;::</span><span style="color:#000">type</span><span style="color:#000">&gt;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">~</span><span style="color:#000">ThreadPool</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a90d91">private</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// need to keep track of threads so we can join them
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">vector</span><span style="color:#000">&lt;</span><span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#a90d91">thread</span><span style="color:#000">&gt;</span> <span style="color:#000">workers</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// the task queue
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">queue</span><span style="color:#000">&lt;</span><span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">function</span><span style="color:#000">&lt;</span><span style="color:#a90d91">void</span>()<span style="color:#000">&gt;&gt;</span> <span style="color:#000">tasks</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// synchronization
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">mutex</span> <span style="color:#000">queue_mutex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">condition_variable</span> <span style="color:#000">condition</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">bool</span> <span style="color:#000">stop</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// the constructor just launches some amount of workers
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">inline</span> <span style="color:#000">ThreadPool</span><span style="color:#000">::</span><span style="color:#000">ThreadPool</span>(<span style="color:#000">size_t</span> <span style="color:#000">threads</span>) <span style="color:#000">:</span> <span style="color:#000">stop</span>(<span style="color:#a90d91">false</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">for</span> (<span style="color:#000">size_t</span> <span style="color:#000">i</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span>; <span style="color:#000">i</span> <span style="color:#000">&lt;</span> <span style="color:#000">threads</span>; <span style="color:#000">++</span><span style="color:#000">i</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">workers</span>.<span style="color:#000">emplace_back</span>([<span style="color:#a90d91">this</span>] {
+</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">for</span> (;;) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">function</span><span style="color:#000">&lt;</span><span style="color:#a90d91">void</span>()<span style="color:#000">&gt;</span> <span style="color:#000">task</span>;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">unique_lock</span><span style="color:#000">&lt;</span><span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">mutex</span><span style="color:#000">&gt;</span> <span style="color:#000">lock</span>(<span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">queue_mutex</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">condition</span>.<span style="color:#000">wait</span>(<span style="color:#000">lock</span>, [<span style="color:#a90d91">this</span>] {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">return</span> <span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">stop</span> <span style="color:#000">||</span> <span style="color:#000">!</span><span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">tasks</span>.<span style="color:#000">empty</span>();
+</span></span><span style="display:flex;"><span>          });
+</span></span><span style="display:flex;"><span>          <span style="color:#a90d91">if</span> (<span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">stop</span> <span style="color:#000">&amp;&amp;</span> <span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">tasks</span>.<span style="color:#000">empty</span>())
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">return</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#000">task</span> <span style="color:#000">=</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">move</span>(<span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">tasks</span>.<span style="color:#000">front</span>());
+</span></span><span style="display:flex;"><span>          <span style="color:#a90d91">this</span><span style="color:#000">-&gt;</span><span style="color:#000">tasks</span>.<span style="color:#000">pop</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">task</span>();
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// add new work item to the pool
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">template</span> <span style="color:#000">&lt;</span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">F</span>, <span style="color:#a90d91">class</span><span style="color:#000">... </span><span style="color:#3f6e75">Args</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">auto</span> <span style="color:#000">ThreadPool</span><span style="color:#000">::</span><span style="color:#000">enqueue</span>(<span style="color:#000">F</span><span style="color:#000">&amp;&amp;</span> <span style="color:#000">f</span>, <span style="color:#000">Args</span><span style="color:#000">&amp;&amp;</span>... <span style="color:#000">args</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">-&gt;</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">future</span><span style="color:#000">&lt;</span><span style="color:#a90d91">typename</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">result_of</span><span style="color:#000">&lt;</span><span style="color:#000">F</span>(<span style="color:#000">Args</span>...)<span style="color:#000">&gt;::</span><span style="color:#000">type</span><span style="color:#000">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">using</span> <span style="color:#000">return_type</span> <span style="color:#000">=</span> <span style="color:#a90d91">typename</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">result_of</span><span style="color:#000">&lt;</span><span style="color:#000">F</span>(<span style="color:#000">Args</span>...)<span style="color:#000">&gt;::</span><span style="color:#000">type</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">auto</span> <span style="color:#000">task</span> <span style="color:#000">=</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">make_shared</span><span style="color:#000">&lt;</span><span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">packaged_task</span><span style="color:#000">&lt;</span><span style="color:#000">return_type</span>()<span style="color:#000">&gt;&gt;</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">bind</span>(<span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">forward</span><span style="color:#000">&lt;</span><span style="color:#000">F</span><span style="color:#000">&gt;</span>(<span style="color:#000">f</span>), <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">forward</span><span style="color:#000">&lt;</span><span style="color:#000">Args</span><span style="color:#000">&gt;</span>(<span style="color:#000">args</span>)...));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">future</span><span style="color:#000">&lt;</span><span style="color:#000">return_type</span><span style="color:#000">&gt;</span> <span style="color:#000">res</span> <span style="color:#000">=</span> <span style="color:#000">task</span><span style="color:#000">-&gt;</span><span style="color:#000">get_future</span>();
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">unique_lock</span><span style="color:#000">&lt;</span><span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">mutex</span><span style="color:#000">&gt;</span> <span style="color:#000">lock</span>(<span style="color:#000">queue_mutex</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// don&#39;t allow enqueueing after stopping the pool
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">if</span> (<span style="color:#000">stop</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">throw</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">runtime_error</span>(<span style="color:#c41a16">&#34;enqueue on stopped ThreadPool&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">tasks</span>.<span style="color:#000">emplace</span>([<span style="color:#000">task</span>]() { (<span style="color:#000">*</span><span style="color:#000">task</span>)(); });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000">condition</span>.<span style="color:#000">notify_one</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">return</span> <span style="color:#000">res</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// the destructor joins all threads
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">inline</span> <span style="color:#000">ThreadPool</span><span style="color:#000">::~</span><span style="color:#000">ThreadPool</span>() {
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">unique_lock</span><span style="color:#000">&lt;</span><span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">mutex</span><span style="color:#000">&gt;</span> <span style="color:#000">lock</span>(<span style="color:#000">queue_mutex</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000">stop</span> <span style="color:#000">=</span> <span style="color:#a90d91">true</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000">condition</span>.<span style="color:#000">notify_all</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">for</span> (<span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#a90d91">thread</span><span style="color:#000">&amp;</span> <span style="color:#000">worker</span> : <span style="color:#000">workers</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">worker</span>.<span style="color:#000">join</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#endif
+</span></span></span></code></pre></div><p><code>example.cpp</code>示例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;chrono&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;iostream&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;vector&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&#34;ThreadPool.h&#34;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">int</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">ThreadPool</span> <span style="color:#000">pool</span>(<span style="color:#1c01ce">4</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">vector</span><span style="color:#000">&lt;</span><span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">future</span><span style="color:#000">&lt;</span><span style="color:#a90d91">int</span><span style="color:#000">&gt;</span> <span style="color:#000">&gt;</span> <span style="color:#000">results</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">for</span> (<span style="color:#a90d91">int</span> <span style="color:#000">i</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span>; <span style="color:#000">i</span> <span style="color:#000">&lt;</span> <span style="color:#1c01ce">8</span>; <span style="color:#000">++</span><span style="color:#000">i</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">results</span>.<span style="color:#000">emplace_back</span>(<span style="color:#000">pool</span>.<span style="color:#000">enqueue</span>([<span style="color:#000">i</span>] {
+</span></span><span style="display:flex;"><span>      <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;hello &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">i</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">this_thread</span><span style="color:#000">::</span><span style="color:#000">sleep_for</span>(<span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">chrono</span><span style="color:#000">::</span><span style="color:#000">seconds</span>(<span style="color:#1c01ce">1</span>));
+</span></span><span style="display:flex;"><span>      <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;world &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">i</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">return</span> <span style="color:#000">i</span> <span style="color:#000">*</span> <span style="color:#000">i</span>;
+</span></span><span style="display:flex;"><span>    }));
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">for</span> (<span style="color:#a90d91">auto</span><span style="color:#000">&amp;&amp;</span> <span style="color:#000">result</span> : <span style="color:#000">results</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">result</span>.<span style="color:#000">get</span>() <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">return</span> <span style="color:#1c01ce">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>解释：https://www.cnblogs.com/blizzard8204/p/17507513.html</p>
+<p><a href="https://subingwen.cn/linux/threadpool/">手写线程池 - C语言版</a></p>
+<p><a href="https://github.com/Pithikos/C-Thread-Pool">C Thread Pool</a></p>
+<p><a href="https://nixiz.github.io/yazilim-notlari/2023/10/07/thread_pool-en">Building a Thread Pool with C++ and STL</a></p>
+<p>线程池是并发编程中的一个基本概念，提供了一种有效地管理和并发执行大量任务的方式。线程池是一组工作线程，可用于并发执行任务。线程池不是为每个任务创建一个新线程，而是重用现有线程，这可以显著提高性能和资源利用率。</p>
+<p><a href="https://www.cnblogs.com/sinkinben/p/16064857.html">Implement Thread Pool in C++</a></p>
+<p>实现线程池是一个生产者-消费者问题：</p>
+<ul>
+<li><code>enqueue</code>函数是生产者，它将一些任务放入队列。</li>
+<li>线程池中的线程是消费者，它们“消耗”任务并完成它们。</li>
+</ul>
+<p>从用户的角度来看，这里的线程池：</p>
+<ul>
+<li>拥有固定数量的线程。</li>
+<li>队列中的每个任务具有相同的优先级，并且每个任务都是一个lambda函数。支持优先级调度很容易，我们可以使用<code>std::priority_queue</code>来替换<code>std::queue</code>。</li>
+</ul>
+<p>前置知识：</p>
+<ul>
+<li><code>std::thread</code>, <code>mutex</code>, <code>condition_variable</code></li>
+<li><code>std::future</code></li>
+<li><code>std::bind</code></li>
+<li><code>std::package_task</code></li>
+<li>万能引用和完美转发 <code>std::forward&lt;&gt;</code></li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

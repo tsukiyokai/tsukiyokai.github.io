@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tmyy</title>
+    <link>https://tsukiyokai.github.io/</link>
+    <description>Recent content on tmyy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Aug 2022 21:30:04 +0800</lastBuildDate><atom:link href="https://tsukiyokai.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大语言模型</title>
+      <link>https://tsukiyokai.github.io/posts/ai4se/</link>
+      <pubDate>Tue, 02 Jul 2024 03:01:32 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/ai4se/</guid>
+      <description>rag fine-tuning model prompt AI is Mostly Prompting
+agent AI Agent正在淘汰一些软件：1、单机数据分析类；2、
+第一，AI Agent依赖的大模型更新和改进很复杂，需要大量时间和金钱。第二，数据是个大问题，大模型要不断获取大量数据，而专业数据不容易获取。
+AI4SE AI for Software Engineering CMU
+AI for Software Engineering
+Code Generation and Validation - 代码生成 TestSpark paper demo LLM Adaptation - 垂直领域模型 Interactive and Aligned IDEs - 人·ide·模型交互 In-IDE Human-AI Experience in the Era of Large Language Models paper Utilizing Runtime Information to Improve Development Processes - 利用运行时信息改进开发流程 Intelligent Teaching Assistant in Programming Education - 学习助理 Strong AI4SE presence at ICSE 2024</description>
+    </item>
+    
+    <item>
+      <title>编译构建</title>
+      <link>https://tsukiyokai.github.io/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/</link>
+      <pubDate>Sun, 30 Jun 2024 23:28:15 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/</guid>
+      <description>cmake tutorial CMake Tutorial https://cmake.org/cmake/help/latest/guide/tutorial/index.html Reference Documentation https://cmake.org/documentation gitlab faq https://gitlab.kitware.com/cmake/community/-/wikis/FAQ wiki https://gitlab.kitware.com/cmake/community/-/wikis/home cmake-variables https://cmake.org/cmake/help/git-master/manual/cmake-variables.7.html CMake Variable Guidelines https://jeremimucha.com/2021/02/cmake-variable-guidelines cmake-commands https://cmake.org/cmake/help/git-master/manual/cmake-commands.7.html llvm cmake primer https://llvm.org/docs/CMakePrimer.html hsf cmake tutorial https://hsf-training.github.io/hsf-training-cmake-webpage/index.html CMake Best Practices https://subscription.packtpub.com/book/programming/9781803239729/17/ch17lvl1sec09/profiling-a-cmake-build CMake基本用法介绍 https://zhjwpku.com/2019/11/15/cmake-basic-commands-intro.html#tutorials cmake语法核心概念 https://blog.csdn.net/u012193416/article/details/122476749 CMake Cookbook https://www.bookstack.cn/read/CMake-Cookbook repo pdf How to CMake Good https://www.youtube.com/playlist?list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s CGold: The Hitchhiker’s Guide to the CMake https://cgold.readthedocs.io/en/latest It&amp;rsquo;s Time To Do CMake Right https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right Use The Tools Available: CMake https://github.com/cpp-best-practices/cppbestpractices set Normal Variable和Cache Variable两种变量原理 https://www.</description>
+    </item>
+    
+    <item>
+      <title>线程池</title>
+      <link>https://tsukiyokai.github.io/posts/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</link>
+      <pubDate>Sun, 30 Jun 2024 18:32:28 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
+      <description>Producer–consumer problem https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem
+Thread Pool C++没有原生的线程池。一般而言，当你的函数需要在多线程中运行，但是你又不能每来一个函数就开启一个线程，此时你就需要根据资源情况固定几个线程来执行，但会出现有的线程还没有执行完，有的又在空闲，如何分配任务呢？这时你就需要封装一个线程池来完成这些操作，有了线程池这层封装，你只需要告诉它开启几个线程，然后直接往里塞任务，并通过一定的机制获取执行结果。
+线程池是一种池化资源技术，负责管理和调度线程执行任务；主要的特点是：可以在整个生命周期内，不断重用现有线程来处理用户提交的任务，避免线程频繁创建和销毁带来的开销，提高响应速度，同时增加线程的可管理性。
+有哪些开销？
+线程池的组件：
+任务 - 表示我们线程池可以执行的任务。 任务队列：一个保存要执行的任务的队列。 线程池 - 一个包含任务队列及其逻辑的结构。 高级解释：
+需要有一个可以接受任意参数类型的任意函数。 线程池需要一个适当的队列来保存任务及其参数，因此队列应该是线程安全的。 线程池的执行只有在队列中的所有任务都执行完毕时才会停止。 线程安全队列要求：
+这个队列有多少个生产者？有多少个线程将“推送到它”？ 队列中会有很多线程“弹出”吗？ 我们是否总是需要“pop”操作返回某些内容？它能阻塞线程吗？ 队列是否需要是原子的-不允许使用互斥锁？ ThreadPool - A simple C++11 Thread Pool implementation
+ThreadPool.h示例：
+#ifndef THREAD_POOL_H #define THREAD_POOL_H #include &amp;lt;condition_variable&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;future&amp;gt; #include &amp;lt;memory&amp;gt; #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;stdexcept&amp;gt; #include &amp;lt;thread&amp;gt; #include &amp;lt;vector&amp;gt; class ThreadPool { public: ThreadPool(size_t); template &amp;lt;class F, class... Args&amp;gt; auto enqueue(F&amp;amp;&amp;amp; f, Args&amp;amp;&amp;amp;... args) -&amp;gt; std::future&amp;lt;typename std::result_of&amp;lt;F(Args.</description>
+    </item>
+    
+    <item>
+      <title>人性的弱点</title>
+      <link>https://tsukiyokai.github.io/posts/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/</link>
+      <pubDate>Sun, 30 Jun 2024 17:23:24 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/</guid>
+      <description>存在一种持久不衰的人类饥渴，那些真诚满足这种内心饥渴的少数人将掌握住他人的命运。
+大多数人追求的东西包括：1. 健康和生命的保障 2. 食物 3. 睡眠 4. 金钱和金钱能买到的东西 5. 来日的生活 6. 性满足 7. 我们的孩子的幸福 8. 重要感。这些愿望通常几乎所有都能得到满足，但有一种渴望几乎和对食物或睡眠的渴望一样深刻、一样迫切，却很少得到满足。这就是弗洛伊德所说的“成为伟大的愿望”，杜威称之为“成为重要的愿望”。林肯曾经在一封信中写道：“每个人都喜欢受到赞美”，威廉·詹姆斯说：“人类本性中最深层的原则是渴望被欣赏”。
+渴望重要感是人类与动物之间的主要区别之一。正是对重要感的渴望，促使一个没有受过教育、贫困的杂货店职员研究他在购买了五十美分的家庭掠夺品桶底发现的一些法律书。你可能听说过这个杂货店职员。他的名字叫林肯。正是对重要感的渴望激发了狄更斯写下他不朽的小说。这种渴望激励了克里斯托弗·雷恩爵士设计他的石头交响曲。这种渴望让洛克菲勒积累了他从未花费的数百万！而这种渴望也让你镇上最富有的家庭建造了一座远远超出需求的房子。这种欲望让你想要穿最新款式的衣服，开最新款的车，谈论你聪明的孩子。
+有时候，人们会故意让自己变得无助，以赢得同情和关注，获得重要感。例如，麦金利夫人就是一个例子。她通过强迫她的丈夫——美国总统——忽视国家重要事务来获得重要感，让他躺在床上陪伴她数小时，抚慰她入睡。她通过坚持要求丈夫在她修牙时陪伴在身边来满足她对关注的渴望，甚至一次在他不得不独自留在牙医那里与国务卿约翰·海约会时，制造了一场风波。
+不要害怕攻击你的敌人，要害怕那些奉承你的朋友。奉承很少能奏效于有洞察力的人。它是肤浅的、自私的和虚伪的。它应该而且通常也会失败。然而，有些人如此渴望被欣赏，以至于他们会接受任何事情，就像一个饥饿的人会吃草和蚯蚓一样。欣赏和阿谀之间的区别？很简单。一个是真诚的，另一个是虚伪的。一个是发自内心的，另一个是发自牙齿的。一个是无私的，另一个是自私的。一个受到普遍赞赏；另一个受到普遍谴责。
+有一次，北风和太阳正在争论谁比较有本事。他们正好看到有个人走过，那个人穿着一件斗篷。他们就说了，谁可以让那个人脱掉那件斗篷，就算谁比较有本事。于是，北风就拼命地吹。怎料，他吹得越厉害，那个人就越是用斗篷包紧自己。最后，北风没办法，只好放弃。接着，太阳出来晒了一下，那个人就立刻把斗篷脱掉了。于是，北风只好认输了。</description>
+    </item>
+    
+    <item>
+      <title>软件工程</title>
+      <link>https://tsukiyokai.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</link>
+      <pubDate>Fri, 28 Jun 2024 00:04:36 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</guid>
+      <description>软工 Software Engineering at Google The Pragmatic Programmer: From Journeyman to Master Learn things that don&amp;rsquo;t change 文档 Design Docs at Google long-form writing的魔力 让团队学会写作 如何干好架构师 在研发流程中使用RFC Chromium docs Documentation guide 用LaTeX排版技术书籍的个人经验 Mastering the Art of Software Architecture Documentation arc42 Documentation 设计 C4 model 语言 c&amp;amp;cpp Welcome to Bjarne Stroustrup&amp;rsquo;s homepage!
+rust shell lisp 工具 mypc 沉浸式翻译 uBlock Origin ide make VSCode great again https://www.xheldon.com/life/make-vscode-great-forever.html 我的vsc插件：
+shalldie.background rickynormandeau.mariana-pro xaver.clang-format scitool blog features doxygen home Doxygen Awesome OpenCV（想做成这样的网页） weggli repo Sourcetrail repo Alloy home comments on alloy - Hacker News Experiences with using Alloy in real-world projects - stackoverflow Sterling a web-based visualizer for Alloy 风格 The Zen of Python Linux kernel coding style 构建 cmake ctest makefile ninja 测试 模糊测试 变异测试 基于LLM的开源变异测试工具</description>
+    </item>
+    
+    <item>
+      <title>随机数生成器</title>
+      <link>https://tsukiyokai.github.io/posts/%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E5%99%A8/</link>
+      <pubDate>Sun, 23 Jun 2024 13:14:20 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E5%99%A8/</guid>
+      <description>密码学范畴下的随机数定义 许多密码学场景依赖于安全随机数生成器来生成密钥和密码随机数，因此如果可以使随机数生成器生成的结果可预测，则攻击者可以将其用作后门来破解加密。为了能够生成安全的、不被轻易破解的加密密钥，需要一个随机数源。熵越大，数字随机性越强，越能够得到更佳的密钥。
+一个数字，例如8，不能称之为是随机数，随机数是指具有确定分布和概率的、位于一定阈值内的一组数字。除了传统的均匀分布随机数之外，还有非均匀分布随机数，例如二项分布、Poisson分布和指数分布等。
+TRNG与PRNG 随机数生成器(random number generator)即RNG。根据生成结果能否被预见，随机数生成器可以分为以物理随机量作为发生源的真随机数生成器TRNG(true random number generators)和使用数学算法的伪随机数生成器PRNG(pseudorandom number generators)。区别如下：
+伪随机数生成器生成的数字只是看起来随机，但实际上是预先确定的——只需了解PRNG的状态即可重现这些生成结果。 真随机数生成器可以是硬件随机数生成器(HRNG)，其每次生成都是物理环境属性的当前值，该属性以实际上不可能建模的方式不断变化。 虽然伪随机数生成方法达不到真正随机的目标，因此一般的伪随机数生成器无法用于密码学。但是它们仍可以在某些程度上满足一些随机性统计测试，其中加密安全伪随机数生成器(CSPRNGS)具有专门设计用于加密的特殊功能。
+生成随机数的两种方法：
+测量物理现象。大自然提供了大量的现象，可以产生低水平、统计随机的“噪声”信号，包括热噪声和散粒噪声、电子电路的抖动和亚稳态、布朗运动、大气噪声。虽然“经典”（非量子）现象并不是真正随机的，但不可预测的物理系统通常可以作为随机性的来源，因此限定词“真实”和“物理”可以互换使用。从自然资源获得熵的速度取决于所测量的潜在物理现象。因此，自然发生的“真实”熵的来源被认为是阻塞的——它们的速率受到限制，直到收获足够的熵来满足需求。例如在大多数Linux发行版上，伪设备文件/dev/random就是阻塞式的，因此用随机位填充硬盘驱动器，在使用此类熵源的系统上通常会很慢。 使用计算算法。大多数计算机生成的随机数都使用PRNG，这些算法可以自动创建具有良好随机属性的长期数字，但最终序列会重复（或者内存使用量无限制地增长）。这些随机数在许多情况下都很好，但不如用作熵源的电磁大气噪声生成的数字那么随机。这种算法可以产生看似随机的一些列值，但是这些结果实际上完全由较短的初始值（称为种子值或密钥）决定。因此，如果种子值已知，则可以再现整个看似随机的序列。这种类型的随机数生成器通常称为伪随机数生成器。这种类型的发生器通常不依赖于自然发生的熵源，尽管它可以定期由自然源播种。这种生成器类型是非阻塞的，因此它们不受外部事件的速率限制，从而使大批量读取成为可能。 一些系统采用混合方法，使用TRNG来播种加密安全的伪随机数生成器。这种方法提供从可用的自然资源中获取的随机性，并定期回退到重新播种的基于软件的加密安全伪随机数生成器(CSPRNG)。当所需的随机性读取速率超过自然收获方法满足需求的能力时，就会发生回退。这种方法避免了基于较慢且纯环境方法的随机数生成器的速率限制阻塞行为。虽然仅基于确定性逻辑的伪随机数生成器永远不能被视为最纯粹意义上的“真正的”随机数源，但实际上，即使对于要求严格的安全关键型应用，它们通常也足够了。精心设计和实现的伪随机数生成器可以被认证用于安全关键的加密目的。
+硬件随机数生成器的主要用途是在数据加密领域，例如创建加密和签名数据所需的随机加密密钥和随机数。HRNG预计会输出近乎完美的随机数（“全熵”），经典世界的物理过程则通常不具有此属性。实际的TRNG通常包括几个部分：
+实现产生熵的物理过程的噪声源。通常这个过程是模拟的，因此数字转换器用于将模拟源的输出转换为二进制表示形式； 提高随机位质量的调节器（随机性提取器）； 健康测试。TRNG主要用于密码算法，如果随机数的熵较低，这些算法就会被完全破解，因此通常包含测试功能。 关于用于生成随机比特的熵源的建议 by NIST https://doi.org/10.6028/NIST.SP.800-90B
+密码学和安全应用程序广泛使用随机数和随机位。然而，随机位的生成在密码学的许多实际应用中是有问题的。NIST特别出版物(SP)800-90系列建议以确定性随机位生成器(DRBG)（也称为伪随机数生成器）或非确定性随机位生成器(RBG)的形式提供有关构建和验证随机位生成器(RBG)的指导可用于加密应用程序的随机位生成器(NRBG)。本建议书规定了如何设计和测试这些RBG可以使用的熵源。SP 800-90A解决了经批准的DRBG机制的构建，而SP 800-90C解决了根据SP 800-90A中的机制和SP 800-90B中的熵源构建RBG。这些建议为NIST的加密算法验证计划(CAVP)和加密模块验证计划的验证提供了基础。
+RBG可以使用符合本建议书的熵源来产生随机比特序列。熵源的输出应包含足够的随机性以提供安全性。本建议书描述了熵源必须具备的属性，以使其适合密码随机​​位生成器的使用，以及用于验证熵源质量的测试。
+开发构建不可预测输出的熵源很困难，为其设计和验证测试提供指导更是如此。本建议书中定义的测试方法假设开发人员了解熵源内随机性源的行为，并真诚地努力生成适合密码应用的熵源（例如，生成可以以满足（或超过）指定值的速率提供熵的位串）。
+熵源模型 noise_source -digitization&amp;gt; raw_data raw_data -(opt)conditioning&amp;gt; output raw_data -healthtests&amp;gt; err_msg 噪声源是熵源和整个RBG安全的根源。这是包含非确定性熵提供过程的组件，该过程最终负责与熵源输出的位串相关的不确定性。 可选的调节组件是一个确定性函数，负责减少偏差和/或增加结果输出位的熵率（如果需要获得目标值）。有多种方法可以实现此目的。开发人员应考虑如何使用调节组件以及噪声源行为的变化如何影响输出的熵率。在选择实现方法时，开发人员可以选择实现第3.1.5.1.1节中列出的加密算法，或者使用替代算法作为调节组件。本建议书允许使用这两种方法中的任何一种。 健康测试是熵源设计的一个组成部分，旨在确保噪声源和整个熵源继续按预期运行。测试熵源时，最终目标是确保快速且高概率地捕获熵源的故障。健康测试策略的另一个方面是确定熵源，特别是噪声源的可能故障模式。健康测试预计包括可以检测这些故障情况的测试。健康测试可分为三类：启动测试、连续测试（主要针对噪声源）和按需测试。 健康测试 健康测试概述 Hardware random number generators should be constantly monitored for proper operation to protect against the entropy source degradation due to natural causes and deliberate attacks.</description>
+    </item>
+    
+    <item>
+      <title>回调地狱</title>
+      <link>https://tsukiyokai.github.io/posts/%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1/</link>
+      <pubDate>Sat, 22 Jun 2024 07:43:31 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1/</guid>
+      <description>证书发布订阅加载使用一系列cl消息进行异步通信的同时需要确保正确的相对顺序，这种正确性是通过谨慎编排一系列回调函数来保证的。
+深度嵌套的回调通常被称为“callback hell”，因为它让代码可读性急剧变差且不易维护。这种“回调地狱”问题在JavaScript世界中早已被认识到，因为js中的所有io操作（定时器或xml http请求）都是异步的。在js世界中，这一切最终催化出了面向promise的api，以求更线性地表示一系列异步操作，以上导致了js promise的Promises/A+规范。
+Promise-Cpp with Boost.Beast
+sco
+asyncpp</description>
+    </item>
+    
+    <item>
+      <title>插件式设计</title>
+      <link>https://tsukiyokai.github.io/posts/%E6%8F%92%E4%BB%B6%E5%BC%8F%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Fri, 21 Jun 2024 06:57:22 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E6%8F%92%E4%BB%B6%E5%BC%8F%E8%AE%BE%E8%AE%A1/</guid>
+      <description>C++ dlopen mini HOWTO: How to dynamically load C++ functions and classes using the dlopen API.
+写插件或模块的时候可能需要在运行时加载库并使用其函数。c语言加载一个库很简单，调dlopen、dlsym和dlclose就行了，但c++有Name Mangling，且c++标准没有定义mangling的标准所以不同编译器都用了自己的算法，所以需要通过extern &amp;quot;C&amp;quot;来声明被加载的函数，然后像c语言一样通过dlsym。
+main.cpp
+#include &amp;lt;dlfcn.h&amp;gt; #include &amp;lt;iostream&amp;gt; int main() { using std::cerr; using std::cout; cout &amp;lt;&amp;lt; &amp;#34;C++ dlopen demo\n\n&amp;#34;; // open the library cout &amp;lt;&amp;lt; &amp;#34;Opening hello.so...\n&amp;#34;; void *handle = dlopen(&amp;#34;./hello.so&amp;#34;, RTLD_LAZY); if (!handle) { cerr &amp;lt;&amp;lt; &amp;#34;Cannot open library: &amp;#34; &amp;lt;&amp;lt; dlerror() &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; return 1; } // load the symbol cout &amp;lt;&amp;lt; &amp;#34;Loading symbol hello.</description>
+    </item>
+    
+    <item>
+      <title>单例模式</title>
+      <link>https://tsukiyokai.github.io/posts/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>一个实例和两个问题 经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但是一般的constructor在运行期间允许多次调用以生成多个实例，在此场景下，为了避免客户端直接使用构造函数，需要提供一种机制来保证一个类只有一个实例。一个设计好的类应该“Easy To Use And Hard To Misuse”，因此思考上述问题应该是类设计者的责任，而不是使用者的责任。
+正确实现单例模式须考虑两个基本问题：线程安全和顺序安全。线程安全问题通过加锁或使用同步原语基本可以得到解决，但也会面临性能变差的权衡。由于C++11以后static的data racing问题已得到妥善解决（参考静态局部变量），故目前主流的单例模式都是基于这种写法，如AOSP的libutils模块从2017年起就禁止用单锁方式实现单例：
+// DO NOT USE: Please use scoped static initialization. // For instance: // MyClass&amp;amp; getInstance() { // static MyClass gInstance(...); // return gInstance; // } template &amp;lt;typename TYPE&amp;gt; class ANDROID_API Singleton { public: static TYPE&amp;amp; getInstance() { Mutex::Autolock _l(sLock); TYPE* instance = sInstance; if (instance == nullptr) { instance = new TYPE(); sInstance = instance; } return *instance; } static bool hasInstance() { Mutex::Autolock _l(sLock); return sInstance !</description>
+    </item>
+    
+    <item>
+      <title>吉光片羽</title>
+      <link>https://tsukiyokai.github.io/posts/%E5%90%89%E5%85%89%E7%89%87%E7%BE%BD/</link>
+      <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E5%90%89%E5%85%89%E7%89%87%E7%BE%BD/</guid>
+      <description> 世界是普遍联系和永恒发展的。 自由是对必然的认识和对客观世界的改造。认识必然，争取自由，是人类认识世界和改造世界的根本目标。 喜欢就去争取。 公司天才太多，普通人反而稀缺，更高级管理者需要的素质都是普通人所不齿的，大多数人都过不了自己内心这一关，你想升到20，就瞄准最让你难受的主管学习。 相遇青春，我们心中开始萌发一些对异性朦胧的情感，这是青春成长中的正常现象。在与异性交往的过程中，我们会因为对异性的欣赏、对美好的向往而愉悦，也容易把这种欣赏和向往理解为爱情。其实，这并不是真正的爱情。爱情是一种高尚的情感。爱情意味着欣赏与尊重，更需要责任和能力。面对生活中可能出现的朦胧的情感，我们应该慎重对待，理智处理。—— 初中道德与法治/七年级下册 “未成熟的果实是不能采摘的，同样，未成熟的人不宜步入情场”。当你具备了基本的爱的知识，具备了恋爱的生理和心理基础之后，可以积极地去寻找，但不代表着大学期间一定要找到。爱与不爱都由自己心中的标准判断，这些标准可以是对对方的要求，也可以是对自己学习、事业和感情的目标规划。符合标准了而不爱，说明你害怕成长；不符合标准而接受爱，则是爱的轻率。—— 第八章 健康的爱情观 </description>
+    </item>
+    
+    <item>
+      <title>我曾七次鄙视自己的灵魂</title>
+      <link>https://tsukiyokai.github.io/posts/%E6%88%91%E6%9B%BE%E4%B8%83%E6%AC%A1%E9%84%99%E8%A7%86%E8%87%AA%E5%B7%B1%E7%9A%84%E7%81%B5%E9%AD%82/</link>
+      <pubDate>Tue, 01 Jan 2019 00:04:36 +0800</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/%E6%88%91%E6%9B%BE%E4%B8%83%E6%AC%A1%E9%84%99%E8%A7%86%E8%87%AA%E5%B7%B1%E7%9A%84%E7%81%B5%E9%AD%82/</guid>
+      <description>第一次，当它本可进取时，却故作谦卑；
+第二次，当它在空虚时，用爱欲来填充；
+第三次，在困难和容易之间，它选择了容易；
+第四次，它犯了错，却借由别人也会犯错来安慰自己；
+第五次，它自由软弱，却把它认为是生命的坚韧；
+第六次，当它鄙视一张丑恶的嘴脸时，却不知那正是自己面具中的一副；
+第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏尾。</description>
+    </item>
+    
+    <item>
+      <title>关于</title>
+      <link>https://tsukiyokai.github.io/about/</link>
+      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/about/</guid>
+      <description>生日97年三月三，家乡平原省。09级太行五联中，12级市一中，15级东北人民大学swe，19级nhk，21级德子，22级华子。mbti=infp，全马破4，二次元，cf红名。我太喜欢计算机了！日拱一卒：白天工作；晚上研究pl、llm、alg、crypto和compiler；周末健身、做菜、做数学、玩游戏。努力脱单中，请满足“96以后，身高165，本科211；身体健康，情绪稳定”的未婚单身美少女主动联系我，我的微信是bW10YWk4MDUxCg==。</description>
+    </item>
+    
+  </channel>
+</rss>
