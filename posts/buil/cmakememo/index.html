@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="cmake tutorial LLVM CMake Primer HSF CMake tutorial CMake Tutorial gitlab CMake FAQ gitlab CMake Wiki CMake Variable Guidelines cmake-commands CMake Best Practices CMake Cookbook repo pdf How to CMake Good https://www.youtube.com/playlist?list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s CGold: The Hitchhiker’s Guide to the CMake https://cgold.readthedocs.io/en/latest It&rsquo;s Time To Do CMake Right https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right Use The Tools Available: CMake https://github.com/cpp-best-practices/cppbestpractices set Normal Variable和Cache Variable两种变量原理 https://www.cnblogs.com/ncuneugcj/p/9756324.html
+massage if elseif else list file add_library 根据Craig Scott的CMake书，在add_library(...)中省略类型参数其实是一种好的做法。从本质上讲，这意味着构建你库的人可以自己通过标志BUILD_SHARED_LIBS来指定项目构建静态还是共享库。如果开发者在CMake配置命令中把BUILD_SHARED_LIBS设置为True，运行cmake --build ...会生成共享库。否则CMake会生成静态库。
+CMake的library目标，有一个OBJECT模式，这个模式的library不会被archive成静态库，而是一个“假的”库，产物是一堆对象文件。">  
+
+  <title>
+    
+      CMake笔记
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.1d7fe65b67f2064e8ef2be6444eb3ff386972bc4233864a46b07b46585917d4c68e009ab74ccd28ca8fc79495ea1fe14fd57e5d33d8305f83be36be77161d490.css" integrity="sha512-HX/mW2fyBk6O8r5kROs/84aXK8QjOGSkawe0ZYWRfUxo4AmrdMzSjKj8eUleof4U/Vfl0z2DBfg742vncWHUkA==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <h1>CMake笔记</h1>
+
+    
+
+    <h2 id="cmake">cmake</h2>
+<h3 id="tutorial">tutorial</h3>
+<ul>
+<li><a href="https://llvm.org/docs/CMakePrimer.html">LLVM CMake Primer</a></li>
+<li><a href="https://hsf-training.github.io/hsf-training-cmake-webpage/index.html">HSF CMake tutorial</a></li>
+<li><a href="https://cmake.org/cmake/help/latest/guide/tutorial/index.html">CMake Tutorial</a></li>
+<li><a href="https://gitlab.kitware.com/cmake/community/-/wikis/FAQ">gitlab CMake FAQ</a></li>
+<li><a href="https://gitlab.kitware.com/cmake/community/-/wikis/home">gitlab CMake Wiki</a></li>
+<li><a href="https://jeremimucha.com/2021/02/cmake-variable-guidelines">CMake Variable Guidelines</a></li>
+<li><a href="https://cmake.org/cmake/help/git-master/manual/cmake-commands.7.html">cmake-commands</a></li>
+<li><a href="https://subscription.packtpub.com/book/programming/9781803239729/17/ch17lvl1sec09/profiling-a-cmake-build">CMake Best Practices</a></li>
+<li><a href="https://www.bookstack.cn/read/CMake-Cookbook">CMake Cookbook</a> <a href="https://github.com/dev-cafe/cmake-cookbook">repo</a> <a href="https://github.com/xiaoweiChen/CMake-Cookbook/releases/download/0.2/CMake-CookBook.pdf">pdf</a></li>
+<li>How to CMake Good <a href="https://www.youtube.com/playlist?list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s">https://www.youtube.com/playlist?list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s</a></li>
+<li>CGold: The Hitchhiker’s Guide to the CMake <a href="https://cgold.readthedocs.io/en/latest">https://cgold.readthedocs.io/en/latest</a></li>
+<li>It&rsquo;s Time To Do CMake Right <a href="https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right">https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right</a></li>
+<li>Use The Tools Available: CMake <a href="https://github.com/cpp-best-practices/cppbestpractices">https://github.com/cpp-best-practices/cppbestpractices</a></li>
+</ul>
+<h3 id="set">set</h3>
+<p>Normal Variable和Cache Variable两种变量原理 <a href="https://www.cnblogs.com/ncuneugcj/p/9756324.html">https://www.cnblogs.com/ncuneugcj/p/9756324.html</a></p>
+<h3 id="massage">massage</h3>
+<h3 id="if-elseif-else">if elseif else</h3>
+<h3 id="list">list</h3>
+<h3 id="file">file</h3>
+<h3 id="add_library">add_library</h3>
+<p>根据Craig Scott的CMake书，在<code>add_library(...)</code>中省略类型参数其实是一种好的做法。从本质上讲，这意味着构建你库的人可以自己通过标志<code>BUILD_SHARED_LIBS</code>来指定项目构建静态还是共享库。如果开发者在CMake配置命令中把<code>BUILD_SHARED_LIBS</code>设置为<code>True</code>，运行<code>cmake --build ...</code>会生成共享库。否则CMake会生成静态库。</p>
+<p>CMake的library目标，有一个OBJECT模式，这个模式的library不会被archive成静态库，而是一个“假的”库，产物是一堆对象文件。</p>
+<p>声明方式：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#a90d91">add_library</span>(<span style="color:#c41a16">my_library</span> <span style="color:#c41a16">OBJECT</span> <span style="color:#c41a16">foo.cpp</span> <span style="color:#c41a16">bar.cpp</span> <span style="color:#c41a16">baz.cpp</span>)<span style="color:#000">
+</span></span></span></code></pre></div><p>使用方式：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#a90d91">add_executable</span>(<span style="color:#c41a16">my_app</span> <span style="color:#c41a16">my_app.cpp</span> <span style="color:#000">$&lt;</span><span style="color:#000">TARGET_OBJECTS:my_library</span><span style="color:#000">&gt;</span>)<span style="color:#000">
+</span></span></span><span style="display:flex;"><span><span style="color:#000"></span><span style="color:#a90d91">add_library</span>(<span style="color:#c41a16">my_static_lib</span> <span style="color:#c41a16">STATIC</span> <span style="color:#c41a16">some_other_source.cpp</span> <span style="color:#000">$&lt;</span><span style="color:#000">TARGET_OBJECTS:my_library</span><span style="color:#000">&gt;</span>)<span style="color:#000">
+</span></span></span></code></pre></div><p>如上所示使用时比较特别，必须使用“这个目标的对象文件”的生成表达式，放在<code>add_executable</code>、<code>add_library</code>放源代码的位置，而不是<code>target_link_library</code>的位置。这种需求其实不太常见，大部分情况下你可以用静态库目标来做同样的事情，因为静态库实际上就是对象文件打包，没有做特别的事情。我能想到的唯一必须这么做的理由，就是你想把项目分成几个部分，而这几个部分之间的符号依赖是一锅粥，各自打包成静态库之后，链接时顺序搞不定。https://www.zhihu.com/question/269918425</p>
+<p>模块库可以动态加载，用于构建运行时插件。模块库与共享库非常相似。不同的是，可执行文件可以在程序中的某个时刻被懒加载而不必在执行开始时就加载模块库。如果程序逻辑需要，你可以使用<code>dlopen(...)</code>来打开一个模块库。即使该库不存在，你的可执行文件也可以照样运行。因此，可以使用模块库作为向软件添加“插件”的一种手段。这就是所谓的插件式设计。</p>
+<h3 id="可见性">可见性</h3>
+<ul>
+<li>Modern CMake is like inheritance <a href="https://kubasejdak.com/modern-cmake-is-like-inheritance">https://kubasejdak.com/modern-cmake-is-like-inheritance</a></li>
+<li>CMake: Public, Private, Interface <a href="https://leimao.github.io/blog/CMake-Public-Private-Interface">https://leimao.github.io/blog/CMake-Public-Private-Interface</a></li>
+<li>Using Modern CMake to Enforce Modular Design <a href="https://youtu.be/eC9-iRN2b04">https://youtu.be/eC9-iRN2b04</a></li>
+<li>modularizing, specifying dependencies in a project - cmake mail <a href="https://cmake.org/pipermail/cmake/2018-January/066812.html">https://cmake.org/pipermail/cmake/2018-January/066812.html</a></li>
+</ul>
+<h3 id="生成器表达式">生成器表达式</h3>
+<ul>
+<li>生成器表达式：CMake Generator-Expressions <a href="https://jeremimucha.com/2021/03/cmake-generator-expressions">https://jeremimucha.com/2021/03/cmake-generator-expressions</a></li>
+<li>cmake-generator-expressions <a href="https://cmake.org/cmake/help/git-master/manual/cmake-generator-expressions.7.html">https://cmake.org/cmake/help/git-master/manual/cmake-generator-expressions.7.html</a></li>
+</ul>
+<h3 id="杂项">杂项</h3>
+<ul>
+<li>我理解的CMake中的<code>add_custom_target</code>和<code>add_custom_command</code> <a href="https://zhuanlan.zhihu.com/p/397394950">https://zhuanlan.zhihu.com/p/397394950</a></li>
+<li>用<code>target_sources()</code>加强源文件处理 <a href="https://crascit.com/2016/01/31/enhanced-source-file-handling-with-target_sources">https://crascit.com/2016/01/31/enhanced-source-file-handling-with-target_sources</a></li>
+<li>for C++, it&rsquo;s probably better to hardcode the list of files and keep it up to date. <a href="https://www.reddit.com/r/cmake/comments/bay8cl/comment/ekf0upr/?utm_source=share&amp;utm_medium=web2x&amp;context=3">https://www.reddit.com/r/cmake/comments/bay8cl/comment/ekf0upr/?utm_source=share&amp;utm_medium=web2x&amp;context=3</a></li>
+<li>cmake + X：Analyze configure times with CMake <a href="https://fekir.info/post/analyze-configure-times-with-cmake">https://fekir.info/post/analyze-configure-times-with-cmake</a></li>
+<li>Git, CMake, Conan - How to ship and reuse our C++ projects <a href="https://youtu.be/S4QSKLXdTtA">https://youtu.be/S4QSKLXdTtA</a></li>
+<li>cmake-format <a href="https://github.com/cheshirekow/cmake_format">https://github.com/cheshirekow/cmake_format</a></li>
+<li>cheshirekow.cmake-format cmake language tools <a href="https://cmake-format.readthedocs.io/en/latest">https://cmake-format.readthedocs.io/en/latest</a></li>
+<li>gtest + cmake Integrating Google Test Into CMake Projects <a href="https://matgomes.com/integrate-google-test-into-cmake">https://matgomes.com/integrate-google-test-into-cmake</a></li>
+<li>other cmake sources <a href="https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html#other-sources">https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html#other-sources</a></li>
+<li>The Architecture of Open Source Applications: CMake <a href="http://www.aosabook.org/en/cmake.html">http://www.aosabook.org/en/cmake.html</a></li>
+<li>cmake - reddit <a href="https://www.reddit.com/r/cmake">https://www.reddit.com/r/cmake</a></li>
+<li>CMake构建系统 fangcun <a href="https://zhuanlan.zhihu.com/p/56167140">https://zhuanlan.zhihu.com/p/56167140</a></li>
+<li>Deep CMake for Library Authors - CppCon <a href="https://youtu.be/m0DwB4OvDXk">https://youtu.be/m0DwB4OvDXk</a></li>
+<li>Effective Modern CMake <a href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1">https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1</a></li>
+<li>An Introduction to Modern CMake <a href="https://modern-cmake-cn.github.io/Modern-CMake-zh_CN">https://modern-cmake-cn.github.io/Modern-CMake-zh_CN</a> <a href="https://cliutils.gitlab.io/modern-cmake">https://cliutils.gitlab.io/modern-cmake</a></li>
+<li>Professional CMake: A Practical Guide - crascit <a href="https://crascit.com">https://crascit.com</a></li>
+<li>awesome-cmake <a href="https://github.com/onqtam/awesome-cmake">https://github.com/onqtam/awesome-cmake</a></li>
+<li>vector-of-bool <a href="https://vector-of-bool.github.io">https://vector-of-bool.github.io</a> cmaketools作者</li>
+<li>Mathieu Ropert <a href="https://mropert.github.io">https://mropert.github.io</a></li>
+<li>How to Use CMake Without the Agonizing Pain <a href="https://alexreinking.com/blog/how-to-use-cmake-without-the-agonizing-pain-part-1.html">1</a> <a href="https://alexreinking.com/blog/how-to-use-cmake-without-the-agonizing-pain-part-2.html">2</a></li>
+<li>cmake实现堆排序 <a href="https://zhuanlan.zhihu.com/p/121079042">https://zhuanlan.zhihu.com/p/121079042</a></li>
+</ul>
+<h2 id="makefile">makefile</h2>
+<ul>
+<li>The Lost Art of the Makefile <a href="https://www.olioapps.com/blog/the-lost-art-of-the-makefile">https://www.olioapps.com/blog/the-lost-art-of-the-makefile</a></li>
+<li>Learn Makefiles With the tastiest examples <a href="https://makefiletutorial.com">https://makefiletutorial.com</a></li>
+<li>config kconfig</li>
+</ul>
+<h2 id="ninja">ninja</h2>
+<p>Ninja比Make拥有更高的输出信噪比。在进行增量构建时，Ninja的耗时较小。</p>
+<ul>
+<li>Ninja用户手册 <a href="https://ninja-build.org/manual.html">https://ninja-build.org/manual.html</a></li>
+<li>ninjatracing <a href="https://github.com/nico/ninjatracing">https://github.com/nico/ninjatracing</a> chrome://tracing</li>
+<li>Perfetto <a href="https://ui.perfetto.dev">https://ui.perfetto.dev</a></li>
+<li>speedscope <a href="https://www.speedscope.app">https://www.speedscope.app</a></li>
+<li>Ninja+parallel linking——CMake mailing list <a href="https://cmake.org/pipermail/cmake/2016-July/063891.html">https://cmake.org/pipermail/cmake/2016-July/063891.html</a></li>
+<li>Make和Ninja性能对比 <a href="https://hamelot.io/programming/make-vs-ninja-performance-comparison">https://hamelot.io/programming/make-vs-ninja-performance-comparison</a></li>
+<li>Useful ninja flags <a href="https://chromium.googlesource.com/chromium/src/+/HEAD/build/docs/writing_gn_templates.md#Useful-Ninja-Flags">https://chromium.googlesource.com/chromium/src/+/HEAD/build/docs/writing_gn_templates.md#Useful-Ninja-Flags</a></li>
+<li>Debugging Slow Builds <a href="https://chromium.googlesource.com/chromium/src/build/+/HEAD/docs/debugging_slow_builds.md">https://chromium.googlesource.com/chromium/src/build/+/HEAD/docs/debugging_slow_builds.md</a></li>
+<li>post_build_ninja_summary.py <a href="https://chromium.googlesource.com/chromium/tools/depot_tools.git/+/refs/heads/main/post_build_ninja_summary.py">https://chromium.googlesource.com/chromium/tools/depot_tools.git/+/refs/heads/main/post_build_ninja_summary.py</a></li>
+</ul>
+<h2 id="编译优化">编译优化</h2>
+<p><img src="https://imgs.xkcd.com/comics/compiling.png" alt="https://xkcd.com/303"></p>
+<ul>
+<li>C++服务编译耗时优化原理及实践 - 美团 <a href="https://tech.meituan.com/2020/12/10/apache-kylin-practice-in-meituan.html">https://tech.meituan.com/2020/12/10/apache-kylin-practice-in-meituan.html</a></li>
+<li>bot-man-jl <a href="https://bot-man-jl.github.io/articles/?post=2022/Cpp-Project-Compile-Optimization">https://bot-man-jl.github.io/articles/?post=2022/Cpp-Project-Compile-Optimization</a></li>
+<li>A Performance-Based Comparison of C/C++ Compilers <a href="https://colfaxresearch.com/compiler-comparison">https://colfaxresearch.com/compiler-comparison</a></li>
+<li>Speeding up the Build of C and C++ Projects <a href="https://pvs-studio.com/en/blog/posts/cpp/0549">https://pvs-studio.com/en/blog/posts/cpp/0549</a></li>
+<li>Build Performance Insights (ninjatracing) <a href="https://crascit.com/2022/06/24/build-performance-insights">https://crascit.com/2022/06/24/build-performance-insights</a></li>
+<li>How does Google avoid clean builds <a href="https://jmmv.dev/2020/12/google-no-clean-builds.html">https://jmmv.dev/2020/12/google-no-clean-builds.html</a></li>
+<li>Faster C++ builds <a href="https://www.bitsnbites.eu/faster-c-builds">https://www.bitsnbites.eu/faster-c-builds</a></li>
+<li>iwyu <a href="https://include-what-you-use.org">https://include-what-you-use.org</a></li>
+<li>distcc 分布式</li>
+<li>ccache 缓存</li>
+<li>Speeding Up Linux Kernel Builds With ccache <a href="http://nickdesaulniers.github.io/blog/2018/06/02/speeding-up-linux-kernel-builds-with-ccache">http://nickdesaulniers.github.io/blog/2018/06/02/speeding-up-linux-kernel-builds-with-ccache</a></li>
+<li>pch 预编译</li>
+<li>cotire <code>target_precompile_headers</code> 预编译头文件 <a href="https://cmake.org/cmake/help/latest/command/target_precompile_headers.html">https://cmake.org/cmake/help/latest/command/target_precompile_headers.html</a></li>
+<li>Creating precompiled headers with cmake <a href="https://edgarluque.com/blog/cmake-precompiled-headers">https://edgarluque.com/blog/cmake-precompiled-headers</a></li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

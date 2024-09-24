@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="线程池提供了一种有效地管理和并发执行大量任务的方式。线程池并不为每个任务创建一个新线程，而是重用现有线程，以显著提高性能和资源利用率。
+前置知识：
+std::thread, mutex, condition_variable std::future std::bind std::package_task 万能引用和完美转发 std::forward&lt;&gt; C&#43;&#43;没有原生的线程池。当你的函数需要在多线程中运行，但是你又不能每来一个函数就开启一个线程，此时你就需要根据资源情况固定几个线程来执行，但会出现有的线程还没有执行完，有的又在空闲，如何分配任务呢？这时你就需要封装一个线程池来完成这些操作，有了线程池这层封装，你只需要告诉它开启几个线程，然后直接往里塞任务，并通过一定的机制获取执行结果。
+线程池是一种池化资源技术，负责管理和调度线程执行的任务；主要的特点是：可以在整个生命周期内，不断重用现有线程来处理用户提交的任务，避免线程频繁创建和销毁带来的开销，提高响应速度，同时增加线程的可管理性。
+实现线程池是一个生产者-消费者问题：enqueue函数是生产者，它将一些任务放入队列；线程池中的线程是消费者，它们“消耗”任务（即完成它们）。从用户的角度来看，这里的线程池：拥有固定数量的线程，队列中的每个任务具有相同的优先级，并且每个任务都是一个lambda函数。支持优先级调度很容易，可以使用std::priority_queue来替换std::queue。
+线程池的组件包括：
+任务：表示线程池可以执行的任务。 任务队列：一个保存要执行的任务的队列。 线程池：一个包含任务队列及其逻辑的结构。 高级解释：
+需要有一个可以接受任意参数类型的任意函数。 线程池需要一个适当的队列来保存任务及其参数，因此队列应该是线程安全的。 线程池的执行只有在队列中的所有任务都执行完毕时才会停止。 线程安全队列要求：
+这个队列有多少个生产者？有多少个线程将“推送到它”？ 队列中会有很多线程“弹出”吗？ 我们是否总是需要“pop”操作返回某些内容？它能阻塞线程吗？ 队列是否需要是原子的，不允许使用互斥锁？ 参考资料：
+手写线程池 - C语言版 C Thread Pool Building a Thread Pool with C&#43;&#43; and STL Implement Thread Pool in C&#43;&#43; A simple C&#43;&#43;11 Thread Pool implementation repo ">  
+
+  <title>
+    
+      C语言线程池
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.1d7fe65b67f2064e8ef2be6444eb3ff386972bc4233864a46b07b46585917d4c68e009ab74ccd28ca8fc79495ea1fe14fd57e5d33d8305f83be36be77161d490.css" integrity="sha512-HX/mW2fyBk6O8r5kROs/84aXK8QjOGSkawe0ZYWRfUxo4AmrdMzSjKj8eUleof4U/Vfl0z2DBfg742vncWHUkA==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <h1>C语言线程池</h1>
+
+    
+
+    <p>线程池提供了一种有效地管理和并发执行大量任务的方式。线程池并不为每个任务创建一个新线程，而是重用现有线程，以显著提高性能和资源利用率。</p>
+<p>前置知识：</p>
+<ul>
+<li>std::thread, mutex, condition_variable</li>
+<li>std::future</li>
+<li>std::bind</li>
+<li>std::package_task</li>
+<li>万能引用和完美转发 std::forward&lt;&gt;</li>
+</ul>
+<p>C++没有原生的线程池。当你的函数需要在多线程中运行，但是你又不能每来一个函数就开启一个线程，此时你就需要根据资源情况固定几个线程来执行，但会出现有的线程还没有执行完，有的又在空闲，如何分配任务呢？这时你就需要封装一个线程池来完成这些操作，有了线程池这层封装，你只需要告诉它开启几个线程，然后直接往里塞任务，并通过一定的机制获取执行结果。</p>
+<p>线程池是一种池化资源技术，负责管理和调度线程执行的任务；主要的特点是：可以在整个生命周期内，不断重用现有线程来处理用户提交的任务，避免线程频繁创建和销毁带来的开销，提高响应速度，同时增加线程的可管理性。</p>
+<p>实现线程池是一个<a href="https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem">生产者-消费者问题</a>：enqueue函数是生产者，它将一些任务放入队列；线程池中的线程是消费者，它们“消耗”任务（即完成它们）。从用户的角度来看，这里的线程池：拥有固定数量的线程，队列中的每个任务具有相同的优先级，并且每个任务都是一个lambda函数。支持优先级调度很容易，可以使用std::priority_queue来替换std::queue。</p>
+<p>线程池的组件包括：</p>
+<ol>
+<li>任务：表示线程池可以执行的任务。</li>
+<li>任务队列：一个保存要执行的任务的队列。</li>
+<li>线程池：一个包含任务队列及其逻辑的结构。</li>
+</ol>
+<p>高级解释：</p>
+<ol>
+<li>需要有一个可以接受任意参数类型的任意函数。</li>
+<li>线程池需要一个适当的队列来保存任务及其参数，因此队列应该是线程安全的。</li>
+<li>线程池的执行只有在队列中的所有任务都执行完毕时才会停止。</li>
+</ol>
+<p>线程安全队列要求：</p>
+<ol>
+<li>这个队列有多少个生产者？有多少个线程将“推送到它”？</li>
+<li>队列中会有很多线程“弹出”吗？</li>
+<li>我们是否总是需要“pop”操作返回某些内容？它能阻塞线程吗？</li>
+<li>队列是否需要是原子的，不允许使用互斥锁？</li>
+</ol>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://subingwen.cn/linux/threadpool">手写线程池 - C语言版</a></li>
+<li><a href="https://github.com/Pithikos/C-Thread-Pool">C Thread Pool</a></li>
+<li><a href="https://nixiz.github.io/yazilim-notlari/2023/10/07/thread_pool-en">Building a Thread Pool with C++ and STL</a></li>
+<li><a href="https://www.cnblogs.com/sinkinben/p/16064857.html">Implement Thread Pool in C++</a></li>
+<li>A simple C++11 Thread Pool implementation <a href="https://github.com/progschj/ThreadPool">repo</a></li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

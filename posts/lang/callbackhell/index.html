@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="证书的发布-订阅-加载流程使用一系列cl消息进行异步通信的同时需要确保正确的相对顺序，这种正确性是通过谨慎编排一系列回调函数来保证的。
+深度嵌套的回调通常被称为“callback hell”，因为它让代码可读性急剧变差且不易维护。这种“回调地狱”问题在JavaScript中早已被认识到，因为js中的所有io操作（定时器或http请求）全都是异步的。在js世界中，这一切最终催化出了面向promise的api，以求更线性地表示一系列异步操作，并导致了js promise的Promises/A&#43;规范的产生。
+参考资料：
+Promise-Cpp with Boost.Beast sco simplest C&#43;&#43;20 coroutine library asyncpp ">  
+
+  <title>
+    
+      回调地狱
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.1d7fe65b67f2064e8ef2be6444eb3ff386972bc4233864a46b07b46585917d4c68e009ab74ccd28ca8fc79495ea1fe14fd57e5d33d8305f83be36be77161d490.css" integrity="sha512-HX/mW2fyBk6O8r5kROs/84aXK8QjOGSkawe0ZYWRfUxo4AmrdMzSjKj8eUleof4U/Vfl0z2DBfg742vncWHUkA==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <h1>回调地狱</h1>
+
+    
+
+    <p>证书的发布-订阅-加载流程使用一系列cl消息进行异步通信的同时需要确保正确的相对顺序，这种正确性是通过谨慎编排一系列回调函数来保证的。</p>
+<p>深度嵌套的回调通常被称为“callback hell”，因为它让代码可读性急剧变差且不易维护。这种“回调地狱”问题在JavaScript中早已被认识到，因为js中的所有io操作（定时器或http请求）全都是异步的。在js世界中，这一切最终催化出了面向promise的api，以求更线性地表示一系列异步操作，并导致了js promise的Promises/A+规范的产生。</p>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://youtu.be/YnTaumB5HVM?si=fsfGmGE9l5wFZ5E1">Promise-Cpp with Boost.Beast</a></li>
+<li><a href="https://github.com/kkHAIKE/sco">sco</a> simplest C++20 coroutine library</li>
+<li><a href="https://github.com/paulrademacher/asyncpp">asyncpp</a></li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

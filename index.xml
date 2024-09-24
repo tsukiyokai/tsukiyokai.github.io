@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iwyu</title>
+    <link>https://tsukiyokai.github.io/</link>
+    <description>Recent content on iwyu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Aug 2022 21:30:04 +0800</lastBuildDate><atom:link href="https://tsukiyokai.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的书单</title>
+      <link>https://tsukiyokai.github.io/posts/z/mybookslist/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/z/mybookslist/</guid>
+      <description>The Pragmatic Programmer: From Journeyman to Master by Andrew Hunt, David Thomas
+The Art of Computer Programming (TAOCP) by Donald E. Knuth
+Structure and Interpretation of Computer Programs (SICP) by Gerald Jay Sussman, Hal Abelson, and Julie Sussman
+Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin
+Code Complete by Steve McConnell
+Refactoring by Kent Beck and Martin Fowler
+Design Patterns: Elements of Reusable Object-Oriented Software
+Mythical Man-Month, The: Essays on Software Engineering, Anniversary Edition</description>
+    </item>
+    
+    <item>
+      <title>团队赛指北</title>
+      <link>https://tsukiyokai.github.io/posts/algo/gamedev/</link>
+      <pubDate>Wed, 28 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/algo/gamedev/</guid>
+      <description>GridMap 栅格地图（GridMap）的定义：将连续空间离散化成一个个栅格。栅格地图使用经典的二维直角坐标系（笛卡尔坐标系）对真实世界进行映射，其数据结构为二维数组。在一幅大小为50*30的栅格地图grid[30][50]上，直角坐标为(x,y)的点处取值为grid[y][x]，“y down”与“y up”实际上没有任何区别。
+jsoncpp 寻路算法 寻路试图解决的问题是如何在地图上从起点到目标找到一条好的路径——避开障碍物、避开敌人，并最小化成本（燃料、时间、距离、设备、金钱等）。在实际对局中要达成最佳效果需要同时兼顾寻路和运动：对于大局、缓慢变化的障碍和长路径，优先使用寻路；对于局部区域、快速变化和短路径，优先使用运动。
+A*结合了Dijkstra算法（偏向于靠近起点的顶点）和贪心最佳优先搜索（偏向于靠近目标的顶点）。g(n)表示从起点到任何顶点n的路径成本，而h(n)表示从顶点n到目标的启发式估计成本。A*在从起点移动到目标时平衡了这两者。在主循环的每次迭代中，它检查具有最低f(n)=g(n)+h(n)的顶点n。
+启发式函数h(n)为A*提供了从任何顶点到目标点的最小成本估计。选择一个好的启发式函数是很重要的，甚至可以用来控制A*的行为：
+AI for NPC https://www.aigamesnetwork.org/main_events_ainpc/
+计算机科学和信息理论的创始人（图灵和香农）将游戏视为应用人工智能的优秀测试平台。多年来，该领域的研究主要集中在象棋、跳棋和围棋等策略游戏上。一些显著的人工智能成功案例（例如，IBM的深蓝和最近的谢弗“完美”跳棋玩家）是手动编程的，但最近越来越强调自我学习的程序，或者通过自我对弈的时间差学习，或共同进化。人们对比较这些方法以及开发新的混合技术的兴趣日益增加。商业游戏使用越来越复杂的模拟环境，并向人类玩家呈现接近照片现实主义的世界观。随着虚拟世界变得越来越复杂，设计具有足够有趣和可信行为的非玩家角色（NPC）变得更加困难。目前的NPC控制技术主要涉及有限状态机、脚本和搜索等方法。大多数行为是手动编程的，涉及大量人力来编码和测试。尽管游戏公司偶尔使用诸如遗传算法和神经网络等人工智能技术，但游戏中使用的方法往往落后于机器学习的最新技术。同样，机器学习和人工智能也可以通过将算法应用于比通常遇到的更具挑战性的环境，从游戏中获益。此外，随着游戏利用更真实的物理引擎，游戏与机器人研究之间的协同作用有更大的空间：控制一个类人机器人或非玩家角色（NPC）将有很多共同之处。
+资料：
+RedBlob的A*系列 介绍、实现、制图、Amit’s A* Pages D* Lite 仓库 影响图 The Core Mechanics of Influence Mapping Influence Maps I Influence Maps II - Practical Applications GameAIPro2_Chapter30_Modular_Tactical_Influence_Maps.pdf AI Influence Maps Modular Influence Map System (Imap) ytb
+https://gdcvault.com/play/1025243/Spatial-Knowledge-Representation-through-Modular
+Building a Better Centaur: AI at Massive Scale
+Modular, Scalable, Influence Map System
+ccinfluence
+Layered Influence Map (IMap).
+行为树 A survey of Behavior Trees in robotics and AI BehaviorTree.</description>
+    </item>
+    
+    <item>
+      <title>个人赛题解</title>
+      <link>https://tsukiyokai.github.io/posts/cf/wxbcdsper/</link>
+      <pubDate>Thu, 15 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/cf/wxbcdsper/</guid>
+      <description>1、猫和老鼠 题目 猫和老鼠被困在一个包含0和1的N*M的囚笼中，牢的左上角坐标为[1,1]，右下角坐标为[N,M]，0代表老鼠，1代表猫，猫不可移动但老鼠可以移动，老鼠每次可以上下左右移动一步。
+老鼠想要逃离这个囚笼，逃离的方式可以是如下情况之一：
+x=0或y=0 x&amp;gt;N或y&amp;gt;M 老鼠的逃离时间是它在能够逃离之前碰到的最少的猫的数量，求囚笼中所有老鼠中的最长逃离时间是多少。
+输入 输入的第一行将包含一个整数T，T表示测试用例的数量。
+每个测试用例由多行输入组成，具体内容如下：
+第一行：老鼠生命值L，所有老鼠相同。
+第二行：包含两个空格分隔的整数N和M，代表监狱的大小。
+接下来N行：每行包含长度为M的01字符串，代表监狱结构。
+约束条件：
+1&amp;lt;T&amp;lt;10 1&amp;lt;=N，M&amp;lt;=1000 网格中的字符只有0或1 输出 对于每个测试用例，在新的一行上输出所有老鼠中的最大逃脱时间。
+样例 输入：
+3 3 3 111 101 111 3 4 1110 1000 1111 5 5 11111 10101 11011 10101 11111 输出：
+1 0 2 解释：
+只有一只老鼠，无论往哪移动均会遇到猫，移动2步之后就可以逃离因笼，期间只会遇到一个猫，所以逃离时间为1。 老鼠们可以在不碰到猫的前提下逃离囚笼。 位于[3,3]的老鼠在逃离时会遇到2次猫，其他的老鼠在逃离时均遇到1次，所以最大逃离时间为2。 题解 考点：01bfs。跟《A visual guide to 0–1 BFS》这个例子有点像，边权都是只有01，移动本身都伴随着某种代价，因此如何移动存在着优先级。
+#include &amp;lt;algorithm&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;vector&amp;gt; using namespace std; using pii = pair&amp;lt;int, int&amp;gt;; // 方向数组 constexpr int dx[4] = {1, -1, 0, 0}; constexpr int dy[4] = {0, 0, 1, -1}; void chkMax(int &amp;amp;a, int b) { if (a &amp;lt; b) a = b; } int main() { int T; cin &amp;gt;&amp;gt; T; while (T--) { int n, m; cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m; // 距离矩阵d和囚笼网格g vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; d(n + 1, vector&amp;lt;int&amp;gt;(m + 1, 1e9)); vector&amp;lt;vector&amp;lt;char&amp;gt;&amp;gt; g(n + 1, vector&amp;lt;char&amp;gt;(m + 1, &amp;#39;0&amp;#39;)); for (int i = 1; i &amp;lt;= n; ++i) { for (int j = 1; j &amp;lt;= m; ++j) { cin &amp;gt;&amp;gt; g[i][j]; } } // 定义双端队列用于“0-1 BFS” deque&amp;lt;pii&amp;gt; q; for (int i = 1; i &amp;lt;= n; i++) { for (int j = 1; j &amp;lt;= m; j++) { int a = g[i][j] - &amp;#39;0&amp;#39;; if (i == 1 || j == 1 || i == n || j == m) { d[i][j] = a; // 初始化边界距离 if (d[i][j] == 0) q.</description>
+    </item>
+    
+    <item>
+      <title>动态主机设置协议</title>
+      <link>https://tsukiyokai.github.io/posts/tr/dhcp/</link>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/tr/dhcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>提示工程指南</title>
+      <link>https://tsukiyokai.github.io/posts/ai/promptengineeringguide/</link>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/ai/promptengineeringguide/</guid>
+      <description>prompt 提示工程指南
+openai提示工程最佳实践
+openai官方提示工程指南
+AI is Mostly Prompting
+rag rag是当前大模型解决幻觉问题的重要方法
+RAG是什么?
+RAG用于知识密集型自然语言处理任务 提出rag的文章
+使用RAG简化智能自然语言处理模型的创建 开卷考试的优势 节省重新训练的开销
+基于RAG的AI聊天机器人
+agent 定义：a system that can use an LLM to reason through a problem, create a plan to solve the problem, and execute the plan with the help of a set of tools.
+llm代理简介
+组成：
+Agent core Memory module Tools Planning module model fine-tuning AI4SE AI for Software Engineering CMU
+AI for Software Engineering</description>
+    </item>
+    
+    <item>
+      <title>CMake笔记</title>
+      <link>https://tsukiyokai.github.io/posts/buil/cmakememo/</link>
+      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/buil/cmakememo/</guid>
+      <description>cmake tutorial LLVM CMake Primer HSF CMake tutorial CMake Tutorial gitlab CMake FAQ gitlab CMake Wiki CMake Variable Guidelines cmake-commands CMake Best Practices CMake Cookbook repo pdf How to CMake Good https://www.youtube.com/playlist?list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s CGold: The Hitchhiker’s Guide to the CMake https://cgold.readthedocs.io/en/latest It&amp;rsquo;s Time To Do CMake Right https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right Use The Tools Available: CMake https://github.com/cpp-best-practices/cppbestpractices set Normal Variable和Cache Variable两种变量原理 https://www.cnblogs.com/ncuneugcj/p/9756324.html
+massage if elseif else list file add_library 根据Craig Scott的CMake书，在add_library(...)中省略类型参数其实是一种好的做法。从本质上讲，这意味着构建你库的人可以自己通过标志BUILD_SHARED_LIBS来指定项目构建静态还是共享库。如果开发者在CMake配置命令中把BUILD_SHARED_LIBS设置为True，运行cmake --build ...会生成共享库。否则CMake会生成静态库。
+CMake的library目标，有一个OBJECT模式，这个模式的library不会被archive成静态库，而是一个“假的”库，产物是一堆对象文件。</description>
+    </item>
+    
+    <item>
+      <title>C语言线程池</title>
+      <link>https://tsukiyokai.github.io/posts/lang/threadpool/</link>
+      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/lang/threadpool/</guid>
+      <description>线程池提供了一种有效地管理和并发执行大量任务的方式。线程池并不为每个任务创建一个新线程，而是重用现有线程，以显著提高性能和资源利用率。
+前置知识：
+std::thread, mutex, condition_variable std::future std::bind std::package_task 万能引用和完美转发 std::forward&amp;lt;&amp;gt; C++没有原生的线程池。当你的函数需要在多线程中运行，但是你又不能每来一个函数就开启一个线程，此时你就需要根据资源情况固定几个线程来执行，但会出现有的线程还没有执行完，有的又在空闲，如何分配任务呢？这时你就需要封装一个线程池来完成这些操作，有了线程池这层封装，你只需要告诉它开启几个线程，然后直接往里塞任务，并通过一定的机制获取执行结果。
+线程池是一种池化资源技术，负责管理和调度线程执行的任务；主要的特点是：可以在整个生命周期内，不断重用现有线程来处理用户提交的任务，避免线程频繁创建和销毁带来的开销，提高响应速度，同时增加线程的可管理性。
+实现线程池是一个生产者-消费者问题：enqueue函数是生产者，它将一些任务放入队列；线程池中的线程是消费者，它们“消耗”任务（即完成它们）。从用户的角度来看，这里的线程池：拥有固定数量的线程，队列中的每个任务具有相同的优先级，并且每个任务都是一个lambda函数。支持优先级调度很容易，可以使用std::priority_queue来替换std::queue。
+线程池的组件包括：
+任务：表示线程池可以执行的任务。 任务队列：一个保存要执行的任务的队列。 线程池：一个包含任务队列及其逻辑的结构。 高级解释：
+需要有一个可以接受任意参数类型的任意函数。 线程池需要一个适当的队列来保存任务及其参数，因此队列应该是线程安全的。 线程池的执行只有在队列中的所有任务都执行完毕时才会停止。 线程安全队列要求：
+这个队列有多少个生产者？有多少个线程将“推送到它”？ 队列中会有很多线程“弹出”吗？ 我们是否总是需要“pop”操作返回某些内容？它能阻塞线程吗？ 队列是否需要是原子的，不允许使用互斥锁？ 参考资料：
+手写线程池 - C语言版 C Thread Pool Building a Thread Pool with C++ and STL Implement Thread Pool in C++ A simple C++11 Thread Pool implementation repo </description>
+    </item>
+    
+    <item>
+      <title>人性的弱点</title>
+      <link>https://tsukiyokai.github.io/posts/z/howtoinfluencepeople/</link>
+      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/z/howtoinfluencepeople/</guid>
+      <description>存在一种持久不衰的人类饥渴，那些真诚满足这种内心饥渴的少数人将掌握住他人的命运。大多数人追求的东西包括：健康和生命的保障、食物、睡眠、金钱和金钱能买到的东西、来日的生活、性满足、我们的孩子的幸福、重要感。这些愿望通常都能得到满足，但有一种渴望几乎和对食物或睡眠的渴望一样深刻、一样迫切，却很少得到满足——这就是弗洛伊德所说的“成为伟大的愿望”。林肯曾经在一封信中写道：“每个人都喜欢受到赞美”，威廉·詹姆斯说：“人类本性中最深层的原则是渴望被欣赏”。渴望重要感是人类与动物之间的主要区别之一。正是对重要感的渴望，促使一个没有受过教育、贫困的杂货店职员研究他在购买了五十美分的家庭掠夺品桶底发现的一些法律书。正是对重要感的渴望激发了狄更斯写下他不朽的小说。而这种渴望也让你镇上最富有的家庭建造了一座远远超出需求的房子。这种欲望让你想要穿最新款式的衣服，开最新款的车，谈论你聪明的孩子。有时候，人们甚至会故意让自己变得无助，以赢得同情和关注，获得重要感。
+不要害怕攻击你的敌人，要害怕那些奉承你的朋友。奉承很少能奏效于有洞察力的人。它肤浅、自私和虚伪。它应该而且通常也会失败。然而，有些人如此渴望被欣赏，以至于他们会接受任何事情，就像一个饥饿的人会吃草和蚯蚓一样。
+有一次，北风和太阳正在争论谁比较有本事。他们正好看到有个人走过，那个人穿着一件斗篷。他们就说了，谁可以让那个人脱掉那件斗篷，就算谁比较有本事。于是，北风就拼命地吹。怎料，他吹得越厉害，那个人就越是用斗篷包紧自己。最后，北风没办法，只好放弃。接着，太阳出来晒了一下，那个人就立刻把斗篷脱掉了。于是，北风只好认输了。</description>
+    </item>
+    
+    <item>
+      <title>软件工程</title>
+      <link>https://tsukiyokai.github.io/posts/dev/swe/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/dev/swe/</guid>
+      <description>软工 Software Engineering at Google The Pragmatic Programmer: From Journeyman to Master Learn things that don&amp;rsquo;t change 文档 Design Docs at Google long-form writing的魔力 让团队学会写作 如何干好架构师 在研发流程中使用RFC Chromium docs Documentation guide 用LaTeX排版技术书籍的个人经验 Mastering the Art of Software Architecture Documentation arc42 Documentation 设计 C4 model 语言 c&amp;amp;cpp Welcome to Bjarne Stroustrup&amp;rsquo;s homepage!
+rust shell lisp 工具 pc 沉浸式翻译 uBlock Origin ide make VSCode great again scitool blog features doxygen home Doxygen Awesome OpenCV（想做成这样的网页） weggli repo Sourcetrail repo Alloy home comments on alloy - Hacker News Experiences with using Alloy in real-world projects - stackoverflow Sterling a web-based visualizer for Alloy 风格 The Zen of Python Linux kernel coding style 测试 模糊测试 变异测试 基于LLM的开源变异测试工具</description>
+    </item>
+    
+    <item>
+      <title>安全随机数</title>
+      <link>https://tsukiyokai.github.io/posts/cert/rng/</link>
+      <pubDate>Sun, 23 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/cert/rng/</guid>
+      <description>一个数字，例如8，不能称之为是随机数，随机数是指具有确定分布和概率的、位于一定阈值内的一组数字。除了传统的均匀分布随机数之外，还有非均匀分布随机数，例如二项分布、Poisson分布和指数分布等。
+许多密码学场景依赖于安全随机数生成器来生成密钥和密码随机数，如果随机数生成器生成的结果可预测，则攻击者可以将其用作后门来破解加密。因此为了能够生成安全的、不被轻易破解的密钥，需要一个随机数源。熵越大，数字随机性越强，越能得到更安全的密钥。
+随机数生成器即random number generator，RNG。根据生成结果能否被预见，随机数生成器可以分为以物理随机量作为发生源的真随机数生成器TRNG，true random number generators和使用数学算法的伪随机数生成器PRNG，pseudorandom number generators。两者区别如下：
+伪随机数生成器生成的数字只是看起来随机，但实际上是预先确定的——只需了解PRNG的状态即可重现这些生成结果。 真随机数生成器可以是硬件随机数生成器（HRNG），其每次生成都是物理环境属性的当前值，该属性以实际上不可能建模的方式不断变化。 伪随机数生成方法达不到真正随机的目标，因此一般的伪随机数生成器无法直接用于密码学。但是它们仍可以在某些程度上满足一些随机性统计测试，其中加密安全伪随机数生成器（CSPRNGS）具有专门设计用于加密的特殊功能。
+生成随机数的两种一般方法：
+测量物理现象。大自然提供了大量的现象，可以产生低水平、统计随机的“噪声”信号，包括热噪声和散粒噪声、电子电路的抖动和亚稳态、布朗运动、大气噪声。虽然“经典”（非量子）现象并不是真正随机的，但不可预测的物理系统通常可以作为随机性的来源，因此限定词“真实”和“物理”可以互换使用。从自然资源获得熵的速度取决于所测量的潜在物理现象。因此，自然发生的“真实”熵的来源被认为是阻塞的——它们的速率受到限制，直到收获足够的熵来满足需求。例如，在大多数Linux发行版上，伪设备文件/dev/random就是阻塞式的，因此用随机位填充硬盘驱动器，在使用此类熵源的系统上通常会很慢。 使用计算算法。大多数计算机生成的随机数都使用PRNG，这些算法可以自动创建具有良好随机属性的长期数字，但最终序列会重复（或者内存使用量无限制地增长）。这些随机数在许多情况下都很好，但不如用作熵源的电磁大气噪声生成的数字那么随机。这种算法可以产生看似随机的一些列值，但是这些结果实际上完全由较短的初始值（称为种子值或密钥）决定。因此，如果种子值已知，则可以再现整个看似随机的序列。这种类型的随机数生成器通常称为伪随机数生成器。这种类型的发生器通常不依赖于自然发生的熵源，尽管它可以定期由自然源播种。这种生成器类型是非阻塞的，因此它们不受外部事件的速率限制，因此适合大规模读取。 一般采用以上两种的混合方法，使用TRNG来播种加密安全的伪随机数生成器。这种方法提供从可用的自然资源中获取的随机性，并定期回退到重新播种的基于软件的加密安全伪随机数生成器。当所需的随机性读取速率超过自然收获方法满足需求的能力时，就会发生回退。这种方法避免了基于较慢且纯环境方法的随机数生成器的速率限制阻塞行为。虽然仅基于确定性逻辑的伪随机数生成器永远不能被视为最纯粹意义上的“真正的”随机数源，但实际上，即使对于要求严格的安全关键型应用，它们通常也足够了。精心设计和实现的伪随机数生成器完全可以用于安全关键的加密目的。
+硬件随机数生成器的主要用途是数据加密领域，例如创建加密和签名数据所需的随机加密密钥和随机数。HRNG预计会输出近乎完美的随机数（“全熵”），经典世界的物理过程则通常不具有此属性。实际的TRNG通常包括几个部分：
+实现产生熵的物理过程的噪声源。通常这个过程是模拟的，因此数字转换器用于将模拟源的输出转换为二进制表示形式。 提高随机位质量的调节器。 健康测试。TRNG主要用于密码算法，如果随机数的熵较低，这些算法就会被完全破解，因此通常包含测试功能。 参考资料：
+The Intel Random Number Generator by Intel NIST.SP.800-90B Recommendation for the Entropy Sources Used for Random Bit Generation OP-TEE Documentation This is the official location for OP-TEE documentation. NIST计算机安全资源中心 CSRC Projects, Publications, News, Events and Presentations </description>
+    </item>
+    
+    <item>
+      <title>回调地狱</title>
+      <link>https://tsukiyokai.github.io/posts/lang/callbackhell/</link>
+      <pubDate>Sat, 22 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/lang/callbackhell/</guid>
+      <description>证书的发布-订阅-加载流程使用一系列cl消息进行异步通信的同时需要确保正确的相对顺序，这种正确性是通过谨慎编排一系列回调函数来保证的。
+深度嵌套的回调通常被称为“callback hell”，因为它让代码可读性急剧变差且不易维护。这种“回调地狱”问题在JavaScript中早已被认识到，因为js中的所有io操作（定时器或http请求）全都是异步的。在js世界中，这一切最终催化出了面向promise的api，以求更线性地表示一系列异步操作，并导致了js promise的Promises/A+规范的产生。
+参考资料：
+Promise-Cpp with Boost.Beast sco simplest C++20 coroutine library asyncpp </description>
+    </item>
+    
+    <item>
+      <title>插件式设计</title>
+      <link>https://tsukiyokai.github.io/posts/lang/plugdesign/</link>
+      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/lang/plugdesign/</guid>
+      <description>在一些onetrack的项目中，有时需要在运行时加载库并使用其中的函数。在C语言中加载一个库很简单（dlopen、dlsym和dlclose），但C++有Name Mangling，且标准中未定义mangling的规则，所以不同编译器都用了自己的算法，因此需要通过extern &amp;quot;C&amp;quot;来声明被加载的函数，然后就可以像C语言一样了。
+main.cpp
+#include &amp;lt;dlfcn.h&amp;gt; #include &amp;lt;iostream&amp;gt; int main() { using std::cerr; using std::cout; cout &amp;lt;&amp;lt; &amp;#34;C++ dlopen demo\n\n&amp;#34;; // open the library cout &amp;lt;&amp;lt; &amp;#34;Opening hello.so...\n&amp;#34;; void *handle = dlopen(&amp;#34;./hello.so&amp;#34;, RTLD_LAZY); if (!handle) { cerr &amp;lt;&amp;lt; &amp;#34;Cannot open library: &amp;#34; &amp;lt;&amp;lt; dlerror() &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; return 1; } // load the symbol cout &amp;lt;&amp;lt; &amp;#34;Loading symbol hello...\n&amp;#34;; typedef void (*hello_t)(); // reset errors dlerror(); hello_t hello = (hello_t)dlsym(handle, &amp;#34;hello&amp;#34;); const char *dlsym_error = dlerror(); if (dlsym_error) { cerr &amp;lt;&amp;lt; &amp;#34;Cannot load symbol &amp;#39;hello&amp;#39;: &amp;#34; &amp;lt;&amp;lt; dlsym_error &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; dlclose(handle); return 1; } // use it to do the calculation cout &amp;lt;&amp;lt; &amp;#34;Calling hello.</description>
+    </item>
+    
+    <item>
+      <title>单例模式</title>
+      <link>https://tsukiyokai.github.io/posts/lang/singletonpattern/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/lang/singletonpattern/</guid>
+      <description>经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但constructor在运行期允许多次调用以生成多个实例，为了避免客户端直接使用构造函数，需要提供一种机制来保证一个类只有一个实例。单例模式就是为了解决这类问题。
+正确实现单例模式需要考虑两个问题：线程安全和顺序安全。线程安全问题通过加锁或使用同步原语基本可以得到解决，但会面临性能变差的权衡。由于C++11以后static的data racing问题已得到妥善解决（参考静态局部变量），故目前主流的单例模式都是基于这种写法，如AOSP的libutils模块从2017年起就禁止用单锁方式实现单例：
+// DO NOT USE: Please use scoped static initialization. // For instance: // MyClass&amp;amp; getInstance() { // static MyClass gInstance(...); // return gInstance; // } template &amp;lt;typename TYPE&amp;gt; class ANDROID_API Singleton { public: static TYPE&amp;amp; getInstance() { Mutex::Autolock _l(sLock); TYPE* instance = sInstance; if (instance == nullptr) { instance = new TYPE(); sInstance = instance; } return *instance; } static bool hasInstance() { Mutex::Autolock _l(sLock); return sInstance !</description>
+    </item>
+    
+    <item>
+      <title>我曾七次鄙视自己的灵魂</title>
+      <link>https://tsukiyokai.github.io/posts/z/seventimes/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/z/seventimes/</guid>
+      <description>第一次，当它本可进取时，却故作谦卑；
+第二次，当它在空虚时，用爱欲来填充；
+第三次，在困难和容易之间，它选择了容易；
+第四次，它犯了错，却借由别人也会犯错来安慰自己；
+第五次，它自由软弱，却把它认为是生命的坚韧；
+第六次，当它鄙视一张丑恶的嘴脸时，却不知那正是自己面具中的一副；
+第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏尾。</description>
+    </item>
+    
+    <item>
+      <title>吉光片羽</title>
+      <link>https://tsukiyokai.github.io/posts/z/%E5%90%89%E5%85%89%E7%89%87%E7%BE%BD/</link>
+      <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/posts/z/%E5%90%89%E5%85%89%E7%89%87%E7%BE%BD/</guid>
+      <description> 世界是普遍联系和永恒发展的 自由是对必然的认识和对客观世界的改造。认识必然，争取自由，是人类认识世界和改造世界的根本目标。 Keep Knowledge in Plain Text 公司天才太多，普通人反而稀缺，更高级管理者需要的素质往往是普通人所不齿的，大多数人都过不了自己内心这一关，你想升到20，就瞄准最让你难受的主管学习。 相遇青春，我们心中开始萌发一些对异性朦胧的情感，这是青春成长中的正常现象。在与异性交往的过程中，我们会因为对异性的欣赏、对美好的向往而愉悦，也容易把这种欣赏和向往理解为爱情。其实，这并不是真正的爱情。爱情是一种高尚的情感。爱情意味着欣赏与尊重，更需要责任和能力。面对生活中可能出现的朦胧的情感，我们应该慎重对待，理智处理。 未成熟的果实是不能采摘的，同样，未成熟的人不宜步入情场。当你具备了基本的爱的知识，具备了恋爱的生理和心理基础之后，可以积极地去寻找，但不代表着一定要立刻找到。爱与不爱都由自己心中的标准判断，这些标准可以是对对方的要求，也可以是对自己学习、事业和感情的目标规划。符合标准了而不爱，说明你害怕成长；不符合标准而接受爱，则是爱的轻率。 新的故事会在秋风中慢慢开始 不要变坏啊 </description>
+    </item>
+    
+    <item>
+      <title>autre</title>
+      <link>https://tsukiyokai.github.io/about/</link>
+      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsukiyokai.github.io/about/</guid>
+      <description>生日三月三，家乡平原省。09级太行五联中，15级东北人民大学swe，19级nhk，21级德子，22级华子。二次元，infp，全马破4，cf红名，健身，做菜，数学，摄影，游戏。我太喜欢计算机了！日拱一卒：编程语言、人工智能、算法竞赛、密码学和编译器。努力脱单中，请满足“96年以后，身高165，身体健康，情绪稳定，热爱学习，黑长直”的单身美少女和我交朋友，我的微信（base64）是zwpiy2e4。</description>
+    </item>
+    
+  </channel>
+</rss>

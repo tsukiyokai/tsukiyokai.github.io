@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="在一些onetrack的项目中，有时需要在运行时加载库并使用其中的函数。在C语言中加载一个库很简单（dlopen、dlsym和dlclose），但C&#43;&#43;有Name Mangling，且标准中未定义mangling的规则，所以不同编译器都用了自己的算法，因此需要通过extern &quot;C&quot;来声明被加载的函数，然后就可以像C语言一样了。
+main.cpp
+#include &lt;dlfcn.h&gt; #include &lt;iostream&gt; int main() { using std::cerr; using std::cout; cout &lt;&lt; &#34;C&#43;&#43; dlopen demo\n\n&#34;; // open the library cout &lt;&lt; &#34;Opening hello.so...\n&#34;; void *handle = dlopen(&#34;./hello.so&#34;, RTLD_LAZY); if (!handle) { cerr &lt;&lt; &#34;Cannot open library: &#34; &lt;&lt; dlerror() &lt;&lt; &#39;\n&#39;; return 1; } // load the symbol cout &lt;&lt; &#34;Loading symbol hello...\n&#34;; typedef void (*hello_t)(); // reset errors dlerror(); hello_t hello = (hello_t)dlsym(handle, &#34;hello&#34;); const char *dlsym_error = dlerror(); if (dlsym_error) { cerr &lt;&lt; &#34;Cannot load symbol &#39;hello&#39;: &#34; &lt;&lt; dlsym_error &lt;&lt; &#39;\n&#39;; dlclose(handle); return 1; } // use it to do the calculation cout &lt;&lt; &#34;Calling hello.">  
+
+  <title>
+    
+      插件式设计
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.1d7fe65b67f2064e8ef2be6444eb3ff386972bc4233864a46b07b46585917d4c68e009ab74ccd28ca8fc79495ea1fe14fd57e5d33d8305f83be36be77161d490.css" integrity="sha512-HX/mW2fyBk6O8r5kROs/84aXK8QjOGSkawe0ZYWRfUxo4AmrdMzSjKj8eUleof4U/Vfl0z2DBfg742vncWHUkA==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <h1>插件式设计</h1>
+
+    
+
+    <p>在一些onetrack的项目中，有时需要在运行时加载库并使用其中的函数。在C语言中加载一个库很简单（dlopen、dlsym和dlclose），但C++有Name Mangling，且标准中未定义mangling的规则，所以不同编译器都用了自己的算法，因此需要通过<code>extern &quot;C&quot;</code>来声明被加载的函数，然后就可以像C语言一样了。</p>
+<p>main.cpp</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;dlfcn.h&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;iostream&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">int</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">using</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cerr</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">using</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cout</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;C++ dlopen demo</span><span style="color:#c41a16">\n\n</span><span style="color:#c41a16">&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// open the library
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Opening hello.so...</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">void</span> <span style="color:#000">*</span><span style="color:#000">handle</span> <span style="color:#000">=</span> <span style="color:#000">dlopen</span>(<span style="color:#c41a16">&#34;./hello.so&#34;</span>, <span style="color:#000">RTLD_LAZY</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> (<span style="color:#000">!</span><span style="color:#000">handle</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">cerr</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Cannot open library: &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">dlerror</span>() <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#1c01ce">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// load the symbol
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Loading symbol hello...</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">typedef</span> <span style="color:#a90d91">void</span> (<span style="color:#000">*</span><span style="color:#000">hello_t</span>)();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// reset errors
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">dlerror</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#000">hello_t</span> <span style="color:#000">hello</span> <span style="color:#000">=</span> (<span style="color:#000">hello_t</span>)<span style="color:#000">dlsym</span>(<span style="color:#000">handle</span>, <span style="color:#c41a16">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">const</span> <span style="color:#a90d91">char</span> <span style="color:#000">*</span><span style="color:#000">dlsym_error</span> <span style="color:#000">=</span> <span style="color:#000">dlerror</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> (<span style="color:#000">dlsym_error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">cerr</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Cannot load symbol &#39;hello&#39;: &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">dlsym_error</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000">dlclose</span>(<span style="color:#000">handle</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#1c01ce">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// use it to do the calculation
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Calling hello...</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">hello</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// close the library
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Closing library...</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">dlclose</span>(<span style="color:#000">handle</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>hello.cpp</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;iostream&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">extern</span> <span style="color:#c41a16">&#34;C&#34;</span> <span style="color:#a90d91">void</span> <span style="color:#000">hello</span>() { <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;hello&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39;\n&#39;</span>; }
+</span></span></code></pre></div><p><code>extern &quot;C&quot;</code>和带大括号的<code>extern &quot;C&quot; { … }</code>区别：第一种形式的声明具有extern链接和C语言链接；第二个仅影响语言链接。所以下面两种声明是等效的：</p>
+<p>即</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#a90d91">extern</span> <span style="color:#c41a16">&#34;C&#34;</span> <span style="color:#a90d91">int</span> <span style="color:#000">foo</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">extern</span> <span style="color:#c41a16">&#34;C&#34;</span> <span style="color:#a90d91">void</span> <span style="color:#000">bar</span>();
+</span></span></code></pre></div><p>和</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#a90d91">extern</span> <span style="color:#c41a16">&#34;C&#34;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">extern</span> <span style="color:#a90d91">int</span> <span style="color:#000">foo</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">extern</span> <span style="color:#a90d91">void</span> <span style="color:#000">bar</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>dlopen API另一个问题是只能加载函数，不能加载类。加载类稍微麻烦一些，因为我们需要的是类的实例，而不仅仅是指向函数的指针。解决方法是把类的创建过程也api化了，即工厂模式。</p>
+<p>例子：use a generic polygon class as interface and the derived class triangle as implementation</p>
+<p>main.cpp</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&#34;polygon.hpp&#34;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;dlfcn.h&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;iostream&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">int</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">using</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cerr</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">using</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">cout</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// load the triangle library
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#a90d91">void</span> <span style="color:#000">*</span><span style="color:#000">triangle</span> <span style="color:#000">=</span> <span style="color:#000">dlopen</span>(<span style="color:#c41a16">&#34;./triangle.so&#34;</span>, <span style="color:#000">RTLD_LAZY</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> (<span style="color:#000">!</span><span style="color:#000">triangle</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">cerr</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Cannot load library: &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">dlerror</span>() <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#1c01ce">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// reset errors
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">dlerror</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// load the symbols
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">create_t</span> <span style="color:#000">*</span><span style="color:#000">create_triangle</span> <span style="color:#000">=</span> (<span style="color:#000">create_t</span> <span style="color:#000">*</span>)<span style="color:#000">dlsym</span>(<span style="color:#000">triangle</span>, <span style="color:#c41a16">&#34;create&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">const</span> <span style="color:#a90d91">char</span> <span style="color:#000">*</span><span style="color:#000">dlsym_error</span> <span style="color:#000">=</span> <span style="color:#000">dlerror</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> (<span style="color:#000">dlsym_error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">cerr</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Cannot load symbol create: &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">dlsym_error</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#1c01ce">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">destroy_t</span> <span style="color:#000">*</span><span style="color:#000">destroy_triangle</span> <span style="color:#000">=</span>
+</span></span><span style="display:flex;"><span>      (<span style="color:#000">destroy_t</span> <span style="color:#000">*</span>)<span style="color:#000">dlsym</span>(<span style="color:#000">triangle</span>, <span style="color:#c41a16">&#34;destroy&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#000">dlsym_error</span> <span style="color:#000">=</span> <span style="color:#000">dlerror</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> (<span style="color:#000">dlsym_error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">cerr</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Cannot load symbol destroy: &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">dlsym_error</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#1c01ce">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// create an instance of the class
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">polygon</span> <span style="color:#000">*</span><span style="color:#000">poly</span> <span style="color:#000">=</span> <span style="color:#000">create_triangle</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// use the class
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">poly</span><span style="color:#000">-&gt;</span><span style="color:#000">set_side_length</span>(<span style="color:#1c01ce">7</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;The area is: &#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">poly</span><span style="color:#000">-&gt;</span><span style="color:#000">area</span>() <span style="color:#000">&lt;&lt;</span> <span style="color:#2300ce">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// destroy the class
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">destroy_triangle</span>(<span style="color:#000">poly</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// unload the triangle library
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#000">dlclose</span>(<span style="color:#000">triangle</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>polygon.hpp</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#ifndef POLYGON_HPP
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#define POLYGON_HPP
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">polygon</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">protected</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">double</span> <span style="color:#000">side_length_</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">polygon</span>() <span style="color:#000">:</span> <span style="color:#000">side_length_</span>(<span style="color:#1c01ce">0</span>) {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">virtual</span> <span style="color:#000">~</span><span style="color:#000">polygon</span>() {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">void</span> <span style="color:#000">set_side_length</span>(<span style="color:#a90d91">double</span> <span style="color:#000">side_length</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">side_length_</span> <span style="color:#000">=</span> <span style="color:#000">side_length</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">virtual</span> <span style="color:#a90d91">double</span> <span style="color:#000">area</span>() <span style="color:#a90d91">const</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// the types of the class factories
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">typedef</span> <span style="color:#000">polygon</span> <span style="color:#000">*</span><span style="color:#000">create_t</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">typedef</span> <span style="color:#a90d91">void</span> <span style="color:#000">destroy_t</span>(<span style="color:#000">polygon</span> <span style="color:#000">*</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#endif
+</span></span></span></code></pre></div><p>triangle.cpp</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&#34;polygon.hpp&#34;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;cmath&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">triangle</span> <span style="color:#000">:</span> <span style="color:#a90d91">public</span> <span style="color:#000">polygon</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">virtual</span> <span style="color:#a90d91">double</span> <span style="color:#000">area</span>() <span style="color:#a90d91">const</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">side_length_</span> <span style="color:#000">*</span> <span style="color:#000">side_length_</span> <span style="color:#000">*</span> <span style="color:#000">sqrt</span>(<span style="color:#1c01ce">3</span>) <span style="color:#000">/</span> <span style="color:#1c01ce">2</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// the class factories
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">extern</span> <span style="color:#c41a16">&#34;C&#34;</span> <span style="color:#000">polygon</span> <span style="color:#000">*</span><span style="color:#000">create</span>() { <span style="color:#a90d91">return</span> <span style="color:#a90d91">new</span> <span style="color:#000">triangle</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">extern</span> <span style="color:#c41a16">&#34;C&#34;</span> <span style="color:#a90d91">void</span> <span style="color:#000">destroy</span>(<span style="color:#000">polygon</span> <span style="color:#000">*</span><span style="color:#000">p</span>) { <span style="color:#a90d91">delete</span> <span style="color:#000">p</span>; }
+</span></span></code></pre></div><p>通过上面的例子可以总结出c++的插件系统基本都是基于这样的原理：</p>
+<ol>
+<li>定义纯虚基类作为interface。</li>
+<li>把实现类封装为dll文件，用LoadLibrary运行时载入。</li>
+<li>扩展接口不用C++而是用pure C。即通过C API获取插件对象实例。因为一个基本的常识：C++ ABI在不同编译器、不同编译器版本之间有差异，而的C ABI是稳定的。</li>
+</ol>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/372381276">插件式可扩展架构设计心得 ES2049 Studio</a></li>
+<li><a href="https://tldp.org/HOWTO/C++-dlopen/">C++ dlopen mini HOWTO</a>: How to dynamically load C++ functions and classes using the dlopen API.</li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

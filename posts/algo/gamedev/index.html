@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="GridMap 栅格地图（GridMap）的定义：将连续空间离散化成一个个栅格。栅格地图使用经典的二维直角坐标系（笛卡尔坐标系）对真实世界进行映射，其数据结构为二维数组。在一幅大小为50*30的栅格地图grid[30][50]上，直角坐标为(x,y)的点处取值为grid[y][x]，“y down”与“y up”实际上没有任何区别。
+jsoncpp 寻路算法 寻路试图解决的问题是如何在地图上从起点到目标找到一条好的路径——避开障碍物、避开敌人，并最小化成本（燃料、时间、距离、设备、金钱等）。在实际对局中要达成最佳效果需要同时兼顾寻路和运动：对于大局、缓慢变化的障碍和长路径，优先使用寻路；对于局部区域、快速变化和短路径，优先使用运动。
+A*结合了Dijkstra算法（偏向于靠近起点的顶点）和贪心最佳优先搜索（偏向于靠近目标的顶点）。g(n)表示从起点到任何顶点n的路径成本，而h(n)表示从顶点n到目标的启发式估计成本。A*在从起点移动到目标时平衡了这两者。在主循环的每次迭代中，它检查具有最低f(n)=g(n)&#43;h(n)的顶点n。
+启发式函数h(n)为A*提供了从任何顶点到目标点的最小成本估计。选择一个好的启发式函数是很重要的，甚至可以用来控制A*的行为：
+AI for NPC https://www.aigamesnetwork.org/main_events_ainpc/
+计算机科学和信息理论的创始人（图灵和香农）将游戏视为应用人工智能的优秀测试平台。多年来，该领域的研究主要集中在象棋、跳棋和围棋等策略游戏上。一些显著的人工智能成功案例（例如，IBM的深蓝和最近的谢弗“完美”跳棋玩家）是手动编程的，但最近越来越强调自我学习的程序，或者通过自我对弈的时间差学习，或共同进化。人们对比较这些方法以及开发新的混合技术的兴趣日益增加。商业游戏使用越来越复杂的模拟环境，并向人类玩家呈现接近照片现实主义的世界观。随着虚拟世界变得越来越复杂，设计具有足够有趣和可信行为的非玩家角色（NPC）变得更加困难。目前的NPC控制技术主要涉及有限状态机、脚本和搜索等方法。大多数行为是手动编程的，涉及大量人力来编码和测试。尽管游戏公司偶尔使用诸如遗传算法和神经网络等人工智能技术，但游戏中使用的方法往往落后于机器学习的最新技术。同样，机器学习和人工智能也可以通过将算法应用于比通常遇到的更具挑战性的环境，从游戏中获益。此外，随着游戏利用更真实的物理引擎，游戏与机器人研究之间的协同作用有更大的空间：控制一个类人机器人或非玩家角色（NPC）将有很多共同之处。
+资料：
+RedBlob的A*系列 介绍、实现、制图、Amit’s A* Pages D* Lite 仓库 影响图 The Core Mechanics of Influence Mapping Influence Maps I Influence Maps II - Practical Applications GameAIPro2_Chapter30_Modular_Tactical_Influence_Maps.pdf AI Influence Maps Modular Influence Map System (Imap) ytb
+https://gdcvault.com/play/1025243/Spatial-Knowledge-Representation-through-Modular
+Building a Better Centaur: AI at Massive Scale
+Modular, Scalable, Influence Map System
+ccinfluence
+Layered Influence Map (IMap).
+行为树 A survey of Behavior Trees in robotics and AI BehaviorTree.">  
+
+  <title>
+    
+      团队赛指北
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.1d7fe65b67f2064e8ef2be6444eb3ff386972bc4233864a46b07b46585917d4c68e009ab74ccd28ca8fc79495ea1fe14fd57e5d33d8305f83be36be77161d490.css" integrity="sha512-HX/mW2fyBk6O8r5kROs/84aXK8QjOGSkawe0ZYWRfUxo4AmrdMzSjKj8eUleof4U/Vfl0z2DBfg742vncWHUkA==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <h1>团队赛指北</h1>
+
+    
+
+    <h2 id="gridmap">GridMap</h2>
+<p>栅格地图（GridMap）的定义：将连续空间离散化成一个个栅格。栅格地图使用经典的二维直角坐标系（笛卡尔坐标系）对真实世界进行映射，其数据结构为二维数组。在一幅大小为50*30的栅格地图grid[30][50]上，直角坐标为(x,y)的点处取值为grid[y][x]，“y down”与“y up”实际上没有任何区别。</p>
+<h2 id="jsoncpp">jsoncpp</h2>
+<h2 id="寻路算法">寻路算法</h2>
+<p>寻路试图解决的问题是如何在地图上从起点到目标找到一条好的路径——避开障碍物、避开敌人，并最小化成本（燃料、时间、距离、设备、金钱等）。在实际对局中要达成最佳效果需要同时兼顾寻路和运动：对于大局、缓慢变化的障碍和长路径，优先使用寻路；对于局部区域、快速变化和短路径，优先使用运动。</p>
+<p>A*结合了Dijkstra算法（偏向于靠近起点的顶点）和贪心最佳优先搜索（偏向于靠近目标的顶点）。g(n)表示从起点到任何顶点n的路径成本，而h(n)表示从顶点n到目标的启发式估计成本。A*在从起点移动到目标时平衡了这两者。在主循环的每次迭代中，它检查具有最低f(n)=g(n)+h(n)的顶点n。</p>
+<p>启发式函数h(n)为A*提供了从任何顶点到目标点的最小成本估计。选择一个好的启发式函数是很重要的，甚至可以用来控制A*的行为：</p>
+<h2 id="ai-for-npc">AI for NPC</h2>
+<p><a href="https://www.aigamesnetwork.org/main_events_ainpc/">https://www.aigamesnetwork.org/main_events_ainpc/</a></p>
+<blockquote>
+<p>计算机科学和信息理论的创始人（图灵和香农）将游戏视为应用人工智能的优秀测试平台。多年来，该领域的研究主要集中在象棋、跳棋和围棋等策略游戏上。一些显著的人工智能成功案例（例如，IBM的深蓝和最近的谢弗“完美”跳棋玩家）是手动编程的，但最近越来越强调自我学习的程序，或者通过自我对弈的时间差学习，或共同进化。人们对比较这些方法以及开发新的混合技术的兴趣日益增加。商业游戏使用越来越复杂的模拟环境，并向人类玩家呈现接近照片现实主义的世界观。随着虚拟世界变得越来越复杂，设计具有足够有趣和可信行为的非玩家角色（NPC）变得更加困难。目前的NPC控制技术主要涉及有限状态机、脚本和搜索等方法。大多数行为是手动编程的，涉及大量人力来编码和测试。尽管游戏公司偶尔使用诸如遗传算法和神经网络等人工智能技术，但游戏中使用的方法往往落后于机器学习的最新技术。同样，机器学习和人工智能也可以通过将算法应用于比通常遇到的更具挑战性的环境，从游戏中获益。此外，随着游戏利用更真实的物理引擎，游戏与机器人研究之间的协同作用有更大的空间：控制一个类人机器人或非玩家角色（NPC）将有很多共同之处。</p>
+</blockquote>
+<p>资料：</p>
+<ol>
+<li>RedBlob的A*系列 <a href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">介绍</a>、<a href="https://www.redblobgames.com/pathfinding/a-star/implementation.html">实现</a>、<a href="https://www.redblobgames.com/pathfinding/a-star/making-of.html">制图</a>、<a href="https://theory.stanford.edu/~amitp/GameProgramming/">Amit’s A* Pages</a></li>
+<li>D* Lite <a href="https://github.com/PathPlanning/DstarLite">仓库</a></li>
+</ol>
+<h2 id="影响图">影响图</h2>
+<ul>
+<li><a href="https://www.gamedev.net/articles/programming/artificial-intelligence/the-core-mechanics-of-influence-mapping-r2799/">The Core Mechanics of Influence Mapping</a></li>
+<li><a href="https://gameschoolgems.blogspot.com/2009/12/influence-maps-i.html">Influence Maps I</a></li>
+<li><a href="https://gameschoolgems.blogspot.com/2010/03/influence-maps-ii-practical.html">Influence Maps II - Practical Applications</a></li>
+<li><a href="https://www.gameaipro.com/GameAIPro2/GameAIPro2_Chapter30_Modular_Tactical_Influence_Maps.pdf">GameAIPro2_Chapter30_Modular_Tactical_Influence_Maps.pdf</a></li>
+<li><a href="https://discussions.unity.com/t/ai-influence-maps/482326/20">AI Influence Maps</a></li>
+</ul>
+<p><img src="https://europe1.discourse-cdn.com/unity/original/4X/8/9/d/89dcc1d426aa1d2b3dab3ae22bcaa42fc9e63dc7.png" alt=""></p>
+<p><img src="https://www.nooparmygames.com/WF-UtilityAI-Unreal/images/influencemaps/gameplaydebugger.png" alt=""></p>
+<p><img src="https://uploads.gamedev.net/forums/monthly_2021_05/513593bbfba6431ca6b4053e065b6bdb.image.png" alt=""></p>
+<p><img src="https://europe1.discourse-cdn.com/unity/original/4X/6/a/7/6a769b2aeeca19c82f111bac7d7e28b93cdfb373.png" alt=""></p>
+<p>Modular Influence Map System (Imap) <a href="https://www.youtube.com/watch?v=6RGquWxNock">ytb</a></p>
+<p><a href="https://gdcvault.com/play/1025243/Spatial-Knowledge-Representation-through-Modular">https://gdcvault.com/play/1025243/Spatial-Knowledge-Representation-through-Modular</a></p>
+<p><a href="https://www.gdcvault.com/play/1021848/Building-a-Better-Centaur-AI">Building a Better Centaur: AI at Massive Scale</a></p>
+<p><a href="https://www.gameai.com/imap.php">Modular, Scalable, Influence Map System</a></p>
+<p><a href="https://github.com/mnem/ccinfluence">ccinfluence</a></p>
+<p><a href="https://github.com/river34/game-imap">Layered Influence Map (IMap).</a></p>
+<h2 id="行为树">行为树</h2>
+<ul>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0921889022000513">A survey of Behavior Trees in robotics and AI</a></li>
+<li><a href="https://www.behaviortree.dev/">BehaviorTree.CPP 4.6</a></li>
+<li><a href="https://escholarship.mcgill.ca/concern/theses/fj236563h">回合制游戏中演变行为树的实际和理论问题</a></li>
+<li><a href="https://scholar.google.com/scholar?q=B.G.%20Weber%2C%20M.%20Mateas%2C%20A.%20Jhala%2C%20Building%20Human-Level%20AI%20for%20Real-Time%20Strategy%20Games%2C%20in%3A%202011%20AAAI%20Fall%20Symposium%20Series%2C%202011.">Building Human-Level AI for Real-Time Strategy Games</a></li>
+</ul>
+<h2 id="蒙特卡洛树搜索">蒙特卡洛树搜索</h2>
+<h2 id="强化学习">强化学习</h2>
+<hr>
+<p>常用算法：</p>
+<ul>
+<li>fsm：管理单个英雄的行为，并根据健康、敌人接近度和团队指令等条件在攻击、撤退状态之间转换。</li>
+<li>Behavior Trees：行为树提供了一种层次结构，用于通过节点定义复杂行为，这些节点可以是动作、条件或组合。适合编写复杂的动作序列，例如技能连击和协调攻击。相比于FSM，提供了更多的灵活性和模块化。</li>
+<li>Influence Maps：影响图是覆盖在游戏世界上的网格，表示不同区域的控制或威胁水平，受单位或环境因素的影响。对于战略定位和移动非常有用，因为英雄可以向高影响力的友好区域移动以进行攻击行动，并避免高威胁的敌方区域。</li>
+<li>Monte Carlo Tree Search：MCTS是一种决策算法，通过对决策空间进行随机采样来评估潜在的行动并选择最有前景的一个。用于高层次的战略决策，例如何时进攻或撤退，以及在不确定环境中寻找最佳的行动顺序或技能组合。</li>
+<li>Formation Algorithms：旨在维持单位编队的特定算法，例如领导跟随模型或鸟群算法。对于维持进攻或防守阵型至关重要，确保英雄在移动和战斗期间相互之间保持最佳位置。</li>
+<li>Utility-Based Systems：效用系统根据不同动作的可取性为其分配分数，得分最高的动作被选中。适用于快速决策，例如在特定情况下选择最佳技能或判断是进攻还是撤退。</li>
+<li>寻路算法：A*、D*、potential fields。对移动和定位至关重要，确保英雄能够高效地到达目标，同时避开障碍和威胁。</li>
+<li>Constraint Satisfaction Problems：CSP算法通过寻找满足一组约束的变量值来解决问题。可用于确保技能组合和英雄位置符合特定战术约束，例如确保某些技能一起使用或英雄保持特定距离。</li>
+</ul>
+<p>示例场景：</p>
+<ul>
+<li>技能组合：使用行为树来排列技能使用顺序，确保某些技能组合使用以达到最大效果。遗传算法可以优化这些序列。</li>
+<li>角色组合：使用遗传算法或强化学习根据协同作用和对抗敌方团队来确定最佳英雄组合。——没时间训练，直接根据游戏经验人肉组合。</li>
+<li>维持阵型：实施领导-跟随模型，其中一个英雄充当领导者，其他英雄按照预定阵型跟随。影响图也可以根据战场情况指导阵型调整。</li>
+<li>进攻与撤退：使用基于效用的系统或蒙特卡洛树搜索（MCTS）来决定何时进攻或撤退。影响图可以提供有关安全区和高威胁区域的战略洞察。</li>
+</ul>
+<hr>
+<p>【Influence Map】</p>
+<p>【Behavior Trees】</p>
+<p>【boids】</p>
+<p>通过创建称为鸟群体（boids）的简单实体来模拟群体行为。鸟群体存在于二维平面上，通过三个简单规则运作——对齐、凝聚和分离。</p>
+<ul>
+<li>
+<p>对齐使得群体智能体与附近的群体智能体匹配速度。</p>
+</li>
+<li>
+<p>凝聚力使得鸟群趋向于最近鸟群的质心。</p>
+</li>
+<li>
+<p>分离防止群体智能体彼此靠得太近。</p>
+</li>
+<li>
+<p><a href="https://github.com/jyanar/Boids/tree/master">https://github.com/jyanar/Boids/tree/master</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sarckk/boids/tree/main">https://github.com/sarckk/boids/tree/main</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/62804710/how-to-make-boids-pursue-a-movable-character-in-a-2d-game">https://stackoverflow.com/questions/62804710/how-to-make-boids-pursue-a-movable-character-in-a-2d-game</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/fragmentblog/simulating-flocking-with-the-boids-algorithm-92aef51b9e00">使用 Boids 算法模拟群聚行为</a></p>
+</li>
+<li>
+<p><a href="https://vojtatom.github.io/flocking.cpp/">I flock, you flock</a></p>
+</li>
+<li>
+<p><a href="https://www.jdxdev.com/blog/2021/03/19/boids-for-rts/">Boids for RTS</a></p>
+</li>
+</ul>
+<p>【Potential Fields】</p>
+<ul>
+<li><a href="https://cdn.aaai.org/ojs/18670/18670-52-22331-1-10-20210927.pdf">The Rise of Potential Fields in Real Time Strategy Bots</a></li>
+<li><a href="https://ifaamas.org/Proceedings/aamas08/proceedings/pdf/paper/AAMAS08_0269.pdf">Using Multi-agent Potential Fields in Real-time Strategy Games</a></li>
+</ul>
+<p>RVO2是目前障碍物避让的黄金标准</p>
+<p><a href="https://gamma.cs.unc.edu/RVO2/">https://gamma.cs.unc.edu/RVO2/</a></p>
+<p><img src="https://gamma.cs.unc.edu/RVO2/images/RVO2.gif" alt=""></p>
+<p>Crowd Flows</p>
+<p>In our model, a dynamic potential field simultaneously integrates global navigation with moving obstacles</p>
+<p><a href="https://grail.cs.washington.edu/projects/crowd-flows/">https://grail.cs.washington.edu/projects/crowd-flows/</a></p>
+<p><a href="https://howtorts.github.io/2014/01/14/avoidance-behaviours.html">Avoidance Behaviours</a></p>
+<p>Flow Fields</p>
+<p><a href="https://howtorts.github.io/examples/4-basic-flow-fields/index.html">https://howtorts.github.io/examples/4-basic-flow-fields/index.html</a></p>
+<p><a href="https://github.com/rfranco84/Vector2D">Vector2D</a></p>
+<p>【kite】</p>
+<p><a href="https://waywardstrategy.com/2024/03/12/of-archers-and-artillery-range-dynamics-in-rts/">Of Archers and Artillery: Range Dynamics in RTS</a></p>
+<p>【misc】</p>
+<ul>
+<li><a href="https://dave-lecompte.gitbook.io/gamedev-book">GameDev Book</a></li>
+<li><a href="https://gamedev.stackexchange.com/">gamedev.stackexchange</a></li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

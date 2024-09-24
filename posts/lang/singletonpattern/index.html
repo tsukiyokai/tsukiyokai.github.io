@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但constructor在运行期允许多次调用以生成多个实例，为了避免客户端直接使用构造函数，需要提供一种机制来保证一个类只有一个实例。单例模式就是为了解决这类问题。
+正确实现单例模式需要考虑两个问题：线程安全和顺序安全。线程安全问题通过加锁或使用同步原语基本可以得到解决，但会面临性能变差的权衡。由于C&#43;&#43;11以后static的data racing问题已得到妥善解决（参考静态局部变量），故目前主流的单例模式都是基于这种写法，如AOSP的libutils模块从2017年起就禁止用单锁方式实现单例：
+// DO NOT USE: Please use scoped static initialization. // For instance: // MyClass&amp; getInstance() { // static MyClass gInstance(...); // return gInstance; // } template &lt;typename TYPE&gt; class ANDROID_API Singleton { public: static TYPE&amp; getInstance() { Mutex::Autolock _l(sLock); TYPE* instance = sInstance; if (instance == nullptr) { instance = new TYPE(); sInstance = instance; } return *instance; } static bool hasInstance() { Mutex::Autolock _l(sLock); return sInstance !">  
+
+  <title>
+    
+      单例模式
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.1d7fe65b67f2064e8ef2be6444eb3ff386972bc4233864a46b07b46585917d4c68e009ab74ccd28ca8fc79495ea1fe14fd57e5d33d8305f83be36be77161d490.css" integrity="sha512-HX/mW2fyBk6O8r5kROs/84aXK8QjOGSkawe0ZYWRfUxo4AmrdMzSjKj8eUleof4U/Vfl0z2DBfg742vncWHUkA==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <h1>单例模式</h1>
+
+    
+
+    <p>经常有这样一些特殊的类：必须保证它们在系统中只存在一个实例，才能确保其逻辑正确性。但constructor在运行期允许多次调用以生成多个实例，为了避免客户端直接使用构造函数，需要提供一种机制来保证一个类只有一个实例。单例模式就是为了解决这类问题。</p>
+<p><img src="https://www.oodesign.com/images/design_patterns/creational/singleton_implementation_-_uml_class_diagram.gif" alt=""></p>
+<p>正确实现单例模式需要考虑两个问题：线程安全和顺序安全。线程安全问题通过加锁或使用同步原语基本可以得到解决，但会面临性能变差的权衡。由于C++11以后static的data racing问题已得到妥善解决（参考<a href="https://zh.cppreference.com/w/cpp/language/storage_duration#.E9.9D.99.E6.80.81.E5.B1.80.E9.83.A8.E5.8F.98.E9.87.8F">静态局部变量</a>），故目前主流的单例模式都是基于这种写法，如AOSP的libutils模块从2017年起就禁止用单锁方式实现单例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#177500">// DO NOT USE: Please use scoped static initialization.
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// For instance:
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">//     MyClass&amp; getInstance() {
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">//         static MyClass gInstance(...);
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">//         return gInstance;
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">//     }
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">template</span> <span style="color:#000">&lt;</span><span style="color:#a90d91">typename</span> <span style="color:#000">TYPE</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">ANDROID_API</span> <span style="color:#000">Singleton</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#000">TYPE</span><span style="color:#000">&amp;</span> <span style="color:#000">getInstance</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">Mutex</span><span style="color:#000">::</span><span style="color:#000">Autolock</span> <span style="color:#000">_l</span>(<span style="color:#000">sLock</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#000">TYPE</span><span style="color:#000">*</span> <span style="color:#000">instance</span> <span style="color:#000">=</span> <span style="color:#000">sInstance</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> (<span style="color:#000">instance</span> <span style="color:#000">==</span> <span style="color:#a90d91">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">instance</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">TYPE</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#000">sInstance</span> <span style="color:#000">=</span> <span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">*</span><span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#a90d91">bool</span> <span style="color:#000">hasInstance</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">Mutex</span><span style="color:#000">::</span><span style="color:#000">Autolock</span> <span style="color:#000">_l</span>(<span style="color:#000">sLock</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">sInstance</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nullptr</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">protected</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">~</span><span style="color:#000">Singleton</span>() { }
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span>() { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">private</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span>(<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span> <span style="color:#a90d91">operator</span> <span style="color:#000">=</span> (<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#000">Mutex</span> <span style="color:#000">sLock</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#000">TYPE</span><span style="color:#000">*</span> <span style="color:#000">sInstance</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>顺序问题则可以按初始化顺序和销毁顺序分别进行讨论。</p>
+<p>C++的初始化有很多种，根据<a href="https://zh.cppreference.com/w/cpp/language/initialization">cppref - 初始化</a>中写的：“所有具有静态存储期的非局部变量的初始化会作为程序启动的一部分在main函数的执行之前进行（除非被延迟）；所有具有线程局部存储期的非局部变量的初始化会作为线程启动的一部分进行，按顺序早于线程函数的执行开始。”可知，全局和局部静态变量的初始化发生于两个截然不同的阶段。</p>
+<p>又由于同一个翻译单元内对象是从上到下初始化的，但不同翻译单元中具有静态存储期的对象的初始化顺序不确定（详见<a href="https://en.cppreference.com/w/cpp/language/siof">Static Initialization Order Fiasco</a>），因此我们写代码时不能假设某个全局变量在另一个全局变量之前初始化完成，必须保证全局变量在其构造函数中不能调用其他全局变量提供的接口，因为实际运行中那个被调用接口的对象有可能还没有来得及初始化，构造函数未执行，成员变量没有初始化，各种资源可能没来得及申请。为了解决这个问题，单例模式通常会有一个静态函数用于返回单例类的对象的引用，这样就保证了在使用这个单例对象时该对象肯定是被初始化了的。</p>
+<p>单例模式在解决全局变量初始化问题的同时又引入了一个新的问题，由于单例模式解决这个问题是通过“静态局部变量在控制流首次经过它的声明时才会被初始化（除非它被零初始化或常量初始化，这可以在首次进入块前进行）”这一点来保证，但块作用域静态变量的析构函数在初始化已成功的情况下直到程序退出时才被调用，而多个静态对象的析构顺序是不确定的。当静态对象在析构时依赖了另一个静态对象就会出现问题，其原理与构造顺序不确定类似。即由于析构顺序是随机的，多个静态变量在销毁时也不能存在相互依赖关系。完整的解决方案可以参考《Modern C++ Design》中的phenix singleton这一例子。</p>
+<p>局部静态变量初始化机制的核心其实是C标准库提供的<code>exit()</code>和<code>atexit(...)</code>函数，在程序的编译过程中，编译器会在你的块作用域静态变量周围注入一些其他代码（参考：<a href="https://stackoverflow.com/a/71574301">Who is responsible for destructing the block scoped static Singleton instance?</a>）。下面是一个返回静态局部变量的引用的静态函数的编译期伪码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#a90d91">static</span> <span style="color:#000">MyClass</span> <span style="color:#000">&amp;</span><span style="color:#000">instance</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#000">MyClass</span> <span style="color:#000">inst</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">/*** COMPILER GENERATED ***/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#a90d91">bool</span> <span style="color:#000">b_isConstructed</span> <span style="color:#000">=</span> <span style="color:#a90d91">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> (<span style="color:#000">!</span><span style="color:#000">b_isConstructed</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ConstructInstance</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#000">b_isConstructed</span> <span style="color:#000">=</span> <span style="color:#a90d91">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#177500">// Push dctor to the list of exit functions
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>        <span style="color:#000">atexit</span>(<span style="color:#000">~</span><span style="color:#000">MyClass</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">/*** COMPILER GENERATED ***/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">inst</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>从C++11起普遍利用使用静态局部变量来实现线程安全的单例模式。因为这种写法的发明者是Scott Meyers，因此也被称为Meyer’s Singleton。下面是C++11标准中对静态存储期（static storage duration）更为详细的描述：</p>
+<blockquote>
+<p>The zero-initialization of all block-scope variables with static storage duration or thread storage duration is performed before any other initialization takes place. Constant initialization of a block-scope entity with static storage duration, if applicable, is performed before its block is first entered. An implementation is permitted to perform early initialization of other block-scope variables with static or thread storage duration under the same conditions that an implementation is permitted to statically initialize a variable with static or thread storage duration in namespace scope. Otherwise such a variable is initialized the first time control passes through its declaration; such a variable is considered initialized upon the completion of its initialization. If the initialization exits by throwing an exception, the initialization is not complete, so it will be tried again the next time control enters the declaration. If control enters the declaration concurrently while the variable is being initialized, the concurrent execution shall wait for completion of the initialization. If control re-enters the declaration recursively while the variable is being initialized, the behavior is undefined.</p>
+</blockquote>
+<p>Meyer’s Singleton的一种朴素实现如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">Singleton</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">static</span> <span style="color:#000">Singleton</span> <span style="color:#000">&amp;</span><span style="color:#000">getInstance</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#000">Singleton</span> <span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Singleton</span>(<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span> <span style="color:#000">&amp;</span>) <span style="color:#000">=</span> <span style="color:#a90d91">delete</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Singleton</span> <span style="color:#000">&amp;</span><span style="color:#a90d91">operator</span><span style="color:#000">=</span>(<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span> <span style="color:#000">&amp;</span>) <span style="color:#000">=</span> <span style="color:#a90d91">delete</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">string</span> <span style="color:#000">method</span>() { <span style="color:#a90d91">return</span> <span style="color:#c41a16">&#34;Singleton pattern&#34;</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">private</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Singleton</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Singleton init&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#000">~</span><span style="color:#000">Singleton</span>() {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">int</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Enter&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">Singleton</span><span style="color:#000">::</span><span style="color:#000">getInstance</span>().<span style="color:#000">method</span>() <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Leave&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Enter
+</span></span><span style="display:flex;"><span>Singleton init
+</span></span><span style="display:flex;"><span>Singleton pattern
+</span></span><span style="display:flex;"><span>Leave
+</span></span></code></pre></div><p>很明显，Meyer’s Singleton就是是java选手们所谓的lazy init，冲上来就初始化的那个写法用的是非局部静态变量：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">My</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">My</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;my init&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">static</span> <span style="color:#000">My</span> <span style="color:#000">m</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">int</span> <span style="color:#000">main</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;main&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>my init
+</span></span><span style="display:flex;"><span>main
+</span></span></code></pre></div><p>什么时候用static，推荐阅读一篇1996年的文章：<a href="https://dl.acm.org/doi/fullHtml/10.1145/332159.332165">Statics: Schizophrenia for C++ Programmers</a>。</p>
+<p>Meyer’s Singleton的实现较为固定，因此如果系统中的单例类很多，会有很多相似代码，很自然想到用泛型来减少重复。这里必须在基类中泛子类的型，借助CRTP技巧的实现方案如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#a90d91">template</span> <span style="color:#000">&lt;</span><span style="color:#a90d91">typename</span> <span style="color:#000">Derived</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">Singleton</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#000">Derived</span><span style="color:#000">&amp;</span> <span style="color:#000">GetInstance</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">static</span> <span style="color:#000">Derived</span> <span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span>(<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span>) <span style="color:#000">=</span> <span style="color:#a90d91">delete</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span> <span style="color:#a90d91">operator</span><span style="color:#000">=</span>(<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span>) <span style="color:#000">=</span> <span style="color:#a90d91">delete</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#a90d91">protected</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span>() <span style="color:#000">=</span> <span style="color:#a90d91">default</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000">~</span><span style="color:#000">Singleton</span>() <span style="color:#000">=</span> <span style="color:#a90d91">default</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>客户端代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;bits/stdc++.h&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span><span style="color:#a90d91">using</span> <span style="color:#a90d91">namespace</span> <span style="color:#000">std</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// Singleton.hpp
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">template</span> <span style="color:#000">&lt;</span><span style="color:#a90d91">typename</span> <span style="color:#000">Derived</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">Singleton</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">static</span> <span style="color:#000">Derived</span><span style="color:#000">&amp;</span> <span style="color:#000">GetInstance</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">static</span> <span style="color:#000">Derived</span> <span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span>(<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span>) <span style="color:#000">=</span> <span style="color:#a90d91">delete</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span> <span style="color:#a90d91">operator</span><span style="color:#000">=</span>(<span style="color:#a90d91">const</span> <span style="color:#000">Singleton</span><span style="color:#000">&amp;</span>) <span style="color:#000">=</span> <span style="color:#a90d91">delete</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#a90d91">protected</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Singleton</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;base init&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; };
+</span></span><span style="display:flex;"><span>    <span style="color:#000">~</span><span style="color:#000">Singleton</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;~base init&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// MySingleton.hpp
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// #include &#34;Singleton.hpp&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">MySingleton</span> <span style="color:#000">:</span> <span style="color:#a90d91">public</span> <span style="color:#000">Singleton</span><span style="color:#000">&lt;</span><span style="color:#000">MySingleton</span><span style="color:#000">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">friend</span> <span style="color:#000">Singleton</span><span style="color:#000">&lt;</span><span style="color:#000">MySingleton</span><span style="color:#000">&gt;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#a90d91">public</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">void</span> <span style="color:#000">method</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;my method!&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#a90d91">private</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">MySingleton</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;my init&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; };
+</span></span><span style="display:flex;"><span>    <span style="color:#000">~</span><span style="color:#000">MySingleton</span>() { <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;~my init&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>; };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">int</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Enter main&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000">MySingleton</span><span style="color:#000">::</span><span style="color:#000">GetInstance</span>().<span style="color:#000">method</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">cout</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#c41a16">&#34;Leave main&#34;</span> <span style="color:#000">&lt;&lt;</span> <span style="color:#000">endl</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Enter main
+</span></span><span style="display:flex;"><span>base init
+</span></span><span style="display:flex;"><span>my init
+</span></span><span style="display:flex;"><span>my method!
+</span></span><span style="display:flex;"><span>Leave main
+</span></span><span style="display:flex;"><span>~my init
+</span></span><span style="display:flex;"><span>~base init
+</span></span></code></pre></div><p>一个设计好的类应该“<a href="http://principles-wiki.net/principles:easy_to_use_and_hard_to_misuse">Easy To Use And Hard To Misuse</a>”，因此思考上述问题应该是类设计者的责任，而不是使用者的责任。下面是CRTP版单例模式的一些实现上的考虑：</p>
+<ol>
+<li>静态局部变量，静态入口函数。</li>
+<li>为了避免有人无聊到用本例中的模版基类直接去new派生类，防止不必要的使用，比如Singleton&lt;MySingleton&gt; sm，模版基类的构造析构函数应该用protected来修饰。</li>
+<li>基类Singleton析构函数非虚即可，理由详见<a href="https://www.cs.technion.ac.il/users/yechiel/c++-faq/virtual-dtors.html">[20.7] When should my destructor be virtual?</a>和<a href="http://www.gotw.ca/publications/mill18.htm">Virtuality</a>。一般来说，基类都有析构函数，且这个析构函数一般应该是个虚函数。什么情况下父类中可以没有析构函数或者析构函数可以不为虚呢？一、子类并没有析构函数的情况；二、代码中不会出现使用指向派生类对象的基类指针来删除对象的情况。</li>
+<li>强制禁用拷贝构造函数和复制赋值运算符，而且最好是public=delete而不是private=delete。理由是Scott Meyers在Effective Modern C++中提到：Prefer deleted functions to private undefined ones，被禁用的函数通常应该是公开的，它会输出更合明确的错误消息，因为编译器会先检查可访问性，再检查是否弃置。从表达力看，delete蕴含的感情比private更强烈。private表示你不需要感知，而delete表示你被禁止使用。</li>
+<li>子类不用再禁用一遍上面两个函数，理由是从C++11起在基类已经禁用这俩货的情况下子类也会自动弃置它们。这样客户端就又可以少写两行代码了。参见<a href="https://zh.cppreference.com/w/cpp/language/copy_constructor">4 弃置的隐式声明的复制构造函数</a>。如果满足下列任一条件，那么类T的隐式声明的复制构造函数被定义为弃置的(C++11起)：T拥有无法复制的直接或虚基类（拥有被弃置、不可访问或有歧义的复制构造函数）。复制赋值运算符operator=同理，参考<a href="https://zh.cppreference.com/w/cpp/language/copy_assignment">4 弃置的隐式声明的复制赋值运算符</a>。</li>
+<li>分类讨论子类和基类的构造析构函数能否私有化：
+<ul>
+<li>基类保护+子类私有：父子权限不同可能有告警，否则首选。</li>
+<li>基类保护+子类保护：叶子类的析构函数一般不受保护，有点奇怪。</li>
+<li>基类保护+子类公共：可以省去友元，但子类权限没有最小化。</li>
+<li>基类私有：报错基类Singleton&lt;MySingleton&gt;构造器私有。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>一个通用的准则是，任何基类的析构函数都必须是public and virtual或protected and non-virtual。</p>
+</blockquote>
+<p>还有另一种写法是基于宏展开的代码生成技术，以<a href="https://blog.shipengx.com/archives/f61b5eee.html">apollo</a>的<code>modules/perception/common/algorithm/sensor_manager/sensor_manager.h</code>为例，一个普通的SensorManager类经宏定义<code>DECLARE_SINGLETON(SensorManager)</code>修饰成为单例类。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">SensorManager</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// other code
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span> <span style="color:#a90d91">private</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">DECLARE_SINGLETON</span>(<span style="color:#000">SensorManager</span>)
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>该宏实现为：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#633820">#ifndef CYBER_COMMON_MACROS_H_
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#define CYBER_COMMON_MACROS_H_
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;iostream&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;memory&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;mutex&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;type_traits&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&lt;utility&gt;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#include</span> <span style="color:#633820">&#34;cyber/base/macros.h&#34;</span><span style="color:#633820">
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#000">DEFINE_TYPE_TRAIT</span>(<span style="color:#000">HasShutdown</span>, <span style="color:#000">Shutdown</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">template</span> <span style="color:#000">&lt;</span><span style="color:#a90d91">typename</span> <span style="color:#000">T</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">typename</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">enable_if</span><span style="color:#000">&lt;</span><span style="color:#000">HasShutdown</span><span style="color:#000">&lt;</span><span style="color:#000">T</span><span style="color:#000">&gt;::</span><span style="color:#000">value</span><span style="color:#000">&gt;::</span><span style="color:#000">type</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">CallShutdown</span>(<span style="color:#000">T</span> <span style="color:#000">*</span><span style="color:#000">instance</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">instance</span><span style="color:#000">-&gt;</span><span style="color:#000">Shutdown</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">template</span> <span style="color:#000">&lt;</span><span style="color:#a90d91">typename</span> <span style="color:#000">T</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">typename</span> <span style="color:#000">std</span><span style="color:#000">::</span><span style="color:#000">enable_if</span><span style="color:#000">&lt;!</span><span style="color:#000">HasShutdown</span><span style="color:#000">&lt;</span><span style="color:#000">T</span><span style="color:#000">&gt;::</span><span style="color:#000">value</span><span style="color:#000">&gt;::</span><span style="color:#000">type</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">CallShutdown</span>(<span style="color:#000">T</span> <span style="color:#000">*</span><span style="color:#000">instance</span>) {
+</span></span><span style="display:flex;"><span>  (<span style="color:#a90d91">void</span>)<span style="color:#000">instance</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// There must be many copy-paste versions of these macros which are
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// same things, undefine them to avoid conflict.
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#633820">#undef UNUSED
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">#undef DISALLOW_COPY_AND_ASSIGN
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#define UNUSED(param) (void)param
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#define DISALLOW_COPY_AND_ASSIGN(classname)                        \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  classname(const classname &amp;) = delete;                           \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  classname &amp;operator=(const classname &amp;) = delete;
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#define DECLARE_SINGLETON(classname)                               \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">public:                                                            \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  static classname *Instance(bool create_if_needed = true) {       \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">    static classname *instance = nullptr;                          \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">    if (!instance &amp;&amp; create_if_needed) {                           \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">      static std::once_flag flag;                                  \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">      std::call_once(flag, [&amp;] {                                   \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">        instance = new (std::nothrow) classname();                 \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">      });                                                          \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">    }                                                              \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">    return instance;                                               \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  }                                                                \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">                                                                   \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  static void CleanUp() {                                          \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">    auto instance = Instance(false);                               \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">    if (instance != nullptr) {                                     \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">      CallShutdown(instance);                                      \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">    }                                                              \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  }                                                                \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">                                                                   \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">private:                                                           \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  classname();                                                     \
+</span></span></span><span style="display:flex;"><span><span style="color:#633820">  DISALLOW_COPY_AND_ASSIGN(classname)
+</span></span></span><span style="display:flex;"><span><span style="color:#633820"></span>
+</span></span><span style="display:flex;"><span><span style="color:#633820">#endif </span><span style="color:#177500">// CYBER_COMMON_MACROS_H_
+</span></span></span></code></pre></div><p>最后总结一下单例模式的应用场景：</p>
+<ol>
+<li>当一个类的多个实例可能没有意义，甚至可能造成混乱时。如：设备驱动；缓存；工厂方法模式中的工厂类、原型模式中的原型注册表。</li>
+<li>当一个对象需要在整个系统中协调行动时。如：日志类；配置类、运行时配置、配置文件；串口管理，以共享模式访问资源。</li>
+<li>当为了确定的初始化顺序而不得不封装已有的全局变量或全局状态。</li>
+</ol>
+<p>实际开发中的单例类：</p>
+<ol>
+<li><a href="https://github.com/opencv/opencv/blob/fc3e393516a7637425f73a3ce40f7950329bf3e3/modules/highgui/src/window_w32.cpp#L3030">opencv-highgui-win32</a> OpenCV內部的VideoBackendRegistry class為例，使用<code>VideoBackendRegistry::getInstance()</code>來取得實例，所以在整個程式裡<code>VideoBackendRegistry</code>這個class就只會有一份實例。</li>
+<li><a href="https://github.com/aosp-mirror/platform_system_core/blob/34a0e57a257f0081c672c9be0e87230762e677ca/libutils/include/utils/Singleton.h#L42">aosp-platform_system_core-libutils</a> AOSP(Android Open Source Project)裡面libutils提供的Singleton.h採用的是單一鎖方式，明顯地這種方式在多執行緒被頻繁呼叫的話會有race condition問題，2017年在程式碼裡改成禁用，並建議改用scoped static initialization的方式，也就是本文提到的Meyers Singleton實作方式。</li>
+<li><a href="https://github.com/xbmc/xbmc/blob/f621a026f671ab0f1a91d411f2f452915242bddf/xbmc/cores/playercorefactory/PlayerCoreFactory.cpp">Kodi-PlayerCoreFactory.cpp</a> 知名的xbmc專案(現已改名為Kodi)也是採用Meyers Singleton實作方式。</li>
+<li>标准库里的<code>std::clog</code>、<code>std::cerr</code>、<code>std::cin</code>、<code>std::cout</code>也采用了单例模式。</li>
+</ol>
+<p>关于单例模式是否是反模式的讨论：</p>
+<ol>
+<li><a href="https://news.ycombinator.com/item?id=4456835">yygq</a></li>
+<li><a href="https://code.google.com/archive/p/google-singleton-detector/wikis/WhySingletonsAreControversial.wiki">Why Singletons Are Controversial - googlecode</a></li>
+<li><a href="http://staff.cs.utu.fi/~jounsmed/doos_06/material/SingletonAndMonostate.pdf">单例和单状态</a></li>
+<li><a href="https://sourcemaking.com/design_patterns/to_kill_a_singleton">To Kill A Singleton</a></li>
+<li><a href="https://softwareengineering.stackexchange.com/a/40610">So Singletons are bad, then what?</a></li>
+<li><a href="https://accu.org/journals/overload/23/126/schmidt_2085/">Alternatives to Singletons and Global Variables</a></li>
+<li><a href="https://meetingcpp.com/mcpp/slides/2019/Retiring_the_singleton_pattern.pdf">Retiring_the_singleton_pattern.pdf</a></li>
+<li><a href="https://www.youtube.com/watch?v=-FRm3VPhseI">The Clean Code Talks - &ldquo;Global State and Singletons”</a></li>
+<li><a href="https://www.vojtechruzicka.com/singleton-pattern-pitfalls/">Singleton Pattern Pitfalls</a></li>
+<li><a href="https://www.jianshu.com/p/f0d7b866eb1b">Is Singleton Really Evil?</a></li>
+</ol>
+<p>其他资料：</p>
+<ol>
+<li><a href="https://www.cs.fsu.edu/~lacher/lectures/Output/loki6/script.html">Singletons - loki6</a></li>
+<li><a href="https://www.modernescpp.com/index.php/thread-safe-initialization-of-a-singleton">Thread-Safe Initialization of a Singleton</a></li>
+<li><a href="https://lonkamikaze.github.io/2019/10/05/embedded-cxx-singletons">Embedded C++: Singletons</a></li>
+<li><a href="https://shengyu7697.github.io/cpp-singleton-pattern/">誰也使用了單例模式？</a></li>
+<li><a href="http://dreamrunner.org/blog/2014/05/03/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F6/">浅谈设计模式六：单例模式</a> 把dclp的微观顺序讲的很好</li>
+<li><a href="https://mp.weixin.qq.com/s/ufDK34vWC6yTSkS3TmucWw">C++ DP.07 Singleton</a></li>
+<li><a href="https://hedzr.com/c++/algorithm/cxx17-singleton-pattern/">谈C++17里的Singleton模式</a></li>
+<li><a href="https://blog.shipengx.com/archives/f61b5eee.html">百度Apollo中的单例设计模式</a></li>
+<li><a href="http://dreamrunner.org/blog/2014/06/22/double-checked-locking-works-in-c-plus-plus-11/">Double-Checked Locking Works in C++11</a></li>
+</ol>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>
