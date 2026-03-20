@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}blog - {{ config.title }}{% endblock %}
+
+{% block content %}
+<h1>blog</h1>
+<ul>
+{% for page in paginator.pages %}
+    <li>
+        {{ page.date }} -
+        <a href="{{ page.permalink }}">{{ page.title }}</a>
+        {% for tag in page.taxonomies.tags | default(value=[]) %}
+        [{{ tag }}]
+        {% endfor %}
+    </li>
+{% endfor %}
+</ul>
+
+{% if paginator.previous %}
+<a href="{{ paginator.previous }}">&lt; prev</a>
+{% endif %}
+{% if paginator.next %}
+<a href="{{ paginator.next }}">next &gt;</a>
+{% endif %}
+{% endblock %}

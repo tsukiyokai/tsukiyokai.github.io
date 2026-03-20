@@ -171,7 +171,17 @@ T1 -> T2 --+--> T3 -> T4 -> [T4b] --+-> T6 -> T7 -> T8
 4. ~~ZOLA_VERSION="0.19.2"~~ 需更新: 实际安装0.22.1，deploy.yml应同步
 5. planck/dage项目信息 — 执行时从相邻仓库只读取，不可修改那些仓库
 
-## 关键发现 (Zola 0.22.x vs 0.19.x breaking changes)
+## 关键发现
+
+### Zola模板匹配机制
+
+section的默认模板是`section.html`，不会按目录名自动匹配。`content/blog/_index.md`不会自动使用`templates/blog.html`，必须在frontmatter中显式声明`template = "blog.html"`。同理`page_template = "blog-page.html"`指定该section下文章的模板。原plan遗漏了此配置，导致首次构建输出Zola默认页面。
+
+### Zola taxonomy模板是隐性依赖
+
+config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章使用tags就不会报错。一旦某篇文章的frontmatter包含`[taxonomies] tags = [...]`，Zola就会尝试生成标签页面，此时必须存在`taxonomy_list.html`和`taxonomy_single.html`模板，否则build失败。这是一个"延迟暴露"的依赖——Task 3时不会触发，Task 4添加带tags的文章后才暴露。
+
+### Zola 0.22.x vs 0.19.x breaking changes
 
 1. `highlight_code`/`highlight_theme`已从顶层和`[markdown]`移到`[markdown.highlighting]`子区块
 2. 字段名变为`theme`（不再是`highlight_theme`），无`enabled`开关（有`[markdown.highlighting]`区块即启用）
@@ -183,8 +193,8 @@ T1 -> T2 --+--> T3 -> T4 -> [T4b] --+-> T6 -> T7 -> T8
 - [x] 精读plan和design文档，创建执行计划 (第1轮)
 - [x] Task 1: 初始化Zola项目 (第2轮，第3轮验证通过)
 - [x] Task 2: 基础布局模板 + 极简CSS (第5轮)
-- [ ] Task 3: 博客列表页 ← 当前
-- [ ] Task 4: 博客文章页 + 示例文章
+- [x] Task 3: 博客列表页 (第7轮)
+- [x] Task 4: 博客文章页 + 示例文章 (第10轮)
 - [ ] Task 5: 作品展示页
 - [ ] Task 6: 首页完善
 - [ ] Task 7: GitHub Actions部署
@@ -197,18 +207,27 @@ T1 -> T2 --+--> T3 -> T4 -> [T4b] --+-> T6 -> T7 -> T8
 | .git/              | T1   | git init                                |
 | .gitignore         | T1   | 忽略 public/                            |
 | config.toml        | T1   | Zola 0.22.x格式, github-light高亮主题   |
-| content/blog/      | T1   | 空目录                                  |
+| content/blog/_index.md | T3 | sort_by=date, paginate_by=20, template=blog.html |
+| templates/blog.html| T3   | 博客列表: paginator.pages遍历+翻页链接  |
 | content/projects/  | T1   | 空目录                                  |
 | static/.gitkeep    | T1   | 占位文件                                |
 | sass/style.scss    | T2   | img max-width + pre white-space 两条规则 |
 | templates/base.html| T2   | HTML骨架: charset/viewport/nav/footer   |
 | templates/index.html| T2  | extends base, 渲染section.content       |
 | content/_index.md  | T2   | 首页占位: "shanshan's blog."            |
+| templates/blog-page.html | T4 | 文章详情: date+tags+content+"< back to blog" |
+| content/blog/hello-world.md | T4 | 示例文章: date=2026-03-20, tags=["life"] |
+| templates/taxonomy_list.html | T4 | 标签列表页(使用tags触发的隐性依赖)     |
+| templates/taxonomy_single.html | T4 | 单标签文章列表页                      |
 
 验证: T1 `zola check`通过, T2 `zola build`通过且public/index.html正确生成
 
 ## 当前阶段
 
-第6轮: Task 2再次验证通过。`zola build`成功(146ms)，public/index.html(470B)内容完整，public/style.css(71B)已编译。
-Task 2所有文件已就绪，待commit: sass/style.scss, templates/base.html, templates/index.html, content/_index.md
-下一步: Task 3 — 创建 content/blog/_index.md + templates/blog.html (博客列表页)
+第12轮: gate_blog re-verification通过，无需代码修复。
+- gate失败原因: DAG时序问题，gate在hello-world.md尚未生成时被触发(2 pages vs 3 pages)
+- 现状: `zola build` → 3 pages, 2 sections, 无error; 两个test -f均通过; 输出"blog pages OK"
+- 已知非阻塞问题: blog.html中`page.permalink`产生双重/blog/路径(base_url末尾含/blog + content/blog/路径)，部署前需调整base_url
+
+待commit: templates/blog-page.html, content/blog/hello-world.md, templates/taxonomy_list.html, templates/taxonomy_single.html
+下一步: Task 5 — 作品展示页

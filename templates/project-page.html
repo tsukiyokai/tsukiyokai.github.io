@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ page.title }}</h1>
+<p>{{ page.description }}</p>
+
+{{ page.content | safe }}
+
+<p><a href="/projects/">&lt; back to projects</a></p>
+{% endblock %}
