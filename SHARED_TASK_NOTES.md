@@ -196,8 +196,8 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 - [x] Task 3: 博客列表页 (第7轮)
 - [x] Task 4: 博客文章页 + 示例文章 (第10轮)
 - [x] Task 4b: 爬取danluu.com文章 (第13轮, 111篇)
-- [ ] Task 5: 作品展示页
-- [ ] Task 6: 首页完善
+- [x] Task 5: 作品展示页 (第15轮)
+- [x] Task 6: 首页完善 (第16轮)
 - [ ] Task 7: GitHub Actions部署
 - [ ] Task 8: 最终验证
 
@@ -227,11 +227,11 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 
 ## 当前阶段
 
-第14轮: 爬取danluu.com目标已完成，验证通过。
-- 111篇文章全部成功爬取，0失败
-- `zola build` → 114 pages (112文章 + hello-world + _index), 2 sections, 395ms, 无error
-- frontmatter格式正确: title/date/taxonomies tags均存在
-- 已知非阻塞问题: blog.html中`page.permalink`产生双重/blog/路径(base_url末尾含/blog + content/blog/路径)，部署前需调整base_url
+第16轮 (Task 6): 首页完善，验证通过。
+- 修改: content/_index.md (名字+介绍), templates/index.html (get_section拉取最新5篇)
+- `zola build` → 114 pages, 2 sections, 424ms, 无error
+- 首页展示: "shanshan" + "tech & life." + 5篇最新文章(日期+标题链接) + "all posts >"
+- 已知非阻塞问题: permalink双重/blog/路径(base_url末尾含/blog)，部署前需调整base_url
 
-待commit: scripts/crawl_danluu.py, content/blog/danluu-*.md (111文件)
-下一步: Task 5 — 作品展示页
+待commit: content/_index.md, templates/index.html
+下一步: Task 7 — GitHub Actions部署

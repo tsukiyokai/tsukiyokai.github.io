@@ -2,4 +2,6 @@
 title = "home"
 +++
 
-shanshan's blog.
+shanshan
+
+tech & life.
