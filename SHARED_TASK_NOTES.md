@@ -195,6 +195,7 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 - [x] Task 2: 基础布局模板 + 极简CSS (第5轮)
 - [x] Task 3: 博客列表页 (第7轮)
 - [x] Task 4: 博客文章页 + 示例文章 (第10轮)
+- [x] Task 4b: 爬取danluu.com文章 (第13轮, 111篇)
 - [ ] Task 5: 作品展示页
 - [ ] Task 6: 首页完善
 - [ ] Task 7: GitHub Actions部署
@@ -218,16 +219,19 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 | templates/blog-page.html | T4 | 文章详情: date+tags+content+"< back to blog" |
 | content/blog/hello-world.md | T4 | 示例文章: date=2026-03-20, tags=["life"] |
 | templates/taxonomy_list.html | T4 | 标签列表页(使用tags触发的隐性依赖)     |
-| templates/taxonomy_single.html | T4 | 单标签文章列表页                      |
+| templates/taxonomy_single.html | T4 | 标签列表页(使用tags触发的隐性依赖)     |
+| scripts/crawl_danluu.py        | T4b | 爬虫脚本: 首页解析+逐篇下载+html2text转换 |
+| content/blog/danluu-*.md (×111)| T4b | danluu.com全部文章, Zola frontmatter     |
 
-验证: T1 `zola check`通过, T2 `zola build`通过且public/index.html正确生成
+验证: T1 `zola check`通过, T2 `zola build`通过, T4b `zola build` → 114 pages, 2 sections, 无error
 
 ## 当前阶段
 
-第12轮: gate_blog re-verification通过，无需代码修复。
-- gate失败原因: DAG时序问题，gate在hello-world.md尚未生成时被触发(2 pages vs 3 pages)
-- 现状: `zola build` → 3 pages, 2 sections, 无error; 两个test -f均通过; 输出"blog pages OK"
+第14轮: 爬取danluu.com目标已完成，验证通过。
+- 111篇文章全部成功爬取，0失败
+- `zola build` → 114 pages (112文章 + hello-world + _index), 2 sections, 395ms, 无error
+- frontmatter格式正确: title/date/taxonomies tags均存在
 - 已知非阻塞问题: blog.html中`page.permalink`产生双重/blog/路径(base_url末尾含/blog + content/blog/路径)，部署前需调整base_url
 
-待commit: templates/blog-page.html, content/blog/hello-world.md, templates/taxonomy_list.html, templates/taxonomy_single.html
+待commit: scripts/crawl_danluu.py, content/blog/danluu-*.md (111文件)
 下一步: Task 5 — 作品展示页
