@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav>
+    <a href="/">home</a> /
+    <a href="/blog/">blog</a> /
+    <a href="/projects/">projects</a>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <a href="https://github.com/shanshan">github</a>
+  </footer>
+</body>
+</html>

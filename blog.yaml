@@ -1,0 +1,274 @@
+# blog.yaml — Personal Blog: Zola + GitHub Pages
+# Ref: docs/plans/2026-03-20-homepage-design.md
+#      docs/superpowers/plans/2026-03-20-personal-blog.md
+
+description: "danluu-style极简个人博客，Zola SSG + GitHub Pages部署"
+
+auto_commit:
+  push: false
+
+vars:
+  repo_dir: /Users/shanshan/repo/_me/blog
+
+nodes:
+  # ==== 上下文采集 ====
+  read_design:
+    role: context
+    max_runs: 1
+    prompt: |
+      精读 docs/plans/2026-03-20-homepage-design.md。
+      只读不写代码。提炼: 站点定位(技术博客+作品展示)、视觉风格(danluu-style零CSS)、
+      站点结构(content/templates/sass)、页面设计(首页/博客/作品)、技术决策(Zola/GitHub Pages/无评论)。
+
+  read_plan:
+    role: context
+    max_runs: 1
+    prompt: |
+      精读 docs/superpowers/plans/2026-03-20-personal-blog.md。
+      只读不写代码。提炼: 8个task、文件结构、依赖关系、每个task的具体产出和验证标准。
+
+  scan_repo:
+    role: context
+    type: shell
+    cmd: >
+      cd ${vars.repo_dir} &&
+      echo "=== git status ===" && git status --short 2>/dev/null || echo "(not a git repo)" &&
+      echo "=== file tree ===" && find . -not -path './.git/*' -not -path './public/*' -type f | head -40 &&
+      echo "=== zola version ===" && zola --version 2>/dev/null || echo "(zola not installed)"
+
+  # ==== Chunk 1: 项目初始化 + 基础模板 ====
+  init_project:
+    deps: [read_design, read_plan, scan_repo]
+    max_runs: 3
+    prompt: |
+      实现 Task 1: 初始化Zola项目。
+
+      设计文档: ${nodes.read_design.output}
+      实现计划: ${nodes.read_plan.output}
+      仓库现状: ${nodes.scan_repo.output}
+
+      任务:
+      1. 确认zola已安装，未安装则 `brew install zola`
+      2. 初始化git仓库（如尚未初始化）
+      3. 创建 .gitignore (忽略 public/)
+      4. 创建 config.toml (base_url待定, tags taxonomy, highlight_code, no feeds, no minify)
+      5. 创建目录结构: content/blog, content/projects, templates, sass, static
+      6. 验证: `zola check` 无报错
+      7. 提交: "chore: 初始化Zola项目结构"
+
+  base_template:
+    deps: [init_project]
+    max_runs: 3
+    prompt: |
+      实现 Task 2: 创建基础布局模板和极简CSS。
+
+      设计文档: ${nodes.read_design.output}
+      实现计划: ${nodes.read_plan.output}
+
+      任务:
+      1. sass/style.scss — 只需两条规则: img max-width:100%, pre white-space:pre-wrap
+      2. templates/base.html — 极简HTML骨架:
+         - <head>: charset, viewport, title, stylesheet
+         - <nav>: home / blog / projects 纯文字链接
+         - content block
+         - <footer>: github链接
+         不加任何装饰，浏览器默认样式即可
+      3. templates/index.html — extends base, 渲染section.content
+      4. content/_index.md — 临时首页内容
+      5. 验证: `zola build` 成功, public/index.html 存在
+      6. 提交: "feat: 添加基础布局模板和极简CSS"
+
+  gate_base:
+    role: gate
+    deps: [base_template]
+    type: shell
+    cmd: "cd ${vars.repo_dir} && zola build 2>&1"
+
+  # ==== Chunk 2: 博客功能 ====
+  blog_list:
+    deps: [gate_base]
+    max_runs: 3
+    prompt: |
+      实现 Task 3: 博客列表页。
+
+      设计文档: ${nodes.read_design.output}
+      实现计划: ${nodes.read_plan.output}
+
+      任务:
+      1. content/blog/_index.md — sort_by=date, paginate_by=20
+      2. templates/blog.html — extends base, 遍历paginator.pages显示日期+标题+tags, 翻页链接
+      3. 验证: `zola build` 成功
+      4. 提交: "feat: 添加博客列表页模板"
+
+  blog_post:
+    deps: [blog_list]
+    max_runs: 3
+    prompt: |
+      实现 Task 4: 博客文章页 + 示例文章。
+
+      设计文档: ${nodes.read_design.output}
+      实现计划: ${nodes.read_plan.output}
+
+      任务:
+      1. templates/blog-page.html — extends base, 显示title/date/tags/content, 底部返回链接
+      2. content/blog/hello-world.md — 示例文章, tags=["life"]
+      3. 验证: `zola build` 成功, /blog/ 和 /blog/hello-world/ 页面都能生成
+      4. 提交: "feat: 添加博客文章模板和示例文章"
+
+  gate_blog:
+    role: gate
+    deps: [blog_post]
+    type: shell
+    cmd: "cd ${vars.repo_dir} && zola build 2>&1 && test -f public/blog/index.html && test -f public/blog/hello-world/index.html && echo 'blog pages OK'"
+
+  # ==== Chunk 2b: 爬取danluu.com文章 ====
+  crawl_danluu:
+    deps: [gate_blog]
+    max_runs: 3
+    prompt: |
+      爬取 danluu.com 全部文章，转为Zola格式的Markdown，存入 content/blog/。
+
+      步骤:
+      1. 写一个Python脚本 scripts/crawl_danluu.py:
+         - GET https://danluu.com/ 解析首页，提取所有文章链接(href格式: /slug/)
+         - 对每篇文章 GET https://danluu.com/<slug>/, 提取正文HTML
+         - 用 html2text 或手写逻辑将HTML转为Markdown
+         - 生成Zola frontmatter:
+           +++
+           title = "<文章标题>"
+           date = <从页面提取，如无法提取则用2020-01-01>
+           [taxonomies]
+           tags = ["danluu"]
+           +++
+         - 保存到 content/blog/danluu-<slug>.md
+         - 注意: 限速，每请求间隔0.5s，避免被ban
+         - 注意: 处理编码、特殊字符、相对链接转绝对链接
+      2. 安装依赖: pip install requests beautifulsoup4 html2text (如未安装)
+      3. 运行脚本: python3 scripts/crawl_danluu.py
+      4. 验证: content/blog/ 下生成了 danluu-*.md 文件
+      5. 提交: "feat: 爬取danluu.com文章作为种子内容"
+
+  gate_crawl:
+    role: gate
+    deps: [crawl_danluu]
+    type: shell
+    cmd: "cd ${vars.repo_dir} && ls content/blog/danluu-*.md | wc -l | xargs -I{} echo '{} danluu articles crawled' && zola build 2>&1"
+
+  # ==== Chunk 3: 作品展示(与博客并行) ====
+  read_projects:
+    role: context
+    deps: [gate_base]
+    type: shell
+    cmd: >
+      echo "=== planck ===" &&
+      cat /Users/shanshan/repo/_me/planck/README.md 2>/dev/null || echo "(no README)" &&
+      echo "=== planck Cargo.toml ===" &&
+      head -20 /Users/shanshan/repo/_me/planck/Cargo.toml 2>/dev/null || echo "(no Cargo.toml)" &&
+      echo "=== planck design ===" &&
+      head -40 /Users/shanshan/repo/_me/planck/docs/plans/2026-03-19-planck-design.md 2>/dev/null || echo "(no design doc)" &&
+      echo "=== dage ===" &&
+      head -30 /Users/shanshan/repo/_me/dage/dage.py 2>/dev/null || echo "(no dage.py)" &&
+      head -20 /Users/shanshan/repo/_me/dage/README.md 2>/dev/null || echo "(no README)"
+
+  projects:
+    deps: [read_projects]
+    max_runs: 3
+    prompt: |
+      实现 Task 5: 作品展示页。
+
+      设计文档: ${nodes.read_design.output}
+      实现计划: ${nodes.read_plan.output}
+      项目资料(只读参考): ${nodes.read_projects.output}
+
+      重要: 只在 blog 仓库内操作，绝对不要修改 /Users/shanshan/repo/_me/planck/ 或 /Users/shanshan/repo/_me/dage/ 下的任何文件。
+
+      任务:
+      1. content/projects/_index.md — sort_by=weight
+      2. templates/projects.html — extends base, 遍历section.pages显示名称+描述+链接
+      3. templates/project-page.html — extends base, 显示title/description/content, 底部返回链接
+      4. content/projects/planck.md — 基于读取到的planck项目资料撰写介绍:
+         - Rust编写的Plan Compiler + PyO3绑定
+         - 从设计文档提取项目定位和核心特性
+         - weight=1
+      5. content/projects/dage.md — 基于读取到的dage源码撰写介绍:
+         - Python编写的DAG-based Agent Workflow Orchestrator
+         - 从源码docstring提取核心功能描述
+         - weight=2
+      6. 验证: `zola build` 成功, /projects/ 和 /projects/planck/ 和 /projects/dage/ 页面都能生成
+      7. 提交: "feat: 添加作品展示页，收录planck和dage项目"
+
+  gate_projects:
+    role: gate
+    deps: [projects]
+    type: shell
+    cmd: "cd ${vars.repo_dir} && zola build 2>&1 && test -f public/projects/index.html && test -f public/projects/planck/index.html && test -f public/projects/dage/index.html && echo 'project pages OK'"
+
+  # ==== Chunk 4: 首页完善 ====
+  homepage:
+    deps: [gate_crawl, gate_projects]
+    max_runs: 3
+    prompt: |
+      实现 Task 6: 完善首页，展示最新文章。
+
+      设计文档: ${nodes.read_design.output}
+      实现计划: ${nodes.read_plan.output}
+
+      任务:
+      1. 更新 content/_index.md — 名字 + 一句话介绍
+      2. 更新 templates/index.html — 用 get_section 拉取blog最新5篇文章, 显示日期+标题链接, "all posts >" 链接
+      3. 验证: `zola build` 成功, 首页包含最新文章列表
+      4. 提交: "feat: 完善首页模板，展示最新文章"
+
+  gate_homepage:
+    role: gate
+    deps: [homepage]
+    type: shell
+    cmd: "cd ${vars.repo_dir} && zola build 2>&1 && grep -q 'href.*blog/' public/index.html && echo 'homepage shows posts OK'"
+
+  # ==== Chunk 5: 部署 ====
+  deploy_config:
+    deps: [gate_homepage]
+    max_runs: 2
+    prompt: |
+      实现 Task 7: GitHub Actions部署配置。
+
+      实现计划: ${nodes.read_plan.output}
+
+      任务:
+      1. 创建 .github/workflows/deploy.yml:
+         - on push to main
+         - 安装Zola (curl下载二进制)
+         - zola build
+         - peaceiris/actions-gh-pages@v4 部署到gh-pages分支
+      2. 验证YAML语法正确
+      3. 提交: "ci: 添加GitHub Pages自动部署"
+
+  final_check:
+    deps: [deploy_config]
+    type: shell
+    cmd: >
+      cd ${vars.repo_dir} &&
+      echo "=== zola build ===" && zola build 2>&1 &&
+      echo "=== page count ===" && find public -name 'index.html' | wc -l &&
+      echo "=== total size ===" && du -sh public/ &&
+      echo "=== index.html size ===" && wc -c < public/index.html &&
+      echo "=== all pages ===" && find public -name 'index.html' | sort
+
+  # ==== 报告 ====
+  report:
+    role: meta
+    max_runs: 1
+    deps: [final_check]
+    prompt: |
+      撰写博客站点搭建完成报告。
+
+      各阶段结果:
+      - 项目初始化: ${nodes.init_project.status}
+      - 基础模板: ${nodes.gate_base.status}
+      - 博客功能: ${nodes.gate_blog.status}
+      - 作品展示: ${nodes.gate_projects.status}
+      - 首页: ${nodes.gate_homepage.status}
+      - 部署配置: ${nodes.deploy_config.status}
+      - 最终验证: ${nodes.final_check.output}
+
+      包含: 生成的页面清单、站点总大小、后续步骤(创建GitHub repo、更新base_url、push触发部署)。
