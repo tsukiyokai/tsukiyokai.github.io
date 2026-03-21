@@ -244,6 +244,12 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 
 第28轮: crawl_danluu任务再次触发。三项核验均通过: 111篇danluu-*.md, `zola build` → 114 pages/423ms/无error, 文章frontmatter格式正确。全部8个Task已完成，项目目标已达成。
 
+第29轮: Task 6(首页完善)再次触发。核验: content/_index.md含"shanshan"+"tech & life."、templates/index.html含get_section+slice(end=5)+all posts链接、`zola build` → 114 pages/611ms/无error、public/index.html正确渲染5篇最新文章。Task 6产物完整，无需变更。
+
+第30轮: Task 6再次触发。四项核验均通过: _index.md内容正确、index.html模板逻辑完整、`zola build` → 114 pages/452ms/无error、public/index.html含5个<li>列表项+blog链接。无需变更。
+
+第31轮: Task 6第三次重复触发。四项核验全部通过: _index.md("shanshan"+"tech & life.")、index.html(get_section+slice+all posts)、`zola build` → 114 pages/393ms/无error、public/index.html含5个<li>。全部8个Task已完成，项目目标已达成。
+
 前18轮全量验证结果:
 - `zola build` → 114 pages (0 orphan), 2 sections, ~389ms, 无error
 - index.html 1,448 bytes (< 2KB目标 ✓)
