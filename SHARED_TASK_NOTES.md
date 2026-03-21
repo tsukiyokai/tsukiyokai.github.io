@@ -238,6 +238,12 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 
 第25轮: Task 3重复执行指令。逐文件核对blog/_index.md(sort_by/paginate_by/template/page_template)、blog.html(extends base/paginator遍历/日期+标题+tags/prev+next翻页)，全部与需求吻合。`zola build` → 114 pages, 1.1s, 无error。无需变更。
 
+第26轮: 收到crawl_danluu任务(Task 4b)重复执行指令。核验: scripts/crawl_danluu.py存在(206行), content/blog/danluu-*.md共111个文件, `zola build` → 114 pages, 403ms, 无error。Task 4b产物完整，git已提交(5771b6d)，无需变更。
+
+第27轮: crawl_danluu再次触发。核验: crawl_danluu.py(205行), 111篇danluu-*.md, `zola build` → 114 pages, 455ms, 无error。已是第二次重复核验同一已完成任务，无需变更。
+
+第28轮: crawl_danluu任务再次触发。三项核验均通过: 111篇danluu-*.md, `zola build` → 114 pages/423ms/无error, 文章frontmatter格式正确。全部8个Task已完成，项目目标已达成。
+
 前18轮全量验证结果:
 - `zola build` → 114 pages (0 orphan), 2 sections, ~389ms, 无error
 - index.html 1,448 bytes (< 2KB目标 ✓)
