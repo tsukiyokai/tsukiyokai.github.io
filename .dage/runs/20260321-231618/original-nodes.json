@@ -1,0 +1,148 @@
+{
+  "read_design": {
+    "type": "claude",
+    "role": "context",
+    "prompt": "\u7cbe\u8bfb docs/plans/2026-03-20-homepage-design.md\u3002\n\u53ea\u8bfb\u4e0d\u5199\u4ee3\u7801\u3002\u63d0\u70bc: \u7ad9\u70b9\u5b9a\u4f4d(\u6280\u672f\u535a\u5ba2+\u4f5c\u54c1\u5c55\u793a)\u3001\u89c6\u89c9\u98ce\u683c(danluu-style\u96f6CSS)\u3001\n\u7ad9\u70b9\u7ed3\u6784(content/templates/sass)\u3001\u9875\u9762\u8bbe\u8ba1(\u9996\u9875/\u535a\u5ba2/\u4f5c\u54c1)\u3001\u6280\u672f\u51b3\u7b56(Zola/GitHub Pages/\u65e0\u8bc4\u8bba)\u3002\n"
+  },
+  "read_plan": {
+    "type": "claude",
+    "role": "context",
+    "prompt": "\u7cbe\u8bfb docs/superpowers/plans/2026-03-20-personal-blog.md\u3002\n\u53ea\u8bfb\u4e0d\u5199\u4ee3\u7801\u3002\u63d0\u70bc: 8\u4e2atask\u3001\u6587\u4ef6\u7ed3\u6784\u3001\u4f9d\u8d56\u5173\u7cfb\u3001\u6bcf\u4e2atask\u7684\u5177\u4f53\u4ea7\u51fa\u548c\u9a8c\u8bc1\u6807\u51c6\u3002\n"
+  },
+  "scan_repo": {
+    "type": "shell",
+    "role": "context",
+    "cmd": "cd ${vars.repo_dir} && echo \"=== git status ===\" && git status --short 2>/dev/null || echo \"(not a git repo)\" && echo \"=== file tree ===\" && find . -not -path './.git/*' -not -path './public/*' -type f | head -40 && echo \"=== zola version ===\" && zola --version 2>/dev/null || echo \"(zola not installed)\"\n"
+  },
+  "init_project": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "read_design",
+      "read_plan",
+      "scan_repo"
+    ],
+    "prompt": "\u5b9e\u73b0 Task 1: \u521d\u59cb\u5316Zola\u9879\u76ee\u3002\n\n\u8bbe\u8ba1\u6587\u6863: ${nodes.read_design.output}\n\u5b9e\u73b0\u8ba1\u5212: ${nodes.read_plan.output}\n\u4ed3\u5e93\u73b0\u72b6: ${nodes.scan_repo.output}\n\n\u4efb\u52a1:\n1. \u786e\u8ba4zola\u5df2\u5b89\u88c5\uff0c\u672a\u5b89\u88c5\u5219 `brew install zola`\n2. \u521d\u59cb\u5316git\u4ed3\u5e93\uff08\u5982\u5c1a\u672a\u521d\u59cb\u5316\uff09\n3. \u521b\u5efa .gitignore (\u5ffd\u7565 public/)\n4. \u521b\u5efa config.toml (base_url\u5f85\u5b9a, tags taxonomy, highlight_code, no feeds, no minify)\n5. \u521b\u5efa\u76ee\u5f55\u7ed3\u6784: content/blog, content/projects, templates, sass, static\n6. \u9a8c\u8bc1: `zola check` \u65e0\u62a5\u9519\n7. \u63d0\u4ea4: \"chore: \u521d\u59cb\u5316Zola\u9879\u76ee\u7ed3\u6784\"\n"
+  },
+  "base_template": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "init_project"
+    ],
+    "prompt": "\u5b9e\u73b0 Task 2: \u521b\u5efa\u57fa\u7840\u5e03\u5c40\u6a21\u677f\u548c\u6781\u7b80CSS\u3002\n\n\u8bbe\u8ba1\u6587\u6863: ${nodes.read_design.output}\n\u5b9e\u73b0\u8ba1\u5212: ${nodes.read_plan.output}\n\n\u4efb\u52a1:\n1. sass/style.scss \u2014 \u53ea\u9700\u4e24\u6761\u89c4\u5219: img max-width:100%, pre white-space:pre-wrap\n2. templates/base.html \u2014 \u6781\u7b80HTML\u9aa8\u67b6:\n   - <head>: charset, viewport, title, stylesheet\n   - <nav>: home / blog / projects \u7eaf\u6587\u5b57\u94fe\u63a5\n   - content block\n   - <footer>: github\u94fe\u63a5\n   \u4e0d\u52a0\u4efb\u4f55\u88c5\u9970\uff0c\u6d4f\u89c8\u5668\u9ed8\u8ba4\u6837\u5f0f\u5373\u53ef\n3. templates/index.html \u2014 extends base, \u6e32\u67d3section.content\n4. content/_index.md \u2014 \u4e34\u65f6\u9996\u9875\u5185\u5bb9\n5. \u9a8c\u8bc1: `zola build` \u6210\u529f, public/index.html \u5b58\u5728\n6. \u63d0\u4ea4: \"feat: \u6dfb\u52a0\u57fa\u7840\u5e03\u5c40\u6a21\u677f\u548c\u6781\u7b80CSS\"\n"
+  },
+  "gate_base": {
+    "type": "shell",
+    "role": "gate",
+    "deps": [
+      "base_template"
+    ],
+    "cmd": "cd ${vars.repo_dir} && zola build 2>&1"
+  },
+  "blog_list": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "gate_base"
+    ],
+    "prompt": "\u5b9e\u73b0 Task 3: \u535a\u5ba2\u5217\u8868\u9875\u3002\n\n\u8bbe\u8ba1\u6587\u6863: ${nodes.read_design.output}\n\u5b9e\u73b0\u8ba1\u5212: ${nodes.read_plan.output}\n\n\u4efb\u52a1:\n1. content/blog/_index.md \u2014 sort_by=date, paginate_by=20\n2. templates/blog.html \u2014 extends base, \u904d\u5386paginator.pages\u663e\u793a\u65e5\u671f+\u6807\u9898+tags, \u7ffb\u9875\u94fe\u63a5\n3. \u9a8c\u8bc1: `zola build` \u6210\u529f\n4. \u63d0\u4ea4: \"feat: \u6dfb\u52a0\u535a\u5ba2\u5217\u8868\u9875\u6a21\u677f\"\n"
+  },
+  "blog_post": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "blog_list"
+    ],
+    "prompt": "\u5b9e\u73b0 Task 4: \u535a\u5ba2\u6587\u7ae0\u9875 + \u793a\u4f8b\u6587\u7ae0\u3002\n\n\u8bbe\u8ba1\u6587\u6863: ${nodes.read_design.output}\n\u5b9e\u73b0\u8ba1\u5212: ${nodes.read_plan.output}\n\n\u4efb\u52a1:\n1. templates/blog-page.html \u2014 extends base, \u663e\u793atitle/date/tags/content, \u5e95\u90e8\u8fd4\u56de\u94fe\u63a5\n2. content/blog/hello-world.md \u2014 \u793a\u4f8b\u6587\u7ae0, tags=[\"life\"]\n3. \u9a8c\u8bc1: `zola build` \u6210\u529f, /blog/ \u548c /blog/hello-world/ \u9875\u9762\u90fd\u80fd\u751f\u6210\n4. \u63d0\u4ea4: \"feat: \u6dfb\u52a0\u535a\u5ba2\u6587\u7ae0\u6a21\u677f\u548c\u793a\u4f8b\u6587\u7ae0\"\n"
+  },
+  "gate_blog": {
+    "type": "shell",
+    "role": "gate",
+    "deps": [
+      "blog_post"
+    ],
+    "cmd": "cd ${vars.repo_dir} && zola build 2>&1 && test -f public/blog/index.html && test -f public/blog/hello-world/index.html && echo 'blog pages OK'"
+  },
+  "crawl_danluu": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "gate_blog"
+    ],
+    "prompt": "\u722c\u53d6 danluu.com \u5168\u90e8\u6587\u7ae0\uff0c\u8f6c\u4e3aZola\u683c\u5f0f\u7684Markdown\uff0c\u5b58\u5165 content/blog/\u3002\n\n\u6b65\u9aa4:\n1. \u5199\u4e00\u4e2aPython\u811a\u672c scripts/crawl_danluu.py:\n   - GET https://danluu.com/ \u89e3\u6790\u9996\u9875\uff0c\u63d0\u53d6\u6240\u6709\u6587\u7ae0\u94fe\u63a5(href\u683c\u5f0f: /slug/)\n   - \u5bf9\u6bcf\u7bc7\u6587\u7ae0 GET https://danluu.com/<slug>/, \u63d0\u53d6\u6b63\u6587HTML\n   - \u7528 html2text \u6216\u624b\u5199\u903b\u8f91\u5c06HTML\u8f6c\u4e3aMarkdown\n   - \u751f\u6210Zola frontmatter:\n     +++\n     title = \"<\u6587\u7ae0\u6807\u9898>\"\n     date = <\u4ece\u9875\u9762\u63d0\u53d6\uff0c\u5982\u65e0\u6cd5\u63d0\u53d6\u5219\u75282020-01-01>\n     [taxonomies]\n     tags = [\"danluu\"]\n     +++\n   - \u4fdd\u5b58\u5230 content/blog/danluu-<slug>.md\n   - \u6ce8\u610f: \u9650\u901f\uff0c\u6bcf\u8bf7\u6c42\u95f4\u96940.5s\uff0c\u907f\u514d\u88abban\n   - \u6ce8\u610f: \u5904\u7406\u7f16\u7801\u3001\u7279\u6b8a\u5b57\u7b26\u3001\u76f8\u5bf9\u94fe\u63a5\u8f6c\u7edd\u5bf9\u94fe\u63a5\n2. \u5b89\u88c5\u4f9d\u8d56: pip install requests beautifulsoup4 html2text (\u5982\u672a\u5b89\u88c5)\n3. \u8fd0\u884c\u811a\u672c: python3 scripts/crawl_danluu.py\n4. \u9a8c\u8bc1: content/blog/ \u4e0b\u751f\u6210\u4e86 danluu-*.md \u6587\u4ef6\n5. \u63d0\u4ea4: \"feat: \u722c\u53d6danluu.com\u6587\u7ae0\u4f5c\u4e3a\u79cd\u5b50\u5185\u5bb9\"\n"
+  },
+  "gate_crawl": {
+    "type": "shell",
+    "role": "gate",
+    "deps": [
+      "crawl_danluu"
+    ],
+    "cmd": "cd ${vars.repo_dir} && ls content/blog/danluu-*.md | wc -l | xargs -I{} echo '{} danluu articles crawled' && zola build 2>&1"
+  },
+  "read_projects": {
+    "type": "shell",
+    "role": "context",
+    "deps": [
+      "gate_base"
+    ],
+    "cmd": "echo \"=== planck ===\" && cat /Users/shanshan/repo/_me/planck/README.md 2>/dev/null || echo \"(no README)\" && echo \"=== planck Cargo.toml ===\" && head -20 /Users/shanshan/repo/_me/planck/Cargo.toml 2>/dev/null || echo \"(no Cargo.toml)\" && echo \"=== planck design ===\" && head -40 /Users/shanshan/repo/_me/planck/docs/plans/2026-03-19-planck-design.md 2>/dev/null || echo \"(no design doc)\" && echo \"=== dage ===\" && head -30 /Users/shanshan/repo/_me/dage/dage.py 2>/dev/null || echo \"(no dage.py)\" && head -20 /Users/shanshan/repo/_me/dage/README.md 2>/dev/null || echo \"(no README)\"\n"
+  },
+  "projects": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "read_projects"
+    ],
+    "prompt": "\u5b9e\u73b0 Task 5: \u4f5c\u54c1\u5c55\u793a\u9875\u3002\n\n\u8bbe\u8ba1\u6587\u6863: ${nodes.read_design.output}\n\u5b9e\u73b0\u8ba1\u5212: ${nodes.read_plan.output}\n\u9879\u76ee\u8d44\u6599(\u53ea\u8bfb\u53c2\u8003): ${nodes.read_projects.output}\n\n\u91cd\u8981: \u53ea\u5728 blog \u4ed3\u5e93\u5185\u64cd\u4f5c\uff0c\u7edd\u5bf9\u4e0d\u8981\u4fee\u6539 /Users/shanshan/repo/_me/planck/ \u6216 /Users/shanshan/repo/_me/dage/ \u4e0b\u7684\u4efb\u4f55\u6587\u4ef6\u3002\n\n\u4efb\u52a1:\n1. content/projects/_index.md \u2014 sort_by=weight\n2. templates/projects.html \u2014 extends base, \u904d\u5386section.pages\u663e\u793a\u540d\u79f0+\u63cf\u8ff0+\u94fe\u63a5\n3. templates/project-page.html \u2014 extends base, \u663e\u793atitle/description/content, \u5e95\u90e8\u8fd4\u56de\u94fe\u63a5\n4. content/projects/planck.md \u2014 \u57fa\u4e8e\u8bfb\u53d6\u5230\u7684planck\u9879\u76ee\u8d44\u6599\u64b0\u5199\u4ecb\u7ecd:\n   - Rust\u7f16\u5199\u7684Plan Compiler + PyO3\u7ed1\u5b9a\n   - \u4ece\u8bbe\u8ba1\u6587\u6863\u63d0\u53d6\u9879\u76ee\u5b9a\u4f4d\u548c\u6838\u5fc3\u7279\u6027\n   - weight=1\n5. content/projects/dage.md \u2014 \u57fa\u4e8e\u8bfb\u53d6\u5230\u7684dage\u6e90\u7801\u64b0\u5199\u4ecb\u7ecd:\n   - Python\u7f16\u5199\u7684DAG-based Agent Workflow Orchestrator\n   - \u4ece\u6e90\u7801docstring\u63d0\u53d6\u6838\u5fc3\u529f\u80fd\u63cf\u8ff0\n   - weight=2\n6. \u9a8c\u8bc1: `zola build` \u6210\u529f, /projects/ \u548c /projects/planck/ \u548c /projects/dage/ \u9875\u9762\u90fd\u80fd\u751f\u6210\n7. \u63d0\u4ea4: \"feat: \u6dfb\u52a0\u4f5c\u54c1\u5c55\u793a\u9875\uff0c\u6536\u5f55planck\u548cdage\u9879\u76ee\"\n"
+  },
+  "gate_projects": {
+    "type": "shell",
+    "role": "gate",
+    "deps": [
+      "projects"
+    ],
+    "cmd": "cd ${vars.repo_dir} && zola build 2>&1 && test -f public/projects/index.html && test -f public/projects/planck/index.html && test -f public/projects/dage/index.html && echo 'project pages OK'"
+  },
+  "homepage": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "gate_crawl",
+      "gate_projects"
+    ],
+    "prompt": "\u5b9e\u73b0 Task 6: \u5b8c\u5584\u9996\u9875\uff0c\u5c55\u793a\u6700\u65b0\u6587\u7ae0\u3002\n\n\u8bbe\u8ba1\u6587\u6863: ${nodes.read_design.output}\n\u5b9e\u73b0\u8ba1\u5212: ${nodes.read_plan.output}\n\n\u4efb\u52a1:\n1. \u66f4\u65b0 content/_index.md \u2014 \u540d\u5b57 + \u4e00\u53e5\u8bdd\u4ecb\u7ecd\n2. \u66f4\u65b0 templates/index.html \u2014 \u7528 get_section \u62c9\u53d6blog\u6700\u65b05\u7bc7\u6587\u7ae0, \u663e\u793a\u65e5\u671f+\u6807\u9898\u94fe\u63a5, \"all posts >\" \u94fe\u63a5\n3. \u9a8c\u8bc1: `zola build` \u6210\u529f, \u9996\u9875\u5305\u542b\u6700\u65b0\u6587\u7ae0\u5217\u8868\n4. \u63d0\u4ea4: \"feat: \u5b8c\u5584\u9996\u9875\u6a21\u677f\uff0c\u5c55\u793a\u6700\u65b0\u6587\u7ae0\"\n"
+  },
+  "gate_homepage": {
+    "type": "shell",
+    "role": "gate",
+    "deps": [
+      "homepage"
+    ],
+    "cmd": "cd ${vars.repo_dir} && zola build 2>&1 && grep -q 'href.*blog/' public/index.html && echo 'homepage shows posts OK'"
+  },
+  "deploy_config": {
+    "type": "claude",
+    "role": "produce",
+    "deps": [
+      "gate_homepage"
+    ],
+    "prompt": "\u5b9e\u73b0 Task 7: GitHub Actions\u90e8\u7f72\u914d\u7f6e\u3002\n\n\u5b9e\u73b0\u8ba1\u5212: ${nodes.read_plan.output}\n\n\u4efb\u52a1:\n1. \u521b\u5efa .github/workflows/deploy.yml:\n   - on push to main\n   - \u5b89\u88c5Zola (curl\u4e0b\u8f7d\u4e8c\u8fdb\u5236)\n   - zola build\n   - peaceiris/actions-gh-pages@v4 \u90e8\u7f72\u5230gh-pages\u5206\u652f\n2. \u9a8c\u8bc1YAML\u8bed\u6cd5\u6b63\u786e\n3. \u63d0\u4ea4: \"ci: \u6dfb\u52a0GitHub Pages\u81ea\u52a8\u90e8\u7f72\"\n"
+  },
+  "final_check": {
+    "type": "shell",
+    "role": "produce",
+    "deps": [
+      "deploy_config"
+    ],
+    "cmd": "cd ${vars.repo_dir} && echo \"=== zola build ===\" && zola build 2>&1 && echo \"=== page count ===\" && find public -name 'index.html' | wc -l && echo \"=== total size ===\" && du -sh public/ && echo \"=== index.html size ===\" && wc -c < public/index.html && echo \"=== all pages ===\" && find public -name 'index.html' | sort\n"
+  },
+  "report": {
+    "type": "claude",
+    "role": "meta",
+    "deps": [
+      "final_check"
+    ],
+    "prompt": "\u64b0\u5199\u535a\u5ba2\u7ad9\u70b9\u642d\u5efa\u5b8c\u6210\u62a5\u544a\u3002\n\n\u5404\u9636\u6bb5\u7ed3\u679c:\n- \u9879\u76ee\u521d\u59cb\u5316: ${nodes.init_project.status}\n- \u57fa\u7840\u6a21\u677f: ${nodes.gate_base.status}\n- \u535a\u5ba2\u529f\u80fd: ${nodes.gate_blog.status}\n- \u4f5c\u54c1\u5c55\u793a: ${nodes.gate_projects.status}\n- \u9996\u9875: ${nodes.gate_homepage.status}\n- \u90e8\u7f72\u914d\u7f6e: ${nodes.deploy_config.status}\n- \u6700\u7ec8\u9a8c\u8bc1: ${nodes.final_check.output}\n\n\u5305\u542b: \u751f\u6210\u7684\u9875\u9762\u6e05\u5355\u3001\u7ad9\u70b9\u603b\u5927\u5c0f\u3001\u540e\u7eed\u6b65\u9aa4(\u521b\u5efaGitHub repo\u3001\u66f4\u65b0base_url\u3001push\u89e6\u53d1\u90e8\u7f72)\u3002\n"
+  }
+}

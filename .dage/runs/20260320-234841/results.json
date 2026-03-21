@@ -1,0 +1,116 @@
+{
+  "read_design": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 101.0,
+    "retries": 0
+  },
+  "read_plan": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 275.1,
+    "retries": 0
+  },
+  "scan_repo": {
+    "status": "success",
+    "output_len": 252,
+    "duration": 0.1,
+    "retries": 0
+  },
+  "init_project": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 1194.2,
+    "retries": 0
+  },
+  "base_template": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 322.5,
+    "retries": 0
+  },
+  "gate_base": {
+    "status": "success",
+    "output_len": 77,
+    "duration": 0.2,
+    "retries": 0
+  },
+  "blog_list": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 455.5,
+    "retries": 0
+  },
+  "blog_post": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 473.3,
+    "retries": 0
+  },
+  "gate_blog": {
+    "status": "success",
+    "output_len": 92,
+    "duration": 0.2,
+    "retries": 0
+  },
+  "crawl_danluu": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 719.7,
+    "retries": 0
+  },
+  "gate_crawl": {
+    "status": "success",
+    "output_len": 107,
+    "duration": 0.5,
+    "retries": 0
+  },
+  "read_projects": {
+    "status": "success",
+    "output_len": 8014,
+    "duration": 0.6,
+    "retries": 0
+  },
+  "projects": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 834.9,
+    "retries": 0
+  },
+  "gate_projects": {
+    "status": "success",
+    "output_len": 95,
+    "duration": 0.2,
+    "retries": 0
+  },
+  "homepage": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 456.3,
+    "retries": 0
+  },
+  "gate_homepage": {
+    "status": "success",
+    "output_len": 104,
+    "duration": 0.6,
+    "retries": 0
+  },
+  "deploy_config": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 240.2,
+    "retries": 0
+  },
+  "final_check": {
+    "status": "success",
+    "output_len": 5628,
+    "duration": 1.5,
+    "retries": 0
+  },
+  "report": {
+    "status": "success",
+    "output_len": 0,
+    "duration": 318.8,
+    "retries": 0
+  }
+}

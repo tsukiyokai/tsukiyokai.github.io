@@ -198,8 +198,8 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 - [x] Task 4b: 爬取danluu.com文章 (第13轮, 111篇)
 - [x] Task 5: 作品展示页 (第15轮)
 - [x] Task 6: 首页完善 (第16轮)
-- [ ] Task 7: GitHub Actions部署
-- [ ] Task 8: 最终验证
+- [x] Task 7: GitHub Actions部署 (第17轮)
+- [x] Task 8: 最终验证 + 完成报告 (第18轮)
 
 ## 已完成产物
 
@@ -223,15 +223,42 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 | scripts/crawl_danluu.py        | T4b | 爬虫脚本: 首页解析+逐篇下载+html2text转换 |
 | content/blog/danluu-*.md (×111)| T4b | danluu.com全部文章, Zola frontmatter     |
 
-验证: T1 `zola check`通过, T2 `zola build`通过, T4b `zola build` → 114 pages, 2 sections, 无error
+| .github/workflows/deploy.yml | T7 | on push main, Zola 0.22.1, peaceiris/actions-gh-pages@v4 |
+| docs/reports/2026-03-21-site-completion.md | T8 | 站点搭建完成报告 |
+
+验证: T1 `zola check`通过, T2 `zola build`通过, T4b `zola build` → 114 pages, 2 sections, 无error, T7 YAML语法校验通过, T8 全量验证通过 (114 pages, 1448B index.html, 4.4MB total)
 
 ## 当前阶段
 
-第16轮 (Task 6): 首页完善，验证通过。
-- 修改: content/_index.md (名字+介绍), templates/index.html (get_section拉取最新5篇)
-- `zola build` → 114 pages, 2 sections, 424ms, 无error
-- 首页展示: "shanshan" + "tech & life." + 5篇最新文章(日期+标题链接) + "all posts >"
-- 已知非阻塞问题: permalink双重/blog/路径(base_url末尾含/blog)，部署前需调整base_url
+第22轮: 收到Task 2重复执行指令，验证确认Task 2全部产物已存在且构建正常。`zola build` → 114 pages, 409ms, 无error。public/index.html 1,448 bytes。全部8个Task已完成，无待办事项。
 
-待commit: content/_index.md, templates/index.html
-下一步: Task 7 — GitHub Actions部署
+前18轮全量验证结果:
+- `zola build` → 114 pages (0 orphan), 2 sections, ~389ms, 无error
+- index.html 1,448 bytes (< 2KB目标 ✓)
+- 站点总大小 4.4MB
+- 所有关键页面均生成: /, /blog/, /blog/hello-world/, /projects/, /planck/, /dage/, /tags/
+- 分页6页 (/blog/page/1~6/)
+- 完成报告: docs/reports/2026-03-21-site-completion.md
+
+## 设计文档5维度提炼 (第19轮)
+
+源: docs/plans/2026-03-20-homepage-design.md
+
+1. 站点定位: 技术博客(tech+life) + 作品展示，双section架构(blog按时间/projects按权重)，单向输出无评论
+2. 视觉风格: danluu.com路线，near-zero CSS(~10-20行)，浏览器默认一切(颜色/字体/margin)，零外部资源
+3. 站点结构: content(Markdown) / templates(Tera) / sass(SCSS) 三层分离，6个模板文件覆盖5种页面
+4. 页面设计: 首页(信息枢纽: 导航+最新5篇) / 博客列表(逆序+分页+tags) / 文章(高亮+tags) / 作品列表(卡片) / 作品详情(描述+截图+repo)
+5. 技术决策: Zola(单二进制/内置sass+高亮) + GitHub Pages(零成本push部署) + tags taxonomy(自动生成标签页)
+
+YAGNI边界: 评论/RSS/搜索/暗色模式/外部字体CSS JS/Hero图片头像banner — 每个"不做"都在减少维护负担
+
+设计文档遗漏(执行中发现):
+- Zola section模板需在frontmatter显式声明template字段，不会按目录名自动匹配
+- tags taxonomy一旦被文章使用，必须有taxonomy_list.html + taxonomy_single.html模板
+
+待commit: .github/workflows/deploy.yml, docs/reports/2026-03-21-site-completion.md, SHARED_TASK_NOTES.md
+
+部署前必须完成:
+1. 创建GitHub仓库
+2. 更新config.toml base_url为实际GitHub Pages URL
+3. git push触发自动部署
