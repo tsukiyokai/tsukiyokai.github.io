@@ -232,6 +232,12 @@ config.toml中声明了`taxonomies = [{name = "tags"}]`，但只要没有文章�
 
 第22轮: 收到Task 2重复执行指令，验证确认Task 2全部产物已存在且构建正常。`zola build` → 114 pages, 409ms, 无error。public/index.html 1,448 bytes。全部8个Task已完成，无待办事项。
 
+第23轮: 收到Task 3重复执行指令。逐文件核对blog/_index.md(sort_by/paginate_by配置)、blog.html(paginator遍历+翻页)，确认与Task 3需求完全吻合。`zola build` → 114 pages, 397ms, 无error。无需任何变更。
+
+第24轮: 再次收到Task 3执行指令。核验blog/_index.md和blog.html内容与需求吻合，`zola build` → 114 pages, 416ms, 无error。Task 3产物完整，无需变更。
+
+第25轮: Task 3重复执行指令。逐文件核对blog/_index.md(sort_by/paginate_by/template/page_template)、blog.html(extends base/paginator遍历/日期+标题+tags/prev+next翻页)，全部与需求吻合。`zola build` → 114 pages, 1.1s, 无error。无需变更。
+
 前18轮全量验证结果:
 - `zola build` → 114 pages (0 orphan), 2 sections, ~389ms, 无error
 - index.html 1,448 bytes (< 2KB目标 ✓)
