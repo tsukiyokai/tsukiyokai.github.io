@@ -1,7 +1,7 @@
 +++
 title = "处境性知识与离身规划的限度"
 date  = 2026-03-22
-description = "对基于DAG的AI agent编排系统中规划与执行之间信息不对称问题的大陆哲学分析。"
+description = "考察DAG编排系统中无环境访问的规划阶段向处境性执行agent规定实现细节时的结构性失败。"
 [taxonomies]
 tags = ["philosophy", "ai", "design"]
 +++
@@ -9,6 +9,8 @@ tags = ["philosophy", "ai", "design"]
 本文考察在基于DAG的AI工作流编排系统设计中遭遇的一个认识论问题：一个无法访问执行环境的规划阶段向拥有完整环境上下文的执行agent规定实现细节。借助Heidegger关于上手状态与在手状态的存在论区分、Merleau-Ponty的身体性认知、Gadamer的诠释学视域理论以及Husserl的现象学还原，本文论证这代表了一个一般性情形，我将其称为"离身规划问题"(disembodied planning problem)：当抽象规格凌驾于处境性知识之上时系统性地发生的失败。本文提出"验证边界"作为一个具有现象学基础的原则，用于确定规划系统中适当的抽象层次。
 
 <!-- more -->
+
+> Zuhandenheit/Vorhandenheit（参与性理解 vs. 旁观性理解）
 
 ## 1. 引言：工程反常现象
 
