@@ -1,6 +1,7 @@
 +++
 title       = "dage"
 description = "DAG-based Agent Workflow Orchestrator — 把AI工作流写成YAML，按下run，走开"
+date        = 2026-03-01
 weight      = 2
 
 [extra]

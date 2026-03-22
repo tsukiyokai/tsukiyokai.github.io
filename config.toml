@@ -1,5 +1,5 @@
 base_url = "https://tsukiyokai.github.io"
-theme    = "tabi"
+theme    = "even"
 
 title            = "shanshan's blog"
 description      = "tech & life"
@@ -20,18 +20,12 @@ smart_punctuation           = true
 external_links_target_blank = true
 
 [markdown.highlighting]
-theme = "catppuccin-frappe"
+theme = "github-light"
 
 [extra]
-skin                        = "teal"
-show_reading_time           = true
-show_date                   = true
-show_author                 = false
-toc                         = false
-copy_button                 = true
-show_previous_next_articles = true
-section_path                = "blog/_index.md"
-max_posts                   = 5
-
-[extra.footer]
-show_made_with_tabi         = true
+even_title = "shanshan"
+even_menu  = [
+    { url = "$BASE_URL",          name = "Home"     },
+    { url = "$BASE_URL/tags",     name = "Tags"     },
+    { url = "$BASE_URL/projects", name = "Projects" },
+]

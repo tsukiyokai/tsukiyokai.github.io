@@ -1,6 +1,7 @@
 +++
 title       = "Planck"
 description = "Ascend NPU集合通信库 — Plan Compilation + Hardware Exploitation"
+date        = 2026-03-01
 weight      = 1
 
 [extra]
