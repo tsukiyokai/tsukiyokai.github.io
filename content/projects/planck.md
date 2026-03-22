@@ -5,7 +5,7 @@ weight      = 1
 
 [extra]
 lang = "Rust"
-repo = "https://github.com/shanshan/planck"
+repo = "https://github.com/tsukiyokai/planck"
 +++
 
 Plan + Communication + Link — 为Ascend NPU上PanGu大模型全栈特化的集合通信库。

@@ -3,20 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock %}">
   <title>{% block title %}{{ config.title }}{% endblock %}</title>
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="/rss.xml">
 </head>
 <body>
   <nav>
     <a href="/">home</a> /
     <a href="/blog/">blog</a> /
+    <a href="/reading/">reading</a> /
     <a href="/projects/">projects</a>
   </nav>
 
   {% block content %}{% endblock %}
 
   <footer>
-    <a href="https://github.com/shanshan">github</a>
+    <a href="https://github.com/tsukiyokai">github</a> /
+    <a href="/rss.xml">rss</a>
   </footer>
 </body>
 </html>

@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}blog - {{ config.title }}{% endblock %}
+{% block title %}reading - {{ config.title }}{% endblock %}
 
 {% block content %}
-<h1>blog</h1>
+<h1>reading</h1>
+<p>值得一读的文章，主要来自 <a href="https://danluu.com">danluu.com</a>。</p>
 <ul>
 {% for page in paginator.pages %}
     <li>
         {{ page.date | date(format="%Y-%m-%d") }} -
         <a href="{{ page.permalink }}">{{ page.title }}</a>
-        {% for tag in page.taxonomies.tags | default(value=[]) %}
-        [{{ tag }}]
-        {% endfor %}
     </li>
 {% endfor %}
 </ul>

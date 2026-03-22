@@ -7,7 +7,7 @@
 <h2>recent posts</h2>
 <ul>
 {% for page in blog.pages | slice(end=5) %}
-    <li>{{ page.date }} - <a href="{{ page.permalink }}">{{ page.title }}</a></li>
+    <li>{{ page.date | date(format="%Y-%m-%d") }} - <a href="{{ page.permalink }}">{{ page.title }}</a></li>
 {% endfor %}
 </ul>
 <a href="{{ blog.permalink }}">all posts &gt;</a>
