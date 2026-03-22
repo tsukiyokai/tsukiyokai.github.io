@@ -4,7 +4,7 @@ title       = "shanshan's blog"
 description = "tech & life"
 
 compile_sass   = true
-minify_html    = true
+minify_html    = false
 generate_feeds = true
 feed_filenames  = ["rss.xml"]
 
