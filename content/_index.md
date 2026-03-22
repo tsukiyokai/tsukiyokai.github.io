@@ -1,9 +1,8 @@
 +++
-title       = "home"
-sort_by     = "date"
-paginate_by = 20
+title   = "home"
+sort_by = "date"
 +++
 
-shanshan
+# shanshan
 
 tech & life.

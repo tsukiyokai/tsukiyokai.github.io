@@ -1,5 +1,7 @@
 +++
-title       = "blog"
-sort_by     = "date"
-transparent = true
+title         = "blog"
+sort_by       = "date"
+template      = "blog.html"
+page_template = "blog-page.html"
+paginate_by   = 20
 +++
