@@ -5,8 +5,9 @@ date        = 2026-03-01
 weight      = 2
 
 [extra]
-lang = "Python"
-repo = "https://github.com/tsukiyokai/dage"
+lang      = "Python"
+repo      = "https://github.com/tsukiyokai/dage"
+hide_date = true
 +++
 
 编排AI agent曾经意味着写胶水脚本、逐步看护、祈祷第三步不要在你睡着前崩溃。dage是解药。
