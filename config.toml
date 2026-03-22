@@ -1,8 +1,10 @@
 base_url = "https://tsukiyokai.github.io"
+theme    = "tabi"
 
 title            = "shanshan's blog"
 description      = "tech & life"
 default_language = "zh"
+author           = "shanshan"
 
 compile_sass   = true
 minify_html    = false
@@ -10,12 +12,26 @@ generate_feeds = true
 feed_filenames = ["rss.xml"]
 
 taxonomies = [
-    { name = "tags" },
+    { name = "tags", feed = true },
 ]
 
 [markdown]
-smart_punctuation              = true
-external_links_target_blank    = true
+smart_punctuation           = true
+external_links_target_blank = true
 
 [markdown.highlighting]
-theme = "github-light"
+theme = "catppuccin-frappe"
+
+[extra]
+skin                        = "teal"
+show_reading_time           = true
+show_date                   = true
+show_author                 = false
+toc                         = false
+copy_button                 = true
+show_previous_next_articles = true
+section_path                = "blog/_index.md"
+max_posts                   = 5
+
+[extra.footer]
+show_made_with_tabi         = true

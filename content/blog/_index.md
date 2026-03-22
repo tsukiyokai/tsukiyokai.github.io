@@ -1,7 +1,5 @@
 +++
-title    = "blog"
-sort_by  = "date"
-template = "blog.html"
-page_template = "blog-page.html"
-paginate_by   = 20
+title       = "blog"
+sort_by     = "date"
+paginate_by = 20
 +++
