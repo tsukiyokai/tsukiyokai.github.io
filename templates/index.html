@@ -2,4 +2,17 @@
 
 {% block content %}
 {{ section.content | safe }}
+
+{% set blog = get_section(path="blog/_index.md") %}
+{% if blog.pages %}
+<h2>recent posts</h2>
+<ul>
+{% for page in blog.pages | slice(end=5) %}
+    <li>{{ page.date | date(format="%Y-%m-%d") }} - <a href="{{ page.permalink }}">{{ page.title }}</a></li>
+{% endfor %}
+</ul>
+{% if blog.pages | length > 5 %}
+<p><a href="{{ blog.permalink }}">all posts &gt;</a></p>
+{% endif %}
+{% endif %}
 {% endblock %}
