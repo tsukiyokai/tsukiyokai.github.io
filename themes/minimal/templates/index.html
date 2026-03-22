@@ -8,7 +8,10 @@
 <h2>posts</h2>
 <ul>
 {% for page in blog.pages | slice(end=5) %}
-    <li>{{ page.date | date(format="%b %d") }} <a href="{{ page.permalink }}">{{ page.title }}</a>{% for tag in page.taxonomies.tags | default(value=[]) %} [<a href="/tags/{{ tag }}/">{{ tag }}</a>]{% endfor %}</li>
+    <li>
+        <span class="date">{{ page.date | date(format="%b %d") }}</span> <a href="{{ page.permalink }}">{{ page.title }}</a>{% for tag in page.taxonomies.tags | default(value=[]) %} [<a href="/tags/{{ tag }}/">{{ tag }}</a>]{% endfor %}
+        <br><small>{{ page.description }}</small>
+    </li>
 {% endfor %}
 </ul>
 {% if blog.pages | length > 5 %}
@@ -16,12 +19,20 @@
 {% endif %}
 {% endif %}
 
-{% set projects = get_section(path="projects/_index.md") %}
-{% if projects.pages %}
+{% set repos = load_data(path="static/repos.json") %}
+{% if repos %}
 <h2>projects</h2>
-<ul>
-{% for page in projects.pages %}
-    <li><a href="{{ page.permalink }}">{{ page.title }}</a> — {{ page.description }}</li>
+<ul class="repo-list">
+{% for repo in repos %}
+    <li class="repo-card">
+        <a href="{{ repo.url }}">{{ repo.name }}</a>
+        {% if repo.description %}<span class="desc">{{ repo.description }}</span>{% endif %}
+        <span class="repo-meta">
+            {% if repo.language %}<span><span class="lang-dot" style="background:{{ repo.language_color }}"></span> {{ repo.language }}</span>{% endif %}
+            {% if repo.stars > 0 %}<span>&#9733; {{ repo.stars }}</span>{% endif %}
+            {% if repo.forks > 0 %}<span>&#9906; {{ repo.forks }}</span>{% endif %}
+        </span>
+    </li>
 {% endfor %}
 </ul>
 {% endif %}

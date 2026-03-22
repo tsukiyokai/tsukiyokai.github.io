@@ -4,11 +4,17 @@
 
 {% block content %}
 <h1>projects</h1>
-<ul>
-{% for page in section.pages %}
-    <li>
-        <a href="{{ page.permalink }}">{{ page.title }}</a>
-        — {{ page.description }}
+{% set repos = load_data(path="static/repos.json") %}
+<ul class="repo-list">
+{% for repo in repos %}
+    <li class="repo-card">
+        <a href="{{ repo.url }}">{{ repo.name }}</a>
+        {% if repo.description %}<span class="desc">{{ repo.description }}</span>{% endif %}
+        <span class="repo-meta">
+            {% if repo.language %}<span><span class="lang-dot" style="background:{{ repo.language_color }}"></span> {{ repo.language }}</span>{% endif %}
+            {% if repo.stars > 0 %}<span>&#9733; {{ repo.stars }}</span>{% endif %}
+            {% if repo.forks > 0 %}<span>&#9906; {{ repo.forks }}</span>{% endif %}
+        </span>
     </li>
 {% endfor %}
 </ul>

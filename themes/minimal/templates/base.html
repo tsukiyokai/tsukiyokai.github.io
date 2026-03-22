@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="{{ lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,15 @@
     .toc { font-size: 0.85em; line-height: 1; }
     .toc ul { padding-left: 1em; }
     .toc a { text-decoration: none; }
+    .date  { color: #888; font-size: 0.85em; }
+    .tag   { color: #888; font-size: 0.85em; }
+    .desc  { color: #666; font-size: 0.85em; }
+    .repo-list { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; gap: 0.8em; }
+    .repo-card { border: 1px solid #ddd; border-radius: 6px; padding: 0.8em; width: 100%; max-width: 18em; }
+    .repo-card a { font-weight: bold; }
+    .repo-card .desc { display: block; margin: 0.4em 0; }
+    .repo-meta { display: flex; gap: 1em; font-size: 0.8em; color: #888; }
+    .repo-meta .lang-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; }
   </style>
   {% block css %}{% endblock %}
   <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="/rss.xml">
@@ -20,7 +29,7 @@
   <nav>
     <a href="/">home</a> /
     <a href="/blog/">blog</a> /
-    <a href="/projects/">projects</a>
+    <a href="/projects/">proj</a>
   </nav>
 
   {% block content %}{% endblock %}
