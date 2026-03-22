@@ -84,7 +84,7 @@ Python：
 
 ```python
 def topo_sort(graph: dict[str, list[str]]) -> list[str]:
-    """Kahn's algorithm — O(V+E), stable."""
+    """Kahn's algorithm -- O(V+E), stable."""
     in_deg = {n: 0 for n in graph}
     for deps in graph.values():
         for d in deps:
