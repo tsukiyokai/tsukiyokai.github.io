@@ -273,7 +273,7 @@ It's easy to see why someone might have benchmarked the same code and decided th
 
 Thanks to [Scott](<https://github.com/graue/>) for some comments on the organization of this post, and to [Leah](<http://blog.leahhanson.us/>) for extensive comments on just about everything
 
-**If you liked this, you'll probably enjoy[this post about how CPUs have changed since the 80s](<https://danluu.com//danluu.com/new-cpu-features/>).**
+**If you liked this, you'll probably enjoy[this post about how CPUs have changed since the 80s](<https://danluu.com/new-cpu-features/>).**
 
 * * *
 

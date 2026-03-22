@@ -126,7 +126,7 @@ A more general observation is that SPEC is basically irrelevant as a benchmark n
 
 This is what a search query looks like at Google. A query comes in, a wide fanout set of RPCs are issued to a set of machines (the first row). Each of those machines also does a set of RPCs (the second row), those do more RPCs (the third row), and there's a fourth row that's not shown because the graph has so much going on that it looks like noise. This is one quite normal type of workload for a datacenter, and there's nothing in SPEC that looks like this.
 
-There are a lot more fun tidbits in all of these papers, and I recommend reading them if you thought anything in this post was interesting. **If you liked this post, you'll probably also like[this talk by Dick Sites on various performance and profiling related topics](<https://www.youtube.com/watch?v=QBu2Ae8-8LM>), [this post on Intel's new CLWB and PCOMMIT instructions](<https://danluu.com//danluu.com/clwb-pcommit/>), and [this post on other "new" CPU features](<https://danluu.com//danluu.com/new-cpu-features/>)**.
+There are a lot more fun tidbits in all of these papers, and I recommend reading them if you thought anything in this post was interesting. **If you liked this post, you'll probably also like[this talk by Dick Sites on various performance and profiling related topics](<https://www.youtube.com/watch?v=QBu2Ae8-8LM>), [this post on Intel's new CLWB and PCOMMIT instructions](<https://danluu.com/clwb-pcommit/>), and [this post on other "new" CPU features](<https://danluu.com/new-cpu-features/>)**.
 
 Thanks to Leah Hanson, David Kanter, Joe Wilder, Nico Erfurth, and Jason Davies for comments/corrections on this. 
 

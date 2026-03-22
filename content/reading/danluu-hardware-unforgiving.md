@@ -34,12 +34,12 @@ _Thanks to Sophia Wisdom for comments/corrections/discussion._
 ### CPU internals series
 
   * [CPU bugs](<https://danluu.com/cpu-bugs/>)
-  * [New CPU features since the 80s](<https://danluu.com//danluu.com/new-cpu-features/>)
-  * [A brief history of branch prediction](<https://danluu.com//danluu.com/branch-prediction/>)
-  * [The cost of branches and integer overflow checking in real code](<https://danluu.com//danluu.com/integer-overflow/>)
-  * [Why CPU development is hard](<https://danluu.com//danluu.com/hardware-unforgiving/>)
-  * [Verilog sucks, part 1](<https://danluu.com//danluu.com/why-hardware-development-is-hard/>)
-  * [Verilog sucks, part 2](<https://danluu.com//danluu.com/pl-troll/>)
+  * [New CPU features since the 80s](<https://danluu.com/new-cpu-features/>)
+  * [A brief history of branch prediction](<https://danluu.com/branch-prediction/>)
+  * [The cost of branches and integer overflow checking in real code](<https://danluu.com/integer-overflow/>)
+  * [Why CPU development is hard](<https://danluu.com/hardware-unforgiving/>)
+  * [Verilog sucks, part 1](<https://danluu.com/why-hardware-development-is-hard/>)
+  * [Verilog sucks, part 2](<https://danluu.com/pl-troll/>)
 
 
 ### 2021 comments
@@ -48,7 +48,7 @@ In retrospect, I think that I was too optimistic about software in this post. If
 
 * * *
 
-  1. Comparing [my old company](<https://danluu.com//danluu.com/glenn-henry-interview/>) to another x86 startup founded within the year is instructive. Both started at around the same time. Both had great teams of smart people. Our competitor even had famous software and business people on their side. But it's notable that their hardware implementers weren't a core team of multi-decade industry veterans who had worked together before. It took us about two years to get a working x86 chip, on top of $15M in funding. Our goal was to produce a low-cost chip and we nailed it. It took them five years, with over $250M in funding. Their original goal was to produce a high performance low-power processor, but they missed their performance target so badly that they were forced into the low-cost space. They ended up with worse performance than us, with a chip was 50% bigger (and hence, cost more than 50% more to produce) using team four times our size. They eventually went under, because there's no way they could survive with 4x our burn rate and weaker performance. But, not before burning through $969M in funding (including $230M from patent lawsuits). [return]
+  1. Comparing [my old company](<https://danluu.com/glenn-henry-interview/>) to another x86 startup founded within the year is instructive. Both started at around the same time. Both had great teams of smart people. Our competitor even had famous software and business people on their side. But it's notable that their hardware implementers weren't a core team of multi-decade industry veterans who had worked together before. It took us about two years to get a working x86 chip, on top of $15M in funding. Our goal was to produce a low-cost chip and we nailed it. It took them five years, with over $250M in funding. Their original goal was to produce a high performance low-power processor, but they missed their performance target so badly that they were forced into the low-cost space. They ended up with worse performance than us, with a chip was 50% bigger (and hence, cost more than 50% more to produce) using team four times our size. They eventually went under, because there's no way they could survive with 4x our burn rate and weaker performance. But, not before burning through $969M in funding (including $230M from patent lawsuits). [return]
   2. A funny side effect of the importance of experience is that age discrimination doesn't affect the areas I've worked in. At 30, I'm bizarrely young for someone who's done microprocessor design. The core folks at my old place were in their 60s. They'd picked up some younger folks along the way, but 30? Freakishly young. People are much younger at the new gig: I'm surrounded by ex-supercomputer folks from [Cray and SGI](<http://en.wikipedia.org/wiki/Cray#Cray_Research_Inc._and_Cray_Computer_Corporation:_1972_to_1996>), who are barely pushing 50, along with a couple kids from [Synplify](<http://en.wikipedia.org/wiki/Synplicity>) and [DESRES](<http://www.deshawresearch.com/>) who, at 40, are unusually young. Not all hardware folks are that old. In another arm of the company, there are folks who grew up in the FPGA world, which is a lot more forgiving. In that group, I think I met someone who's only a few years older than me. Kidding aside, you'll see younger folks doing RTL design on complex projects at large companies that are willing to spend a decade mentoring folks. But, at startups and on small hardware teams that move fast, it's rare to hire someone into design who doesn't have a decade of experience.
 
 There's a crowd that's even younger than the FPGA folks, even younger than me, working on Arduinos and microcontrollers, doing hobbyist electronics and consumer products. I'm genuinely curious how many of those folks will decide to work on large-scale systems design. In one sense, it's inevitable, as the area matures, and solutions become more complex. The other sense is what I'm curious about: will the hardware renaissance spark an interest in supercomputers, microprocessors, and warehouse-scale computers?

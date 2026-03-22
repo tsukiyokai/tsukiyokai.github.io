@@ -57,12 +57,12 @@ What's the future? Locally, I've managed to convince a couple of people on my te
 ### CPU internals series
 
   * [CPU bugs](<https://danluu.com/cpu-bugs/>)
-  * [New CPU features since the 80s](<https://danluu.com//danluu.com/new-cpu-features/>)
-  * [A brief history of branch prediction](<https://danluu.com//danluu.com/branch-prediction/>)
-  * [The cost of branches and integer overflow checking in real code](<https://danluu.com//danluu.com/integer-overflow/>)
-  * [Why CPU development is hard](<https://danluu.com//danluu.com/hardware-unforgiving/>)
-  * [Verilog sucks, part 1](<https://danluu.com//danluu.com/why-hardware-development-is-hard/>)
-  * [Verilog sucks, part 2](<https://danluu.com//danluu.com/pl-troll/>)
+  * [New CPU features since the 80s](<https://danluu.com/new-cpu-features/>)
+  * [A brief history of branch prediction](<https://danluu.com/branch-prediction/>)
+  * [The cost of branches and integer overflow checking in real code](<https://danluu.com/integer-overflow/>)
+  * [Why CPU development is hard](<https://danluu.com/hardware-unforgiving/>)
+  * [Verilog sucks, part 1](<https://danluu.com/why-hardware-development-is-hard/>)
+  * [Verilog sucks, part 2](<https://danluu.com/pl-troll/>)
 
 
 P.S. Dear hardware folks, sorry for oversimplifying so much. I started writing footnotes explaining everything I was glossing over until I realized that my footnotes were longer than the post. The culled footnotes may make it into their own blog posts some day. A very long footnote that I'll briefly summarize is that semantically correct Verilog simulation is inherently slower than something like Bluespec or Chisel because of the complications involved with the event model. EDA vendors have managed to get decent performance out of Verilog, but only by hiring large teams of the best simulation people in the world to hammer at the problem, the same way JavaScript is fast not because of any property of the language, but because there are amazing people working on the VM. It should tell you something when a tiny team working on a shoestring grant-funded budget can produce a language and simulation infrastructure that smokes existing tools.

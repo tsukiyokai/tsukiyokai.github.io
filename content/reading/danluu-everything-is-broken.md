@@ -21,7 +21,7 @@ GitHub switched from Pygments to whatever they use for Atom, [breaking syntax hi
 
 > You're of course free to fork the Racket bundle and improve it as you see fit. I'm afraid nobody at GitHub works with Racket so we can't judge what proper highlighting looks like. But we'll of course pull your changes thanks to the magic of O P E N S O U R C E.
 
-A bit ironic after the recent keynote talk by another GitHub employee titled [“move fast and break nothing”](<http://zachholman.com/talk/move-fast-break-nothing/>). Not to mention that it's unlikely to work. The last time I submitted a PR to linguist, it only got merged after I wrote [a blog post pointing out that they had 100s of open PRs, some of which were a year old](<https://danluu.com//danluu.com/discourage-oss/>), which got them to merge a bunch of PRs after the post hit reddit. As far as I can tell, "the magic of O P E N S O U R C E" is code for the magic of hitting the front page of reddit/HN or having lots of twitter followers.
+A bit ironic after the recent keynote talk by another GitHub employee titled [“move fast and break nothing”](<http://zachholman.com/talk/move-fast-break-nothing/>). Not to mention that it's unlikely to work. The last time I submitted a PR to linguist, it only got merged after I wrote [a blog post pointing out that they had 100s of open PRs, some of which were a year old](<https://danluu.com/discourage-oss/>), which got them to merge a bunch of PRs after the post hit reddit. As far as I can tell, "the magic of O P E N S O U R C E" is code for the magic of hitting the front page of reddit/HN or having lots of twitter followers.
 
 Also, icons were broken for a while. Was that this past week?
 
@@ -49,7 +49,7 @@ Tags are only downcased in some contexts but not others, which means that any ta
 
 My Atom feed [doesn't work correctly](<https://twitter.com/chmaynard/status/534540677078855680>).
 
-If you consider performance bugs to be problems, I noticed so many of those this past week that they [have their own blog post](<https://danluu.com//danluu.com/octopress-speedup/>).
+If you consider performance bugs to be problems, I noticed so many of those this past week that they [have their own blog post](<https://danluu.com/octopress-speedup/>).
 
 #### Running with Rifles (Game)
 
@@ -93,7 +93,7 @@ Here's one which might be an OS X bug? I had some bad code that caused an infini
 
 I won't list bugs in packages because there are too many. Even in core Julia, I've run into so many Julia bugs that I don't file bugs any more. It's just too much of an interruption. When I have some time, I should spend a day filing all the bugs I can remember, but I think it would literally take a whole day to write up a decent, reproducible, bug report for each bug.
 
-See [this post](<https://danluu.com//danluu.com/julialang/>) for more on why I run into so many Julia bugs.
+See [this post](<https://danluu.com/julialang/>) for more on why I run into so many Julia bugs.
 
 #### Google Hangouts
 
@@ -165,11 +165,11 @@ At every place I've worked, a 2k LOC prototype that exists just so you can get p
 
 At 18k LOC in tests for 108k LOC of code, users are going to find bugs. A lot of bugs.
 
-Here's where I'm supposed to write an appeal to take testing more seriously and [put real effort into it](<https://danluu.com//danluu.com/empirical-pl/#fn2>). But we all know that's not going to work. It would take 90k LOC of tests to get Julia to be as well tested as a poorly tested prototype (falsely assuming linear complexity in size). That's two person-years of work, not even including time to debug and fix bugs (which probably brings it closer to four of five years). Who's going to do that? No one. Writing tests is like writing documentation. Everyone already knows you should do it. Telling people they should do it adds zero information1.
+Here's where I'm supposed to write an appeal to take testing more seriously and [put real effort into it](<https://danluu.com/empirical-pl/#fn2>). But we all know that's not going to work. It would take 90k LOC of tests to get Julia to be as well tested as a poorly tested prototype (falsely assuming linear complexity in size). That's two person-years of work, not even including time to debug and fix bugs (which probably brings it closer to four of five years). Who's going to do that? No one. Writing tests is like writing documentation. Everyone already knows you should do it. Telling people they should do it adds zero information1.
 
 Given that people aren't going to put any effort into testing, what's the best way to do it?
 
-Property-based testing. Generative testing. Random testing. Concolic Testing (which was done long before the term was coined). Static analysis. [Fuzzing](<https://danluu.com//danluu.com/everything-is-broken/>). [Statistical bug finding](<https://danluu.com//danluu.com/bugalytics/>). There are lots of options. Some of them are actually the same thing because the terminology we use is inconsistent and buggy. I'm going to arbitrarily pick one to talk about, but they're all worth looking into.
+Property-based testing. Generative testing. Random testing. Concolic Testing (which was done long before the term was coined). Static analysis. [Fuzzing](<https://danluu.com/everything-is-broken/>). [Statistical bug finding](<https://danluu.com/bugalytics/>). There are lots of options. Some of them are actually the same thing because the terminology we use is inconsistent and buggy. I'm going to arbitrarily pick one to talk about, but they're all worth looking into.
 
 People are often intimidated by these, though. I've seen a lot of talks on these and they often make it sound like this stuff is really hard. [Csmith](<http://embed.cs.utah.edu/csmith/>) is 40k LOC. [American Fuzzy Lop](<https://code.google.com/p/american-fuzzy-lop/>)'s compile-time instrumentation is smart enough to [generate valid JPEGs](<http://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html>). [Sixth Sense](<http://researcher.watson.ibm.com/researcher/view_group_subpage.php?id=2989>) has the same kind of intelligence as American Fuzzy Lop in terms of exploration, and in addition, uses symbolic execution to exhaustively explore large portions of the state space; it will formally verify that your asserts hold if it's able to collapse the state space enough to exhaustively search it, otherwise it merely tries to get the best possible test coverage by covering different paths and states. In addition, it will use symbolic equivalence checking to check different versions of your code against each other.
 
@@ -181,7 +181,7 @@ What does it really take to write a fuzzer? Well, you need to generate random in
 
 This applies to a lot of different types of programs. Have a GUI? It's pretty easy to prod random UI elements. Read files or things off the network? Generating (or mutating) random data is straightforward. This is something anyone can do.
 
-But this isn't a silver bullet. Lackadaisical testing means that [your users will find bugs](<https://danluu.com//danluu.com/cpu-bugs/>). However, even given that developers aren't going to spend nearly enough time on testing, we can do a lot better than we're doing right now.
+But this isn't a silver bullet. Lackadaisical testing means that [your users will find bugs](<https://danluu.com/cpu-bugs/>). However, even given that developers aren't going to spend nearly enough time on testing, we can do a lot better than we're doing right now.
 
 #### Resources
 
@@ -189,7 +189,7 @@ There are a lot of great resources out there, but if you're just getting started
 
 John Regehr has [a udacity course on software testing](<https://www.udacity.com/course/cs258>). I haven't worked through it yet (Pablo Torres just pointed to it), but given the quality of Dr. Regehr's writing, I expect the course to be good.
 
-For more on my perspective on testing, [there's this](<https://danluu.com//danluu.com/testing/>).
+For more on my perspective on testing, [there's this](<https://danluu.com/testing/>).
 
 #### Acknowledgments
 
@@ -201,7 +201,7 @@ I'm experimenting with blogging more by spending less time per post and just spe
 
   1. If I were really trying to convince you of this, I'd devote a post to the business case, diving into the data and trying to figure out the cost of bugs. The short version of that unwritten post is that response times are well studied and it's known that a 100ms of extra latency will cost you a noticeable amount of revenue. A 1s latency hit is a disaster. How do you think that compares to having your product not work at all?
 
-Compared to 100ms of latency, how bad is it when your page loads and then bugs out in a way that makes it totally unusable? What if it destroys user state and makes the user re-enter everything they wanted to buy into their cart? Removing one extra click is worth a huge amount of revenue, and now we're talking about adding 10 extra clicks or infinite latency to a random subset of users. And not a small subset, either. Want to stop lighting piles of money on fire? Write tests. If that's too much work, at least [use the data you already have to find bugs](<https://danluu.com//danluu.com/bugalytics/>).
+Compared to 100ms of latency, how bad is it when your page loads and then bugs out in a way that makes it totally unusable? What if it destroys user state and makes the user re-enter everything they wanted to buy into their cart? Removing one extra click is worth a huge amount of revenue, and now we're talking about adding 10 extra clicks or infinite latency to a random subset of users. And not a small subset, either. Want to stop lighting piles of money on fire? Write tests. If that's too much work, at least [use the data you already have to find bugs](<https://danluu.com/bugalytics/>).
 
 Of course it's sometimes worth it to light pile of money on fire. Maybe your rocket ship is powered by flaming piles of money. If you're a very rapidly growing startup, a 20% increase in revenue might not be worth that much. It could be better to focus on adding features that drive growth. The point isn't that you should definitely write more tests, it's that you should definitely do the math to see if you should write more tests.
 

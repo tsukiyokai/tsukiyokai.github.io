@@ -617,7 +617,7 @@ Something else that HN does that’s different from most forums is that user fla
 
 Maybe the answer is that people come to HN for the same reason people come to Silicon Valley -- despite all the downsides, there’s a relatively large concentration of experts there across a wide variety of CS-related disciplines. If that’s true, and it’s a combination of path dependence on network effects, that’s pretty depressing since that’s not replicable.
 
-_If you liked this curated list of comments, you'll probably also like[this list of books](<https://danluu.com//danluu.com/programming-books/>) and [this list of blogs](<https://danluu.com//danluu.com/programming-blogs/>)._
+_If you liked this curated list of comments, you'll probably also like[this list of books](<https://danluu.com/programming-books/>) and [this list of blogs](<https://danluu.com/programming-blogs/>)._
 
 This is part of an experiment where I write up thoughts quickly, without proofing or editing. Apologies if this is less clear than a normal post. This is probably going to be the last post like this, for now, since, by quickly writing up a post whenever I have something that can be written up quickly, I'm building up a backlog of post ideas that require re-reading the literature in an area or running experiments.
 

@@ -9,7 +9,7 @@ Once upon a time, my [computer architecture professor](<http://pages.cs.wisc.edu
 
 In practice, on real workloads, random tends to do worse than other algorithms. But what if we take two random choices (2-random) and just use LRU between those two choices?
 
-Here are the relative miss rates we get for SPEC CPU1 with a Sandy Bridge-like cache ([8-way associative](<https://danluu.com//danluu.com/3c-conflict/>), 64k, 256k, and 2MB L1, L2, and L3 caches, respectively). These are ratios (algorithm miss rate : random miss rate); lower is better. Each cache uses the same policy at all levels of the cache.
+Here are the relative miss rates we get for SPEC CPU1 with a Sandy Bridge-like cache ([8-way associative](<https://danluu.com/3c-conflict/>), 64k, 256k, and 2MB L1, L2, and L3 caches, respectively). These are ratios (algorithm miss rate : random miss rate); lower is better. Each cache uses the same policy at all levels of the cache.
 
 Policy | L1 (64k) | L2 (256k) | L3 (2MB)  
 ---|---|---|---  

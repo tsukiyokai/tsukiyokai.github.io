@@ -70,7 +70,7 @@ _I don’t really understand how this is an example of circumventing the dev/ops
 
 _2 events per shift is the max, but what’s the average? How many on-call events are expected to get sent from the SRE team to the dev team per week?_
 
-_How do you get from a blameful postmortem culture to a blameless postmortem culture? Now that everyone knows that you should have blameless postmortems,[everyone will claim to do them. Sort of like having good testing and deployment practices](<https://danluu.com//danluu.com/wat/>). I’ve been lucky to be on an on call rotation that’s never gotten paged, but when I talk to folks who joined recently and are on call, they have not so great stories of finger pointing, trash talk, and blame shifting. The fact that everyone knows you’re supposed to be blameless seems to make it harder to call out blamefulness, not easier._
+_How do you get from a blameful postmortem culture to a blameless postmortem culture? Now that everyone knows that you should have blameless postmortems,[everyone will claim to do them. Sort of like having good testing and deployment practices](<https://danluu.com/wat/>). I’ve been lucky to be on an on call rotation that’s never gotten paged, but when I talk to folks who joined recently and are on call, they have not so great stories of finger pointing, trash talk, and blame shifting. The fact that everyone knows you’re supposed to be blameless seems to make it harder to call out blamefulness, not easier._
 
 #### Move fast without breaking SLO
 
@@ -357,7 +357,7 @@ _Multiple interesting case studies and explanations skipped in notes._
     * CI
     * Release process creates an audit trail that runs tests and shows that tests passed
   * Config management 
-    * Deceptively simple, [can cause instability](<https://danluu.com//danluu.com/postmortem-lessons/>)
+    * Deceptively simple, [can cause instability](<https://danluu.com/postmortem-lessons/>)
   * Many possible schemes (all involve storing config in source control and having strict config review)
   * Use mainline for config -- config maintained at head and applied immediately 
     * Originally used for Borg (and pre-Borg systems)
@@ -501,7 +501,7 @@ _This is an area where we seem to actually be pretty good. No notes on this chap
 
 ### Chapter 15: Postmortem culture: learning from failure
 
-_[I'm in strong agreement with most of this chapter](<https://danluu.com//danluu.com/postmortem-lessons/>). No notes._
+_[I'm in strong agreement with most of this chapter](<https://danluu.com/postmortem-lessons/>). No notes._
 
 ### Chapter 16: Tracking outages
 

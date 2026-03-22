@@ -5,7 +5,7 @@ date  = 2019-07-01
 tags  = ["danluu"]
 +++
 
-_This is a psuedo-transcript for a talk given at Deconstruct 2019.[To make this accessible for people on slow connections](<https://danluu.com//danluu.com/web-bloat/>) as well as people using screen readers, the slides have been replaced by in-line text (the talk has ~120 slides; at an average of 20 kB per slide, that's 2.4 MB. If you think that's trivial, consider that [half of Americans still aren't on broadband](<https://blogs.microsoft.com/on-the-issues/2019/04/08/its-time-for-a-new-approach-for-mapping-broadband-data-to-better-serve-americans/>) and the situation is much worse in developing countries._
+_This is a psuedo-transcript for a talk given at Deconstruct 2019.[To make this accessible for people on slow connections](<https://danluu.com/web-bloat/>) as well as people using screen readers, the slides have been replaced by in-line text (the talk has ~120 slides; at an average of 20 kB per slide, that's 2.4 MB. If you think that's trivial, consider that [half of Americans still aren't on broadband](<https://blogs.microsoft.com/on-the-issues/2019/04/08/its-time-for-a-new-approach-for-mapping-broadband-data-to-better-serve-americans/>) and the situation is much worse in developing countries._
 
 Let's talk about files! Most developers seem to think that files are easy. Just for example, let's take a look at the top reddit r/programming comments from when Dropbox announced that they were only going to support ext4 on Linux (the most widely used Linux filesystem). For people not familiar with reddit r/programming, I suspect r/programming is the most widely read English language programming forum in the world.
 
@@ -213,7 +213,7 @@ If we want to make sure that filessystems work, one of the most basic tests we c
 
 Prabhakaran et al., SOSP’05 did this and found that, for most filesystems tested, almost all write errors were dropped. The major exception to this was on ReiserFS, which did a pretty good job with all types of errors tested, but ReiserFS isn't really used today for reasons beyond the scope of this talk.
 
-[We (Wesley Aptekar-Cassels and I) looked at this again in 2017](<https://danluu.com//danluu.com/filesystem-errors/>) and found that things had improved significantly. Most filesystems (other than JFS) could pass these very basic tests on error handling.
+[We (Wesley Aptekar-Cassels and I) looked at this again in 2017](<https://danluu.com/filesystem-errors/>) and found that things had improved significantly. Most filesystems (other than JFS) could pass these very basic tests on error handling.
 
 Another way to look for errors is to look at filesystems code to see if it handles internal errors correctly. Gunawai et al., FAST’08 did this and found that internal errors were dropped a significant percentage of the time. The technique they used made it difficult to tell if functions that could return many different errors were correctly handling each error, so they also looked at calls to functions that can only return a single error. In those cases, depending on the function, errors were dropped roughly 2/3 to 3/4 of the time, depending on the function.
 
@@ -227,7 +227,7 @@ On recent Linux kernels, there's a good chance the error will be reported (to th
 
 In general, there isn't a good way to recover from this on Linux. Postgres, MySQL, and MongoDB (widely used databases) will crash themselves and the user is expected to restore from the last checkpoint. Most software will probably just silently lose or corrupt data. And `fsync` is a relatively good case -- for example, `syncfs` simply doesn't return errors on Linux at all, leading to silent data loss and data corruption.
 
-BTW, when Craig Ringer first proposed that Postgres should crash on `fsync` error, the [first response on the Postgres dev mailing list](<https://danluu.com//danluu.com/fsyncgate/>) was:
+BTW, when Craig Ringer first proposed that Postgres should crash on `fsync` error, the [first response on the Postgres dev mailing list](<https://danluu.com/fsyncgate/>) was:
 
 > Surely you jest . . . If [current behavior of fsync] is actually the case, we need to push back on this kernel brain damage
 

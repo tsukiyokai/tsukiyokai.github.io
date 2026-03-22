@@ -222,13 +222,13 @@ He's [active on Twitter](<https://twitter.com/yossikreinin>), where he posts ext
 
 Common themes include:
 
-  * [This thing that's often considered easy is harder than you might think](<https://danluu.com//danluu.com/file-consistency/>)
-  * [This thing that's often considered hard is easier than you might think](<https://danluu.com//danluu.com/edit-binary/>)
-  * [This obvious fact](<https://danluu.com//danluu.com/dunning-kruger/>) [is not obvious](<https://danluu.com//danluu.com/tech-discrimination/>) [at all](<https://danluu.com//danluu.com/integer-overflow/>)
-  * [Humans are human](<https://danluu.com//danluu.com/postmortem-lessons/>): humans make mistakes, [and systems must be designed to account for that](<https://danluu.com//danluu.com/google-sre-book/>)
-  * [Computers will have faults](<https://danluu.com//danluu.com/postmortem-lessons/>), [and systems must be designed to account for that](<https://danluu.com//danluu.com/limplock/>)
-  * [Is it just me](<https://danluu.com//danluu.com/broken-builds/>), [or is stuff really broken](<https://danluu.com//danluu.com/everything-is-broken/>)?
-  * [Hey](<https://danluu.com//danluu.com/infinite-disk/>)! [Look at this set of papers](<https://danluu.com//danluu.com/intel-cat/>)! [Let's talk about their context and why they're interesting](<https://danluu.com//danluu.com/clwb-pcommit/>)
+  * [This thing that's often considered easy is harder than you might think](<https://danluu.com/file-consistency/>)
+  * [This thing that's often considered hard is easier than you might think](<https://danluu.com/edit-binary/>)
+  * [This obvious fact](<https://danluu.com/dunning-kruger/>) [is not obvious](<https://danluu.com/tech-discrimination/>) [at all](<https://danluu.com/integer-overflow/>)
+  * [Humans are human](<https://danluu.com/postmortem-lessons/>): humans make mistakes, [and systems must be designed to account for that](<https://danluu.com/google-sre-book/>)
+  * [Computers will have faults](<https://danluu.com/postmortem-lessons/>), [and systems must be designed to account for that](<https://danluu.com/limplock/>)
+  * [Is it just me](<https://danluu.com/broken-builds/>), [or is stuff really broken](<https://danluu.com/everything-is-broken/>)?
+  * [Hey](<https://danluu.com/infinite-disk/>)! [Look at this set of papers](<https://danluu.com/intel-cat/>)! [Let's talk about their context and why they're interesting](<https://danluu.com/clwb-pcommit/>)
 
 
 #### The end
@@ -295,7 +295,7 @@ The selection of topics is eclectic, and explained at a level of detail such tha
 
 #### Rebecca Frankel
 
-As far as I know, Rebecca doesn't have a programming blog, but if you look at her apparently off-the-cuff comments on other people's posts as a blog, it's one of the best written programming blogs out there. She used to be prolific on [Piaw's](<https://danluu.com//danluu.com/open-social-networks/>) [Buzz](<https://danluu.com//danluu.com/mit-stanford/>) (and probably elsewhere, although I don't know where), and you occasionally see comments elsewhere, like on [this Steve Yegge blog post about brilliant engineers](<http://steve-yegge.blogspot.com/2008/06/done-and-gets-things-smart.html>)1. I wish I could write like that.
+As far as I know, Rebecca doesn't have a programming blog, but if you look at her apparently off-the-cuff comments on other people's posts as a blog, it's one of the best written programming blogs out there. She used to be prolific on [Piaw's](<https://danluu.com/open-social-networks/>) [Buzz](<https://danluu.com/mit-stanford/>) (and probably elsewhere, although I don't know where), and you occasionally see comments elsewhere, like on [this Steve Yegge blog post about brilliant engineers](<http://steve-yegge.blogspot.com/2008/06/done-and-gets-things-smart.html>)1. I wish I could write like that.
 
 #### [Russell Smith](<http://qqrs.github.io/>)
 

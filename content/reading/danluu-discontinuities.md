@@ -25,7 +25,7 @@ A naive queue has discontinuous behavior. If the queue is full, new entries are 
 
 A class of solutions to this problem are [random early drop](<https://en.wikipedia.org/wiki/Random_early_detection>) and its variants, which gives incoming items a probability of being dropped which can be determined by queue fullness (and possibly other factors), smoothing out the discontinuity and mitigating issues caused by having a discontinuous probability of queue drops.
 
-[This post on voting in link aggregators](<https://danluu.com//danluu.com/randomize-hn/>) is fundamentally the same idea although, in some sense, the polarity is reversed. There's a very sharp discontinuity in how much traffic something gets based on whether or not it's on the front page. You could view this as a link getting dropped from a queue if it only receives N-1 votes and not getting dropped if it receives N votes.
+[This post on voting in link aggregators](<https://danluu.com/randomize-hn/>) is fundamentally the same idea although, in some sense, the polarity is reversed. There's a very sharp discontinuity in how much traffic something gets based on whether or not it's on the front page. You could view this as a link getting dropped from a queue if it only receives N-1 votes and not getting dropped if it receives N votes.
 
 ### [College admissions and Pell Grant recipients](<https://www.insidehighered.com/admissions/article/2019/01/28/study-pressure-enroll-more-pell-eligible-students-has-skewed-colleges>)
 
@@ -82,7 +82,7 @@ The bottom-left graph shows the sharp spike in prosecutions at 280 grams followe
 
 ![](https://danluu.com/images/discontinuities/cocaine-280.png)
 
-### [High school exit exam scores](<https://danluu.com//danluu.com/matura-2013.pdf>)
+### [High school exit exam scores](<https://danluu.com/matura-2013.pdf>)
 
 This is a histogram of high school exit exam scores from the Polish language exam. We can see that a curiously high number of students score 30 or just above thirty while curiously low number of students score from 23-29. This is from 2013; other years I've looked at (2010-2012) show a similar discontinuity.
 
@@ -117,7 +117,7 @@ It's generally believed that this is caused by a discontinuity in youth sports:
   3. This causes older-within-year kids to outcompete younger kids, which later results in older-within-year kids having higher levels of participation for a variety of reasons
 
 
-This is arguably a "bug" in how youth sports works. But [as we've seen in baseball](<https://danluu.com//danluu.com/bad-decisions/>) [as well as a survey of multiple sports](<https://danluu.com//danluu.com/tech-discrimination/>), obviously bad decision making that costs individual teams tens or even hundreds of millions of dollars can persist for decades in the face of people pubicly discussing how bad the decisions are. In this case, the youth sports teams aren't feeder teams to pro teams, so they don't have a financial incentive to select players who are skilled for their age (as opposed to just taller and faster because they're slightly older) so this system-wide non-optimal even more difficult to fix than pro sports teams making locally non-optimal decisions that are completely under their control.
+This is arguably a "bug" in how youth sports works. But [as we've seen in baseball](<https://danluu.com/bad-decisions/>) [as well as a survey of multiple sports](<https://danluu.com/tech-discrimination/>), obviously bad decision making that costs individual teams tens or even hundreds of millions of dollars can persist for decades in the face of people pubicly discussing how bad the decisions are. In this case, the youth sports teams aren't feeder teams to pro teams, so they don't have a financial incentive to select players who are skilled for their age (as opposed to just taller and faster because they're slightly older) so this system-wide non-optimal even more difficult to fix than pro sports teams making locally non-optimal decisions that are completely under their control.
 
 ### [Procurement auctions](<http://www.keikawai.com/Full_0804.pdf>)
 
@@ -159,7 +159,7 @@ This post doesn't really have a goal or a point, it's just a collection of disco
 
 One thing that's maybe worth noting is that I've gotten a lot of mileage out in my career both out of being suspicious of discontinuities and figuring out where they come from and also out of applying standard techniques to smooth out discontinuities.
 
-For finding discontinuities, basic tools like "drawing a scatterplot", "[drawing a histogram](<https://danluu.com//danluu.com/perf-tracing/#histogram>)", "drawing the [CDF](<https://en.wikipedia.org/wiki/Cumulative_distribution_function>)" often come in handy. Other kinds of visualizations that add temporality, like [flamescope](<https://github.com/Netflix/flamescope>), can also come in handy.
+For finding discontinuities, basic tools like "drawing a scatterplot", "[drawing a histogram](<https://danluu.com/perf-tracing/#histogram>)", "drawing the [CDF](<https://en.wikipedia.org/wiki/Cumulative_distribution_function>)" often come in handy. Other kinds of visualizations that add temporality, like [flamescope](<https://github.com/Netflix/flamescope>), can also come in handy.
 
 We noted above that queues create a kind of discontinuity that, in some circumstances, should be smoothed out. We also noted that we see similar behavior for other kinds of thresholds and that randomization can be a useful tool to smooth out discontinuities in thresholds as well. Randomization can also be used to allow for reducing quantization error when reducing precision with ML and in other applications.
 

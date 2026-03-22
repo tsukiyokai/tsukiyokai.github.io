@@ -65,7 +65,7 @@ We can fix this, if we stop assuming the market will fix it for us.
 
 ### Appendix: a few related items
 
-  * [People literally read the opposite result into studies they look at](<https://danluu.com//danluu.com/gender-gap/>)
+  * [People literally read the opposite result into studies they look at](<https://danluu.com/gender-gap/>)
   * At [FSE](<http://fse22.gatech.edu/>) this year, a the speaker noted that if you show a bunch of programmers random data, they will interpret that data as supporting their prior beliefs of best practices
   * [The more biased people are, the more objective they think they are](<https://ed.stanford.edu/sites/default/files/uhlmann_et_2005.pdf>)
 

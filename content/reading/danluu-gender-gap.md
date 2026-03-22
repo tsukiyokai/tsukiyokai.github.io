@@ -25,7 +25,7 @@ The Smithsonian Mag published a correction in response to criticism about their 
 
 It's clear that the author of the Quartz piece had an agenda in mind, picked out evidence that supported that agenda, and wrote a blog post. A number of bloggers picked up the post and used its thesis as link bait to drive hits to their sites, without reading any of the cited evidence. If this is how “digitally native news” works, I'm opting out.
 
-**If you liked reading this, you might also enjoy[this post on the interaction of markets with discrimination](<https://danluu.com//danluu.com/tech-discrimination/>), and [this post, which has a very partial explanation of why so many people drop out of science and engineering](<https://danluu.com//danluu.com/teach-debugging/>).**
+**If you liked reading this, you might also enjoy[this post on the interaction of markets with discrimination](<https://danluu.com/tech-discrimination/>), and [this post, which has a very partial explanation of why so many people drop out of science and engineering](<https://danluu.com/teach-debugging/>).**
 
 ### Updates
 

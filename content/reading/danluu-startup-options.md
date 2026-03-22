@@ -143,7 +143,7 @@ From a company standpoint, there are a couple factors that allow companies to re
 
 All of this sounds fine for founders and investors, but I don’t see what’s in it for employees. If you have additional reasons that I’m missing, I’d love to hear them.
 
-_If you liked this post, you may also like [this other post on the tradeoff between working at a big company and working at a startup](<https://danluu.com//danluu.com/startup-tradeoffs/>).
+_If you liked this post, you may also like [this other post on the tradeoff between working at a big company and working at a startup](<https://danluu.com/startup-tradeoffs/>).
 
 ### Appendix: caveats
 

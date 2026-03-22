@@ -25,7 +25,7 @@ If you have commit access to a project that has this problem, please [own the pr
 
 ![joewiz replies to an month old comment. Asks for review months later. No reply.](https://danluu.com/images/discourage-oss/plz-review.png)
 
-For an update on the repo featured in this post, [check out this response to a breaking change](<https://danluu.com//danluu.com/everything-is-broken/#github>).
+For an update on the repo featured in this post, [check out this response to a breaking change](<https://danluu.com/everything-is-broken/#github>).
 
 * * *
 

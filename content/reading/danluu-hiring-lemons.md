@@ -45,7 +45,7 @@ At the last conference I attended, I asked most people I met two questions:
   2. Do you know of any particular teams that are great and are hiring?
 
 
-Not one single person told me that their company meets the criteria in (1). A few people suggested that, maybe, Dropbox is ok, or that, maybe, Jane Street is ok, but the answers were of the form "I know a few people there and I haven't heard any terrible horror stories yet, plus I sometimes hear good stories", not "that company is great and you should definitely work there". Most people said that they didn't know of any companies that weren't [a total mess](<https://danluu.com//danluu.com/wat/>).
+Not one single person told me that their company meets the criteria in (1). A few people suggested that, maybe, Dropbox is ok, or that, maybe, Jane Street is ok, but the answers were of the form "I know a few people there and I haven't heard any terrible horror stories yet, plus I sometimes hear good stories", not "that company is great and you should definitely work there". Most people said that they didn't know of any companies that weren't [a total mess](<https://danluu.com/wat/>).
 
 A few people had suggestions for (2), but the most common answer was something like "LOL no, if I knew that I'd go work there". The second most common answer was of the form "I know some people on the Google Brain team and it sounds great". There are a few teams that are well known for being great places to work, but the fact that they're so few and far between that it's basically impossible to get a job on one of those teams. A few people knew of actual teams that they'd strongly recommend who were hiring, but that was rare. Much rarer than finding a developer who I'd want to work with who would consider moving. If I flipped the question around and asked if they knew of any good developers who were looking for work, the answer was usually "yes"2.
 
@@ -88,7 +88,7 @@ BTW, this illustrates a problem with Joel's idea that "great" devs never apply f
 
 (3), needing a weird combination of skills, can be solved by hiring people with half or a third of the expertise you need and training people. People don't seem to need much convincing on this one, and I see this happen all the time.
 
-(4), dysfunction [seems hard to fix](<https://danluu.com//danluu.com/learning-to-program/#fixing-totally-broken-danluu-com-wat-situations>). If I knew how to do that, I'd be manager.
+(4), dysfunction [seems hard to fix](<https://danluu.com/learning-to-program/#fixing-totally-broken-danluu-com-wat-situations>). If I knew how to do that, I'd be manager.
 
 As a dev, it seems to me that teams I know of that are actually good environments that pay well have no problems hiring, and that teams that have trouble hiring can pretty easily solve that problem. But I'm biased. I'm not a hiring manager. There's probably some hiring manager out there thinking: "every developer I know who complains that it's hard to find a good team has one of these four obvious problems; if only my problems were that easy to solve!"
 

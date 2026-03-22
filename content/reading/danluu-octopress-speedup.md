@@ -105,7 +105,7 @@ I'm not sure what to think about all this. On the one hand, I'm happy that I was
 
 ### Update
 
-I found it too hard to futz around with trimming down the massive CSS file that comes with Octopress, so I removed all of the CSS and then added a few lines to allow for a nav bar. This makes almost no difference on the desktop benchmark above, but it's a noticable improvement for slow connections. [The difference is quite dramatic for 56k connections as well as connections with high packetloss](<https://danluu.com//danluu.com/web-bloat/>).
+I found it too hard to futz around with trimming down the massive CSS file that comes with Octopress, so I removed all of the CSS and then added a few lines to allow for a nav bar. This makes almost no difference on the desktop benchmark above, but it's a noticable improvement for slow connections. [The difference is quite dramatic for 56k connections as well as connections with high packetloss](<https://danluu.com/web-bloat/>).
 
 Starting the day I made this change, my analytics data shows a noticeable improvement in engagement and traffic. There are too many things confounded here to say what caused this change (performance increase, total lack of styling, etc.), but there are a couple of things find interesting about this. First, it seems to likely show that the advice that it's very important to keep line lengths short is incorrect since, if that had a very large impact, it would've overwhelmed the other changes and resulted in reduced engagement and not increased engagement. Second, despite the Octopress design being widely used and lauded (it appears to have been the most widely used blog theme for programmers when I started my blog), it appears to cause a blog (or at least this blog) to get less readership than literally having no styling at all. Having no styling is surely not optimal, but there's something a bit funny about no styling beating the at-the-time most widely used programmer blog styling, which means it likely also beat wordpress, [svtble](<https://danluu.com/writing-non-advice/#svbtle>), blogspot, medium, etc., since those have most oof the same ingredients as Octopress.
 
@@ -124,7 +124,7 @@ I'm not a front-end person, so I might be totally off in how I'm looking at thes
   1. From whatever version was current in September 2013. It's possible some of these issues have been fixed, but based on the extremely painful experience of other people who've tried to update their Octopress installs, it didn't seem worth making the attempt to get a newer version of Octopress. [return]
   2. Why is “Repeat View” slower than “First View”? [return]
   3. If you look at a video of loading [the original](<http://www.webpagetest.org/video/view.php?id=141115_AP_12A9.1.0>) vs. [this version](<http://www.webpagetest.org/video/view.php?id=141116_RH_7WC.1.0>), the difference is pretty dramatic. [return]
-  4. For example, [slashdot](<https://danluu.com//danluu.com/web-bloat/#appendix-experimental-caveats>) takes 15s to load over FIOS. The tests shown above were done on Cable, which is [substantially slower](<https://danluu.com//danluu.com/web-bloat/>). [return]
+  4. For example, [slashdot](<https://danluu.com/web-bloat/#appendix-experimental-caveats>) takes 15s to load over FIOS. The tests shown above were done on Cable, which is [substantially slower](<https://danluu.com/web-bloat/>). [return]
 
 
 [← One week of bugs](<https://danluu.com/everything-is-broken/>) [How often is the build broken? →](<https://danluu.com/broken-builds/>)

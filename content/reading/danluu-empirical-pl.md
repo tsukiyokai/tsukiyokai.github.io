@@ -343,7 +343,7 @@ Other than cherry picking studies to confirm a long-held position, the most comm
 
 The next most common response is that their viewpoint is still valid because their specific language or use case isn't covered. Maybe, but if the strongest statement you can make for your position is that there's no empirical evidence against the position, that's not much of a position.
 
-If you've managed to read this entire thing without falling asleep, you might be interested in [my opinion on tests](<https://danluu.com//danluu.com/everything-is-broken/>).
+If you've managed to read this entire thing without falling asleep, you might be interested in [my opinion on tests](<https://danluu.com/everything-is-broken/>).
 
 #### Responses
 

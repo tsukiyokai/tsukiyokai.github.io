@@ -63,7 +63,7 @@ It takes 50us for the thread to start executing after it gets scheduled. Note th
 
 In the talk, Dick notes that, given the actual working set size, it would be worth waiting up to 10us to schedule on another CPU sharing the same l2 cache, and 100us to schedule on another CPU sharing the same l3 cache2.
 
-Something else you can observe from this trace is that, if you care about a workload that resembles Google search, basically every standard benchmark out there is bad, and the standard technique of running [N copies of spec](<https://danluu.com//danluu.com/intel-cat/#spec>) is terrible. That's not a straw man. People still do that in academic papers today, and some chip companies use SPEC to benchmark their mobile devices!
+Something else you can observe from this trace is that, if you care about a workload that resembles Google search, basically every standard benchmark out there is bad, and the standard technique of running [N copies of spec](<https://danluu.com/intel-cat/#spec>) is terrible. That's not a straw man. People still do that in academic papers today, and some chip companies use SPEC to benchmark their mobile devices!
 
 Anyway, that was one performance issue where we were able to see what was going on because of the ability to see a number of different things at the same time (CPU scheduling, thread scheduling, and locks). Let's look at a simpler single-threaded example on a single machine where a tracing framework is still beneficial:
 
@@ -130,7 +130,7 @@ As we saw from the tcpdump trace in the Dick Sites talk, interrupts take a signi
 
 Instead of having an interrupt come in periodically, like perf, SHIM instruments the runtime so that it periodically runs a code snippet that can squirrel away relevant information. In particular, the authors instrumented the Jikes RVM, which injects yield points into every method prologue, method epilogue, and loop back edge. At a high level, injecting a code snippet into every function prologue and epilogue sounds similar to what Dick Sites describes in his talk.
 
-The details are different, and I recommend both watching the Dick Sites talk and reading the Yang et al. paper if you're interested in performance measurement, but the fundamental similarity is that both of them decided that it's [too expensive to having another thread break in and sample periodically](<https://danluu.com//danluu.com/new-cpu-features/#context-switches-syscalls>), so they both ended up injecting some kind of tracing code into the normal execution stream.
+The details are different, and I recommend both watching the Dick Sites talk and reading the Yang et al. paper if you're interested in performance measurement, but the fundamental similarity is that both of them decided that it's [too expensive to having another thread break in and sample periodically](<https://danluu.com/new-cpu-features/#context-switches-syscalls>), so they both ended up injecting some kind of tracing code into the normal execution stream.
 
 It's worth noting that sampling, at any frequency, is going to miss waiting on (for example) software locks. Dick Sites's recommendation for this is to timestamp based on wall clock (not CPU clock), and then try to find the underlying causes of unusually long waits.
 
@@ -146,12 +146,12 @@ In [Brendan Gregg's page on Linux tracers](<http://www.brendangregg.com/blog/201
 
 If you want to use an tracing tool like the one we looked at today your options are:
 
-  1. Get a job at [Google](<https://danluu.com//danluu.com/startup-tradeoffs/>)
+  1. Get a job at [Google](<https://danluu.com/startup-tradeoffs/>)
   2. Build it yourself
   3. Cobble together what you need out of existing tools
 
 
-#### 1\. Get a job at [Google](<https://danluu.com//danluu.com/startup-tradeoffs/>)
+#### 1\. Get a job at [Google](<https://danluu.com/startup-tradeoffs/>)
 
 I hear [Steve Yegge has good advice on how to do this](<http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html>). If you go this route, try to attend orientation in Mountain View. They have the best orientation.
 
@@ -184,7 +184,7 @@ P.S. Xi Yang, one of the authors of SHIM is finishing up his PhD soon and is goi
 * * *
 
   1. The talk is amazing and I recommend watching the talk instead of reading this post. I'm writing this up because I know if someone told me I should watch a talk instead of reading the summary, I wouldn't do it. Ok, fine. If you're like me, maybe you'd consider [reading a couple of his papers](<https://scholar.google.com/scholar?q=richard+l+sites>) instead of reading this post. I once heard someone say that it's impossible to disagree with Dick's reasoning. You can disagree with his premises, but if you accept his premises and follow his argument, you have to agree with his conclusions. His presentation is impeccable and his logic is implacable. [return]
-  2. This oversimplifies things a bit since, if some level of cache is bandwidth limited, spending bandwidth to move data between cores could slow down other operations more than this operation is sped up by not having to wait. But even that's oversimplified since it doesn't take into account the [extra power it takes](<https://danluu.com//danluu.com/datacenter-power/>) to move data from a higher level cache as opposed to accessing the local cache. But that's also oversimplified, as is everything in this post. Reality is really complicated, and the more detail we want the less effective sampling profilers are. [return]
+  2. This oversimplifies things a bit since, if some level of cache is bandwidth limited, spending bandwidth to move data between cores could slow down other operations more than this operation is sped up by not having to wait. But even that's oversimplified since it doesn't take into account the [extra power it takes](<https://danluu.com/datacenter-power/>) to move data from a higher level cache as opposed to accessing the local cache. But that's also oversimplified, as is everything in this post. Reality is really complicated, and the more detail we want the less effective sampling profilers are. [return]
   3. This sounds like a long time, but if you ask around you'll hear other versions of this story at every company that creates systems complex beyond human understanding. I know of one chip project at Sun that was delayed for multiple years because they couldn't track down some persistent bugs. At Microsoft, they famously spent two years tracking down a scrolling smoothness bug on Vista. The bug was hard enough to reproduce that they set up screens in the hallways so that they could casually see when the bug struck their test boxes. One clue was that the bug only struck high-end boxes with video cards, not low-end boxes with integrated graphics, but that clue wasn't sufficient to find the bug.
 
 After quite a while, they called the Xbox team in to use their profiling expertise to set up a system that could capture the bug, and once they had the profiler set up it immediately became apparent what the cause was. This was back in the AGP days, where upstream bandwidth was something like 1/10th downstream bandwidth. When memory would fill up, textures would get ejected, and while doing so, the driver would lock the bus and prevent any other traffic from going through. That took long enough that the video card became unresponsive, resulting in janky scrolling.

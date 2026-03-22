@@ -129,7 +129,7 @@ In theory, that kind of reasoning should be taught regardless of specialization,
 
 This book teaches you how to do systems design with multiple constraints (e.g., performance, TCO, and power) and how to reason about tradeoffs. It happens to mostly do so using microprocessors and supercomputers as examples.
 
-New editions of this book have substantive additions and you really want the latest version. For example, the latest version added, among other things, a chapter on data center design, and it answers questions like, [how much opex/capex is spent on power, power distribution, and cooling, and how much is spent on support staff and machines](<https://danluu.com//danluu.com/datacenter-power/>), what's the effect of using lower power machines on tail latency and result quality (bing search results are used as an example), and what other factors should you consider when designing a data center.
+New editions of this book have substantive additions and you really want the latest version. For example, the latest version added, among other things, a chapter on data center design, and it answers questions like, [how much opex/capex is spent on power, power distribution, and cooling, and how much is spent on support staff and machines](<https://danluu.com/datacenter-power/>), what's the effect of using lower power machines on tail latency and result quality (bing search results are used as an example), and what other factors should you consider when designing a data center.
 
 Assumes some background, but that background is presented in the appendices (which are available online for free).
 
@@ -179,7 +179,7 @@ A survey of various results in algorithmic game theory. Requires a fair amount o
 
 A description of how Google handles operations. Has the typical Google tone, which is off-putting to a lot of folks with a “traditional” ops background, and assumes that many things can only be done with the SRE model when they can, in fact, be done without going full SRE.
 
-For a much longer description, [see this 22 page set of notes on Google's SRE book](<https://danluu.com//danluu.com/google-sre-book/>).
+For a much longer description, [see this 22 page set of notes on Google's SRE book](<https://danluu.com/google-sre-book/>).
 
 #### Fowler, Beck, Brant, Opdyke, and Roberts; [Refactoring](<https://www.amazon.com/gp/product/0201485672/ref=as_li_tl?ie=UTF8&tag=abroaview-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0201485672&linkId=72ba04417a765056c7e41111361dcfba>)
 
@@ -195,7 +195,7 @@ Steve Yegge has [a great pitch for this book](<https://sites.google.com/site/ste
 
 #### Demarco & Lister, [Peopleware](<https://www.amazon.com/gp/product/0321934113/ref=as_li_tl?ie=UTF8&tag=abroaview-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0321934113&linkId=37e2eb92615c6926852e31fa057c3df5>)
 
-This book seemed convincing when I read it in college. It even had [all sorts of studies](<https://danluu.com//danluu.com/dunning-kruger/>) backing up what they said. No deadlines is better than having deadlines. Offices are better than cubicles. Basically all devs I talk to agree with this stuff.
+This book seemed convincing when I read it in college. It even had [all sorts of studies](<https://danluu.com/dunning-kruger/>) backing up what they said. No deadlines is better than having deadlines. Offices are better than cubicles. Basically all devs I talk to agree with this stuff.
 
 But virtually every successful company is run the opposite way. Even Microsoft is remodeling buildings from individual offices to open plan layouts. Could it be that all of this stuff just doesn't matter that much? If it really is that important, how come companies that are true believers, like Fog Creek, aren't running roughshod over their competitors?
 
@@ -335,7 +335,7 @@ The reasons for leaving off topic areas vary; I don't have any PL books listed b
 
 This list also doesn't include many books on history and culture, like Inside Intel or Masters of Doom. I'll probably add more at some point, but I've been trying an experiment where I try to write more like Julia Evans (stream of consciousness, fewer or no drafts). I'd have to go back and re-read the books I read 10+ years ago to write meaningful comments, which doesn't exactly fit with the experiment. On that note, since this list is from memory and I got rid of almost all of my books a couple years ago, I'm probably forgetting a lot of books that I meant to add.
 
-_If you liked this, you might also like Thomas Ptacek's [Application Security Reading List](<https://www.amazon.com/gp/richpub/listmania/fullview/R2EN4JTQOCHNBA/ref=cm_lm_pthnk_view?ie=UTF8&lm_bb=>) or [this list of programming blogs](<https://danluu.com//danluu.com/programming-blogs/>), which is written in a similar style_
+_If you liked this, you might also like Thomas Ptacek's [Application Security Reading List](<https://www.amazon.com/gp/richpub/listmania/fullview/R2EN4JTQOCHNBA/ref=cm_lm_pthnk_view?ie=UTF8&lm_bb=>) or [this list of programming blogs](<https://danluu.com/programming-blogs/>), which is written in a similar style_
 
 _Thanks to @tytr _dev for comments/corrections/discussion._
 

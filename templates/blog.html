@@ -10,7 +10,7 @@
         {{ page.date | date(format="%Y-%m-%d") }} -
         <a href="{{ page.permalink }}">{{ page.title }}</a>
         {% for tag in page.taxonomies.tags | default(value=[]) %}
-        [{{ tag }}]
+        [<a href="/tags/{{ tag }}/">{{ tag }}</a>]
         {% endfor %}
     </li>
 {% endfor %}

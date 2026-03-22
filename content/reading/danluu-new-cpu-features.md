@@ -27,7 +27,7 @@ I'm also going to avoid discussing things that are now irrelevant (like A20M) an
 
 Of the remaining topics, the one that's most likely to have a real effect on day-to-day programming is how memory works. My first computer was a 286. On that machine, a memory access might take a few cycles. A few years back, I used a Pentium 4 system where a memory access took more than 400 cycles. Processors have sped up a lot more than memory. The solution to the problem of having relatively slow memory has been to add caching, which provides fast access to frequently used data, and prefetching, which preloads data into caches if the access pattern is predictable.
 
-A few cycles vs. 400+ cycles sounds really bad; that's well over 100x slower. But if I write a dumb loop that reads and operates on a large block of 64-bit (8-byte) values, the CPU is smart enough to prefetch the correct data before I need it, which lets me process at about [22 GB/s](<https://danluu.com//danluu.com/assembly-intrinsics/>) on my 3GHz processor. A calculation that can consume 8 bytes every cycle at 3GHz only works out to 24GB/s, so getting 22GB/s isn't so bad. We're losing something like 8% performance by having to go to main memory, not 100x.
+A few cycles vs. 400+ cycles sounds really bad; that's well over 100x slower. But if I write a dumb loop that reads and operates on a large block of 64-bit (8-byte) values, the CPU is smart enough to prefetch the correct data before I need it, which lets me process at about [22 GB/s](<https://danluu.com/assembly-intrinsics/>) on my 3GHz processor. A calculation that can consume 8 bytes every cycle at 3GHz only works out to 24GB/s, so getting 22GB/s isn't so bad. We're losing something like 8% performance by having to go to main memory, not 100x.
 
 As a first-order approximation, using predictable memory access patterns and operating on chunks of data that are smaller than your CPU cache will get you most of the benefit of modern caches. If you want to squeeze out as much performance as possible, [this document](<http://people.freebsd.org/~lstewart/articles/cpumemory.pdf>) is a good starting point. After digesting that 100 page PDF, you'll want to familiarize yourself with the microarchitecture and memory subsystem of the system you're optimizing for, and learn how to profile the performance of your application with something like [likwid](<https://code.google.com/p/likwid/>).
 
@@ -37,7 +37,7 @@ There are lots of little caches on the chip for all sorts of things, not just ma
 
 Because the first level TLB cache has to be fast, it's severely limited in size (perhaps 64 entries on a modern chip). If you use 4k pages, that limits the amount of memory you can address without incurring a TLB miss. x86 also supports 2MB and 1GB pages; some applications will benefit a lot from using larger page sizes. It's something worth looking into if you've got a long-running application that uses a lot of memory.
 
-Also, first-level caches are usually limited by the page size times [the associativity of the cache](<https://danluu.com//danluu.com/3c-conflict/>). If the cache is smaller than that, the bits used to index into the cache are the same regardless if whether you're looking at the virtual address or the physical address, so you don't have to do a virtual to physical translation before indexing into the cache. If the cache is larger than that, you have to first do a TLB lookup to index into the cache (which will cost at least one extra cycle), or build a virtually indexed cache (which is possible, but adds complexity and coupling to software). You can see this limit in modern chips. Haswell has an 8-way associative cache and 4kB pages. Its l1 data cache is `8 * 4kB = 32kB`.
+Also, first-level caches are usually limited by the page size times [the associativity of the cache](<https://danluu.com/3c-conflict/>). If the cache is smaller than that, the bits used to index into the cache are the same regardless if whether you're looking at the virtual address or the physical address, so you don't have to do a virtual to physical translation before indexing into the cache. If the cache is larger than that, you have to first do a TLB lookup to index into the cache (which will cost at least one extra cycle), or build a virtually indexed cache (which is possible, but adds complexity and coupling to software). You can see this limit in modern chips. Haswell has an 8-way associative cache and 4kB pages. Its l1 data cache is `8 * 4kB = 32kB`.
 
 #### Out of Order Execution / Serialization
 
@@ -259,7 +259,7 @@ Here's a table of the footprint of a few different syscalls, both the direct cos
 
 Some of these syscalls cause 40+ TLB evictions! For a chip with a 64-entry d-TLB, that nearly wipes out the TLB. The cache evictions aren't free, either.
 
-The high cost of syscalls is the reason people have switched to using batched versions of syscalls for high-performance code (e.g., `epoll`, or `recvmmsg`) and the reason that people who need [very high performance I/O](<https://danluu.com//danluu.com/clwb-pcommit/>) often use user space I/O stacks. More generally, the cost of context switches is why high-performance code is often thread-per-core (or even single threaded on a pinned thread) and not thread-per-logical-task.
+The high cost of syscalls is the reason people have switched to using batched versions of syscalls for high-performance code (e.g., `epoll`, or `recvmmsg`) and the reason that people who need [very high performance I/O](<https://danluu.com/clwb-pcommit/>) often use user space I/O stacks. More generally, the cost of context switches is why high-performance code is often thread-per-core (or even single threaded on a pinned thread) and not thread-per-logical-task.
 
 This high cost was also the driver behind [vDSO, which turns some simple syscalls that don't require any kind of privilege escalation into simple user space library calls](<http://www.linuxjournal.com/content/creating-vdso-colonels-other-chicken>).
 
@@ -277,11 +277,11 @@ Compilers are good enough at recognizing common patterns that can be vectorized 
     }
     
 
-But compilers will [often produce non-optimal code](<https://danluu.com//danluu.com/assembly-intrinsics/>) if you don't write the assembly by hand, especially for SIMD code, so you'll want to look at the disassembly and check for compiler optimization bugs if you really care about getting the best possible performance.
+But compilers will [often produce non-optimal code](<https://danluu.com/assembly-intrinsics/>) if you don't write the assembly by hand, especially for SIMD code, so you'll want to look at the disassembly and check for compiler optimization bugs if you really care about getting the best possible performance.
 
 #### Power Management
 
-There are a lot of fancy power management feature on modern CPUs that [optimize power usage](<https://danluu.com//danluu.com/datacenter-power/>) in different scenarios. The result of these is that “race to idle”, completing work as fast as possible and then letting the CPU go back to sleep is the most power efficient way to work.
+There are a lot of fancy power management feature on modern CPUs that [optimize power usage](<https://danluu.com/datacenter-power/>) in different scenarios. The result of these is that “race to idle”, completing work as fast as possible and then letting the CPU go back to sleep is the most power efficient way to work.
 
 There's been a lot of work that's shown that specific microoptmizations can benefit power consumption, but [applying those microoptimizations on real workloads often results in smaller than expected benefits](<http://arcade.cs.columbia.edu/energy-oopsla14.pdf>).
 
@@ -348,7 +348,7 @@ Old school conventional wisdom is that branches are expensive, and should be avo
 
 This actually overstates the penalty since about 1995, since Intel added conditional move instructions that allow you to conditionally move data without a branch. This instruction was memorably [panned by Linus](<http://yarchive.net/comp/linux/cmov.html>), which has given it a bad reputation, but it's fairly common to [get significant speedups using cmov compared to branches](<https://github.com/logicchains/LPATHBench/issues/53#issuecomment-68160081>)
 
-A real-world example of the cost of extra branches are enabling integer overflow checks. When using [bzip2 to compress a particular file, that increases the number of instructions by about 30% (with all of the increase coming from extra branch instructions), which results in a 1% performance hit](<https://danluu.com//danluu.com/integer-overflow/>).
+A real-world example of the cost of extra branches are enabling integer overflow checks. When using [bzip2 to compress a particular file, that increases the number of instructions by about 30% (with all of the increase coming from extra branch instructions), which results in a 1% performance hit](<https://danluu.com/integer-overflow/>).
 
 Unpredictable branches are bad, but most branches are predictable. Ignoring the cost of branches until your profiler tells you that you have a hot spot is pretty reasonable nowadays. CPUs have gotten a lot better at executing poorly optimized code over the past decade, and compilers are getting better at optimizing code, which makes optimizing branches a poor use of time unless you're trying to squeeze out the absolute best possible performance out of some code.
 
@@ -360,7 +360,7 @@ If you really must do this by hand, there are compiler directives you can use to
 
 Old school conventional wisdom is that you should pad out structs and make sure things are aligned. But on a Haswell chip, the mis-alignment for almost any single-threaded thing you can think of that doesn't cross a page boundary is zero. There are some cases where it can make a difference, but in general, this is another type of optimization that's mostly irrelevant because CPUs have gotten so much better at executing bad code. It's also mildly harmful in cases where it increases the memory footprint for no benefit.
 
-Also, [don't make things page aligned or otherwise aligned to large boundaries or you'll destroy the performance of your caches](<https://danluu.com//danluu.com/3c-conflict/>).
+Also, [don't make things page aligned or otherwise aligned to large boundaries or you'll destroy the performance of your caches](<https://danluu.com/3c-conflict/>).
 
 #### Self-modifying code
 
@@ -372,7 +372,7 @@ Here are some possible changes, from least speculative to most speculative.
 
 #### Partitioning
 
-It's now obvious that more and more compute is moving into large datacenters. Sometimes this involves running on VMs, sometimes it involves running in some kind of container, and sometimes it involves running bare metal, but in any case, individual machines are often multiplexed to run a wide variety of workloads. Ideally, you'd be able to schedule best effort workloads to soak up stranded resources without effecting latency sensitive workloads with an SLA. It turns out that you can actually do this with some [relatively straightforward hardware changes](<https://danluu.com//danluu.com/intel-cat/>).
+It's now obvious that more and more compute is moving into large datacenters. Sometimes this involves running on VMs, sometimes it involves running in some kind of container, and sometimes it involves running bare metal, but in any case, individual machines are often multiplexed to run a wide variety of workloads. Ideally, you'd be able to schedule best effort workloads to soak up stranded resources without effecting latency sensitive workloads with an SLA. It turns out that you can actually do this with some [relatively straightforward hardware changes](<https://danluu.com/intel-cat/>).
 
 ![90% overall machine utilization](https://danluu.com/images/new-cpu-features/google_heracles.png)
 
@@ -380,7 +380,7 @@ It's now obvious that more and more compute is moving into large datacenters. So
 
 #### Transactional Memory and Hardware Lock Elision
 
-IBM already has these features in their POWER chips. Intel made an attempt to add these to Haswell, but they're disabled because of a bug. In general, modern CPUs are quite complex [and we should expect to see many more bugs than we used to](<https://danluu.com//danluu.com/cpu-bugs/>).
+IBM already has these features in their POWER chips. Intel made an attempt to add these to Haswell, but they're disabled because of a bug. In general, modern CPUs are quite complex [and we should expect to see many more bugs than we used to](<https://danluu.com/cpu-bugs/>).
 
 Transactional memory support is what it sounds like: hardware support for transactions. This is through three new instructions, `xbegin`, `xend`, and `xabort`.
 
@@ -398,7 +398,7 @@ That RDMA bit is significant; it lets you bypass the CPU completely and have the
 
 [This MS talk discusses how you can take advantage of this kind of bandwidth and latency](<https://www.youtube.com/watch?v=8Kyoj3bKepY&feature=youtu.be&t=20m8s>) for network storage. A concrete example that doesn't require clicking through to a link is Amazon's EBS. It lets you use an “elastic” disk of arbitrary size on any of your AWS nodes. Since a spinning metal disk seek has higher latency than an RPC over kernel TCP, you can get infinite storage pretty much transparently. For example, say you can get [100us (.1ms) latency out of your network](<http://www.scs.stanford.edu/~rumble/papers/latency_hotos11.pdf>), and your disk seek time is 8ms. That makes a remote disk access 8.1ms instead of 8ms, which isn't that much overhead. That doesn't work so well with SSDs, though, since you can get 20 us (.02ms) [out of an SSD](<http://www.anandtech.com/show/8104/intel-ssd-dc-p3700-review-the-pcie-ssd-transition-begins-with-nvme/3>). But RDMA latency is low enough that a transparent EBS-like layer is possible for SSDs.
 
-So that's networked I/O. The performance benefit might be even bigger on the disk side, if/when next generation storage technologies that are faster than flash start getting deployed. The performance delta is so large that [Intel is adding new instructions to keep up with next generation low-latency storage technology](<https://danluu.com//danluu.com/clwb-pcommit/>). Depending on who you ask, that stuff has been a few years away for a decade or two; this is more iffy than the networking stuff. But even with flash, people are showing off devices that can get down into the single microsecond range for latency, which is a substantial improvement.
+So that's networked I/O. The performance benefit might be even bigger on the disk side, if/when next generation storage technologies that are faster than flash start getting deployed. The performance delta is so large that [Intel is adding new instructions to keep up with next generation low-latency storage technology](<https://danluu.com/clwb-pcommit/>). Depending on who you ask, that stuff has been a few years away for a decade or two; this is more iffy than the networking stuff. But even with flash, people are showing off devices that can get down into the single microsecond range for latency, which is a substantial improvement.
 
 #### Hardware Acceleration
 
@@ -471,9 +471,9 @@ Also, things will happen in the future. But most predictions are wrong, so who k
 
 For one level deeper of "why", you'll probably need to look at a VLSI text, which will explain how devices and interconnect scale and how that affects circuit design, which in turn affects architecture. I really like [Weste & Harris](<http://www.amazon.com/gp/product/B008VIXPI2/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B008VIXPI2&linkCode=as2&tag=abroaview-20&linkId=YOJVAWVH5XTIF6LN>) because they have clear explanations and good exercises with solutions that you can find online, but if you're not going to work the problems pretty much any VLSI text will do. For one more level deeper of the "why" of things, you'll want a solid state devices text and something that explains how transmission lines and interconnect can work. For devices, I really like [Pierret's](<http://www.amazon.com/gp/product/0201543931/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0201543931&linkCode=as2&tag=abroaview-20&linkId=MXV5K7IJXWXJD446>) [books](<http://www.amazon.com/gp/product/013061792X/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=013061792X&linkCode=as2&tag=abroaview-20&linkId=N7YLCANVDPI3M35R>). I got introduced to the E-mag stuff through [Ramo, Whinnery & Van Duzer](<http://www.amazon.com/gp/product/8126515252/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=8126515252&linkCode=as2&tag=abroaview-20&linkId=XZUQXDRDJVABGITB>), but [Ida](<http://www.amazon.com/gp/product/3319078054/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=3319078054&linkCode=as2&tag=abroaview-20&linkId=GTQSYCVTMIFZKSPZ>) is a better intro text.
 
-For specifics about current generation CPUs and specific optimization techniques, [see Agner Fog's site](<http://www.agner.org/optimize/>). For something on [optimization tools from the future, see this post](<https://danluu.com//danluu.com/perf-tracing/>). [What Every Programmer Should Know About Memory](<http://www.akkadia.org/drepper/cpumemory.pdf>) is also good background knowledge. Those docs cover a lot of important material, but if you're writing in a higher level language there [are a lot of other things you need to keep in mind](<http://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html>). For more on Intel CPU history, Xao-Feng Li [has a nice overview](<https://people.apache.org/~xli/presentations/history_Intel_CPU.pdf>).
+For specifics about current generation CPUs and specific optimization techniques, [see Agner Fog's site](<http://www.agner.org/optimize/>). For something on [optimization tools from the future, see this post](<https://danluu.com/perf-tracing/>). [What Every Programmer Should Know About Memory](<http://www.akkadia.org/drepper/cpumemory.pdf>) is also good background knowledge. Those docs cover a lot of important material, but if you're writing in a higher level language there [are a lot of other things you need to keep in mind](<http://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html>). For more on Intel CPU history, Xao-Feng Li [has a nice overview](<https://people.apache.org/~xli/presentations/history_Intel_CPU.pdf>).
 
-For something a bit off the wall, see [this post on the possibility of **CPU backdoors**](<https://danluu.com//danluu.com/cpu-backdoors/>). For something less off the wall, see [this post on how complexity we have in modern CPUs enables **all sorts of exciting bugs**](<https://danluu.com//danluu.com/cpu-bugs/>).
+For something a bit off the wall, see [this post on the possibility of **CPU backdoors**](<https://danluu.com/cpu-backdoors/>). For something less off the wall, see [this post on how complexity we have in modern CPUs enables **all sorts of exciting bugs**](<https://danluu.com/cpu-bugs/>).
 
 For more benchmarks on locking, See [this post by Aleksey Shipilev](<http://shipilev.net/blog/2014/on-the-fence-with-dependencies/>), [this post by Paul Khuong](<http://www.pvk.ca/Blog/2015/01/13/lock-free-mutual-exclusion/>), as well as their archives.
 

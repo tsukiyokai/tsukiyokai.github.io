@@ -97,7 +97,7 @@ In the past, I've spent time figuring out where time is going when I code and ba
 
 One thing to note here is that it's important to actually track what you're doing and not just guess at what you're doing. When I've recorded what people do and compare it to what they think they're doing, these are often quite different. It would generally be considered absurd to operate a complex software system without metrics or tracing, but it's normal to operate yourself without metrics or tracing, even though you're much more complex and harder to understand than the software you work on.
 
-[Jonathan Tang has noted that choosing the right problem dominates execution speed](<https://danluu.com//danluu.com/hn-comments/#what-makes-engineers-productive-https-news-ycombinator-com-item-id-5496914>). I don't disagree with that, [but doubling execution speed is still decent win that's independent of selecting the right problem to work on](<https://danluu.com/productivity-velocity/>) and I don't think that discussing how to choose the right problem can be effectively described in the abstract and the context necessary to give examples would be much longer than the already too long Overwatch examples in this post, maybe I'll write another post that's just about that.
+[Jonathan Tang has noted that choosing the right problem dominates execution speed](<https://danluu.com/hn-comments/#what-makes-engineers-productive-https-news-ycombinator-com-item-id-5496914>). I don't disagree with that, [but doubling execution speed is still decent win that's independent of selecting the right problem to work on](<https://danluu.com/productivity-velocity/>) and I don't think that discussing how to choose the right problem can be effectively described in the abstract and the context necessary to give examples would be much longer than the already too long Overwatch examples in this post, maybe I'll write another post that's just about that.
 
 Anyway, this is sort of an odd post for me to write since I think that culturally, we care a bit too much about productivity in the U.S., especially in places I've lived recently (NYC & SF). But at a personal level, higher productivity doing work or chores doesn't have to be converted into more work or chores, it can also be converted into more vacation time or more time doing whatever you value.
 
@@ -118,12 +118,12 @@ Of course, these aren't novel ideas, e.g., Kotov's series of books from the 70s,
 
 Here are the ideas I've posted about that were the most widely ridiculed at the time of the post:
 
-  * [It's not uncommon for programmers at trendy tech companies to make $350k/yr or more](<https://danluu.com//danluu.com/startup-tradeoffs/>) (2015, stated number was $250k/yr at the time)
-  * [Monorepos can be reasonable](<https://danluu.com//danluu.com/monorepo/>) (2015)
-  * [We should expect to see a lot more CPU bugs](<https://danluu.com//danluu.com/cpu-bugs/>) (2016)
-  * [Markets are not incompatible with discrimination](<https://danluu.com//danluu.com/tech-discrimination/>) (2014)
-  * [Computers are getting slower in some ways](<https://danluu.com//danluu.com/input-lag/>) (2017)
-  * [Empirical evidence on the benefit of types is almost non-existent](<https://danluu.com//danluu.com/empirical-pl/>) (2014)
+  * [It's not uncommon for programmers at trendy tech companies to make $350k/yr or more](<https://danluu.com/startup-tradeoffs/>) (2015, stated number was $250k/yr at the time)
+  * [Monorepos can be reasonable](<https://danluu.com/monorepo/>) (2015)
+  * [We should expect to see a lot more CPU bugs](<https://danluu.com/cpu-bugs/>) (2016)
+  * [Markets are not incompatible with discrimination](<https://danluu.com/tech-discrimination/>) (2014)
+  * [Computers are getting slower in some ways](<https://danluu.com/input-lag/>) (2017)
+  * [Empirical evidence on the benefit of types is almost non-existent](<https://danluu.com/empirical-pl/>) (2014)
   * It's reasonable to write technical posts on a subject that avoid domain-specific terminology
 
 
@@ -135,7 +135,7 @@ Opinions on monorepos have also seen a similar change since 2015. Outside of som
 
 Although it's taken longer for opinions to come around on CPU bugs, that's probably the post that now gets the least ridicule from the list above.
 
-That markets don't eliminate all discrimination is the one where opinions have come around the least. Hardline "all markets are efficient" folks aren't really convinced by academic work like [Becker's The Economics of Discrimination](<https://amzn.to/2Or7Z9k>) or summaries like [the evidence laid out in the post](<https://danluu.com//danluu.com/tech-discrimination/>).
+That markets don't eliminate all discrimination is the one where opinions have come around the least. Hardline "all markets are efficient" folks aren't really convinced by academic work like [Becker's The Economics of Discrimination](<https://amzn.to/2Or7Z9k>) or summaries like [the evidence laid out in the post](<https://danluu.com/tech-discrimination/>).
 
 The posts on computers having higher latency and the lack of empirical evidence of the benefit of types are the posts I've seen pointed to the most often to defend a ridiculable opinion. I didn't know when I started doing the work for either post and they both happen to have turned up evidence that's the opposite of the most common loud claims (there's very good evidence that advanced type systems improve safety in practice and of course computers are faster in every way, people who think they're slower are just indulging in nostalgia). I don't know if this has changed many opinion. However, I haven't gotten much direct ridicule for either post even though both posts directly state a position I see commonly ridiculed online. I suspect that's partially because both posts are empirical, so there's not much to dispute (though the post on discrimnation is also empirical, but it still gets its share of ridicule).
 

@@ -28,9 +28,9 @@ In 2009, [Erik Meijer and Butler Lampson talked about this](<https://channel9.ms
 
 Also, note that I'm using the same criteria to judge all of these. Whenever you say something doesn't work, someone will drop in say that, no wait, here's a PhD that demonstrates that someone has once done this thing, or here are nine programs that demonstrate that Idris is, in fact, widely used in large scale production systems. I take Lampson's view, which is that if the vast majority of programmers are literally incapable of using a certain class of technologies, that class of technologies has probably not succeeded.
 
-On recent advancements in parallelism, Intel [recently added features that make it easier to take advantage of trivial parallelism by co-scheduling multiple applications on the same machine without interference](<https://danluu.com//danluu.com/intel-cat/>), but outside of a couple big companies, no one's really taking advantage of this yet. They also added hardware support for STM recently, but it's still not clear how much STM helps with usability when designing large scale systems.
+On recent advancements in parallelism, Intel [recently added features that make it easier to take advantage of trivial parallelism by co-scheduling multiple applications on the same machine without interference](<https://danluu.com/intel-cat/>), but outside of a couple big companies, no one's really taking advantage of this yet. They also added hardware support for STM recently, but it's still not clear how much STM helps with usability when designing large scale systems.
 
-### [RISC](<https://danluu.com//danluu.com/risc-definition/>)
+### [RISC](<https://danluu.com/risc-definition/>)
 
 If this was a Maybe in 1999 it's certainly a No now. In the 80s and 90s a lot of folks, probably the majority of folks, believed RISC was going to take over the world and x86 was doomed. In 1991, Apple, IBM, and Motorola got together to create PowerPC (PPC) chips that were going to demolish Intel in the consumer market. They opened the Somerset facility for chip design, and collected a lot of their best folks for what was going to be a world changing effort. At the upper end of the market, DEC's Alpha chips were getting twice the performance of Intel's, and their threat to the workstation market was serious enough that Microsoft ported Windows NT to the Alpha. DEC started a project to do dynamic translation from x86 to Alpha; at the time the project started, the projected performance of x86 basically running in emulation on Alpha was substantially better than native x86 on Intel chips.
 
@@ -86,7 +86,7 @@ Maybe? Formal methods have had high impact in a few areas. Model checking is omn
 
 ### Software engineering
 
-No. In 1995, David Parnas had a talk at ICSE (the premier software engineering conference) about the fact that even the ICSE papers that won their “most influential paper award” (including two of Parnas's papers) had [very little impact on industry](<https://danluu.com//danluu.com/empirical-pl/>).
+No. In 1995, David Parnas had a talk at ICSE (the premier software engineering conference) about the fact that even the ICSE papers that won their “most influential paper award” (including two of Parnas's papers) had [very little impact on industry](<https://danluu.com/empirical-pl/>).
 
 Basically all of Parnas's criticisms are still true today. One of his suggestions, that there should be distinct conferences for researchers and for practitioners has been taken up, but there's not much cross-pollination between academic conferences like ICSE and FSE and practitioner-focused conferences like StrangeLoop and PyCon.
 
@@ -133,7 +133,7 @@ Security | No | Maybe
   
 Not only is every Yes from 1999 still Yes today, seven of the Maybes and Nos were upgraded, and only one was downgraded. And on top of that, there are a lot of topics like neural networks that weren't even worth adding to the list as a No that are an unambiguous Yes today.
 
-In 1999, I was taking the SATs and applying to colleges. Today, I'm not really all that far into my career, and the landscape has changed substantially; many previously impractical academic topics are now widely used in industry. I probably have twice again as much time until the end of my career and [things are changing faster now than they were in 1999](<https://danluu.com//danluu.com/infinite-disk/>). After reviewing Lampson's 1999 talk, I'm much more optimistic about research areas that haven't yielded much real-world impact (yet), like capability based computing and fancy type systems. It seems basically impossible to predict what areas will become valuable over the next thirty years.
+In 1999, I was taking the SATs and applying to colleges. Today, I'm not really all that far into my career, and the landscape has changed substantially; many previously impractical academic topics are now widely used in industry. I probably have twice again as much time until the end of my career and [things are changing faster now than they were in 1999](<https://danluu.com/infinite-disk/>). After reviewing Lampson's 1999 talk, I'm much more optimistic about research areas that haven't yielded much real-world impact (yet), like capability based computing and fancy type systems. It seems basically impossible to predict what areas will become valuable over the next thirty years.
 
 ### Correction
 

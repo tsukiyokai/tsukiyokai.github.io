@@ -371,13 +371,13 @@ A side effect of these factors that push back against chip complexity is that, f
 
 ### CPU internals series
 
-  * [New CPU features since the 80s](<https://danluu.com//danluu.com/new-cpu-features/>)
-  * [The cost of branches and integer overflow checking in real code](<https://danluu.com//danluu.com/integer-overflow/>)
+  * [New CPU features since the 80s](<https://danluu.com/new-cpu-features/>)
+  * [The cost of branches and integer overflow checking in real code](<https://danluu.com/integer-overflow/>)
   * [CPU bugs](<https://danluu.com/cpu-bugs/>)
-  * [A brief history of branch prediction](<https://danluu.com//danluu.com/branch-prediction/>)
-  * [Why CPU development is hard](<https://danluu.com//danluu.com/hardware-unforgiving/>)
-  * [Verilog sucks, part 1](<https://danluu.com//danluu.com/why-hardware-development-is-hard/>)
-  * [Verilog sucks, part 2](<https://danluu.com//danluu.com/pl-troll/>)
+  * [A brief history of branch prediction](<https://danluu.com/branch-prediction/>)
+  * [Why CPU development is hard](<https://danluu.com/hardware-unforgiving/>)
+  * [Verilog sucks, part 1](<https://danluu.com/why-hardware-development-is-hard/>)
+  * [Verilog sucks, part 2](<https://danluu.com/pl-troll/>)
 
 
 _Thanks to Leah Hanson, Hari Angepat, and Nick Bergson-Shilcock for reviewing practice versions of the talk and to Fred Clausen Jr for finding a typo in this post. Apologies for the somewhat slapdash state of this post -- I wrote it quickly so that people who attended the talk could refer to the “transcript ” soon afterwards and look up references, but this means that there are probably more than the usual number of errors and that the organization isn’t as nice as it would be for a normal blog post. In particular, things that were explained using a series of animations in the talk are not explained in the same level of detail and on skimming this, I notice that there’s less explanation of what sorts of branches each predictor doesn’t handle well, and hence less motivation for each predictor. I may try to go back and add more motivation, but I’m unlikely to restructure the post completely and generate a new set of graphics that better convey concepts when there are a couple of still graphics next to text. Thanks to Julien Vivenot, Ralph Corderoy, Vaibhav Sagar, Mindy Preston, Stefan Kanthak, and Uri Shaked for catching typos in this hastily written post._

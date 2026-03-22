@@ -103,13 +103,13 @@ On clang 3.8.0 and after, and gcc 5 and after, register allocation seems to work
 
 ### CPU internals series
 
-  * [A brief history of branch prediction](<https://danluu.com//danluu.com/branch-prediction/>)
-  * [New CPU features since the 80s](<https://danluu.com//danluu.com/new-cpu-features/>)
-  * [The cost of branches and integer overflow checking in real code](<https://danluu.com//danluu.com/integer-overflow/>)
+  * [A brief history of branch prediction](<https://danluu.com/branch-prediction/>)
+  * [New CPU features since the 80s](<https://danluu.com/new-cpu-features/>)
+  * [The cost of branches and integer overflow checking in real code](<https://danluu.com/integer-overflow/>)
   * [CPU bugs](<https://danluu.com/cpu-bugs/>)
-  * [Why CPU development is hard](<https://danluu.com//danluu.com/hardware-unforgiving/>)
-  * [Verilog sucks, part 1](<https://danluu.com//danluu.com/why-hardware-development-is-hard/>)
-  * [Verilog sucks, part 2](<https://danluu.com//danluu.com/pl-troll/>)
+  * [Why CPU development is hard](<https://danluu.com/hardware-unforgiving/>)
+  * [Verilog sucks, part 1](<https://danluu.com/why-hardware-development-is-hard/>)
+  * [Verilog sucks, part 2](<https://danluu.com/pl-troll/>)
 
 
 Thanks to Nathan Kurz for comments on this topic, including, but not limited to, the quote that's attributed to him, and to Stan Schwertly, Nick Bergson-Shilcock, Scott Feeney, Marek Majkowski, Adrian and Juan Carlos Borras for typo corrections and suggestions for clarification. Also, huge thanks to Richard Smith, who pointed out the `-fsanitize-undefined-trap-on-error` option to me. This post was updated with results for that option after Richard's comment. Also, thanks to Filipe Cabecinhas for noticing that clang fixed this behavior in clang 3.8 (released approximately 1.5 years after this post).

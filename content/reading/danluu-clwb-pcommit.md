@@ -85,13 +85,13 @@ Now, let's look how Intel decided to address this. There are two new instruction
 
 How much `CLWB` and `PCOMMIT` actually improve performance will be up to their implementations. It will be interesting to benchmark these and see how they do. In any case, this is an attempt to solve the WB/NVRAM impedance mismatch issue. It doesn't directly address the OS overhead issue, but that can, to a large extent, be worked around without extra hardware.
 
-**If you liked this post, you'll probably also enjoy[reading about cache partitioning in Broadwell and newer Intel server parts](<https://danluu.com//danluu.com/intel-cat/>)**.
+**If you liked this post, you'll probably also enjoy[reading about cache partitioning in Broadwell and newer Intel server parts](<https://danluu.com/intel-cat/>)**.
 
 Thanks to Eric Bron for spotting this in the manual and pointing it out, and to Leah Hanson, Nate Rowe, and 'unwind' for finding typos.
 
 If you haven't had enough of papers, Zvonimir Bandic pointed out [a paper by Dejan Vučinić, Qingbo Wang, Cyril Guyot, Robert Mateescu, Filip Blagojević, Luiz Franca-Neto, Damien Le Moal, Trevor Bunker, Jian Xu, and Steven Swanson on getting 1.4 us latency and 700k IOPS out of a type of NVRAM](<https://www.usenix.org/conference/fast14/technical-sessions/presentation/vucinic>)
 
-If you liked this post, you might also like [this related post on "new" CPU features](<https://danluu.com//danluu.com/new-cpu-features/>). 
+If you liked this post, you might also like [this related post on "new" CPU features](<https://danluu.com/new-cpu-features/>). 
 
 * * *
 

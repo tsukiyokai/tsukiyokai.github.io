@@ -4,7 +4,10 @@
 
 {% block content %}
 <h1>{{ page.title }}</h1>
-<p>{{ page.description }}</p>
+<p>{{ page.description }}
+{% if page.extra.lang %} · {{ page.extra.lang }}{% endif %}
+{% if page.extra.repo %} · <a href="{{ page.extra.repo }}">source</a>{% endif %}
+</p>
 
 {{ page.content | safe }}
 
