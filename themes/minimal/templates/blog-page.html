@@ -2,16 +2,35 @@
 
 {% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
 {% block description %}{{ page.summary | default(value=page.title) | striptags | truncate(length=160) }}{% endblock %}
-
 {% block content %}
 <h1>{{ page.title }}</h1>
-<p>{{ page.date | date(format="%Y-%m-%d") }} · {{ page.reading_time }} min read
+<p>{{ page.date | date(format="%b %d, %Y") }} · {{ page.reading_time }} min read
 {% for tag in page.taxonomies.tags | default(value=[]) %}
  [<a href="/tags/{{ tag }}/">{{ tag }}</a>]
 {% endfor %}
 </p>
 
+{% if page.toc %}
+<nav class="toc">
+<ul>
+{% for h1 in page.toc %}
+  <li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+  {% if h1.children %}
+  <ul>
+  {% for h2 in h1.children %}
+    <li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+  </li>
+{% endfor %}
+</ul>
+</nav>
+{% endif %}
+
+<article>
 {{ page.content | safe }}
+</article>
 
 <p><a href="/blog/">&lt; back to blog</a></p>
 {% endblock %}

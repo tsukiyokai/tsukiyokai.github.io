@@ -5,14 +5,24 @@
 
 {% set blog = get_section(path="blog/_index.md") %}
 {% if blog.pages %}
-<h2>recent posts</h2>
+<h2>posts</h2>
 <ul>
 {% for page in blog.pages | slice(end=5) %}
-    <li>{{ page.date | date(format="%Y-%m-%d") }} - <a href="{{ page.permalink }}">{{ page.title }}</a></li>
+    <li>{{ page.date | date(format="%b %d") }} <a href="{{ page.permalink }}">{{ page.title }}</a>{% for tag in page.taxonomies.tags | default(value=[]) %} [<a href="/tags/{{ tag }}/">{{ tag }}</a>]{% endfor %}</li>
 {% endfor %}
 </ul>
 {% if blog.pages | length > 5 %}
 <p><a href="{{ blog.permalink }}">all posts &gt;</a></p>
 {% endif %}
+{% endif %}
+
+{% set projects = get_section(path="projects/_index.md") %}
+{% if projects.pages %}
+<h2>projects</h2>
+<ul>
+{% for page in projects.pages %}
+    <li><a href="{{ page.permalink }}">{{ page.title }}</a> — {{ page.description }}</li>
+{% endfor %}
+</ul>
 {% endif %}
 {% endblock %}

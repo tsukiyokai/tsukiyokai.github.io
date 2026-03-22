@@ -7,7 +7,7 @@
 <ul>
 {% for page in paginator.pages %}
     <li>
-        {{ page.date | date(format="%Y-%m-%d") }} -
+        {{ page.date | date(format="%b %d, %Y") }}
         <a href="{{ page.permalink }}">{{ page.title }}</a>
         {% for tag in page.taxonomies.tags | default(value=[]) %}
         [<a href="/tags/{{ tag }}/">{{ tag }}</a>]
