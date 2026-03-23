@@ -8,6 +8,7 @@
 <ul class="repo-list">
 {% for repo in repos %}
     <li class="repo-card">
+        {% if repo.spark_bars %}<svg class="spark" viewBox="0 0 {{ repo.spark_width }} 100" preserveAspectRatio="none" fill="{{ repo.language_color | default(value='#888') }}">{{ repo.spark_bars | safe }}</svg>{% endif %}
         <a href="{{ repo.url }}">{{ repo.name }}</a>
         {% if repo.description %}<span class="desc">{{ repo.description }}</span>{% endif %}
         <span class="repo-meta">
