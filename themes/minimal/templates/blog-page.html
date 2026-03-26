@@ -2,6 +2,10 @@
 
 {% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
 {% block description %}{{ page.summary | default(value=page.title) | striptags | truncate(length=160) }}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
+{% endblock %}
 {% block content %}
 <h1>{{ page.title }}</h1>
 <p>{{ page.date | date(format="%b %d, %Y") }} · {{ page.reading_time }} min read
@@ -33,4 +37,11 @@
 </article>
 
 <p><a href="/blog/">&lt; back to blog</a></p>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
+<script>
+document.querySelectorAll('.pseudocode').forEach(function(el) {
+  pseudocode.renderElement(el, { lineNumber: true, noEnd: false });
+});
+</script>
 {% endblock %}

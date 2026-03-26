@@ -6,7 +6,7 @@
 {% set blog = get_section(path="blog/_index.md") %}
 {% if blog.pages %}
 <h2>posts</h2>
-<ul>
+<ul class="entry-list">
 {% for page in blog.pages | slice(end=5) %}
     <li>
         <span class="date">{{ page.date | date(format="%b %d") }}</span> <a href="{{ page.permalink }}">{{ page.title }}</a>{% for tag in page.taxonomies.tags | default(value=[]) %} [<a href="/tags/{{ tag }}/">{{ tag }}</a>]{% endfor %}
@@ -22,17 +22,11 @@
 {% set repos = load_data(path="static/repos.json") %}
 {% if repos %}
 <h2>projects</h2>
-<ul class="repo-list">
+<ul class="entry-list">
 {% for repo in repos %}
-    <li class="repo-card">
-        {% if repo.spark_bars %}<svg class="spark" viewBox="0 0 {{ repo.spark_width }} 100" preserveAspectRatio="none" fill="{{ repo.language_color | default(value='#888') }}">{{ repo.spark_bars | safe }}</svg>{% endif %}
+    <li>
         <a href="{{ repo.url }}">{{ repo.name }}</a>
-        {% if repo.description %}<span class="desc">{{ repo.description }}</span>{% endif %}
-        <span class="repo-meta">
-            {% if repo.language %}<span><span class="lang-dot" style="background:{{ repo.language_color }}"></span> {{ repo.language }}</span>{% endif %}
-            {% if repo.stars > 0 %}<span>&#9733; {{ repo.stars }}</span>{% endif %}
-            {% if repo.forks > 0 %}<span>&#9906; {{ repo.forks }}</span>{% endif %}
-        </span>
+        <br><small>{{ repo.description | default(value="&nbsp;") | safe }}</small>
     </li>
 {% endfor %}
 </ul>

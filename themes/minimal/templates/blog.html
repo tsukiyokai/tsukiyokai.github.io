@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>blog</h1>
-<ul>
+<ul class="entry-list">
 {% for page in paginator.pages %}
     <li><span class="date">{{ page.date | date(format="%b %d") }}</span> <a href="{{ page.permalink }}">{{ page.title }}</a>{% for tag in page.taxonomies.tags | default(value=[]) %} [<a href="/tags/{{ tag }}/">{{ tag }}</a>]{% endfor %}</li>
 {% endfor %}

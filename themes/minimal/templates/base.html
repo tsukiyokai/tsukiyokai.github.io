@@ -6,22 +6,25 @@
   <meta name="description" content="{% block description %}{{ config.description }}{% endblock %}">
   <title>{% block title %}{{ config.title }}{% endblock %}</title>
   <style>
+    .date  { color: #888; font-size: 0.85em; }
+    .tag   { color: #888; font-size: 0.85em; }
+    .desc  { color: #666; font-size: 0.85em; }
+    .entry-list li > a:first-of-type { font-family: Georgia, "Noto Serif SC", serif; font-size: 1.5em; }
     .footnote-definition { display: flex; gap: 0.4em; }
     .footnote-definition p { margin: 0; }
     li:has(> input[type="checkbox"]) { list-style: none; }
     .toc { font-size: 0.85em; line-height: 1; }
     .toc ul { padding-left: 1em; }
     .toc a { text-decoration: none; }
-    .date  { color: #888; font-size: 0.85em; }
-    .tag   { color: #888; font-size: 0.85em; }
-    .desc  { color: #666; font-size: 0.85em; }
-    .repo-list { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; gap: 0.6em; }
-    .repo-card { border: 1px solid #ddd; border-radius: 6px; padding: 0.6em 0.8em; flex: 1 1 14em; max-width: 22em; font-size: 0.9em; position: relative; overflow: hidden; }
-    .repo-card .spark { position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; opacity: 0.12; }
-    .repo-card a { font-weight: bold; }
-    .repo-card .desc { display: block; margin: 0.3em 0; }
-    .repo-meta { display: flex; gap: 0.8em; font-size: 0.85em; color: #888; }
-    .repo-meta .lang-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; vertical-align: middle; }
+    .algo { border: 1px solid #ccc; padding: 0.8em 1.2em; margin: 1em 0; font-family: Georgia, "Noto Serif SC", serif; font-size: 0.92em; line-height: 1.7; max-width: 36em; }
+    .algo-cap { font-variant: small-caps; font-size: 1.05em; letter-spacing: 0.03em; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; margin-bottom: 0.5em; }
+    .algo .kw { font-variant: small-caps; }
+    .algo .fn { font-style: italic; }
+    .algo .cm { color: #888; font-size: 0.9em; }
+    .algo ol { margin: 0; padding-left: 1.8em; }
+    .algo ol li { padding-left: 0.3em; }
+    .algo ol li::marker { font-size: 0.85em; color: #999; }
+    .ps-root { font-size: 1.05em !important; }
   </style>
   {% block css %}{% endblock %}
   <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="/rss.xml">
@@ -34,10 +37,5 @@
   </nav>
 
   {% block content %}{% endblock %}
-
-  <footer>
-    <a href="https://github.com/tsukiyokai">github</a> /
-    <a href="/rss.xml">rss</a>
-  </footer>
 </body>
 </html>
