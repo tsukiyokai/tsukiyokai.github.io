@@ -29,30 +29,27 @@ gh api graphql -f query="
   topics:        [.repositoryTopics.nodes[].topic.name]
 }]' > "$OUT"
 
-# Append daily activity sparkline (last 90 days)
+# Append weekly activity sparkline (52 weeks via participation API)
 python3 -c "
 import json, subprocess
 
 repos = json.load(open('$OUT'))
 for repo in repos:
     r = subprocess.run(
-        ['gh', 'api', f'repos/$USER/{repo[\"name\"]}/stats/commit_activity'],
+        ['gh', 'api', f'repos/$USER/{repo[\"name\"]}/stats/participation'],
         capture_output=True, text=True)
+    weeks = [0] * 52
     if r.returncode == 0:
         data = json.loads(r.stdout)
-        days = [d for w in data for d in w['days']][-90:]
-    else:
-        days = [0] * 90
+        if isinstance(data, dict) and 'all' in data:
+            weeks = data['all']
 
-    if not days:
-        days = [0] * 90
-    mx = max(days) or 1
-    n = len(days)
-    # SVG viewBox: width=n-1, height=100. Bars from baseline at 100 going up.
+    mx = max(weeks) or 1
+    n = len(weeks)
     bars = []
-    for i, v in enumerate(days):
+    for i, v in enumerate(weeks):
         if v > 0:
-            h = max(v * 85 // mx, 5)  # min 5% height for visibility
+            h = max(v * 85 // mx, 5)
             bars.append(f'<rect x=\"{i}\" y=\"{100-h}\" width=\"1\" height=\"{h}\"/>')
     repo['spark_bars'] = ''.join(bars)
     repo['spark_width'] = n
