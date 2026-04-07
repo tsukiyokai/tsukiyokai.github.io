@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="本文考察在基于DAG的AI工作流编排系统设计中遭遇的一个认识论问题：一个无法访问执行环境的规划阶段向拥有完整环境上下文的执行agent规定实现细节。借助Heidegger关于上手状态与在手状态的存在论区分、Merleau-Ponty的身体性认知、Gadamer的诠释学视域理论以及Husserl的现象学还原，本文论证这代…">
+  <title>离身的规划者：论DAG编排中处境性知识的不可替代性 - shanshan&#x27;s blog</title>
+  <style>
+    .date  { color: #888; font-size: 0.85em; }
+    .tag   { color: #888; font-size: 0.85em; }
+    .desc  { color: #666; font-size: 0.85em; }
+    .entry-list li > a:first-of-type { font-size: 1.5em; }
+    article { font-size: 1.1em; line-height: 1.8; }
+    .footnote-definition { display: flex; gap: 0.4em; }
+    .footnote-definition p { margin: 0; }
+    li:has(> input[type="checkbox"]) { list-style: none; }
+    .toc { font-size: 0.85em; line-height: 1; }
+    .toc ul { padding-left: 1em; }
+    .toc a { text-decoration: none; }
+    .algo { border: 1px solid #ccc; padding: 0.8em 1.2em; margin: 1em 0; font-family: Georgia, "Noto Serif SC", serif; font-size: 0.92em; line-height: 1.7; max-width: 36em; }
+    .algo-cap { font-variant: small-caps; font-size: 1.05em; letter-spacing: 0.03em; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; margin-bottom: 0.5em; }
+    .algo .kw { font-variant: small-caps; }
+    .algo .fn { font-style: italic; }
+    .algo .cm { color: #888; font-size: 0.9em; }
+    .algo ol { margin: 0; padding-left: 1.8em; }
+    .algo ol li { padding-left: 0.3em; }
+    .algo ol li::marker { font-size: 0.85em; color: #999; }
+    .ps-root { font-size: 1.05em !important; }
+    .home-cols { display: flex; gap: 2em; align-items: stretch; }
+    .home-col  { min-width: 0; }
+    .home-col:first-child  { flex: 2; }
+    .home-col:last-child   { flex: 1; }
+  </style>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
+
+  <link rel="alternate" type="application/rss+xml" title="shanshan&#x27;s blog" href="/rss.xml">
+</head>
+<body>
+  <nav>
+    <a href="/">home</a> /
+    <a href="/blog/">blog</a> /
+    <a href="/projects/">proj</a>
+  </nav>
+
+  
+<h1>离身的规划者：论DAG编排中处境性知识的不可替代性</h1>
+<p>Mar 22, 2026 · 24 min read
+
+ [<a href="/tags/philosophy/">philosophy</a>]
+
+ [<a href="/tags/ai/">ai</a>]
+
+ [<a href="/tags/design/">design</a>]
+
+</p>
+
+
+<nav class="toc">
+<ul>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#1-yin-yan-gong-cheng-fan-chang-xian-xiang">1. 引言：工程反常现象</a>
+  
+  </li>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#2-heidegger-dai-ma-de-cun-zai-lun-di-wei">2. Heidegger：代码的存在论地位</a>
+  
+  <ul>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#2-1-shang-shou-zhuang-tai-yu-zai-shou-zhuang-tai">2.1 上手状态与在手状态</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#2-2-dui-gui-hua-wen-ti-de-ying-yong">2.2 对规划问题的应用</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#2-3-duan-lie-zuo-wei-jie-shi">2.3 断裂作为揭示</a></li>
+  
+  </ul>
+  
+  </li>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#3-merleau-ponty-ju-shen-de-agent">3. Merleau-Ponty：具身的Agent</a>
+  
+  <ul>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#3-1-gan-zhi-zuo-wei-zhu-dong-can-yu">3.1 感知作为主动参与</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#3-2-agentde-yun-zuo-yi-xiang-xing">3.2 Agent的运作意向性</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#3-3-mei-you-shen-ti-de-gui-hua">3.3 没有身体的规划</a></li>
+  
+  </ul>
+  
+  </li>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#4-gadamer-shi-yu-rong-he">4. Gadamer：视域融合</a>
+  
+  <ul>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#4-1-shi-yu-zuo-wei-ren-zhi-bian-jie">4.1 视域作为认知边界</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#4-2-liu-shui-xian-zhong-de-liang-ge-shi-yu">4.2 流水线中的两个视域</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#4-3-rong-he-de-jie-gou-xing-tiao-jian">4.3 融合的结构性条件</a></li>
+  
+  </ul>
+  
+  </li>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#5-husserl-yan-zheng-zuo-wei-xian-xiang-xue-huan-yuan">5. Husserl：验证作为现象学还原</a>
+  
+  <ul>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#5-1-xuan-ge">5.1 悬搁</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#5-2-gatejie-dian-yu-xuan-ge-lei-bi-de-xian-du">5.2 Gate节点与悬搁类比的限度</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#5-3-yan-zheng-bian-jie-zuo-wei-xian-xiang-xue-yuan-ze">5.3 验证边界作为现象学原则</a></li>
+  
+  </ul>
+  
+  </li>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#6-chi-shen-gui-hua-wen-ti-yi-ban-xing-biao-shu">6. 离身规划问题：一般性表述</a>
+  
+  <ul>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#6-1-yuan-ze">6.1 原则</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#6-2-yi-ge-ming-xian-de-fan-bo">6.2 一个明显的反驳</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#6-3-hayekzhong-de-jie-gou-xing-ping-xing">6.3 Hayek中的结构性平行</a></li>
+  
+    <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#6-4-guan-yu-shang-xia-wen-yu-ke-die-dai-xing-de-fu-zhu">6.4 关于上下文与可迭代性的附注</a></li>
+  
+  </ul>
+  
+  </li>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#7-jie-lun">7. 结论</a>
+  
+  </li>
+
+  <li><a href="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/#can-kao-wen-xian">参考文献</a>
+  
+  </li>
+
+</ul>
+</nav>
+
+
+<article>
+<p>本文考察在基于DAG的AI工作流编排系统设计中遭遇的一个认识论问题：一个无法访问执行环境的规划阶段向拥有完整环境上下文的执行agent规定实现细节。借助Heidegger关于上手状态与在手状态的存在论区分、Merleau-Ponty的身体性认知、Gadamer的诠释学视域理论以及Husserl的现象学还原，本文论证这代表了一个一般性情形，我将其称为“离身规划问题“(disembodied planning problem)：当抽象规格凌驾于处境性知识之上时系统性地发生的失败。本文提出“验证边界“作为一个具有现象学基础的原则，用于确定规划系统中适当的抽象层次。</p>
+<span id="continue-reading"></span>
+<blockquote>
+<p>Zuhandenheit/Vorhandenheit（参与性理解 vs. 旁观性理解）</p>
+</blockquote>
+<h2 id="1-yin-yan-gong-cheng-fan-chang-xian-xiang">1. 引言：工程反常现象</h2>
+<p>问题是经验性地发现的。在一个名为dage的基于DAG的工作流编排器中，一条四阶段流水线将自然语言描述转化为可执行的工作流规格。该流水线的第二阶段将设计文档分解为具体的实现步骤（函数签名、文件路径、校验逻辑），随后映射为DAG节点并编译成YAML，供自主AI agent执行。</p>
+<p>生成的工作流表现出持续的质量缺陷。执行agent（拥有完整代码库访问权限的Claude Code完整会话）遵循规定的实现步骤，产出的代码在语法上正确但在架构上与现有代码库错位。规划指定的函数签名与现有类型系统冲突，文件路径违反既定的项目约定，校验逻辑重复或矛盾于现有实现。</p>
+<p>诊断是直截了当的：第二阶段通过API调用运行，仅接收前序阶段的文本输出，无法访问目标代码库。执行agent拥有第二阶段所缺乏的代码库上下文。系统的架构确保了信息较少的一方做出了更关键的决策。</p>
+<p>本文论证：这不仅是一个工程疏忽，而是大陆哲学已经广泛理论化的一个更深层认识论问题的实例。</p>
+<h2 id="2-heidegger-dai-ma-de-cun-zai-lun-di-wei">2. Heidegger：代码的存在论地位</h2>
+<h3 id="2-1-shang-shou-zhuang-tai-yu-zai-shou-zhuang-tai">2.1 上手状态与在手状态</h3>
+<p>在《存在与时间》(1927)第一篇中，Heidegger引入了关于遭遇存在者的两种模式的根本存在论区分。<em>Zuhandenheit</em>（上手状态）描述我们通过实践参与遭遇事物的模式：锤子被体验为锤击，键盘被体验为打字，工具退隐于它所使能的活动之中。<em>Vorhandenheit</em>（在手状态）描述我们作为具有属性的对象来审视存在者的超脱的、理论性的模式：锤子作为一个由固定重量和尺寸的金属头连接木柄的物件。</p>
+<p>关键在于，这不是两个同等有效的视角之间的区分。Heidegger的论点是：<em>Zuhandenheit</em>是遭遇存在者的原初模式，而<em>Vorhandenheit</em>是派生的，它只在实践参与断裂时才浮现。锤子作为锤击揭示了锤子作为对象所不能揭示的东西：它卷入由目的、材料和实践构成的指引性整体之中。理论描述并非错误；它在存在论上是贫乏的，而且是次生的，是一种从更根本模式的断裂中浮现的缺损模式。</p>
+<h3 id="2-2-dui-gui-hua-wen-ti-de-ying-yong">2.2 对规划问题的应用</h3>
+<p>编排流水线的第二阶段以<em>Vorhandenheit</em>的方式遭遇代码库。它接收一份文本设计文档，将其作为抽象结构进行推理：具有接口的组件、具有职责的模块、具有签名的函数。这种推理并非不正确。但如果Heidegger是对的，即理论模式派生于实践模式且从属于实践模式，那么第二阶段的理解不仅仅是不完整的，它在存在论上就是次生的。它在一种本性上比执行agent可用的模式更少揭示性的认知模式中产出规格。</p>
+<p>执行agent以<em>Zuhandenheit</em>的方式遭遇代码库。它读取文件，项目的约定自行呈现。它运行测试，发现编码在其中的假设。它搜索一个函数名，找到三个调用点，揭示了该函数在系统中的实际角色（这一角色可能与任何规格说明所述不同）。代码库不是agent审视的对象；它是agent栖居的环境。</p>
+<p>规划问题在以下情况下出现：<em>Vorhandenheit</em>模式的产出（实现规格）被强加于一个<em>Zuhandenheit</em>模式的agent。规划规定了<code>class OAuth2Provider(BaseAuth)</code>却不知道<code>BaseAuth</code>已被重构。agent在遭遇实际的<code>BaseAuth</code>时发现规划是错误的，但它被指示去遵循规划。</p>
+<h3 id="2-3-duan-lie-zuo-wei-jie-shi">2.3 断裂作为揭示</h3>
+<p>Heidegger观察到，<em>Zuhandenheit</em>通常在透明模式中运作，工具退隐，我们关注于工作本身。恰恰在断裂中工具才变得可见：当锤子断裂时，我们突然看见了作为对象的锤子。正是编排流水线的断裂（低质量的产出）使认识论结构变得可见。系统的失败是其在哲学上最具生产力的时刻。</p>
+<h2 id="3-merleau-ponty-ju-shen-de-agent">3. Merleau-Ponty：具身的Agent</h2>
+<h3 id="3-1-gan-zhi-zuo-wei-zhu-dong-can-yu">3.1 感知作为主动参与</h3>
+<p>Merleau-Ponty的《知觉现象学》(1945)通过将其奠基于身体性来激进化了Heidegger的洞见。对Merleau-Ponty而言，知识不是心灵与世界之间的关系，而是身体与世界之间的关系。身体不是认知主体的载具；它本身就是认知主体。感知不是被动地接收感觉与料，而是主动的运动参与：手通过伸向对象来知道对象的形状，知识在伸取中被构成。</p>
+<h3 id="3-2-agentde-yun-zuo-yi-xiang-xing">3.2 Agent的运作意向性</h3>
+<p>执行agent对代码库的参与展现了Merleau-Ponty所称的<em>运作意向性</em>(<em>fungierende Intentionalitaet</em>)，即一种前反思的、指向世界的实践性而非表象性的意向。当agent读取一个源文件时，文件并非作为中性的符号集合呈现自身。它作为可供性(affordance)呈现：可以遵循的模式、可以扩展的抽象、可以运行的测试。Agent对代码库的理解通过这种主动参与而构成，而非通过被动接收规格。</p>
+<p>第二阶段缺乏对代码库的运作意向性，只能产出Merleau-Ponty所谓的<em>表象性</em>说明，即一个关于代码库可能是什么样子的描述，由设计文档的抽象命题建构而成。执行agent则拥有<em>运作性</em>知识，即关于代码库实际上提供什么可供性的知识，通过参与而发现。</p>
+<h3 id="3-3-mei-you-shen-ti-de-gui-hua">3.3 没有身体的规划</h3>
+<p>幻肢（Merleau-Ponty的著名案例）似乎提供了一个类比：大脑向不再存在的肢体发出运动指令。但这个类比在关键点上失败了。幻肢患者曾经拥有那条手臂；身体图式保留了先前具身性的痕迹。第二阶段没有任何先前的具身性可以保留。它从未参与过代码库。它不是向一个缺席的身体发出指令，而是在从未拥有过身体的情况下发出指令。</p>
+<p>更精确的Merleau-Ponty式框架：第二阶段处于他所称的<em>表象意识</em>的位置，即一种完全通过符号运作的认知模式，脱离了那些符号所声称描述的感知领域。执行agent则通过Merleau-Ponty所称的<em>运作意向性</em>（<em>fungierende Intentionalitaet</em>，借用Husserl的术语）运作，也即构成我们与世界之原初关系的前反思的、实践性的指向。</p>
+<p>第二阶段产出的实现规格是没有运作性基础的表象。它们描述的代码库仅作为从设计文档推导出的逻辑建构而存在。实际的代码库（带着其积淀的历史、隐含的约定、阻力和可供性）只能通过运作性参与来认知。第二阶段缺乏这种参与的器官。它规定了一个从未握过的门把手的形状。</p>
+<h2 id="4-gadamer-shi-yu-rong-he">4. Gadamer：视域融合</h2>
+<h3 id="4-1-shi-yu-zuo-wei-ren-zhi-bian-jie">4.1 视域作为认知边界</h3>
+<p>在《真理与方法》(1960)中，Gadamer发展了<em>Horizont</em>（视域）概念来描述任何理解行为所从出发的有限视角。视域不是贬义上的局限，而是理解的可能性条件。拥有视域意味着能够看见；没有视域意味着迷失。</p>
+<p>Gadamer的诠释学洞见是：不同视域之间的理解不是通过一个视域吞并或支配另一个来实现的，而是通过<em>Horizontverschmelzung</em>，即视域融合。每一方贡献其视角；浮现的理解超越了任何一方单独所能达到的。</p>
+<h3 id="4-2-liu-shui-xian-zhong-de-liang-ge-shi-yu">4.2 流水线中的两个视域</h3>
+<p>规划阶段拥有真正的视域。它能看到执行agent所不能看到的：用户的原始意图、整体项目目标、定义成功的验收标准、工作与其他工作流的关系。这些不是琐碎的视角；它们构成了工作的目的论维度。</p>
+<p>执行agent拥有不同的真正视域。它能看到规划阶段所不能看到的：代码库的实际结构、现有模式和约定、类型系统的约束、测试套件中编码的假设、埋在辅助模块三层目录深处的三个月前的工具函数（它已经解决了一半的问题）。</p>
+<p>原始系统架构阻绝了融合。规划阶段产出完整的实现规格，使执行agent的视域变得无关紧要。用Gadamer的术语说，这是诠释学独白而非对话：一个视域将自身投射到另一个之上，拒绝了对方能够贡献的条件。</p>
+<h3 id="4-3-rong-he-de-jie-gou-xing-tiao-jian">4.3 融合的结构性条件</h3>
+<p>修正后的架构创造了融合的条件。规划阶段贡献其视域范围内的东西：目标、约束、验证标准。执行agent贡献其视域范围内的东西：实现路径、设计决策、模式识别。产出的工作流是两个视域的产物，而非一个视域的投射。</p>
+<p>具体而言：第二阶段现在产出工作流定义(“实现认证模块；验证：<code>pytest tests/auth/</code>；约束：遵循现有middleware模式”)而非实现规格(“创建<code>src/auth/oauth2.py</code>，包含类<code>OAuth2Provider(BaseAuth)</code>”)。前者在第二阶段的视域之内。后者不在。</p>
+<h2 id="5-husserl-yan-zheng-zuo-wei-xian-xiang-xue-huan-yuan">5. Husserl：验证作为现象学还原</h2>
+<h3 id="5-1-xuan-ge">5.1 悬搁</h3>
+<p>Husserl的<em>悬搁</em>(epoche)，引入于《纯粹现象学和现象学哲学的观念》(1913)，是对自然态度的方法论悬置，即对关于什么存在以及如何存在的一切预设进行括号化，以便关注事情本身(<em>zu den Sachen selbst</em>)。悬搁并不否认世界；它悬置对世界的判断，以便在无偏见的情况下考察经验的结构。</p>
+<h3 id="5-2-gatejie-dian-yu-xuan-ge-lei-bi-de-xian-du">5.2 Gate节点与悬搁类比的限度</h3>
+<p>在dage编排系统中，<em>gate节点</em>是一个机械地验证工作是否成功的shell命令：<code>pytest</code>返回退出码0，<code>cargo build</code>无错误完成，<code>curl /health</code>返回HTTP 200。Gate丢弃一切叙事（规划的意图、agent的自信、设计文档的推理），仅关注一个唯一的经验问题：测试通过了吗？</p>
+<p>将此称为“机械悬搁“是有诱惑力的，但知识诚实要求指出不类比之处。Husserl的悬搁是一种意识的反思性行为，它要求一个能够悬置自身自然态度的主体。一个检查退出码的shell命令没有态度可以悬置；它是一个布尔运算，不是一种现象学方法。</p>
+<p>Gate节点与悬搁确实共享的是在一个更大系统内的结构性功能：它是预设被迫让位于自行呈现之物的那个点。规划预设其规格是正确的。Agent预设其实现是充分的。Gate迫使两种预设面对经验实在。它不是现象学意义上的悬搁，但它占据着相同的结构性位置，即系统中断自身前行运动并追问“实际情况是什么？“的那个时刻。</p>
+<p>我将使用“验证还原“(verification reduction)这一术语而非“机械悬搁“，以标记这种结构性类比而不夸大现象学上的平行关系。</p>
+<h3 id="5-3-yan-zheng-bian-jie-zuo-wei-xian-xiang-xue-yuan-ze">5.3 验证边界作为现象学原则</h3>
+<p>上述分析为粒度问题给出了一个有原则的回答：规划应该在验证边界处分解工作。</p>
+<p>验证边界是可以执行验证还原的那个点，即叙事被悬置、实在被咨询的那个点。两个验证边界之间的一切构成一个工作单元。在该单元内部，agent自由地以<em>Zuhandenheit</em>模式参与代码库，行使其运作意向性，在自身视域内运作。在边界处，gate执行还原：实际情况是什么？</p>
+<p>这一原则具有将分解奠基于认识论而非传统项目管理启发式方法的哲学优点。传统的粒度问题由此转化为一个认识论问题：在哪些点上我们可以咨询实在？凡是shell命令能够区分成功与失败的地方，就是一个验证边界。</p>
+<h2 id="6-chi-shen-gui-hua-wen-ti-yi-ban-xing-biao-shu">6. 离身规划问题：一般性表述</h2>
+<h3 id="6-1-yuan-ze">6.1 原则</h3>
+<p>上述分析提示了一个一般性的认识论原则，非形式地陈述如下：</p>
+<p><em>规划者对执行环境知道得越少，其规定就越应限于目标和约束而非实现细节。规划应该指定落在其认知视域之内的东西，而将落在其外的东西延迟给处境性的执行者。</em></p>
+<p>在规划者完全没有环境访问权限的极限情形中（如dage流水线的第二阶段），规划不应规定目标、约束和验证标准以外的任何东西。其余一切延迟给处境性的执行者。</p>
+<h3 id="6-2-yi-ge-ming-xian-de-fan-bo">6.2 一个明显的反驳</h3>
+<p>最直接的反驳是工程性的而非哲学性的：为什么不给第二阶段代码库访问权？如果规划者能读取文件、运行测试、检查类型系统，信息不对称就会缩小，详细规划可能变得恰当。</p>
+<p>这个反驳部分正确，减少信息不对称确实扩展了规划者的合法范围。但它不能消除离身规划问题，原因有二。第一，规划在时间上先于执行，而执行改变环境。在实现开始之前做出的规划无法预见前三个节点修改代码库之后的状态。处境性知识不仅是空间性的（对文件的访问），也是时间性的（在演化过程中对当前状态的访问）。第二，即使拥有代码库访问权，规划者仍以<em>Vorhandenheit</em>的方式推理代码（理论性地检视它），而执行者以<em>Zuhandenheit</em>的方式参与代码（实践性地在其中工作）。给规划者一架望远镜并不等于给它一双手。</p>
+<h3 id="6-3-hayekzhong-de-jie-gou-xing-ping-xing">6.3 Hayek中的结构性平行</h3>
+<p>尽管Hayek属于奥地利分析传统而非大陆哲学，但他在《知识在社会中的运用》(1945)中的论证展现了一种过于精确而不容忽略的结构性平行。Hayek的论题：核心经济问题不是分配给定资源，而是利用分散在参与者之间的、没有任何单一参与者完整拥有的知识。中央规划失败不是因为规划者不聪明，而是因为良好决策所需的知识是构成性地局部的，它只存在于行动点上。</p>
+<p>与工作流编排的平行是直接的。Hayek所识别为经济价值所在的“关于时间和地点的特殊情势的知识“对应于只有执行agent才拥有的代码库上下文。两种情形中的解决方案相同：在规则和约束层面规划（Hayek的价格体系；dage的目标和验证边界），而非在具体行动层面规划（Hayek的生产配额；dage的函数签名）。</p>
+<p>跨传统的引用是合理的，因为结构同构是真实的，即使哲学谱系是不同的。</p>
+<h3 id="6-4-guan-yu-shang-xia-wen-yu-ke-die-dai-xing-de-fu-zhu">6.4 关于上下文与可迭代性的附注</h3>
+<p>Derrida在《签名 事件 语境》(1972)中的分析提供了一个进一步的复杂化。Derrida论证：任何符号的意义都构成性地依赖于其使用语境，然而每个符号必须是<em>可迭代的</em>，即能够在其生产者未预见的语境中运作。一个诸如“实现<code>validate_token()</code>接受一个JWT字符串“的规格是可迭代的：它可以在任何代码库中被阅读和执行。但它的意义（什么算作验证token、一个JWT字符串提供什么可供性、什么安全属性重要）随每个部署语境而转移。</p>
+<p>第二阶段产出可迭代的规格。执行agent在一个决定其实际意义的特定语境中遭遇它们。离身规划问题，用Derrida的术语说，是语境依赖的意义通过语境无关的符号传递的问题。修正后的架构通过传递目标（更具语境稳定性）而非实现细节（更具语境敏感性）来缓解这一问题。</p>
+<h2 id="7-jie-lun">7. 结论</h2>
+<p>离身规划问题是大陆哲学以不同名称理论化的一个问题的具体实例：Heidegger关于参与性理解与超脱性理解的区分，Merleau-Ponty关于知识通过身体参与而构成的论题，Gadamer关于理解需要不同视域之融合的论证，以及Husserl悬置预设以关注事情本身的方法。</p>
+<p>工程上的修正（在目标和验证边界层面而非实现步骤层面进行规划）不仅是一种实用改进。它是一个哲学洞见的架构性表达：知识是处境性的，参与揭示了思辨所不能揭示的东西，一个尊重其组件之认知边界的系统将胜过一个不尊重的系统。</p>
+<p>知道自己看不见的规划不是一个较差的规划。它是达成了Husserl所称自然态度最困难任务的规划：对自身限度的认识。</p>
+<h2 id="can-kao-wen-xian">参考文献</h2>
+<ul>
+<li>Derrida, J. (1972). Signature Event Context. In <em>Margins of Philosophy</em>, trans. A. Bass. Chicago: University of Chicago Press, 1982.</li>
+<li>Gadamer, H.-G. (1960). <em>Wahrheit und Methode: Grundzuege einer philosophischen Hermeneutik</em>. Tuebingen: Mohr.</li>
+<li>Hayek, F. A. (1945). The Use of Knowledge in Society. <em>American Economic Review</em>, 35(4), 519-530.</li>
+<li>Heidegger, M. (1927). <em>Sein und Zeit</em>. Halle: Niemeyer.</li>
+<li>Husserl, E. (1913). <em>Ideen zu einer reinen Phaenomenologie und phaenomenologischen Philosophie</em>. Halle: Niemeyer.</li>
+<li>Merleau-Ponty, M. (1945). <em>Phenomenologie de la perception</em>. Paris: Gallimard.</li>
+</ul>
+
+</article>
+
+<p><a href="/blog/">&lt; back to blog</a></p>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
+<script>
+document.querySelectorAll('.pseudocode').forEach(function(el) {
+  pseudocode.renderElement(el, { lineNumber: true, noEnd: false });
+});
+</script>
+
+</body>
+</html>

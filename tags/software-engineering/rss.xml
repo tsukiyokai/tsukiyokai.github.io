@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>shanshan&#x27;s blog - software-engineering</title>
+      <link>https://tsukiyokai.github.io</link>
+      <description>tech &amp; life</description>
+      <generator>Zola</generator>
+      <language>zh</language>
+      <atom:link href="https://tsukiyokai.github.io/tags/software-engineering/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 03 Apr 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>形式之外：论代码验证与文档审阅的存在论差异</title>
+          <pubDate>Fri, 03 Apr 2026 00:00:00 +0000</pubDate>
+          <author>shanshan</author>
+          <link>https://tsukiyokai.github.io/blog/verification-and-understanding/</link>
+          <guid>https://tsukiyokai.github.io/blog/verification-and-understanding/</guid>
+          <description xml:base="https://tsukiyokai.github.io/blog/verification-and-understanding/">&lt;p&gt;本文从一个工程直觉出发：写文档比写代码容易，但审阅文档比验证代码正确性困难得多。本文论证这一非对称性不是工具链成熟度的偶然差距，而是形式语言与自然语言在意义存在方式上的存在论断裂的表现。借助Husserl关于表达与指示的区分、Derrida关于延异与补充的批判、Heidegger关于座架的技术之思以及Gadamer的哲学诠释学，本文考察代码验证之所以可机械化是因为意义在形式系统中被规定(stipuliert)而非被理解，而文档审阅之所以不可还原为验证是因为自然语言中的意义只在视域融合的诠释学事件中才能兑现。由此得出的实践推论不是“将一切文档形式化“，而是承认形式化的结构性遮蔽，并为不可形式化的意义维度保留自然语言的空间。&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

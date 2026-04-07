@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>shanshan&#x27;s blog - philosophy</title>
+      <link>https://tsukiyokai.github.io</link>
+      <description>tech &amp; life</description>
+      <generator>Zola</generator>
+      <language>zh</language>
+      <atom:link href="https://tsukiyokai.github.io/tags/philosophy/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 03 Apr 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>形式之外：论代码验证与文档审阅的存在论差异</title>
+          <pubDate>Fri, 03 Apr 2026 00:00:00 +0000</pubDate>
+          <author>shanshan</author>
+          <link>https://tsukiyokai.github.io/blog/verification-and-understanding/</link>
+          <guid>https://tsukiyokai.github.io/blog/verification-and-understanding/</guid>
+          <description xml:base="https://tsukiyokai.github.io/blog/verification-and-understanding/">&lt;p&gt;本文从一个工程直觉出发：写文档比写代码容易，但审阅文档比验证代码正确性困难得多。本文论证这一非对称性不是工具链成熟度的偶然差距，而是形式语言与自然语言在意义存在方式上的存在论断裂的表现。借助Husserl关于表达与指示的区分、Derrida关于延异与补充的批判、Heidegger关于座架的技术之思以及Gadamer的哲学诠释学，本文考察代码验证之所以可机械化是因为意义在形式系统中被规定(stipuliert)而非被理解，而文档审阅之所以不可还原为验证是因为自然语言中的意义只在视域融合的诠释学事件中才能兑现。由此得出的实践推论不是“将一切文档形式化“，而是承认形式化的结构性遮蔽，并为不可形式化的意义维度保留自然语言的空间。&lt;&#x2F;p&gt;</description>
+      </item>
+      <item>
+          <title>否证的独白：论AI代码审查中形式化反证的认识论地位</title>
+          <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+          <author>shanshan</author>
+          <link>https://tsukiyokai.github.io/blog/monologue-of-refutation/</link>
+          <guid>https://tsukiyokai.github.io/blog/monologue-of-refutation/</guid>
+          <description xml:base="https://tsukiyokai.github.io/blog/monologue-of-refutation/">&lt;p&gt;本文从一个AI代码审查工具(vibe-review)中约束反证(constraint refutation)机制的设计与实践出发，考察当同一个LLM既生成缺陷假说又试图否证该假说时所遭遇的结构性困难。借助Popper的证伪主义、Hegel关于自我意识之辩证法中对独立他者性的要求，以及Wittgenstein关于规则遵循与实践之关系的论述，本文论证：单体agent的自我否证在逻辑形式上模仿了对抗性推理，但在结构上无法实现对抗性推理所要求的认知独立性。形式化反证框架的实际效用不在其逻辑形式，而在其所编码的物质性实践。&lt;&#x2F;p&gt;</description>
+      </item>
+      <item>
+          <title>不透明层：论自指系统的认知拓扑与判断的真诚性</title>
+          <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+          <author>shanshan</author>
+          <link>https://tsukiyokai.github.io/blog/opaque-layer/</link>
+          <guid>https://tsukiyokai.github.io/blog/opaque-layer/</guid>
+          <description xml:base="https://tsukiyokai.github.io/blog/opaque-layer/">&lt;p&gt;本文考察在一个基于DAG的AI工作流编排系统(dage)的开发过程中遭遇的两个看似无关的事件：系统在试图重构自身规划管线时的失败，以及人机协作过程中AI agent在面对用户追问时对自身判断的即时放弃。借助Hegel关于自我意识之运动的辩证法、Wittgenstein关于语言界限的命题、Sartre关于自欺的存在论分析以及Merleau-Ponty关于身体图式的现象学，本文论证这两个事件共享同一个结构：当行为的主体与行为的对象重合时，行为对自身失去作用力。本文提出“不透明层“(opaque layer)概念来描述这一结构，并论证系统设计的核心问题不是消除不透明性，而是在其边界上设置最小干预面。&lt;&#x2F;p&gt;</description>
+      </item>
+      <item>
+          <title>离身的规划者：论DAG编排中处境性知识的不可替代性</title>
+          <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+          <author>shanshan</author>
+          <link>https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/</link>
+          <guid>https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/</guid>
+          <description xml:base="https://tsukiyokai.github.io/blog/situated-knowledge-orchestration/">&lt;p&gt;本文考察在基于DAG的AI工作流编排系统设计中遭遇的一个认识论问题：一个无法访问执行环境的规划阶段向拥有完整环境上下文的执行agent规定实现细节。借助Heidegger关于上手状态与在手状态的存在论区分、Merleau-Ponty的身体性认知、Gadamer的诠释学视域理论以及Husserl的现象学还原，本文论证这代表了一个一般性情形，我将其称为“离身规划问题“(disembodied planning problem)：当抽象规格凌驾于处境性知识之上时系统性地发生的失败。本文提出“验证边界“作为一个具有现象学基础的原则，用于确定规划系统中适当的抽象层次。&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>
