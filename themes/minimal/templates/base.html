@@ -9,7 +9,8 @@
     .date  { color: #888; font-size: 0.85em; }
     .tag   { color: #888; font-size: 0.85em; }
     .desc  { color: #666; font-size: 0.85em; }
-    .entry-list li > a:first-of-type { font-family: Georgia, "Noto Serif SC", serif; font-size: 1.5em; }
+    .entry-list li > a:first-of-type { font-size: 1.5em; }
+    article { font-size: 1.1em; line-height: 1.8; }
     .footnote-definition { display: flex; gap: 0.4em; }
     .footnote-definition p { margin: 0; }
     li:has(> input[type="checkbox"]) { list-style: none; }
@@ -25,6 +26,10 @@
     .algo ol li { padding-left: 0.3em; }
     .algo ol li::marker { font-size: 0.85em; color: #999; }
     .ps-root { font-size: 1.05em !important; }
+    .home-cols { display: flex; gap: 2em; align-items: stretch; }
+    .home-col  { min-width: 0; }
+    .home-col:first-child  { flex: 2; }
+    .home-col:last-child   { flex: 1; }
   </style>
   {% block css %}{% endblock %}
   <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="/rss.xml">

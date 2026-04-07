@@ -3,8 +3,10 @@
 {% block content %}
 {{ section.content | safe }}
 
+<div class="home-cols">
 {% set blog = get_section(path="blog/_index.md") %}
 {% if blog.pages %}
+<div class="home-col">
 <h2>posts</h2>
 <ul class="entry-list">
 {% for page in blog.pages | slice(end=5) %}
@@ -17,10 +19,12 @@
 {% if blog.pages | length > 5 %}
 <p><a href="{{ blog.permalink }}">all posts &gt;</a></p>
 {% endif %}
+</div>
 {% endif %}
 
 {% set repos = load_data(path="static/repos.json") %}
 {% if repos %}
+<div class="home-col">
 <h2>projects</h2>
 <ul class="entry-list">
 {% for repo in repos %}
@@ -30,5 +34,7 @@
     </li>
 {% endfor %}
 </ul>
+</div>
 {% endif %}
+</div>
 {% endblock %}
